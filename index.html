@@ -72,6 +72,14 @@ button{font-family:inherit; cursor:pointer}
 }
 #workspace{position:absolute; left:0; right:0; top:0; bottom:var(--taskbar-h); overflow:hidden}
 .desktop-icons{position:absolute; top:18px; left:18px; display:flex; flex-direction:column; gap:4px; z-index:1}
+#deskMark{
+  position:absolute; left:50%; bottom:64px; transform:translateX(-50%); z-index:0; pointer-events:none;
+  font-family:var(--mono); font-size:11px; letter-spacing:.22em; color:var(--tx3); white-space:nowrap;
+  text-transform:uppercase; opacity:.55;
+}
+.dm-cursor{color:var(--tl); margin-left:2px; animation:dmBlink 1s step-end infinite}
+@keyframes dmBlink{50%{opacity:0}}
+@media(max-width:720px){ #deskMark{font-size:9px; bottom:80px; letter-spacing:.14em} }
 .dicon{
   width:78px; display:flex; flex-direction:column; align-items:center; gap:6px; padding:8px 4px;
   border-radius:10px; border:1px solid transparent; background:transparent;
@@ -285,6 +293,7 @@ select{background:var(--glass2); border:1px solid var(--br2); color:var(--tx); p
   <div class="wallpaper-grid"></div>
   <div id="workspace">
     <div class="desktop-icons" id="desktopIcons"></div>
+    <div id="deskMark" aria-hidden="true"><span id="deskMarkText"></span><span class="dm-cursor">_</span></div>
   </div>
 
   <div id="notif-stack"></div>
@@ -351,9 +360,12 @@ function notify(title, body){
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 function getBrowserLabel(){
   const ua = navigator.userAgent;
-  const m = ua.match(/(Firefox|Edg|OPR|Chrome|Safari)\/([\d.]+)/g);
-  if(!m) return ua.slice(0,40);
-  return m[m.length-1];
+  const order = [["Edg","Edge"],["OPR","Opera"],["Chrome","Chrome"],["Firefox","Firefox"],["Safari","Safari"]];
+  for(const [token,label] of order){
+    const m = ua.match(new RegExp(token+"/([\\d.]+)"));
+    if(m) return `${label}/${m[1]}`;
+  }
+  return ua.slice(0,40);
 }
 
 /* ---- icon helper (each app gets a distinct geometric glyph, not text) ---- */
@@ -630,6 +642,26 @@ function renderDesktopIcons(){
     d.onclick = (e)=>{ if(e.detail===2) openWindow(id); };
     wrap.appendChild(d);
   });
+}
+
+/* ---- desktop wallpaper mark: brand typography, no mascots, honors reduce-motion ---- */
+function runDeskMark(){
+  const el = document.getElementById("deskMarkText");
+  const lines = ["PIXELPROTECH SOLUTIONS", "BUILD · DEPLOY · REPEAT", "WE CREATE. WE DON'T COPY."];
+  if(PixelOS.settings.reduceMotion){ el.textContent = lines[0]; return; }
+  let li=0, ci=0, deleting=false;
+  function tick(){
+    const line = lines[li];
+    el.textContent = line.slice(0, ci);
+    if(!deleting){
+      if(ci < line.length){ ci++; setTimeout(tick, 55); }
+      else { deleting = true; setTimeout(tick, 1800); }
+    } else {
+      if(ci > 0){ ci--; setTimeout(tick, 22); }
+      else { deleting = false; li = (li+1)%lines.length; setTimeout(tick, 260); }
+    }
+  }
+  tick();
 }
 
 /* =========================================================
@@ -1161,7 +1193,7 @@ registerApp({
       body.querySelectorAll(".swatch").forEach(x=>x.classList.remove("active")); s.classList.add("active");
       applyAccent();
     });
-    body.querySelector("#s-motion").onclick = e=>{ PixelOS.settings.reduceMotion=!PixelOS.settings.reduceMotion; saveSettings(); e.target.classList.toggle("on"); };
+    body.querySelector("#s-motion").onclick = e=>{ PixelOS.settings.reduceMotion=!PixelOS.settings.reduceMotion; saveSettings(); e.target.classList.toggle("on"); runDeskMark(); };
     body.querySelector("#s-notif-req").onclick = async ()=>{
       if(!("Notification" in window)){ body.querySelector("#s-notif-state").textContent="Not supported in this browser"; return; }
       const perm = await Notification.requestPermission();
@@ -1229,6 +1261,7 @@ window.addEventListener("keydown", e=>{
 runBoot(()=>{
   renderLauncher();
   renderDesktopIcons();
+  runDeskMark();
   openWindow("commandcentre");
 });
 
