@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hamba Rides</title>
+<meta name="description" content="A top-down ride-hailing driving game across a schematic Johannesburg. Pick up passengers, beat the robots and build your business.">
+<meta name="author" content="Lindokuhle Mabika, PixelProTech Solutions (Pty) Ltd">
+<meta name="theme-color" content="#0e1714">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="hamba-rides-icon.svg" type="image/svg+xml">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Hamba">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="application-name" content="Hamba Rides">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="hamba-rides.css">
+</head>
+<body>
+<canvas id="game"></canvas>
+
+<div id="hud" class="hidden">
+  <div id="status" class="panel">
+    <span class="brand">HAMBA</span>
+    <div><span class="k">Balance</span><span class="v num" id="sMoney">R0</span></div>
+    <div><span class="k">Rating</span><span class="v"><span class="stars" id="sStars">★★★★★</span> <span class="num" id="sRate" style="font-size:13px;color:var(--muted)">5.00</span></span></div>
+    <div><span class="k" id="sLevelName">Rookie</span><span class="v num" id="sTrips">0 trips</span></div>
+    <div><span class="k">Time</span><span class="v num" id="sClock">06:30</span></div>
+  </div>
+
+  <div id="board"></div>
+
+  <div id="trip" class="panel hidden">
+    <div class="lbl" id="tLbl">Pick up</div>
+    <div class="dest" id="tDest">-</div>
+    <div class="row num"><span id="tDist">-</span><span id="tTime">-</span><span id="tFare">-</span></div>
+    <div class="bar"><i id="tBar"></i></div>
+  </div>
+
+  <div id="gauges" class="panel">
+    <canvas id="speedo" width="264" height="184"></canvas>
+    <div class="bars">
+      <div><div class="lab"><span>Fuel</span><span class="num" id="fuelTxt">0 L</span></div><div class="track"><i id="fuelBar"></i></div></div>
+      <div><div class="lab"><span>Body</span><span class="num" id="condTxt">100%</span></div><div class="track"><i id="condBar"></i></div></div>
+      <div><div class="lab"><span id="carName">Sprint 1.2</span></div><div class="lab" style="margin-top:2px"><span id="winTxt">Windows up</span></div></div>
+    </div>
+  </div>
+
+  <div id="miniwrap" class="panel"><canvas id="mini" width="440" height="440"></canvas><span class="mapcap">Map · M</span></div>
+
+  <div id="prompt" class="panel hidden"></div>
+  <div id="toast" class="panel"></div>
+  <div id="hint" class="panel" style="padding:4px 12px">WASD / arrows drive · Space handbrake · E interact · 1–4 accept · G garage · H horn · V windows · Esc pause</div>
+
+  <div id="touch">
+    <div class="grp"><button id="tL" aria-label="Steer left">◀</button><button id="tR" aria-label="Steer right">▶</button></div>
+    <div class="grp"><button id="tE" aria-label="Interact">E</button><button id="tB" aria-label="Brake">▼</button><button id="tG" aria-label="Accelerate">▲</button></div>
+  </div>
+</div>
+
+<div id="fade"><span id="fadeTxt"></span></div>
+
+<div id="summary" class="modal hidden"><div class="card" id="summaryCard"></div></div>
+<div id="garage" class="modal hidden"><div class="card" id="garageCard"></div></div>
+
+<div id="pause" class="modal hidden"><div class="card">
+  <h2>Paused</h2>
+  <h3>Sound</h3>
+  <div class="mix">
+    <label for="vMaster">Master</label><input id="vMaster" type="range" min="0" max="100" value="80">
+    <label for="vEngine">Engine</label><input id="vEngine" type="range" min="0" max="100" value="70">
+    <label for="vTraffic">Traffic</label><input id="vTraffic" type="range" min="0" max="100" value="60">
+    <label for="vUI">Alerts</label><input id="vUI" type="range" min="0" max="100" value="60">
+  </div>
+  <div class="btns"><button class="btn primary" id="bResume">Resume</button><button class="btn" id="bGarage2">Garage</button><button class="btn" id="bAbout2">About</button><button class="btn" id="bNew">New game</button></div>
+</div></div>
+
+<div id="title" class="modal"><div class="card">
+  <div class="title-art">HAMBA</div>
+  <h2 style="font-size:20px;color:var(--fg)">Ride-hailing in Johannesburg</h2>
+  <p>Take trips across a compressed, schematic Johannesburg. Pick up passengers, get them there on time, keep the car healthy and build your business.</p>
+  <h3>Controls</h3>
+  <div class="keys">
+    <span><span class="kbd">W</span><span class="kbd">A</span><span class="kbd">S</span><span class="kbd">D</span> or arrows</span><span>Drive, brake and reverse</span>
+    <span><span class="kbd">Space</span></span><span>Handbrake</span>
+    <span><span class="kbd">E</span></span><span>Pick up, drop off, refuel, repair</span>
+    <span><span class="kbd">1</span>–<span class="kbd">4</span></span><span>Accept a request (or click it)</span>
+    <span><span class="kbd">G</span> <span class="kbd">H</span> <span class="kbd">V</span></span><span>Garage · horn · windows up/down</span>
+  </div>
+  <div class="btns"><button class="btn primary" id="bStart">Start driving</button><button class="btn" id="bContinue" disabled>Continue saved game</button><button class="btn hidden" id="bInstall">Install app</button></div>
+  <p class="credit">Created by <b>Lindokuhle Mabika</b> · <a href="https://pixelprotechsolutions.co.za" target="_blank" rel="noopener">PixelProTech Solutions</a> · <button class="linkbtn" id="bAbout">About</button></p>
+  <p id="iosHint" class="hidden" style="font-size:12px">To install on iPhone or iPad, tap Share, then Add to Home Screen.</p>
+  <p style="margin-top:12px;font-size:12px">Sound starts when you press a button. The map is hand-drawn from Johannesburg's geography, not exact survey data.</p>
+</div></div>
+
+<div id="mapview" class="modal hidden"><div class="mapcard">
+  <div class="maphead"><h2>City map</h2><div class="mapbtns">
+    <button class="btn" id="mFocus">Trip view</button><button class="btn" id="mFit">Whole city</button><button class="btn" id="mMe">My car</button>
+    <button class="btn sq" id="mOut" aria-label="Zoom out">−</button><button class="btn sq" id="mIn" aria-label="Zoom in">+</button><button class="btn primary" id="mClose">Close</button></div></div>
+  <div class="mapbody"><div class="mapwrap"><canvas id="bigmap"></canvas></div><aside id="mapside"></aside></div>
+</div></div>
+
+<div id="about" class="modal hidden"><div class="card about">
+  <div class="pp-tag">// BUILT BY</div>
+  <h2>Lindokuhle Mabika</h2>
+  <p class="pp-co">PixelProTech Solutions (Pty) Ltd</p>
+  <p>Field IT engineering and digital systems. Supporting, repairing and building technology across Gauteng: Johannesburg, Pretoria and Centurion.</p>
+  <div class="pp-grid">
+    <span class="k">Website</span><a href="https://pixelprotechsolutions.co.za" target="_blank" rel="noopener">pixelprotechsolutions.co.za</a>
+    <span class="k">Email</span><a href="mailto:pixelprotechsolutions@proton.me">pixelprotechsolutions@proton.me</a>
+    <span class="k">Phone</span><a href="tel:+27651971461">065 197 1461</a>
+    <span class="k">Registration</span><span>2026/622131/07</span>
+  </div>
+  <h3>About this game</h3>
+  <p>Hamba Rides is an independent game and is not affiliated with any ride-hailing company. The map is a hand-drawn schematic of Johannesburg, not survey data. Passengers and addresses are fictional.</p>
+  <div class="btns"><button class="btn primary" id="bAboutClose">Close</button></div>
+</div></div>
+
+<noscript>Hamba Rides needs JavaScript to run.</noscript>
+<script src="hamba-rides.js"></script>
+<script src="hamba-rides-pwa.js"></script>
+</body>
+</html>

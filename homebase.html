@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>HOMEBASE — Field Operations</title>
+<meta name="description" content="HOMEBASE: Field Operations. Adults-only (18+) top-down action game by PixelProTech Solutions. Guns, police pursuits, eight missions. Fictional. No accounts, no ads, no tracking.">
+<meta name="theme-color" content="#07070a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="HOMEBASE FO">
+<link rel="icon" href="homebase-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="homebase.css">
+</head>
+<body>
+<div id="stage"><canvas id="game" width="960" height="540" aria-label="HOMEBASE Field Operations game world"></canvas>
+<div id="ui">
+<div id="hud" style="display:none"><div class="hudbox"><div class="bar"><i id="hp-fill"></i><span id="hp-txt">HP 100</span></div><div class="bar ar"><i id="ar-fill"></i></div><span id="hud-coins">R 0</span><span id="heat"><i></i><i></i><i></i><i></i><i></i></span></div><div id="hud-track"></div><canvas id="minimap" width="160" height="120"></canvas><div id="zone"></div><div id="hud-weapon"></div><div id="hud-timer"></div><div id="hud-speed"></div><div id="hud-prompt" style="display:none"></div></div>
+<div id="toasts" role="status" aria-live="polite"></div><div id="floats"></div><div id="bigmsg"></div>
+<div id="cine"></div>
+<div id="dialog" style="display:none" role="dialog"></div><div id="modals"></div><div id="fade"></div>
+</div></div><div id="fatal"></div>
+<noscript>HOMEBASE needs JavaScript to run.</noscript>
+<script src="homebase-00_core.js"></script>
+<script src="homebase-10_audio.js"></script>
+<script src="homebase-20_input.js"></script>
+<script src="homebase-30_gfx.js"></script>
+<script src="homebase-40_world.js"></script>
+<script src="homebase-50_entities.js"></script>
+<script src="homebase-60_ui.js"></script>
+<script src="homebase-65_combat.js"></script>
+<script src="homebase-70_ops.js"></script>
+<script src="homebase-85_screens.js"></script>
+<script src="homebase-88_aura.js"></script>
+<script src="homebase-90_main.js"></script>
+</body>
+</html>
