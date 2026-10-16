@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pixel — HTML Workspace by PixelProTech</title>
+<meta name="description" content="Write, run, and understand HTML. Learn at your own pace, or just get the job done.">
+<meta name="theme-color" content="#0A0A0F">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAFOklEQVR4nLWX74tc1RnHP89zz52ZvbM7s1mhDVJjo9BoX0htiJJoW+xK8IWUKCq+KP54177qO5FgilSE0vf+E8U2DRQUmzWhNassbW1LSgiFlsQEN7q/d2Z25t5zz+OLe3cyM5sNu437hcPcc+85z/M9z/M95zwjDKP+wv1nzny38ZPpLHBHiBX+svBr/vzlKWKtA1wwY6bRqP3mxo0b7c1xuvmQJI3jWtN3F9NL03fmels8JiK/XFvrvpskjeNDBOr15hNmcjpCn1JxqIBQNCdF2+zf6p1KsWIdeacSj3AwROQpMzldrzefAHDNZnNfmnJSRBLFca3zEQvdZ1EqCHC9+1cirXDP2FFyIAI+2/gYgHvGjhIAH7pcbv2eQ+PP4rQGwEboca3zESF4vBURF4mJtIKIJCHYyWaz+Q9JksYboG+BYRaI3TgPHfgFTsdQibi69CeuL84w5u4CK5bXzVcBqEVNMAgEOvkXJNE30DKrAU+QwAPfehWVKioRX6zOcX1xBhFXximckiRpXgA5BobP23zv4Gs8cuht8tBDxNHe+Iw/fPIYPb+MSDSYOeCmUoUII+/3fd7h4YOv8+iht8mDR8XR6l7h9MePk/qVkoTNOuBYsbTStFYJwZPnXUSisjmECCFiGMP9we+CololDx6ft0vyisgmeQM4poxAxSHIUJ+B/m6wE1s6OmF+eZZuWMFUIIqYX5kl86sDzHfufCe23PA0IRvLWN7fQtWhGrPmO5gwmKUdYme2hpZlwTP1zUeJahMECeSkTO1/hDhuYLY7Bju1tSWuFjz0B0jR3/3yd2zLjU4SHRGOutJY3qe7+d0GjIkoZje3pVle2JIIkUL9qhVGRThEQNSxND9H6leLyVHEwtVP8L5DXJ8qHQm+uw5AXJsAKw6wrL1MXN/XF5j6Kkvzc2y0rhUE1LHw+Sw+ayEi2xAwIa15FkvhiDrW1zPuO/EWjW8fwXIPkWP9yt8AmLj3MISckHVZvjTDvgen0bhWRiDw3zOnOP+7adRVQQSftggh234XWO5pHDiMJuOEXgesx+R3foiIFM5LTD3w4/54AMaa7D/2MpZn/ZxrNaFx4DArl8+jlQQwZOggugWBzdyNCseKDwNEs83B5S/9VPTHhLzQQamB7bDlHAhZFwmGWJGnPN1AXIyrTWAYwk0NuNoExSVmZO0l4vpUP7/iqphPt3V8SwLiYhYvn6V5/EW0Po7EFRY+/C0bF+eYOHgEQg4asX7l7wBM3Pv9QgO+x9Kls0w9+GSRbyD4lC8/PY2UmtgOkiTNfmyt12Xy6ZeYfP5nWNYDVfKlBa6/+QphfQVUAUOiotAoUlFUIRJVsDy9uc2FUny3P8JHUmBIpYqg/ZtW4yoaV6EyVhIYYB8NVzyiY7d1divs7obZA2wRoaU9JDcwKVqvB3aHJfJtMBQBcTGtT8+zJvO0J1PadwWWL31IWFvZEv49IUCWoT84SudAjdbEBq36On76CNKchLA3UdhyEFEtRWgUQqxUixp7j6DA7NANFUVFUy2ai0D2goAAzDqw94qquHAeLv4b+99VRAUiR7h4ETqdPSJh77k4lnfS1H4kIk/iHP4/l+n9awZqVYgiZO6fRN0U4q3Z+v8hmNnZSkXeESj+moXAH7WbJunPT5C9/lNIU9AI+XyB2omTyHr7a9oJgpl1VHm63V49pwDt9uo5EXsG8+9TiSHz0M2gm5Z6+LrCL5jZ+yL2TLu9eg4GtmGns/bBONlz+X13zwxVTbssRm+DC2b2q0aj9lyns/bB5suvAMrgRpHCFMnzAAAAAElFTkSuQmCC" sizes="32x32" type="image/png">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAB/UlEQVR4nO2bIVPDQBCFLxlUDHiY6S9gEMxgapBgMZhaJBrBL6hCILE1GCxIDIaZKiSqGkwRZ4uAdNI2uX3pXfuSy34yu3N9+7LZu2baxADcHs1mSN62ufvcK71u7TRB19iRErJst5HFuyhqlsxI0YXailRDaQfEUHiRvJ6ybljpgNiKL1JWWyolxMZyjc4Z0AXmBrjuftV2U4xLOWhenbXWpVhrsnyhS1g7TcRzQM7gdFIZG732gghaB19d0AxwfQgS3xQhdKVdbX9j/h593QXYAtioAWwBbNQAJEnaT1nngBC64IPQ98EPmrpVfHVBHXA2+PCKb4oQunQGsAWwUQPYAtioAWwBbNQAJOlldOgV3xQhdMEnwa99+cR1fPPmjI+HfTEPySnm+ZqfIG+EJDEschN80BnAFsBGDWALYKMGsAWwgQyQtpvxsA9tSUhenbVCAJ0DjDGmd/9cGZtcnwcRwwDqAFfxSLzJ6AxgC2CjBrAFsFED2ALYqAFIknTQafNBKOgrsTYCdUD29OgVbzI6A9gC2KgBbAFs0jp/MIoNa6eJdgCSZC8uveJNZt7+XfvRdP7oLzz/LhPs+0PlYtnJVTBh26A497BHwFE8Em8yCwZ0YUdYrnGlA2I2oay20m+DeWIsg9F1U50zIIZukGoQ3wf8L9CqTqhz434BjmGyayqvI4QAAAAASUVORK5CYII=" type="image/png">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFdElEQVR4nO3drXIlRRgG4CSFOma5g1VICkEVBoMEi8GsRSJQCK4AhUBi12CwIDEYqlBI1N4BMccGAUllk/Mzf1/P9HmfR63Z7lMz7zs9MyfpXF8V+PaDu7uKcY/5/u93H/799Xv/rDJv8txj7Pe318t9kvneWfsDkGW3e/Hs4rhmKRSA1T0uResy3LScDM7Z7V7cHVolqigAm9SqCArAplUXYfECtFy+yFFVhEULIPxUWzpji7wFEnxaus/bEm+MZq8Aws9alsjerAIIP2ubm8HJBRB+tmJOFicVQPjZmqmZHF0A4WerpmRzVAGEn60bm9HBBRgz8Jwflx3r6Vyt5j40T+rcWzMmq4MKMOXK3+JAHZujeu5T46fOvTVDM3u2AHNueyoP2Lmxq+YeMm7q3FszJLtnv0lz30/Pzn1bfHIFEH56dy7DRwsg/FyKU1ku/5XIV5+8KRn39W8vS8Zluh7P9cEVYKmrf9UBqR6b8bZ+ro9luuw3wloEVAm2oedz/awAS1z9WwZTCdbV07k+lG2/E0y0twrgzQ+X7mnGrQBEeyiAqz8pHmfdCkA0BSDazdWV2x/y3GfeCkA0BSCaAhBNAYh24wGYVLvdizsrANEUgGgKQDQFIJoCEE0BiKYARFMAoikA0UoK0HLTKhtkrav3c122ArQ4MMK/DT2f69JboMoDI/zb0uu5vvbDcCTzEEw0BSBa+fbon776q2TcX1+/XzIu0/V4rktXgKoDUj024/V6rssK0CKgSrANPZ/rkgK0DKYSrKv3c+0hmGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiKQDRFIBoCkA0BSCaAhCtpAAt9+yxP9C6ej/XZStAiwMj/NvQ87kuvQWqPDDCvy29nmu7QxPNQzDRFIBoCkC08u3RP/zm95Jx//zu41XmHjJv8ty9KV0BqsI/ZOyquYeMmzp3j8oK0OKAHZujeu5T46fO3auSArQ8UE/najX3oXlS5+6Zh2CiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApAtJICtNxD5ulcreY+NE/q3D0rWwFaHKhjc1TPfWr81Ll7VXoLVHnAzo1dNfeQcVPn7pHt0YnmIZhoCkA0BSBa+fboL3/4pWTcN199VjIuWUpXgKrwV49NjrICtAioEjBXSQFaBlMJmMNDMNEUgGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiKQDRFIBoCkA0BSBaSQFa7tljfyDmKFsBWgRT+Jmr9BaoMqDCzxJsj040D8FEUwCile8Ovfv5p5Jx959/UTIuWUpXgKrwV49NjrICtAioEjBXSQFaBlMJmMNDMNEUgGgKQDQFIJoCEE0BiKYARFMAot3s97fXa38IWMN+f3ttBSCaAhBNAYimAES7ubr672Fg7Q8CLd1n3gpANAUg2kMB3AaR4nHWrQBEe6sAVgEu3dOMWwGI9qwAVgEu1aFsl6wALTetskEWcxwswBKrQItgCj9DHct06TNAZUCFnyWcvNLbOp1LcOqO5uQK4IGY3p3LsNegRBt0hZ9zK7T/48ep//Wk3UdflozL5RhyBzNoBZh6K1QV/uqx6d/QzA6+BRpbghYBVQIOGZPVUc8AQwduGUwl4LGxF+rRD8HeDLFVU7I56S2QErA1UzM5+TWoErAVc7I463sAJWBtczM4+4swJWAtS2Rvkb8TfP9B/OwQLSx50V30RyGsBlRbOmOL/6X4/z+glYBFVV1cFy8ALKn6rkIB2KRWt9MKwKa0fo5UAFa35ssTBaCprb0p/BcPdOCLoeDdXAAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>/* =========================================================
+   PIXEL — Design tokens
+   ========================================================= */
+:root{
+  --bg:            #0A0A0F;
+  --bg-raised:     #1A1A2E;
+  --bg-raised-2:   #201f3a;
+  --line:          #2c2c46;
+  --line-soft:     #212138;
+  --text:          #F5F4FA;
+  --text-dim:      #A6A4C0;
+  --text-faint:    #6f6d90;
+  --purple:        #7B2FFF;
+  --purple-soft:   #9a5cff;
+  --teal:          #00D4AA;
+  --white:         #FFFFFF;
+  --danger:        #FF5D7A;
+  --warn:          #FFB84D;
+
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-1: 0 1px 0 rgba(255,255,255,0.03) inset, 0 8px 24px rgba(0,0,0,0.35);
+
+  --topbar-h: 62px;
+  --tabbar-h: 64px;
+}
+
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    /* Pixel is a dark-native product; light mode keeps the same
+       palette but is not the default focus of this v1. */
+  }
+}
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+}
+
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+h1, h2, h3{
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 .5em;
+  letter-spacing: -0.01em;
+}
+
+p{ margin: 0 0 1em; color: var(--text-dim); line-height: 1.6; }
+
+a{ color: var(--teal); }
+
+button{ font-family: inherit; }
+
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--teal);
+  color: #04231c;
+  padding: 10px 16px;
+  border-radius: 0 0 8px 0;
+  z-index: 200;
+  font-weight: 600;
+}
+.skip-link:focus{ left: 0; }
+
+:focus-visible{
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   APP SHELL
+   ========================================================= */
+.app-shell{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topbar{
+  height: var(--topbar-h);
+  padding: 0 20px;
+  padding-top: env(safe-area-inset-top, 0px);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid var(--line-soft);
+  background: rgba(10,10,15,0.9);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar-brand{
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+.brand-mark{ display: inline-flex; }
+.brand-name{ font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand-sub{ color: var(--text-faint); font-size: .78rem; display: none; }
+@media (min-width: 720px){ .brand-sub{ display: inline; } }
+
+.topbar-nav{
+  display: none;
+  gap: 4px;
+  flex: 1;
+}
+@media (min-width: 860px){ .topbar-nav{ display: flex; } }
+
+.nav-btn{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: .92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.nav-btn:hover{ color: var(--text); background: var(--bg-raised); }
+.nav-btn.is-active{
+  color: var(--bg);
+  background: var(--teal);
+}
+
+.topbar-actions{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: .85rem;
+  font-weight: 600;
+}
+.icon-btn:hover{ color: var(--text); border-color: var(--purple-soft); }
+.icon-btn span{ display: none; }
+@media (min-width: 640px){ .icon-btn span{ display: inline; } }
+
+/* Mobile tab bar */
+.tabbar{
+  display: flex;
+  border-top: 1px solid var(--line-soft);
+  background: rgba(10,10,15,0.96);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  order: 2;
+}
+@media (min-width: 860px){ .tabbar{ display: none; } }
+
+.tabbar-btn{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: transparent;
+  border: none;
+  color: var(--text-faint);
+  padding: 9px 4px 10px;
+  font-size: .68rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tabbar-btn.is-active{ color: var(--teal); }
+
+.main{
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.view{ display: none; flex: 1; min-height: 0; flex-direction: column; }
+.view.is-active{ display: flex; }
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+.workspace-toolbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  flex-wrap: wrap;
+}
+
+.toolbar-group{ display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  background: var(--bg-raised);
+  color: var(--text);
+  font-weight: 600;
+  font-size: .88rem;
+  padding: 9px 15px;
+  cursor: pointer;
+  transition: transform .1s ease, border-color .15s ease, background .15s ease;
+}
+.btn:hover{ border-color: var(--purple-soft); }
+.btn:active{ transform: scale(.97); }
+.btn-primary{
+  background: linear-gradient(135deg, var(--purple), #5b2fd6);
+  border-color: transparent;
+  color: #fff;
+}
+.btn-primary:hover{ filter: brightness(1.08); }
+.btn-ghost{ background: transparent; }
+.btn-sm{ padding: 6px 11px; font-size: .8rem; }
+.btn-block{ width: calc(100% - 32px); margin: 4px 16px 20px; justify-content: center; }
+
+.autorun-toggle{
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-dim);
+  font-size: .85rem;
+  padding-right: 6px;
+}
+.autorun-toggle input{ accent-color: var(--teal); width: 16px; height: 16px; }
+
+.workspace-grid{
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: var(--line-soft);
+}
+@media (min-width: 900px){
+  .workspace-grid{ grid-template-columns: 1fr 1fr; grid-template-rows: 1fr; }
+}
+
+.panel{
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.panel-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: .82rem;
+}
+.panel-title{ display: flex; align-items: center; gap: 7px; font-weight: 700; color: var(--text-dim); }
+.panel-meta{ color: var(--text-faint); font-family: var(--font-mono); font-size: .74rem; }
+
+.panel-head-tabs{ padding: 6px 10px 6px 14px; }
+.subtab-group{ display: flex; gap: 4px; }
+.subtab{
+  display: flex; align-items: center; gap: 6px;
+  background: transparent; border: none; color: var(--text-faint);
+  padding: 7px 11px; border-radius: 8px; font-size: .82rem; font-weight: 600; cursor: pointer;
+}
+.subtab:hover{ color: var(--text); }
+.subtab.is-active{ background: var(--bg-raised); color: var(--teal); }
+
+.editor-wrap{
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.line-numbers{
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  line-height: 1.6;
+  color: var(--text-faint);
+  padding: 14px 10px 14px 14px;
+  text-align: right;
+  user-select: none;
+  overflow: hidden;
+  white-space: pre;
+  border-right: 1px solid var(--line-soft);
+  background: var(--bg-raised);
+  min-width: 42px;
+}
+
+.code-editor{
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: .9rem;
+  line-height: 1.6;
+  padding: 14px 16px;
+  tab-size: 2;
+  white-space: pre;
+  overflow: auto;
+}
+.code-editor::placeholder{ color: var(--text-faint); }
+
+.subview{ display: none; flex: 1; min-height: 0; }
+.subview.is-active{ display: flex; }
+
+.preview-frame{
+  flex: 1;
+  border: none;
+  width: 100%;
+  background: #fff;
+}
+
+.understand-panel{
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}
+.understand-empty{ color: var(--text-faint); font-size: .9rem; }
+
+.understand-item{
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--bg-raised);
+}
+.understand-item-head{
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.understand-tag{
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--teal);
+  font-size: .92rem;
+}
+.understand-count{
+  font-family: var(--font-mono);
+  color: var(--text-faint);
+  font-size: .75rem;
+}
+.understand-desc{ color: var(--text-dim); font-size: .87rem; margin: 0; }
+
+/* =========================================================
+   LEARN
+   ========================================================= */
+.learn-layout{
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: auto;
+}
+@media (min-width: 860px){
+  .learn-layout{ grid-template-columns: 300px 1fr; overflow: hidden; }
+}
+
+.lesson-list-wrap{
+  border-bottom: 1px solid var(--line-soft);
+  padding: 16px;
+}
+@media (min-width: 860px){
+  .lesson-list-wrap{ border-bottom: none; border-right: 1px solid var(--line-soft); overflow: auto; }
+}
+
+.learn-progress{ margin-bottom: 14px; }
+.learn-progress-bar{
+  height: 6px;
+  border-radius: 999px;
+  background: var(--bg-raised);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+.learn-progress-fill{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--purple), var(--teal));
+  transition: width .3s ease;
+}
+#progressLabel{ font-size: .78rem; color: var(--text-faint); }
+
+.lesson-list{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+
+.lesson-item{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-dim);
+  padding: 10px 11px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: .88rem;
+}
+.lesson-item:hover{ background: var(--bg-raised); }
+.lesson-item.is-active{ background: var(--bg-raised); border-color: var(--purple-soft); color: var(--text); }
+.lesson-num{
+  flex: none;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  background: var(--bg-raised-2);
+  color: var(--text-faint);
+}
+.lesson-item.is-complete .lesson-num{ background: var(--teal); color: #04231c; }
+.lesson-item.is-active .lesson-num{ background: var(--purple); color: #fff; }
+
+.lesson-content{
+  padding: 24px 20px 60px;
+  overflow: auto;
+  max-width: 760px;
+}
+
+.lesson-eyebrow{ color: var(--text-faint); font-size: .8rem; font-weight: 600; margin-bottom: 6px; }
+.lesson-content h1{ font-size: clamp(1.4rem, 3vw, 1.9rem); }
+
+.lesson-block{ margin-bottom: 22px; }
+.lesson-block h2{ font-size: 1.05rem; color: var(--teal); margin-bottom: 8px; }
+
+.lesson-example{
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.lesson-example pre{
+  margin: 0;
+  padding: 14px 16px;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  color: var(--text);
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.lesson-example-actions{
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 10px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.practice-frame-wrap{
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-top: 10px;
+}
+.practice-editor{
+  width: 100%;
+  min-height: 120px;
+  background: var(--bg-raised);
+  color: var(--text);
+  border: none;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  padding: 12px 14px;
+  resize: vertical;
+}
+.practice-preview{
+  width: 100%;
+  height: 120px;
+  border: none;
+  border-top: 1px solid var(--line-soft);
+  background: #fff;
+}
+
+.quiz-box{
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+.quiz-question{ font-weight: 600; margin-bottom: 12px; }
+.quiz-options{ display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+.quiz-option{
+  text-align: left;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 10px 13px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: .88rem;
+}
+.quiz-option:hover{ border-color: var(--purple-soft); }
+.quiz-option.is-correct{ border-color: var(--teal); background: rgba(0,212,170,.12); }
+.quiz-option.is-wrong{ border-color: var(--danger); background: rgba(255,93,122,.12); }
+.quiz-option[disabled]{ cursor: default; }
+.quiz-feedback{ margin-top: 10px; font-size: .87rem; }
+.quiz-feedback.is-correct{ color: var(--teal); }
+.quiz-feedback.is-wrong{ color: var(--danger); }
+
+.lesson-nav{
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+/* =========================================================
+   NOTE → HTML
+   ========================================================= */
+.notes-intro{ padding: 22px 20px 4px; max-width: 680px; }
+.notes-intro h1{ font-size: clamp(1.3rem, 3vw, 1.7rem); }
+
+.notes-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 12px 16px;
+  align-items: stretch;
+}
+@media (min-width: 900px){
+  .notes-grid{ grid-template-columns: 1fr 40px 1fr; }
+}
+
+.notes-arrow{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-faint);
+}
+@media (min-width: 900px){ .notes-arrow{ display: flex; } }
+
+.notes-input{ min-height: 260px; }
+
+.code-output{
+  flex: 1;
+  margin: 0;
+  padding: 14px 16px;
+  overflow: auto;
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  color: var(--text-dim);
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 260px;
+}
+
+/* =========================================================
+   HELP DIALOG
+   ========================================================= */
+.help-dialog{
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--bg-raised);
+  color: var(--text);
+  padding: 0;
+  max-width: 480px;
+  width: 92vw;
+}
+.help-dialog::backdrop{ background: rgba(0,0,0,.6); backdrop-filter: blur(2px); }
+.help-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 0;
+}
+.help-list{ padding: 16px 20px 22px 34px; margin: 0; color: var(--text-dim); font-size: .88rem; line-height: 1.55; }
+.help-list li{ margin-bottom: 12px; }
+.help-list strong{ color: var(--text); }
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+.toast{
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--bg-raised-2);
+  border: 1px solid var(--purple-soft);
+  color: var(--text);
+  padding: 11px 18px;
+  border-radius: 999px;
+  font-size: .85rem;
+  font-weight: 600;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+.toast.is-visible{
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Bottom padding so mobile tabbar never overlaps content */
+@media (max-width: 859px){
+  .view.is-active{ padding-bottom: 4px; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="app-shell">
+
+  <!-- ===================== TOP BAR ===================== -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="3" width="7" height="7" rx="1.6" fill="#7B2FFF"/><rect x="3" y="12" width="7" height="7" rx="1.6" fill="#00D4AA"/><rect x="12" y="3" width="7" height="7" rx="1.6" fill="#5B6EDB"/></svg>
+      </span>
+      <span class="brand-name">Pixel</span>
+      <span class="brand-sub">by PixelProTech</span>
+    </div>
+
+    <nav class="topbar-nav" aria-label="Primary">
+      <button class="nav-btn is-active" data-view="workspace" aria-current="page">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4 3 12l5 8M16 4l5 8-5 8"/></svg>
+        Workspace
+      </button>
+      <button class="nav-btn" data-view="learn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H12v16H6.5A2.5 2.5 0 0 0 4 22.5v-16Z"/><path d="M20 6.5A2.5 2.5 0 0 0 17.5 4H12v16h5.5a2.5 2.5 0 0 1 2.5 2.5v-16Z"/></svg>
+        Learn
+      </button>
+      <button class="nav-btn" data-view="notes">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path d="M8 12h8M8 16h5"/></svg>
+        Note → HTML
+      </button>
+    </nav>
+
+    <div class="topbar-actions">
+      <button class="icon-btn" id="installBtn" hidden title="Install Pixel">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v13m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+        <span>Install</span>
+      </button>
+      <button class="icon-btn" id="helpBtn" title="Help &amp; limitations">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.9.4-1.3 1-1.3 1.9M12 17h.01"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== MOBILE TAB BAR ===================== -->
+  <nav class="tabbar" aria-label="Primary mobile">
+    <button class="tabbar-btn is-active" data-view="workspace">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4 3 12l5 8M16 4l5 8-5 8"/></svg>
+      <span>Workspace</span>
+    </button>
+    <button class="tabbar-btn" data-view="learn">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H12v16H6.5A2.5 2.5 0 0 0 4 22.5v-16Z"/><path d="M20 6.5A2.5 2.5 0 0 0 17.5 4H12v16h5.5a2.5 2.5 0 0 1 2.5 2.5v-16Z"/></svg>
+      <span>Learn</span>
+    </button>
+    <button class="tabbar-btn" data-view="notes">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Z"/><path d="M8 12h8M8 16h5"/></svg>
+      <span>Notes</span>
+    </button>
+  </nav>
+
+  <main id="main" class="main">
+
+    <!-- ===================== WORKSPACE VIEW ===================== -->
+    <section class="view is-active" id="view-workspace" data-view="workspace">
+
+      <div class="workspace-toolbar">
+        <div class="toolbar-group">
+          <button class="btn btn-primary" id="runBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 4.5v15l13-7.5-13-7.5Z"/></svg>
+            Run
+          </button>
+          <button class="btn btn-ghost" id="sampleBtn">Load sample</button>
+          <button class="btn btn-ghost" id="resetBtn">Reset</button>
+        </div>
+        <div class="toolbar-group">
+          <span class="autorun-toggle">
+            <label for="autorunCheck">Auto-run</label>
+            <input type="checkbox" id="autorunCheck" checked>
+          </span>
+          <button class="btn btn-ghost" id="downloadBtn">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v13m0 0-4-4m4 4 4-4M5 21h14"/></svg>
+            Download .html
+          </button>
+        </div>
+      </div>
+
+      <div class="workspace-grid">
+
+        <!-- CODE EDITOR -->
+        <div class="panel panel-editor">
+          <div class="panel-head">
+            <span class="panel-title">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3m8-6 4 3-4 3M13 5l-2 14"/></svg>
+              Code
+            </span>
+            <span class="panel-meta" id="lineCount">0 lines</span>
+          </div>
+          <div class="editor-wrap">
+            <div class="line-numbers" id="lineNumbers" aria-hidden="true">1</div>
+            <textarea id="codeEditor" class="code-editor" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="HTML code editor"></textarea>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: PREVIEW / UNDERSTAND -->
+        <div class="panel panel-right">
+          <div class="panel-head panel-head-tabs">
+            <div class="subtab-group" role="tablist" aria-label="Result view">
+              <button class="subtab is-active" data-subview="preview" role="tab" aria-selected="true" aria-controls="preview-panel">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                Preview
+              </button>
+              <button class="subtab" data-subview="understand" role="tab" aria-selected="false" aria-controls="understand-panel-region">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg>
+                Understand
+              </button>
+            </div>
+            <span class="panel-meta" id="elementCount">—</span>
+          </div>
+
+          <div class="subview is-active" data-subview="preview" id="preview-panel" role="tabpanel">
+            <iframe id="previewFrame" class="preview-frame" title="Live HTML preview" sandbox="allow-scripts allow-forms" referrerpolicy="no-referrer"></iframe>
+          </div>
+
+          <div class="subview" data-subview="understand" id="understand-panel-region" role="tabpanel">
+            <div class="understand-panel" id="understandPanel">
+              <p class="understand-empty">Run your code to see what's inside it.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== LEARN VIEW ===================== -->
+    <section class="view" id="view-learn" data-view="learn">
+      <div class="learn-layout">
+
+        <aside class="lesson-list-wrap">
+          <div class="learn-progress">
+            <div class="learn-progress-bar"><div class="learn-progress-fill" id="progressFill"></div></div>
+            <span id="progressLabel">0 of 10 lessons complete</span>
+          </div>
+          <ol class="lesson-list" id="lessonList" aria-label="Lessons"></ol>
+        </aside>
+
+        <div class="lesson-content" id="lessonContent">
+          <!-- injected by app.js -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================== NOTE → HTML VIEW ===================== -->
+    <section class="view" id="view-notes" data-view="notes">
+      <div class="notes-intro">
+        <h1>Turn a plain note into HTML</h1>
+        <p>Write ordinary notes — a title, a line of text, a short list. Pixel converts the structure using a fixed set of local rules. <strong>No AI is used here</strong> — it's a deterministic pattern match, every time the same input gives the same output.</p>
+      </div>
+
+      <div class="notes-grid">
+        <div class="panel panel-editor">
+          <div class="panel-head">
+            <span class="panel-title">Your note</span>
+            <button class="btn btn-ghost btn-sm" id="notesSampleBtn">Load example</button>
+          </div>
+          <textarea id="notesInput" class="code-editor notes-input" placeholder="PixelProTech&#10;&#10;IT support that comes to you.&#10;&#10;Computer troubleshooting&#10;Wi-Fi support&#10;Software installation&#10;&#10;Contact us" aria-label="Plain text note input"></textarea>
+        </div>
+
+        <div class="notes-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14m0 0-5-5m5 5-5 5"/></svg>
+        </div>
+
+        <div class="panel panel-editor">
+          <div class="panel-head">
+            <span class="panel-title">Generated HTML</span>
+            <div class="toolbar-group">
+              <button class="btn btn-ghost btn-sm" id="notesToWorkspaceBtn">Open in Workspace</button>
+              <button class="btn btn-primary btn-sm" id="notesDownloadBtn">Download</button>
+            </div>
+          </div>
+          <pre class="code-output" id="notesOutput" aria-label="Generated HTML output"><code>Convert your note to see the HTML here.</code></pre>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-block" id="notesConvertBtn">Convert to HTML</button>
+    </section>
+
+  </main>
+</div>
+
+<!-- ===================== HELP DIALOG ===================== -->
+<dialog id="helpDialog" class="help-dialog">
+  <form method="dialog">
+    <div class="help-head">
+      <h2>How Pixel works</h2>
+      <button class="icon-btn" value="close" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <ul class="help-list">
+      <li><strong>Live preview</strong> runs inside a sandboxed frame. Scripts and forms are allowed so real demos work, but the frame cannot access this page, your storage, or read other tabs.</li>
+      <li><strong>Note → HTML</strong> uses fixed local rules, not an AI model. The same note always produces the same result.</li>
+      <li><strong>Nothing leaves your device.</strong> Your code and progress are stored only in this browser, using local storage.</li>
+      <li><strong>External AI code welcome.</strong> Paste code from GPT, Claude, or anywhere else straight into the editor and run it.</li>
+    </ul>
+  </form>
+</dialog>
+
+<script>'use strict';
+
+/* =========================================================
+   STORAGE HELPERS
+   ========================================================= */
+const Store = {
+  get(key, fallback){
+    try{
+      const raw = localStorage.getItem(key);
+      return raw === null ? fallback : JSON.parse(raw);
+    }catch(e){ return fallback; }
+  },
+  set(key, value){
+    try{ localStorage.setItem(key, JSON.stringify(value)); }
+    catch(e){ /* storage unavailable — app still works, just won't persist */ }
+  }
+};
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+let toastTimer = null;
+function showToast(message){
+  let el = document.querySelector('.toast');
+  if(!el){
+    el = document.createElement('div');
+    el.className = 'toast';
+    document.body.appendChild(el);
+  }
+  el.textContent = message;
+  el.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('is-visible'), 2200);
+}
+
+/* =========================================================
+   VIEW ROUTING
+   ========================================================= */
+function setView(name){
+  document.querySelectorAll('.view').forEach(v => v.classList.toggle('is-active', v.dataset.view === name));
+  document.querySelectorAll('.nav-btn').forEach(b => {
+    const active = b.dataset.view === name;
+    b.classList.toggle('is-active', active);
+    if(active) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+  });
+  document.querySelectorAll('.tabbar-btn').forEach(b => b.classList.toggle('is-active', b.dataset.view === name));
+  Store.set('pixel:lastView', name);
+}
+
+document.querySelectorAll('[data-view]').forEach(el => {
+  if(el.classList.contains('nav-btn') || el.classList.contains('tabbar-btn')){
+    el.addEventListener('click', () => setView(el.dataset.view));
+  }
+});
+
+/* =========================================================
+   WORKSPACE — CODE EDITOR
+   ========================================================= */
+const SAMPLE_HTML = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Page</title>
+</head>
+<body>
+  <h1>Hello, world!</h1>
+  <p>This is a paragraph. Edit this code and press Run to see it change.</p>
+  <ul>
+    <li>HTML builds structure</li>
+    <li>CSS adds style</li>
+    <li>JavaScript adds behavior</li>
+  </ul>
+  <a href="https://example.com">A link you can click</a>
+</body>
+</html>
+`;
+
+const codeEditor = document.getElementById('codeEditor');
+const lineNumbers = document.getElementById('lineNumbers');
+const lineCountEl = document.getElementById('lineCount');
+const previewFrame = document.getElementById('previewFrame');
+const autorunCheck = document.getElementById('autorunCheck');
+const elementCountEl = document.getElementById('elementCount');
+
+function updateLineNumbers(){
+  const lines = codeEditor.value.split('\n').length;
+  let out = '';
+  for(let i = 1; i <= lines; i++) out += i + '\n';
+  lineNumbers.textContent = out;
+  lineCountEl.textContent = `${lines} line${lines === 1 ? '' : 's'}`;
+}
+
+function syncLineScroll(){
+  lineNumbers.scrollTop = codeEditor.scrollTop;
+}
+
+function runPreview(){
+  const code = codeEditor.value;
+  previewFrame.srcdoc = code;
+  renderUnderstand(code);
+  Store.set('pixel:code', code);
+}
+
+let autorunTimer = null;
+function scheduleAutorun(){
+  if(!autorunCheck.checked) return;
+  clearTimeout(autorunTimer);
+  autorunTimer = setTimeout(runPreview, 500);
+}
+
+codeEditor.addEventListener('input', () => {
+  updateLineNumbers();
+  scheduleAutorun();
+});
+codeEditor.addEventListener('scroll', syncLineScroll);
+
+document.getElementById('runBtn').addEventListener('click', runPreview);
+
+document.getElementById('sampleBtn').addEventListener('click', () => {
+  codeEditor.value = SAMPLE_HTML;
+  updateLineNumbers();
+  runPreview();
+  showToast('Sample code loaded');
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if(codeEditor.value.trim() && !confirm('Clear the editor? This cannot be undone.')) return;
+  codeEditor.value = '';
+  updateLineNumbers();
+  previewFrame.srcdoc = '';
+  renderUnderstand('');
+  Store.set('pixel:code', '');
+  showToast('Editor cleared');
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  downloadText(codeEditor.value || '<!-- empty page -->', 'my-page.html', 'text/html');
+  showToast('Downloaded my-page.html');
+});
+
+function downloadText(content, filename, mime){
+  const blob = new Blob([content], { type: mime || 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+}
+
+/* Load code that was open last time, else the sample */
+setTimeout(function initEditor(){
+  const saved = Store.get('pixel:code', null);
+  codeEditor.value = saved !== null && saved !== '' ? saved : SAMPLE_HTML;
+  updateLineNumbers();
+  runPreview();
+}, 0);
+
+/* Preview / Understand sub-tabs */
+document.querySelectorAll('.subtab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.subview;
+    document.querySelectorAll('.subtab').forEach(b => {
+      b.classList.toggle('is-active', b === btn);
+      b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
+    });
+    document.querySelectorAll('.subview').forEach(s => s.classList.toggle('is-active', s.dataset.subview === target));
+  });
+});
+
+/* =========================================================
+   UNDERSTAND PANEL
+   ========================================================= */
+const TAG_EXPLANATIONS = {
+  html: 'The root of the page. Everything else lives inside it.',
+  head: 'Holds information about the page that is not shown directly — like its title.',
+  title: 'Sets the text shown in the browser tab.',
+  meta: 'Gives the browser extra information, like the character set or how to size the page on mobile.',
+  body: 'Holds everything the visitor actually sees.',
+  h1: 'The main heading. Use one per page for the most important title.',
+  h2: 'A section heading, one level below h1.',
+  h3: 'A sub-section heading, one level below h2.',
+  h4: 'A smaller heading, used for minor sections.',
+  h5: 'A smaller heading still.',
+  h6: 'The smallest heading level.',
+  p: 'A paragraph of text.',
+  a: 'A link. The href attribute says where it goes.',
+  img: 'An image. src points to the file, alt describes it for screen readers.',
+  ul: 'An unordered (bulleted) list.',
+  ol: 'An ordered (numbered) list.',
+  li: 'One item inside a list.',
+  div: 'A generic block used to group content, usually for layout or styling.',
+  span: 'A generic inline wrapper, usually for styling a piece of text.',
+  button: 'A clickable button.',
+  form: 'A group of inputs that can be submitted, e.g. a contact form.',
+  input: 'A field the visitor can type into, or a control like a checkbox.',
+  label: 'The visible caption for a form field.',
+  textarea: 'A multi-line text field.',
+  select: 'A dropdown list of options.',
+  option: 'One choice inside a select dropdown.',
+  table: 'A data table.',
+  thead: 'The header row group of a table.',
+  tbody: 'The main row group of a table.',
+  tr: 'One row of a table.',
+  td: 'One cell of a table.',
+  th: 'A header cell of a table.',
+  nav: 'A section of navigation links.',
+  header: 'The introductory section of a page or section, often a logo and title.',
+  footer: 'The closing section of a page, often with contact info or credits.',
+  main: 'The primary content of the page. Use once per page.',
+  section: 'A named grouping of related content.',
+  article: 'A self-contained piece of content, like a blog post.',
+  aside: 'Content related to, but separate from, the main content — like a sidebar.',
+  strong: 'Marks text as important; browsers show it bold.',
+  em: 'Marks text as emphasized; browsers show it italic.',
+  br: 'A single line break.',
+  hr: 'A horizontal rule, used to separate content.',
+  script: 'Embeds or links to JavaScript, which adds behavior to the page.',
+  style: 'Embeds CSS, which adds visual styling to the page.',
+  link: 'Connects the page to an external file, most often a CSS stylesheet.',
+  iframe: 'Embeds another web page inside this one.',
+  svg: 'An inline vector image, drawn with code instead of a photo file.',
+  canvas: 'A blank area that JavaScript can draw graphics into.'
+};
+
+const understandPanel = document.getElementById('understandPanel');
+
+function renderUnderstand(html){
+  understandPanel.innerHTML = '';
+  const trimmed = (html || '').trim();
+
+  if(!trimmed){
+    understandPanel.innerHTML = '<p class="understand-empty">Run your code to see what\'s inside it.</p>';
+    elementCountEl.textContent = '—';
+    return;
+  }
+
+  let doc;
+  try{
+    doc = new DOMParser().parseFromString(html, 'text/html');
+  }catch(e){
+    understandPanel.innerHTML = '<p class="understand-empty">Could not read this code as HTML.</p>';
+    elementCountEl.textContent = '—';
+    return;
+  }
+
+  const allEls = doc.querySelectorAll('*');
+  const total = allEls.length;
+  elementCountEl.textContent = `${total} element${total === 1 ? '' : 's'}`;
+
+  if(total === 0){
+    understandPanel.innerHTML = '<p class="understand-empty">No recognizable HTML elements were found yet. Try adding a tag like &lt;h1&gt; or &lt;p&gt;.</p>';
+    return;
+  }
+
+  const counts = {};
+  allEls.forEach(el => {
+    const tag = el.tagName.toLowerCase();
+    counts[tag] = (counts[tag] || 0) + 1;
+  });
+
+  const tags = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+
+  tags.forEach(tag => {
+    const desc = TAG_EXPLANATIONS[tag] || 'A custom or less common element. Look it up if you want the full detail.';
+    const item = document.createElement('div');
+    item.className = 'understand-item';
+    item.innerHTML = `
+      <div class="understand-item-head">
+        <span class="understand-tag">&lt;${escapeHTML(tag)}&gt;</span>
+        <span class="understand-count">used ${counts[tag]} time${counts[tag] === 1 ? '' : 's'}</span>
+      </div>
+      <p class="understand-desc">${escapeHTML(desc)}</p>
+    `;
+    understandPanel.appendChild(item);
+  });
+}
+
+function escapeHTML(str){
+  return String(str).replace(/[&<>"']/g, c => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  }[c]));
+}
+
+/* =========================================================
+   NOTE → HTML  (deterministic, local — no AI)
+   ========================================================= */
+const NOTE_SAMPLE = `PixelProTech
+
+IT support that comes to you.
+
+Computer troubleshooting
+Wi-Fi support
+Software installation
+
+Contact us`;
+
+function convertNoteToHTML(note){
+  const rawBlocks = note.replace(/\r\n/g, '\n').split(/\n\s*\n/).map(b => b.trim()).filter(Boolean);
+  if(rawBlocks.length === 0) return '';
+
+  const parts = [];
+  let usedH1 = false;
+
+  rawBlocks.forEach((block, index) => {
+    const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+
+    if(lines.length === 0) return;
+
+    if(lines.length === 1){
+      const line = lines[0];
+      const wordCount = line.split(/\s+/).length;
+      const endsWithPunctuation = /[.!?]$/.test(line);
+
+      if(!usedH1){
+        parts.push(`  <h1>${escapeHTML(line)}</h1>`);
+        usedH1 = true;
+      } else if(wordCount <= 4 && !endsWithPunctuation){
+        parts.push(`  <h2>${escapeHTML(line)}</h2>`);
+      } else {
+        parts.push(`  <p>${escapeHTML(line)}</p>`);
+      }
+    } else {
+      const allShort = lines.every(l => l.split(/\s+/).length <= 6);
+      if(allShort){
+        parts.push('  <ul>');
+        lines.forEach(l => parts.push(`    <li>${escapeHTML(l)}</li>`));
+        parts.push('  </ul>');
+      } else {
+        lines.forEach(l => parts.push(`  <p>${escapeHTML(l)}</p>`));
+      }
+    }
+  });
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Page</title>
+</head>
+<body>
+${parts.join('\n')}
+</body>
+</html>
+`;
+}
+
+const notesInput = document.getElementById('notesInput');
+const notesOutput = document.getElementById('notesOutput');
+
+document.getElementById('notesConvertBtn').addEventListener('click', () => {
+  const note = notesInput.value;
+  if(!note.trim()){
+    notesOutput.innerHTML = '<code>Write a note on the left, then convert it.</code>';
+    return;
+  }
+  const html = convertNoteToHTML(note);
+  notesOutput.innerHTML = `<code>${escapeHTML(html)}</code>`;
+  notesOutput.dataset.html = html;
+});
+
+document.getElementById('notesSampleBtn').addEventListener('click', () => {
+  notesInput.value = NOTE_SAMPLE;
+});
+
+document.getElementById('notesToWorkspaceBtn').addEventListener('click', () => {
+  const html = notesOutput.dataset.html;
+  if(!html){ showToast('Convert your note first'); return; }
+  codeEditor.value = html;
+  updateLineNumbers();
+  runPreview();
+  setView('workspace');
+  showToast('Opened in Workspace');
+});
+
+document.getElementById('notesDownloadBtn').addEventListener('click', () => {
+  const html = notesOutput.dataset.html;
+  if(!html){ showToast('Convert your note first'); return; }
+  downloadText(html, 'my-note.html', 'text/html');
+  showToast('Downloaded my-note.html');
+});
+
+/* =========================================================
+   LEARN — LESSON DATA
+   ========================================================= */
+const LESSONS = [
+  {
+    id: 1,
+    title: 'What is HTML?',
+    explain: 'HTML (HyperText Markup Language) describes the structure of a web page. You wrap content in tags to tell the browser what each piece is — a heading, a paragraph, a list, a link.',
+    example: `<h1>Welcome</h1>\n<p>This is a paragraph.</p>`,
+    quiz: {
+      q: 'What does HTML mainly describe?',
+      options: ['How a page looks visually', 'The structure and meaning of content', 'How a server stores data', 'Network security rules'],
+      correct: 1,
+      feedback: 'HTML marks up content with structure and meaning. CSS handles how it looks.'
+    }
+  },
+  {
+    id: 2,
+    title: 'Document structure',
+    explain: 'Every HTML page follows the same shape: a doctype, an <html> element containing a <head> (page info) and a <body> (visible content).',
+    example: `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>My Page</title>\n</head>\n<body>\n  <p>Hello!</p>\n</body>\n</html>`,
+    quiz: {
+      q: 'Where does the visible content of a page go?',
+      options: ['Inside <head>', 'Inside <body>', 'Inside <title>', 'Inside <!DOCTYPE>'],
+      correct: 1,
+      feedback: 'The <body> holds everything a visitor actually sees on the page.'
+    }
+  },
+  {
+    id: 3,
+    title: 'Headings',
+    explain: 'Headings go from <h1> (most important) to <h6> (least important). Use them in order — they give your page a readable outline, for people and for screen readers.',
+    example: `<h1>Main Title</h1>\n<h2>A Section</h2>\n<h3>A Smaller Section</h3>`,
+    quiz: {
+      q: 'How many heading levels does HTML have?',
+      options: ['3', '4', '6', 'Unlimited'],
+      correct: 2,
+      feedback: 'HTML has six heading levels, h1 through h6.'
+    }
+  },
+  {
+    id: 4,
+    title: 'Paragraphs',
+    explain: 'The <p> tag holds a block of text. Browsers automatically add space above and below each paragraph.',
+    example: `<p>HTML is easier than it looks.</p>\n<p>Each paragraph gets its own line.</p>`,
+    quiz: {
+      q: 'Which tag is used for a block of body text?',
+      options: ['<text>', '<p>', '<paragraph>', '<body>'],
+      correct: 1,
+      feedback: '<p> is the standard tag for a paragraph of text.'
+    }
+  },
+  {
+    id: 5,
+    title: 'Lists',
+    explain: 'Use <ul> for a bulleted list or <ol> for a numbered list. Each item inside goes in its own <li>.',
+    example: `<ul>\n  <li>Milk</li>\n  <li>Eggs</li>\n  <li>Bread</li>\n</ul>`,
+    quiz: {
+      q: 'What does each item in a list need to be wrapped in?',
+      options: ['<item>', '<li>', '<ul>', '<row>'],
+      correct: 1,
+      feedback: '<li> marks one list item, whether the list is <ul> or <ol>.'
+    }
+  },
+  {
+    id: 6,
+    title: 'Links',
+    explain: 'The <a> tag creates a link. Its href attribute says where the link goes — another page, another site, or a file.',
+    example: `<a href="https://example.com">Visit example.com</a>`,
+    quiz: {
+      q: 'Which attribute tells a link where to go?',
+      options: ['src', 'link', 'href', 'to'],
+      correct: 2,
+      feedback: 'href (hypertext reference) sets the destination of a link.'
+    }
+  },
+  {
+    id: 7,
+    title: 'Images',
+    explain: 'The <img> tag embeds an image. src points to the file, and alt describes the image for people using screen readers or when the image fails to load.',
+    example: `<img src="cat.jpg" alt="A grey cat sleeping on a sofa">`,
+    quiz: {
+      q: 'Why does <img> need an alt attribute?',
+      options: ['It sets the image size', 'It describes the image for accessibility', 'It changes the file format', 'It is required by every browser to load the file'],
+      correct: 1,
+      feedback: 'alt text describes the image for screen readers and shows if the image cannot load.'
+    }
+  },
+  {
+    id: 8,
+    title: 'Forms',
+    explain: 'A <form> groups inputs together so they can be submitted. Common fields include <input> (text, checkboxes, etc.) and <textarea> (multi-line text), each with a <label>.',
+    example: `<form>\n  <label for="name">Name</label>\n  <input id="name" type="text">\n  <button type="submit">Send</button>\n</form>`,
+    quiz: {
+      q: 'What is a <label> used for?',
+      options: ['Styling a button', 'The visible caption for a form field', 'Linking to another page', 'Storing hidden data'],
+      correct: 1,
+      feedback: 'A <label> gives a form field a visible, accessible caption.'
+    }
+  },
+  {
+    id: 9,
+    title: 'Classes and IDs',
+    explain: 'A class (reusable, can repeat) or id (unique, one per page) attaches a name to an element so CSS or JavaScript can target it specifically.',
+    example: `<p class="highlight">Styled by class</p>\n<p id="intro">Styled by id</p>`,
+    quiz: {
+      q: 'What is the key difference between a class and an id?',
+      options: ['Classes are for links only', 'An id should be unique on the page; a class can repeat', 'IDs cannot be styled', 'Classes only work in the head'],
+      correct: 1,
+      feedback: 'IDs are meant to be unique per page; classes are meant to be reused across elements.'
+    }
+  },
+  {
+    id: 10,
+    title: 'Intro to CSS',
+    explain: 'CSS controls appearance — color, spacing, layout. You can add it inline, in a <style> block, or in a separate file linked with <link>.',
+    example: `<style>\n  h1 { color: #7B2FFF; }\n  p { font-size: 18px; }\n</style>\n<h1>Styled heading</h1>`,
+    quiz: {
+      q: 'Which tag lets you write CSS directly inside an HTML page?',
+      options: ['<css>', '<script>', '<style>', '<design>'],
+      correct: 2,
+      feedback: 'A <style> block holds CSS rules directly inside the HTML document.'
+    }
+  }
+];
+
+const lessonListEl = document.getElementById('lessonList');
+const lessonContentEl = document.getElementById('lessonContent');
+const progressFillEl = document.getElementById('progressFill');
+const progressLabelEl = document.getElementById('progressLabel');
+
+let completedLessons = Store.get('pixel:completedLessons', []);
+let currentLessonId = Store.get('pixel:currentLesson', 1);
+
+function saveProgress(){
+  Store.set('pixel:completedLessons', completedLessons);
+  Store.set('pixel:currentLesson', currentLessonId);
+}
+
+function renderLessonList(){
+  lessonListEl.innerHTML = '';
+  LESSONS.forEach(lesson => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.className = 'lesson-item';
+    if(lesson.id === currentLessonId) btn.classList.add('is-active');
+    if(completedLessons.includes(lesson.id)) btn.classList.add('is-complete');
+    const isDone = completedLessons.includes(lesson.id);
+    btn.innerHTML = `<span class="lesson-num">${isDone ? '✓' : lesson.id}</span><span>${escapeHTML(lesson.title)}</span>`;
+    btn.addEventListener('click', () => {
+      currentLessonId = lesson.id;
+      saveProgress();
+      renderLessonList();
+      renderLessonContent();
+    });
+    li.appendChild(btn);
+    lessonListEl.appendChild(li);
+  });
+
+  const pct = Math.round((completedLessons.length / LESSONS.length) * 100);
+  progressFillEl.style.width = pct + '%';
+  progressLabelEl.textContent = `${completedLessons.length} of ${LESSONS.length} lessons complete`;
+}
+
+function renderLessonContent(){
+  const lesson = LESSONS.find(l => l.id === currentLessonId);
+  if(!lesson) return;
+
+  lessonContentEl.innerHTML = `
+    <div class="lesson-eyebrow">Lesson ${lesson.id} of ${LESSONS.length}</div>
+    <h1>${escapeHTML(lesson.title)}</h1>
+
+    <div class="lesson-block">
+      <p>${escapeHTML(lesson.explain)}</p>
+    </div>
+
+    <div class="lesson-block">
+      <h2>Example</h2>
+      <div class="lesson-example">
+        <pre><code>${escapeHTML(lesson.example)}</code></pre>
+        <div class="lesson-example-actions">
+          <button class="btn btn-ghost btn-sm" id="tryInWorkspaceBtn">Try it in Workspace</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lesson-block">
+      <h2>Practice</h2>
+      <p>Edit the code below. It updates live underneath.</p>
+      <div class="practice-frame-wrap">
+        <textarea class="practice-editor" id="practiceEditor" spellcheck="false">${escapeHTML(lesson.example)}</textarea>
+        <iframe class="practice-preview" id="practicePreview" title="Practice preview" sandbox="allow-scripts"></iframe>
+      </div>
+    </div>
+
+    <div class="lesson-block">
+      <h2>Quick check</h2>
+      <div class="quiz-box" id="quizBox"></div>
+    </div>
+
+    <div class="lesson-nav">
+      <button class="btn btn-ghost" id="prevLessonBtn" ${lesson.id === 1 ? 'disabled' : ''}>&larr; Previous</button>
+      <button class="btn btn-primary" id="nextLessonBtn" ${lesson.id === LESSONS.length ? 'disabled' : ''}>Next lesson &rarr;</button>
+    </div>
+  `;
+
+  const practiceEditor = document.getElementById('practiceEditor');
+  const practicePreview = document.getElementById('practicePreview');
+  const runPracticePreview = () => { practicePreview.srcdoc = practiceEditor.value; };
+  runPracticePreview();
+  let practiceTimer = null;
+  practiceEditor.addEventListener('input', () => {
+    clearTimeout(practiceTimer);
+    practiceTimer = setTimeout(runPracticePreview, 400);
+  });
+
+  document.getElementById('tryInWorkspaceBtn').addEventListener('click', () => {
+    codeEditor.value = wrapAsFullPage(lesson.example);
+    updateLineNumbers();
+    runPreview();
+    setView('workspace');
+    showToast('Opened in Workspace');
+  });
+
+  renderQuiz(lesson);
+
+  document.getElementById('prevLessonBtn').addEventListener('click', () => {
+    currentLessonId = Math.max(1, lesson.id - 1);
+    saveProgress();
+    renderLessonList();
+    renderLessonContent();
+  });
+  document.getElementById('nextLessonBtn').addEventListener('click', () => {
+    currentLessonId = Math.min(LESSONS.length, lesson.id + 1);
+    saveProgress();
+    renderLessonList();
+    renderLessonContent();
+  });
+}
+
+function wrapAsFullPage(snippet){
+  if(/<html[\s>]/i.test(snippet)) return snippet;
+  return `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8">\n  <title>Practice</title>\n</head>\n<body>\n${snippet}\n</body>\n</html>\n`;
+}
+
+function renderQuiz(lesson){
+  const quizBox = document.getElementById('quizBox');
+  quizBox.innerHTML = `
+    <p class="quiz-question">${escapeHTML(lesson.quiz.q)}</p>
+    <div class="quiz-options"></div>
+    <div class="quiz-feedback" id="quizFeedback" hidden></div>
+  `;
+  const optionsWrap = quizBox.querySelector('.quiz-options');
+  const feedbackEl = document.getElementById('quizFeedback');
+
+  lesson.quiz.options.forEach((optionText, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-option';
+    btn.textContent = optionText;
+    btn.addEventListener('click', () => {
+      const allOptionBtns = optionsWrap.querySelectorAll('.quiz-option');
+      allOptionBtns.forEach(b => b.disabled = true);
+
+      const isCorrect = i === lesson.quiz.correct;
+      btn.classList.add(isCorrect ? 'is-correct' : 'is-wrong');
+      if(!isCorrect){
+        allOptionBtns[lesson.quiz.correct].classList.add('is-correct');
+      }
+
+      feedbackEl.hidden = false;
+      feedbackEl.className = 'quiz-feedback ' + (isCorrect ? 'is-correct' : 'is-wrong');
+      feedbackEl.textContent = (isCorrect ? 'Correct — ' : 'Not quite — ') + lesson.quiz.feedback;
+
+      if(isCorrect && !completedLessons.includes(lesson.id)){
+        completedLessons.push(lesson.id);
+        saveProgress();
+        renderLessonList();
+      }
+    });
+    optionsWrap.appendChild(btn);
+  });
+}
+
+renderLessonList();
+renderLessonContent();
+
+/* =========================================================
+   HELP DIALOG
+   ========================================================= */
+const helpDialog = document.getElementById('helpDialog');
+document.getElementById('helpBtn').addEventListener('click', () => helpDialog.showModal());
+
+/* =========================================================
+   PWA — SERVICE WORKER + INSTALL PROMPT
+   ========================================================= */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {
+      /* offline support just won't be available; the app still works online */
+    });
+  });
+}
+
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById('installBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  installBtn.hidden = false;
+});
+
+installBtn.addEventListener('click', async () => {
+  if(!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  installBtn.hidden = true;
+});
+
+window.addEventListener('appinstalled', () => {
+  installBtn.hidden = true;
+  showToast('Pixel installed');
+});
+
+/* =========================================================
+   RESTORE LAST VIEW
+   ========================================================= */
+(function restoreView(){
+  const last = Store.get('pixel:lastView', 'workspace');
+  setView(['workspace', 'learn', 'notes'].includes(last) ? last : 'workspace');
+})();
+</script>
+</body>
+</html>

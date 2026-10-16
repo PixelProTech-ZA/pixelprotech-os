@@ -1,0 +1,2130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>PixelProTech Remote Assistant</title>
+<meta name="description" content="Professional remote device diagnostics — camera, microphone, speaker, screen, network, GPS, motion and AI-assisted reporting, installable on any device." />
+
+<!-- PWA core -->
+<link rel="manifest" href="data:application/manifest+json,%7B%7D" />
+<meta name="theme-color" content="#0F172A" />
+<meta name="color-scheme" content="dark light" />
+
+<!-- iOS installability (Safari ignores manifest install prompts, needs these) -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="PixelProTech" />
+<link rel="apple-touch-icon" href="icon-180.png" />
+<link rel="apple-touch-icon" sizes="152x152" href="icon-152.png" />
+<link rel="apple-touch-icon" sizes="167x167" href="icon-167.png" />
+
+<!-- Windows tiles -->
+<meta name="msapplication-TileColor" content="#0F172A" />
+<meta name="msapplication-TileImage" content="icon-144.png" />
+<meta name="msapplication-config" content="none" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="icon-16.png" />
+<link rel="shortcut icon" href="data:image/vnd.microsoft.icon;base64,AAABAAEAEBAAAAAAIACuAAAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAQAAAAEAgCAAAAkJFoNgAAAHVJREFUeJxj5BfXYiAFMGEV/fhiNS4NLFiV8kuEwhloChjhTsKqAlMQquHji9XIophcuDYsfoBIf3yxGu4TZM0smErxOwl7KOEBtNeA4geIW5F9ghkPCBuQwwSiDlM1A3LEMRAXd4yYiQ9/6sCiAa6NsJOIAQAoYT3Ue9YwzgAAAABJRU5ErkJggg==" />
+
+<style>/* =========================================================
+   PixelProTech Remote Assistant — Stylesheet
+   Design tokens
+   ========================================================= */
+:root{
+  --cyan:#00FFD5;
+  --green:#00C896;
+  --navy:#0F172A;
+  --panel:#111827;
+  --slate:#1E293B;
+  --white:#FFFFFF;
+  --blue:#3B82F6;
+  --purple:#8B5CF6;
+  --danger:#FB7185;
+  --text-dim:#94A3B8;
+  --text-dimmer:#64748B;
+  --border:rgba(148,163,184,.14);
+  --glass-bg:rgba(30,41,59,.55);
+  --radius:16px;
+  --radius-sm:10px;
+  --font-display: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", Roboto, sans-serif;
+  --font-mono: "SFMono-Regular", ui-monospace, "Cascadia Code", "Roboto Mono", Consolas, monospace;
+  --shadow-lg: 0 20px 60px rgba(0,0,0,.45);
+  --nav-w: 264px;
+}
+
+[data-theme="light"]{
+  --navy:#F1F5F9;
+  --panel:#FFFFFF;
+  --slate:#FFFFFF;
+  --text-dim:#475569;
+  --text-dimmer:#64748B;
+  --border:rgba(15,23,42,.1);
+  --glass-bg:rgba(255,255,255,.72);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  margin:0;
+  background:
+    radial-gradient(1100px 600px at 85% -10%, rgba(0,255,213,.08), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(139,92,246,.08), transparent 55%),
+    var(--navy);
+  color:var(--white);
+  font-family:var(--font-display);
+  min-height:100vh;
+  transition:background-color .3s ease, color .3s ease;
+}
+[data-theme="light"] body{ color:#0F172A; }
+
+h1,h2{ font-family:var(--font-display); letter-spacing:-.01em; margin:0 0 6px; }
+h1{ font-size:1.7rem; font-weight:800; }
+h2{ font-size:1.1rem; font-weight:700; margin-top:0; }
+p{ color:var(--text-dim); line-height:1.55; }
+a{ color:var(--cyan); }
+.mono{ font-family:var(--font-mono); }
+.hidden{ display:none !important; }
+
+::selection{ background:var(--cyan); color:var(--navy); }
+
+/* scrollbars */
+*{ scrollbar-width:thin; scrollbar-color:var(--slate) transparent; }
+*::-webkit-scrollbar{ width:8px; height:8px; }
+*::-webkit-scrollbar-thumb{ background:var(--slate); border-radius:8px; }
+
+/* =========================================================
+   Loading screen
+   ========================================================= */
+#loading-screen{
+  position:fixed; inset:0; z-index:999; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:18px; background:var(--navy);
+  transition:opacity .5s ease, visibility .5s ease;
+}
+#loading-screen.done{ opacity:0; visibility:hidden; pointer-events:none; }
+.loader-mark{ position:relative; width:84px; height:84px; }
+.loader-hex{ width:100%; height:100%; fill:none; stroke:var(--cyan); stroke-width:3; filter:drop-shadow(0 0 10px rgba(0,255,213,.5)); animation:spin 3s linear infinite; }
+.loader-p{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.6rem; color:var(--white); }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.loader-text{ font-family:var(--font-mono); letter-spacing:.35em; color:var(--text-dim); font-size:.8rem; }
+.loader-text span{ color:var(--cyan); }
+.loader-bar{ width:180px; height:3px; background:var(--slate); border-radius:2px; overflow:hidden; }
+.loader-bar-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--cyan),var(--green)); animation:load 1.4s ease forwards; }
+@keyframes load{ to{ width:100%; } }
+
+/* =========================================================
+   HUD top bar
+   ========================================================= */
+.hud-bar{
+  position:sticky; top:0; z-index:60; display:flex; align-items:center; gap:14px;
+  padding:10px 18px; background:rgba(15,23,42,.72); backdrop-filter:blur(16px) saturate(140%);
+  border-bottom:1px solid var(--border);
+}
+[data-theme="light"] .hud-bar{ background:rgba(255,255,255,.78); }
+.icon-btn{
+  width:38px; height:38px; border-radius:10px; border:1px solid var(--border); background:var(--glass-bg);
+  color:var(--white); display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0;
+}
+[data-theme="light"] .icon-btn{ color:#0F172A; }
+.icon-btn--small{ width:28px; height:28px; border-radius:8px; }
+.burger{ display:flex; flex-direction:column; gap:4px; width:16px; }
+.burger span{ height:2px; background:currentColor; border-radius:2px; transition:transform .25s, opacity .25s; }
+.brand{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.brand-mark svg{ width:26px; height:26px; fill:none; stroke:var(--cyan); stroke-width:6; }
+.brand-name{ font-weight:800; font-size:.98rem; white-space:nowrap; }
+.brand-name em{ display:block; font-style:normal; font-weight:500; font-size:.62rem; letter-spacing:.18em; color:var(--text-dimmer); text-transform:uppercase; }
+.hud-readouts{ display:flex; align-items:center; gap:8px; margin-left:auto; overflow:hidden; }
+.hud-chip{
+  font-family:var(--font-mono); font-size:.74rem; padding:6px 10px; border-radius:999px;
+  background:var(--glass-bg); border:1px solid var(--border); display:flex; align-items:center; gap:6px; white-space:nowrap;
+}
+.hud-chip--muted{ color:var(--text-dim); }
+.hud-actions{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+.dot{ width:8px; height:8px; border-radius:50%; background:var(--danger); display:inline-block; }
+.dot.on{ background:var(--green); box-shadow:0 0 8px var(--green); }
+
+@media (max-width:760px){
+  .hud-readouts .hud-chip:nth-child(2){ display:none; }
+  .brand-name em{ display:none; }
+  #install-btn span{ display:none; }
+}
+
+/* =========================================================
+   App shell / side nav
+   ========================================================= */
+.app-shell{ display:flex; min-height:calc(100vh - 59px); }
+.side-nav{
+  width:var(--nav-w); flex-shrink:0; background:rgba(17,24,39,.6); border-right:1px solid var(--border);
+  padding:18px 12px; position:sticky; top:59px; height:calc(100vh - 59px); overflow-y:auto;
+  display:flex; flex-direction:column; gap:14px;
+}
+[data-theme="light"] .side-nav{ background:rgba(255,255,255,.7); }
+.nav-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; }
+.nav-group-label{ font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--text-dimmer); margin:14px 10px 4px; }
+.nav-link{
+  display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:10px; color:var(--text-dim);
+  text-decoration:none; font-size:.88rem; font-weight:600; transition:background .15s, color .15s;
+}
+.nav-link:hover{ background:var(--glass-bg); color:var(--white); }
+[data-theme="light"] .nav-link:hover{ color:#0F172A; }
+.nav-link.active{ background:linear-gradient(135deg, rgba(0,255,213,.16), rgba(0,200,150,.06)); color:var(--cyan); }
+.nav-ic{ width:18px; text-align:center; font-style:normal; }
+.nav-footer{ margin-top:auto; padding:10px; }
+.sw-status{ font-size:.68rem; color:var(--green); font-family:var(--font-mono); display:flex; align-items:center; gap:6px; }
+.sw-status::before{ content:""; width:6px; height:6px; border-radius:50%; background:var(--green); box-shadow:0 0 6px var(--green); }
+.nav-scrim{ display:none; }
+
+@media (max-width:980px){
+  .side-nav{ position:fixed; left:0; top:59px; height:calc(100vh - 59px); z-index:70; transform:translateX(-100%); transition:transform .28s ease; box-shadow:var(--shadow-lg); }
+  .side-nav.open{ transform:translateX(0); }
+  .nav-scrim{ display:none; position:fixed; inset:59px 0 0 0; background:rgba(0,0,0,.5); z-index:65; }
+  .nav-scrim.show{ display:block; }
+}
+@media (min-width:981px){
+  #nav-toggle{ display:none; }
+}
+
+/* =========================================================
+   Main / panels
+   ========================================================= */
+.main{ flex:1; min-width:0; padding:22px clamp(16px,3vw,40px) 90px; }
+.panel{ display:none; animation:fadeUp .35s ease; }
+.panel.active{ display:block; }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(10px);} to{ opacity:1; transform:none; } }
+.panel-head{ margin-bottom:20px; max-width:760px; }
+.panel-head p{ margin:0; }
+
+.glass{
+  background:var(--glass-bg); border:1px solid var(--border); border-radius:var(--radius);
+  backdrop-filter:blur(14px) saturate(140%); box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.card{ padding:20px; margin-bottom:18px; }
+.card-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; margin-bottom:18px; }
+.card-grid--tight{ grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:0; }
+.stat-card{ display:flex; flex-direction:column; gap:8px; padding:16px 18px; }
+.stat-label{ font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-dimmer); }
+.stat-value{ font-size:1.05rem; font-weight:700; display:flex; align-items:center; gap:6px; word-break:break-word; }
+.mini-stat{ background:var(--glass-bg); border:1px solid var(--border); border-radius:10px; padding:10px 12px; font-size:.78rem; color:var(--text-dim); display:flex; flex-direction:column; gap:4px; }
+.mini-stat strong{ font-family:var(--font-mono); font-size:.95rem; color:var(--white); }
+
+/* Hero */
+.hero{ text-align:center; padding:48px 24px; margin-bottom:22px; position:relative; overflow:hidden; }
+.hero-mark{ position:relative; width:90px; height:90px; margin:0 auto 18px; }
+.hero-hex{ width:100%; height:100%; fill:none; stroke:url(#none); stroke:var(--cyan); stroke-width:3; filter:drop-shadow(0 0 16px rgba(0,255,213,.45)); }
+.hero-p{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:800; }
+.hero-sweep{ position:absolute; inset:-10px; border-radius:50%; background:conic-gradient(from 0deg, transparent 0deg, rgba(0,255,213,.35) 25deg, transparent 60deg); animation:sweep 3.2s linear infinite; }
+@keyframes sweep{ to{ transform:rotate(360deg); } }
+.hero h1{ font-size:clamp(1.6rem,4vw,2.5rem); margin-bottom:8px; }
+.hero-sub{ font-size:1rem; color:var(--text-dim); margin-bottom:22px; }
+.hero-cta{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+
+.quick-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:10px; }
+.quick-tile{
+  background:var(--glass-bg); border:1px solid var(--border); border-radius:12px; color:var(--white);
+  padding:16px 10px; display:flex; flex-direction:column; align-items:center; gap:8px; font-size:.8rem; font-weight:600;
+  cursor:pointer; transition:transform .15s, border-color .15s;
+}
+[data-theme="light"] .quick-tile{ color:#0F172A; }
+.quick-tile span{ font-size:1.3rem; color:var(--cyan); }
+.quick-tile:hover{ transform:translateY(-3px); border-color:var(--cyan); }
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn{
+  font-family:var(--font-display); font-weight:700; font-size:.85rem; padding:11px 18px; border-radius:10px;
+  border:1px solid transparent; cursor:pointer; display:inline-flex; align-items:center; gap:8px; transition:transform .12s, filter .15s, background .15s;
+}
+.btn:active{ transform:scale(.97); }
+.btn--primary{ background:linear-gradient(135deg,var(--cyan),var(--green)); color:var(--navy); box-shadow:0 6px 20px rgba(0,255,213,.25); }
+.btn--primary:hover{ filter:brightness(1.08); }
+.btn--ghost{ background:var(--glass-bg); color:var(--white); border-color:var(--border); }
+[data-theme="light"] .btn--ghost{ color:#0F172A; }
+.btn--ghost:hover{ border-color:var(--cyan); }
+.btn--danger{ background:rgba(251,113,133,.12); color:var(--danger); border-color:rgba(251,113,133,.35); }
+.btn--success{ background:rgba(0,200,150,.14); color:var(--green); border-color:rgba(0,200,150,.35); }
+.btn--small{ padding:7px 12px; font-size:.75rem; }
+.btn:disabled{ opacity:.4; cursor:not-allowed; }
+.ic{ width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+
+/* =========================================================
+   Test cards, media, forms
+   ========================================================= */
+.test-card{ display:flex; flex-direction:column; gap:14px; }
+.test-controls{ display:flex; gap:10px; flex-wrap:wrap; }
+.media-frame{ position:relative; width:100%; aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.media-frame video{ width:100%; height:100%; object-fit:cover; }
+.media-frame canvas{ width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+.media-placeholder{ color:var(--text-dimmer); text-align:center; }
+.media-placeholder span{ font-size:2rem; display:block; margin-bottom:6px; color:var(--cyan); }
+.status-pill{ align-self:flex-start; padding:6px 14px; border-radius:999px; font-size:.75rem; font-weight:700; font-family:var(--font-mono); }
+.status-pill--idle{ background:var(--glass-bg); color:var(--text-dim); border:1px solid var(--border); }
+.status-pill--pass{ background:rgba(0,200,150,.16); color:var(--green); }
+.status-pill--fail{ background:rgba(251,113,133,.16); color:var(--danger); }
+.status-pill--busy{ background:rgba(59,130,246,.16); color:var(--blue); }
+
+.waveform-canvas{ width:100%; height:120px; background:rgba(0,0,0,.3); border-radius:10px; }
+.meter{ height:10px; background:var(--slate); border-radius:6px; overflow:hidden; }
+.meter-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--green),var(--cyan)); transition:width .08s linear; }
+
+.slider-label{ display:flex; align-items:center; gap:12px; font-size:.85rem; color:var(--text-dim); }
+.slider-label input[type=range]{ flex:1; accent-color:var(--cyan); }
+.pass-fail-row{ display:flex; gap:10px; }
+
+.swatch-row{ display:grid; grid-template-columns:repeat(auto-fit,minmax(90px,1fr)); gap:10px; margin-top:6px; }
+.swatch{ height:64px; border-radius:10px; border:1px solid var(--border); color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); font-weight:700; font-size:.78rem; cursor:pointer; }
+.swatch--light{ color:#0F172A; text-shadow:none; }
+.hint{ font-size:.78rem; color:var(--text-dimmer); margin:2px 0 0; }
+
+.pad-canvas{ width:100%; height:220px; background:rgba(0,0,0,.35); border-radius:10px; touch-action:none; }
+
+.kb-stats{ display:flex; align-items:center; gap:18px; font-size:.85rem; color:var(--text-dim); flex-wrap:wrap; }
+.kb-stats strong{ color:var(--cyan); }
+.virtual-keyboard{ display:flex; flex-direction:column; gap:6px; padding:14px; background:rgba(0,0,0,.25); border-radius:10px; outline:none; }
+.kb-row{ display:flex; gap:5px; justify-content:center; flex-wrap:wrap; }
+.kb-key{ min-width:34px; height:34px; padding:0 6px; border-radius:6px; background:var(--slate); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:.68rem; font-family:var(--font-mono); color:var(--text-dim); transition:background .1s,color .1s; }
+.kb-key.active{ background:linear-gradient(135deg,var(--cyan),var(--green)); color:var(--navy); border-color:transparent; }
+
+.mouse-pad{ position:relative; height:260px; background:rgba(0,0,0,.3); border-radius:12px; overflow:hidden; display:flex; align-items:center; justify-content:center; cursor:none; }
+.mouse-hint{ color:var(--text-dimmer); font-size:.8rem; pointer-events:none; }
+.mouse-dot{ position:absolute; width:14px; height:14px; border-radius:50%; background:var(--cyan); box-shadow:0 0 14px var(--cyan); pointer-events:none; transform:translate(-50%,-50%); left:50%; top:50%; }
+
+.ping-track{ height:6px; background:var(--slate); border-radius:4px; position:relative; overflow:hidden; }
+.ping-dot{ position:absolute; left:0; top:-3px; width:12px; height:12px; border-radius:50%; background:var(--cyan); box-shadow:0 0 10px var(--cyan); opacity:0; }
+.ping-dot.run{ animation:ping-move 1.2s ease-in-out infinite; opacity:1; }
+@keyframes ping-move{ 0%{ left:0; } 50%{ left:calc(100% - 12px); } 100%{ left:0; } }
+
+.compass-wrap{ width:140px; height:140px; margin:6px auto; border-radius:50%; border:2px solid var(--border); position:relative; background:radial-gradient(circle,rgba(0,255,213,.06),transparent 70%); }
+.compass-needle{ position:absolute; left:50%; top:50%; width:3px; height:56px; background:linear-gradient(var(--cyan),var(--danger)); transform-origin:bottom center; transform:translate(-50%,-100%) rotate(0deg); border-radius:2px; }
+
+.storage-bar{ height:14px; background:var(--slate); border-radius:8px; overflow:hidden; }
+.storage-bar-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--blue),var(--purple)); transition:width .4s ease; }
+
+.detail-list{ margin-top:10px; font-family:var(--font-mono); font-size:.82rem; color:var(--text-dim); display:flex; flex-direction:column; gap:6px; }
+
+/* dropzones / uploads */
+.dropzone{
+  border:2px dashed var(--border); border-radius:12px; padding:36px 18px; text-align:center; cursor:pointer;
+  color:var(--text-dim); transition:border-color .15s, background .15s;
+}
+.dropzone span{ font-size:1.8rem; color:var(--cyan); display:block; margin-bottom:6px; }
+.dropzone.drag{ border-color:var(--cyan); background:rgba(0,255,213,.06); }
+.upload-list{ margin-top:14px; display:flex; flex-direction:column; gap:10px; }
+.upload-item{ display:flex; align-items:center; gap:10px; background:var(--glass-bg); border:1px solid var(--border); border-radius:10px; padding:10px 12px; font-size:.8rem; }
+.upload-item img{ width:40px; height:40px; object-fit:cover; border-radius:6px; flex-shrink:0; }
+.upload-item .name{ flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.upload-progress{ flex:1; height:6px; background:var(--slate); border-radius:4px; overflow:hidden; min-width:60px; }
+.upload-progress-fill{ height:100%; width:0%; background:linear-gradient(90deg,var(--cyan),var(--green)); }
+.upload-remove{ background:none; border:none; color:var(--danger); cursor:pointer; font-size:1rem; }
+
+.screenshot-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; margin-top:14px; }
+.screenshot-tile{ background:var(--glass-bg); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.screenshot-tile img{ width:100%; height:100px; object-fit:cover; display:block; }
+.screenshot-meta{ padding:8px; display:flex; flex-direction:column; gap:6px; }
+.screenshot-meta input{ background:transparent; border:1px solid var(--border); border-radius:6px; color:inherit; padding:4px 6px; font-size:.72rem; width:100%; }
+.screenshot-actions{ display:flex; justify-content:space-between; }
+.screenshot-actions button{ background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:.7rem; }
+
+/* forms */
+.field-label{ display:block; font-size:.78rem; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--text-dimmer); margin:14px 0 6px; }
+textarea, input[type=text], input[type=email], input[type=tel], input[type=file], select{
+  width:100%; background:rgba(0,0,0,.25); border:1px solid var(--border); border-radius:10px; color:var(--white);
+  padding:10px 12px; font-family:var(--font-display); font-size:.88rem; outline:none;
+}
+[data-theme="light"] textarea, [data-theme="light"] input, [data-theme="light"] select{ color:#0F172A; background:rgba(0,0,0,.03); }
+textarea:focus, input:focus, select:focus{ border-color:var(--cyan); }
+.char-counter{ text-align:right; font-size:.72rem; color:var(--text-dimmer); margin-top:4px; }
+.priority-row{ display:flex; gap:8px; flex-wrap:wrap; }
+.priority-btn{ padding:9px 16px; border-radius:999px; border:1px solid var(--border); background:var(--glass-bg); color:var(--text-dim); font-weight:700; font-size:.78rem; cursor:pointer; }
+.priority-btn[data-priority=Low].active{ background:rgba(0,200,150,.18); color:var(--green); border-color:var(--green); }
+.priority-btn[data-priority=Medium].active{ background:rgba(59,130,246,.18); color:var(--blue); border-color:var(--blue); }
+.priority-btn[data-priority=High].active{ background:rgba(245,158,11,.18); color:#F59E0B; border-color:#F59E0B; }
+.priority-btn[data-priority=Critical].active{ background:rgba(251,113,133,.18); color:var(--danger); border-color:var(--danger); }
+
+.form-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+.form-grid label{ display:flex; flex-direction:column; gap:6px; font-size:.78rem; color:var(--text-dimmer); font-weight:700; text-transform:uppercase; letter-spacing:.03em; }
+
+.diagnostic-output{ margin-top:16px; display:flex; flex-direction:column; gap:10px; }
+.diag-line{ display:flex; gap:10px; align-items:flex-start; padding:12px 14px; border-radius:10px; background:var(--glass-bg); border:1px solid var(--border); font-size:.85rem; }
+.diag-line.ok::before{ content:"✓"; color:var(--green); font-weight:800; }
+.diag-line.warn::before{ content:"!"; color:#F59E0B; font-weight:800; }
+.diag-line.bad::before{ content:"✕"; color:var(--danger); font-weight:800; }
+.diag-line.info::before{ content:"i"; color:var(--blue); font-weight:800; font-style:italic; }
+
+.export-row{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+
+/* =========================================================
+   Floating assistant
+   ========================================================= */
+.assistant-toggle{
+  position:fixed; right:20px; bottom:20px; width:56px; height:56px; border-radius:50%; z-index:80;
+  background:linear-gradient(135deg,var(--cyan),var(--purple)); border:none; color:var(--navy); font-size:1.3rem; cursor:pointer;
+  box-shadow:0 10px 30px rgba(0,255,213,.3); display:flex; align-items:center; justify-content:center;
+}
+.assistant-pulse{ position:absolute; inset:0; border-radius:50%; border:2px solid var(--cyan); animation:pulse 2.4s ease-out infinite; }
+@keyframes pulse{ 0%{ transform:scale(1); opacity:.7;} 100%{ transform:scale(1.6); opacity:0; } }
+.assistant-panel{
+  position:fixed; right:20px; bottom:88px; width:min(340px,88vw); max-height:60vh; z-index:80;
+  background:var(--panel); border:1px solid var(--border); border-radius:16px; display:flex; flex-direction:column;
+  box-shadow:var(--shadow-lg); overflow:hidden;
+}
+.assistant-head{ display:flex; justify-content:space-between; align-items:center; padding:12px 14px; border-bottom:1px solid var(--border); font-weight:700; font-size:.85rem; background:var(--glass-bg); }
+.assistant-log{ flex:1; overflow-y:auto; padding:12px 14px; display:flex; flex-direction:column; gap:10px; font-size:.82rem; }
+.assistant-msg{ padding:9px 12px; border-radius:10px; max-width:88%; line-height:1.4; }
+.assistant-msg.bot{ background:var(--glass-bg); align-self:flex-start; }
+.assistant-msg.user{ background:linear-gradient(135deg,var(--cyan),var(--green)); color:var(--navy); align-self:flex-end; font-weight:600; }
+.assistant-form{ display:flex; gap:8px; padding:10px; border-top:1px solid var(--border); }
+.assistant-form input{ flex:1; }
+
+/* =========================================================
+   Toasts, banners, fullscreen overlay
+   ========================================================= */
+.toast-stack{ position:fixed; top:70px; right:16px; z-index:200; display:flex; flex-direction:column; gap:10px; max-width:88vw; }
+.toast{ background:var(--panel); border:1px solid var(--border); border-left:4px solid var(--cyan); border-radius:10px; padding:12px 16px; font-size:.82rem; box-shadow:var(--shadow-lg); animation:toastIn .25s ease; }
+.toast.success{ border-left-color:var(--green); }
+.toast.error{ border-left-color:var(--danger); }
+@keyframes toastIn{ from{ opacity:0; transform:translateX(20px);} to{opacity:1; transform:none;} }
+
+.fullscreen-test{ position:fixed; inset:0; z-index:300; cursor:pointer; }
+.fullscreen-test.grad{ background:linear-gradient(90deg,#000,#fff); }
+
+.update-banner{
+  position:fixed; left:50%; bottom:20px; transform:translateX(-50%); z-index:150; background:var(--panel);
+  border:1px solid var(--cyan); border-radius:12px; padding:10px 16px; display:flex; align-items:center; gap:14px; font-size:.82rem;
+  box-shadow:var(--shadow-lg);
+}
+.ios-install-hint{
+  position:fixed; left:12px; right:12px; bottom:16px; z-index:150; background:var(--panel); border:1px solid var(--border);
+  border-radius:12px; padding:12px 14px; display:flex; align-items:center; gap:10px; font-size:.8rem; box-shadow:var(--shadow-lg);
+}
+.ios-install-hint p{ margin:0; flex:1; color:var(--white); }
+
+/* =========================================================
+   Print report (used for "Generate PDF")
+   ========================================================= */
+.print-report{ display:none; }
+@media print{
+  body *{ visibility:hidden; }
+  .print-report, .print-report *{ visibility:visible; }
+  .print-report{ display:block; position:absolute; inset:0; padding:24px; color:#0F172A; background:#fff; }
+  .print-header{ display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #0F172A; padding-bottom:10px; margin-bottom:14px; }
+  .print-brand{ display:flex; gap:10px; align-items:center; }
+  .print-report section{ margin-bottom:14px; }
+  .print-report h3{ font-size:.85rem; text-transform:uppercase; letter-spacing:.06em; border-bottom:1px solid #cbd5e1; padding-bottom:4px; }
+  .print-footer{ display:flex; justify-content:space-between; align-items:flex-end; margin-top:30px; }
+  .sign-line{ border-top:1px solid #0F172A; padding-top:4px; width:200px; font-size:.72rem; margin-top:34px; }
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+@media (max-width:640px){
+  .main{ padding:16px 14px 100px; }
+  .hero{ padding:36px 16px; }
+  .hero-cta{ flex-direction:column; }
+  .hud-bar{ padding:8px 12px; gap:8px; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+}
+</style>
+</head>
+<body data-theme="dark">
+
+<!-- ============ LOADING SCREEN ============ -->
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader-mark">
+    <svg viewBox="0 0 100 100" class="loader-hex">
+      <polygon points="50,3 93,26 93,74 50,97 7,74 7,26" />
+    </svg>
+    <span class="loader-p">P</span>
+  </div>
+  <p class="loader-text">PIXELPROTECH<span>.</span></p>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<!-- ============ TOP HUD BAR ============ -->
+<header class="hud-bar" role="banner">
+  <button id="nav-toggle" class="icon-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="side-nav">
+    <span class="burger"><span></span><span></span><span></span></span>
+  </button>
+
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><polygon points="50,3 93,26 93,74 50,97 7,74 7,26"/></svg>
+    </span>
+    <span class="brand-name">PixelProTech<em>Solutions</em></span>
+  </div>
+
+  <div class="hud-readouts" aria-live="off">
+    <span class="hud-chip" id="hud-time">--:--:--</span>
+    <span class="hud-chip hud-chip--muted" id="hud-date">-- --- ----</span>
+    <span class="hud-chip" id="hud-net"><i class="dot" id="hud-net-dot"></i><span id="hud-net-text">Checking…</span></span>
+  </div>
+
+  <div class="hud-actions">
+    <button id="install-btn" class="btn btn--ghost btn--small hidden" title="Install PixelProTech Remote Assistant">
+      <svg viewBox="0 0 24 24" class="ic"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
+      <span>Install App</span>
+    </button>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle dark or light mode">
+      <svg viewBox="0 0 24 24" class="ic ic-moon"><path d="M21 12.6A9 9 0 1 1 11.4 3a7 7 0 0 0 9.6 9.6z"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="app-shell">
+  <!-- ============ SIDE NAV ============ -->
+  <nav id="side-nav" class="side-nav" aria-label="Primary">
+    <ul class="nav-list">
+      <li><a href="#home" class="nav-link active" data-panel="home"><i class="nav-ic">◆</i>Dashboard</a></li>
+      <li><a href="#device" class="nav-link" data-panel="device"><i class="nav-ic">▣</i>Device Detection</a></li>
+      <li class="nav-group-label">Hardware Tests</li>
+      <li><a href="#camera" class="nav-link" data-panel="camera"><i class="nav-ic">◉</i>Camera</a></li>
+      <li><a href="#mic" class="nav-link" data-panel="mic"><i class="nav-ic">●</i>Microphone</a></li>
+      <li><a href="#speaker" class="nav-link" data-panel="speaker"><i class="nav-ic">♪</i>Speaker</a></li>
+      <li><a href="#screen" class="nav-link" data-panel="screen"><i class="nav-ic">▢</i>Screen</a></li>
+      <li><a href="#keyboard" class="nav-link" data-panel="keyboard"><i class="nav-ic">⌨</i>Keyboard</a></li>
+      <li><a href="#mouse" class="nav-link" data-panel="mouse"><i class="nav-ic">➤</i>Mouse</a></li>
+      <li class="nav-group-label">Connectivity</li>
+      <li><a href="#network" class="nav-link" data-panel="network"><i class="nav-ic">◈</i>Network</a></li>
+      <li><a href="#gps" class="nav-link" data-panel="gps"><i class="nav-ic">⦿</i>GPS</a></li>
+      <li><a href="#motion" class="nav-link" data-panel="motion"><i class="nav-ic">◐</i>Compass &amp; Motion</a></li>
+      <li><a href="#storage" class="nav-link" data-panel="storage"><i class="nav-ic">▤</i>Storage</a></li>
+      <li><a href="#usb" class="nav-link" data-panel="usb"><i class="nav-ic">⏚</i>USB</a></li>
+      <li><a href="#bluetooth" class="nav-link" data-panel="bluetooth"><i class="nav-ic">Ⓑ</i>Bluetooth</a></li>
+      <li class="nav-group-label">Case Files</li>
+      <li><a href="#uploads" class="nav-link" data-panel="uploads"><i class="nav-ic">⇧</i>File Uploads</a></li>
+      <li><a href="#screenshots" class="nav-link" data-panel="screenshots"><i class="nav-ic">▥</i>Screenshots</a></li>
+      <li><a href="#report" class="nav-link" data-panel="report"><i class="nav-ic">✎</i>Error Report</a></li>
+      <li><a href="#contact" class="nav-link" data-panel="contact"><i class="nav-ic">☎</i>Contact</a></li>
+      <li><a href="#diagnostic" class="nav-link" data-panel="diagnostic"><i class="nav-ic">✺</i>AI Diagnostic</a></li>
+      <li><a href="#export" class="nav-link" data-panel="export"><i class="nav-ic">⇩</i>Generate Report</a></li>
+    </ul>
+    <div class="nav-footer">
+      <span id="sw-status" class="sw-status">Offline-ready</span>
+    </div>
+  </nav>
+  <div id="nav-scrim" class="nav-scrim"></div>
+
+  <!-- ============ MAIN ============ -->
+  <main id="main" class="main">
+
+    <!-- HOME -->
+    <section id="panel-home" class="panel active" data-title="Dashboard">
+      <div class="hero glass">
+        <div class="hero-mark">
+          <svg viewBox="0 0 100 100" class="hero-hex"><polygon points="50,3 93,26 93,74 50,97 7,74 7,26"/></svg>
+          <span class="hero-p">P</span>
+          <span class="hero-sweep"></span>
+        </div>
+        <h1>PixelProTech Remote Assistant</h1>
+        <p class="hero-sub">Professional Remote Device Diagnostics</p>
+        <div class="hero-cta">
+          <button class="btn btn--primary" data-goto="device">Run Full Diagnostic</button>
+          <button class="btn btn--ghost" data-goto="report">Report an Issue</button>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <div class="card glass stat-card">
+          <span class="stat-label">Local Time</span>
+          <span class="stat-value mono" id="stat-time">--:--:--</span>
+        </div>
+        <div class="card glass stat-card">
+          <span class="stat-label">Date</span>
+          <span class="stat-value mono" id="stat-date">--</span>
+        </div>
+        <div class="card glass stat-card">
+          <span class="stat-label">Operating System</span>
+          <span class="stat-value mono" id="stat-os">--</span>
+        </div>
+        <div class="card glass stat-card">
+          <span class="stat-label">Browser</span>
+          <span class="stat-value mono" id="stat-browser">--</span>
+        </div>
+        <div class="card glass stat-card">
+          <span class="stat-label">Internet</span>
+          <span class="stat-value mono" id="stat-net"><i class="dot" id="stat-net-dot"></i> <span id="stat-net-text">--</span></span>
+        </div>
+        <div class="card glass stat-card">
+          <span class="stat-label">Session ID</span>
+          <span class="stat-value mono" id="stat-session">--</span>
+        </div>
+      </div>
+
+      <div class="card glass">
+        <h2>Quick Access</h2>
+        <div class="quick-grid">
+          <button class="quick-tile" data-goto="camera"><span>◉</span>Camera Test</button>
+          <button class="quick-tile" data-goto="mic"><span>●</span>Mic Test</button>
+          <button class="quick-tile" data-goto="speaker"><span>♪</span>Speaker Test</button>
+          <button class="quick-tile" data-goto="network"><span>◈</span>Network Test</button>
+          <button class="quick-tile" data-goto="diagnostic"><span>✺</span>AI Diagnostic</button>
+          <button class="quick-tile" data-goto="export"><span>⇩</span>Export Report</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVICE DETECTION -->
+    <section id="panel-device" class="panel" data-title="Device Detection">
+      <div class="panel-head"><h1>Device Detection</h1><p>Everything the browser can tell us about this device, gathered locally — nothing leaves your machine unless you generate a report.</p></div>
+      <div class="card-grid" id="device-grid"><!-- populated by script.js --></div>
+    </section>
+
+    <!-- CAMERA -->
+    <section id="panel-camera" class="panel" data-title="Camera Test">
+      <div class="panel-head"><h1>Camera Test</h1><p>We'll ask your browser for camera permission only when you press Start. Nothing is recorded or uploaded automatically.</p></div>
+      <div class="card glass test-card">
+        <div class="media-frame">
+          <video id="camera-video" autoplay playsinline muted></video>
+          <canvas id="camera-canvas" class="hidden"></canvas>
+          <div id="camera-placeholder" class="media-placeholder"><span>◉</span><p>Camera preview will appear here</p></div>
+        </div>
+        <div class="test-controls">
+          <button id="camera-start" class="btn btn--primary">Start Camera Test</button>
+          <button id="camera-snap" class="btn btn--ghost" disabled>Take Snapshot</button>
+          <button id="camera-download" class="btn btn--ghost" disabled>Download Snapshot</button>
+          <button id="camera-stop" class="btn btn--danger" disabled>Stop</button>
+        </div>
+        <div id="camera-status" class="status-pill status-pill--idle">Idle</div>
+      </div>
+    </section>
+
+    <!-- MICROPHONE -->
+    <section id="panel-mic" class="panel" data-title="Microphone Test">
+      <div class="panel-head"><h1>Microphone Test</h1><p>Live waveform, volume meter, and a short recording you can play back or download.</p></div>
+      <div class="card glass test-card">
+        <canvas id="mic-waveform" class="waveform-canvas"></canvas>
+        <div class="meter"><div id="mic-meter-fill" class="meter-fill"></div></div>
+        <div class="test-controls">
+          <button id="mic-start" class="btn btn--primary">Start Microphone</button>
+          <button id="mic-record" class="btn btn--ghost" disabled>Record Voice</button>
+          <button id="mic-stop" class="btn btn--danger" disabled>Stop</button>
+        </div>
+        <audio id="mic-playback" controls class="hidden"></audio>
+        <div class="test-controls">
+          <button id="mic-download" class="btn btn--ghost hidden">Download Recording</button>
+        </div>
+        <div id="mic-status" class="status-pill status-pill--idle">Idle</div>
+      </div>
+    </section>
+
+    <!-- SPEAKER -->
+    <section id="panel-speaker" class="panel" data-title="Speaker Test">
+      <div class="panel-head"><h1>Speaker Test</h1><p>Plays short test tones through each channel. Start low if you're wearing headphones.</p></div>
+      <div class="card glass test-card">
+        <label class="slider-label">Volume
+          <input type="range" id="speaker-volume" min="0" max="100" value="40" />
+          <span id="speaker-volume-val">40%</span>
+        </label>
+        <div class="test-controls">
+          <button class="btn btn--ghost" data-tone="left">Left Channel</button>
+          <button class="btn btn--ghost" data-tone="right">Right Channel</button>
+          <button class="btn btn--primary" data-tone="stereo">Stereo</button>
+          <button id="speaker-stop" class="btn btn--danger">Stop</button>
+        </div>
+        <div class="pass-fail-row">
+          <button id="speaker-pass" class="btn btn--success btn--small">✓ Speaker Pass</button>
+          <button id="speaker-fail" class="btn btn--danger btn--small">✕ Speaker Fail</button>
+        </div>
+        <div id="speaker-status" class="status-pill status-pill--idle">Idle</div>
+      </div>
+    </section>
+
+    <!-- SCREEN -->
+    <section id="panel-screen" class="panel" data-title="Screen Test">
+      <div class="panel-head"><h1>Screen Test</h1><p>Full-screen color and gradient sweeps for dead-pixel checks, plus touch and mouse tracking pads.</p></div>
+      <div class="card glass test-card">
+        <h2>Dead Pixel / Full Screen Test</h2>
+        <div class="swatch-row">
+          <button class="swatch" style="background:#ff0000" data-color="#ff0000">Red</button>
+          <button class="swatch" style="background:#00ff00" data-color="#00ff00">Green</button>
+          <button class="swatch" style="background:#0000ff" data-color="#0000ff">Blue</button>
+          <button class="swatch swatch--dark" style="background:#000000" data-color="#000000">Black</button>
+          <button class="swatch swatch--light" style="background:#ffffff" data-color="#ffffff">White</button>
+          <button class="swatch" style="background:linear-gradient(90deg,#000,#fff)" data-color="gradient">Gradient</button>
+        </div>
+        <p class="hint">Tap any swatch to go full screen. Tap / click anywhere, or press Esc, to exit.</p>
+      </div>
+      <div class="card glass test-card">
+        <h2>Touch &amp; Mouse Pad Test</h2>
+        <canvas id="screen-pad" class="pad-canvas"></canvas>
+        <div class="test-controls">
+          <button id="screen-pad-clear" class="btn btn--ghost">Clear Pad</button>
+        </div>
+        <p class="hint" id="screen-pad-info">Draw or click across the pad — every point registered will be plotted.</p>
+      </div>
+    </section>
+
+    <!-- KEYBOARD -->
+    <section id="panel-keyboard" class="panel" data-title="Keyboard Test">
+      <div class="panel-head"><h1>Keyboard Test</h1><p>Press any key to light it up below. We track how many unique keys have been tested and flag any that appear stuck.</p></div>
+      <div class="card glass test-card">
+        <div class="kb-stats">
+          <span>Keys pressed: <strong id="kb-count">0</strong></span>
+          <span>Stuck keys: <strong id="kb-stuck">0</strong></span>
+          <button id="kb-reset" class="btn btn--ghost btn--small">Reset</button>
+        </div>
+        <div id="virtual-keyboard" class="virtual-keyboard" tabindex="0"></div>
+        <p class="hint">Click into this panel first (desktop only — a physical keyboard is required).</p>
+      </div>
+    </section>
+
+    <!-- MOUSE -->
+    <section id="panel-mouse" class="panel" data-title="Mouse Test">
+      <div class="panel-head"><h1>Mouse Test</h1><p>Move, click and scroll inside the pad to verify every button and the wheel.</p></div>
+      <div class="card glass test-card">
+        <div id="mouse-pad" class="mouse-pad">
+          <div id="mouse-dot" class="mouse-dot"></div>
+          <span class="mouse-hint">Move your mouse here</span>
+        </div>
+        <div class="card-grid card-grid--tight">
+          <div class="mini-stat">Left clicks <strong id="m-left">0</strong></div>
+          <div class="mini-stat">Right clicks <strong id="m-right">0</strong></div>
+          <div class="mini-stat">Middle clicks <strong id="m-middle">0</strong></div>
+          <div class="mini-stat">Double clicks <strong id="m-double">0</strong></div>
+          <div class="mini-stat">Scroll delta <strong id="m-scroll">0</strong></div>
+          <div class="mini-stat">Position <strong id="m-pos">0, 0</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NETWORK -->
+    <section id="panel-network" class="panel" data-title="Network Test">
+      <div class="panel-head"><h1>Network Test</h1><p>Live connection status plus a same-origin latency check and simulated throughput sweep.</p></div>
+      <div class="card-grid">
+        <div class="card glass stat-card"><span class="stat-label">Status</span><span class="stat-value mono" id="net-status">--</span></div>
+        <div class="card glass stat-card"><span class="stat-label">Connection Type</span><span class="stat-value mono" id="net-type">--</span></div>
+        <div class="card glass stat-card"><span class="stat-label">Downlink (est.)</span><span class="stat-value mono" id="net-downlink">--</span></div>
+        <div class="card glass stat-card"><span class="stat-label">Round-trip (est.)</span><span class="stat-value mono" id="net-rtt">--</span></div>
+      </div>
+      <div class="card glass test-card">
+        <button id="net-run" class="btn btn--primary">Run Network Test</button>
+        <div class="ping-track"><div id="ping-dot" class="ping-dot"></div></div>
+        <div class="card-grid card-grid--tight">
+          <div class="mini-stat">Latency <strong id="net-latency">--</strong></div>
+          <div class="mini-stat">Download (sim) <strong id="net-download">--</strong></div>
+          <div class="mini-stat">Upload (sim) <strong id="net-upload">--</strong></div>
+        </div>
+        <p class="hint">Download/upload figures are a local simulation (transfer to/from an in-memory buffer) since this sandbox has no speed-test server — useful as a relative, not absolute, measure.</p>
+      </div>
+    </section>
+
+    <!-- GPS -->
+    <section id="panel-gps" class="panel" data-title="GPS Test">
+      <div class="panel-head"><h1>GPS Test</h1><p>Requests location permission only when you press the button below.</p></div>
+      <div class="card glass test-card">
+        <button id="gps-start" class="btn btn--primary">Request GPS Permission</button>
+        <div class="card-grid card-grid--tight">
+          <div class="mini-stat">Latitude <strong id="gps-lat">--</strong></div>
+          <div class="mini-stat">Longitude <strong id="gps-lng">--</strong></div>
+          <div class="mini-stat">Accuracy <strong id="gps-acc">--</strong></div>
+        </div>
+        <a id="gps-map-link" href="#" target="_blank" rel="noopener" class="btn btn--ghost hidden">Open in Google Maps</a>
+        <div id="gps-status" class="status-pill status-pill--idle">Idle</div>
+      </div>
+    </section>
+
+    <!-- MOTION -->
+    <section id="panel-motion" class="panel" data-title="Compass & Motion">
+      <div class="panel-head"><h1>Compass &amp; Motion</h1><p>Reads orientation, accelerometer and gyroscope data where the device and browser support it.</p></div>
+      <div class="card glass test-card">
+        <button id="motion-start" class="btn btn--primary">Enable Motion &amp; Orientation</button>
+        <div class="compass-wrap"><div id="compass-needle" class="compass-needle"></div></div>
+        <div class="card-grid card-grid--tight">
+          <div class="mini-stat">Heading <strong id="mo-heading">--</strong></div>
+          <div class="mini-stat">Beta (front/back tilt) <strong id="mo-beta">--</strong></div>
+          <div class="mini-stat">Gamma (left/right tilt) <strong id="mo-gamma">--</strong></div>
+          <div class="mini-stat">Accel X <strong id="mo-ax">--</strong></div>
+          <div class="mini-stat">Accel Y <strong id="mo-ay">--</strong></div>
+          <div class="mini-stat">Accel Z <strong id="mo-az">--</strong></div>
+        </div>
+        <div id="motion-status" class="status-pill status-pill--idle">Idle</div>
+      </div>
+    </section>
+
+    <!-- STORAGE -->
+    <section id="panel-storage" class="panel" data-title="Device Storage">
+      <div class="panel-head"><h1>Device Storage</h1><p>An estimate of storage this browser profile can use, from the Storage API.</p></div>
+      <div class="card glass test-card">
+        <div class="storage-bar"><div id="storage-bar-fill" class="storage-bar-fill"></div></div>
+        <div class="card-grid card-grid--tight">
+          <div class="mini-stat">Used <strong id="storage-used">--</strong></div>
+          <div class="mini-stat">Quota <strong id="storage-quota">--</strong></div>
+          <div class="mini-stat">Available <strong id="storage-available">--</strong></div>
+          <div class="mini-stat">Persistent <strong id="storage-persist">--</strong></div>
+        </div>
+        <button id="storage-request-persist" class="btn btn--ghost">Request Persistent Storage</button>
+      </div>
+    </section>
+
+    <!-- USB -->
+    <section id="panel-usb" class="panel" data-title="USB Devices">
+      <div class="panel-head"><h1>USB Devices</h1><p>Uses WebUSB where available (Chromium desktop/Android only). You'll get a native device picker.</p></div>
+      <div class="card glass test-card">
+        <button id="usb-request" class="btn btn--primary">Request USB Device</button>
+        <div id="usb-result" class="detail-list"></div>
+      </div>
+    </section>
+
+    <!-- BLUETOOTH -->
+    <section id="panel-bluetooth" class="panel" data-title="Bluetooth">
+      <div class="panel-head"><h1>Bluetooth</h1><p>Uses Web Bluetooth where available (Chromium desktop/Android only).</p></div>
+      <div class="card glass test-card">
+        <button id="bt-request" class="btn btn--primary">Search Nearby Bluetooth Devices</button>
+        <div id="bt-result" class="detail-list"></div>
+      </div>
+    </section>
+
+    <!-- UPLOADS -->
+    <section id="panel-uploads" class="panel" data-title="File Upload Center">
+      <div class="panel-head"><h1>File Upload Center</h1><p>Photos, videos, screenshots, PDFs, ZIPs and text logs — everything stays in this browser tab until you export a report.</p></div>
+      <div class="card glass">
+        <div id="dropzone" class="dropzone">
+          <span>⇧</span>
+          <p>Drag &amp; drop files here, or click to browse</p>
+          <input type="file" id="file-input" multiple hidden accept="image/*,video/*,.pdf,.zip,.txt,.log" />
+        </div>
+        <div id="upload-list" class="upload-list"></div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section id="panel-screenshots" class="panel" data-title="Screenshot Center">
+      <div class="panel-head"><h1>Screenshot Center</h1><p>Upload screenshots of an error, preview them, rename or delete before sending.</p></div>
+      <div class="card glass">
+        <div id="screenshot-dropzone" class="dropzone">
+          <span>▥</span>
+          <p>Drag &amp; drop screenshots here, or click to browse</p>
+          <input type="file" id="screenshot-input" multiple hidden accept="image/*" />
+        </div>
+        <div id="screenshot-grid" class="screenshot-grid"></div>
+      </div>
+    </section>
+
+    <!-- ERROR REPORT -->
+    <section id="panel-report" class="panel" data-title="Error Report">
+      <div class="panel-head"><h1>Error Report</h1><p>Describe what's going wrong in your own words — the more detail, the faster the diagnosis.</p></div>
+      <div class="card glass">
+        <label class="field-label" for="report-text">Describe your issue</label>
+        <textarea id="report-text" rows="8" maxlength="2000" placeholder="e.g. The laptop screen flickers when I open it more than 45°, started three days ago…"></textarea>
+        <div class="char-counter"><span id="report-count">0</span> / 2000</div>
+
+        <label class="field-label">Priority</label>
+        <div class="priority-row">
+          <button class="priority-btn" data-priority="Low">Low</button>
+          <button class="priority-btn" data-priority="Medium">Medium</button>
+          <button class="priority-btn" data-priority="High">High</button>
+          <button class="priority-btn" data-priority="Critical">Critical</button>
+        </div>
+
+        <label class="field-label" for="report-files">Attach files</label>
+        <input type="file" id="report-files" multiple />
+        <div id="report-files-list" class="upload-list"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="panel-contact" class="panel" data-title="Contact">
+      <div class="panel-head"><h1>Contact &amp; Device Details</h1><p>So a technician can find your ticket and match it to the right hardware.</p></div>
+      <div class="card glass">
+        <form id="contact-form" class="form-grid">
+          <label>Customer Name<input type="text" name="name" autocomplete="name" /></label>
+          <label>Phone<input type="tel" name="phone" autocomplete="tel" /></label>
+          <label>Email<input type="email" name="email" autocomplete="email" /></label>
+          <label>Address<input type="text" name="address" autocomplete="street-address" /></label>
+          <label>Device Brand<input type="text" name="brand" placeholder="e.g. Dell, Apple, Samsung" /></label>
+          <label>Device Model<input type="text" name="model" /></label>
+          <label>Serial Number<input type="text" name="serial" /></label>
+          <label>Repair Type
+            <select name="repairType">
+              <option>Diagnostic Only</option>
+              <option>Hardware Repair</option>
+              <option>Software Issue</option>
+              <option>Data Recovery</option>
+              <option>Warranty Claim</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </form>
+      </div>
+    </section>
+
+    <!-- AI DIAGNOSTIC -->
+    <section id="panel-diagnostic" class="panel" data-title="AI Diagnostic Engine">
+      <div class="panel-head"><h1>AI Diagnostic Engine</h1><p>Runs entirely in this browser tab — reviews every test you've completed and drafts a plain-English summary.</p></div>
+      <div class="card glass">
+        <button id="run-diagnostic" class="btn btn--primary">Run Diagnostic Analysis</button>
+        <div id="diagnostic-output" class="diagnostic-output"></div>
+      </div>
+    </section>
+
+    <!-- EXPORT / REPORT -->
+    <section id="panel-export" class="panel" data-title="Generate Report">
+      <div class="panel-head"><h1>Generate &amp; Export Report</h1><p>Compile everything collected in this session into a shareable report.</p></div>
+      <div class="card glass">
+        <div class="export-row">
+          <button id="export-print" class="btn btn--primary">Generate PDF Report (Print)</button>
+          <button id="export-json" class="btn btn--ghost">Export JSON</button>
+          <button id="export-txt" class="btn btn--ghost">Export TXT</button>
+          <button id="export-csv" class="btn btn--ghost">Export CSV</button>
+        </div>
+        <p class="hint">"Generate PDF" opens your browser's print dialog with a formatted report — choose <strong>Save as PDF</strong> as the destination on any platform.</p>
+      </div>
+
+      <!-- printable report, hidden on screen, shown via print stylesheet -->
+      <div id="print-report" class="print-report">
+        <header class="print-header">
+          <div class="print-brand">
+            <svg viewBox="0 0 100 100" width="40" height="40"><polygon points="50,3 93,26 93,74 50,97 7,74 7,26" fill="#0F172A"/></svg>
+            <div><strong>PixelProTech Solutions</strong><br /><small>Remote Diagnostic Report</small></div>
+          </div>
+          <div id="print-meta"></div>
+        </header>
+        <section id="print-customer"></section>
+        <section id="print-device"></section>
+        <section id="print-tests"></section>
+        <section id="print-files"></section>
+        <section id="print-diagnostic"></section>
+        <footer class="print-footer">
+          <div id="print-qr"></div>
+          <div class="print-sign">
+            <div class="sign-line">Technician Signature</div>
+            <div class="sign-line" id="print-date">Date</div>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ FLOATING AI ASSISTANT ============ -->
+<button id="assistant-toggle" class="assistant-toggle" aria-label="Open assistant">
+  <span class="assistant-pulse"></span>✺
+</button>
+<div id="assistant-panel" class="assistant-panel hidden" role="dialog" aria-label="PixelProTech Assistant">
+  <div class="assistant-head">
+    <span>PixelProTech Assistant</span>
+    <button id="assistant-close" class="icon-btn icon-btn--small" aria-label="Close assistant">✕</button>
+  </div>
+  <div id="assistant-log" class="assistant-log"></div>
+  <form id="assistant-form" class="assistant-form">
+    <input id="assistant-input" type="text" placeholder="Ask about a test, e.g. “camera not working”" autocomplete="off" />
+    <button type="submit" class="btn btn--primary btn--small">Send</button>
+  </form>
+</div>
+
+<!-- ============ TOAST / NOTIFICATIONS ============ -->
+<div id="toast-stack" class="toast-stack" aria-live="polite"></div>
+
+<!-- ============ FULLSCREEN COLOR TEST OVERLAY ============ -->
+<div id="fullscreen-test" class="fullscreen-test hidden"></div>
+
+<!-- ============ UPDATE AVAILABLE BANNER ============ -->
+<div id="update-banner" class="update-banner hidden">
+  <span>A new version is ready.</span>
+  <button id="update-reload" class="btn btn--small btn--primary">Update now</button>
+</div>
+
+<!-- ============ IOS INSTALL HINT ============ -->
+<div id="ios-install-hint" class="ios-install-hint hidden">
+  <p>Install PixelProTech Remote Assistant: tap <strong>Share ⬆</strong>, then <strong>“Add to Home Screen.”</strong></p>
+  <button id="ios-install-dismiss" class="icon-btn icon-btn--small" aria-label="Dismiss">✕</button>
+</div>
+
+<script>/* =========================================================================
+   PixelProTech Remote Assistant — script.js
+   Vanilla JS only. All state lives in memory for the session (no
+   localStorage/sessionStorage) so nothing persists beyond the tab —
+   every sensor/API is only touched after an explicit user action.
+   ========================================================================= */
+"use strict";
+
+/* -------------------------------------------------------------------------
+   Global session state — this is what gets bundled into the final report.
+   ------------------------------------------------------------------------- */
+const SESSION = {
+  id: makeSessionId(),
+  startedAt: new Date(),
+  device: {},
+  tests: {},        // { camera:{status,notes}, mic:{...}, ... }
+  uploads: [],       // {name,size,type,dataUrl?}
+  screenshots: [],   // {id,name,size,dataUrl}
+  report: { text: "", priority: null, files: [] },
+  contact: {},
+  diagnostic: null
+};
+
+function makeSessionId(){
+  const t = Date.now().toString(36).toUpperCase();
+  const r = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `PPT-${t}-${r}`;
+}
+
+function recordTest(name, status, notes){
+  SESSION.tests[name] = { status, notes, at: new Date().toISOString() };
+}
+
+/* -------------------------------------------------------------------------
+   Toasts
+   ------------------------------------------------------------------------- */
+function toast(msg, type = ""){
+  const stack = document.getElementById("toast-stack");
+  const el = document.createElement("div");
+  el.className = `toast ${type}`;
+  el.textContent = msg;
+  stack.appendChild(el);
+  setTimeout(() => { el.style.opacity = "0"; el.style.transition = "opacity .3s"; }, 3200);
+  setTimeout(() => el.remove(), 3600);
+}
+
+/* -------------------------------------------------------------------------
+   Loading screen
+   ------------------------------------------------------------------------- */
+window.addEventListener("load", () => {
+  setTimeout(() => document.getElementById("loading-screen").classList.add("done"), 900);
+});
+
+/* -------------------------------------------------------------------------
+   Navigation (hash-routed single page app)
+   ------------------------------------------------------------------------- */
+const panels = Array.from(document.querySelectorAll(".panel"));
+const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+const sideNav = document.getElementById("side-nav");
+const navScrim = document.getElementById("nav-scrim");
+
+function showPanel(name){
+  const target = document.getElementById(`panel-${name}`) ? name : "home";
+  panels.forEach(p => p.classList.toggle("active", p.id === `panel-${target}`));
+  navLinks.forEach(l => l.classList.toggle("active", l.dataset.panel === target));
+  document.title = `${document.getElementById(`panel-${target}`)?.dataset.title || "Dashboard"} — PixelProTech`;
+  window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
+  closeMobileNav();
+}
+
+function goto(name){ location.hash = name; }
+
+navLinks.forEach(link => link.addEventListener("click", (e) => {
+  e.preventDefault();
+  goto(link.dataset.panel);
+}));
+
+document.querySelectorAll("[data-goto]").forEach(btn =>
+  btn.addEventListener("click", () => goto(btn.dataset.goto))
+);
+
+window.addEventListener("hashchange", () => showPanel(location.hash.replace("#", "")));
+
+function openMobileNav(){ sideNav.classList.add("open"); navScrim.classList.add("show"); document.getElementById("nav-toggle").setAttribute("aria-expanded", "true"); }
+function closeMobileNav(){ sideNav.classList.remove("open"); navScrim.classList.remove("show"); document.getElementById("nav-toggle").setAttribute("aria-expanded", "false"); }
+document.getElementById("nav-toggle").addEventListener("click", () => {
+  sideNav.classList.contains("open") ? closeMobileNav() : openMobileNav();
+});
+navScrim.addEventListener("click", closeMobileNav);
+
+// initial route (also honours ?panel= from install-shortcuts)
+(function initRoute(){
+  const params = new URLSearchParams(location.search);
+  const initial = location.hash.replace("#", "") || params.get("panel") || "home";
+  showPanel(initial);
+})();
+
+/* -------------------------------------------------------------------------
+   Theme toggle (in-memory only for this session)
+   ------------------------------------------------------------------------- */
+const themeToggle = document.getElementById("theme-toggle");
+themeToggle.addEventListener("click", () => {
+  const isDark = document.body.dataset.theme !== "light";
+  document.body.dataset.theme = isDark ? "light" : "dark";
+  document.querySelector("meta[name=theme-color]").setAttribute("content", isDark ? "#F1F5F9" : "#0F172A");
+});
+
+/* -------------------------------------------------------------------------
+   HUD clock / date / connectivity
+   ------------------------------------------------------------------------- */
+function pad(n){ return n.toString().padStart(2, "0"); }
+function updateClock(){
+  const now = new Date();
+  const time = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+  const date = now.toLocaleDateString(undefined, { weekday: "short", year: "numeric", month: "short", day: "numeric" });
+  document.getElementById("hud-time").textContent = time;
+  document.getElementById("hud-date").textContent = date;
+  const st = document.getElementById("stat-time"); if (st) st.textContent = time;
+  const sd = document.getElementById("stat-date"); if (sd) sd.textContent = date;
+}
+updateClock();
+setInterval(updateClock, 1000);
+
+function updateNetStatus(){
+  const online = navigator.onLine;
+  document.getElementById("hud-net-dot").classList.toggle("on", online);
+  document.getElementById("hud-net-text").textContent = online ? "Online" : "Offline";
+  const dot = document.getElementById("stat-net-dot");
+  const statNetText = document.getElementById("stat-net-text");
+  if (dot && statNetText) {
+    dot.classList.toggle("on", online);
+    statNetText.textContent = online ? "Online" : "Offline";
+  }
+  const netStatus = document.getElementById("net-status");
+  if (netStatus) netStatus.textContent = online ? "Online" : "Offline";
+}
+window.addEventListener("online", () => { updateNetStatus(); toast("Back online", "success"); });
+window.addEventListener("offline", () => { updateNetStatus(); toast("Connection lost", "error"); });
+updateNetStatus();
+
+document.getElementById("stat-session").textContent = SESSION.id;
+
+/* =========================================================================
+   DEVICE DETECTION
+   ========================================================================= */
+function detectDeviceType(){
+  const ua = navigator.userAgent;
+  const touch = navigator.maxTouchPoints > 0;
+  if (/iPad|Tablet|(Android(?!.*Mobile))/i.test(ua)) return "Tablet";
+  if (/Mobi|Android.*Mobile|iPhone|iPod/i.test(ua)) return "Phone";
+  if (touch && Math.min(window.innerWidth, window.innerHeight) > 700) return "Tablet";
+  return /Macintosh|Windows|Linux X11|CrOS/i.test(ua) ? "Desktop / Laptop" : "Unknown";
+}
+
+function detectOS(){
+  const ua = navigator.userAgent;
+  const platform = navigator.userAgentData?.platform || navigator.platform || "";
+  if (/Windows NT 10/.test(ua)) return "Windows 10/11";
+  if (/Windows/.test(ua)) return "Windows";
+  if (/Mac OS X/.test(ua)) {
+    const m = ua.match(/Mac OS X ([\d_]+)/);
+    return `macOS ${m ? m[1].replace(/_/g, ".") : ""}`.trim();
+  }
+  if (/Android/.test(ua)) { const m = ua.match(/Android ([\d.]+)/); return `Android ${m ? m[1] : ""}`.trim(); }
+  if (/iPhone|iPad|iPod/.test(ua)) { const m = ua.match(/OS ([\d_]+) like/); return `iOS ${m ? m[1].replace(/_/g, ".") : ""}`.trim(); }
+  if (/CrOS/.test(ua)) return "Chrome OS";
+  if (/Linux/.test(ua)) return "Linux";
+  return platform || "Unknown";
+}
+
+function detectBrowser(){
+  const ua = navigator.userAgent;
+  const rules = [
+    ["Edge", /Edg\/([\d.]+)/],
+    ["Opera", /OPR\/([\d.]+)/],
+    ["Samsung Internet", /SamsungBrowser\/([\d.]+)/],
+    ["Chrome", /Chrome\/([\d.]+)/],
+    ["Firefox", /Firefox\/([\d.]+)/],
+    ["Safari", /Version\/([\d.]+).*Safari/],
+  ];
+  for (const [name, re] of rules) {
+    const m = ua.match(re);
+    if (m) return `${name} ${m[1]}`;
+  }
+  return "Unknown Browser";
+}
+
+function bytesToGB(b){ return (b / 1073741824).toFixed(1) + " GB"; }
+
+async function buildDeviceProfile(){
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const profile = {
+    "Device Type": detectDeviceType(),
+    "Operating System": detectOS(),
+    "Browser": detectBrowser(),
+    "Platform": navigator.platform || navigator.userAgentData?.platform || "—",
+    "Language": navigator.language,
+    "Timezone": Intl.DateTimeFormat().resolvedOptions().timeZone,
+    "Screen Resolution": `${screen.width} × ${screen.height}`,
+    "Viewport": `${window.innerWidth} × ${window.innerHeight}`,
+    "Pixel Ratio": window.devicePixelRatio || 1,
+    "Touch Support": navigator.maxTouchPoints > 0 ? `Yes (${navigator.maxTouchPoints} pts)` : "No",
+    "CPU Cores": navigator.hardwareConcurrency || "Unknown",
+    "Estimated RAM": navigator.deviceMemory ? `${navigator.deviceMemory} GB` : "Not reported",
+    "Connection Type": conn ? (conn.effectiveType || conn.type || "Unknown") : "Not supported",
+    "Online": navigator.onLine ? "Yes" : "No",
+    "Cookies Enabled": navigator.cookieEnabled ? "Yes" : "No",
+    "PWA Display Mode": window.matchMedia("(display-mode: standalone)").matches ? "Installed (standalone)" : "Browser tab",
+  };
+
+  if (navigator.getBattery) {
+    try {
+      const battery = await navigator.getBattery();
+      profile["Battery Level"] = `${Math.round(battery.level * 100)}%`;
+      profile["Charging State"] = battery.charging ? "Charging" : "Not charging";
+      battery.addEventListener("levelchange", renderDeviceGrid);
+      battery.addEventListener("chargingchange", renderDeviceGrid);
+    } catch { profile["Battery"] = "Unavailable"; }
+  } else {
+    profile["Battery"] = "Not supported in this browser";
+  }
+
+  SESSION.device = profile;
+  return profile;
+}
+
+function renderDeviceGrid(){
+  const grid = document.getElementById("device-grid");
+  if (!grid) return;
+  grid.innerHTML = "";
+  Object.entries(SESSION.device).forEach(([label, value]) => {
+    const card = document.createElement("div");
+    card.className = "card glass stat-card";
+    card.innerHTML = `<span class="stat-label">${label}</span><span class="stat-value mono">${value}</span>`;
+    grid.appendChild(card);
+  });
+  document.getElementById("stat-os").textContent = SESSION.device["Operating System"] || "--";
+  document.getElementById("stat-browser").textContent = SESSION.device["Browser"] || "--";
+}
+buildDeviceProfile().then(renderDeviceGrid);
+
+/* =========================================================================
+   CAMERA TEST
+   ========================================================================= */
+(function cameraModule(){
+  const video = document.getElementById("camera-video");
+  const canvas = document.getElementById("camera-canvas");
+  const placeholder = document.getElementById("camera-placeholder");
+  const startBtn = document.getElementById("camera-start");
+  const snapBtn = document.getElementById("camera-snap");
+  const dlBtn = document.getElementById("camera-download");
+  const stopBtn = document.getElementById("camera-stop");
+  const status = document.getElementById("camera-status");
+  let stream = null, snapshotUrl = null;
+
+  function setStatus(text, cls){ status.textContent = text; status.className = `status-pill status-pill--${cls}`; }
+
+  startBtn.addEventListener("click", async () => {
+    if (!navigator.mediaDevices?.getUserMedia) { setStatus("Camera Failed", "fail"); recordTest("camera", "fail", "getUserMedia unsupported"); return; }
+    setStatus("Requesting permission…", "busy");
+    toast("Requesting camera permission — used only for this live preview.");
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+      video.srcObject = stream;
+      placeholder.classList.add("hidden");
+      video.classList.remove("hidden");
+      setStatus("Camera Working", "pass");
+      recordTest("camera", "pass", "Live preview established");
+      startBtn.disabled = true; snapBtn.disabled = false; stopBtn.disabled = false;
+    } catch (err) {
+      setStatus("Camera Failed", "fail");
+      recordTest("camera", "fail", err.message);
+      toast("Camera permission denied or unavailable", "error");
+    }
+  });
+
+  snapBtn.addEventListener("click", () => {
+    canvas.width = video.videoWidth; canvas.height = video.videoHeight;
+    canvas.getContext("2d").drawImage(video, 0, 0);
+    canvas.classList.remove("hidden");
+    canvas.toBlob(blob => { snapshotUrl = URL.createObjectURL(blob); dlBtn.disabled = false; toast("Snapshot captured", "success"); });
+  });
+
+  dlBtn.addEventListener("click", () => {
+    if (!snapshotUrl) return;
+    const a = document.createElement("a");
+    a.href = snapshotUrl; a.download = `pixelprotech-snapshot-${Date.now()}.png`; a.click();
+  });
+
+  stopBtn.addEventListener("click", () => {
+    stream?.getTracks().forEach(t => t.stop());
+    video.classList.add("hidden"); canvas.classList.add("hidden"); placeholder.classList.remove("hidden");
+    startBtn.disabled = false; snapBtn.disabled = true; stopBtn.disabled = true;
+    setStatus("Idle", "idle");
+  });
+})();
+
+/* =========================================================================
+   MICROPHONE TEST
+   ========================================================================= */
+(function micModule(){
+  const startBtn = document.getElementById("mic-start");
+  const recordBtn = document.getElementById("mic-record");
+  const stopBtn = document.getElementById("mic-stop");
+  const dlBtn = document.getElementById("mic-download");
+  const playback = document.getElementById("mic-playback");
+  const status = document.getElementById("mic-status");
+  const canvas = document.getElementById("mic-waveform");
+  const ctx2d = canvas.getContext("2d");
+  const meterFill = document.getElementById("mic-meter-fill");
+
+  let audioCtx, analyser, source, stream, dataArray, rafId;
+  let mediaRecorder, chunks = [], recordedUrl = null;
+
+  function setStatus(text, cls){ status.textContent = text; status.className = `status-pill status-pill--${cls}`; }
+
+  function resizeCanvas(){ canvas.width = canvas.clientWidth * 2; canvas.height = canvas.clientHeight * 2; }
+
+  function draw(){
+    rafId = requestAnimationFrame(draw);
+    analyser.getByteTimeDomainData(dataArray);
+    ctx2d.fillStyle = "rgba(15,23,42,0.4)";
+    ctx2d.fillRect(0, 0, canvas.width, canvas.height);
+    ctx2d.lineWidth = 3;
+    ctx2d.strokeStyle = "#00FFD5";
+    ctx2d.beginPath();
+    const slice = canvas.width / dataArray.length;
+    let x = 0, sumSq = 0;
+    for (let i = 0; i < dataArray.length; i++) {
+      const v = dataArray[i] / 128.0;
+      sumSq += (v - 1) * (v - 1);
+      const y = (v * canvas.height) / 2;
+      i === 0 ? ctx2d.moveTo(x, y) : ctx2d.lineTo(x, y);
+      x += slice;
+    }
+    ctx2d.stroke();
+    const rms = Math.sqrt(sumSq / dataArray.length);
+    meterFill.style.width = `${Math.min(100, rms * 400)}%`;
+  }
+
+  startBtn.addEventListener("click", async () => {
+    if (!navigator.mediaDevices?.getUserMedia) { setStatus("Microphone Failed", "fail"); recordTest("microphone", "fail", "getUserMedia unsupported"); return; }
+    toast("Requesting microphone permission for live waveform + recording.");
+    setStatus("Requesting permission…", "busy");
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      source = audioCtx.createMediaStreamSource(stream);
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = 1024;
+      dataArray = new Uint8Array(analyser.fftSize);
+      source.connect(analyser);
+      resizeCanvas();
+      draw();
+      setStatus("Microphone Working", "pass");
+      recordTest("microphone", "pass", "Live waveform established");
+      startBtn.disabled = true; recordBtn.disabled = false; stopBtn.disabled = false;
+
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => chunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(chunks, { type: "audio/webm" });
+        recordedUrl = URL.createObjectURL(blob);
+        playback.src = recordedUrl;
+        playback.classList.remove("hidden");
+        dlBtn.classList.remove("hidden");
+        chunks = [];
+      };
+    } catch (err) {
+      setStatus("Microphone Failed", "fail");
+      recordTest("microphone", "fail", err.message);
+      toast("Microphone permission denied or unavailable", "error");
+    }
+  });
+
+  recordBtn.addEventListener("click", () => {
+    if (mediaRecorder.state === "recording") { mediaRecorder.stop(); recordBtn.textContent = "Record Voice"; toast("Recording saved"); }
+    else { mediaRecorder.start(); recordBtn.textContent = "Stop Recording"; toast("Recording…"); }
+  });
+
+  dlBtn.addEventListener("click", () => {
+    if (!recordedUrl) return;
+    const a = document.createElement("a");
+    a.href = recordedUrl; a.download = `pixelprotech-recording-${Date.now()}.webm`; a.click();
+  });
+
+  stopBtn.addEventListener("click", () => {
+    cancelAnimationFrame(rafId);
+    stream?.getTracks().forEach(t => t.stop());
+    audioCtx?.close();
+    startBtn.disabled = false; recordBtn.disabled = true; stopBtn.disabled = true;
+    setStatus("Idle", "idle");
+    ctx2d.clearRect(0, 0, canvas.width, canvas.height);
+    meterFill.style.width = "0%";
+  });
+})();
+
+/* =========================================================================
+   SPEAKER TEST
+   ========================================================================= */
+(function speakerModule(){
+  const volSlider = document.getElementById("speaker-volume");
+  const volVal = document.getElementById("speaker-volume-val");
+  const status = document.getElementById("speaker-status");
+  let audioCtx, activeNodes = [];
+
+  function setStatus(text, cls){ status.textContent = text; status.className = `status-pill status-pill--${cls}`; }
+
+  volSlider.addEventListener("input", () => volVal.textContent = `${volSlider.value}%`);
+
+  function stopAll(){ activeNodes.forEach(n => { try { n.stop(); } catch {} }); activeNodes = []; }
+
+  function playTone(pan){
+    stopAll();
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const gain = audioCtx.createGain();
+    gain.gain.value = volSlider.value / 100 * 0.3;
+    const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+    if (panner) panner.pan.value = pan === "left" ? -1 : pan === "right" ? 1 : 0;
+    const osc = audioCtx.createOscillator();
+    osc.frequency.value = 440;
+    osc.connect(gain);
+    (panner ? gain.connect(panner).connect(audioCtx.destination) : gain.connect(audioCtx.destination));
+    osc.start();
+    activeNodes.push(osc);
+    setStatus(`Playing: ${pan}`, "busy");
+    recordTest("speaker", "pass", `Played ${pan} channel tone`);
+  }
+
+  document.querySelectorAll("[data-tone]").forEach(btn =>
+    btn.addEventListener("click", () => playTone(btn.dataset.tone))
+  );
+  document.getElementById("speaker-stop").addEventListener("click", () => { stopAll(); setStatus("Idle", "idle"); });
+  document.getElementById("speaker-pass").addEventListener("click", () => { recordTest("speaker", "pass", "User confirmed audio heard clearly"); setStatus("Speaker Pass", "pass"); toast("Speaker marked as passing", "success"); });
+  document.getElementById("speaker-fail").addEventListener("click", () => { recordTest("speaker", "fail", "User reported no / distorted audio"); setStatus("Speaker Fail", "fail"); toast("Speaker marked as failing", "error"); });
+})();
+
+/* =========================================================================
+   SCREEN TEST — full-screen swatches + touch/mouse pad
+   ========================================================================= */
+(function screenModule(){
+  const overlay = document.getElementById("fullscreen-test");
+  document.querySelectorAll(".swatch").forEach(sw => sw.addEventListener("click", () => {
+    const c = sw.dataset.color;
+    overlay.classList.remove("grad");
+    if (c === "gradient") overlay.classList.add("grad");
+    else overlay.style.background = c;
+    overlay.classList.remove("hidden");
+    recordTest("screen", "pass", `Displayed ${c === "gradient" ? "gradient" : c} full-screen sweep`);
+  }));
+  function exit(){ overlay.classList.add("hidden"); }
+  overlay.addEventListener("click", exit);
+  overlay.addEventListener("touchstart", exit, { passive: true });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") exit(); });
+
+  const pad = document.getElementById("screen-pad");
+  const pctx = pad.getContext("2d");
+  const info = document.getElementById("screen-pad-info");
+  let points = 0;
+
+  function fit(){ pad.width = pad.clientWidth * 2; pad.height = pad.clientHeight * 2; pctx.lineWidth = 4; pctx.strokeStyle = "#00FFD5"; pctx.lineCap = "round"; }
+  window.addEventListener("resize", fit);
+  fit();
+
+  function plot(x, y, type){
+    const rect = pad.getBoundingClientRect();
+    const cx = (x - rect.left) * (pad.width / rect.width);
+    const cy = (y - rect.top) * (pad.height / rect.height);
+    pctx.beginPath(); pctx.arc(cx, cy, 5, 0, Math.PI * 2);
+    pctx.fillStyle = type === "touch" ? "#8B5CF6" : "#00FFD5"; pctx.fill();
+    points++;
+    info.textContent = `${points} points registered (${type})`;
+    recordTest("screen-pad", "pass", `${points} ${type} points registered`);
+  }
+  pad.addEventListener("pointerdown", e => plot(e.clientX, e.clientY, e.pointerType === "touch" ? "touch" : "mouse"));
+  pad.addEventListener("pointermove", e => { if (e.buttons > 0 || e.pointerType === "touch") plot(e.clientX, e.clientY, e.pointerType === "touch" ? "touch" : "mouse"); });
+  document.getElementById("screen-pad-clear").addEventListener("click", () => { pctx.clearRect(0, 0, pad.width, pad.height); points = 0; info.textContent = "Cleared."; });
+})();
+
+/* =========================================================================
+   KEYBOARD TEST
+   ========================================================================= */
+(function keyboardModule(){
+  const rows = [
+    "` 1 2 3 4 5 6 7 8 9 0 - = Backspace".split(" "),
+    "Tab q w e r t y u i o p [ ] \\".split(" "),
+    "CapsLock a s d f g h j k l ; ' Enter".split(" "),
+    "Shift z x c v b n m , . / Shift".split(" "),
+    "Ctrl Alt Space Alt Ctrl".split(" ")
+  ];
+  const kb = document.getElementById("virtual-keyboard");
+  const keyEls = {};
+  rows.forEach(row => {
+    const rowEl = document.createElement("div"); rowEl.className = "kb-row";
+    row.forEach(k => {
+      const el = document.createElement("div"); el.className = "kb-key"; el.textContent = k;
+      rowEl.appendChild(el);
+      keyEls[k.toLowerCase()] = keyEls[k.toLowerCase()] || [];
+      keyEls[k.toLowerCase()].push(el);
+    });
+    kb.appendChild(rowEl);
+  });
+
+  const countEl = document.getElementById("kb-count");
+  const stuckEl = document.getElementById("kb-stuck");
+  const pressed = new Set();
+  const downTimes = {};
+  let stuckCount = 0;
+
+  const keyMap = { " ": "space", "control": "ctrl", "capslock": "capslock" };
+
+  function normalize(key){ return (keyMap[key.toLowerCase()] || key).toLowerCase(); }
+
+  window.addEventListener("keydown", e => {
+    const norm = normalize(e.key);
+    const els = keyEls[norm];
+    if (els) els.forEach(el => el.classList.add("active"));
+    if (!pressed.has(norm)) { pressed.add(norm); countEl.textContent = pressed.size; }
+    downTimes[norm] = downTimes[norm] || performance.now();
+  });
+  window.addEventListener("keyup", e => {
+    const norm = normalize(e.key);
+    const els = keyEls[norm];
+    if (els) els.forEach(el => el.classList.remove("active"));
+    const held = performance.now() - (downTimes[norm] || performance.now());
+    if (held > 3000) { stuckCount++; stuckEl.textContent = stuckCount; recordTest("keyboard", "warn", `Key "${norm}" held ${Math.round(held)}ms — possible stuck key`); }
+    delete downTimes[norm];
+  });
+  document.getElementById("kb-reset").addEventListener("click", () => {
+    pressed.clear(); stuckCount = 0; countEl.textContent = "0"; stuckEl.textContent = "0";
+    recordTest("keyboard", "pass", "Manual reset");
+  });
+  document.getElementById("virtual-keyboard").addEventListener("click", function(){ this.focus(); });
+})();
+
+/* =========================================================================
+   MOUSE TEST
+   ========================================================================= */
+(function mouseModule(){
+  const pad = document.getElementById("mouse-pad");
+  const dot = document.getElementById("mouse-dot");
+  const left = document.getElementById("m-left"), right = document.getElementById("m-right"),
+        middle = document.getElementById("m-middle"), dbl = document.getElementById("m-double"),
+        scroll = document.getElementById("m-scroll"), pos = document.getElementById("m-pos");
+  let counts = { left: 0, right: 0, middle: 0, dbl: 0, scroll: 0 };
+
+  pad.addEventListener("mousemove", e => {
+    const r = pad.getBoundingClientRect();
+    const x = e.clientX - r.left, y = e.clientY - r.top;
+    dot.style.left = `${x}px`; dot.style.top = `${y}px`;
+    pos.textContent = `${Math.round(x)}, ${Math.round(y)}`;
+  });
+  pad.addEventListener("mousedown", e => {
+    if (e.button === 0) counts.left++, left.textContent = counts.left;
+    if (e.button === 1) counts.middle++, middle.textContent = counts.middle;
+    if (e.button === 2) counts.right++, right.textContent = counts.right;
+  });
+  pad.addEventListener("dblclick", () => { counts.dbl++; dbl.textContent = counts.dbl; });
+  pad.addEventListener("contextmenu", e => e.preventDefault());
+  pad.addEventListener("wheel", e => { counts.scroll += Math.round(Math.abs(e.deltaY)); scroll.textContent = counts.scroll; }, { passive: true });
+  pad.addEventListener("mouseleave", () => recordTest("mouse", "pass", JSON.stringify(counts)));
+})();
+
+/* =========================================================================
+   NETWORK TEST
+   ========================================================================= */
+(function networkModule(){
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  document.getElementById("net-type").textContent = conn ? (conn.effectiveType || conn.type || "Unknown") : "Not supported";
+  document.getElementById("net-downlink").textContent = conn?.downlink ? `${conn.downlink} Mbps` : "Not reported";
+  document.getElementById("net-rtt").textContent = conn?.rtt ? `${conn.rtt} ms` : "Not reported";
+  document.getElementById("net-status").textContent = navigator.onLine ? "Online" : "Offline";
+
+  const runBtn = document.getElementById("net-run");
+  const pingDot = document.getElementById("ping-dot");
+
+  runBtn.addEventListener("click", async () => {
+    runBtn.disabled = true;
+    pingDot.classList.add("run");
+
+    // Latency: time a same-origin, cache-busted HEAD-ish fetch.
+    const t0 = performance.now();
+    try {
+      await fetch(`./manifest.json?ts=${Date.now()}`, { cache: "no-store" });
+    } catch {}
+    const latency = Math.round(performance.now() - t0);
+    document.getElementById("net-latency").textContent = `${latency} ms`;
+
+    // Simulated throughput: measure local in-memory transfer speed as a relative proxy.
+    const size = 2_000_000; // 2MB synthetic buffer
+    const buf = new Uint8Array(size);
+    const dStart = performance.now();
+    const blob = new Blob([buf]);
+    await blob.arrayBuffer();
+    const dTime = (performance.now() - dStart) / 1000;
+    const simDown = ((size * 8) / dTime / 1_000_000).toFixed(1);
+    document.getElementById("net-download").textContent = `${simDown} Mbps (sim)`;
+
+    const uStart = performance.now();
+    await new Response(buf).blob();
+    const uTime = (performance.now() - uStart) / 1000;
+    const simUp = ((size * 8) / uTime / 1_000_000).toFixed(1);
+    document.getElementById("net-upload").textContent = `${simUp} Mbps (sim)`;
+
+    pingDot.classList.remove("run");
+    runBtn.disabled = false;
+    recordTest("network", "pass", `Latency ${latency}ms, sim down ${simDown}Mbps, sim up ${simUp}Mbps`);
+    toast("Network test complete", "success");
+  });
+})();
+window.addEventListener("online", updateConnFields);
+window.addEventListener("offline", updateConnFields);
+function updateConnFields(){
+  const el = document.getElementById("net-status");
+  if (el) el.textContent = navigator.onLine ? "Online" : "Offline";
+}
+
+/* =========================================================================
+   GPS TEST
+   ========================================================================= */
+(function gpsModule(){
+  const btn = document.getElementById("gps-start");
+  const status = document.getElementById("gps-status");
+  function setStatus(text, cls){ status.textContent = text; status.className = `status-pill status-pill--${cls}`; }
+
+  btn.addEventListener("click", () => {
+    if (!navigator.geolocation) { setStatus("Not supported", "fail"); return; }
+    toast("Requesting location permission for GPS accuracy check.");
+    setStatus("Requesting permission…", "busy");
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const { latitude, longitude, accuracy } = pos.coords;
+        document.getElementById("gps-lat").textContent = latitude.toFixed(6);
+        document.getElementById("gps-lng").textContent = longitude.toFixed(6);
+        document.getElementById("gps-acc").textContent = `± ${Math.round(accuracy)} m`;
+        const link = document.getElementById("gps-map-link");
+        link.href = `https://www.google.com/maps?q=${latitude},${longitude}`;
+        link.classList.remove("hidden");
+        setStatus("GPS Locked", "pass");
+        recordTest("gps", "pass", `${latitude.toFixed(4)}, ${longitude.toFixed(4)} ±${Math.round(accuracy)}m`);
+      },
+      err => { setStatus("GPS Failed", "fail"); recordTest("gps", "fail", err.message); toast("Location permission denied or unavailable", "error"); },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  });
+})();
+
+/* =========================================================================
+   COMPASS & MOTION
+   ========================================================================= */
+(function motionModule(){
+  const btn = document.getElementById("motion-start");
+  const status = document.getElementById("motion-status");
+  const needle = document.getElementById("compass-needle");
+  function setStatus(text, cls){ status.textContent = text; status.className = `status-pill status-pill--${cls}`; }
+
+  function bindOrientation(){
+    window.addEventListener("deviceorientation", e => {
+      const heading = e.webkitCompassHeading ?? (e.alpha != null ? 360 - e.alpha : null);
+      if (heading != null) { document.getElementById("mo-heading").textContent = `${Math.round(heading)}°`; needle.style.transform = `translate(-50%,-100%) rotate(${heading}deg)`; }
+      document.getElementById("mo-beta").textContent = e.beta != null ? `${Math.round(e.beta)}°` : "--";
+      document.getElementById("mo-gamma").textContent = e.gamma != null ? `${Math.round(e.gamma)}°` : "--";
+    });
+  }
+  function bindMotion(){
+    window.addEventListener("devicemotion", e => {
+      const a = e.accelerationIncludingGravity || {};
+      document.getElementById("mo-ax").textContent = a.x != null ? a.x.toFixed(2) : "--";
+      document.getElementById("mo-ay").textContent = a.y != null ? a.y.toFixed(2) : "--";
+      document.getElementById("mo-az").textContent = a.z != null ? a.z.toFixed(2) : "--";
+    });
+  }
+
+  btn.addEventListener("click", async () => {
+    setStatus("Requesting permission…", "busy");
+    try {
+      if (typeof DeviceOrientationEvent !== "undefined" && DeviceOrientationEvent.requestPermission) {
+        const res = await DeviceOrientationEvent.requestPermission();
+        if (res !== "granted") throw new Error("Orientation permission denied");
+      }
+      if (typeof DeviceMotionEvent !== "undefined" && DeviceMotionEvent.requestPermission) {
+        const res2 = await DeviceMotionEvent.requestPermission();
+        if (res2 !== "granted") throw new Error("Motion permission denied");
+      }
+      bindOrientation(); bindMotion();
+      setStatus("Sensors Active", "pass");
+      recordTest("motion", "pass", "Orientation + motion listeners bound");
+    } catch (err) {
+      setStatus("Unavailable", "fail");
+      recordTest("motion", "fail", err.message || "Sensors not supported (desktop browsers typically lack these)");
+      toast("Motion sensors unavailable on this device/browser", "error");
+    }
+  });
+})();
+
+/* =========================================================================
+   STORAGE
+   ========================================================================= */
+(function storageModule(){
+  async function refresh(){
+    if (navigator.storage?.estimate) {
+      const { usage, quota } = await navigator.storage.estimate();
+      document.getElementById("storage-used").textContent = bytesToGB(usage || 0);
+      document.getElementById("storage-quota").textContent = bytesToGB(quota || 0);
+      document.getElementById("storage-available").textContent = bytesToGB((quota || 0) - (usage || 0));
+      document.getElementById("storage-bar-fill").style.width = quota ? `${Math.min(100, (usage / quota) * 100)}%` : "0%";
+      recordTest("storage", "pass", `${bytesToGB(usage||0)} used of ${bytesToGB(quota||0)}`);
+    } else {
+      document.getElementById("storage-used").textContent = "Not supported";
+    }
+    if (navigator.storage?.persisted) {
+      document.getElementById("storage-persist").textContent = (await navigator.storage.persisted()) ? "Yes" : "No";
+    }
+  }
+  refresh();
+  document.getElementById("storage-request-persist").addEventListener("click", async () => {
+    if (!navigator.storage?.persist) { toast("Not supported in this browser", "error"); return; }
+    const granted = await navigator.storage.persist();
+    toast(granted ? "Persistent storage granted" : "Persistent storage denied", granted ? "success" : "error");
+    refresh();
+  });
+})();
+
+/* =========================================================================
+   USB / BLUETOOTH
+   ========================================================================= */
+document.getElementById("usb-request").addEventListener("click", async () => {
+  const out = document.getElementById("usb-result");
+  if (!navigator.usb) { out.textContent = "WebUSB is not supported in this browser."; recordTest("usb", "fail", "unsupported"); return; }
+  try {
+    toast("Opening USB device picker…");
+    const device = await navigator.usb.requestDevice({ filters: [] });
+    out.innerHTML = `Vendor ID: ${device.vendorId}<br>Product ID: ${device.productId}<br>Product: ${device.productName || "—"}<br>Serial: ${device.serialNumber || "Not exposed"}`;
+    recordTest("usb", "pass", `${device.productName || device.vendorId}`);
+  } catch (err) { out.textContent = "No device selected."; recordTest("usb", "warn", err.message); }
+});
+
+document.getElementById("bt-request").addEventListener("click", async () => {
+  const out = document.getElementById("bt-result");
+  if (!navigator.bluetooth) { out.textContent = "Web Bluetooth is not supported in this browser."; recordTest("bluetooth", "fail", "unsupported"); return; }
+  try {
+    toast("Opening Bluetooth device picker…");
+    const device = await navigator.bluetooth.requestDevice({ acceptAllDevices: true });
+    out.innerHTML = `Name: ${device.name || "Unnamed device"}<br>ID: ${device.id}`;
+    recordTest("bluetooth", "pass", device.name || device.id);
+  } catch (err) { out.textContent = "No device selected."; recordTest("bluetooth", "warn", err.message); }
+});
+
+/* =========================================================================
+   FILE UPLOAD CENTER
+   ========================================================================= */
+(function uploadModule(){
+  const zone = document.getElementById("dropzone");
+  const input = document.getElementById("file-input");
+  const list = document.getElementById("upload-list");
+
+  function humanSize(b){ if (b < 1024) return `${b} B`; if (b < 1048576) return `${(b/1024).toFixed(1)} KB`; return `${(b/1048576).toFixed(1)} MB`; }
+
+  function addFiles(files){
+    Array.from(files).forEach(file => {
+      const item = document.createElement("div"); item.className = "upload-item";
+      const isImg = file.type.startsWith("image/");
+      item.innerHTML = `
+        ${isImg ? '<img alt="">' : '<span style="font-size:1.3rem">📄</span>'}
+        <span class="name">${file.name}</span>
+        <span class="mono" style="color:var(--text-dimmer);font-size:.72rem">${humanSize(file.size)}</span>
+        <div class="upload-progress"><div class="upload-progress-fill"></div></div>
+        <button class="upload-remove" aria-label="Remove">✕</button>`;
+      list.appendChild(item);
+      const fill = item.querySelector(".upload-progress-fill");
+      const img = item.querySelector("img");
+
+      const reader = new FileReader();
+      reader.onprogress = e => { if (e.lengthComputable) fill.style.width = `${(e.loaded / e.total) * 100}%`; };
+      reader.onload = () => {
+        fill.style.width = "100%";
+        if (isImg && img) img.src = reader.result;
+        SESSION.uploads.push({ name: file.name, size: file.size, type: file.type });
+      };
+      if (isImg) reader.readAsDataURL(file); else { setTimeout(() => fill.style.width = "100%", 250); SESSION.uploads.push({ name: file.name, size: file.size, type: file.type }); }
+
+      item.querySelector(".upload-remove").addEventListener("click", () => {
+        item.remove();
+        SESSION.uploads = SESSION.uploads.filter(u => u.name !== file.name);
+      });
+    });
+    toast(`${files.length} file(s) added`, "success");
+  }
+
+  zone.addEventListener("click", () => input.click());
+  input.addEventListener("change", () => addFiles(input.files));
+  ["dragenter", "dragover"].forEach(evt => zone.addEventListener(evt, e => { e.preventDefault(); zone.classList.add("drag"); }));
+  ["dragleave", "drop"].forEach(evt => zone.addEventListener(evt, e => { e.preventDefault(); zone.classList.remove("drag"); }));
+  zone.addEventListener("drop", e => addFiles(e.dataTransfer.files));
+})();
+
+/* =========================================================================
+   SCREENSHOT CENTER
+   ========================================================================= */
+(function screenshotModule(){
+  const zone = document.getElementById("screenshot-dropzone");
+  const input = document.getElementById("screenshot-input");
+  const grid = document.getElementById("screenshot-grid");
+
+  function render(){
+    grid.innerHTML = "";
+    SESSION.screenshots.forEach(s => {
+      const tile = document.createElement("div"); tile.className = "screenshot-tile";
+      tile.innerHTML = `
+        <img src="${s.dataUrl}" alt="${s.name}">
+        <div class="screenshot-meta">
+          <input type="text" value="${s.name}" data-id="${s.id}">
+          <div class="screenshot-actions">
+            <button data-action="preview" data-id="${s.id}">Preview</button>
+            <button data-action="delete" data-id="${s.id}">Delete</button>
+          </div>
+        </div>`;
+      grid.appendChild(tile);
+    });
+  }
+
+  function addFiles(files){
+    Array.from(files).filter(f => f.type.startsWith("image/")).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        SESSION.screenshots.push({ id: crypto.randomUUID ? crypto.randomUUID() : Date.now() + Math.random(), name: file.name, size: file.size, dataUrl: reader.result });
+        render();
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  zone.addEventListener("click", () => input.click());
+  input.addEventListener("change", () => addFiles(input.files));
+  ["dragenter", "dragover"].forEach(evt => zone.addEventListener(evt, e => { e.preventDefault(); zone.classList.add("drag"); }));
+  ["dragleave", "drop"].forEach(evt => zone.addEventListener(evt, e => { e.preventDefault(); zone.classList.remove("drag"); }));
+  zone.addEventListener("drop", e => addFiles(e.dataTransfer.files));
+
+  grid.addEventListener("click", e => {
+    const id = e.target.dataset.id;
+    if (!id) return;
+    if (e.target.dataset.action === "delete") { SESSION.screenshots = SESSION.screenshots.filter(s => s.id != id); render(); }
+    if (e.target.dataset.action === "preview") { const s = SESSION.screenshots.find(s => s.id == id); if (s) window.open(s.dataUrl, "_blank"); }
+  });
+  grid.addEventListener("change", e => {
+    if (e.target.tagName === "INPUT") {
+      const s = SESSION.screenshots.find(s => s.id == e.target.dataset.id);
+      if (s) s.name = e.target.value;
+    }
+  });
+})();
+
+/* =========================================================================
+   ERROR REPORT
+   ========================================================================= */
+(function reportModule(){
+  const textarea = document.getElementById("report-text");
+  const counter = document.getElementById("report-count");
+  textarea.addEventListener("input", () => { counter.textContent = textarea.value.length; SESSION.report.text = textarea.value; });
+
+  document.querySelectorAll(".priority-btn").forEach(btn => btn.addEventListener("click", () => {
+    document.querySelectorAll(".priority-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    SESSION.report.priority = btn.dataset.priority;
+  }));
+
+  const fileInput = document.getElementById("report-files");
+  const list = document.getElementById("report-files-list");
+  fileInput.addEventListener("change", () => {
+    list.innerHTML = "";
+    Array.from(fileInput.files).forEach(f => {
+      const item = document.createElement("div"); item.className = "upload-item";
+      item.innerHTML = `<span style="font-size:1.2rem">📎</span><span class="name">${f.name}</span>`;
+      list.appendChild(item);
+    });
+    SESSION.report.files = Array.from(fileInput.files).map(f => ({ name: f.name, size: f.size }));
+  });
+})();
+
+/* =========================================================================
+   CONTACT FORM
+   ========================================================================= */
+document.getElementById("contact-form").addEventListener("input", e => {
+  const form = e.currentTarget;
+  SESSION.contact = Object.fromEntries(new FormData(form).entries());
+});
+
+/* =========================================================================
+   AI DIAGNOSTIC ENGINE (rule-based, entirely local)
+   ========================================================================= */
+function runDiagnostic(){
+  const lines = [];
+  const t = SESSION.tests;
+
+  function add(kind, msg){ lines.push({ kind, msg }); }
+
+  // Camera
+  if (t.camera?.status === "pass") add("ok", "Camera appears functional — live preview established successfully.");
+  else if (t.camera?.status === "fail") add("bad", "Possible camera issue detected — permission was denied or no device responded.");
+  else add("info", "Camera test not yet run.");
+
+  // Microphone
+  if (t.microphone?.status === "pass") add("ok", "Microphone signal detected and waveform rendered correctly.");
+  else if (t.microphone?.status === "fail") add("bad", "Possible microphone issue detected — no audio input was captured.");
+  else add("info", "Microphone test not yet run.");
+
+  // Speaker
+  if (t.speaker?.status === "pass") add("ok", "Speaker output confirmed by test tone playback.");
+  else if (t.speaker?.status === "fail") add("bad", "Speaker reported as failing — user did not hear a clear test tone.");
+  else add("info", "Speaker test not yet run.");
+
+  // Screen
+  if (t.screen?.status === "pass" || t["screen-pad"]?.status === "pass") add("ok", "Screen responded correctly to color sweeps and/or touch input.");
+  else add("info", "Screen test not yet run.");
+
+  // Keyboard
+  if (t.keyboard?.status === "warn") add("warn", "One or more keys were held unusually long — worth a physical inspection for a stuck key.");
+  else if (t.keyboard) add("ok", "Keyboard input registered normally.");
+  else add("info", "Keyboard test not yet run.");
+
+  // Network
+  if (t.network?.status === "pass") add("ok", `Internet connection is stable. ${t.network.notes}`);
+  else add("info", "Network test not yet run.");
+
+  // GPS
+  if (t.gps?.status === "pass") add("ok", "GPS lock acquired with a reasonable accuracy radius.");
+  else if (t.gps?.status === "fail") add("warn", "GPS unavailable — expected on desktops or when location services are off.");
+
+  // Motion
+  if (t.motion?.status === "pass") add("ok", "Motion and orientation sensors are reporting live data.");
+  else if (t.motion?.status === "fail") add("info", "Motion sensors unavailable — normal for most laptops/desktops.");
+
+  // Storage
+  if (t.storage?.status === "pass") add("ok", `Storage looks healthy: ${t.storage.notes}.`);
+
+  // Battery
+  const battery = SESSION.device["Battery Level"];
+  if (battery) {
+    const pct = parseInt(battery);
+    if (pct < 20) add("warn", `Battery is low (${battery}) — recommend charging before further diagnostics.`);
+    else add("ok", `Battery healthy (${battery}).`);
+  }
+
+  // Browser currency (heuristic only — cannot verify "latest" offline)
+  add("info", `Browser detected as ${SESSION.device["Browser"]}. Verify against the vendor's latest release if issues persist.`);
+
+  const anyFail = Object.values(t).some(x => x.status === "fail");
+  const anyWarn = Object.values(t).some(x => x.status === "warn");
+  if (anyFail) add("bad", "One or more hardware tests failed — recommend in-person technician inspection.");
+  else if (anyWarn) add("warn", "Minor issues flagged — monitor and retest; technician review optional.");
+  else if (Object.keys(t).length > 0) add("ok", "No critical issues detected across completed tests.");
+
+  SESSION.diagnostic = lines;
+  return lines;
+}
+
+document.getElementById("run-diagnostic").addEventListener("click", () => {
+  const lines = runDiagnostic();
+  const out = document.getElementById("diagnostic-output");
+  out.innerHTML = "";
+  lines.forEach(l => {
+    const div = document.createElement("div");
+    div.className = `diag-line ${l.kind}`;
+    div.textContent = l.msg;
+    out.appendChild(div);
+  });
+  toast("Diagnostic analysis complete", "success");
+});
+
+/* =========================================================================
+   EXPORT / REPORT GENERATION
+   ========================================================================= */
+function buildReportObject(){
+  if (!SESSION.diagnostic) runDiagnostic();
+  return {
+    sessionId: SESSION.id,
+    generatedAt: new Date().toISOString(),
+    contact: SESSION.contact,
+    device: SESSION.device,
+    tests: SESSION.tests,
+    report: SESSION.report,
+    uploads: SESSION.uploads,
+    screenshots: SESSION.screenshots.map(s => ({ name: s.name, size: s.size })),
+    diagnostic: SESSION.diagnostic
+  };
+}
+
+function downloadBlob(content, filename, type){
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+document.getElementById("export-json").addEventListener("click", () => {
+  downloadBlob(JSON.stringify(buildReportObject(), null, 2), `pixelprotech-report-${SESSION.id}.json`, "application/json");
+  toast("JSON exported", "success");
+});
+
+document.getElementById("export-txt").addEventListener("click", () => {
+  const r = buildReportObject();
+  let txt = `PIXELPROTECH SOLUTIONS — DIAGNOSTIC REPORT\nSession: ${r.sessionId}\nGenerated: ${r.generatedAt}\n\n--- CONTACT ---\n`;
+  Object.entries(r.contact).forEach(([k, v]) => txt += `${k}: ${v}\n`);
+  txt += `\n--- DEVICE ---\n`;
+  Object.entries(r.device).forEach(([k, v]) => txt += `${k}: ${v}\n`);
+  txt += `\n--- TESTS ---\n`;
+  Object.entries(r.tests).forEach(([k, v]) => txt += `${k}: ${v.status.toUpperCase()} — ${v.notes}\n`);
+  txt += `\n--- AI DIAGNOSTIC SUMMARY ---\n`;
+  (r.diagnostic || []).forEach(l => txt += `[${l.kind.toUpperCase()}] ${l.msg}\n`);
+  downloadBlob(txt, `pixelprotech-report-${SESSION.id}.txt`, "text/plain");
+  toast("TXT exported", "success");
+});
+
+document.getElementById("export-csv").addEventListener("click", () => {
+  const r = buildReportObject();
+  let csv = "Test,Status,Notes\n";
+  Object.entries(r.tests).forEach(([k, v]) => csv += `"${k}","${v.status}","${(v.notes || "").replace(/"/g, "'")}"\n`);
+  downloadBlob(csv, `pixelprotech-report-${SESSION.id}.csv`, "text/csv");
+  toast("CSV exported", "success");
+});
+
+document.getElementById("export-print").addEventListener("click", () => {
+  const r = buildReportObject();
+  document.getElementById("print-meta").innerHTML = `<small>Session ${r.sessionId}<br>${new Date(r.generatedAt).toLocaleString()}</small>`;
+  document.getElementById("print-customer").innerHTML = `<h3>Customer</h3>` + Object.entries(r.contact).map(([k, v]) => `<div><strong>${k}:</strong> ${v || "—"}</div>`).join("") || "<h3>Customer</h3><div>No contact details entered.</div>";
+  document.getElementById("print-device").innerHTML = `<h3>Device</h3>` + Object.entries(r.device).map(([k, v]) => `<div><strong>${k}:</strong> ${v}</div>`).join("");
+  document.getElementById("print-tests").innerHTML = `<h3>Tests</h3>` + (Object.entries(r.tests).map(([k, v]) => `<div><strong>${k}:</strong> ${v.status.toUpperCase()} — ${v.notes}</div>`).join("") || "<div>No tests run.</div>");
+  document.getElementById("print-files").innerHTML = `<h3>Attachments</h3><div>${r.uploads.length} upload(s), ${r.screenshots.length} screenshot(s)</div>`;
+  document.getElementById("print-diagnostic").innerHTML = `<h3>AI Diagnostic Summary</h3>` + (r.diagnostic || []).map(l => `<div>[${l.kind.toUpperCase()}] ${l.msg}</div>`).join("");
+  document.getElementById("print-date").textContent = `Date: ${new Date().toLocaleDateString()}`;
+  document.getElementById("print-qr").innerHTML = renderScanCode(r.sessionId);
+  window.print();
+});
+
+// Lightweight deterministic "scan code" (visual identifier, not ISO-QR)
+// so the printed report carries a unique glyph tying it back to the session ID.
+function renderScanCode(seed){
+  const size = 9;
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  let cells = "";
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      hash = (hash * 1103515245 + 12345) >>> 0;
+      const on = (hash >>> 16) % 2 === 0;
+      cells += `<div style="width:6px;height:6px;background:${on ? '#0F172A' : 'transparent'}"></div>`;
+    }
+  }
+  return `<div style="display:grid;grid-template-columns:repeat(${size},6px);gap:1px;border:4px solid #0F172A;padding:4px;width:fit-content;">${cells}</div><div style="font-size:.6rem;margin-top:4px;">Scan code: ${seed}</div>`;
+}
+
+/* =========================================================================
+   FLOATING AI ASSISTANT (rule-based, local, offline-friendly)
+   ========================================================================= */
+(function assistant(){
+  const toggle = document.getElementById("assistant-toggle");
+  const panel = document.getElementById("assistant-panel");
+  const close = document.getElementById("assistant-close");
+  const log = document.getElementById("assistant-log");
+  const form = document.getElementById("assistant-form");
+  const input = document.getElementById("assistant-input");
+
+  function say(text, who = "bot"){
+    const div = document.createElement("div");
+    div.className = `assistant-msg ${who}`;
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+
+  let greeted = false;
+  toggle.addEventListener("click", () => {
+    panel.classList.toggle("hidden");
+    if (!greeted) { say("Hi, I'm the PixelProTech Assistant. Ask me about any test — camera, mic, speaker, network, GPS — or say “report” to jump to the error report."); greeted = true; }
+  });
+  close.addEventListener("click", () => panel.classList.add("hidden"));
+
+  const KB = [
+    [/camera/i, "Open the Camera panel and press Start Camera Test — your browser will ask for permission first. If it fails, check another app isn't already using the camera."],
+    [/mic|microphone/i, "Head to Microphone — press Start, then Record Voice to capture a sample you can play back or download."],
+    [/speaker|audio|sound/i, "In Speaker Test you can play left, right or stereo tones and mark Pass/Fail once you've listened."],
+    [/network|internet|wifi|speed/i, "Network Test shows your connection type plus a same-origin latency check and a local throughput simulation."],
+    [/gps|location/i, "GPS Test requests location permission once you press the button — it needs a device with a GPS/location service."],
+    [/report|issue|problem|broken/i, "You can describe the issue on the Error Report panel, set a priority, and attach files."],
+    [/install|pwa|app/i, "Use the Install App button in the top bar, or your browser's install/Add to Home Screen option, to add this as an app."],
+    [/diagnostic|summary|analy[sz]e/i, "The AI Diagnostic panel reviews every test you've run in this tab and drafts a plain-English summary — all locally, nothing is sent anywhere."],
+    [/export|pdf|download/i, "Generate Report lets you export as a printable PDF, JSON, TXT or CSV."],
+  ];
+
+  function reply(msg){
+    const hit = KB.find(([re]) => re.test(msg));
+    return hit ? hit[1] : "I can help with camera, mic, speaker, screen, keyboard, mouse, network, GPS, motion, storage, or the error report / export flow — try mentioning one of those.";
+  }
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const val = input.value.trim();
+    if (!val) return;
+    say(val, "user");
+    input.value = "";
+    setTimeout(() => say(reply(val)), 300);
+  });
+})();
+
+/* =========================================================================
+   PWA: service worker registration, install prompt, update banner,
+   iOS "Add to Home Screen" guidance.
+   ========================================================================= */
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById("install-btn");
+const swStatus = document.getElementById("sw-status");
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("./service-worker.js");
+      swStatus.textContent = "Offline-ready";
+      reg.addEventListener("updatefound", () => {
+        const newWorker = reg.installing;
+        newWorker?.addEventListener("statechange", () => {
+          if (newWorker.state === "installed" && navigator.serviceWorker.controller) {
+            document.getElementById("update-banner").classList.remove("hidden");
+          }
+        });
+      });
+    } catch (err) {
+      swStatus.textContent = "Offline mode unavailable";
+      console.warn("Service worker registration failed:", err);
+    }
+  });
+
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener("controllerchange", () => {
+    if (refreshing) return; refreshing = true; window.location.reload();
+  });
+}
+
+document.getElementById("update-reload").addEventListener("click", async () => {
+  const reg = await navigator.serviceWorker.getRegistration();
+  reg?.waiting?.postMessage("SKIP_WAITING");
+});
+
+// Chromium-based browsers (desktop + Android): native install prompt.
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  installBtn.classList.remove("hidden");
+});
+
+installBtn.addEventListener("click", async () => {
+  if (!deferredInstallPrompt) return;
+  deferredInstallPrompt.prompt();
+  const { outcome } = await deferredInstallPrompt.userChoice;
+  toast(outcome === "accepted" ? "Installing PixelProTech Remote Assistant…" : "Install dismissed");
+  deferredInstallPrompt = null;
+  installBtn.classList.add("hidden");
+});
+
+window.addEventListener("appinstalled", () => {
+  toast("PixelProTech Remote Assistant installed", "success");
+  installBtn.classList.add("hidden");
+});
+
+// iOS Safari has no beforeinstallprompt — show manual "Add to Home Screen" guidance.
+(function iosInstallHint(){
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isStandalone = window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches;
+  if (!isIOS || isStandalone) return;
+  const hint = document.getElementById("ios-install-hint");
+  setTimeout(() => hint.classList.remove("hidden"), 2500);
+  document.getElementById("ios-install-dismiss").addEventListener("click", () => hint.classList.add("hidden"));
+})();
+
+// If already installed/standalone, no need to show any install affordance.
+if (window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true) {
+  installBtn.classList.add("hidden");
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pixel Warehouse Pro</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="Browser-based warehouse receiving, inventory and barcode scanning platform by PixelProTech Solutions.">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEyUlEQVR4nO3dPZYTRxiG0dIcIhEwiXMnRM6dsAovwgtgJSzAi2AVTpw7InFOMhOgFCKNGakldav/qvq9N4EznNPqaX1PV0kjYFcqs9+/+772OTCvw+F5t/Y5HK16Ioado7WiWPxBDT23LBnDYg9k8BlqiRBmfwCDz1hzhjDbgQ0+U5sjhMkPaPCZ25QhPEx1oFIMP8uYcs4mKcngs5axq8HoFcDws6ax8zcqAMNPDcbM4d0BGH5qcu883hWA4adG98zl4AAMPzUbOp+DAjD8tGDInPYOwPDTkr7z2isAw0+L+sztzQAMPy27Nb+TfhQCWnM1AHd/tuDaHF8MwPCzJZfm2RaIaJ0BuPuzRV1zbQUg2lkA7v5s2el8WwGI9ioAd38S/DznVgCivQTg7k+S47xbAYgmAKLtSrH9IZcVgGgCIJoAiCYAoj14AUwyK8CK/vjl71e/srw3a59AkmuDfvpnn79+mPt0KKXsbIHmNcXdXQzzEcDEltjOCGI6Ahiphv27IO4ngIGmGviuobVdWp4Aephz6Gt6zEQC6FDj8NV4TlsggNLmcNkuTSMygBYH/pqtfT9LigkgaUiSvtexNhuAIfif7dJlmwnAwPfjOr3WbACeyGmkX8emAkh/spaQtl2qOgADv66E6191AKXc9yTUfMFbtsXnYhN/H6D2i7wVp9e5hg8CjlX9ClBK94X+9fG3Fc6ES/57+vfsay3cmJpZAT5//VA+vn9a+zS44PSG1BVEjZpYAUophr9Bn748rn0KN/lL8URrIgB3/za18Lw18xrgVAvLa5oWBv5UEysAzEUARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAER7s/YJLOnwz19nX9v//ufL7799e+p1nLdvHyc/Ztexu44/9Ni3zvX0mGmsAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRdvv9u+9rn8QtH98/nX3t05fHxc+D61p8nqwARBMA0QRANAEQTQBEEwDRmv2f4rvecoOhmlgBan8vmW4tPG9NBEB7Whj+UhoKoJULSlvPVRMfhThl/1+vloa/lEYDgKk0swWCOQiAaA+Hw/Nu7ZOAtVgBiCYAogmAaAIg2kMppXghTKLD4XlnBSCaAIj2EoBtEEmO824FINqrAKwCJPh5zq0ARDsLwCrAlp3OtxWAaJ0BWAXYoq65tgIQ7WIAVgG25NI8X10BRMAWXJtjWyCi3QzAKkDLbs1vrxVABLSoz9z23gKJgJb0nddBrwFEQAuGzOngF8EioGZD5/Oud4FEQI3umcu73wYVATW5dx5H/RxABNRgzByO/kGYCFjT2PmbdHj9U+ssZaob76QfhbAasIQp52y2gbUaMLU5brCz37GFwFhz7iwW27IIgaGW2FIvvmcXArcs+Vpy1RetYuBorTdQfgCAmXOk41brTQAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="512x512" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEYElEQVR4nO3dPXLbVhiGUVCTii7MJr0bV+7TZBVZRBaglXgBWURWkSZ9Kjfp01CF2dpFIoWi+AOAF8C9L85prJFnQBB49PkTaVubrgLb7ftvS58DZRwOT5slH3+RBxfweswd+GwPJmLmiHvSBxAxl0wV9yQHFTJ9lQ77oeTBuk7MDFO6l2JfHULmXiWmdZEJLWZKKNHRXV8RQmYqY6f16AktZqY0tq9RQYuZOYzpbHDQYmZOQ3sbFLSYWcKQ7noHLWaW1Le/XkGLmRr06fBm0GKmJrd6LP7WNyzpatCmMzW61uXFoMVMzS71aeUgytmgTWdacK7TN0GLmZac9mrlIMqroE1nWnTcrQlNFEET5SVo6wYte+7XhCaKoImy6TrrBjlMaKIImiiCJsqD/ZkkJjRRBD2DX37849WvTOeHpU8g0bVwT3/v939+nvp0VmVjh75fqckr7vsJeqQ51geBDyfonmrYfwV+m6AvmHKNsKJMR9D/WSoycZe16qBrjKnGc2rJqoJuMZYWz3lJ0UEnxlDiOdX0fEqLCjox4GvW9nz7aDpoN/Q116PBoN20/tZ4raoPeo03ZQpruY7VBb2WC7+01OtcXdBdN+5i13ZhW5NyzZv+66Mfdp9ePn7c7Zc7kUB/7/9a+hRGqXJCd935iXEcMPM5F3eN07nrKp/QAq7D6X2oeXpX+0+wxFyvD7tP3ePH/dKncVa1QcMYVa8cpz5/2S19CqtV60Q+ZUITRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETRRBE0XQRBE0UQRNFEETRdBEETRRBE0UQRNF0EQRNFEETZSmfnj9UIc/f3vzue1Pv758/PXr/uYx3r3bFT1en+MOOeat8zs9XjoTmiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJImiiCJoogiaKoIkiaKIImiiCJoqgiSJoogiaKIImiqCJstlu339b+iTOefy4f/O5z192s58H/2rlfpjQRBE0UQRNFEETRdBEaeqnYJ37ThuOVTuha3xJiP/Ven+qDRrGqDroWqfA2tV8X6p9p/CY3bkONYf8rImgoa+qVw4YStBEETRRHg6Hp83SJwGlmNBEETRRBE2Uh67rOns0CQ6Hp40JTRRBE+UlaGsHLXvu14QmiqCJ8ipoawctOu7WhCbKm6BNaVpy2uvZCS1qWnCuUysHUS4GbUpTs0t9Xp3QoqZG17q0chDlZtCmNDW51WOvCS1qatCnw94rh6hZUt/+Bu3QomYJQ7ob/E2hqJnT0N5GvcohauYwprPRL9uJmimN7atIlP7DR0q5d1AWeWPFtKaEEh0VD9G0ZqiSA7H4W9+mNUOU7mXS+ExrLplq8M02TcXNHH96L7IeiHs95l5BvwM7O1KeIt/tPAAAAABJRU5ErkJggg==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PixelWMS">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a0a0f;
+  --steel:#1a1a2e;
+  --steel-2:#22223c;
+  --steel-line:#2e2e4c;
+  --paper:#0a0a0f;
+  --paper-dim:#1a1a2e;
+  --ink-soft:rgba(255,255,255,.45);
+  --safety: var(--brand-primary, #7b2fff);
+  --safety-dark: var(--brand-secondary, #5b1fd4);
+  --accent: var(--brand-accent, #00d4aa);
+  --ok:#00d4aa;
+  --warn:#e8b93b;
+  --danger:#ff5c7a;
+  --font-display: var(--brand-font, 'Barlow Condensed'), sans-serif;
+  --font-body:'Inter',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --radius:8px;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:var(--font-body);background:var(--paper);color:#fff;}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;letter-spacing:.01em;margin:0;color:#fff;}
+button{font-family:var(--font-body);cursor:pointer;}
+a{color:inherit;}
+::selection{background:var(--safety);color:#fff;}
+
+/* ---------- GRADIENT DIVIDER (signature element — brand gradient combo) ---------- */
+.hazard{
+  height:6px;
+  background:linear-gradient(90deg, var(--safety), var(--accent));
+}
+
+/* ---------- LANDING ---------- */
+#landing{display:flex;flex-direction:column;min-height:100vh;background:var(--ink);color:#fff;}
+.landing-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 40px;}
+.brandmark{display:flex;align-items:center;gap:10px;font-family:var(--font-display);font-size:22px;font-weight:800;letter-spacing:.02em;}
+.brandmark .chip{width:14px;height:14px;background:linear-gradient(135deg,var(--safety),var(--accent));border-radius:5px;}
+.landing-nav button{background:linear-gradient(90deg,var(--safety),var(--safety-dark));color:#fff;border:none;padding:11px 20px;border-radius:8px;font-weight:700;font-family:var(--font-display);font-size:16px;letter-spacing:.03em;}
+.hero{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:70px 20px 90px;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--steel-line) 1px, transparent 1px),linear-gradient(90deg, var(--steel-line) 1px, transparent 1px);background-size:48px 48px;opacity:.25;mask-image:radial-gradient(ellipse at center, black 20%, transparent 70%);}
+.eyebrow{font-family:var(--font-mono);color:var(--accent);letter-spacing:.25em;font-size:12px;text-transform:uppercase;margin-bottom:18px;position:relative;}
+.hero h1{font-size:clamp(44px,8vw,92px);line-height:.98;max-width:900px;position:relative;background:linear-gradient(90deg,#fff 40%,var(--accent));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-family:var(--font-body);color:var(--ink-soft);font-size:19px;max-width:520px;margin:22px auto 36px;line-height:1.6;position:relative;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;position:relative;}
+.btn-primary{background:linear-gradient(90deg,var(--safety),var(--safety-dark));color:#fff;border:none;padding:15px 26px;font-weight:700;font-family:var(--font-display);font-size:17px;border-radius:8px;letter-spacing:.02em;}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid var(--steel-line);padding:14px 25px;font-weight:600;border-radius:8px;font-family:var(--font-display);font-size:17px;}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent);}
+.landing-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1px;background:var(--steel-line);}
+.lf{background:var(--ink);padding:34px 28px;}
+.lf .num{font-family:var(--font-mono);color:var(--accent);font-size:13px;}
+.lf h3{font-size:22px;margin:10px 0 8px;}
+.lf p{color:var(--ink-soft);font-size:14.5px;line-height:1.55;margin:0;}
+.landing-footer{padding:26px 40px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+/* ---------- APP SHELL ---------- */
+#app{display:none;height:100vh;overflow:hidden;}
+.shell{display:flex;height:100%;}
+.sidebar{width:230px;background:var(--ink);color:#fff;display:flex;flex-direction:column;flex-shrink:0;border-right:1px solid var(--steel-line);}
+.sidebar-brand{padding:18px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--steel-line);}
+.sidebar-brand img{width:28px;height:28px;object-fit:contain;border-radius:6px;}
+.sidebar-brand .chip{width:12px;height:12px;background:linear-gradient(135deg,var(--safety),var(--accent));border-radius:4px;}
+.sidebar-brand b{font-family:var(--font-display);font-size:17px;}
+.navlist{flex:1;overflow-y:auto;padding:10px 0;}
+.navgroup-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.15em;color:#5b5b78;padding:14px 18px 6px;text-transform:uppercase;}
+.navitem{display:flex;align-items:center;gap:11px;padding:10px 18px;font-size:14.5px;color:rgba(255,255,255,.65);border-left:3px solid transparent;font-weight:500;}
+.navitem:hover{background:var(--steel);color:#fff;}
+.navitem.active{background:var(--steel);color:#fff;border-left-color:var(--safety);}
+.navitem .dot{width:6px;height:6px;border-radius:50%;background:var(--steel-line);flex-shrink:0;}
+.navitem.active .dot{background:var(--accent);}
+.sidebar-foot{padding:14px 18px;font-family:var(--font-mono);font-size:10.5px;color:#5b5b78;border-top:1px solid var(--steel-line);}
+
+.main{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--paper);}
+.topbar{height:60px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:0 26px;border-bottom:1px solid var(--steel-line);background:var(--ink);}
+.topbar h2{font-size:22px;}
+.topbar-right{display:flex;align-items:center;gap:14px;}
+.pill{font-family:var(--font-mono);font-size:11.5px;background:var(--steel);padding:6px 10px;border-radius:20px;color:var(--accent);border:1px solid var(--steel-line);}
+.view{flex:1;overflow-y:auto;padding:26px;}
+.view.hidden{display:none;}
+
+/* cards / grids */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-bottom:22px;}
+.stat-card{background:var(--steel);border:1px solid var(--steel-line);border-radius:var(--radius);padding:18px;position:relative;overflow:hidden;}
+.stat-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--safety),var(--accent));}
+.stat-card .label{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);}
+.stat-card .value{font-family:var(--font-display);font-size:34px;font-weight:700;margin-top:4px;color:#fff;}
+.stat-card .sub{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+
+.panel{background:var(--steel);border:1px solid var(--steel-line);border-radius:var(--radius);margin-bottom:20px;}
+.panel-head{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-bottom:1px solid var(--steel-line);}
+.panel-head h3{font-size:18px;}
+.panel-body{padding:18px;}
+
+table{width:100%;border-collapse:collapse;font-size:13.5px;color:#fff;}
+th{text-align:left;font-family:var(--font-mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-soft);padding:9px 10px;border-bottom:2px solid var(--steel-line);}
+td{padding:10px;border-bottom:1px solid var(--steel-line);}
+tr:hover td{background:rgba(255,255,255,.03);}
+.mono{font-family:var(--font-mono);}
+.badge{font-family:var(--font-mono);font-size:10.5px;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.03em;}
+.badge.ok{background:rgba(0,212,170,.15);color:var(--accent);}
+.badge.warn{background:rgba(232,185,59,.15);color:#e8b93b;}
+.badge.danger{background:rgba(255,92,122,.15);color:var(--danger);}
+.badge.info{background:rgba(123,47,255,.18);color:#b98bff;}
+
+.btn{border:1px solid var(--steel-line);background:var(--steel-2);padding:9px 15px;border-radius:var(--radius);font-size:13.5px;font-weight:600;color:#fff;display:inline-flex;align-items:center;}
+.btn-primary,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;}
+.btn:hover{border-color:var(--accent);}
+.btn.solid{background:linear-gradient(90deg,var(--safety),var(--safety-dark));border-color:transparent;color:#fff;}
+.btn.solid:hover{filter:brightness(1.1);}
+.btn.ghost-danger{color:var(--danger);border-color:rgba(255,92,122,.35);background:transparent;}
+.btn.sm{padding:6px 11px;font-size:12.5px;}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+.icn{width:15px;height:15px;vertical-align:-3px;margin-right:6px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+input,select,textarea{font-family:var(--font-body);border:1px solid var(--steel-line);border-radius:var(--radius);padding:9px 11px;font-size:14px;background:var(--steel-2);color:#fff;width:100%;}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,.3);}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent);}
+label{font-size:12px;font-weight:600;color:var(--ink-soft);display:block;margin-bottom:5px;font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.04em;}
+.field{margin-bottom:14px;}
+.field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;}
+
+.empty{text-align:center;padding:50px 20px;color:var(--ink-soft);}
+.empty .chip{width:34px;height:34px;background:var(--steel-2);margin:0 auto 14px;border-radius:8px;}
+
+/* scanner */
+.scan-wrap{display:grid;grid-template-columns:1fr 380px;gap:20px;}
+@media(max-width:900px){.scan-wrap{grid-template-columns:1fr;}}
+.camera-box{background:var(--ink);border:1px solid var(--steel-line);border-radius:var(--radius);overflow:hidden;position:relative;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;}
+.camera-box video{width:100%;height:100%;object-fit:cover;display:none;}
+.scan-line{position:absolute;left:8%;right:8%;top:50%;height:2px;background:var(--accent);box-shadow:0 0 10px var(--accent);display:none;}
+.camera-placeholder{color:var(--ink-soft);text-align:center;padding:30px;font-family:var(--font-mono);font-size:13px;}
+.scan-log{max-height:340px;overflow-y:auto;}
+.scan-log-item{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--steel-line);font-size:13px;}
+.scan-log-item .t{font-family:var(--font-mono);color:var(--ink-soft);font-size:11px;}
+
+/* branding */
+.color-swatch{display:inline-block;width:34px;height:34px;border-radius:8px;border:1px solid var(--steel-line);vertical-align:middle;margin-right:8px;}
+.logo-preview{width:70px;height:70px;border:1px dashed var(--steel-line);border-radius:8px;display:flex;align-items:center;justify-content:center;background:var(--steel-2);color:var(--ink-soft);object-fit:contain;overflow:hidden;font-size:11px;}
+.logo-preview img{max-width:100%;max-height:100%;}
+
+
+#toast{position:fixed;bottom:22px;right:22px;z-index:999;display:flex;flex-direction:column;gap:8px;}
+.toast-item{background:var(--steel);color:#fff;padding:12px 16px;border-radius:8px;font-size:13.5px;border-left:4px solid var(--accent);box-shadow:0 8px 20px rgba(0,0,0,.5);min-width:240px;animation:slidein .2s ease;border:1px solid var(--steel-line);}
+@keyframes slidein{from{transform:translateX(20px);opacity:0;}to{transform:translateX(0);opacity:1;}}
+
+@media(max-width:800px){
+  #app{height:100dvh;}
+  .shell{flex-direction:column;}
+  .main{min-height:0;}
+  .sidebar{width:100%;flex-direction:row;align-items:center;border-right:none;border-bottom:1px solid var(--steel-line);}
+  .sidebar-brand{border-bottom:none;padding:10px 12px;}
+  .navlist{display:flex;flex-direction:row;overflow-x:auto;padding:0;}
+  .navgroup-label,.sidebar-foot{display:none;}
+  .navitem{white-space:nowrap;border-left:none;border-bottom:3px solid transparent;padding:14px 12px;}
+  .navitem.active{border-left-color:transparent;border-bottom-color:var(--safety);}
+  .topbar{padding:6px 12px;height:auto;min-height:52px;flex-wrap:wrap;gap:6px;}
+  .view{padding:14px;}
+  .landing-nav{padding:16px 18px;}
+  .landing-footer{padding:20px 18px;}
+  table{display:block;overflow-x:auto;}
+}
+@media print{
+  .main *{color:#000 !important;}
+  table{display:table !important;}
+  .sidebar,.topbar,#toast,.no-print{display:none !important;}
+  .view{padding:0;overflow:visible;}
+  #app{display:block !important;height:auto;}
+  .main{display:block;background:#fff;}
+  body,.panel,.stat-card,table,td,th{background:#fff !important;color:#000 !important;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LANDING ============ -->
+<div id="landing">
+  <div class="landing-nav">
+    <div class="brandmark"><img src="icon-72.png" alt="" style="width:26px;height:26px;border-radius:6px" onerror="this.onerror=null;this.outerHTML='&lt;div class=&quot;chip&quot;&gt;&lt;/div&gt;';">PIXEL WAREHOUSE <span style="color:var(--safety)">PRO</span></div>
+    <div class="row" style="gap:10px">
+      <button class="btn-ghost no-print" id="installBtnLanding" style="display:none;padding:11px 18px;font-size:15px">Install App</button>
+      <button onclick="enterApp('receiving')">Open App</button>
+    </div>
+  </div>
+  <div class="hero">
+    <div class="eyebrow">// PIXELPROTECH SOLUTIONS — WAREHOUSE OS</div>
+    <h1>Receive Inventory<br>Smarter.</h1>
+    <p>Scan barcodes. Track every box. Units-per-box maths done for you. Works offline, on any laptop, tablet, or phone. Your data stays on your device.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="enterApp('receiving')">Start Receiving</button>
+      <button class="btn-ghost" onclick="enterApp('scanner')">Open Scanner</button>
+    </div>
+  </div>
+  <div class="hazard"></div>
+  <div class="landing-features">
+    <div class="lf"><div class="num">01</div><h3>Smart Box Scanning</h3><p>Scan one box, receive the whole carton. Units-per-box math happens automatically — no manual counting.</p></div>
+    <div class="lf"><div class="num">02</div><h3>Unknown Code Alerts</h3><p>Scan a code that isn't in your catalog and it's flagged immediately instead of silently counted. Each receipt carries your supplier and PO reference.</p></div>
+    <div class="lf"><div class="num">03</div><h3>Stock &amp; Movement Log</h3><p>Stock levels, locations, low-stock alerts and a full movement history update the moment a barcode is scanned.</p></div>
+    <div class="lf"><div class="num">04</div><h3>Your Brand on Screen &amp; Print</h3><p>Set your logo, colours and company details once — they apply across the app and the printed stock report.</p></div>
+  </div>
+  <div class="landing-footer">
+    <div>Powered by PixelProTech Solutions — pixelprotechsolutions@proton.me · 065 197 1461 · Made in South Africa</div>
+    <div>© 2026 PixelProTech Solutions</div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+<div class="shell">
+  <div class="sidebar">
+    <div class="sidebar-brand"><div class="logo-preview" id="sbLogoWrap" style="width:28px;height:28px;border:none;background:transparent;border-radius:6px"><img src="icon-72.png" alt="" style="width:100%;height:100%;object-fit:contain;border-radius:6px" onerror="this.onerror=null;this.outerHTML='&lt;div class=&quot;chip&quot;&gt;&lt;/div&gt;';"></div><b id="sbCompanyName">PIXEL WAREHOUSE</b></div>
+    <div class="navlist" id="navlist">
+      <div class="navgroup-label">Operations</div>
+      <div class="navitem" data-view="dashboard"><span class="dot"></span>Dashboard</div>
+      <div class="navitem" data-view="receiving"><span class="dot"></span>Receiving</div>
+      <div class="navitem" data-view="scanner"><span class="dot"></span>Scanner</div>
+      <div class="navgroup-label">Inventory</div>
+      <div class="navitem" data-view="inventory"><span class="dot"></span>Inventory</div>
+      <div class="navitem" data-view="products"><span class="dot"></span>Products</div>
+      <div class="navitem" data-view="locations"><span class="dot"></span>Locations</div>
+      <div class="navgroup-label">Insight</div>
+      <div class="navitem" data-view="reports"><span class="dot"></span>Stock Report</div>
+      <div class="navgroup-label">Company</div>
+      <div class="navitem" data-view="settings"><span class="dot"></span>Branding &amp; Settings</div>
+      <div class="navitem" data-view="support"><span class="dot"></span>Support</div>
+    </div>
+    <div class="sidebar-foot">v1.0.0 · Powered by PixelProTech Solutions</div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h2 id="viewTitle">Dashboard</h2>
+      <div class="topbar-right">
+        <span class="pill" id="clockPill">--:--:--</span>
+        <span class="pill" id="statusPill">● Online</span>
+        <button class="btn sm no-print" id="installBtnApp" style="display:none"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Install App</button>
+        <button class="btn sm" onclick="window.location.reload()"><svg class="icn" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>Reload</button>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="view" id="view-dashboard">
+      <div class="stat-grid" id="dashStats"></div>
+      <div class="panel">
+        <div class="panel-head"><h3>Recent Activity</h3><span class="badge info">Last 10</span></div>
+        <div class="panel-body"><table><thead><tr><th>Time</th><th>Type</th><th>SKU</th><th>Product</th><th>Qty</th><th>Location</th></tr></thead><tbody id="dashActivity"></tbody></table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Low Stock Alerts</h3></div>
+        <div class="panel-body"><table><thead><tr><th>SKU</th><th>Product</th><th>Current</th><th>Minimum</th><th>Status</th></tr></thead><tbody id="dashLowStock"></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- RECEIVING -->
+    <div class="view hidden" id="view-receiving">
+      <div class="panel">
+        <div class="panel-head"><h3>New Receiving Session</h3></div>
+        <div class="panel-body">
+          <div class="field-grid">
+            <div class="field"><label>Supplier</label><input id="recvSupplier" placeholder="e.g. Acme Distribution"></div>
+            <div class="field"><label>PO Reference</label><input id="recvPO" placeholder="e.g. PO-2026-0044"></div>
+          </div>
+        </div>
+      </div>
+      <div class="scan-wrap">
+        <div class="panel" style="margin-bottom:0">
+          <div class="panel-head"><h3>Scan Box / Barcode</h3><span class="badge" id="camSupportBadge">checking...</span></div>
+          <div class="panel-body">
+            <div class="camera-box" id="cameraBox">
+              <video id="cameraVideo" autoplay muted playsinline></video>
+              <div class="scan-line" id="scanLine"></div>
+              <div class="camera-placeholder" id="cameraPlaceholder"><svg class="icn" viewBox="0 0 24 24" style="width:26px;height:26px;display:block;margin:0 auto 10px"><path d="M3 3l18 18"/><path d="M21 16.5V9a2 2 0 0 0-2-2h-3l-1.5-2h-5L8 7H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/></svg>Camera off.<br>Tap "Start Camera" to scan barcodes, or type a code manually below.</div>
+            </div>
+            <div class="row" style="margin-top:12px">
+              <button class="btn solid" id="btnStartCam"><svg class="icn" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3"/></svg>Start Camera</button>
+              <button class="btn" id="btnStopCam" disabled><svg class="icn" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>Stop</button>
+              <input id="manualCode" placeholder="Or type barcode / SKU / reference — press Enter" style="flex:1;min-width:220px">
+              <input id="manualBoxes" type="number" min="1" value="1" style="width:90px" title="Boxes">
+            </div>
+          </div>
+        </div>
+        <div class="panel" style="margin-bottom:0">
+          <div class="panel-head"><h3>Session Log</h3><span class="badge ok" id="sessionCount">0 scans</span></div>
+          <div class="panel-body"><div class="scan-log" id="scanLog"><div class="empty">No scans yet this session.</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCANNER (quick lookup) -->
+    <div class="view hidden" id="view-scanner">
+      <div class="panel">
+        <div class="panel-head"><h3>Quick Scan Lookup</h3></div>
+        <div class="panel-body">
+          <p style="color:#7a8494;font-size:14px;margin-top:0">Scan or type any barcode / SKU to instantly look up a product — stock level, location, and history.</p>
+          <div class="row"><input id="lookupCode" placeholder="Barcode or SKU" style="flex:1;min-width:220px"><button class="btn solid" onclick="doLookup()">Look Up</button></div>
+          <div id="lookupResult" style="margin-top:16px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVENTORY -->
+    <div class="view hidden" id="view-inventory">
+      <div class="panel">
+        <div class="panel-head"><h3>Current Stock</h3><div class="row"><button class="btn sm" onclick="exportCSV('products')"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Export CSV</button></div></div>
+        <div class="panel-body"><table><thead><tr><th>SKU</th><th>Product</th><th>Location</th><th>On Hand</th><th>Min</th><th>Max</th><th>Status</th></tr></thead><tbody id="invTable"></tbody></table></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Stock Movement Log</h3><button class="btn sm" onclick="exportCSV('movements')">Export CSV</button></div>
+        <div class="panel-body"><table><thead><tr><th>Time</th><th>Type</th><th>SKU</th><th>Qty</th><th>Boxes</th><th>Location</th><th>Ref</th></tr></thead><tbody id="movTable"></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="view hidden" id="view-products">
+      <div class="panel">
+        <div class="panel-head"><h3>Add / Edit Product</h3><span class="badge info">Same SKU = update</span></div>
+        <div class="panel-body">
+          <div class="field-grid">
+            <div class="field"><label>SKU</label><input id="pSku" placeholder="SKU-0001"></div>
+            <div class="field"><label>Barcode</label><input id="pBarcode" placeholder="EAN / UPC / Code128"></div>
+            <div class="field"><label>Product Name</label><input id="pName" placeholder="e.g. 500ml Water Bottle (Case)"></div>
+            <div class="field"><label>Supplier</label><input id="pSupplier" placeholder="Supplier name"></div>
+            <div class="field"><label>Units Per Box</label><input id="pUnitsPerBox" type="number" value="1" min="1"></div>
+            <div class="field"><label>Min Stock</label><input id="pMin" type="number" value="0" min="0"></div>
+            <div class="field"><label>Max Stock</label><input id="pMax" type="number" value="0" min="0"></div>
+            <div class="field"><label>Default Location</label><input id="pLocation" placeholder="e.g. A01-Shelf-3"></div>
+            <div class="field"><label>On Hand (units)</label><input id="pStock" type="number" value="0" min="0"></div>
+          </div>
+          <div class="row" style="margin-top:6px">
+            <button class="btn solid" onclick="saveProduct()">Save Product</button>
+            <button class="btn" onclick="clearProductForm()">Clear</button>
+            <button class="btn" onclick="document.getElementById('csvImport').click()"><svg class="icn" viewBox="0 0 24 24"><path d="M12 21V9"/><path d="M7 14l5-5 5 5"/><path d="M5 3h14"/></svg>Import CSV</button>
+            <input type="file" id="csvImport" accept=".csv" style="display:none" onchange="importCSV(this.files[0])">
+            <button class="btn" onclick="exportCSV('products')"><svg class="icn" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>Export CSV</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Product Catalog</h3><span class="badge info" id="productCount">0 products</span></div>
+        <div class="panel-body"><table><thead><tr><th>SKU</th><th>Barcode</th><th>Name</th><th>Supplier</th><th>Units/Box</th><th>Stock</th><th></th></tr></thead><tbody id="prodTable"></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- LOCATIONS -->
+    <div class="view hidden" id="view-locations">
+      <div class="panel">
+        <div class="panel-head"><h3>Add Location</h3></div>
+        <div class="panel-body">
+          <div class="row">
+            <input id="locCode" placeholder="Code e.g. A01-Shelf-3" style="flex:1">
+            <input id="locZone" placeholder="Zone e.g. Warehouse A" style="flex:1">
+            <input id="locCapacity" type="number" placeholder="Capacity (units)" style="width:180px">
+            <button class="btn solid" onclick="saveLocation()">Add Location</button>
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>All Locations</h3></div>
+        <div class="panel-body"><table><thead><tr><th>Code</th><th>Zone</th><th>Capacity</th><th>Used</th><th>Utilization</th></tr></thead><tbody id="locTable"></tbody></table></div>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div class="view hidden" id="view-reports">
+      <div class="panel">
+        <div class="panel-head"><h3>Stock Report</h3><div class="row"><button class="btn sm" onclick="window.print()"><svg class="icn" viewBox="0 0 24 24"><rect x="6" y="9" width="12" height="7" rx="1"/><path d="M6 9V4h12v5"/><path d="M8 17h8v4H8z"/></svg>Print / Save PDF</button></div></div>
+        <div class="panel-body">
+          <div id="reportHeader" style="margin-bottom:16px"></div>
+          <div class="stat-grid" id="reportStats"></div>
+          <table><thead><tr><th>SKU</th><th>Product</th><th>On Hand</th><th>Units/Box</th></tr></thead><tbody id="reportTable"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETTINGS / BRANDING -->
+    <div class="view hidden" id="view-settings">
+      <div class="panel">
+        <div class="panel-head"><h3>Company Branding Center</h3></div>
+        <div class="panel-body">
+          <div class="row" style="align-items:flex-start;margin-bottom:18px">
+            <div>
+              <label>Company Logo</label>
+              <div class="logo-preview" id="logoPreview">No Logo</div>
+              <input type="file" id="logoInput" accept="image/*" style="margin-top:8px" onchange="handleLogoUpload(this.files[0])">
+            </div>
+          </div>
+          <div class="field-grid">
+            <div class="field"><label>Company Name</label><input id="setCompanyName" placeholder="Your Company Pty Ltd"></div>
+            <div class="field"><label>Trading Name</label><input id="setTradingName"></div>
+            <div class="field"><label>Registration Number</label><input id="setRegNo"></div>
+            <div class="field"><label>VAT Number</label><input id="setVatNo"></div>
+            <div class="field"><label>Phone Number</label><input id="setPhone"></div>
+            <div class="field"><label>Email</label><input id="setEmail"></div>
+            <div class="field"><label>Physical Address</label><input id="setAddress"></div>
+          </div>
+          <div class="field-grid" style="margin-top:10px">
+            <div class="field"><label>Primary Color</label><input type="color" id="setPrimary" value="#7b2fff"></div>
+            <div class="field"><label>Secondary Color</label><input type="color" id="setSecondary" value="#5b1fd4"></div>
+            <div class="field"><label>Accent Color</label><input type="color" id="setAccent" value="#00d4aa"></div>
+            <div class="field"><label>Display Font</label>
+              <select id="setFont">
+                <option value="Barlow Condensed">Barlow Condensed (Industrial)</option>
+                <option value="Inter">Inter (Clean)</option>
+                <option value="JetBrains Mono">JetBrains Mono (Technical)</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn solid" onclick="saveBranding()">Save &amp; Apply Branding</button>
+          <p style="color:#8b95a4;font-size:12.5px;margin-top:10px">Applies to the sidebar, accent colours and the header of the printed Stock Report. Everything (products, movements, branding) is stored only in this browser on this device — export your CSVs regularly as a backup.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPPORT -->
+    <div class="view hidden" id="view-support">
+      <div class="panel">
+        <div class="panel-head"><h3>Support</h3></div>
+        <div class="panel-body">
+          <p style="margin-top:0;color:var(--ink-soft)">Questions or a problem with the app? Reach PixelProTech Solutions directly.</p>
+          <div class="row">
+            <a class="btn solid" href="mailto:pixelprotechsolutions@proton.me">pixelprotechsolutions@proton.me</a>
+            <a class="btn" href="tel:+27651971461">065 197 1461</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* =========================================================
+   PIXEL WAREHOUSE PRO — core app
+   Storage: IndexedDB (products, locations, movements) + localStorage (settings/branding)
+   ========================================================= */
+let db;
+const DB_NAME='pixelWarehousePro', DB_VERSION=1;
+
+function openDB(){
+  return new Promise((resolve,reject)=>{
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = e=>{
+      const d = e.target.result;
+      if(!d.objectStoreNames.contains('products')) d.createObjectStore('products',{keyPath:'sku'});
+      if(!d.objectStoreNames.contains('locations')) d.createObjectStore('locations',{keyPath:'code'});
+      if(!d.objectStoreNames.contains('movements')) d.createObjectStore('movements',{keyPath:'id'});
+    };
+    req.onsuccess = e=>{db=e.target.result;resolve(db);};
+    req.onerror = e=>reject(e);
+  });
+}
+function tx(store,mode='readonly'){return db.transaction(store,mode).objectStore(store);}
+function getAll(store){return new Promise(res=>{const r=tx(store).getAll();r.onsuccess=()=>res(r.result||[]);});}
+function put(store,obj){return new Promise(res=>{const r=tx(store,'readwrite').put(obj);r.onsuccess=()=>res(true);});}
+function del(store,key){return new Promise(res=>{const r=tx(store,'readwrite').delete(key);r.onsuccess=()=>res(true);});}
+
+function toast(msg){
+  const t=document.createElement('div');t.className='toast-item';t.textContent=msg;
+  document.getElementById('toast').appendChild(t);
+  setTimeout(()=>t.remove(),3800);
+}
+function uid(){return 'm_'+Date.now()+'_'+Math.random().toString(36).slice(2,7);}
+function nowStr(){return new Date().toLocaleString();}
+
+/* ---------------- NAVIGATION ---------------- */
+/* Escape anything user-typed or CSV-imported before it goes into innerHTML */
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+document.querySelectorAll('.navitem').forEach(item=>{
+  item.addEventListener('click',()=>switchView(item.dataset.view));
+});
+function switchView(name){
+  document.querySelectorAll('.navitem').forEach(n=>n.classList.toggle('active',n.dataset.view===name));
+  document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));
+  document.getElementById('view-'+name).classList.remove('hidden');
+  const titles={dashboard:'Dashboard',receiving:'Receiving',scanner:'Scanner',inventory:'Inventory',products:'Products',locations:'Locations',reports:'Stock Report',settings:'Branding & Settings',support:'Support'};
+  document.getElementById('viewTitle').textContent = titles[name]||name;
+  if(name==='dashboard') renderDashboard();
+  if(name==='inventory') renderInventory();
+  if(name==='products') renderProducts();
+  if(name==='locations') renderLocations();
+  if(name==='reports') renderReports();
+}
+function enterApp(view){
+  document.getElementById('landing').style.display='none';
+  document.getElementById('app').style.display='block';
+  switchView(view||'dashboard');
+}
+
+/* clock */
+setInterval(()=>{document.getElementById('clockPill').textContent=new Date().toLocaleTimeString();},1000);
+function updateNetPill(){document.getElementById('statusPill').textContent = navigator.onLine ? '● Online' : '○ Offline (data still saves locally)';}
+window.addEventListener('online',updateNetPill);
+window.addEventListener('offline',updateNetPill);
+updateNetPill();
+
+/* ---------------- PRODUCTS ---------------- */
+async function saveProduct(){
+  const sku=document.getElementById('pSku').value.trim();
+  if(!sku){toast('SKU is required');return;}
+  const existing = await new Promise(res=>{const r=tx('products').get(sku);r.onsuccess=()=>res(r.result);});
+  const p={
+    sku, barcode:document.getElementById('pBarcode').value.trim(),
+    name:document.getElementById('pName').value.trim()||sku,
+    supplier:document.getElementById('pSupplier').value.trim(),
+    unitsPerBox:parseInt(document.getElementById('pUnitsPerBox').value)||1,
+    minStock:parseInt(document.getElementById('pMin').value)||0,
+    maxStock:parseInt(document.getElementById('pMax').value)||0,
+    location:document.getElementById('pLocation').value.trim(),
+    stock: Math.max(0, parseInt(document.getElementById('pStock').value)||0)
+  };
+  // Stock set by hand is recorded in the movement log so the audit trail stays honest
+  const before = existing ? (existing.stock||0) : 0;
+  await put('products',p);
+  if(p.stock !== before){
+    await put('movements',{id:uid(),ts:Date.now(),type:existing?'adjust':'opening',sku:p.sku,qty:p.stock-before,boxes:0,location:p.location||'—',ref:'Manual entry'});
+  }
+  clearProductForm();
+  toast(`Product ${sku} saved`);
+  renderProducts();
+}
+function clearProductForm(){
+  ['pSku','pBarcode','pName','pSupplier','pLocation'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pUnitsPerBox').value=1;
+  document.getElementById('pMin').value=0;
+  document.getElementById('pMax').value=0;
+  document.getElementById('pStock').value=0;
+}
+async function editProduct(sku){
+  const p = await new Promise(res=>{const r=tx('products').get(sku);r.onsuccess=()=>res(r.result);});
+  if(!p) return;
+  document.getElementById('pSku').value=p.sku;
+  document.getElementById('pBarcode').value=p.barcode||'';
+  document.getElementById('pName').value=p.name||'';
+  document.getElementById('pSupplier').value=p.supplier||'';
+  document.getElementById('pUnitsPerBox').value=p.unitsPerBox||1;
+  document.getElementById('pMin').value=p.minStock||0;
+  document.getElementById('pMax').value=p.maxStock||0;
+  document.getElementById('pLocation').value=p.location||'';
+  document.getElementById('pStock').value=p.stock||0;
+  window.scrollTo(0,0);
+  document.getElementById('view-products').scrollTop=0;
+  toast('Editing '+sku+' — change fields and press Save Product');
+}
+async function renderProducts(){
+  const products = await getAll('products');
+  document.getElementById('productCount').textContent = products.length+' products';
+  const tbody=document.getElementById('prodTable');
+  if(!products.length){tbody.innerHTML='<tr><td colspan="7"><div class="empty">No products yet. Add one above or import a CSV.</div></td></tr>';return;}
+  tbody.innerHTML = products.map(p=>`<tr>
+    <td class="mono">${esc(p.sku)}</td><td class="mono">${esc(p.barcode)||'—'}</td><td>${esc(p.name)}</td><td>${esc(p.supplier)||'—'}</td>
+    <td>${p.unitsPerBox}</td><td>${p.stock||0}</td>
+    <td><div class="row" style="flex-wrap:nowrap"><button class="btn sm" data-edit="${esc(p.sku)}">Edit</button><button class="btn sm ghost-danger" data-del="${esc(p.sku)}">Delete</button></div></td></tr>`).join('');
+}
+document.getElementById('prodTable').addEventListener('click',e=>{
+  const ed=e.target.closest('[data-edit]'), dl=e.target.closest('[data-del]');
+  if(ed) editProduct(ed.dataset.edit);
+  if(dl) deleteProduct(dl.dataset.del);
+});
+async function deleteProduct(sku){
+  if(!confirm('Delete '+sku+'? Its movement history stays in the log.')) return;
+  await del('products',sku);toast('Deleted '+sku);renderProducts();
+}
+
+/* UPC-A scanned as EAN-13 arrives with a leading 0 — compare numeric codes without leading zeros */
+function normCode(c){c=String(c||'').trim();return /^\d+$/.test(c)?c.replace(/^0+/,''):c;}
+async function findProductByCode(code){
+  const products = await getAll('products');
+  const n = normCode(code);
+  if(!n) return undefined;
+  return products.find(p=>p.sku===code || normCode(p.barcode)===n || normCode(p.sku)===n);
+}
+
+/* ---------------- LOCATIONS ---------------- */
+async function saveLocation(){
+  const code=document.getElementById('locCode').value.trim();
+  if(!code){toast('Location code required');return;}
+  await put('locations',{code,zone:document.getElementById('locZone').value.trim(),capacity:parseInt(document.getElementById('locCapacity').value)||0});
+  ['locCode','locZone','locCapacity'].forEach(id=>document.getElementById(id).value='');
+  toast('Location saved');renderLocations();
+}
+async function renderLocations(){
+  const locs = await getAll('locations');
+  const products = await getAll('products');
+  const tbody=document.getElementById('locTable');
+  if(!locs.length){tbody.innerHTML='<tr><td colspan="5"><div class="empty">No locations yet.</div></td></tr>';return;}
+  tbody.innerHTML = locs.map(l=>{
+    const used = products.filter(p=>p.location===l.code).reduce((s,p)=>s+(p.stock||0),0);
+    const pct = l.capacity? Math.min(100,Math.round(used/l.capacity*100)) : 0;
+    return `<tr><td class="mono">${esc(l.code)}</td><td>${esc(l.zone)||'—'}</td><td>${l.capacity||'—'}</td><td>${used}</td><td>${l.capacity?pct+'%':'—'}</td></tr>`;
+  }).join('');
+}
+
+/* ---------------- RECEIVING / SCANNING ---------------- */
+let stream=null, detector=null, scanLoopId=null, sessionScans=[];
+const camSupportBadge = document.getElementById('camSupportBadge');
+if('BarcodeDetector' in window){
+  camSupportBadge.textContent='Camera scan ready';camSupportBadge.className='badge ok';
+}else{
+  camSupportBadge.textContent='Camera scan ready (software decoder)';camSupportBadge.className='badge ok';
+}
+
+document.getElementById('btnStartCam').addEventListener('click', startCamera);
+document.getElementById('btnStopCam').addEventListener('click', stopCamera);
+
+const SCAN_FORMATS=['ean_13','ean_8','upc_a','upc_e','code_128','code_39','itf','qr_code','data_matrix','pdf417'];
+let zxReader=null, scanCanvas=null, zxLoading=null;
+function loadZXing(){
+  if(window.ZXing) return Promise.resolve();
+  if(zxLoading) return zxLoading;
+  zxLoading = new Promise((res,rej)=>{
+    const sc=document.createElement('script');
+    sc.src='zxing.min.js';
+    sc.onload=()=>res(); sc.onerror=()=>{zxLoading=null;rej(new Error('zxing.min.js did not load — make sure it is uploaded next to index.html'));};
+    document.head.appendChild(sc);
+  });
+  return zxLoading;
+}
+function setupZXing(){
+  const Z=window.ZXing, F=Z.BarcodeFormat;
+  const map={ean_13:F.EAN_13,ean_8:F.EAN_8,upc_a:F.UPC_A,upc_e:F.UPC_E,code_128:F.CODE_128,code_39:F.CODE_39,itf:F.ITF,qr_code:F.QR_CODE,data_matrix:F.DATA_MATRIX,pdf417:F.PDF_417};
+  const hints=new Map();
+  hints.set(Z.DecodeHintType.POSSIBLE_FORMATS, SCAN_FORMATS.map(k=>map[k]));
+  hints.set(Z.DecodeHintType.TRY_HARDER, true);
+  zxReader=new Z.MultiFormatReader(); zxReader.setHints(hints);
+  scanCanvas=document.createElement('canvas');
+}
+function zxDecodeFrame(video){
+  if(!video.videoWidth) return null;
+  const scale=Math.min(1, 800/video.videoWidth);
+  const w=Math.round(video.videoWidth*scale), h=Math.round(video.videoHeight*scale);
+  scanCanvas.width=w; scanCanvas.height=h;
+  const ctx=scanCanvas.getContext('2d',{willReadFrequently:true});
+  ctx.drawImage(video,0,0,w,h);
+  const Z=window.ZXing;
+  try{
+    const bmp=new Z.BinaryBitmap(new Z.HybridBinarizer(new Z.HTMLCanvasElementLuminanceSource(scanCanvas)));
+    return zxReader.decode(bmp).getText();
+  }catch(e){ return null; }   // NotFoundException = no code in this frame
+}
+
+async function startCamera(){
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia){
+    toast('Camera needs a secure (https) page. Use manual entry below, or open the app from its https address.');
+    return;
+  }
+  try{
+    stream = await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'},width:{ideal:1280},height:{ideal:720}},audio:false});
+  }catch(err){
+    toast(err.name==='NotAllowedError' ? 'Camera permission was blocked — allow it in the browser address bar, then tap Start Camera again.' : 'Camera unavailable: '+err.message);
+    return;
+  }
+  const video=document.getElementById('cameraVideo');
+  video.srcObject=stream; video.style.display='block';
+  try{await video.play();}catch(e){}
+  document.getElementById('cameraPlaceholder').style.display='none';
+  document.getElementById('scanLine').style.display='block';
+  document.getElementById('btnStartCam').disabled=true;
+  document.getElementById('btnStopCam').disabled=false;
+  if('BarcodeDetector' in window){
+    detector = new BarcodeDetector({formats:SCAN_FORMATS});
+    scanLoop(video);
+  }else{
+    try{
+      await loadZXing();
+      if(!zxReader) setupZXing();
+      detector=null;
+      scanLoop(video);
+    }catch(err){
+      toast(err.message+' — use manual entry meanwhile.');
+    }
+  }
+}
+function stopCamera(){
+  if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}
+  if(scanLoopId){cancelAnimationFrame(scanLoopId);clearTimeout(scanLoopId);scanLoopId=null;}
+  const v=document.getElementById('cameraVideo'); v.srcObject=null; v.style.display='none';
+  document.getElementById('cameraPlaceholder').style.display='block';
+  document.getElementById('scanLine').style.display='none';
+  document.getElementById('btnStartCam').disabled=false;
+  document.getElementById('btnStopCam').disabled=true;
+}
+let lastScanCode=null,lastScanTime=0;
+async function scanLoop(video){
+  if(!stream) return;
+  let val=null;
+  try{
+    if(detector){
+      const codes = await detector.detect(video);
+      if(codes.length) val=codes[0].rawValue;
+    }else if(zxReader){
+      val = zxDecodeFrame(video);
+    }
+  }catch(e){/* detection frame errors are non-fatal */}
+  if(val){
+    const t = Date.now();
+    // Same code held in frame counts once; it must leave the frame for 1.5s to be counted again
+    const fresh = (val!==lastScanCode || t-lastScanTime>1500);
+    lastScanCode=val; lastScanTime=t;
+    if(fresh){ handleScan(val,parseInt(document.getElementById('manualBoxes').value)||1); if(navigator.vibrate) navigator.vibrate(60); }
+  }
+  // native detector every frame; software decoder ~8x/second to keep phones cool
+  if(detector) scanLoopId=requestAnimationFrame(()=>scanLoop(video));
+  else scanLoopId=setTimeout(()=>scanLoop(video),120);
+}
+
+document.getElementById('manualCode').addEventListener('keydown', e=>{
+  if(e.key==='Enter'){
+    const code=e.target.value.trim();
+    const boxes=parseInt(document.getElementById('manualBoxes').value)||1;
+    if(code){handleScan(code,boxes); e.target.value='';}
+  }
+});
+
+async function handleScan(code,boxes){
+  const supplier=document.getElementById('recvSupplier').value.trim();
+  const po=document.getElementById('recvPO').value.trim();
+  let product = await findProductByCode(code);
+  let status='ok', qty=0;
+
+  if(!product){
+    status='unknown';
+    toast(`Code "${code}" is not in your catalog — tap "Add this code" in the session log.`);
+  }else{
+    qty = boxes * (product.unitsPerBox||1);
+    product.stock = (product.stock||0) + qty;
+    await put('products',product);
+    const mv={id:uid(),ts:Date.now(),type:'receive',sku:product.sku,qty,boxes,location:product.location||'—',ref:po||supplier||'—'};
+    await put('movements',mv);
+  }
+  const entry={code,product,boxes,qty,status,time:nowStr()};
+  sessionScans.unshift(entry);
+  renderScanLog();
+  if(status==='ok') toast(`Received ${boxes} box(es) of ${product.name} → +${qty} units`);
+}
+function renderScanLog(){
+  document.getElementById('sessionCount').textContent = sessionScans.length+' scans';
+  const wrap=document.getElementById('scanLog');
+  if(!sessionScans.length){wrap.innerHTML='<div class="empty">No scans yet this session.</div>';return;}
+  wrap.innerHTML = sessionScans.map(s=>`
+    <div class="scan-log-item">
+      <div>
+        <div><b>${esc(s.product?s.product.name:s.code)}</b> ${s.status==='unknown'?'<span class="badge danger">unknown code</span>':''}</div>
+        <div class="t">${s.time} · ${s.boxes} box(es)${s.product?` · +${s.qty} units`:''}</div>
+      </div>
+      ${s.status==='unknown'?`<button class="btn sm solid" data-addcode="${esc(s.code)}">Add this code</button>`:''}
+    </div>`).join('');
+}
+
+document.getElementById('scanLog').addEventListener('click',e=>{
+  const b=e.target.closest('[data-addcode]'); if(!b) return;
+  stopCamera();
+  switchView('products');
+  clearProductForm();
+  document.getElementById('pBarcode').value=b.dataset.addcode;
+  document.getElementById('pSku').value=b.dataset.addcode;
+  document.getElementById('pName').focus();
+  toast('Code filled in — add the product name and units per box, press Save, then scan again.');
+});
+
+/* ---------------- SCANNER QUICK LOOKUP ---------------- */
+document.getElementById('lookupCode').addEventListener('keydown',e=>{if(e.key==='Enter')doLookup();});
+async function doLookup(){
+  const code=document.getElementById('lookupCode').value.trim();
+  const result=document.getElementById('lookupResult');
+  if(!code){return;}
+  const product = await findProductByCode(code);
+  if(!product){result.innerHTML='<div class="empty">No product found for that code.</div>';return;}
+  const moves = (await getAll('movements')).filter(m=>m.sku===product.sku).sort((a,b)=>b.ts-a.ts).slice(0,8);
+  result.innerHTML = `
+    <div class="panel" style="margin-bottom:14px">
+      <div class="panel-body">
+        <div class="stat-grid">
+          <div class="stat-card"><div class="label">On Hand</div><div class="value">${product.stock||0}</div></div>
+          <div class="stat-card"><div class="label">Location</div><div class="value" style="font-size:22px">${esc(product.location)||'—'}</div></div>
+          <div class="stat-card"><div class="label">Units / Box</div><div class="value">${product.unitsPerBox}</div></div>
+        </div>
+        <p style="margin:14px 0 0"><b>${esc(product.name)}</b> · SKU <span class="mono">${esc(product.sku)}</span> · Barcode <span class="mono">${esc(product.barcode)||'—'}</span> · Supplier ${esc(product.supplier)||'—'}</p>
+      </div>
+    </div>
+    <table><thead><tr><th>Time</th><th>Type</th><th>Qty</th><th>Ref</th></tr></thead><tbody>
+    ${moves.length? moves.map(m=>`<tr><td class="mono">${new Date(m.ts).toLocaleString()}</td><td>${esc(m.type)}</td><td>${m.qty}</td><td>${esc(m.ref)}</td></tr>`).join(''):'<tr><td colspan="4"><div class="empty">No movement history.</div></td></tr>'}
+    </tbody></table>`;
+}
+
+/* ---------------- INVENTORY VIEW ---------------- */
+async function renderInventory(){
+  const products = await getAll('products');
+  const tbody=document.getElementById('invTable');
+  if(!products.length){tbody.innerHTML='<tr><td colspan="7"><div class="empty">No inventory yet.</div></td></tr>';}
+  else tbody.innerHTML = products.map(p=>{
+    const stock=p.stock||0;
+    let status='<span class="badge ok">In Stock</span>';
+    if(stock===0) status='<span class="badge danger">Out of Stock</span>';
+    else if(p.minStock && stock<=p.minStock) status='<span class="badge warn">Low Stock</span>';
+    return `<tr><td class="mono">${esc(p.sku)}</td><td>${esc(p.name)}</td><td>${esc(p.location)||'—'}</td><td>${stock}</td><td>${p.minStock||0}</td><td>${p.maxStock||0}</td><td>${status}</td></tr>`;
+  }).join('');
+
+  const moves = (await getAll('movements')).sort((a,b)=>b.ts-a.ts).slice(0,50);
+  const mtbody=document.getElementById('movTable');
+  mtbody.innerHTML = moves.length? moves.map(m=>`<tr><td class="mono">${new Date(m.ts).toLocaleString()}</td><td>${esc(m.type)}</td><td class="mono">${esc(m.sku)}</td><td>${m.qty}</td><td>${m.boxes||'—'}</td><td>${esc(m.location)}</td><td>${esc(m.ref)}</td></tr>`).join(''):'<tr><td colspan="7"><div class="empty">No movements logged yet.</div></td></tr>';
+}
+
+/* ---------------- DASHBOARD ---------------- */
+async function renderDashboard(){
+  const products = await getAll('products');
+  const moves = await getAll('movements');
+  const today = new Date().toDateString();
+  const todaysMoves = moves.filter(m=>new Date(m.ts).toDateString()===today);
+  const boxesToday = todaysMoves.reduce((s,m)=>s+(m.boxes||0),0);
+  const unitsToday = todaysMoves.filter(m=>m.type==='receive').reduce((s,m)=>s+m.qty,0);
+  const lowStock = products.filter(p=>p.minStock && (p.stock||0)<=p.minStock);
+  const totalUnits = products.reduce((s,p)=>s+(p.stock||0),0);
+
+  document.getElementById('dashStats').innerHTML = `
+    <div class="stat-card"><div class="label">Boxes Received Today</div><div class="value">${boxesToday}</div><div class="sub">${unitsToday} units</div></div>
+    <div class="stat-card"><div class="label">Products Tracked</div><div class="value">${products.length}</div><div class="sub">${totalUnits} total units</div></div>
+    <div class="stat-card"><div class="label">Low Stock Alerts</div><div class="value">${lowStock.length}</div><div class="sub">below minimum threshold</div></div>
+    <div class="stat-card"><div class="label">Movements Logged</div><div class="value">${moves.length}</div><div class="sub">all-time audit trail</div></div>`;
+
+  const recent = moves.sort((a,b)=>b.ts-a.ts).slice(0,10);
+  document.getElementById('dashActivity').innerHTML = recent.length? recent.map(m=>`<tr><td class="mono">${new Date(m.ts).toLocaleTimeString()}</td><td>${esc(m.type)}</td><td class="mono">${esc(m.sku)}</td><td>${esc((products.find(p=>p.sku===m.sku)||{}).name)||'—'}</td><td>${m.qty}</td><td>${esc(m.location)}</td></tr>`).join(''):'<tr><td colspan="6"><div class="empty">No activity yet — start receiving to populate this feed.</div></td></tr>';
+
+  document.getElementById('dashLowStock').innerHTML = lowStock.length? lowStock.map(p=>`<tr><td class="mono">${esc(p.sku)}</td><td>${esc(p.name)}</td><td>${p.stock||0}</td><td>${p.minStock}</td><td><span class="badge warn">Reorder</span></td></tr>`).join(''):'<tr><td colspan="5"><div class="empty">All products are above their minimum stock levels.</div></td></tr>';
+}
+
+/* ---------------- REPORTS ---------------- */
+async function renderReports(){
+  const products = await getAll('products');
+  const totalUnits = products.reduce((s,p)=>s+(p.stock||0),0);
+  const totalSkus = products.length;
+  const totalBoxesOnHand = products.reduce((s,p)=>s+Math.ceil((p.stock||0)/(p.unitsPerBox||1)),0);
+  let b={}; try{b=JSON.parse(localStorage.getItem('pwp_branding')||'{}');}catch(e){}
+  const lines = [b.tradingName, b.regNo&&('Reg: '+b.regNo), b.vatNo&&('VAT: '+b.vatNo), b.phone, b.email, b.address].filter(Boolean).map(esc).join(' · ');
+  document.getElementById('reportHeader').innerHTML =
+    `<div style="display:flex;align-items:center;gap:14px">${b.logo?`<img src="${b.logo}" style="height:46px;max-width:120px;object-fit:contain">`:''}<div><div style="font-family:var(--font-display);font-size:22px;font-weight:700">${esc(b.companyName||'Stock Report')}</div><div style="font-size:12px;color:var(--ink-soft)">${lines}</div><div style="font-size:12px;color:var(--ink-soft)">Stock report · ${esc(new Date().toLocaleString())}</div></div></div>`;
+  document.getElementById('reportStats').innerHTML = `
+    <div class="stat-card"><div class="label">Total SKUs</div><div class="value">${totalSkus}</div></div>
+    <div class="stat-card"><div class="label">Total Units On Hand</div><div class="value">${totalUnits}</div></div>
+    <div class="stat-card"><div class="label">Equivalent Boxes</div><div class="value">${totalBoxesOnHand}</div></div>`;
+  document.getElementById('reportTable').innerHTML = products.length? products.map(p=>`<tr><td class="mono">${esc(p.sku)}</td><td>${esc(p.name)}</td><td>${p.stock||0}</td><td>${p.unitsPerBox}</td></tr>`).join(''):'<tr><td colspan="4"><div class="empty">No data to report yet.</div></td></tr>';
+}
+
+/* ---------------- CSV IMPORT / EXPORT ---------------- */
+function csvEscape(v){v=String(v??'');return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v;}
+async function exportCSV(store){
+  const rows = await getAll(store);
+  if(!rows.length){toast('Nothing to export yet');return;}
+  const cols = Object.keys(rows[0]);
+  const csv = [cols.join(',')].concat(rows.map(r=>cols.map(c=>csvEscape(r[c])).join(','))).join('\n');
+  const blob = new Blob([csv],{type:'text/csv'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=store+'.csv'; a.click();
+  toast(`Exported ${rows.length} rows`);
+}
+function parseCSV(text){
+  const rows=[];let row=[],cur='',inQ=false;
+  text=text.replace(/^﻿/,'');
+  for(let i=0;i<text.length;i++){
+    const ch=text[i];
+    if(inQ){
+      if(ch==='"'){ if(text[i+1]==='"'){cur+='"';i++;} else inQ=false; }
+      else cur+=ch;
+    }else if(ch==='"'){inQ=true;}
+    else if(ch===','){row.push(cur);cur='';}
+    else if(ch==='\n'||ch==='\r'){
+      if(ch==='\r'&&text[i+1]==='\n') i++;
+      row.push(cur);cur='';
+      if(row.some(v=>v.trim()!=='')) rows.push(row);
+      row=[];
+    }else cur+=ch;
+  }
+  row.push(cur); if(row.some(v=>v.trim()!=='')) rows.push(row);
+  if(!rows.length) return [];
+  const headers=rows[0].map(h=>h.trim());
+  return rows.slice(1).map(r=>{const o={};headers.forEach((h,i)=>o[h]=(r[i]||'').trim());return o;});
+}
+async function importCSV(file){
+  if(!file) return;
+  const rows = parseCSV(await file.text());
+  let count=0, skipped=0;
+  for(const r of rows){
+    if(!r.sku){skipped++;continue;}
+    const existing = await new Promise(res=>{const q=tx('products').get(r.sku);q.onsuccess=()=>res(q.result);});
+    const stock = Math.max(0,parseInt(r.stock)||0);
+    const before = existing?(existing.stock||0):0;
+    await put('products',{
+      sku:r.sku, barcode:r.barcode||'', name:r.name||r.sku, supplier:r.supplier||'',
+      unitsPerBox:parseInt(r.unitsPerBox)||1, minStock:parseInt(r.minStock)||0, maxStock:parseInt(r.maxStock)||0,
+      location:r.location||'', stock
+    });
+    if(stock!==before) await put('movements',{id:uid(),ts:Date.now(),type:existing?'adjust':'opening',sku:r.sku,qty:stock-before,boxes:0,location:r.location||'—',ref:'CSV import'});
+    count++;
+  }
+  document.getElementById('csvImport').value='';
+  toast(`Imported ${count} products`+(skipped?` · ${skipped} row(s) skipped (no SKU)`:''));
+  renderProducts();
+}
+
+/* ---------------- BRANDING ---------------- */
+function applyBrandingToDOM(b){
+  document.documentElement.style.setProperty('--brand-primary', b.primary||'#7b2fff');
+  document.documentElement.style.setProperty('--brand-secondary', b.secondary||'#5b1fd4');
+  document.documentElement.style.setProperty('--brand-accent', b.accent||'#00d4aa');
+  document.documentElement.style.setProperty('--brand-font', b.font||'Barlow Condensed');
+  document.getElementById('sbCompanyName').textContent = (b.companyName||'PIXEL WAREHOUSE').toUpperCase();
+  const wrap = document.getElementById('sbLogoWrap');
+  const preview = document.getElementById('logoPreview');
+  if(b.logo){
+    wrap.innerHTML = `<img src="${b.logo}" style="width:100%;height:100%;object-fit:contain">`;
+    preview.innerHTML = `<img src="${b.logo}">`;
+  }
+}
+function loadBranding(){
+  const raw = localStorage.getItem('pwp_branding');
+  let b0=null; try{b0=raw?JSON.parse(raw):null;}catch(e){}
+  const b = b0 || {primary:'#7b2fff',secondary:'#5b1fd4',accent:'#00d4aa',font:'Barlow Condensed',companyName:'PixelProTech Solutions'};
+  applyBrandingToDOM(b);
+  document.getElementById('setCompanyName').value=b.companyName||'';
+  document.getElementById('setTradingName').value=b.tradingName||'';
+  document.getElementById('setRegNo').value=b.regNo||'';
+  document.getElementById('setVatNo').value=b.vatNo||'';
+  document.getElementById('setPhone').value=b.phone||'';
+  document.getElementById('setEmail').value=b.email||'';
+  document.getElementById('setAddress').value=b.address||'';
+  document.getElementById('setPrimary').value=b.primary||'#7b2fff';
+  document.getElementById('setSecondary').value=b.secondary||'#5b1fd4';
+  document.getElementById('setAccent').value=b.accent||'#00d4aa';
+  document.getElementById('setFont').value=b.font||'Barlow Condensed';
+  if(b.logo) document.getElementById('logoPreview').innerHTML = `<img src="${b.logo}">`;
+  return b;
+}
+let currentLogo = null;
+function handleLogoUpload(file){
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = e=>{currentLogo=e.target.result; document.getElementById('logoPreview').innerHTML=`<img src="${currentLogo}">`;};
+  reader.readAsDataURL(file);
+}
+function saveBranding(){
+  const b = {
+    companyName:document.getElementById('setCompanyName').value.trim(),
+    tradingName:document.getElementById('setTradingName').value.trim(),
+    regNo:document.getElementById('setRegNo').value.trim(),
+    vatNo:document.getElementById('setVatNo').value.trim(),
+    phone:document.getElementById('setPhone').value.trim(),
+    email:document.getElementById('setEmail').value.trim(),
+    address:document.getElementById('setAddress').value.trim(),
+    primary:document.getElementById('setPrimary').value,
+    secondary:document.getElementById('setSecondary').value,
+    accent:document.getElementById('setAccent').value,
+    font:document.getElementById('setFont').value,
+    logo: currentLogo || (JSON.parse(localStorage.getItem('pwp_branding')||'{}').logo || null)
+  };
+  try{
+    localStorage.setItem('pwp_branding', JSON.stringify(b));
+  }catch(err){
+    toast('Could not save branding — the logo may be too large. Try a smaller image.');
+    return;
+  }
+  applyBrandingToDOM(b);
+  toast('Branding saved and applied');
+}
+
+/* ---------------- PWA: SERVICE WORKER + INSTALL PROMPT ---------------- */
+if('serviceWorker' in navigator && (location.protocol==='https:' || location.hostname==='localhost')){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js')
+      .then(()=>console.log('[pwp] service worker registered'))
+      .catch(err=>console.warn('[pwp] service worker registration failed:',err));
+  });
+}
+// One-time deploy check: confirms manifest + icons actually resolve on this host.
+// If this ever warns, icon-192.png or manifest.json did not deploy correctly —
+// re-check the hosting repo/bucket for those files at the same relative paths as index.html.
+(function checkDeployedAssets(){
+  Promise.all([
+    fetch('manifest.json').then(r=>r.ok).catch(()=>false),
+    fetch('icon-192.png').then(r=>r.ok).catch(()=>false)
+  ]).then(([manifestOk, iconOk])=>{
+    if(!manifestOk) console.warn('[pwp] manifest.json is missing or not deployed at this path — install features will not work.');
+    if(!iconOk) console.warn('[pwp] icon-192.png is missing or not deployed to the host. Logo images and install icon will be affected.');
+    if(!manifestOk || !iconOk) toast('Some app assets (icons/manifest) failed to load — check your hosting deploy. See console for details.');
+  });
+})();
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', e=>{
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  document.getElementById('installBtnLanding').style.display='inline-flex';
+  document.getElementById('installBtnApp').style.display='inline-flex';
+});
+async function triggerInstall(){
+  if(!deferredInstallPrompt){toast('This browser doesn\'t support app install, or it\'s already installed.');return;}
+  deferredInstallPrompt.prompt();
+  const choice = await deferredInstallPrompt.userChoice;
+  deferredInstallPrompt = null;
+  document.getElementById('installBtnLanding').style.display='none';
+  document.getElementById('installBtnApp').style.display='none';
+  if(choice.outcome==='accepted') toast('Pixel Warehouse Pro installed');
+}
+document.getElementById('installBtnLanding').addEventListener('click', triggerInstall);
+document.getElementById('installBtnApp').addEventListener('click', triggerInstall);
+window.addEventListener('appinstalled', ()=>toast('App installed — you can now launch it from your home screen or app list'));
+
+/* ---------------- INIT ---------------- */
+(async function init(){
+  await openDB();
+  loadBranding();
+})();
+</script>
+</body>
+</html>

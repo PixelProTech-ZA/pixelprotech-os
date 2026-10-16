@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelProTech — Bulk Email Sender</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D"/>
+<meta name="theme-color" content="#050a0e"/>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAEdUlEQVR4nO3dQXbTOhiGYfUeOmHAKlgkS2CR7IQJA99jchI7LflkWZKfZwE0SG9+KWnTvr1//VbgVf+d/QAYm4CICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiHw56wv//vXzrC89q/fvP9p/0bfGPxOtmwZaltQoIN2cokFJhwckndMdmtGxAT2v55Qze1ZnLfWBAW3+l0TTQMuVPyQg6fSgzS7UD+jxcUvnREdvR+U3EtXTm8f1r/uypmZA6unToQ0d9U60dLqybMcRb6lUm0De7xlLrf2qE9DdozF++nS3L1UaqhCQegZSvaHKr8LU07++Xsa7+owu3MGaE8j4GUXFnfITiUSigG6nn/Ezltv9Sk4xE4iIgIi8HpDXXzN5eTfrTCAXoBFV2TVHGBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBjaTDDzL0GFCHy9SDZVl6W5zT/lbGnj6XiT09TiCe6+rZ1VdAXS1Nt7r6FF5fAXW1NHxGd3egJy6S11hjuK8J9NzvXz/HWtwXDPdXIroOaHPhZm1o7+nRcz2l84DKfkOTZbSXTuf1lP4DKvvrOEdDgw6e1QABLaYcReMOntUwAZXpRtHQg2c1UkCLCRraHJxjDZ7VeAGVnbUe5TibY/CshgxoMdwoGv2+vGnggMpQN+sJ7subxg6ojHCznnLwrIYPaNHtKJp18KwmCaj0N4rmHjyreQJadDKKph88q9kCKmePoosMntWEAS1OGUXXGTyraQMqzUfRpQbPauaAFg0amulbE/9q/oDKwd/6uObgWV0ioEX1UXS1+/KmCwVUqt6sL3hf3nStgEqNm7XBc+tyAS1eHkUGz52LBlT+fRQZPJuuG9Dik6PI4Nlz9YDKR6PI4HlOQP/7/HFm8NwS0F+fKUM6dwR0by8Rg2eTgDY8tiKdPQLatURj8DwnoGek8yEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEfly9gN45vS/tcOHTCAiAiIiICLd3YH8QoyxmEBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERKROQD6DPKIqu/Z6QD7ANZOXd9MRRkRARKKAbueea9BYbvcruY2YQERqBmQIjaLiTqUBeS02unAHKx9hhlD/6u5RhYDuEtZQz+52Jz9A6kwgDQ2hej2l4hHmMjSWWvt11K+4W2JXVSeOOxNqXqIfc3GW9eBxFyo+sSu/CtNQbw6tp5Ty9v71W8V/brEZjeOssTa7cEhACxmdpeXKHxhQ+ej8ElNFZy31sQEVd6AOHPpEPTyghYxO0WDGNwpopaQGWt4NWge0UlJ1p9wpTwuIOfiJRCICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAifwDXgrckOag//QAAAABJRU5ErkJggg=="/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #00e696;
+  --green-dim: rgba(0,230,150,0.6);
+  --green-faint: rgba(0,230,150,0.08);
+  --green-border: rgba(0,230,150,0.15);
+  --green-border2: rgba(0,230,150,0.3);
+  --amber: #ffb020;
+  --amber-faint: rgba(255,176,32,0.1);
+  --amber-border: rgba(255,176,32,0.3);
+  --red: #ff5c5c;
+  --bg: #050a0e;
+  --bg2: rgba(255,255,255,0.02);
+  --bg3: rgba(255,255,255,0.04);
+  --text: #e0f0ff;
+  --text-dim: rgba(160,196,184,0.7);
+  --text-faint: rgba(160,196,184,0.4);
+}
+body {
+  background: var(--bg); color: var(--text); font-family: 'Syne', sans-serif;
+  min-height: 100vh; padding: 2rem 1.25rem 4rem;
+}
+.grid-bg {
+  position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(0,200,150,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,150,0.035) 1px, transparent 1px);
+  background-size: 44px 44px; pointer-events: none; z-index: 0;
+}
+.wrap { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+.eyebrow {
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--green);
+  letter-spacing: 3px; margin-bottom: 0.5rem;
+}
+h1 { font-size: clamp(1.6rem, 5vw, 2.2rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 0.5rem; color: #fff; }
+.sub { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--text-faint); line-height: 1.8; margin-bottom: 2rem; }
+.panel {
+  background: var(--bg2); border: 1px solid var(--green-border); border-radius: 14px;
+  padding: 1.5rem; margin-bottom: 1.5rem;
+}
+.panel-hd {
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--green-dim);
+  letter-spacing: 2px; margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
+}
+.panel-hd::after { content: ''; flex: 1; height: 1px; background: var(--green-border); }
+label { display: block; font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-faint); letter-spacing: 1px; margin-bottom: 8px; }
+textarea, input[type=text] {
+  width: 100%; background: var(--bg3); border: 1px solid var(--green-border); border-radius: 8px;
+  padding: 12px 14px; color: var(--text); font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  resize: vertical;
+}
+textarea:focus, input:focus { outline: none; border-color: var(--green-border2); }
+textarea::placeholder, input::placeholder { color: var(--text-faint); }
+.field { margin-bottom: 1.25rem; }
+.field:last-child { margin-bottom: 0; }
+.row { display: flex; gap: 1rem; flex-wrap: wrap; }
+.row .field { flex: 1; min-width: 160px; }
+.mode-toggle { display: flex; gap: 0.5rem; }
+.mode-btn {
+  flex: 1; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 1px;
+  color: var(--text-faint); background: var(--bg3); border: 1px solid var(--green-border);
+  border-radius: 8px; padding: 10px; cursor: pointer; text-align: center;
+}
+.mode-btn.sel { color: var(--green); background: var(--green-faint); border-color: var(--green-border2); }
+.hint { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-faint); margin-top: 6px; }
+.hint.warn { color: var(--amber); }
+.parse-summary {
+  font-family: 'Share Tech Mono', monospace; font-size: 11px; color: var(--text-dim);
+  margin-top: 10px; display: none;
+}
+.parse-summary.show { display: block; }
+.parse-summary .bad { color: var(--red); }
+.btn {
+  width: 100%; background: linear-gradient(135deg, var(--green) 0%, #00b377 100%);
+  color: #001a10; border: none; border-radius: 10px; padding: 14px; font-family: 'Syne', sans-serif;
+  font-weight: 700; font-size: 14px; cursor: pointer; letter-spacing: 0.5px;
+}
+.btn:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn.secondary {
+  background: transparent; border: 1px solid var(--green-border2); color: var(--green);
+  padding: 10px; font-size: 12px;
+}
+.batches { display: none; flex-direction: column; gap: 12px; margin-top: 1.5rem; }
+.batches.show { display: flex; }
+.batch-card {
+  background: var(--bg3); border: 1px solid var(--green-border); border-radius: 10px; padding: 1rem;
+}
+.batch-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.batch-title { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--green); letter-spacing: 1px; }
+.batch-meta { font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-faint); }
+.batch-actions { display: flex; gap: 8px; margin-top: 10px; }
+.batch-actions a, .batch-actions button {
+  flex: 1; text-align: center; text-decoration: none; font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 1px; border-radius: 8px; padding: 10px; cursor: pointer;
+}
+.open-btn { background: var(--green-faint); border: 1px solid var(--green-border2); color: var(--green) !important; }
+.copy-btn { background: transparent; border: 1px solid var(--green-border); color: var(--text-dim); }
+.batch-len { font-size: 10px; font-family: 'Share Tech Mono', monospace; margin-top: 8px; }
+.len-ok { color: var(--green-dim); }
+.len-warn { color: var(--amber); }
+.footer-note {
+  font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--text-faint);
+  line-height: 1.8; margin-top: 2rem; text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="wrap">
+  <div class="eyebrow">// PIXELPROTECH · UTILITY</div>
+  <h1>Bulk Email Sender</h1>
+  <div class="sub">
+    One message, many people — batched to fit safely inside your email app.
+    Nothing is sent from this page. Every batch opens your own mail app,
+    fully written, ready for you to review and hit send.
+  </div>
+
+  <!-- RECIPIENTS -->
+  <div class="panel">
+    <div class="panel-hd">// 01 — RECIPIENTS</div>
+    <div class="field">
+      <label>PASTE EMAIL ADDRESSES (one per line, or comma/semicolon separated)</label>
+      <textarea id="recipients" rows="6" placeholder="jane@example.com&#10;thabo@example.co.za&#10;lerato@example.com"></textarea>
+    </div>
+    <div class="parse-summary" id="parse-summary"></div>
+  </div>
+
+  <!-- MESSAGE -->
+  <div class="panel">
+    <div class="panel-hd">// 02 — MESSAGE</div>
+    <div class="field">
+      <label>SUBJECT</label>
+      <input type="text" id="subject" placeholder="e.g. Your October invoice from PixelProTech">
+    </div>
+    <div class="field">
+      <label>BODY — same message goes to everyone in a batch, no per-person merge fields</label>
+      <textarea id="body" rows="8" placeholder="Hi there,&#10;&#10;..."></textarea>
+    </div>
+  </div>
+
+  <!-- SEND MODE -->
+  <div class="panel">
+    <div class="panel-hd">// 03 — HOW RECIPIENTS SEE EACH OTHER</div>
+    <div class="mode-toggle">
+      <button class="mode-btn sel" id="mode-bcc" onclick="setMode('bcc')">BCC — private (recommended)</button>
+      <button class="mode-btn" id="mode-to" onclick="setMode('to')">TO — everyone sees every address</button>
+    </div>
+    <div class="hint" id="mode-hint">BCC keeps every recipient's email address private from the others — the standard choice for any list of people who don't already know each other.</div>
+  </div>
+
+  <div class="field">
+    <button class="btn" id="generate-btn" onclick="generateBatches()" disabled>▶ BUILD BATCHES</button>
+  </div>
+
+  <!-- BATCHES -->
+  <div class="batches" id="batches"></div>
+
+  <div class="footer-note">
+    Some mail apps (older Outlook builds especially) truncate very long mailto links.<br>
+    That's why this splits into batches automatically — each batch is sized to open cleanly.
+    <br><br>
+    PixelProTech Solutions (Pty) Ltd · Reg 2026/622131/07 · South Africa
+  </div>
+</div>
+
+<script>
+const MAX_URL_LEN = 1800; // conservative — keeps compatibility with the strictest common mail clients
+let mode = 'bcc';
+let parsedEmails = [];
+
+function setMode(m) {
+  mode = m;
+  document.getElementById('mode-bcc').classList.toggle('sel', m === 'bcc');
+  document.getElementById('mode-to').classList.toggle('sel', m === 'to');
+  document.getElementById('mode-hint').textContent = m === 'bcc'
+    ? "BCC keeps every recipient's email address private from the others — the standard choice for any list of people who don't already know each other."
+    : "Every recipient will see the full list of everyone else's email address. Only use this for a group who already know each other (e.g. a team).";
+  document.getElementById('batches').classList.remove('show');
+}
+
+function parseEmails(raw) {
+  const parts = raw.split(/[\n,;]+/).map(s => s.trim()).filter(Boolean);
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const valid = [];
+  const invalid = [];
+  const seen = new Set();
+  parts.forEach(p => {
+    if (emailRe.test(p)) {
+      const key = p.toLowerCase();
+      if (!seen.has(key)) { seen.add(key); valid.push(p); }
+    } else {
+      invalid.push(p);
+    }
+  });
+  return { valid, invalid };
+}
+
+document.getElementById('recipients').addEventListener('input', updateParseSummary);
+function updateParseSummary() {
+  const raw = document.getElementById('recipients').value;
+  const { valid, invalid } = parseEmails(raw);
+  parsedEmails = valid;
+  const summary = document.getElementById('parse-summary');
+  if (!raw.trim()) {
+    summary.classList.remove('show');
+    document.getElementById('generate-btn').disabled = true;
+    return;
+  }
+  summary.classList.add('show');
+  let html = valid.length + ' valid address' + (valid.length === 1 ? '' : 'es') + ' found';
+  if (invalid.length) {
+    html += ` — <span class="bad">${invalid.length} skipped (not a valid email): ${invalid.slice(0,5).map(esc).join(', ')}${invalid.length > 5 ? '…' : ''}</span>`;
+  }
+  summary.innerHTML = html;
+  document.getElementById('generate-btn').disabled = valid.length === 0;
+}
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function buildMailtoUrl(addresses, subject, body, m) {
+  const addrList = addresses.join(',');
+  const params = [];
+  if (m === 'bcc') {
+    params.push('bcc=' + encodeURIComponent(addrList));
+  }
+  if (subject) params.push('subject=' + encodeURIComponent(subject));
+  if (body) params.push('body=' + encodeURIComponent(body));
+  const query = params.length ? '?' + params.join('&') : '';
+  if (m === 'to') {
+    return 'mailto:' + encodeURIComponent(addrList).replace(/%2C/g, ',') + query;
+  }
+  return 'mailto:' + query;
+}
+
+function packBatches(addresses, subject, body, m) {
+  const batches = [];
+  let current = [];
+  for (const addr of addresses) {
+    const trial = current.concat([addr]);
+    const url = buildMailtoUrl(trial, subject, body, m);
+    if (url.length > MAX_URL_LEN && current.length > 0) {
+      batches.push(current);
+      current = [addr];
+    } else {
+      current = trial;
+    }
+  }
+  if (current.length) batches.push(current);
+  return batches;
+}
+
+function generateBatches() {
+  const subject = document.getElementById('subject').value;
+  const body = document.getElementById('body').value;
+  if (!parsedEmails.length) return;
+
+  const batches = packBatches(parsedEmails, subject, body, mode);
+  const container = document.getElementById('batches');
+  container.innerHTML = batches.map((batch, i) => {
+    const url = buildMailtoUrl(batch, subject, body, mode);
+    const len = url.length;
+    const lenClass = len > MAX_URL_LEN * 0.95 ? 'len-warn' : 'len-ok';
+    const addrText = batch.join(', ');
+    return `
+      <div class="batch-card">
+        <div class="batch-hd">
+          <div class="batch-title">BATCH ${i + 1} OF ${batches.length}</div>
+          <div class="batch-meta">${batch.length} recipient${batch.length === 1 ? '' : 's'}</div>
+        </div>
+        <div class="batch-actions">
+          <a class="open-btn" href="${url}" target="_blank" rel="noopener">✉ OPEN IN MAIL APP</a>
+          <button class="copy-btn" onclick="copyAddresses(${i})">📋 COPY ADDRESSES</button>
+        </div>
+        <div class="batch-len ${lenClass}">Link length: ${len} / ${MAX_URL_LEN} chars${len > MAX_URL_LEN * 0.95 ? ' — close to the safe limit, some mail apps may truncate' : ''}</div>
+        <textarea style="display:none" id="batch-addr-${i}">${esc(addrText)}</textarea>
+      </div>`;
+  }).join('');
+  container.classList.add('show');
+
+  if (batches.length > 1) {
+    container.insertAdjacentHTML('afterbegin',
+      `<div class="hint warn" style="margin-bottom:4px">Your list needed ${batches.length} separate batches to stay under a safe link length — open each one in turn, review it, and send.</div>`);
+  }
+}
+
+function copyAddresses(i) {
+  const ta = document.getElementById('batch-addr-' + i);
+  navigator.clipboard.writeText(ta.value).then(() => {
+    const btn = event.target;
+    const original = btn.textContent;
+    btn.textContent = '✓ COPIED';
+    setTimeout(() => { btn.textContent = original; }, 1500);
+  });
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js');
+  });
+}
+
+</script>
+</body>
+</html>

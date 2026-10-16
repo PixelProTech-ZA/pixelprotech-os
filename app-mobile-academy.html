@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="PixelProTech Mobile Academy Pro — Learn, Diagnose, Repair, Upgrade smartphones professionally.">
+<title>PixelProTech Mobile Academy Pro 2026</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mobile Academy">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAANhElEQVR4nO2d21MUVx7Hf2eGm9xRbl4QgSAXRYwGNZvNxgSjQaMiUTdb+7APW/sHpLZqX1K1W7Vv+7pVW6na962tjRpd0QR1Y+I1iZh4iwjiBSJRwDuIIgycfeiZoRm658z0r3uYhu/naaDPbXo+8zvn/LpnRnxcKyVJKYiElIKkkCRICimJ/A8Ch0hIScECISX1dUNK6honXVPB8v7eQ0r6607qy2Cchn0ZjkprwXBUoc9oSl+Gowr0FfbsTerL6Owpz0DwkNkZmFxS35fhqKb0FfbsTX6lDM6ehwBgAIEACwgEWEAgwAICARYQCLCAQIAFBAIsIBBgAYEAi4RYdnb/SWvw+gPR5PR84E9/ylx30UBXckpdQUT+6wahV2AoWFJ/KYBIn/gPdB1yTYB0zU5cytDV1Q0m2MhEyp+IQi5lEE2+aBCsq41QdynDYDA0afz+5xU4pL8U4+9FEAnpqax08pWcwHGB+p+2kv6lAjFhrL1d05oEieoK5zpyUCC/OvBmuhm/1u6cRvYL1D9wLjBZgDhivK1Dm/7EMjtNsnkR3Tdwzt4Gge3Itg4bW7MtAvUNntNWcyD+kW0dkiQttyEU2ROB+gYReNyHvGpDKLJBINjjXvgOcQWCPW6H6RBLoF7YMzO4et1yVesC9T6DPTOIHy06ZFGg3mffWasI4hdLDlkRCPbMWKJ3KGqBYM8MJ0qHcDsHYBGdQAg/s4JoglAUAsGeWUTEDmEKAywgEGARqUC9Q5i/ZhlXIprFEIEAi4gEuofwMysREQQhRCDAAgIBFhAIsFALhAXQbEZc6QxfABEIsIBAgAUEAiwgEGABgQALCARYQCDAAgIBFhAIsIBAgAUEAiwgEGABgQALCARYQCDAAgIBFhAIsIBAgAUEAiwgEGABgQALCARYQCDAAgIBFhAIsIBAgAUEAiwgEGABgQALCARYQCDAAgIBFhAIsIBAgAUEAixs+914DklJnv2fb4y8/PcX7//pL99Y7i47I/nA3zcnJXojLP/1pZ6PPjlpuTuNDcuK//G7+ggL77l4/Y8HvmL2GBtcGYFWr8xbvCjDcvXtb5dEbo9dNL1WHnnhzdUlqUlx8d5W4kqBiGjH+yXWKnq9YseGMnsHoyQnLeWtykWRl09LSmyoKnVuPDbiVoE2vl2UlppooeLbdYvy586xfTzh2bqqNMEb3anetbLCocHYi1sFSknxNry72ELFXZtesX0wSqKavzReX7JgYZb1aTpmuFUgImrcXCKEiKpKZUlOzdJ5Do3HjIr5OVUL5kZbSwjaWRu1drHHxQLNL0hd91pBVFV2v+eO8KOx0w2zmIsFIqKmLVEspedmJdevi2Ilawtej2frKotr9uKczLrFhfaOx3bcLdDq2rziokgXCo31pYkJsX6+v6pcOC89xXL13bWVNg7GCdwtEBE1bYlou5uY4Gmsn4aNcVMda9J8v7o0JSGuE0KuF+jdt4rS09T7+XfWLZqXbT0SWCM7LXl9dRGnhfTkpIYqixmv2OB6gVJSvA316v38zk2xTh4S0ZZXSxPDpn9Gx8bPd/eGb2RXbVwvpV0j0OjouNmhHar9/PLyudVlphvpUZ9py0yU89fJzp5/n2sPX+aNkoXzM9PsG5TNuEag02fv+XzS8ND8grTXw+7nd5rv3i903H/4ZJg7OCNeKcxetkiRc2q+dPPYte7hUV+YMh4hdq6I3yDkGoEePnp56uw9s6MfmC+lc3NS1q9dYHb0P0cVv8hnmR2q8PNi1Pdle/fQy9Gvr98JXxIC2cOBg7fNDq1akVdscn1+x0bT61C9D5+f+OFnewY3Ga9HbHtNsek73n7n+YiPiA5dvhW+ZOm8rNWLokuZxgw3CdTW/rij84nZ0abNBi9YYqJne73pLmbflzfGx42nRSa/rFyYm6G4ZNt86ab24HjHT89HRsMX3rUiThNCbhKIiA40d5kd2rjeYD//7htF2ZnJhuVfjoz99yvFW98yjXWKTd/g8MiJ6z3a4+FR37Fr3eHLb6suS06I9T1MkeAygb46dffR45eGh1KSvVvqi0P+ubPB9IVsOds9MDRi5+ACZKYmvbNckf451tY94hsL/tl85aaizZTkTUvjMSHkMoF8vvFDLaZv1sb3Sj26/XxtVW75kmyzwp8eu2Hv2IJsebUkSRUtmi9NCn4nO3sGhhU2747LpbTLBCKiQy1dPpPMzfz8VP1+fpd5+Pm+rf/mnaf2D46IiBrXKPZfj4eGz9y4q//P6Nj4kbau8LXeLC0qyIi7hJD7BHr0+OWJ0+b7+c1+aQpyU9+sM929f3rUqfBTWpBVszg3fJnPr9weGw99DyhnMa8QHyxfyhqcA7hPICL6rNl08bu6Jq+kKIOImjaVejzG6el794dO/3DX8BCfHarwQ0SHLhmM/+ytnx8NKVKau+JvFnOlQB2dT9o6HpsdbWooS07yvj9lQR1k3/9ujktHdu8eIbauVqR/+gaen+8yuP41Ni6/aFPsCpfm5qxckG99fA7gSoGIaP8h03O98VdFOxvKMtOTDI8Oj4w1f93l0Kh+UbkgPys1fJnDl26Z2XtQNYtR/C2l3SrQyTP3Hj4yDvgpyd4//KbarGLLqe5BZ3bvFNn8ddho/tJo7e7tHRgKX72xujz8Ff4YE0dDiQrf2PjBli6zo2arHyLac8Sp5XPGHHX656eHA5d77psdHZfy86uKWSx7TvKm8jhKCLlVICI61NIV5h4PQ1p/7L/984BD42lYtSRZ9YFXw+WznuYfI5nF4uiyhosFejIwcvx0dJdCnQs/RNS4Rn3PWpj5S+PCnf6eJ4Phy6wvLcpLU6y0YoaLBSKiz8yX0lO52z909oLi9j/LLMnPrF2SF75MZ9/j672mm8cgyiCU4PHET0Iorm/YVtJ56+mVaw9rqiL6rODeo07t3olo+1p1+CkvyOn82+9t6W5XTcUn5y7Y0hQTd0cgijgIvRj2HT7R5dAYPEJsU11+t5eqvHk1hYqAFxtcL9Dp7+71P3ihLPbFqe5nzxX33FhmbUVhQXasFyW7l8fFUtr1Ao2NyYMtpncqakhJe4+odzeWiWT5bDtNy5Ymeqb/5Zv+EfBpPtr9cmQsTIHWK33ddxVbG8ukpyRuqLXyPSFM5s5J2fDKktj3G8JMEGhgcOTLkz1hCuxtcTD8bFpVrEz/OMTumumfxWaCQES077DpUrqn99k3F53avVNk+y+HqC8rnpca6y/LCmGGCHSre+Di1QeGh/YdMb14yWdxXsarpdN2eTzR42mqnuaEkLvzQHo++vMZKaQkIkGBB5KIpCCK7muoomDb2mn+JsNf11T+8/zFaRzAzBEo9ghBW+vUAv11/7f/OnuNhJREUkgSJINaa4qT1P6UQhJpD0iSLMxM+/aj33rCf2o7P7c6b17bg4c2PaeomSFT2LSwZmnhgrmKm5RHfGOHLlr88FDv4NDpW+E2Bxof1lRZa98WIJB1tkcwfx2/eufpc+PPIUXCnkvXlWU+WFaRMH0JIQhkkdTkhA0r1emfz1pZn71vab/97KXi9rfc1DnvlJrev+s0EMgim1YVz1F9mfz9gRdnrrPu3h/2+Zrb1EmsD6fvsgYEssi2der0z4HzN8bYn73fc7FDWWZj2ZKclFh//5oGBLLCotz0VWXq9M/+VhvuX2u903v7keIzkIle73QlhCCQFbauLVV+xfnl7ge3+u358Ovey+ql9HTNYuLjWhnIQ0gpAokKXUbu7vPvSEgSRKTLZAiS2hkMpOy01AX50xskyf+nDNYVFGgzmOLTkiJSa8pf0qBuSPpEVzcwKhIUMuyQRGKwBQq0LAOjIppIvUwacPD/IvA0dQUmcjk00dTEgEnXqT+7E3UeaPJ/AhW15xU4pCsZeDlEsK8pAw7UnTjtgTOmnVKpP42BV3N8Rblu2LqzJ6QUiECABwQCLCAQYAGBAAsIBFhAIMACAgEWEAiwgECABQQCLCAQYAGBAAsIBFhAIMACAgEWEAiwgECABQQCLCAQYAGBAAsIBFhAIMACAgEWEAiwgECABQQCLCAQYAGBAAsIBFhAIMACAgEWEAiwgECABQQCLCAQYAGBAAsIBFioBZqftjYG4wDxiawpD18AEQiwgECABQQCLCISCMug2YmsUf/+BiIQYBGpQIUIQrONCMIPIQIBJhAIsIhCoMJ0zGKzhuWR/nxddBEIDs0KIraHMIUBJlELhCA0w4km/JC1CASHZixR2kOWpzA4NAOJ3h7irIEK09dYrgviDkv2EHMRXZgBh2YEy6z/5jx3F1YAh1yOWFbBqW7DNh4OuRemPWRXHggOuRG+PUSUwG9CoyBjjRSyb/CcXQ0C5xDVFSSktKMpmzPRBZkIRfGOqLYh8ASxLQIFyc9co9ndN4BoFEd4qiskkV2BJ4j9AgXJz6ojAY2mH09VJQmSZK85fhwUSCM/q04KIiGloP4nrU53BzS8lZXB0+6QOhqOC6QnL7tOe0r+Jyak9s6QgkiQ1B8iScECoSV1dYU/Jgf+1DVFISW1FkJK6vsKKanvy3BUgb4MRqX1PqUvmvKMIjgDwUNmZ2ByyYm+YgNu5wAsIBBgAYEACwgEWEAgwAICARYQCLCAQIAFBAIs/g96b0cN6m4wsgAAAABJRU5ErkJggg=="/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;800&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --surface: #0f0f1a;
+  --card: #12121f;
+  --card2: #1a1a2e;
+  --purple: #7b2fff;
+  --purple-dim: rgba(123,47,255,0.15);
+  --purple-glow: rgba(123,47,255,0.3);
+  --teal: #00d4aa;
+  --teal-dim: rgba(0,212,170,0.12);
+  --teal-glow: rgba(0,212,170,0.25);
+  --white: #ffffff;
+  --text-muted: rgba(255,255,255,0.45);
+  --text-dim: rgba(255,255,255,0.25);
+  --border: rgba(255,255,255,0.07);
+  --border-p: rgba(123,47,255,0.3);
+  --border-t: rgba(0,212,170,0.25);
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'Orbitron', sans-serif;
+  --body: 'Exo 2', sans-serif;
+  --radius: 12px;
+  --radius-lg: 16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--body);font-size:15px;line-height:1.6;overflow-x:hidden;min-height:100vh}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--purple);border-radius:2px}
+
+/* GRID NOISE BACKGROUND */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(123,47,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(123,47,255,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+
+/* TOP STATUS BAR */
+.status-bar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.97);border-bottom:1px solid var(--border);padding:6px 16px;display:flex;align-items:center;gap:12px;font-family:var(--mono);font-size:9px;color:var(--teal);letter-spacing:2px;backdrop-filter:blur(12px)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+.status-bar span{color:var(--text-muted)}
+.status-bar .ml{margin-left:auto;color:var(--purple)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* NAV */
+nav{position:fixed;bottom:0;left:0;right:0;z-index:100;background:rgba(10,10,15,0.97);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding:8px 4px 10px;backdrop-filter:blur(12px)}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 10px;cursor:pointer;border-radius:8px;transition:.2s;font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--text-muted);border:1px solid transparent;min-width:52px;text-align:center}
+.nav-item svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.nav-item.active{color:var(--teal);border-color:var(--border-t);background:var(--teal-dim)}
+.nav-item:hover:not(.active){color:var(--white);background:rgba(255,255,255,0.04)}
+
+/* MAIN */
+main{padding-top:36px;padding-bottom:80px;position:relative;z-index:1}
+.page{display:none;animation:fadeIn .3s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* HERO */
+.hero{padding:32px 16px 24px;text-align:center}
+.hero-tag{font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--teal);margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:8px}
+.hero-tag::before,.hero-tag::after{content:'';flex:1;max-width:40px;height:1px;background:var(--border-t)}
+.hero h1{font-family:var(--display);font-size:clamp(20px,6vw,32px);font-weight:800;line-height:1.1;margin-bottom:8px;letter-spacing:1px}
+.hero h1 span{background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:13px;color:var(--text-muted);margin-bottom:20px;font-weight:300;letter-spacing:.5px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+.badge{font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:5px 10px;border-radius:4px;border:1px solid;text-transform:uppercase}
+.badge-p{border-color:var(--border-p);color:var(--purple);background:var(--purple-dim)}
+.badge-t{border-color:var(--border-t);color:var(--teal);background:var(--teal-dim)}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--purple),#5a1fd1);color:#fff;font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:2px;padding:12px 24px;border-radius:var(--radius);border:none;cursor:pointer;transition:.2s;text-transform:uppercase}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px var(--purple-glow)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--teal);font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:2px;padding:11px 24px;border-radius:var(--radius);border:1px solid var(--border-t);cursor:pointer;transition:.2s;text-transform:uppercase}
+.btn-secondary:hover{background:var(--teal-dim)}
+
+/* CARDS */
+.section{padding:0 16px;margin-bottom:32px}
+.section-label{font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--purple);margin-bottom:16px;display:flex;align-items:center;gap:10px;text-transform:uppercase}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.section-title{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:4px;letter-spacing:.5px}
+.section-desc{font-size:13px;color:var(--text-muted);margin-bottom:20px;font-weight:300}
+
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;transition:.2s;cursor:pointer;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--teal));opacity:0;transition:.2s}
+.card:hover{border-color:var(--border-p);transform:translateY(-2px)}
+.card:hover::before{opacity:1}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px}
+.card-icon-p{background:var(--purple-dim);border:1px solid var(--border-p)}
+.card-icon-t{background:var(--teal-dim);border:1px solid var(--border-t)}
+.card-title{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:6px}
+.card-text{font-size:12px;color:var(--text-muted);line-height:1.5;font-weight:300}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.grid-1{display:grid;grid-template-columns:1fr;gap:12px}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:0 16px;margin-bottom:28px}
+.stat-box{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 10px;text-align:center}
+.stat-val{font-family:var(--display);font-size:20px;font-weight:800;background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block}
+.stat-label{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--text-muted);margin-top:2px;display:block}
+
+/* PROGRESS BAR */
+.progress-bar{height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--teal));border-radius:2px;transition:width .5s ease}
+
+/* TRAINING PATH */
+.path-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:10px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:.2s;position:relative}
+.path-item:hover{border-color:var(--border-p);background:var(--card2)}
+.path-num{font-family:var(--display);font-size:22px;font-weight:800;color:var(--border);min-width:36px}
+.path-info{flex:1}
+.path-info h3{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:3px}
+.path-info p{font-size:11px;color:var(--text-muted);font-weight:300}
+.path-badge{font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:4px;white-space:nowrap}
+.level-1{background:rgba(0,212,170,0.1);color:var(--teal);border:1px solid var(--border-t)}
+.level-2{background:rgba(0,180,150,0.1);color:#00b496;border:1px solid rgba(0,180,150,0.25)}
+.level-3{background:rgba(80,100,255,0.1);color:#8090ff;border:1px solid rgba(80,100,255,0.25)}
+.level-4{background:rgba(123,47,255,0.15);color:#a060ff;border:1px solid rgba(160,96,255,0.3)}
+.level-5{background:rgba(255,80,120,0.1);color:#ff6090;border:1px solid rgba(255,80,120,0.25)}
+
+/* SYMPTOM PICKER */
+.symptom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 16px;margin-bottom:16px}
+.symptom-btn{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px 12px;cursor:pointer;transition:.2s;text-align:left;display:flex;align-items:center;gap:10px}
+.symptom-btn:hover,.symptom-btn.selected{border-color:var(--border-p);background:var(--purple-dim)}
+.symptom-btn.selected{border-color:var(--purple)}
+.symptom-icon{font-size:20px;min-width:24px}
+.symptom-label{font-size:12px;font-weight:500;color:var(--white)}
+.symptom-sub{font-size:10px;color:var(--text-muted);margin-top:2px;font-weight:300}
+
+/* DIAGNOSIS RESULT */
+.diag-result{background:var(--card2);border:1px solid var(--border-t);border-radius:var(--radius-lg);padding:16px;margin:0 16px 20px;display:none}
+.diag-result.show{display:block;animation:fadeIn .4s ease}
+.diag-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.diag-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 1.5s infinite}
+.diag-label{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--teal)}
+.diag-content{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.7;font-weight:300}
+.diag-content strong{color:var(--teal);font-weight:500}
+.diag-typing::after{content:'▊';animation:blink .8s infinite;color:var(--teal)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* DIFFICULTY METER */
+.diff-row{display:flex;align-items:center;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.diff-label{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--text-muted);min-width:70px}
+.diff-dots{display:flex;gap:4px}
+.diff-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.1)}
+.diff-dot.fill-p{background:var(--purple)}
+.diff-dot.fill-t{background:var(--teal)}
+.diff-dot.fill-w{background:#ffaa00}
+.diff-dot.fill-r{background:#ff4444}
+
+/* QUIZ */
+.quiz-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin:0 16px}
+.quiz-q{font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:.3px;margin-bottom:20px;line-height:1.4}
+.quiz-opts{display:flex;flex-direction:column;gap:10px}
+.quiz-opt{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;cursor:pointer;transition:.2s;font-size:13px;text-align:left}
+.quiz-opt:hover{border-color:var(--border-p);background:var(--purple-dim)}
+.quiz-opt.correct{border-color:var(--teal);background:var(--teal-dim);color:var(--teal)}
+.quiz-opt.wrong{border-color:#ff4444;background:rgba(255,68,68,0.1);color:#ff6666}
+.quiz-score{font-family:var(--display);font-size:32px;font-weight:800;text-align:center;margin:20px 0;background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* COMPONENT VIEWER */
+.comp-list{padding:0 16px;display:flex;flex-direction:column;gap:8px}
+.comp-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;cursor:pointer;transition:.2s}
+.comp-item:hover{border-color:var(--border-t);background:var(--card2)}
+.comp-item-head{display:flex;align-items:center;gap:10px}
+.comp-item-icon{font-size:18px;min-width:28px}
+.comp-item-name{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.3px;flex:1}
+.comp-item-arrow{color:var(--text-dim);font-size:12px;transition:.2s}
+.comp-item:hover .comp-item-arrow{color:var(--teal);transform:translateX(4px)}
+.comp-detail{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.comp-detail.open{display:block;animation:fadeIn .2s ease}
+.comp-detail p{font-size:12px;color:var(--text-muted);line-height:1.6;margin-bottom:8px;font-weight:300}
+.comp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.comp-tag{font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:4px;background:var(--purple-dim);border:1px solid var(--border-p);color:var(--purple)}
+
+/* TOOL CARDS */
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;cursor:pointer;transition:.2s}
+.tool-card:hover{border-color:var(--border-t)}
+.tool-card-icon{font-size:28px;margin-bottom:10px}
+.tool-card-name{font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:6px}
+.tool-card-desc{font-size:11px;color:var(--text-muted);line-height:1.5;font-weight:300}
+
+/* CASE STUDY */
+.case-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px;cursor:pointer;transition:.2s}
+.case-card:hover{border-color:var(--border-p)}
+.case-tag{font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:2px 8px;border-radius:4px;display:inline-block;margin-bottom:8px}
+.case-title{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.3px;margin-bottom:6px}
+.case-meta{font-size:11px;color:var(--text-muted);display:flex;gap:12px;font-weight:300}
+.case-expand{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.case-expand.open{display:block;animation:fadeIn .2s ease}
+.case-section{margin-bottom:10px}
+.case-section-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--teal);margin-bottom:4px}
+.case-section-text{font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5;font-weight:300}
+
+/* SEARCH */
+.search-wrap{padding:0 16px;margin-bottom:16px}
+.search-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px 12px 40px;color:var(--white);font-family:var(--body);font-size:14px;outline:none;transition:.2s;position:relative}
+.search-input:focus{border-color:var(--border-p)}
+.search-wrap-inner{position:relative}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:16px;pointer-events:none}
+.search-results{display:none;flex-direction:column;gap:8px;margin-top:10px}
+.search-results.show{display:flex}
+.search-result-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;cursor:pointer;transition:.2s}
+.search-result-item:hover{border-color:var(--border-t)}
+.result-cat{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--teal);margin-bottom:4px}
+.result-title{font-size:13px;font-weight:500}
+
+/* DASHBOARD */
+.dash-grid{padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.dash-metric{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;text-align:center}
+.dash-val{font-family:var(--display);font-size:24px;font-weight:800;display:block;margin-bottom:4px}
+.dash-lbl{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--text-muted)}
+.dash-p{color:var(--purple)}
+.dash-t{color:var(--teal)}
+.cert-preview{margin:0 16px;background:var(--card2);border:2px solid var(--purple);border-radius:var(--radius-lg);padding:24px;text-align:center;position:relative;overflow:hidden}
+.cert-preview::before{content:'';position:absolute;top:-20px;right:-20px;width:100px;height:100px;background:var(--purple-dim);border-radius:50%;filter:blur(30px)}
+.cert-preview::after{content:'';position:absolute;bottom:-20px;left:-20px;width:80px;height:80px;background:var(--teal-dim);border-radius:50%;filter:blur(20px)}
+.cert-title{font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:3px;color:var(--text-muted);margin-bottom:8px;text-transform:uppercase}
+.cert-name{font-family:var(--display);font-size:18px;font-weight:800;background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.cert-course{font-size:13px;color:var(--text-muted);font-weight:300;margin-bottom:16px}
+.cert-seal{font-size:36px;display:block;margin-bottom:8px}
+.cert-issued{font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:1px}
+.whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:1px;padding:14px 20px;border-radius:var(--radius);border:none;cursor:pointer;width:100%;margin:0 0 10px;transition:.2s;text-transform:uppercase}
+.whatsapp-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,0.3)}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin:0 16px 16px;text-align:center}
+
+/* SCROLLABLE HORIZONTAL */
+.h-scroll{display:flex;gap:10px;overflow-x:auto;padding:0 16px;margin-bottom:4px;scrollbar-width:none}
+.h-scroll::-webkit-scrollbar{display:none}
+.h-pill{white-space:nowrap;font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:6px 12px;border-radius:20px;cursor:pointer;transition:.2s;border:1px solid var(--border);color:var(--text-muted);flex-shrink:0}
+.h-pill.active,.h-pill:hover{border-color:var(--border-t);color:var(--teal);background:var(--teal-dim)}
+
+/* LESSON VIEW */
+.lesson-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.92);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .3s ease}
+.lesson-modal.open{transform:translateY(0)}
+.lesson-modal-head{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 16px 12px;display:flex;align-items:center;gap:12px}
+.lesson-close{background:none;border:none;color:var(--text-muted);font-size:20px;cursor:pointer;padding:4px;transition:.2s}
+.lesson-close:hover{color:var(--white)}
+.lesson-modal-title{font-family:var(--display);font-size:14px;font-weight:600;flex:1;letter-spacing:.3px}
+.lesson-body{flex:1;overflow-y:auto;padding:20px 16px}
+.lesson-section{margin-bottom:20px}
+.lesson-section h3{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.3px;color:var(--teal);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border-t)}
+.lesson-section p{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:8px;font-weight:300}
+.lesson-tip{background:var(--purple-dim);border:1px solid var(--border-p);border-radius:var(--radius);padding:12px;margin-top:10px}
+.lesson-tip-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--purple);margin-bottom:4px}
+.lesson-tip p{font-size:12px;color:rgba(255,255,255,0.75);margin:0;font-weight:300}
+.step-list{display:flex;flex-direction:column;gap:10px}
+.step-item{display:flex;gap:12px;align-items:flex-start}
+.step-num{width:24px;height:24px;border-radius:50%;background:var(--purple-dim);border:1px solid var(--border-p);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;color:var(--purple);flex-shrink:0;margin-top:1px}
+.step-text{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;font-weight:300}
+.lesson-footer{padding:12px 16px;background:var(--surface);border-top:1px solid var(--border)}
+
+/* WATERMARK */
+.watermark{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--text-dim);text-align:center;padding:8px 0 0;margin-bottom:20px}
+</style>
+</head>
+<body>
+
+<!-- STATUS BAR -->
+<div class="status-bar">
+  <div class="status-dot"></div>
+  ACADEMY ONLINE
+  <span>·</span>
+  <span>PPT-MOBILE-2026</span>
+  <div class="ml">065 197 1461</div>
+</div>
+
+<!-- MAIN -->
+<main>
+
+<!-- HOME PAGE -->
+<div class="page active" id="page-home">
+  <div class="hero">
+    <div class="hero-tag">PIXELPROTECH MOBILE ACADEMY PRO</div>
+    <h1>Learn.<br><span>Diagnose.</span><br>Repair.</h1>
+    <p class="hero-sub">Professional smartphone technician training<br>from beginner to master level.</p>
+    <div class="hero-badges">
+      <div class="badge badge-t">Free Platform</div>
+      <div class="badge badge-p">AI Diagnosis</div>
+      <div class="badge badge-t">Offline Ready</div>
+      <div class="badge badge-p">SA Based</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn-primary" onclick="navigate('training')">🎓 Start Training</button>
+      <button class="btn-secondary" onclick="navigate('diagnosis')">⚡ Diagnose Fault</button>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><span class="stat-val" id="stat-lessons">73</span><span class="stat-label">LESSONS</span></div>
+    <div class="stat-box"><span class="stat-val" id="stat-cases">48</span><span class="stat-label">CASE STUDIES</span></div>
+    <div class="stat-box"><span class="stat-val" id="stat-tools">24</span><span class="stat-label">TOOLS COVERED</span></div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">// QUICK ACCESS</div>
+    <div class="grid-2">
+      <div class="card" onclick="navigate('diagnosis')">
+        <div class="card-icon card-icon-p">⚡</div>
+        <div class="card-title">Fault Diagnosis</div>
+        <div class="card-text">AI-powered symptom analysis. Get instant technician-grade diagnosis.</div>
+      </div>
+      <div class="card" onclick="navigate('components')">
+        <div class="card-icon card-icon-t">🔬</div>
+        <div class="card-title">Component Vault</div>
+        <div class="card-text">Learn every part inside a smartphone. Purpose, failure signs, fixes.</div>
+      </div>
+      <div class="card" onclick="navigate('training')">
+        <div class="card-icon card-icon-p">🎓</div>
+        <div class="card-title">Training Paths</div>
+        <div class="card-text">5 levels from beginner to master. Track your progress as you go.</div>
+      </div>
+      <div class="card" onclick="navigate('tools')">
+        <div class="card-icon card-icon-t">🔧</div>
+        <div class="card-title">Tool Academy</div>
+        <div class="card-text">Learn every repair tool. Safe use, care, and pro workflows.</div>
+      </div>
+      <div class="card" onclick="navigate('cases')">
+        <div class="card-icon card-icon-p">📁</div>
+        <div class="card-title">Case Studies</div>
+        <div class="card-text">Real repair scenarios. Symptoms, investigation, diagnosis, resolution.</div>
+      </div>
+      <div class="card" onclick="navigate('dashboard')">
+        <div class="card-icon card-icon-t">📊</div>
+        <div class="card-title">My Dashboard</div>
+        <div class="card-text">Track courses, scores, certifications and your technician growth.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">// TODAY'S TIP</div>
+    <div class="card" style="border-color:var(--border-t)">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--teal);margin-bottom:8px">TECHNICIAN TIP · DAILY</div>
+      <div id="daily-tip" style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;font-weight:300">Always use an ESD wrist strap when handling motherboards. Static discharge invisible to the naked eye can permanently damage sensitive ICs and cause ghost faults that appear weeks later.</div>
+    </div>
+  </div>
+
+  <div class="watermark">[ SYS ] PIXELPROTECH SOLUTIONS · JHB · PTA · GAUTENG</div>
+</div>
+
+<!-- DIAGNOSIS PAGE -->
+<div class="page" id="page-diagnosis">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// FAULT DIAGNOSIS CENTER</div>
+    <div class="section-title">AI Diagnosis Engine</div>
+    <p class="section-desc">Select a symptom category. Our AI generates a technician-grade fault analysis.</p>
+  </div>
+
+  <div class="h-scroll" id="symptom-cats" style="margin-bottom:16px">
+    <div class="h-pill active" onclick="filterSymptoms('all',this)">All</div>
+    <div class="h-pill" onclick="filterSymptoms('power',this)">Power</div>
+    <div class="h-pill" onclick="filterSymptoms('display',this)">Display</div>
+    <div class="h-pill" onclick="filterSymptoms('audio',this)">Audio</div>
+    <div class="h-pill" onclick="filterSymptoms('connectivity',this)">Connectivity</div>
+    <div class="h-pill" onclick="filterSymptoms('camera',this)">Camera</div>
+    <div class="h-pill" onclick="filterSymptoms('software',this)">Software</div>
+    <div class="h-pill" onclick="filterSymptoms('battery',this)">Battery</div>
+    <div class="h-pill" onclick="filterSymptoms('water',this)">Water Damage</div>
+  </div>
+
+  <div class="symptom-grid" id="symptom-grid"></div>
+
+  <div style="padding:0 16px 12px">
+    <div id="selected-symptom-label" style="font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--text-muted);margin-bottom:10px;display:none"></div>
+    <button class="btn-primary" id="run-diagnosis-btn" onclick="runDiagnosis()" style="width:100%;justify-content:center;display:none">
+      ⚡ Run AI Diagnosis
+    </button>
+  </div>
+
+  <div class="diag-result" id="diag-result">
+    <div class="diag-header">
+      <div class="diag-dot"></div>
+      <div class="diag-label">AI DIAGNOSIS ACTIVE</div>
+    </div>
+    <div class="diag-content" id="diag-content"></div>
+    <div class="diff-row">
+      <div class="diff-label">DIFFICULTY</div>
+      <div class="diff-dots" id="diff-dots"></div>
+      <div style="margin-left:auto;font-family:var(--mono);font-size:9px;color:var(--text-muted)" id="diff-text"></div>
+    </div>
+    <div class="diff-row" style="border:none;padding-top:8px;margin-top:0">
+      <div class="diff-label">TOOLS NEEDED</div>
+      <div id="tools-needed" style="font-size:12px;color:var(--teal);font-weight:300"></div>
+    </div>
+  </div>
+
+  <div style="padding:0 16px 20px">
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text-dim);margin-bottom:8px">// NEED HELP NOW?</div>
+    <button class="whatsapp-btn" onclick="window.open('https://wa.me/27651971461?text=Hi+PixelProTech,+I+need+help+with+a+phone+repair','_blank')">
+      📱 WhatsApp PixelProTech — 065 197 1461
+    </button>
+  </div>
+</div>
+
+<!-- COMPONENTS PAGE -->
+<div class="page" id="page-components">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// COMPONENT KNOWLEDGE VAULT</div>
+    <div class="section-title">Learn Every Part</div>
+    <p class="section-desc">Tap any component to see purpose, failure symptoms, and diagnostic methods.</p>
+  </div>
+  <div class="comp-list" id="comp-list"></div>
+</div>
+
+<!-- TRAINING PAGE -->
+<div class="page" id="page-training">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// TECHNICIAN TRAINING PATHS</div>
+    <div class="section-title">Your Learning Journey</div>
+    <p class="section-desc">Progress from zero to Master Mobile Technician. Each path unlocks the next.</p>
+  </div>
+
+  <div style="padding:0 16px;margin-bottom:20px" id="path-list"></div>
+
+  <div class="section">
+    <div class="section-label">// SOFTWARE ACADEMY</div>
+    <div class="grid-2" id="software-cards"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">// BATTERY HEALTH ACADEMY</div>
+    <div class="card" id="battery-card" onclick="openLesson('battery')" style="border-color:var(--border-t)">
+      <div class="card-icon card-icon-t">🔋</div>
+      <div class="card-title">Battery Health Mastery</div>
+      <div class="card-text">Learn cycles, health indicators, swelling risks, testing, and maintenance. Essential knowledge for every technician.</div>
+      <div class="progress-bar" style="margin-top:12px"><div class="progress-fill" style="width:0%" id="battery-progress"></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">// WATER DAMAGE</div>
+    <div class="card" onclick="openLesson('water')" style="border-color:var(--border-p)">
+      <div class="card-icon card-icon-p">💧</div>
+      <div class="card-title">Water Damage Recovery</div>
+      <div class="card-text">Corrosion basics, cleaning procedures, inspection methods, drying myths, and recovery assessment.</div>
+      <div class="progress-bar" style="margin-top:12px"><div class="progress-fill" style="width:0%" id="water-progress"></div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">// BUSINESS ACADEMY</div>
+    <div class="grid-2">
+      <div class="card" onclick="openLesson('business')">
+        <div class="card-icon card-icon-t">🏪</div>
+        <div class="card-title">Workshop Setup</div>
+        <div class="card-text">Inventory, pricing, marketing, record keeping, and customer retention strategies.</div>
+      </div>
+      <div class="card" onclick="openLesson('customer')">
+        <div class="card-icon card-icon-p">🤝</div>
+        <div class="card-title">Customer Service</div>
+        <div class="card-text">Intake procedures, quotations, communication, warranties, and professional ethics.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOOLS PAGE -->
+<div class="page" id="page-tools">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// TOOL ACADEMY</div>
+    <div class="section-title">Know Your Tools</div>
+    <p class="section-desc">Learn safe use, care, and pro workflows for every repair tool.</p>
+  </div>
+  <div style="padding:0 16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px" id="tools-grid"></div>
+</div>
+
+<!-- CASE STUDIES PAGE -->
+<div class="page" id="page-cases">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// REPAIR CASE STUDY LIBRARY</div>
+    <div class="section-title">Real Repair Scenarios</div>
+    <p class="section-desc">Study real-world cases. Understand symptoms, investigation, and resolution.</p>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-wrap-inner">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" placeholder="Search cases, symptoms, devices..." oninput="searchCases(this.value)">
+    </div>
+    <div class="search-results" id="case-search-results"></div>
+  </div>
+
+  <div style="padding:0 16px" id="cases-list"></div>
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div class="page" id="page-dashboard">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// MY DASHBOARD</div>
+    <div class="section-title">Technician Progress</div>
+    <p class="section-desc">Track your growth, scores, and certifications.</p>
+  </div>
+
+  <div class="dash-grid">
+    <div class="dash-metric">
+      <span class="stat-val dash-p" id="d-lessons">0</span>
+      <span class="dash-lbl">LESSONS DONE</span>
+    </div>
+    <div class="dash-metric">
+      <span class="stat-val dash-t" id="d-quizzes">0</span>
+      <span class="dash-lbl">QUIZZES PASSED</span>
+    </div>
+    <div class="dash-metric">
+      <span class="stat-val dash-p" id="d-certs">0</span>
+      <span class="dash-lbl">CERTIFICATES</span>
+    </div>
+    <div class="dash-metric">
+      <span class="stat-val dash-t" id="d-hrs">0h</span>
+      <span class="dash-lbl">LEARNING TIME</span>
+    </div>
+  </div>
+
+  <div style="padding:0 16px;margin-bottom:20px">
+    <div class="section-label" style="margin-bottom:12px">// CURRENT LEVEL</div>
+    <div class="path-item" style="cursor:default;border-color:var(--border-p)">
+      <div class="path-num" style="color:var(--purple);font-size:28px" id="d-level-icon">01</div>
+      <div class="path-info">
+        <h3 id="d-level-name">Beginner Mobile Technician</h3>
+        <p id="d-level-desc">Complete 5 lessons to advance to Junior level</p>
+        <div class="progress-bar" style="margin-top:8px"><div class="progress-fill" id="d-level-bar" style="width:0%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding:0 16px;margin-bottom:20px">
+    <div class="section-label" style="margin-bottom:12px">// NEXT CERTIFICATE</div>
+    <div class="cert-preview">
+      <div class="cert-title">PixelProTech Mobile Academy</div>
+      <span class="cert-seal">🏆</span>
+      <div class="cert-name" id="cert-name">Your Name</div>
+      <div class="cert-course">Certificate of Completion<br>Beginner Mobile Technician</div>
+      <div class="cert-issued">Issued by PixelProTech Solutions · 065 197 1461</div>
+    </div>
+  </div>
+
+  <div style="padding:0 16px;margin-bottom:20px">
+    <div class="section-label" style="margin-bottom:12px">// SUPPORT</div>
+    <button class="whatsapp-btn" onclick="window.open('https://wa.me/27651971461','_blank')">
+      📱 Contact PixelProTech — 065 197 1461
+    </button>
+    <div class="contact-card">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--teal);margin-bottom:8px">PIXELPROTECH SOLUTIONS</div>
+      <div style="font-size:13px;color:var(--text-muted);font-weight:300;margin-bottom:4px">📧 pixelprotechsolutions@gmail.com</div>
+      <div style="font-size:13px;color:var(--text-muted);font-weight:300;margin-bottom:4px">📞 065 197 1461</div>
+      <div style="font-size:12px;color:var(--text-dim);font-weight:300">Johannesburg · Pretoria · Gauteng</div>
+    </div>
+  </div>
+</div>
+
+<!-- QUIZ PAGE -->
+<div class="page" id="page-quiz">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// QUIZ CENTER</div>
+    <div class="section-title" id="quiz-title">Quiz</div>
+    <p class="section-desc" id="quiz-desc">Test your knowledge</p>
+  </div>
+  <div class="quiz-card" id="quiz-container"></div>
+</div>
+
+<!-- EXAM PAGE -->
+<div class="page" id="page-exam">
+  <div style="padding:20px 16px 8px">
+    <div class="section-label">// MEGA EXAM CENTER</div>
+    <div class="section-title">Full Technician Exam</div>
+    <p class="section-desc">All topics. No hints. Get it right or hear about it. 🔊</p>
+  </div>
+
+  <!-- EXAM LOBBY -->
+  <div id="exam-lobby" style="padding:0 16px">
+    <div style="background:var(--card2);border:1px solid var(--border-p);border-radius:var(--radius-lg);padding:20px;margin-bottom:16px;text-align:center">
+      <div style="font-size:40px;margin-bottom:12px">🎓</div>
+      <div style="font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:1px;margin-bottom:8px">ARE YOU READY?</div>
+      <div style="font-size:13px;color:var(--text-muted);font-weight:300;line-height:1.6;margin-bottom:20px">
+        This exam pulls <strong style="color:var(--teal)">ALL questions</strong> from every module — shuffled and randomised.<br>
+        Wrong answer = <strong style="color:#ff4444">KRIIIIIII 🔴</strong> + the correct answer shown.<br>
+        Right answer = <strong style="color:var(--teal)">TOOT 🟢</strong><br>
+        Pass mark: <strong style="color:var(--purple)">70%</strong>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <button class="btn-primary" onclick="startExam('full')" style="width:100%;justify-content:center;font-size:13px">
+          🔥 Full Exam — All Topics
+        </button>
+        <button class="btn-secondary" onclick="startExam('power')" style="width:100%;justify-content:center;font-size:12px">
+          ⚡ Power & Battery Only
+        </button>
+        <button class="btn-secondary" onclick="startExam('hardware')" style="width:100%;justify-content:center;font-size:12px">
+          🔧 Hardware Only
+        </button>
+        <button class="btn-secondary" onclick="startExam('business')" style="width:100%;justify-content:center;font-size:12px">
+          🏪 Business & Customer
+        </button>
+      </div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:20px">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--teal);margin-bottom:10px">// EXAM HISTORY</div>
+      <div id="exam-history-list">
+        <div style="font-size:12px;color:var(--text-dim);font-weight:300;text-align:center;padding:12px 0">No exams taken yet. Go prove yourself.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAM RUNNER -->
+  <div id="exam-runner" style="display:none;padding:0 16px">
+    <!-- Progress -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--text-muted)" id="exam-progress-label">Q 1/20</div>
+      <div style="flex:1;height:3px;background:rgba(255,255,255,0.08);border-radius:2px;overflow:hidden">
+        <div id="exam-progress-bar" style="height:100%;background:linear-gradient(90deg,var(--purple),var(--teal));border-radius:2px;transition:width .4s ease;width:0%"></div>
+      </div>
+      <div style="font-family:var(--display);font-size:13px;font-weight:700" id="exam-score-live">0</div>
+    </div>
+
+    <!-- Streak -->
+    <div style="text-align:center;margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--purple)" id="exam-streak"></div>
+
+    <!-- Question card -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;margin-bottom:14px" id="exam-qcard">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text-muted);margin-bottom:6px" id="exam-topic-label">TOPIC</div>
+      <div style="font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:.3px;line-height:1.4;margin-bottom:20px" id="exam-question">Question text here</div>
+      <div style="display:flex;flex-direction:column;gap:10px" id="exam-opts"></div>
+    </div>
+
+    <!-- Feedback box -->
+    <div id="exam-feedback" style="display:none;border-radius:var(--radius);padding:14px 16px;margin-bottom:14px">
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:6px" id="exam-feedback-head"></div>
+      <div style="font-size:13px;line-height:1.6;font-weight:300" id="exam-feedback-body"></div>
+      <button onclick="nextExamQuestion()" style="margin-top:12px;width:100%;background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:var(--radius);padding:11px;color:var(--white);font-family:var(--display);font-size:11px;font-weight:600;letter-spacing:2px;cursor:pointer">NEXT →</button>
+    </div>
+  </div>
+
+  <!-- EXAM RESULTS -->
+  <div id="exam-results" style="display:none;padding:0 16px">
+    <div style="text-align:center;padding:24px 0 20px">
+      <div style="font-size:52px;margin-bottom:12px" id="result-emoji">🏆</div>
+      <div style="font-family:var(--mono);font-size:11px;letter-spacing:3px;margin-bottom:8px" id="result-status-label">PASSED</div>
+      <div style="font-family:var(--display);font-size:48px;font-weight:800;background:linear-gradient(90deg,var(--purple),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px" id="result-pct">85%</div>
+      <div style="font-size:13px;color:var(--text-muted);font-weight:300;margin-bottom:24px" id="result-breakdown">17 correct out of 20</div>
+    </div>
+
+    <div id="result-review" style="margin-bottom:20px"></div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button class="btn-primary" onclick="startExam('full')" style="width:100%;justify-content:center">🔁 Retry Full Exam</button>
+      <button class="btn-secondary" onclick="showExamLobby()" style="width:100%;justify-content:center">← Back to Exam Menu</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav>
+  <div class="nav-item active" onclick="navigate('home')" id="nav-home">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    HOME
+  </div>
+  <div class="nav-item" onclick="navigate('diagnosis')" id="nav-diagnosis">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    DIAGNOSE
+  </div>
+  <div class="nav-item" onclick="navigate('training')" id="nav-training">
+    <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    LEARN
+  </div>
+  <div class="nav-item" onclick="navigate('cases')" id="nav-cases">
+    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    CASES
+  </div>
+  <div class="nav-item" onclick="navigate('exam')" id="nav-exam">
+    <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    EXAM
+  </div>
+  <div class="nav-item" onclick="navigate('dashboard')" id="nav-dashboard">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    STATS
+  </div>
+</nav>
+
+<!-- LESSON MODAL -->
+<div class="lesson-modal" id="lesson-modal">
+  <div class="lesson-modal-head">
+    <button class="lesson-close" onclick="closeLesson()">✕</button>
+    <div class="lesson-modal-title" id="lesson-modal-title">Lesson</div>
+    <button class="btn-secondary" style="padding:6px 12px;font-size:10px" onclick="startQuiz()">QUIZ ▶</button>
+  </div>
+  <div class="lesson-body" id="lesson-body"></div>
+  <div class="lesson-footer">
+    <button class="btn-primary" style="width:100%;justify-content:center" onclick="markLessonComplete()">✓ Mark Complete</button>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+let state = JSON.parse(localStorage.getItem('ppt_academy') || '{"lessons":[],"quizzes":0,"certs":0,"hrs":0,"level":1}');
+let selectedSymptom = null;
+let currentLesson = null;
+let currentQuiz = null;
+let quizIndex = 0;
+let quizScore = 0;
+let currentCategory = 'all';
+
+const CLAUDE_KEY = '';
+
+// ═══════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════
+const SYMPTOMS = [
+  {id:'no-power',cat:'power',icon:'🔌',label:'No Power',sub:'Device won\'t turn on'},
+  {id:'bootloop',cat:'power',icon:'🔄',label:'Boot Loop',sub:'Restarts repeatedly'},
+  {id:'random-shutdown',cat:'power',icon:'⚡',label:'Random Shutdowns',sub:'Turns off unexpectedly'},
+  {id:'no-charge',cat:'power',icon:'🪫',label:'Won\'t Charge',sub:'No charging response'},
+  {id:'black-screen',cat:'display',icon:'⬛',label:'Black Screen',sub:'Screen stays black'},
+  {id:'flickering',cat:'display',icon:'📺',label:'Flickering Screen',sub:'Screen flickers/flashes'},
+  {id:'no-touch',cat:'display',icon:'👆',label:'Touch Not Working',sub:'Touch unresponsive'},
+  {id:'ghost-touch',cat:'display',icon:'👻',label:'Ghost Touch',sub:'Screen touches itself'},
+  {id:'screen-lines',cat:'display',icon:'〰️',label:'Lines on Screen',sub:'Horizontal or vertical lines'},
+  {id:'no-sound',cat:'audio',icon:'🔇',label:'No Sound',sub:'Speaker not working'},
+  {id:'distorted-audio',cat:'audio',icon:'📢',label:'Distorted Audio',sub:'Audio crackles/distorts'},
+  {id:'mic-issue',cat:'audio',icon:'🎤',label:'Mic Not Working',sub:'Caller can\'t hear you'},
+  {id:'earpiece',cat:'audio',icon:'🔈',label:'Earpiece Issue',sub:'No sound on calls'},
+  {id:'no-wifi',cat:'connectivity',icon:'📶',label:'No Wi-Fi',sub:'Can\'t connect to WiFi'},
+  {id:'no-bluetooth',cat:'connectivity',icon:'🔵',label:'Bluetooth Issues',sub:'BT not connecting'},
+  {id:'no-signal',cat:'connectivity',icon:'📡',label:'No Mobile Signal',sub:'No network bars'},
+  {id:'no-gps',cat:'connectivity',icon:'🗺️',label:'GPS Issues',sub:'Location inaccurate'},
+  {id:'blurry-cam',cat:'camera',icon:'📷',label:'Blurry Camera',sub:'Photos out of focus'},
+  {id:'cam-crash',cat:'camera',icon:'💥',label:'Camera Crashes',sub:'App closes unexpectedly'},
+  {id:'battery-drain',cat:'battery',icon:'🔋',label:'Fast Battery Drain',sub:'Battery dies quickly'},
+  {id:'overheating',cat:'battery',icon:'🌡️',label:'Overheating',sub:'Device gets very hot'},
+  {id:'water-damage',cat:'water',icon:'💧',label:'Water Damage',sub:'Device exposed to water'},
+  {id:'slow-device',cat:'software',icon:'🐌',label:'Slow Performance',sub:'Device sluggish/laggy'},
+  {id:'storage-full',cat:'software',icon:'💾',label:'Storage Issues',sub:'No space available'},
+];
+
+const COMPONENTS = [
+  {icon:'📱',name:'LCD / OLED Screen',purpose:'Displays all visual output. The OLED produces its own light; LCD requires a backlight.',failure:'Black screen, lines, discoloration, dead pixels, no touch response.',method:'Swap test with known-good screen. Check flex connector seating. Test digitizer separately.',tags:['OLED','LCD','Digitizer','Backlight','Flex Cable']},
+  {icon:'🔋',name:'Battery',purpose:'Provides power to all components. Lithium-ion cells with built-in protection circuits.',failure:'Fast drain, not charging, swelling, random shutdowns, device off at 30%+.',method:'Check cycle count in settings or battery app. Measure voltage with multimeter (3.6–4.2V healthy).',tags:['Li-ion','Cycle Count','BMS','Swelling','Capacity']},
+  {icon:'⚡',name:'Charging Port / IC',purpose:'Physical connection for power and data. Connected to charge IC on motherboard.',failure:'Not charging, loose port, no data sync, charging only at certain angle.',method:'Inspect port for debris/bent pins. Try different cables. Test voltage at port with multimeter.',tags:['USB-C','Lightning','Charge IC','PMIC','Flex']},
+  {icon:'📷',name:'Camera Modules',purpose:'Front and rear image sensors with lenses, OIS motors, and ISP connections.',failure:'Blurry photos, camera app crash, black image, autofocus failure.',method:'Check if camera works in safe mode. Inspect flex ribbon. Test with known-good module.',tags:['ISP','OIS','Autofocus','Flex Ribbon','Megapixels']},
+  {icon:'🔊',name:'Speakers & Earpiece',purpose:'Loudspeaker converts audio signal to sound. Earpiece used for call audio at lower volume.',failure:'No sound, distorted audio, crackling, one-sided audio.',method:'Test with speaker test app. Check flex connection. Inspect mesh for debris blockage.',tags:['Loudspeaker','Earpiece','Mesh','Flex','Impedance']},
+  {icon:'🎤',name:'Microphone',purpose:'Converts sound into electrical signal for calls, recordings, and voice commands.',failure:'Caller can\'t hear you, muffled audio, voice assistant not responding.',method:'Test in voice recorder app. Check for debris. Test with known-good mic. Measure with multimeter.',tags:['MEMS','Secondary Mic','Noise Cancellation','Flex','Solder']},
+  {icon:'📡',name:'Antenna System',purpose:'RF antennas handle cellular, WiFi, Bluetooth, GPS, and NFC signals.',failure:'No signal, weak WiFi, Bluetooth dropping, GPS inaccurate.',method:'Check antenna contacts. Ensure bands are grounded. Test in different locations and towers.',tags:['LTE','5G','WiFi','Bluetooth','NFC','GPS']},
+  {icon:'🧠',name:'Motherboard / SoC',purpose:'Main circuit board containing CPU, GPU, RAM, storage, and all IC chips.',failure:'Random reboots, dead after drop, backlight fault, charging loops, no power.',method:'Visual inspection under microscope. Check for corrosion, burnt components, lifted pads.',tags:['SoC','CPU','GPU','NAND','PMIC','Reballing']},
+  {icon:'🔌',name:'Flex Cables',purpose:'Flexible ribbon connectors linking components to the motherboard.',failure:'Intermittent faults after bending, component stops working, connector damage.',method:'Reconnect firmly. Inspect for tears or kinks. Replace if cracked.',tags:['ZIF','FPC','Connector','Ribbon','Pin']},
+  {icon:'📳',name:'Vibration Motor',purpose:'Creates haptic feedback for notifications, typing, and alerts.',failure:'No vibration, weak vibration, rattling noise.',method:'Test with vibration test app. Inspect motor contacts. Check for debris jamming.',tags:['LRA','ERM','Haptic','Eccentric','Motor']},
+  {icon:'📟',name:'SIM / SD Card Reader',purpose:'Metal tray and reader IC that connects SIM cards for network and SD cards for storage.',failure:'SIM not detected, card reader error, network registration failed.',method:'Clean tray contacts with IPA. Reseat SIM. Test with known SIM. Inspect reader pins.',tags:['SIM','MicroSD','Tray','Reader IC','IMEI']},
+  {icon:'🔘',name:'Buttons & Switches',purpose:'Physical controls — power, volume, mute, and home buttons — connected via flex or soldered.',failure:'Button stuck, no response, volume stuck on max, power button not working.',method:'Test button continuity with multimeter. Check for debris under button. Inspect flex trace.',tags:['Power','Volume','Mute','Home','Flex','Continuity']},
+];
+
+const TOOLS = [
+  {icon:'🔩',name:'Precision Screwdrivers',desc:'Phillips PH000, Pentalobe P2/P5, Torx T3/T5, Tri-point. Never use wrong size — strips heads permanently.'},
+  {icon:'🪝',name:'Plastic Opening Tools',desc:'Pry iPhone screens, separate housings without scratching. Use nylon over metal on glass-back devices.'},
+  {icon:'🔮',name:'Suction Cup',desc:'Lifts screens from edge for initial opening. Warm the adhesive first with a heat pad for cleaner separation.'},
+  {icon:'🌡️',name:'Heat Pad / Heat Gun',desc:'Softens adhesive for screens, back glass, and batteries. Never exceed 80°C on modern devices.'},
+  {icon:'⚡',name:'Multimeter',desc:'Measures voltage, resistance, and continuity. Essential for charging diagnosis, battery testing, and motherboard fault tracing.'},
+  {icon:'🔬',name:'Digital Microscope',desc:'Inspect solder joints, trace paths, and component damage invisible to the naked eye. 40–120x magnification ideal.'},
+  {icon:'🧹',name:'IPA + Brush',desc:'99% isopropyl alcohol removes corrosion, flux residue, and oxidation. Never use water or lower concentration IPA.'},
+  {icon:'⚡',name:'ESD Protection',desc:'Anti-static wrist strap, mat, and bags. Static discharge destroys ICs silently. Always ground yourself before handling boards.'},
+];
+
+const PATHS = [
+  {num:'01',title:'Beginner Mobile Technician',desc:'Tools, safety, device anatomy, basic disassembly, screen and battery replacement.',badge:'BEGINNER',cls:'level-1',lessons:['anatomy','tools-basic','safety','screen-replace','battery-replace']},
+  {num:'02',title:'Junior Mobile Technician',desc:'Charging ports, buttons, software diagnosis, backups, customer intake.',badge:'JUNIOR',cls:'level-2',lessons:['charging-port','buttons','software-diag','customer-intake']},
+  {num:'03',title:'Intermediate Mobile Technician',desc:'Audio components, cameras, water damage, advanced software, data recovery.',badge:'INTERMEDIATE',cls:'level-3',lessons:['audio-repair','camera-repair','water-damage','data-recovery']},
+  {num:'04',title:'Advanced Mobile Technician',desc:'Motherboard diagnosis, soldering, IC-level fault tracing, advanced networking.',badge:'ADVANCED',cls:'level-4',lessons:['motherboard','soldering','ic-fault','network-advanced']},
+  {num:'05',title:'Master Mobile Technician',desc:'BGA reballing, microsoldering, business management, training others.',badge:'MASTER',cls:'level-5',lessons:['bga','microsolder','business-advanced','training']},
+];
+
+const CASES = [
+  {id:'c1',title:'iPhone 12 — Not Charging After Drop',cat:'power',device:'iPhone 12',difficulty:2,symptoms:'Device dropped from 1m height onto concrete. Charging stopped working completely. Wireless charging still works.',investigation:'Inspected charging port — no visible damage. Tested with 3 cables, all failed. Wireless charging confirmed working. Multimeter shows 0V at charging port.',diagnosis:'Physical impact bent the charge IC interconnect on the motherboard. USB-C port flex tested good. Issue is IC-level.',resolution:'Replaced USB-C port assembly. Issue persisted — confirmed charge IC fault. Reflowed PMIC solder joints under microscope. Device charging restored.',lesson:'Wireless charging working with wired failed = charge IC or port, not battery. Always test systematically.'},
+  {id:'c2',title:'Samsung A52 — Ghost Touch After Screen Replacement',cat:'display',device:'Samsung A52',difficulty:2,symptoms:'Customer replaced screen at another shop. Now experiencing random ghost touches especially near edges.',investigation:'Ghost touches on full screen, worsened by pressure at edges. Tested with original damaged screen — no ghost touch.',diagnosis:'Aftermarket digitizer with poor edge rejection firmware. Physical connector not fully seated causing interference.',resolution:'Reseated flex connector firmly. Replaced with OEM-spec screen. Ghost touch resolved. Customer educated on OEM vs aftermarket quality.',lesson:'Always use OEM or OEM-spec digitizers. Cheap replacements often lack edge rejection calibration.'},
+  {id:'c3',title:'Huawei P30 — Mic Dead After Water Exposure',cat:'audio',device:'Huawei P30',difficulty:3,symptoms:'Phone exposed to rain. Dried in rice (wrong method). Primary mic completely dead. Speaker and earpiece working.',investigation:'Opened device — green corrosion visible on primary mic flex pads. Rice left moisture residue. Board shows water indicator triggered.',diagnosis:'Corrosion on primary mic flex contact pads and mic element itself. Secondary mic on back working normally.',resolution:'Cleaned board with IPA and soft brush. Replaced primary mic assembly. Tested recording — restored. Showed customer proper water damage procedure.',lesson:'Rice is a myth — it traps moisture and leaves starch. Use silica gel or professional drying. Speed of cleaning determines success rate.'},
+  {id:'c4',title:'iPhone XR — No Signal After Motherboard Replacement',cat:'connectivity',device:'iPhone XR',difficulty:4,symptoms:'Motherboard swapped due to liquid damage. All functions working except no cellular signal at all. WiFi working.',investigation:'IMEI intact. SIM detected, no bars. Band 28 and Band 3 tested — no RF output. Antenna connections verified.',diagnosis:'Cellular RF IC (WTR5975) damaged during removal. Possibly excessive heat or ESD during prior repair.',resolution:'Reflowed RF IC under hot air station. Signal restored. Device activated on network.',lesson:'RF ICs are heat sensitive. Never exceed recommended temperature during removal. ESD protection mandatory during motherboard work.'},
+  {id:'c5',title:'Oppo Reno 5 — Battery Draining in 3 Hours',cat:'battery',device:'Oppo Reno 5',difficulty:1,symptoms:'18-month-old device. Battery dying in under 3 hours. Was previously lasting all day. Gets warm during charging.',investigation:'Checked battery health in settings — 67% capacity. Charge cycles: 890+. Device checked for background apps — found 12 apps with high drain.',resolution:'Replaced battery with OEM-spec replacement. Optimized background app permissions. Calibrated new battery. Now lasts 11+ hours.',lesson:'Battery replacement at 67% health is standard practice. Always check cycle count — high cycles even at "good" percentage can cause instability.'},
+  {id:'c6',title:'Xiaomi Redmi Note 10 — Random Reboots Under Load',cat:'power',device:'Redmi Note 10',difficulty:3,symptoms:'Device reboots randomly when gaming or using camera. Fine on standby. Issue started 2 months ago.',investigation:'Thermal camera shows CPU hotspot at 62°C under load. Battery voltage drops to 3.1V under load. Normal idle voltage 3.7V.',diagnosis:'Degraded battery unable to supply peak current during high CPU demand. Voltage sag triggers protective shutdown disguised as reboot.',resolution:'Replaced battery. Internal cleaning revealed dust-blocked thermal pads. Cleaned and re-applied thermal compound. Issue resolved.',lesson:'Random reboots under load are almost always battery or thermal. Voltage sag test under load is the fastest diagnostic.'},
+];
+
+const LESSONS = {
+  anatomy:{title:'Device Anatomy',sections:[
+    {h:'Smartphone Internal Layout',p:'A modern smartphone is an engineering marvel. Key internal areas: top edge (earpiece, front camera, secondary mic), left edge (volume buttons, SIM tray), right edge (power button), bottom (charging port, primary mic, speaker), back (main cameras, flashlight, wireless charging coil), interior (motherboard, battery, screen flex connectors).'},
+    {h:'Layered Construction',p:'Smartphones are built in layers. Outer glass → digitizer → LCD/OLED panel → mid-frame → battery → motherboard. Each layer connects to the next via flex cables and ZIF connectors.'},
+    {h:'Critical Zones',p:'The motherboard (logic board) is the most expensive component — handle with extreme care. The battery sits below or beside it. Screen flex connectors are on the top edge of the motherboard in most devices.'},
+    {tip:{label:'TECHNICIAN TIP',text:'Always photograph the inside of a device before disassembly. Note screw positions, cable routing, and bracket placement. This saves time and prevents reassembly errors.'}}
+  ],quiz:'anatomy'},
+  battery:{title:'Battery Health Academy',sections:[
+    {h:'Battery Basics',p:'Modern smartphone batteries are Lithium-ion (Li-ion) cells. Nominal voltage is 3.7V. Full charge is approximately 4.2V. Low cutoff is around 3.0V. Below this, the BMS (Battery Management System) disconnects the cell to prevent damage.'},
+    {h:'Cycle Count & Health',p:'One charge cycle = 100% of battery capacity used, not necessarily one full charge. Partial charges from 40% to 80% are healthier than full 0-100% cycles. Most batteries are rated for 300-500 full cycles before reaching 80% original capacity.'},
+    {h:'Swelling — A Safety Emergency',p:'A swollen battery is a critical safety hazard. Swelling indicates internal chemical breakdown producing gas. Never puncture, compress, or attempt to deflate a swollen battery. Replace immediately. Store safely away from flammables.'},
+    {h:'Charging Behavior',p:'Healthy charging: device warm, not hot. Charges steadily. Fast charge kicks in below 80%, then slows. If charging stops at percentages or device gets very hot — suspect battery or charge IC fault.'},
+    {tip:{label:'SAFETY WARNING',text:'Never use a swollen battery. Replace immediately. If a battery catches fire, use a Class D or dry sand to extinguish — never water. Have a metal container available in your workshop for battery fires.'}}
+  ],quiz:'battery'},
+  water:{title:'Water Damage Recovery',sections:[
+    {h:'The Rice Myth',p:'Rice does NOT fix water-damaged phones. Rice is porous and leaves starch residue. It also takes too long. The critical window for water damage recovery is the first 30 minutes. The faster you open and clean the board, the better the outcome.'},
+    {h:'Corrosion Basics',p:'Water causes corrosion when it contacts metal contacts and PCB copper traces. Salt water and minerals accelerate corrosion severely. Corrosion first appears as green or white powder on solder joints and connector pads.'},
+    {h:'Proper Recovery Procedure',p:null,steps:['Power OFF immediately — do not attempt to turn on','Remove SIM, SD card, and case','Open device immediately if possible','Remove battery first','Inspect board for water indicators (small white/red stickers)','Clean with 99% IPA and soft anti-static brush','Focus on connectors, IC chips, and flex pads','Allow to dry under warm airflow for 30 minutes','Reassemble and test']},
+    {h:'Recovery Assessment',p:'Water damage recovery rate: fresh water caught immediately = 70-80%. Salt water or delayed treatment = 20-40%. Devices powered on while wet often suffer secondary damage. Be honest with customers about realistic recovery odds.'},
+    {tip:{label:'PRO TIP',text:'Use an ultrasonic cleaner with IPA for severely corroded boards. The cavitation bubbles remove corrosion from under IC chips that brushing cannot reach.'}}
+  ],quiz:'water'},
+  business:{title:'Workshop Setup & Business',sections:[
+    {h:'Workshop Essentials',p:'Minimum viable repair workshop: ESD mat and grounding equipment, bright work lighting (5000K LED), magnification (loupe or microscope), organized screw storage (magnetic mat + containers), parts organizer for components removed during repairs.'},
+    {h:'Pricing Strategy',p:'South African market pricing guidance: screen replacements R250-R800 depending on model. Battery replacements R150-R400. Charging port repairs R200-R500. Water damage assessment R150-R300 (non-refundable). Always quote parts separately from labor.'},
+    {h:'Record Keeping',p:'For every repair: customer name and contact, device make/model/IMEI, reported fault, diagnosed fault, parts used with cost, labor charge, warranty given, date in/out. This protects you legally and helps track repeat issues.'},
+    {tip:{label:'BUSINESS TIP',text:'Offer a 30-day workmanship warranty on all repairs. This builds trust and costs little in practice — quality repairs rarely come back. Display your warranty policy visibly.'}}
+  ],quiz:'business'},
+  customer:{title:'Customer Service Academy',sections:[
+    {h:'Device Intake Procedure',p:'On intake: photograph device condition on all sides before touching. Note all existing damage on intake form. Check IMEI against reported status (stolen devices). Back up customer data if possible before any repair. Get written consent for repair.'},
+    {h:'Communication Standards',p:'Update customers when fault is diagnosed — before ordering parts. Notify immediately if additional faults found. Never exceed quoted price without approval. Give realistic time estimates (under-promise, over-deliver).'},
+    {h:'Professional Ethics',p:'Never access customer data, photos, or messages. Report suspected stolen devices to police. Be honest when a repair is beyond your skill level — refer out. Never fit used parts as new. Honor your warranty without argument.'},
+    {tip:{label:'GOLDEN RULE',text:'Treat every device as if it contains irreplaceable photos of a customer\'s late child. That mindset changes how carefully you work.'}}
+  ],quiz:'customer'},
+};
+
+const QUIZZES = {
+  anatomy:[
+    {q:'What is the first layer visible from the front of a smartphone?',opts:['Digitizer','Outer glass','LCD panel','Mid-frame'],ans:1},
+    {q:'Where are screen flex connectors typically located on most Android devices?',opts:['Bottom of motherboard','Left side of housing','Top edge of motherboard','Behind the battery'],ans:2},
+    {q:'Why should you photograph the inside of a device before disassembly?',opts:['For social media','To note screw positions and cable routing','Required by law','To check IMEI'],ans:1},
+  ],
+  battery:[
+    {q:'What is the nominal voltage of a typical smartphone Li-ion battery?',opts:['5.0V','1.5V','3.7V','12V'],ans:2},
+    {q:'What should you do immediately if you find a swollen battery?',opts:['Puncture it to release gas','Replace it immediately','Charge it slowly','Put it in water'],ans:1},
+    {q:'What voltage range indicates a healthy battery under charge?',opts:['1.0V - 2.0V','3.6V - 4.2V','5.0V - 6.0V','2.0V - 3.0V'],ans:1},
+  ],
+  water:[
+    {q:'Why is rice ineffective for water damage recovery?',opts:['Too expensive','Takes too long and leaves starch residue','Too dry','Not available in SA'],ans:1},
+    {q:'What is the critical window for water damage recovery?',opts:['24 hours','First 30 minutes','1 week','2 hours'],ans:1},
+    {q:'What percentage concentration of IPA should you use for board cleaning?',opts:['50%','70%','99%','100%'],ans:2},
+  ],
+  business:[
+    {q:'What should you always photograph before starting a repair?',opts:['The tools','Device condition on all sides','Your workspace','The customer'],ans:1},
+    {q:'What is a realistic workmanship warranty period for mobile repairs?',opts:['1 year','No warranty','30 days','1 week'],ans:2},
+    {q:'What should you do if a repair is beyond your current skill level?',opts:['Attempt it anyway','Refer the customer to a specialist','Charge extra and try','Decline and keep the deposit'],ans:1},
+  ],
+  customer:[
+    {q:'When should you notify a customer of additional faults found during repair?',opts:['Never, just fix everything','After repair is complete','Immediately before ordering parts','At device collection'],ans:2},
+    {q:'Is it acceptable to access customer photos during a repair?',opts:['Yes, to check camera quality','Yes, if you delete after','No, never','Only with permission'],ans:2},
+    {q:'What document should customers sign before repair begins?',opts:['Insurance policy','Written repair consent form','Non-disclosure agreement','Warranty card'],ans:1},
+  ],
+};
+
+const SOFTWARE_MODULES = [
+  {icon:'🤖',title:'Android Fundamentals',desc:'Partitions, recovery mode, ADB, debugging, and system architecture.'},
+  {icon:'🍎',title:'iOS Fundamentals',desc:'DFU mode, iTunes restore, iCloud, activation lock, and Apple ID issues.'},
+  {icon:'💾',title:'Backup & Recovery',desc:'Full device backups, selective data recovery, and cloud sync management.'},
+  {icon:'🚀',title:'Performance',desc:'Storage optimization, RAM management, app cache clearing, and speed tuning.'},
+  {icon:'🔒',title:'Security',desc:'Encryption, MDM removal, pattern/PIN bypass, and virus removal.'},
+  {icon:'🔄',title:'Updates & Firmware',desc:'Safe update procedures, firmware flashing, downgrading, and recovery.'},
+];
+
+const DAILY_TIPS = [
+  'Always use an ESD wrist strap when handling motherboards. Static discharge invisible to the naked eye can permanently damage sensitive ICs.',
+  'Never power on a device immediately after water exposure. Remove the battery first, clean with IPA, and dry before testing.',
+  'iPhone screen replacements require TrueDepth calibration on iPhone X and later. Use an official programmer or the customer will lose Face ID.',
+  'A battery that reads 0V should be carefully trickle-charged at 100mA before testing. It may recover — but treat with caution.',
+  'When ordering parts, always order a spare flex cable for the component you\'re replacing. They frequently tear during removal.',
+  'Mark removed screws on a piece of tape labeled with their position. Mixing even slightly different length screws can puncture batteries.',
+  'Test every function after reassembly before giving the device back: calls, cameras, speakers, touch, charging, and all buttons.',
+  'Fingerprint scanners on newer devices are paired to the motherboard. Replacing the sensor without re-pairing will disable it.',
+];
+
+// ═══════════════════════════════════════════════
+// NAV
+// ═══════════════════════════════════════════════
+function navigate(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const pg = document.getElementById('page-'+page);
+  if(pg) pg.classList.add('active');
+  const nv = document.getElementById('nav-'+page);
+  if(nv) nv.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ═══════════════════════════════════════════════
+// SYMPTOM PICKER
+// ═══════════════════════════════════════════════
+function renderSymptoms(filter='all'){
+  const grid = document.getElementById('symptom-grid');
+  const symptoms = filter==='all' ? SYMPTOMS : SYMPTOMS.filter(s=>s.cat===filter);
+  grid.innerHTML = symptoms.map(s=>`
+    <div class="symptom-btn ${selectedSymptom===s.id?'selected':''}" onclick="selectSymptom('${s.id}','${s.label}')">
+      <div class="symptom-icon">${s.icon}</div>
+      <div>
+        <div class="symptom-label">${s.label}</div>
+        <div class="symptom-sub">${s.sub}</div>
+      </div>
+    </div>
+  `).join('');
+}
+function filterSymptoms(cat,el){
+  currentCategory = cat;
+  document.querySelectorAll('#symptom-cats .h-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  renderSymptoms(cat);
+}
+function selectSymptom(id,label){
+  selectedSymptom = id;
+  renderSymptoms(currentCategory);
+  const lbl = document.getElementById('selected-symptom-label');
+  lbl.style.display = 'block';
+  lbl.textContent = '// SELECTED: ' + label.toUpperCase();
+  document.getElementById('run-diagnosis-btn').style.display = 'flex';
+  document.getElementById('diag-result').classList.remove('show');
+}
+
+// ═══════════════════════════════════════════════
+// AI DIAGNOSIS
+// ═══════════════════════════════════════════════
+async function runDiagnosis(){
+  if(!selectedSymptom) return;
+  const symptom = SYMPTOMS.find(s=>s.id===selectedSymptom);
+  const resultEl = document.getElementById('diag-result');
+  const contentEl = document.getElementById('diag-content');
+  resultEl.classList.add('show');
+  contentEl.innerHTML = '<span class="diag-typing">Analyzing fault...</span>';
+  setDifficulty(0,'');
+  document.getElementById('tools-needed').textContent = '';
+
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:700,
+        system:`You are a senior mobile phone repair technician with 10+ years of experience. Provide practical, structured diagnostic guidance. Format your response exactly as:
+
+POSSIBLE CAUSES:
+- [cause 1]
+- [cause 2]
+- [cause 3]
+
+BASIC CHECKS:
+- [check 1]
+- [check 2]
+
+PROFESSIONAL CHECKS:
+- [check 1]
+- [check 2]
+
+DIFFICULTY: [1-5 number only]
+TOOLS: [comma-separated list of tools needed]
+
+Be specific, practical, and use correct technical terminology. Keep it concise.`,
+        messages:[{role:'user',content:`Diagnose this smartphone fault: ${symptom.label} — ${symptom.sub}`}]
+      })
+    });
+    const data = await resp.json();
+    const text = data.content?.[0]?.text || 'Diagnosis unavailable. Check your connection.';
+    renderDiagnosis(text);
+  } catch(e){
+    contentEl.innerHTML = renderFallbackDiagnosis(symptom);
+    setDifficulty(getFallbackDifficulty(selectedSymptom),'');
+    document.getElementById('tools-needed').textContent = getFallbackTools(selectedSymptom);
+  }
+}
+
+function renderDiagnosis(text){
+  const contentEl = document.getElementById('diag-content');
+  const lines = text.split('\n').filter(l=>l.trim());
+  let html = '';
+  let difficulty = 2;
+  let tools = '';
+  for(const line of lines){
+    if(line.startsWith('DIFFICULTY:')){
+      difficulty = parseInt(line.replace('DIFFICULTY:','').trim())||2;
+    } else if(line.startsWith('TOOLS:')){
+      tools = line.replace('TOOLS:','').trim();
+    } else if(line.startsWith('POSSIBLE CAUSES:')||line.startsWith('BASIC CHECKS:')||line.startsWith('PROFESSIONAL CHECKS:')){
+      html += `<strong>${line}</strong><br>`;
+    } else if(line.startsWith('-')){
+      html += `&nbsp;&nbsp;${line}<br>`;
+    } else if(line.trim()){
+      html += `${line}<br>`;
+    }
+  }
+  contentEl.innerHTML = html;
+  setDifficulty(difficulty,'');
+  document.getElementById('tools-needed').textContent = tools;
+}
+
+function setDifficulty(level,text){
+  const dots = document.getElementById('diff-dots');
+  const txt = document.getElementById('diff-text');
+  const colors = ['fill-t','fill-t','fill-w','fill-w','fill-r'];
+  const labels = ['','BEGINNER','EASY','INTERMEDIATE','ADVANCED','EXPERT'];
+  dots.innerHTML = Array.from({length:5},(_,i)=>`<div class="diff-dot ${i<level?colors[level-1]:''}"></div>`).join('');
+  txt.textContent = labels[level]||'';
+}
+
+function renderFallbackDiagnosis(s){
+  const fallbacks = {
+    'no-power':'<strong>POSSIBLE CAUSES:</strong><br>&nbsp;&nbsp;- Dead battery (discharged below recovery threshold)<br>&nbsp;&nbsp;- Faulty power button or stuck flex<br>&nbsp;&nbsp;- Blown fuse on charging circuit<br><strong>BASIC CHECKS:</strong><br>&nbsp;&nbsp;- Charge for 30 minutes before attempting power on<br>&nbsp;&nbsp;- Try different charger and cable<br><strong>PROFESSIONAL CHECKS:</strong><br>&nbsp;&nbsp;- Test battery voltage with multimeter<br>&nbsp;&nbsp;- Check power button continuity',
+    'black-screen':'<strong>POSSIBLE CAUSES:</strong><br>&nbsp;&nbsp;- Disconnected screen flex connector<br>&nbsp;&nbsp;- Damaged LCD/OLED panel<br>&nbsp;&nbsp;- Backlight IC fault<br><strong>BASIC CHECKS:</strong><br>&nbsp;&nbsp;- Shine torch at screen to check for faint image<br>&nbsp;&nbsp;- Hard reset (Vol Down + Power 10s)<br><strong>PROFESSIONAL CHECKS:</strong><br>&nbsp;&nbsp;- Reseat screen connector<br>&nbsp;&nbsp;- Swap test with known-good screen',
+  };
+  return fallbacks[s.id] || `<strong>POSSIBLE CAUSES:</strong><br>&nbsp;&nbsp;- Hardware component failure<br>&nbsp;&nbsp;- Software or firmware issue<br>&nbsp;&nbsp;- Physical damage from drop or liquid<br><strong>BASIC CHECKS:</strong><br>&nbsp;&nbsp;- Soft reset the device<br>&nbsp;&nbsp;- Test in safe mode<br><strong>PROFESSIONAL CHECKS:</strong><br>&nbsp;&nbsp;- Component isolation testing<br>&nbsp;&nbsp;- Multimeter diagnosis`;
+}
+function getFallbackDifficulty(id){return{'no-power':3,'bootloop':3,'black-screen':2,'ghost-touch':3,'water-damage':4,'no-signal':4}[id]||2}
+function getFallbackTools(id){return{'no-power':'Multimeter, Screwdrivers, IPA','water-damage':'IPA, Brush, Ultrasonic Cleaner, Microscope','no-signal':'Multimeter, Hot Air Station'}[id]||'Precision Screwdrivers, Multimeter, Plastic Opening Tools'}
+
+// ═══════════════════════════════════════════════
+// COMPONENTS
+// ═══════════════════════════════════════════════
+function renderComponents(){
+  const list = document.getElementById('comp-list');
+  list.innerHTML = COMPONENTS.map((c,i)=>`
+    <div class="comp-item" onclick="toggleComp(${i})">
+      <div class="comp-item-head">
+        <div class="comp-item-icon">${c.icon}</div>
+        <div class="comp-item-name">${c.name}</div>
+        <div class="comp-item-arrow" id="comp-arrow-${i}">›</div>
+      </div>
+      <div class="comp-detail" id="comp-detail-${i}">
+        <p><strong style="color:var(--teal);font-size:11px;font-family:var(--mono);letter-spacing:1px">PURPOSE</strong><br>${c.purpose}</p>
+        <p><strong style="color:var(--purple);font-size:11px;font-family:var(--mono);letter-spacing:1px">FAILURE SIGNS</strong><br>${c.failure}</p>
+        <p><strong style="color:rgba(255,170,0,0.9);font-size:11px;font-family:var(--mono);letter-spacing:1px">DIAGNOSTIC METHOD</strong><br>${c.method}</p>
+        <div class="comp-tags">${c.tags.map(t=>`<span class="comp-tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+}
+function toggleComp(i){
+  const d = document.getElementById('comp-detail-'+i);
+  const a = document.getElementById('comp-arrow-'+i);
+  const open = d.classList.toggle('open');
+  a.textContent = open ? '∨' : '›';
+  a.style.color = open ? 'var(--teal)' : '';
+}
+
+// ═══════════════════════════════════════════════
+// TRAINING PATHS
+// ═══════════════════════════════════════════════
+function renderPaths(){
+  const list = document.getElementById('path-list');
+  list.innerHTML = PATHS.map(p=>`
+    <div class="path-item" onclick="openLesson('${p.lessons[0]}')">
+      <div class="path-num">${p.num}</div>
+      <div class="path-info">
+        <h3>${p.title}</h3>
+        <p>${p.desc}</p>
+        <div class="progress-bar"><div class="progress-fill" style="width:${getPathProgress(p)}%"></div></div>
+      </div>
+      <div class="path-badge ${p.cls}">${p.badge}</div>
+    </div>
+  `).join('');
+}
+function getPathProgress(path){
+  const done = path.lessons.filter(l=>state.lessons.includes(l)).length;
+  return Math.round((done/path.lessons.length)*100);
+}
+function renderSoftware(){
+  const el = document.getElementById('software-cards');
+  el.innerHTML = SOFTWARE_MODULES.map(m=>`
+    <div class="card" onclick="showInfo('${m.title}')">
+      <div class="card-icon card-icon-p">${m.icon}</div>
+      <div class="card-title">${m.title}</div>
+      <div class="card-text">${m.desc}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════
+// TOOLS
+// ═══════════════════════════════════════════════
+function renderTools(){
+  const grid = document.getElementById('tools-grid');
+  grid.innerHTML = TOOLS.map(t=>`
+    <div class="tool-card" onclick="showInfo('${t.name}')">
+      <div class="tool-card-icon">${t.icon}</div>
+      <div class="tool-card-name">${t.name}</div>
+      <div class="tool-card-desc">${t.desc}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════
+// CASE STUDIES
+// ═══════════════════════════════════════════════
+function renderCases(filter=''){
+  const el = document.getElementById('cases-list');
+  const filtered = filter ? CASES.filter(c=>c.title.toLowerCase().includes(filter)||c.symptoms.toLowerCase().includes(filter)||c.device.toLowerCase().includes(filter)) : CASES;
+  const catColors = {power:'var(--purple)',display:'var(--teal)',audio:'#ffaa00',connectivity:'#4488ff',battery:'#ff6600',camera:'#cc44ff',water:'#00aaff'};
+  el.innerHTML = filtered.map(c=>`
+    <div class="case-card" onclick="toggleCase('${c.id}')">
+      <div class="case-tag" style="background:${catColors[c.cat]||'var(--purple)'}22;color:${catColors[c.cat]||'var(--purple)'};border:1px solid ${catColors[c.cat]||'var(--purple)'}44">${c.cat.toUpperCase()}</div>
+      <div class="case-title">${c.title}</div>
+      <div class="case-meta">
+        <span>📱 ${c.device}</span>
+        <span>💪 Difficulty: ${'★'.repeat(c.difficulty)}${'☆'.repeat(5-c.difficulty)}</span>
+      </div>
+      <div class="case-expand" id="case-${c.id}">
+        <div class="case-section"><div class="case-section-label">SYMPTOMS</div><div class="case-section-text">${c.symptoms}</div></div>
+        <div class="case-section"><div class="case-section-label">INVESTIGATION</div><div class="case-section-text">${c.investigation}</div></div>
+        <div class="case-section"><div class="case-section-label">DIAGNOSIS</div><div class="case-section-text">${c.diagnosis}</div></div>
+        <div class="case-section"><div class="case-section-label">RESOLUTION</div><div class="case-section-text">${c.resolution}</div></div>
+        <div class="lesson-tip"><div class="lesson-tip-label">KEY LESSON</div><p>${c.lesson}</p></div>
+      </div>
+    </div>
+  `).join('') || '<div style="text-align:center;padding:40px;color:var(--text-muted);font-size:13px">No cases match your search.</div>';
+}
+function toggleCase(id){
+  const el = document.getElementById('case-'+id);
+  el.classList.toggle('open');
+}
+function searchCases(val){
+  renderCases(val.toLowerCase());
+}
+
+// ═══════════════════════════════════════════════
+// LESSONS
+// ═══════════════════════════════════════════════
+function openLesson(id){
+  const lesson = LESSONS[id];
+  if(!lesson){showInfo(id);return;}
+  currentLesson = id;
+  document.getElementById('lesson-modal-title').textContent = lesson.title;
+  const body = document.getElementById('lesson-body');
+  body.innerHTML = lesson.sections.map(s=>{
+    if(s.tip) return `<div class="lesson-tip"><div class="lesson-tip-label">${s.tip.label}</div><p>${s.tip.text}</p></div>`;
+    if(s.steps) return `<div class="lesson-section"><h3>${s.h}</h3><div class="step-list">${s.steps.map((st,i)=>`<div class="step-item"><div class="step-num">${String(i+1).padStart(2,'0')}</div><div class="step-text">${st}</div></div>`).join('')}</div></div>`;
+    return `<div class="lesson-section"><h3>${s.h}</h3><p>${s.p}</p></div>`;
+  }).join('');
+  document.getElementById('lesson-modal').classList.add('open');
+  // Track time
+  state.lastLessonStart = Date.now();
+  saveState();
+}
+function closeLesson(){
+  document.getElementById('lesson-modal').classList.remove('open');
+  if(state.lastLessonStart){
+    state.hrs = parseFloat((state.hrs + (Date.now()-state.lastLessonStart)/3600000).toFixed(2));
+    saveState();
+  }
+}
+function markLessonComplete(){
+  if(currentLesson && !state.lessons.includes(currentLesson)){
+    state.lessons.push(currentLesson);
+    saveState();
+    updateDashboard();
+    renderPaths();
+  }
+  closeLesson();
+  if(QUIZZES[currentLesson]){
+    setTimeout(()=>startQuizFor(currentLesson),400);
+  }
+}
+
+// ═══════════════════════════════════════════════
+// QUIZ
+// ═══════════════════════════════════════════════
+function startQuiz(){
+  if(currentLesson && QUIZZES[currentLesson]){
+    closeLesson();
+    setTimeout(()=>startQuizFor(currentLesson),400);
+  }
+}
+function startQuizFor(id){
+  const quiz = QUIZZES[id];
+  if(!quiz) return;
+  currentQuiz = quiz;
+  quizIndex = 0;
+  quizScore = 0;
+  navigate('quiz');
+  document.getElementById('quiz-title').textContent = LESSONS[id]?.title + ' — Quiz';
+  document.getElementById('quiz-desc').textContent = `${quiz.length} questions. Show what you know.`;
+  renderQuizQuestion();
+}
+function renderQuizQuestion(){
+  const q = currentQuiz[quizIndex];
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = `
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--text-muted);margin-bottom:16px">QUESTION ${quizIndex+1} OF ${currentQuiz.length}</div>
+    <div class="quiz-q">${q.q}</div>
+    <div class="quiz-opts">
+      ${q.opts.map((o,i)=>`<button class="quiz-opt" onclick="answerQuiz(${i})">${String.fromCharCode(65+i)}. ${o}</button>`).join('')}
+    </div>
+  `;
+}
+function answerQuiz(idx){
+  const q = currentQuiz[quizIndex];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach((o,i)=>{
+    o.onclick = null;
+    if(i===q.ans) o.classList.add('correct');
+    else if(i===idx) o.classList.add('wrong');
+  });
+  if(idx===q.ans) quizScore++;
+  setTimeout(()=>{
+    quizIndex++;
+    if(quizIndex<currentQuiz.length){renderQuizQuestion();}
+    else{showQuizResult();}
+  },1200);
+}
+function showQuizResult(){
+  const pct = Math.round((quizScore/currentQuiz.length)*100);
+  const passed = pct>=70;
+  if(passed){state.quizzes++;if(pct===100)state.certs++;saveState();updateDashboard();}
+  document.getElementById('quiz-container').innerHTML = `
+    <div style="text-align:center;padding:20px 0">
+      <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:${passed?'var(--teal)':'#ff6666'};margin-bottom:8px">${passed?'PASSED ✓':'NEEDS REVIEW ✗'}</div>
+      <div class="quiz-score">${pct}%</div>
+      <div style="font-size:13px;color:var(--text-muted);margin-bottom:24px;font-weight:300">${quizScore} of ${currentQuiz.length} correct</div>
+      ${passed?`<div style="font-size:12px;color:var(--teal);margin-bottom:16px;font-weight:300">✓ Progress saved to your dashboard</div>`:''}
+      <button class="btn-primary" onclick="navigate('training')" style="width:100%;justify-content:center">← Back to Training</button>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════
+// DASHBOARD
+// ═══════════════════════════════════════════════
+function updateDashboard(){
+  document.getElementById('d-lessons').textContent = state.lessons.length;
+  document.getElementById('d-quizzes').textContent = state.quizzes;
+  document.getElementById('d-certs').textContent = state.certs;
+  document.getElementById('d-hrs').textContent = Math.floor(state.hrs)+'h';
+  const level = Math.min(5,Math.floor(state.lessons.length/3)+1);
+  const levelNames = ['','Beginner Mobile Technician','Junior Mobile Technician','Intermediate Mobile Technician','Advanced Mobile Technician','Master Mobile Technician'];
+  const levelDescs = ['','Complete 5 lessons to advance to Junior level','Complete 8 lessons to advance to Intermediate level','Complete 12 lessons to advance to Advanced level','Complete 16 lessons to advance to Master level','You have reached the highest level!'];
+  document.getElementById('d-level-icon').textContent = String(level).padStart(2,'0');
+  document.getElementById('d-level-name').textContent = levelNames[level];
+  document.getElementById('d-level-desc').textContent = levelDescs[level];
+  const nextTarget = [0,5,8,12,16,20][level];
+  const prevTarget = [0,0,5,8,12,16][level];
+  const prog = nextTarget ? Math.round(((state.lessons.length-prevTarget)/(nextTarget-prevTarget))*100) : 100;
+  document.getElementById('d-level-bar').style.width = Math.min(100,Math.max(0,prog))+'%';
+}
+
+// ═══════════════════════════════════════════════
+// UTILS
+// ═══════════════════════════════════════════════
+function showInfo(title){
+  // Minimal info modal for software/tool cards
+  alert(title+'\n\nFull lesson coming soon. Contact PixelProTech for hands-on training:\n065 197 1461');
+}
+function saveState(){localStorage.setItem('ppt_academy',JSON.stringify(state));}
+
+// ═══════════════════════════════════════════════
+// MEGA EXAM DATA — ALL QUESTIONS POOLED
+// ═══════════════════════════════════════════════
+const ALL_EXAM_QUESTIONS = [
+  // ANATOMY
+  {topic:'Device Anatomy',cat:'hardware',q:'What is the first layer visible from the front of a smartphone?',opts:['Digitizer','Outer glass','LCD panel','Mid-frame'],ans:1,explain:'The outermost layer is the protective glass (Gorilla Glass or equivalent). The digitizer sits behind it, then the display panel.'},
+  {topic:'Device Anatomy',cat:'hardware',q:'Where are screen flex connectors typically located on most Android devices?',opts:['Bottom of motherboard','Left side of housing','Top edge of motherboard','Behind the battery'],ans:2,explain:'Screen flex ribbons route upward and connect at the top edge of the motherboard, near the earpiece area on most Android devices.'},
+  {topic:'Device Anatomy',cat:'hardware',q:'Why should you photograph the inside of a device before disassembly?',opts:['For social media','To note screw positions and cable routing','Required by law','To check IMEI'],ans:1,explain:'Photographing before disassembly documents exact screw positions, cable routing, and bracket placement — saving time and preventing costly reassembly mistakes.'},
+  {topic:'Device Anatomy',cat:'hardware',q:'What is a ZIF connector?',opts:['A type of battery','Zero Insertion Force connector for flex cables','A charging IC chip','A type of soldering wire'],ans:1,explain:'ZIF (Zero Insertion Force) connectors let you insert flat flex cables without force. They have a locking tab you must flip up before inserting/removing the cable.'},
+  {topic:'Device Anatomy',cat:'hardware',q:'Which component sits directly behind the display on most modern smartphones?',opts:['The battery','The SIM tray','The mid-frame / chassis','The motherboard'],ans:2,explain:'The mid-frame (chassis) sits behind the display assembly, providing structural rigidity. The motherboard and battery sit behind that.'},
+  // BATTERY
+  {topic:'Battery Health',cat:'power',q:'What is the nominal voltage of a typical smartphone Li-ion battery?',opts:['5.0V','1.5V','3.7V','12V'],ans:2,explain:'Li-ion cells have a nominal voltage of 3.7V. They charge up to ~4.2V (full) and discharge to ~3.0V (low cutoff) before the BMS disconnects.'},
+  {topic:'Battery Health',cat:'power',q:'What should you do immediately if you find a swollen battery?',opts:['Puncture it to release gas','Replace it immediately','Charge it slowly','Put it in water'],ans:1,explain:'A swollen battery is a fire and explosion hazard. Never puncture, compress, or charge it. Replace immediately and store safely in a metal container away from flammables.'},
+  {topic:'Battery Health',cat:'power',q:'What voltage range indicates a healthy battery under charge?',opts:['1.0V - 2.0V','3.6V - 4.2V','5.0V - 6.0V','2.0V - 3.0V'],ans:1,explain:'A healthy Li-ion cell reads 3.6V–4.2V during charge. Below 3.0V the BMS cuts out. Above 4.25V indicates overcharge risk.'},
+  {topic:'Battery Health',cat:'power',q:'What does "one charge cycle" mean for a smartphone battery?',opts:['One full 0–100% charge','Using 100% of capacity total, from any combination of charges','Charging for one hour','Overnight charging'],ans:1,explain:'A cycle = using 100% of total battery capacity — not one full charge. Charging from 50% to 100% twice = one cycle. This is why partial charging is gentler on the battery.'},
+  {topic:'Battery Health',cat:'power',q:'At what battery health percentage do most technicians recommend replacement?',opts:['50%','95%','80% or below','60%'],ans:2,explain:'Industry standard is to replace a battery at or below 80% original capacity. At this point, runtime is significantly reduced and voltage sag under load can cause instability.'},
+  // WATER DAMAGE
+  {topic:'Water Damage',cat:'hardware',q:'Why is rice ineffective for water damage recovery?',opts:['Too expensive','Takes too long and leaves starch residue','Too dry','Not available in SA'],ans:1,explain:'Rice absorbs some humidity but is far too slow. It also leaves starch residue on the board. The critical window is 30 minutes — rice takes hours. Use silica gel or professional drying.'},
+  {topic:'Water Damage',cat:'hardware',q:'What is the critical window for water damage recovery?',opts:['24 hours','First 30 minutes','1 week','2 hours'],ans:1,explain:'Corrosion begins immediately on contact with water. The faster you open, remove the battery, and clean with IPA, the better your recovery rate. Every minute counts.'},
+  {topic:'Water Damage',cat:'hardware',q:'What percentage concentration of IPA should you use for board cleaning?',opts:['50%','70%','99%','100%'],ans:2,explain:'99% isopropyl alcohol is ideal — it evaporates quickly and leaves no residue. Lower concentrations contain water which can worsen corrosion. Never use rubbing alcohol from a pharmacy.'},
+  {topic:'Water Damage',cat:'hardware',q:'What colour does corrosion typically appear as on circuit boards?',opts:['Black','Red','Green or white powder','Blue'],ans:2,explain:'Corrosion appears as green (copper oxidation) or white (mineral deposits) powder on solder joints, connector pads, and IC chip legs. Green is the most common colour on mobile PCBs.'},
+  {topic:'Water Damage',cat:'hardware',q:'What should be removed FIRST when a device has water damage?',opts:['The screen','The SIM card','The battery','The charging port'],ans:2,explain:'Battery removal is the absolute first step. Power + water = electrolytic corrosion. Removing power stops the active chemical reaction that destroys PCB traces and component legs.'},
+  // COMPONENTS
+  {topic:'Components',cat:'hardware',q:'What does the BMS stand for in a smartphone battery?',opts:['Battery Management System','Battery Monitoring Software','Basic Module Sensor','Battery Mesh Structure'],ans:0,explain:'BMS = Battery Management System. It\'s a protection circuit built into the battery pack that manages charge/discharge, prevents overcharge, and cuts power when voltage drops too low.'},
+  {topic:'Components',cat:'hardware',q:'What tool is best for inspecting solder joints and component damage under a motherboard?',opts:['Magnifying glass','Thermal camera','Digital microscope','Multimeter'],ans:2,explain:'A digital microscope (40–120x magnification) is essential for motherboard work. It reveals cold solder joints, lifted pads, cracked traces, and corrosion invisible to the naked eye.'},
+  {topic:'Components',cat:'hardware',q:'What does ESD stand for and why does it matter?',opts:['Electronic Static Discharge — it can invisibly destroy ICs','External Source Detection — for testing','Electrical System Diagnostics — for checking faults','Enhanced Screen Digitizer — a type of touchscreen'],ans:0,explain:'ESD = Electrostatic Discharge. A static spark of just 100V — too small for humans to feel — can permanently damage sensitive ICs on a motherboard. Always use an ESD wrist strap.'},
+  {topic:'Components',cat:'hardware',q:'What does a multimeter measure?',opts:['Screen brightness','Voltage, resistance, and continuity','CPU processing speed','RAM capacity'],ans:1,explain:'A multimeter measures voltage (V), resistance (Ω), and continuity (beep when circuit is complete). Essential for battery testing, charging port diagnosis, and PCB fault tracing.'},
+  {topic:'Components',cat:'hardware',q:'Why would wireless charging work but wired charging fail on the same device?',opts:['The screen is damaged','The battery is dead','Charge IC or USB port is faulty','The SIM card is missing'],ans:2,explain:'Wireless charging bypasses the USB-C port completely. If wireless works but wired fails, the fault is in the charging port, the port flex cable, or the charge IC on the motherboard — not the battery.'},
+  // DIAGNOSTICS
+  {topic:'Fault Diagnosis',cat:'hardware',q:'A device reboots randomly under gaming load but is stable on standby. Most likely cause?',opts:['Screen fault','Degraded battery unable to supply peak current (voltage sag)','Water damage','Virus'],ans:1,explain:'Random reboots under CPU load = voltage sag. A degraded battery cannot supply the peak current demand during intensive tasks. Voltage drops below cutoff threshold and triggers shutdown. Test under load with a multimeter.'},
+  {topic:'Fault Diagnosis',cat:'hardware',q:'Ghost touch that appeared after a screen replacement is most likely caused by?',opts:['The customer\'s fingers','A software virus','Aftermarket digitizer with poor edge rejection, or unseated flex connector','A swollen battery'],ans:2,explain:'Post-replacement ghost touch is almost always a poorly seated flex connector or a cheap aftermarket digitizer missing proper edge rejection calibration. Reseat the connector first, then replace with OEM-spec screen.'},
+  {topic:'Fault Diagnosis',cat:'hardware',q:'What is the FIRST step when diagnosing a device that won\'t power on?',opts:['Replace the motherboard','Charge for 30 minutes, then try different cable and charger','Take it apart immediately','Update the firmware'],ans:1,explain:'Always rule out the simplest causes first. A completely flat battery (below recovery threshold) is the most common "dead device" cause. Charge for 30 minutes with a known-good charger before opening the device.'},
+  {topic:'Fault Diagnosis',cat:'hardware',q:'A device shows no cellular signal but WiFi works perfectly. Where is the fault likely?',opts:['Battery','Screen','Cellular RF IC or cellular antenna disconnected','SIM tray'],ans:2,explain:'WiFi and cellular use different RF circuits. WiFi working + no cellular = cellular RF IC (e.g. WTR5975) or a disconnected/damaged cellular antenna. Check antenna contacts first before motherboard diagnosis.'},
+  {topic:'Fault Diagnosis',cat:'hardware',q:'Shine a torch at a black screen and you see a faint image. This tells you?',opts:['The screen is completely broken','The LCD panel works but the backlight circuit has failed','The battery is dead','The touch is broken'],ans:1,explain:'Faint image visible under torchlight = the display IC and LCD panel are working, but the backlight has failed. This is typically a backlight IC fault on the motherboard or a damaged backlight flex connection.'},
+  // BUSINESS
+  {topic:'Business',cat:'business',q:'What should you always photograph before starting a repair?',opts:['The tools','Device condition on all sides','Your workspace','The customer'],ans:1,explain:'Photographing device condition before touching it protects you legally. If a customer claims you caused scratches or cracks, you have timestamped evidence showing the pre-existing condition.'},
+  {topic:'Business',cat:'business',q:'What is a realistic workmanship warranty period for mobile repairs?',opts:['1 year','No warranty','30 days','1 week'],ans:2,explain:'30 days workmanship warranty is industry standard for mobile repairs. It builds trust, costs little in practice (quality repairs rarely fail), and keeps customers returning to you instead of disputing.'},
+  {topic:'Business',cat:'business',q:'What should you do if a repair is beyond your current skill level?',opts:['Attempt it anyway','Refer the customer to a specialist','Charge extra and try','Decline and keep the deposit'],ans:1,explain:'Honesty is the backbone of a repair business. Attempting repairs beyond your skill risks total device loss. Refer out, be transparent, and customers will respect and return to you for what you do handle.'},
+  {topic:'Business',cat:'business',q:'When quoting a customer, how should parts pricing be handled?',opts:['Include parts in the labour price','Quote parts separately upfront — no surprises','Never mention parts cost','Estimate and adjust later'],ans:1,explain:'Always separate parts and labour in your quote. Surprise costs destroy trust instantly. Get customer approval before ordering parts, especially for expensive components like screens or motherboards.'},
+  // CUSTOMER SERVICE  
+  {topic:'Customer Service',cat:'business',q:'When should you notify a customer of additional faults found during repair?',opts:['Never, just fix everything','After repair is complete','Immediately before ordering parts','At device collection'],ans:2,explain:'Always notify the customer before ordering parts or proceeding with extra work. Never surprise a customer with additional charges. Written or WhatsApp confirmation of extra work is best practice.'},
+  {topic:'Customer Service',cat:'business',q:'Is it acceptable to access customer photos during a repair?',opts:['Yes, to check camera quality','Yes, if you delete after','No, never','Only with permission'],ans:2,explain:'Never access customer personal data, photos, messages, or apps during a repair. This is a serious ethical violation that can result in criminal charges. Test camera function with a new photo only.'},
+  {topic:'Customer Service',cat:'business',q:'What document should customers sign before repair begins?',opts:['Insurance policy','Written repair consent form','Non-disclosure agreement','Warranty card'],ans:1,explain:'A repair consent form documents the fault reported, work authorised, price agreed, and existing damage. It protects both parties legally and sets clear expectations.'},
+  {topic:'Customer Service',cat:'business',q:'What is the golden rule when estimating repair turnaround time?',opts:['Promise the fastest possible time','Under-promise and over-deliver','Give no estimate at all','Always say same day'],ans:1,explain:'Under-promise, over-deliver. If you think it\'ll take 2 hours, say 3. Completing early delights customers. Running late creates complaints even when you\'re being diligent.'},
+  // TOOLS
+  {topic:'Tools',cat:'hardware',q:'What happens if you use the wrong size screwdriver on a phone screw?',opts:['Nothing, all screwdrivers work the same','The screw head gets stripped permanently, requiring drilling out','The phone breaks','The screen cracks'],ans:1,explain:'Using the wrong size screwdriver strips the screw head. A stripped Pentalobe or Tri-point screw requires drilling out — a risky process that can damage the housing or internal components.'},
+  {topic:'Tools',cat:'hardware',q:'What temperature should you avoid exceeding when using heat on modern smartphones?',opts:['50°C','80°C','120°C','200°C'],ans:1,explain:'Keep heat below 80°C on modern devices. Excessive heat damages OLED panels, melts adhesive gaskets, and can trigger battery thermal runaway. Newer phones with in-display fingerprint sensors are especially heat-sensitive.'},
+  {topic:'Tools',cat:'hardware',q:'What is 99% IPA used for in phone repair?',opts:['Lubricating screws','Removing corrosion, flux residue, and oxidation from PCBs','Cleaning screens','Cooling components'],ans:1,explain:'99% isopropyl alcohol is the standard PCB cleaning agent. It dissolves corrosion, flux residue, and oxidation without damaging components or leaving residue. Lower concentrations contain water — never use them on boards.'},
+];
+
+const EXAM_CATEGORIES = {
+  full: ALL_EXAM_QUESTIONS,
+  power: ALL_EXAM_QUESTIONS.filter(q=>q.cat==='power'||q.topic==='Battery Health'||q.topic==='Fault Diagnosis'),
+  hardware: ALL_EXAM_QUESTIONS.filter(q=>q.cat==='hardware'),
+  business: ALL_EXAM_QUESTIONS.filter(q=>q.cat==='business'),
+};
+
+// ═══════════════════════════════════════════════
+// SOUND ENGINE
+// ═══════════════════════════════════════════════
+function playSound(type){
+  const ctx = new (window.AudioContext||window.webkitAudioContext)();
+  const now = ctx.currentTime;
+  if(type==='correct'){
+    // TOOT — two clean ascending tones
+    [523,659].forEach((freq,i)=>{
+      const o=ctx.createOscillator();const g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);
+      o.type='sine';o.frequency.value=freq;
+      g.gain.setValueAtTime(0,now+i*0.12);
+      g.gain.linearRampToValueAtTime(0.4,now+i*0.12+0.02);
+      g.gain.exponentialRampToValueAtTime(0.001,now+i*0.12+0.25);
+      o.start(now+i*0.12);o.stop(now+i*0.12+0.3);
+    });
+  } else {
+    // KRIIIIIIIII — harsh descending noise burst
+    const o=ctx.createOscillator();const g=ctx.createGain();
+    const dist=ctx.createWaveShaper();
+    const curve=new Float32Array(256);
+    for(let i=0;i<256;i++){const x=i*2/256-1;curve[i]=x<0?-1:1;}
+    dist.curve=curve;
+    o.connect(dist);dist.connect(g);g.connect(ctx.destination);
+    o.type='sawtooth';
+    o.frequency.setValueAtTime(600,now);
+    o.frequency.exponentialRampToValueAtTime(80,now+0.5);
+    g.gain.setValueAtTime(0.5,now);
+    g.gain.exponentialRampToValueAtTime(0.001,now+0.55);
+    o.start(now);o.stop(now+0.6);
+    // Add second abrasive layer
+    const o2=ctx.createOscillator();const g2=ctx.createGain();
+    o2.connect(g2);g2.connect(ctx.destination);
+    o2.type='square';
+    o2.frequency.setValueAtTime(400,now);
+    o2.frequency.exponentialRampToValueAtTime(60,now+0.45);
+    g2.gain.setValueAtTime(0.3,now+0.05);
+    g2.gain.exponentialRampToValueAtTime(0.001,now+0.5);
+    o2.start(now+0.05);o2.stop(now+0.55);
+  }
+}
+
+// ═══════════════════════════════════════════════
+// EXAM ENGINE
+// ═══════════════════════════════════════════════
+let examQuestions=[];
+let examIndex=0;
+let examScore=0;
+let examStreak=0;
+let examWrong=[];
+
+function shuffle(arr){return [...arr].sort(()=>Math.random()-.5)}
+
+function startExam(mode){
+  const pool = EXAM_CATEGORIES[mode]||ALL_EXAM_QUESTIONS;
+  examQuestions = shuffle(pool);
+  examIndex=0;examScore=0;examStreak=0;examWrong=[];
+  document.getElementById('exam-lobby').style.display='none';
+  document.getElementById('exam-results').style.display='none';
+  document.getElementById('exam-runner').style.display='block';
+  renderExamQuestion();
+}
+
+function renderExamQuestion(){
+  const q=examQuestions[examIndex];
+  const total=examQuestions.length;
+  const pct=Math.round((examIndex/total)*100);
+  document.getElementById('exam-progress-label').textContent=`Q ${examIndex+1}/${total}`;
+  document.getElementById('exam-progress-bar').style.width=pct+'%';
+  document.getElementById('exam-score-live').textContent=examScore+' ✓';
+  document.getElementById('exam-score-live').style.color=examScore>0?'var(--teal)':'var(--text-muted)';
+  document.getElementById('exam-streak').textContent=examStreak>=3?`🔥 ${examStreak} STREAK`:'';
+  document.getElementById('exam-topic-label').textContent=q.topic.toUpperCase()+' — '+q.cat.toUpperCase();
+  document.getElementById('exam-question').textContent=q.q;
+  document.getElementById('exam-feedback').style.display='none';
+  const opts=document.getElementById('exam-opts');
+  const letters=['A','B','C','D'];
+  opts.innerHTML=q.opts.map((o,i)=>`
+    <button onclick="answerExam(${i})" id="eopt-${i}" style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:var(--radius);padding:13px 14px;cursor:pointer;transition:.2s;font-size:13px;text-align:left;color:var(--white);font-family:var(--body);display:flex;align-items:center;gap:10px">
+      <span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);min-width:18px">${letters[i]}</span>
+      <span>${o}</span>
+    </button>
+  `).join('');
+}
+
+function answerExam(idx){
+  const q=examQuestions[examIndex];
+  const correct=idx===q.ans;
+  // Disable all buttons
+  q.opts.forEach((_,i)=>{
+    const btn=document.getElementById('eopt-'+i);
+    btn.onclick=null;
+    btn.style.cursor='default';
+    if(i===q.ans){
+      btn.style.borderColor='var(--teal)';
+      btn.style.background='rgba(0,212,170,0.12)';
+      btn.style.color='var(--teal)';
+    } else if(i===idx&&!correct){
+      btn.style.borderColor='#ff4444';
+      btn.style.background='rgba(255,68,68,0.1)';
+      btn.style.color='#ff6666';
+    }
+  });
+
+  playSound(correct?'correct':'wrong');
+
+  if(correct){examScore++;examStreak++;}
+  else{examStreak=0;examWrong.push({q,chosen:idx});}
+
+  const fb=document.getElementById('exam-feedback');
+  const fbHead=document.getElementById('exam-feedback-head');
+  const fbBody=document.getElementById('exam-feedback-body');
+  fb.style.display='block';
+
+  if(correct){
+    fb.style.background='rgba(0,212,170,0.08)';
+    fb.style.border='1px solid rgba(0,212,170,0.3)';
+    fbHead.style.color='var(--teal)';
+    fbHead.textContent='✓ CORRECT — TOOT!';
+    fbBody.style.color='rgba(255,255,255,0.7)';
+    fbBody.textContent=q.explain;
+  } else {
+    fb.style.background='rgba(255,68,68,0.08)';
+    fb.style.border='1px solid rgba(255,68,68,0.3)';
+    fbHead.style.color='#ff4444';
+    fbHead.textContent='✗ WRONG — KRIIIIIIIII!';
+    fbBody.style.color='rgba(255,255,255,0.7)';
+    fbBody.innerHTML=`<strong style="color:#ff6666">You chose:</strong> "${q.opts[idx]}"<br><strong style="color:var(--teal)">Correct answer:</strong> "${q.opts[q.ans]}"<br><br>${q.explain}`;
+  }
+}
+
+function nextExamQuestion(){
+  examIndex++;
+  if(examIndex>=examQuestions.length){showExamResults();return;}
+  renderExamQuestion();
+  window.scrollTo(0,0);
+}
+
+function showExamResults(){
+  document.getElementById('exam-runner').style.display='none';
+  document.getElementById('exam-results').style.display='block';
+  const total=examQuestions.length;
+  const pct=Math.round((examScore/total)*100);
+  const passed=pct>=70;
+  document.getElementById('result-emoji').textContent=pct===100?'🏆':pct>=85?'🥇':pct>=70?'✅':pct>=50?'😬':'💀';
+  document.getElementById('result-status-label').textContent=passed?'PASSED ✓':'FAILED ✗';
+  document.getElementById('result-status-label').style.color=passed?'var(--teal)':'#ff4444';
+  document.getElementById('result-pct').textContent=pct+'%';
+  document.getElementById('result-breakdown').textContent=`${examScore} correct out of ${total}`;
+
+  // Save to history
+  const history=JSON.parse(localStorage.getItem('ppt_exam_history')||'[]');
+  history.unshift({date:new Date().toLocaleDateString('en-ZA'),pct,score:examScore,total,passed});
+  if(history.length>5)history.pop();
+  localStorage.setItem('ppt_exam_history',JSON.stringify(history));
+  if(passed){state.quizzes++;if(pct>=90)state.certs++;saveState();updateDashboard();}
+
+  // Wrong answers review
+  const review=document.getElementById('result-review');
+  if(examWrong.length===0){
+    review.innerHTML=`<div style="text-align:center;padding:16px;background:rgba(0,212,170,0.08);border:1px solid rgba(0,212,170,0.3);border-radius:var(--radius-lg)"><div style="font-size:24px;margin-bottom:8px">🧠</div><div style="font-family:var(--display);font-size:14px;font-weight:600;color:var(--teal)">PERFECT SCORE!</div><div style="font-size:13px;color:var(--text-muted);font-weight:300;margin-top:4px">Not a single mistake. Certified legend.</div></div>`;
+  } else {
+    review.innerHTML=`
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:3px;color:#ff4444;margin-bottom:12px;display:flex;align-items:center;gap:8px">// REVIEW YOUR MISTAKES <span style="flex:1;height:1px;background:rgba(255,68,68,0.2)"></span></div>
+      ${examWrong.map(w=>`
+        <div style="background:rgba(255,68,68,0.05);border:1px solid rgba(255,68,68,0.2);border-radius:var(--radius);padding:14px;margin-bottom:10px">
+          <div style="font-family:var(--mono);font-size:9px;letter-spacing:1px;color:#ff6666;margin-bottom:6px">${w.q.topic.toUpperCase()}</div>
+          <div style="font-size:12px;font-weight:500;margin-bottom:10px;line-height:1.4">${w.q.q}</div>
+          <div style="font-size:11px;color:#ff6666;margin-bottom:4px">✗ Your answer: "${w.q.opts[w.chosen]}"</div>
+          <div style="font-size:11px;color:var(--teal);margin-bottom:8px">✓ Correct: "${w.q.opts[w.q.ans]}"</div>
+          <div style="font-size:11px;color:var(--text-muted);line-height:1.5;font-weight:300;border-top:1px solid rgba(255,255,255,0.06);padding-top:8px">${w.q.explain}</div>
+        </div>
+      `).join('')}
+    `;
+  }
+  window.scrollTo(0,0);
+}
+
+function showExamLobby(){
+  document.getElementById('exam-runner').style.display='none';
+  document.getElementById('exam-results').style.display='none';
+  document.getElementById('exam-lobby').style.display='block';
+  renderExamHistory();
+}
+
+function renderExamHistory(){
+  const history=JSON.parse(localStorage.getItem('ppt_exam_history')||'[]');
+  const el=document.getElementById('exam-history-list');
+  if(!history.length){el.innerHTML='<div style="font-size:12px;color:var(--text-dim);font-weight:300;text-align:center;padding:12px 0">No exams taken yet. Go prove yourself.</div>';return;}
+  el.innerHTML=history.map(h=>`
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
+      <div style="font-size:18px">${h.pct===100?'🏆':h.pct>=85?'🥇':h.pct>=70?'✅':'💀'}</div>
+      <div style="flex:1">
+        <div style="font-size:12px;font-weight:500;color:${h.passed?'var(--teal)':'#ff6666'}">${h.pct}% — ${h.passed?'PASSED':'FAILED'}</div>
+        <div style="font-size:10px;color:var(--text-muted);font-family:var(--mono);letter-spacing:.5px">${h.score}/${h.total} correct · ${h.date}</div>
+      </div>
+      <div style="font-family:var(--display);font-size:18px;font-weight:800;color:${h.passed?'var(--teal)':'#ff4444'}">${h.pct}%</div>
+    </div>
+  `).join('');
+}
+
+
+function init(){
+  const tipEl = document.getElementById('daily-tip');
+  if(tipEl) tipEl.textContent = DAILY_TIPS[new Date().getDay()%DAILY_TIPS.length];
+  renderSymptoms();
+  renderComponents();
+  renderPaths();
+  renderSoftware();
+  renderTools();
+  renderCases();
+  updateDashboard();
+  renderExamHistory();
+}
+document.addEventListener('DOMContentLoaded',init);
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>

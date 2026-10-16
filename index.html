@@ -327,7 +327,7 @@ select{background:var(--glass2); border:1px solid var(--br2); color:var(--tx); p
    PIXEL CORE
    ========================================================= */
 const PixelOS = {
-  version: "0.5.0",
+  version: "0.6.0",
   core: { eventBus: new EventTarget() },
   apps: {},        // registry: id -> definition
   windows: new Map(), // winId -> record
@@ -642,12 +642,21 @@ function renderLauncher(filter){
   const grid = document.getElementById("launcher-grid");
   grid.innerHTML = "";
   const f = (filter||"").toLowerCase();
-  Object.values(PixelOS.apps).filter(a=>!f || a.name.toLowerCase().includes(f) || a.category.toLowerCase().includes(f)).forEach(app=>{
-    const it = document.createElement("button");
-    it.className = "lgrid-item";
-    it.innerHTML = `<div class="lgrid-badge">${app.icon}</div><span>${escapeHtml(app.name)}</span>`;
-    it.onclick = ()=>{ openWindow(app.id); closeLauncher(); };
-    grid.appendChild(it);
+  const order = ["Company","System","Tools","Office","Field Tech","Network","Internet","Media","Learn","Dev","Hardware","Visual Lab","Games"];
+  const rank = c=>{ const i=order.indexOf(c); return i<0 ? order.length : i; };
+  const apps = Object.values(PixelOS.apps).filter(a=>!f || a.name.toLowerCase().includes(f) || a.category.toLowerCase().includes(f) || (a.desc||"").toLowerCase().includes(f));
+  const cats = [...new Set(apps.map(a=>a.category))].sort((a,b)=>rank(a)-rank(b) || a.localeCompare(b));
+  cats.forEach(cat=>{
+    const h = document.createElement("div");
+    h.className = "launcher-cat"; h.style.gridColumn = "1/-1"; h.textContent = cat.toUpperCase();
+    grid.appendChild(h);
+    apps.filter(a=>a.category===cat).forEach(app=>{
+      const it = document.createElement("button");
+      it.className = "lgrid-item";
+      it.innerHTML = `<div class="lgrid-badge">${app.icon}</div><span>${escapeHtml(app.name)}</span>`;
+      it.onclick = ()=>{ openWindow(app.id); closeLauncher(); };
+      grid.appendChild(it);
+    });
   });
 }
 function openLauncher(){ document.getElementById("launcher").classList.add("open"); document.getElementById("launcherBtn").classList.add("on"); document.getElementById("launcher-search").focus(); }
@@ -1355,6 +1364,7 @@ if("serviceWorker" in navigator){
 })();
 </script>
 <script src="pixel-apps.js"></script>
+<script src="pixel-repos.js"></script>
 <script src="pixel-fx.js"></script>
 </body>
 </html>

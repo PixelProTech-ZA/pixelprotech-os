@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>PixelProTech Academy — Learn Digital Skills</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D"/>
+<meta name="theme-color" content="#06060c"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="PPT Academy"/>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAKmElEQVR4nO3dW2wU1xkH8O+s12Cvb5iruRUXUmNjc6kRENJcqIpV0RKJFuhLLyg8tPQhEhItaoSqqjSVWqFGahNVNGqqXtQ8NAmhalAiAW2q0mAgEAQ2BoMJxsE2pl7be7W96z19mNnZ2bXj2d1vZmdn/f89IOw9e863s/89MztzGMSR9VKSlIJISClICkmCpJCSSP1L/CESUpLWIKWl/rkpLXWdk64rrb06ekpL9blJY01R55RjTVmV0sOUVaW+okljTVlVfKxpt17SWFNtPcMtoD30aVsguaV+rCmrmjTWtFsv+Z2aYuu5CIABAQIWBAhYECBgQYCABQECFgQIWBAgYEGAgAUBAhZ3LgcbGLqknSAn0p8gJ6Lk0/C6iwakXgNJnMgn3TUBIvUKSeo1BPUvydcflObqxQQipUNKvSZASrfxBolB4y311x+0TuIt1ZegKzJejO4lk+4h3aWMRIeJYoiSBk15bnzjqFsvvomKGhqsfS/jLA/Qw+GLiRBArkQ7OuIfS3I1rrZuIAsDpEUH7DVx46Z1MTI/QA9HLmpzOOSPifabyu7P1VRvYrcmH0T3j1w0t0MwXaz9pom9mTYD9fsuqEdzkPdi7TclSbHWhKnInBmo33fBlH4gl2JtJkxFJgQI6XGuWNstZg/cACE9TsfMECtASE9hkIwMZR+gfj/SUziyzlCWAepDegqOvJ5NhrIJENJTqLLIUMYBQnoKW6YZwnIOYMksQH2BVovqgPyR0SSUQYCQnhkk7QxhFwYsCBCwpBsg7L9mnGud6bTCDAQsaQWoF9PPzJTGJIQZCFgQIGBBgIDFOEA4AJrRjA6DMAMBCwIELAgQsCBAwIIAAQsCBCwIELAgQMCCAAELAgQsCBCwIEDAggABCwIELAgQsCBAwIIAAQsCBCwIELAgQMCCAAELAgQsCBCwIEDAggABCwIELAgQsCBAwIIAAQsCBCwIELAgQMCCAAELAgQsCBCwIEDAggABizuXg+3Ytez7hxqyeKKUFB6NBoPRQDASCIzf7fZ33hm61TX8cY8/FpMZdfW17asO72/OrobQWCQQjvjD477QeGfvUPt9b3vP4J2+oQlpXMOr+1u2NSzPYly+PSdPnu2+Z1HnOQ1Q1oQgT6nbU+peML+EiNY2ziOqJaJB7+i7Z++fOtPdNxDMQQ1lJcVlJcWLqj1E1PzYQuX3AyOht1u7Tpzv7PEGrK4hDzl7FzZvbsm39ta9frzlyMGNlRWzbKlhYZXne19e+95Pdv/y20/NKZttSw02cnaAFEJQyzPL//SbLz39+BIba3h208p3XtjVsm6FXTXYohACpKiumn30B1v27nzMxhrmVZT8+rlt33lmjY015FjhBIiIhKDnn1u7/cll9tbwwq7NX21eaWMNuVRQAVL88MDnaxZ47K3hZ9/YuqS63N4acqMAA1Ra4j7wzSZ7a/DMLj707EZ7a8iNvPsav+frpwOBiCRJgqSQJMhVJMrKi5cvK2tuXrBzx4q51cbfdL74xNLfvV7W9yjL7/bbnn/LHxqXgoikFCQFuYqoonRWbU3F1jWL9zz9ufmVpYad7NhQ+9Kpik+G/NnV4BR5F6DJYjHp8423d4y3dXjfONl1+OCGp55YPP1TXEJsf3LZX95O9z8/T6eGkeDY1a7Rq3cf/flsx9F9W7dv+IxhDTubP3v87DXlx+/+4bQk9SMhiUjEPyFEkqQURIKUP4nk1R/tq/aUTNP5K+evvPj+B0Qk1d6IhNQST0JKIimIiLTPoUUctgsLhaIvHrvcdsNr2HLTuoUW1RAYjRx+7dyVrgHDll+oW2pRDfnDYQEiomg09tvftxk2q19VbWENE7Fjb35o2Kxp+TzrasgTzgsQEd26PTzwKDx9m9ISd3WVheeF27oH+7wGx1ie2cXzyqfbExUARwaIiO52+wzbVJZbe3Hjdu+wYZsqT4Ff3HBqgILBiGGbWbOKLK3BHx43bFNS7ICvKRxODVBZWbFhm/HxCUtrqCg1nuFGI1FLa7CdUwO0srbSsM2I33iG4KhbOsewzXBozNIabOfIADWsrl443+BUXng0Ouyz8M1bVzu/prps+jahsYg3MGpdDfnAeQFyu10H9jcaNuu4M2RhDUWuQ7uNr1Rc7/mfdTXkCYcd4nk87sMHNzStmWvY8sNrxif6slNeUnx039bmVcYnKv97q9eiGvKHAwIkhCgvdy9fVr6xef7Or9Smcy0sJuXpcz0m1uASosJTvGJR5dbGxXvTuxYWk/Kdj+6aWEN+yrsAvXmihd/Jvz540P8olPUFoPdf3s2v4d2r9x54A9ZdhMoTzjsGMhQejR7/q/G1DkuFxiK/+sdle2vIjQIM0LHjH/U/Ctlbw4//dr53aEb8I41CC9Arf7x+5twn9tbwi5OXTl0p/KMfRd4dA2VtaGTspVev/ru118bDjkH/6E/faD19/Z5tFeRcIQRISjrzn56XX7s+ErDttK+UdOry3Z+fuDgcGiv4A2c9Zwdo0Dv63j97Tp3p7n0YIHU5X64NjIT+fqHrrfO37w/6pU012MgxAQqHo8FQNBiM+AORj7t9t+4Md3YNd933xWJSXdNpvdBYNBAe94cjvtDY7d7htvuDN3q8nb3eCSmJLFw2ms/yLkCTF9XHFxFra4claYuLrXnPJi+qp/jiZW3lsraQecZGR1Fo38IgxxAgYEGAgAUBAhYECFgQIGBBgIAFAQIWBAhYECBgQYCABQECFgQIWBAgYBFH1kttmYQU2jIJdZGNFPJBsJXUZRXKshftZmzqsgrlhm26e61pLVOXZGgtk5ZkJG7Gprs9WybLOfR3jNPKpnid+q6k0lz5vXZDOO03+kGJ0l/OkdxSfQm6IuPFpH2Lu6RiEhucJMnU56Z9izv9c/X1JzpMlKH+1x9qV+vrdO9UfDvHR8QMBCwIELAgQMCCAAELAgQsCBCwIEDAggABCwIELAgQsCBAwIIAAQsCBCwIELAgQMCCAAELAgQsCBCwIEDAggABCwIELAgQsCBAwIIAAQsCBCwIELAgQMCCAAELAgQsCBCwIEDAggABCwIELAgQsCBAwIIAAQsCBCwIELAYB2hJ+eM5qAPy1Lq66R/HDAQsCBCwIEDAklaAcBg0QxkdABFmIGBKN0CLMQnNNGlMP4QZCJgQIGDJIEDYi80ga1en2TCzGQgZmglE2ukh7MKAKeMALa7YYkUdkCcymn4ouxkIGSpUmaaHst6FIUOFJ4v0EOcYqAYZKiCiKZv0EPMguqYSGSoEWaeH+N/CkCGnczHSQ6Z8jUeGnIuZHjLrPBAy5ESupnp+J25+F4qayi1SyH7fRbM6BOu4GuulkNKUrszoJKGmarO5HYLpXI0mTDwa02YgzaKqzSSkJOofuWB655C1osZ6SUQmTTwa8wOkWTRnMwnEyH5Fa+pJkCRzk6OyMECKRXM2S0EkpBT0cOiS1cOBwt3QoG12i6KjDmRd15MtrN6kvCT1hQmpfDKkIBIk9Q+RJK1Bakvdc4U6J8d/1HVFKS2VHlJa6sdKaakfa8qq4mNNUZUy+qSxaNIrSmMLaA992hZIbpkYKzewnANYECBgQYCABQECFgQIWBAgYEGAgAUBAhYECFj+D32t4gmbFja9AAAAAElFTkSuQmCC"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#06060c;--bg2:#0a0a14;--surface:#0f0f1e;--card:#13132a;--card2:#1a1a35;
+  --purple:#7b2fff;--purple-dim:rgba(123,47,255,.15);--purple-glow:rgba(123,47,255,.3);
+  --teal:#00d4aa;--teal-dim:rgba(0,212,170,.12);--teal-glow:rgba(0,212,170,.3);
+  --white:#fff;--muted:rgba(255,255,255,.4);--border:rgba(255,255,255,.07);
+  --grad:linear-gradient(90deg,#7b2fff,#00d4aa);
+  --success:#00d4aa;--warning:#ffb347;--danger:#ff4d6d;
+  --r:10px;--r-sm:6px;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;cursor:none;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--purple);}
+
+/* CURSOR */
+#cur{width:10px;height:10px;background:var(--teal);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;mix-blend-mode:difference;transition:transform .08s;}
+#cur-ring{width:34px;height:34px;border:1.5px solid rgba(0,212,170,.4);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;}
+
+/* NOISE */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4;}
+
+/* ===== LAYOUT ===== */
+.app{display:flex;min-height:100vh;position:relative;z-index:1;}
+
+/* ===== SIDEBAR ===== */
+.sidebar{width:300px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;bottom:0;z-index:100;overflow-y:auto;transition:transform .3s;}
+.sidebar::-webkit-scrollbar{width:2px;}
+.sidebar-head{padding:24px 20px 16px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.sidebar-logo{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:4px;}
+.sidebar-sub{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);}
+.sidebar-progress-wrap{padding:16px 20px;border-bottom:1px solid var(--border);}
+.sp-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);margin-bottom:8px;display:flex;justify-content:space-between;}
+.sp-bar{height:4px;background:var(--border);border-radius:2px;overflow:hidden;}
+.sp-fill{height:100%;background:var(--grad);border-radius:2px;transition:width .6s ease;}
+.sp-xp{font-family:'Bebas Neue',sans-serif;font-size:22px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:6px;}
+.sp-xp-label{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);}
+
+.sidebar-nav{padding:12px 0;flex:1;}
+.nav-section-label{font-family:'Space Mono',monospace;font-size:8px;letter-spacing:3px;color:rgba(255,255,255,.2);padding:12px 20px 6px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;cursor:none;transition:background .2s;border-left:2px solid transparent;position:relative;}
+.nav-item:hover{background:rgba(255,255,255,.03);}
+.nav-item.active{background:var(--purple-dim);border-left-color:var(--purple);}
+.nav-item.completed{border-left-color:var(--teal);}
+.nav-icon{font-size:16px;width:24px;text-align:center;flex-shrink:0;}
+.nav-text{font-size:12px;font-weight:500;flex:1;line-height:1.3;}
+.nav-badge{font-family:'Space Mono',monospace;font-size:8px;padding:2px 6px;border-radius:10px;background:var(--teal-dim);color:var(--teal);flex-shrink:0;}
+.nav-badge.locked{background:rgba(255,255,255,.05);color:var(--muted);}
+.nav-badge.done{background:rgba(0,212,170,.15);color:var(--teal);}
+.nav-check{font-size:12px;color:var(--teal);}
+
+/* ===== MAIN ===== */
+.main{margin-left:300px;flex:1;min-height:100vh;}
+
+/* ===== TOP BAR ===== */
+.topbar{background:rgba(6,6,12,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;}
+.topbar-left{display:flex;align-items:center;gap:12px;}
+.topbar-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;}
+.topbar-course{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--teal);}
+.topbar-right{display:flex;align-items:center;gap:12px;}
+.xp-chip{background:var(--purple-dim);border:1px solid var(--purple-glow);padding:6px 14px;border-radius:20px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:#b47fff;}
+.streak-chip{background:var(--teal-dim);border:1px solid var(--teal-glow);padding:6px 14px;border-radius:20px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--teal);}
+.menu-btn{display:none;background:none;border:none;color:var(--white);font-size:20px;cursor:none;padding:4px;}
+
+/* ===== CONTENT AREA ===== */
+.content{padding:40px 32px;max-width:900px;}
+
+/* ===== COURSE OVERVIEW CARD ===== */
+.course-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:36px;margin-bottom:32px;position:relative;overflow:hidden;}
+.course-hero::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(circle,var(--purple-dim),transparent 70%);pointer-events:none;}
+.ch-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--teal);margin-bottom:12px;}
+.ch-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:1;margin-bottom:12px;}
+.ch-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ch-desc{font-size:14px;color:var(--muted);line-height:1.8;max-width:600px;margin-bottom:24px;}
+.ch-meta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:28px;}
+.ch-meta-item{display:flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);}
+.ch-meta-item span{color:var(--white);font-weight:600;}
+.ch-progress{margin-bottom:20px;}
+.ch-prog-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--muted);display:flex;justify-content:space-between;margin-bottom:6px;}
+.ch-prog-bar{height:6px;background:var(--border);border-radius:3px;overflow:hidden;}
+.ch-prog-fill{height:100%;background:var(--grad);border-radius:3px;transition:width .8s ease;}
+.btn-start{background:var(--grad);color:#000;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;padding:14px 28px;border-radius:6px;border:none;cursor:none;display:inline-flex;align-items:center;gap:8px;transition:transform .2s,box-shadow .2s;}
+.btn-start:hover{transform:translateY(-2px);box-shadow:0 8px 30px var(--purple-glow);}
+.btn-secondary{background:transparent;color:var(--white);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:2px;padding:14px 28px;border-radius:6px;border:1px solid var(--border);cursor:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .2s,color .2s;margin-left:12px;}
+.btn-secondary:hover{border-color:var(--teal);color:var(--teal);}
+
+/* ===== LESSON LIST ===== */
+.lesson-list{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+.lesson-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;display:flex;align-items:center;gap:16px;cursor:none;transition:border-color .2s,transform .2s,background .2s;}
+.lesson-item:hover{border-color:rgba(123,47,255,.3);transform:translateX(4px);}
+.lesson-item.active-lesson{border-color:var(--purple);background:var(--purple-dim);}
+.lesson-item.done-lesson{border-color:rgba(0,212,170,.25);}
+.lesson-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(255,255,255,.1);width:36px;line-height:1;flex-shrink:0;}
+.lesson-item.done-lesson .lesson-num{color:var(--teal);opacity:.5;}
+.lesson-info{flex:1;}
+.lesson-name{font-size:14px;font-weight:600;margin-bottom:3px;}
+.lesson-desc{font-size:12px;color:var(--muted);}
+.lesson-type{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:3px;flex-shrink:0;}
+.lt-lesson{background:var(--purple-dim);color:#b47fff;border:1px solid rgba(123,47,255,.2);}
+.lt-quiz{background:rgba(255,180,0,.1);color:#ffb347;border:1px solid rgba(255,180,0,.2);}
+.lt-practice{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(0,212,170,.2);}
+.lt-challenge{background:rgba(255,77,109,.1);color:#ff4d6d;border:1px solid rgba(255,77,109,.2);}
+.lesson-status{font-size:16px;flex-shrink:0;}
+.lesson-xp{font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);flex-shrink:0;}
+
+/* ===== LESSON VIEWER ===== */
+.lesson-view{display:none;}
+.lesson-view.active{display:block;}
+.lv-header{margin-bottom:28px;}
+.lv-back{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);cursor:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px;transition:color .2s;background:none;border:none;}
+.lv-back:hover{color:var(--teal);}
+.lv-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,42px);line-height:1;margin-bottom:8px;}
+.lv-meta{display:flex;gap:12px;align-items:center;}
+.lv-type-badge{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:2px;padding:4px 12px;border-radius:20px;}
+
+/* LESSON CONTENT BLOCKS */
+.content-blocks{display:flex;flex-direction:column;gap:20px;margin-bottom:32px;}
+.block{border-radius:var(--r);overflow:hidden;}
+.block-text{background:var(--card);border:1px solid var(--border);padding:28px;}
+.block-text h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:.5px;color:var(--teal);margin-bottom:12px;}
+.block-text p{font-size:14px;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:12px;}
+.block-text p:last-child{margin-bottom:0;}
+.block-text ul{padding-left:20px;margin-bottom:12px;}
+.block-text ul li{font-size:14px;color:rgba(255,255,255,.75);line-height:1.9;margin-bottom:4px;}
+.block-text strong{color:var(--white);}
+.block-text .highlight{background:var(--purple-dim);border-left:3px solid var(--purple);padding:14px 18px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:12px 0;font-size:13px;color:rgba(255,255,255,.8);}
+.block-text .tip{background:var(--teal-dim);border-left:3px solid var(--teal);padding:14px 18px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:12px 0;font-size:13px;color:rgba(255,255,255,.8);}
+.block-code{background:#0d0d1a;border:1px solid rgba(123,47,255,.2);padding:24px;}
+.block-code pre{font-family:'Space Mono',monospace;font-size:12px;color:var(--teal);line-height:1.8;overflow-x:auto;white-space:pre-wrap;}
+.block-code .code-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:12px;}
+.block-visual{background:var(--card);border:1px solid var(--border);padding:28px;text-align:center;}
+.block-visual .visual-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--muted);margin-bottom:20px;}
+.shortcut-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;}
+.shortcut-item{background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;display:flex;justify-content:space-between;align-items:center;}
+.shortcut-key{font-family:'Space Mono',monospace;font-size:11px;background:rgba(123,47,255,.2);border:1px solid rgba(123,47,255,.3);padding:3px 10px;border-radius:4px;color:#b47fff;}
+.shortcut-desc{font-size:12px;color:var(--muted);}
+.table-demo{width:100%;border-collapse:collapse;margin-top:12px;}
+.table-demo th{background:var(--purple-dim);padding:10px 14px;text-align:left;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--teal);border:1px solid var(--border);}
+.table-demo td{padding:10px 14px;font-size:13px;border:1px solid var(--border);color:rgba(255,255,255,.7);}
+.table-demo tr:hover td{background:rgba(255,255,255,.02);}
+
+/* QUIZ BLOCKS */
+.block-quiz{background:var(--card);border:1px solid var(--border);padding:28px;}
+.quiz-q{font-size:15px;font-weight:600;margin-bottom:20px;line-height:1.6;}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;}
+.quiz-opt{background:var(--card2);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 18px;cursor:none;display:flex;align-items:center;gap:12px;transition:border-color .2s,background .2s;font-size:14px;}
+.quiz-opt:hover{border-color:rgba(123,47,255,.3);background:rgba(123,47,255,.05);}
+.quiz-opt.correct{border-color:var(--teal);background:rgba(0,212,170,.08);}
+.quiz-opt.wrong{border-color:var(--danger);background:rgba(255,77,109,.08);}
+.quiz-opt.selected{border-color:var(--purple);background:var(--purple-dim);}
+.quiz-letter{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;flex-shrink:0;}
+.quiz-feedback{margin-top:16px;padding:14px 18px;border-radius:var(--r-sm);font-size:13px;display:none;line-height:1.7;}
+.quiz-feedback.correct{background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);color:var(--teal);display:block;}
+.quiz-feedback.wrong{background:rgba(255,77,109,.1);border:1px solid rgba(255,77,109,.3);color:#ff4d6d;display:block;}
+
+/* PRACTICE BLOCKS */
+.block-practice{background:var(--card);border:1px solid var(--border);padding:28px;}
+.practice-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--warning);margin-bottom:12px;}
+.practice-task{font-size:15px;font-weight:600;margin-bottom:8px;}
+.practice-hint{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.7;}
+.practice-input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:14px 16px;color:var(--white);font-family:'Space Mono',monospace;font-size:13px;outline:none;transition:border-color .2s;resize:vertical;min-height:80px;}
+.practice-input:focus{border-color:var(--purple);}
+.practice-input.correct-ans{border-color:var(--teal);}
+.practice-input.wrong-ans{border-color:var(--danger);}
+.practice-btns{display:flex;gap:10px;margin-top:12px;}
+.btn-check{background:var(--grad);color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:10px 20px;border-radius:4px;border:none;cursor:none;transition:transform .15s;}
+.btn-check:hover{transform:translateY(-1px);}
+.btn-hint{background:transparent;color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;padding:10px 16px;border-radius:4px;border:1px solid var(--border);cursor:none;transition:color .2s,border-color .2s;}
+.btn-hint:hover{color:var(--warning);border-color:var(--warning);}
+.practice-result{margin-top:12px;font-size:13px;padding:12px 16px;border-radius:var(--r-sm);display:none;}
+.practice-result.show{display:block;}
+.practice-result.ok{background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);color:var(--teal);}
+.practice-result.no{background:rgba(255,77,109,.1);border:1px solid rgba(255,77,109,.3);color:#ff4d6d;}
+
+/* TYPING TEST */
+.typing-area{background:var(--bg);border:1px solid var(--border);border-radius:var(--r-sm);padding:20px;margin-bottom:14px;}
+.typing-target{font-family:'Space Mono',monospace;font-size:14px;line-height:2;color:var(--muted);margin-bottom:12px;letter-spacing:.5px;}
+.typing-target .correct-char{color:var(--teal);}
+.typing-target .wrong-char{color:var(--danger);background:rgba(255,77,109,.15);border-radius:2px;}
+.typing-target .current-char{background:var(--purple);color:var(--white);border-radius:2px;}
+.typing-field{width:100%;background:transparent;border:none;color:var(--white);font-family:'Space Mono',monospace;font-size:14px;outline:none;caret-color:var(--teal);}
+.typing-stats{display:flex;gap:24px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);}
+.typing-stats span{color:var(--white);}
+
+/* LESSON NAV */
+.lesson-nav-btns{display:flex;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border);}
+.btn-prev{background:transparent;color:var(--muted);font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1.5px;padding:12px 20px;border-radius:6px;border:1px solid var(--border);cursor:none;transition:color .2s,border-color .2s;}
+.btn-prev:hover{color:var(--white);border-color:rgba(255,255,255,.2);}
+.btn-next{background:var(--grad);color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:12px 24px;border-radius:6px;border:none;cursor:none;display:flex;align-items:center;gap:6px;transition:transform .2s,box-shadow .2s;}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--purple-glow);}
+.btn-complete{background:linear-gradient(90deg,#00d4aa,#00ff99);color:#000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;padding:12px 24px;border-radius:6px;border:none;cursor:none;display:flex;align-items:center;gap:6px;transition:transform .2s,box-shadow .2s;}
+.btn-complete:hover{transform:translateY(-2px);box-shadow:0 6px 24px var(--teal-glow);}
+
+/* XP TOAST */
+.xp-toast{position:fixed;top:80px;right:24px;background:var(--card);border:1px solid var(--teal-glow);border-radius:var(--r);padding:14px 20px;font-family:'Space Mono',monospace;font-size:12px;color:var(--teal);z-index:1000;transform:translateX(120%);transition:transform .4s cubic-bezier(.175,.885,.32,1.275);display:flex;align-items:center;gap:10px;}
+.xp-toast.show{transform:translateX(0);}
+
+/* ACHIEVEMENT */
+.achievement-popup{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:var(--card);border:1px solid var(--purple-glow);border-radius:var(--r);padding:40px;text-align:center;z-index:1000;opacity:0;transition:all .4s cubic-bezier(.175,.885,.32,1.275);pointer-events:none;min-width:280px;}
+.achievement-popup.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:all;}
+.ach-emoji{font-size:56px;display:block;margin-bottom:12px;animation:bounceIn .6s ease;}
+.ach-title{font-family:'Bebas Neue',sans-serif;font-size:32px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ach-sub{font-size:13px;color:var(--muted);margin:8px 0 20px;}
+.ach-xp{font-family:'Space Mono',monospace;font-size:11px;color:var(--teal);border:1px solid var(--teal-glow);padding:6px 16px;border-radius:20px;display:inline-block;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:999;display:none;}
+.overlay.show{display:block;}
+
+/* DASHBOARD */
+.dashboard{padding:0;}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px;}
+.dash-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;position:relative;overflow:hidden;cursor:none;transition:border-color .25s,transform .25s;}
+.dash-card:hover{transform:translateY(-4px);border-color:rgba(123,47,255,.3);}
+.dash-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.dash-card:hover::before{transform:scaleX(1);}
+.dc-icon{font-size:28px;margin-bottom:14px;}
+.dc-name{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;margin-bottom:6px;}
+.dc-desc{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:16px;}
+.dc-progress{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-bottom:8px;}
+.dc-prog-fill{height:100%;background:var(--grad);border-radius:2px;}
+.dc-meta{display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:9px;color:var(--muted);}
+.dc-meta .done{color:var(--teal);}
+.dc-level{position:absolute;top:16px;right:16px;font-family:'Space Mono',monospace;font-size:8px;letter-spacing:1px;padding:3px 8px;border-radius:10px;}
+.dl-beg{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(0,212,170,.2);}
+.dl-int{background:var(--purple-dim);color:#b47fff;border:1px solid rgba(123,47,255,.2);}
+.dl-adv{background:rgba(255,179,71,.1);color:var(--warning);border:1px solid rgba(255,179,71,.2);}
+.dl-tech{background:rgba(255,77,109,.1);color:#ff4d6d;border:1px solid rgba(255,77,109,.2);}
+
+/* HOME HERO */
+.home-hero{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:40px;margin-bottom:28px;position:relative;overflow:hidden;}
+.home-hero::after{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(123,47,255,.12),transparent 65%);pointer-events:none;}
+.hh-greeting{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--teal);margin-bottom:10px;}
+.hh-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5vw,56px);line-height:1;margin-bottom:12px;}
+.hh-title span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hh-sub{font-size:14px;color:var(--muted);max-width:500px;line-height:1.8;margin-bottom:24px;}
+.hh-stats{display:flex;flex-wrap:wrap;gap:24px;}
+.hh-stat{text-align:center;}
+.hh-stat-num{font-family:'Bebas Neue',sans-serif;font-size:32px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.hh-stat-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--muted);}
+
+/* SECTION TITLE */
+.section-head{margin-bottom:20px;}
+.s-label{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:3px;color:var(--purple);margin-bottom:6px;}
+.s-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:.5px;}
+
+/* MOBILE */
+@media(max-width:900px){
+  .sidebar{transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .main{margin-left:0;}
+  .menu-btn{display:block;}
+  .content{padding:24px 20px;}
+}
+@keyframes bounceIn{0%{transform:scale(.3);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+</style>
+</head>
+<body>
+<div id="cur"></div>
+<div id="cur-ring"></div>
+<div class="overlay" id="overlay" onclick="closeAchievement()"></div>
+
+<!-- XP TOAST -->
+<div class="xp-toast" id="xpToast">⚡ <span id="xpToastText">+50 XP EARNED</span></div>
+
+<!-- ACHIEVEMENT POPUP -->
+<div class="achievement-popup" id="achPopup">
+  <span class="ach-emoji" id="achEmoji">🏆</span>
+  <div class="ach-title" id="achTitle">LESSON COMPLETE</div>
+  <div class="ach-sub" id="achSub">You crushed it. Keep going.</div>
+  <div class="ach-xp" id="achXp">+100 XP</div>
+  <br><br>
+  <button class="btn-next" onclick="closeAchievement()" style="margin:0 auto;">CONTINUE →</button>
+</div>
+
+<div class="app">
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-head">
+      <span class="sidebar-logo">PIXELPROTECH</span>
+      <div class="sidebar-sub">DIGITAL ACADEMY · PRETORIA</div>
+    </div>
+    <div class="sidebar-progress-wrap">
+      <div class="sp-label"><span>OVERALL PROGRESS</span><span id="overallPct">0%</span></div>
+      <div class="sp-bar"><div class="sp-fill" id="overallBar" style="width:0%"></div></div>
+      <div class="sp-xp" id="totalXP">0 XP</div>
+      <div class="sp-xp-label">TOTAL EXPERIENCE</div>
+    </div>
+    <nav class="sidebar-nav" id="sidebarNav"></nav>
+  </aside>
+
+  <!-- ===== MAIN ===== -->
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+        <div>
+          <div class="topbar-title" id="topbarTitle">ACADEMY HOME</div>
+          <div class="topbar-course" id="topbarCourse">PIXELPROTECH SOLUTIONS</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="xp-chip">⚡ <span id="xpDisplay">0</span> XP</div>
+        <div class="streak-chip">🔥 <span id="streakDisplay">1</span> DAY STREAK</div>
+      </div>
+    </div>
+
+    <div class="content" id="mainContent"></div>
+  </main>
+</div>
+
+<script>
+/* ============================================================
+   DATA — 18 COURSES WITH FULL LESSON CONTENT
+   ============================================================ */
+const COURSES = [
+  {
+    id:'basic-computers', icon:'🖥️', name:'Basic Computers', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'2 Days', lessons:4,
+    desc:'Start from zero. Mouse, keyboard, desktop, typing, and applications — all covered. By the end you operate a computer with full confidence.',
+    jobs:'All entry-level office roles',
+    topics:['Computer hardware', 'Desktop navigation', 'Keyboard & mouse', 'Basic applications'],
+    lessonData:[
+      {
+        title:'What Is a Computer?',type:'lesson',xp:50,
+        blocks:[
+          {type:'text',content:`<h3>UNDERSTANDING YOUR COMPUTER</h3>
+<p>A computer is an electronic device that processes information. It takes <strong>input</strong> from you, <strong>processes</strong> it, and gives you <strong>output</strong>.</p>
+<p>Every computer has these main parts:</p>
+<ul>
+  <li><strong>CPU (Processor)</strong> — The brain. Does all the calculations.</li>
+  <li><strong>RAM (Memory)</strong> — Short-term memory. Holds what you're currently working on.</li>
+  <li><strong>Hard Drive / SSD</strong> — Long-term storage. Keeps your files when the power is off.</li>
+  <li><strong>Monitor</strong> — The screen that shows you everything.</li>
+  <li><strong>Keyboard & Mouse</strong> — How you talk to the computer.</li>
+</ul>
+<div class="tip">💡 TIP: Think of RAM like your desk — it only holds what you're using right now. The hard drive is your filing cabinet — it stores everything permanently.</div>`},
+          {type:'visual',label:'COMMON COMPUTER PARTS',content:'parts'},
+          {type:'quiz',question:'What does RAM stand for?',opts:['Random Access Memory','Read And Modify','Rapid Application Mode','Remote Access Machine'],correct:0,explanation:'RAM = Random Access Memory. It\'s your computer\'s short-term working memory — the more RAM, the faster your computer handles multiple tasks.'}
+        ]
+      },
+      {
+        title:'The Keyboard: Your Power Tool',type:'lesson',xp:60,
+        blocks:[
+          {type:'text',content:`<h3>MASTERING THE KEYBOARD</h3>
+<p>The keyboard is how you communicate with your computer. Learning the key positions properly will save you hours every week.</p>
+<p><strong>Key groups to know:</strong></p>
+<ul>
+  <li><strong>Letter keys (A-Z)</strong> — The main typing area</li>
+  <li><strong>Number keys (0-9)</strong> — Top row and number pad</li>
+  <li><strong>Function keys (F1-F12)</strong> — Top row for shortcuts</li>
+  <li><strong>Modifier keys</strong> — Ctrl, Alt, Shift, Windows key</li>
+  <li><strong>Navigation keys</strong> — Arrows, Home, End, Page Up/Down</li>
+</ul>
+<div class="highlight">⚡ The most important key combinations you need to memorize immediately:</div>`},
+          {type:'shortcuts',items:[
+            {key:'Ctrl + C',desc:'Copy'},
+            {key:'Ctrl + V',desc:'Paste'},
+            {key:'Ctrl + X',desc:'Cut'},
+            {key:'Ctrl + Z',desc:'Undo'},
+            {key:'Ctrl + S',desc:'Save'},
+            {key:'Ctrl + A',desc:'Select All'},
+            {key:'Alt + F4',desc:'Close Window'},
+            {key:'Windows + D',desc:'Show Desktop'},
+          ]},
+          {type:'practice',task:'Type this sentence exactly:',hint:'The quick brown fox jumps over the lazy dog',placeholder:'Type here...',answer:'The quick brown fox jumps over the lazy dog',points:40}
+        ]
+      },
+      {
+        title:'Windows Desktop Navigation',type:'lesson',xp:70,
+        blocks:[
+          {type:'text',content:`<h3>YOUR DESKTOP — COMMAND CENTRE</h3>
+<p>The Windows desktop is everything you see when your computer starts. Understanding it saves time and reduces frustration.</p>
+<p><strong>Key areas of the desktop:</strong></p>
+<ul>
+  <li><strong>Desktop Icons</strong> — Shortcuts to programs and files</li>
+  <li><strong>Taskbar</strong> — Bottom bar showing open programs</li>
+  <li><strong>Start Menu</strong> — Access ALL programs and settings</li>
+  <li><strong>System Tray</strong> — Bottom right: clock, Wi-Fi, battery</li>
+  <li><strong>Recycle Bin</strong> — Temporarily holds deleted files</li>
+</ul>
+<div class="tip">💡 Right-clicking on anything in Windows gives you a menu of options specific to that item. This is one of the most powerful habits to build.</div>
+<p>To <strong>open a program</strong>: double-click its icon.<br>
+To <strong>close a window</strong>: click the X in the top-right corner.<br>
+To <strong>minimise</strong>: click the minus (–) button.<br>
+To <strong>resize</strong>: click and drag any window edge.</p>`},
+          {type:'quiz',question:'Where do you find the clock and Wi-Fi icon on Windows?',opts:['The Start Menu','The Taskbar System Tray','The Desktop Icons area','The Title Bar'],correct:1,explanation:'The System Tray (bottom-right of taskbar) shows the clock, Wi-Fi status, battery, volume, and notification icons. Right-click the clock to adjust date & time.'}
+        ]
+      },
+      {
+        title:'Files & Folders — Stay Organised',type:'practice',xp:80,
+        blocks:[
+          {type:'text',content:`<h3>FILE MANAGEMENT — THE SKILL NOBODY TEACHES</h3>
+<p>Disorganised files waste hours. People literally lose important documents because they saved them randomly. Here's the system that works:</p>
+<ul>
+  <li><strong>File Explorer</strong> (Windows key + E) — Your file manager</li>
+  <li><strong>Folders</strong> — Containers for organising files</li>
+  <li><strong>File extensions</strong> — .docx (Word), .xlsx (Excel), .pdf, .jpg (image)</li>
+  <li><strong>File path</strong> — The address of a file e.g. C:\\Users\\Name\\Documents\\CV.docx</li>
+</ul>
+<div class="highlight">📁 GOLDEN RULE: Create a folder for everything. Never save files to the desktop long-term. Use Documents, and create sub-folders by topic.</div>
+<p><strong>Recommended folder structure:</strong></p>
+<ul>
+  <li>Documents → Work → [Company Name]</li>
+  <li>Documents → Personal → CVs</li>
+  <li>Documents → Courses → PixelProTech</li>
+</ul>`},
+          {type:'quiz',question:'What does the file extension ".docx" tell you?',opts:['It\'s an image file','It\'s a Microsoft Word document','It\'s a compressed zip file','It\'s a system file'],correct:1,explanation:'.docx is the extension for Microsoft Word documents. ".xlsx" = Excel, ".pptx" = PowerPoint, ".pdf" = PDF, ".jpg/.png" = images.'},
+          {type:'practice',task:'What keyboard shortcut opens File Explorer?',hint:'Think: Windows key + a letter',placeholder:'Type the shortcut...',answer:'Windows + E',points:30}
+        ]
+      }
+    ]
+  },
+  {
+    id:'ms-word', icon:'📄', name:'Microsoft Word', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'2-3 Days', lessons:5,
+    desc:'Document creation, formatting, tables, mail merge, and professional layouts. Build reports, letters, and CVs that look like they cost money.',
+    jobs:'Admin Clerk, Receptionist, Office Assistant',
+    topics:['Document formatting','Styles & headings','Tables & layouts','Mail merge','CV creation'],
+    lessonData:[
+      {
+        title:'The Word Interface',type:'lesson',xp:50,
+        blocks:[
+          {type:'text',content:`<h3>MICROSOFT WORD — YOUR DOCUMENT POWERHOUSE</h3>
+<p>Microsoft Word is the world's most-used word processor. Employers test it at interviews. Learn it properly and stand out immediately.</p>
+<p><strong>The key areas of Word:</strong></p>
+<ul>
+  <li><strong>Ribbon</strong> — The toolbar at the top with all the tools organised in tabs</li>
+  <li><strong>Quick Access Toolbar</strong> — Top-left: Save, Undo, Redo</li>
+  <li><strong>Document Area</strong> — The white page where you type</li>
+  <li><strong>Status Bar</strong> — Bottom: word count, page number, zoom</li>
+  <li><strong>View buttons</strong> — Bottom-right: switch between Print Layout, Read Mode</li>
+</ul>
+<div class="tip">💡 Always save your document first before doing anything else. Hit Ctrl+S immediately when you open a new document.</div>`},
+          {type:'shortcuts',items:[
+            {key:'Ctrl + B',desc:'Bold text'},
+            {key:'Ctrl + I',desc:'Italic text'},
+            {key:'Ctrl + U',desc:'Underline text'},
+            {key:'Ctrl + P',desc:'Print document'},
+            {key:'Ctrl + F',desc:'Find text'},
+            {key:'Ctrl + H',desc:'Find & Replace'},
+            {key:'Ctrl + Enter',desc:'Page break'},
+            {key:'F7',desc:'Spell check'},
+          ]},
+          {type:'quiz',question:'Which keyboard shortcut makes selected text BOLD in Word?',opts:['Ctrl + B','Ctrl + D','Alt + B','Shift + B'],correct:0,explanation:'Ctrl+B toggles bold on/off for selected text. Select your text first, then press Ctrl+B. The same shortcut turns bold off if the text is already bold.'}
+        ]
+      },
+      {
+        title:'Formatting Like a Pro',type:'lesson',xp:70,
+        blocks:[
+          {type:'text',content:`<h3>PROFESSIONAL FORMATTING</h3>
+<p>Formatting is what separates a professional document from an amateur one. Same content — completely different impression.</p>
+<p><strong>Font basics:</strong></p>
+<ul>
+  <li>Use <strong>Calibri 11pt</strong> or <strong>Arial 11pt</strong> for body text — standard for business</li>
+  <li>Use <strong>14-16pt</strong> for headings</li>
+  <li>Never use more than 2-3 font types in one document</li>
+  <li>Black text on white background — always readable</li>
+</ul>
+<p><strong>Paragraph spacing:</strong></p>
+<ul>
+  <li>Line spacing: 1.15 or 1.5 for body text</li>
+  <li>Add space after paragraphs instead of pressing Enter twice</li>
+  <li>Consistent margins: 2.5cm on all sides (default)</li>
+</ul>
+<div class="highlight">⚡ GOLDEN RULE: Use Word's built-in Styles (Home tab) for headings. This makes your document consistent and enables automatic Table of Contents generation.</div>`},
+          {type:'practice',task:'What font size should body text typically be in a business document?',hint:'Standard business documents use this size',placeholder:'Type the answer...',answer:'11',points:30}
+        ]
+      },
+      {
+        title:'Tables — Organise Anything',type:'lesson',xp:60,
+        blocks:[
+          {type:'text',content:`<h3>MASTERING WORD TABLES</h3>
+<p>Tables in Word let you organise any kind of information clearly. Used for CVs, invoices, schedules, and reports.</p>
+<p><strong>To insert a table:</strong></p>
+<ul>
+  <li>Click <strong>Insert tab → Table → choose rows and columns</strong></li>
+  <li>Or type how many rows/columns you need</li>
+</ul>
+<p><strong>Working inside tables:</strong></p>
+<ul>
+  <li>Press <strong>Tab</strong> to move to the next cell</li>
+  <li>Press <strong>Shift + Tab</strong> to go back</li>
+  <li>Press <strong>Tab</strong> in the last cell to add a new row</li>
+  <li>Right-click inside a table to add/delete rows and columns</li>
+</ul>
+<div class="tip">💡 For a CV, tables give you precise control over layout — two-column tables let you put dates on the left and job details on the right.</div>`,},
+          {type:'table',headers:['Task','How To Do It','Shortcut'],rows:[['Bold text','Home → Bold button','Ctrl+B'],['Save document','File → Save','Ctrl+S'],['Insert table','Insert → Table','—'],['Find text','Home → Find','Ctrl+F'],['Undo action','Quick Access → Undo','Ctrl+Z']]},
+          {type:'quiz',question:'How do you move to the next cell in a Word table?',opts:['Press Enter','Press Tab','Press Arrow key','Press Space'],correct:1,explanation:'Press Tab to move to the next cell in a Word table. In the last cell of the table, pressing Tab automatically adds a new row at the bottom.'}
+        ]
+      },
+      {
+        title:'Writing a Professional Letter',type:'practice',xp:80,
+        blocks:[
+          {type:'text',content:`<h3>BUSINESS LETTER FORMAT</h3>
+<p>Every professional letter follows the same structure. Learn this once — use it forever.</p>
+<p><strong>Standard business letter layout:</strong></p>
+<ul>
+  <li><strong>1. Your address</strong> — Top right or top left</li>
+  <li><strong>2. Date</strong> — Below your address</li>
+  <li><strong>3. Recipient's name & address</strong> — Left-aligned</li>
+  <li><strong>4. Reference line</strong> — RE: Subject of the letter</li>
+  <li><strong>5. Salutation</strong> — Dear Mr/Ms [Surname],</li>
+  <li><strong>6. Body paragraphs</strong> — Introduction, main content, closing</li>
+  <li><strong>7. Closing</strong> — Yours sincerely / Yours faithfully</li>
+  <li><strong>8. Signature + printed name + title</strong></li>
+</ul>
+<div class="highlight">📌 Use "Yours sincerely" when you know the person's name. Use "Yours faithfully" when you wrote "Dear Sir/Madam".</div>`},
+          {type:'practice',task:'Complete the closing: "Dear Ms Dlamini, ... __________ sincerely,"',hint:'Which closing do you use when you know the person\'s name?',placeholder:'Type one word...',answer:'Yours',points:30}
+        ]
+      },
+      {
+        title:'CV Creation in Word',type:'challenge',xp:120,
+        blocks:[
+          {type:'text',content:`<h3>BUILDING A WINNING CV</h3>
+<p>Your CV is the most important Word document you'll ever create. Here's the exact structure employers in South Africa expect:</p>
+<p><strong>CV Sections (in order):</strong></p>
+<ul>
+  <li><strong>Personal Details</strong> — Name, phone, email, location, ID number</li>
+  <li><strong>Personal Statement</strong> — 3-4 sentences: who you are, what you offer, what you want</li>
+  <li><strong>Skills Summary</strong> — Bullet list of your top 6-8 skills</li>
+  <li><strong>Work Experience</strong> — Most recent first: dates, company, title, duties</li>
+  <li><strong>Education</strong> — Most recent first: year, school/institution, qualification</li>
+  <li><strong>Courses & Certifications</strong> — PixelProTech goes here ✅</li>
+  <li><strong>References</strong> — "Available on request" is acceptable</li>
+</ul>
+<div class="tip">💡 One to two pages maximum. Use consistent formatting throughout. Make your name large and bold at the top — it should be the first thing the reader sees.</div>`,},
+          {type:'quiz',question:'Which work experience goes FIRST on a South African CV?',opts:['Your oldest job','Your most recent/current job','Your best-paying job','Your longest job'],correct:1,explanation:'CVs use reverse chronological order — most recent experience first. Employers want to see what you\'re doing NOW, not what you did 10 years ago.'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'ms-excel', icon:'📊', name:'Microsoft Excel', level:'int',
+    levelLabel:'BEGINNER–INT', color:'purple', duration:'3-5 Days', lessons:5,
+    desc:'Formulas, VLOOKUP, pivot tables, charts, and data analysis. The most in-demand office skill on the market.',
+    jobs:'Data Capturer, Finance Clerk, Admin',
+    topics:['Spreadsheet basics','Formulas & functions','Data sorting','Charts','VLOOKUP'],
+    lessonData:[
+      {
+        title:'Excel Basics — Rows, Columns & Cells',type:'lesson',xp:60,
+        blocks:[
+          {type:'text',content:`<h3>THE EXCEL GRID — YOUR DATA UNIVERSE</h3>
+<p>Excel is a <strong>spreadsheet program</strong> — a grid of rows and columns where every intersection is a <strong>cell</strong>. Cells hold data, and formulas do the work.</p>
+<p><strong>Understanding the grid:</strong></p>
+<ul>
+  <li><strong>Columns</strong> run vertically — labelled A, B, C... up to XFD</li>
+  <li><strong>Rows</strong> run horizontally — numbered 1, 2, 3...</li>
+  <li><strong>Cell reference</strong> — Column letter + row number (e.g. A1, B5, C12)</li>
+  <li><strong>Active cell</strong> — The currently selected cell (shown in Name Box top-left)</li>
+  <li><strong>Formula Bar</strong> — Shows the content of the active cell</li>
+</ul>
+<div class="highlight">📌 Cell B3 means: Column B, Row 3. Every formula you write references cells this way. This is the single most important concept in Excel.</div>`},
+          {type:'quiz',question:'In Excel, what does the cell reference "C7" mean?',opts:['Column 7, Row C','Column C, Row 7','Sheet C, Cell 7','Cell 7 in Column Group C'],correct:1,explanation:'Cell references always go Column letter first, then Row number. C7 = Column C, Row 7. You can see any cell\'s reference in the Name Box at the top-left of Excel.'}
+        ]
+      },
+      {
+        title:'Formulas — Make Excel Work For You',type:'lesson',xp:80,
+        blocks:[
+          {type:'text',content:`<h3>EXCEL FORMULAS — THE POWER ENGINE</h3>
+<p>A formula in Excel always starts with an <strong>equals sign (=)</strong>. Without it, Excel treats everything as plain text.</p>
+<p><strong>Basic arithmetic formulas:</strong></p>
+<ul>
+  <li><strong>=A1+B1</strong> — Adds cell A1 and B1</li>
+  <li><strong>=A1-B1</strong> — Subtracts B1 from A1</li>
+  <li><strong>=A1*B1</strong> — Multiplies A1 by B1</li>
+  <li><strong>=A1/B1</strong> — Divides A1 by B1</li>
+</ul>
+<p><strong>Essential functions every Excel user needs:</strong></p>`,},
+          {type:'table',headers:['Function','What It Does','Example'],rows:[['=SUM(A1:A10)','Adds up a range of cells','Total sales'],['=AVERAGE(B1:B10)','Calculates the average','Average score'],['=COUNT(C1:C10)','Counts cells with numbers','How many entries'],['=MAX(D1:D10)','Finds the highest value','Best result'],['=MIN(E1:E10)','Finds the lowest value','Lowest price'],['=IF(A1>100,"Yes","No")','Tests a condition','Pass/fail check']]},
+          {type:'practice',task:'What symbol must EVERY Excel formula start with?',hint:'Without this, Excel thinks you\'re typing text',placeholder:'Type the symbol...',answer:'=',points:25}
+        ]
+      },
+      {
+        title:'SUM, AVERAGE & COUNT in Action',type:'practice',xp:90,
+        blocks:[
+          {type:'text',content:`<h3>THE BIG THREE FUNCTIONS</h3>
+<p>SUM, AVERAGE, and COUNT are used in almost every Excel spreadsheet in every office. Master these and you're already ahead of most people.</p>
+<p><strong>SUM — Add everything up:</strong></p>
+<p>=SUM(B2:B10) adds all values from B2 to B10. The colon (:) means "from...to". This is called a <strong>range</strong>.</p>
+<p><strong>AVERAGE — Find the middle ground:</strong></p>
+<p>=AVERAGE(B2:B10) adds all values and divides by how many there are. Automatically handles blank cells correctly.</p>
+<p><strong>COUNT — How many numbers exist:</strong></p>
+<p>=COUNT(B2:B10) counts how many cells contain numbers. COUNTA counts any non-empty cell including text.</p>
+<div class="highlight">🔥 PRO MOVE: Click on a range of cells and look at the bottom of your screen — Excel automatically shows SUM, AVERAGE, and COUNT in the status bar. No formula needed for a quick check.</div>`},
+          {type:'quiz',question:'What does =SUM(A1:A5) calculate?',opts:['Only cells A1 and A5','All cells from A1 to A5','The average of A1 to A5','The count of A1 to A5'],correct:1,explanation:'The colon (:) in Excel means "through" or "from...to". A1:A5 includes A1, A2, A3, A4, AND A5. =SUM(A1:A5) adds up all five cells together.'}
+        ]
+      },
+      {
+        title:'Sorting & Filtering Data',type:'lesson',xp:70,
+        blocks:[
+          {type:'text',content:`<h3>ORGANISE YOUR DATA INSTANTLY</h3>
+<p>Raw data is useless. Sorted and filtered data tells a story. These are two of Excel's most-used features in real offices.</p>
+<p><strong>Sorting data:</strong></p>
+<ul>
+  <li>Click any cell in the column you want to sort</li>
+  <li>Go to <strong>Data tab → Sort A to Z</strong> (text) or <strong>Sort Smallest to Largest</strong> (numbers)</li>
+  <li>For multiple columns: Data → Sort → Add Level</li>
+</ul>
+<p><strong>Filtering data:</strong></p>
+<ul>
+  <li>Click any cell in your data → Data tab → Filter</li>
+  <li>Drop-down arrows appear on each column header</li>
+  <li>Click an arrow to filter by specific values, text, or numbers</li>
+  <li>Click "Clear Filter" to show everything again</li>
+</ul>
+<div class="tip">💡 SHORTCUT: Ctrl+Shift+L toggles AutoFilter on/off instantly on any data table.</div>`},
+          {type:'quiz',question:'What keyboard shortcut toggles AutoFilter on/off in Excel?',opts:['Ctrl+F','Ctrl+Shift+L','Alt+D+F','Ctrl+T'],correct:1,explanation:'Ctrl+Shift+L is the fastest way to add or remove AutoFilter. Once filters are on, drop-down arrows appear on your column headers so you can filter by any value.'}
+        ]
+      },
+      {
+        title:'Creating Charts That Tell Stories',type:'lesson',xp:80,
+        blocks:[
+          {type:'text',content:`<h3>CHARTS — TURN DATA INTO VISUALS</h3>
+<p>A chart makes your data immediately understandable. Management, clients, and colleagues all respond better to visuals than raw numbers.</p>
+<p><strong>Creating a chart in 4 steps:</strong></p>
+<ul>
+  <li><strong>Step 1:</strong> Select the data you want to chart (including headers)</li>
+  <li><strong>Step 2:</strong> Go to <strong>Insert tab → Charts section</strong></li>
+  <li><strong>Step 3:</strong> Choose a chart type</li>
+  <li><strong>Step 4:</strong> Click on the chart to format it using Chart Tools</li>
+</ul>
+<p><strong>Choosing the right chart type:</strong></p>`,},
+          {type:'table',headers:['Chart Type','Best Used For','Example'],rows:[['Bar/Column','Comparing categories','Sales by region'],['Line','Trends over time','Monthly revenue'],['Pie','Parts of a whole','Market share %'],['Scatter','Relationships between values','Price vs quantity']]},
+          {type:'quiz',question:'Which chart type is BEST for showing a trend over time?',opts:['Pie chart','Bar chart','Line chart','Scatter chart'],correct:2,explanation:'Line charts are ideal for showing trends over time because the connected line makes it easy to see rises and falls. Bar charts compare categories. Pie charts show proportions.'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'powerpoint', icon:'🎞️', name:'PowerPoint', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'1-2 Days', lessons:3,
+    desc:'Slide design, animations, transitions, and speaker notes. Build presentations that command any room.',
+    jobs:'Office Assistant, Trainer, Any professional role',
+    topics:['Slide design','Layouts & themes','Animations','Speaker notes','Presenting'],
+    lessonData:[
+      {
+        title:'PowerPoint Interface & Slides',type:'lesson',xp:50,
+        blocks:[
+          {type:'text',content:`<h3>POWERPOINT — VISUAL STORYTELLING</h3>
+<p>PowerPoint lets you present ideas visually. A good presentation has a clear structure, clean design, and one main idea per slide.</p>
+<p><strong>The PowerPoint interface:</strong></p>
+<ul>
+  <li><strong>Slide Panel</strong> — Left: thumbnail view of all your slides</li>
+  <li><strong>Slide Area</strong> — Centre: where you design the current slide</li>
+  <li><strong>Notes Panel</strong> — Bottom: speaker notes (audience doesn't see this)</li>
+  <li><strong>Ribbon</strong> — Top: all the design and layout tools</li>
+</ul>
+<div class="highlight">📌 THE GOLDEN RULE: Maximum 6 words per bullet point. Maximum 6 bullets per slide. Your slides support your speech — they are NOT your script.</div>
+<p><strong>Adding slides:</strong></p>
+<ul>
+  <li>Right-click in slide panel → New Slide</li>
+  <li>Or press <strong>Ctrl+M</strong> for a new slide</li>
+  <li>Use <strong>Home → Layout</strong> to choose the slide structure</li>
+</ul>`},
+          {type:'quiz',question:'What is the MAXIMUM number of bullet points recommended per slide?',opts:['3','6','10','As many as fit'],correct:1,explanation:'The 6x6 rule: no more than 6 bullet points per slide, and no more than 6 words per bullet. Less is more — your audience reads instead of listening if slides have too much text.'}
+        ]
+      },
+      {
+        title:'Design Principles That Work',type:'lesson',xp:70,
+        blocks:[
+          {type:'text',content:`<h3>SLIDE DESIGN THAT IMPRESSES</h3>
+<p>You don't need to be a designer. You need to follow a few rules that separate amateur slides from professional ones.</p>
+<p><strong>The rules:</strong></p>
+<ul>
+  <li><strong>Consistency</strong> — Same fonts, colours, and layouts throughout</li>
+  <li><strong>Contrast</strong> — Dark background = light text. Light background = dark text</li>
+  <li><strong>Alignment</strong> — Never leave elements randomly placed — align everything</li>
+  <li><strong>White space</strong> — Empty space is not wasted — it helps readability</li>
+  <li><strong>Images over clipart</strong> — Real photos look professional. Old clipart does not</li>
+</ul>
+<div class="tip">💡 Use PowerPoint's built-in Themes (Design tab) as a starting point. They give you a consistent colour scheme and font pairing that already looks professional.</div>
+<p><strong>Font size guide:</strong></p>
+<ul>
+  <li>Title: 40-44pt</li>
+  <li>Subtitle/heading: 28-32pt</li>
+  <li>Body text: 20-24pt (never go below 18pt)</li>
+</ul>`},
+          {type:'quiz',question:'Which font size should body text NEVER go below in a presentation?',opts:['12pt','18pt','24pt','28pt'],correct:1,explanation:'Text smaller than 18pt is unreadable from more than 2 metres away. In a meeting room or classroom, 20-24pt for body text ensures everyone can read your slides clearly.'}
+        ]
+      },
+      {
+        title:'Animations & Transitions',type:'lesson',xp:60,
+        blocks:[
+          {type:'text',content:`<h3>ANIMATIONS — USE WITH DISCIPLINE</h3>
+<p>Animations make slides dynamic. Used well, they focus attention. Used badly, they're distracting and unprofessional.</p>
+<p><strong>Transitions (between slides):</strong></p>
+<ul>
+  <li>Go to <strong>Transitions tab</strong></li>
+  <li>Choose one simple transition (Fade is most professional)</li>
+  <li>Click <strong>Apply to All</strong> — consistency matters</li>
+  <li>Avoid flashy transitions like "Vortex" in business settings</li>
+</ul>
+<p><strong>Animations (for text and objects):</strong></p>
+<ul>
+  <li>Select an object → <strong>Animations tab</strong></li>
+  <li><strong>Entrance animations:</strong> how objects appear (Fade, Appear)</li>
+  <li><strong>Emphasis animations:</strong> highlight something already visible</li>
+  <li><strong>Exit animations:</strong> how objects leave</li>
+</ul>
+<div class="highlight">⚡ BEST PRACTICE: Use "Appear" or "Fade" for bullet points so they reveal one at a time during your presentation. This keeps the audience focused on what you're saying.</div>`},
+          {type:'quiz',question:'Which transition is considered most professional for business presentations?',opts:['Vortex','Cube','Fade','Blinds'],correct:2,explanation:'Fade is subtle and professional — it doesn\'t distract from your content. Save flashy transitions for school projects. In business, less movement = more credibility.'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'data-capture', icon:'⌨️', name:'Data Capture', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'2 Days', lessons:3,
+    desc:'Speed, accuracy, and professional data entry techniques used in offices and government departments daily.',
+    jobs:'Data Capturer, Admin Clerk, Government positions',
+    topics:['Typing technique','Speed building','Accuracy & validation','Forms & databases'],
+    lessonData:[
+      {
+        title:'Typing Technique & Posture',type:'lesson',xp:50,
+        blocks:[
+          {type:'text',content:`<h3>TYPING RIGHT FROM THE START</h3>
+<p>Most people type with 2-3 fingers and look at the keyboard. This caps your speed at around 20 WPM. Touch typists reach 60-80 WPM using all 10 fingers without looking.</p>
+<p><strong>Home row position (your default finger placement):</strong></p>
+<ul>
+  <li><strong>Left hand:</strong> A (pinky), S (ring), D (middle), F (index)</li>
+  <li><strong>Right hand:</strong> J (index), K (middle), L (ring), ; (pinky)</li>
+  <li>Both thumbs rest on the <strong>spacebar</strong></li>
+  <li>The small bumps on F and J are your anchor points — feel them</li>
+</ul>
+<div class="highlight">🎯 GOAL: By the end of this course, aim for 35 WPM with 95%+ accuracy. That's enough to pass most data capture employment tests.</div>
+<p><strong>Correct posture:</strong></p>
+<ul>
+  <li>Sit up straight, feet flat on floor</li>
+  <li>Screen at eye level — not looking up or down</li>
+  <li>Wrists slightly elevated, not resting on desk while typing</li>
+  <li>Elbows at roughly 90 degrees</li>
+</ul>`},
+          {type:'quiz',question:'What are the two "anchor keys" you use to find your home row position by feel?',opts:['A and ;','D and K','F and J','S and L'],correct:2,explanation:'The F and J keys have small raised bumps/ridges you can feel without looking. Place your index fingers here and your other fingers fall naturally on the home row.'}
+        ]
+      },
+      {
+        title:'Speed & Accuracy Training',type:'practice',xp:100,
+        blocks:[
+          {type:'text',content:`<h3>BUILDING YOUR SPEED</h3>
+<p>Speed comes from accuracy — not rushing. If you type fast but make errors, you'll spend more time correcting than you saved. Accuracy first, always.</p>
+<p><strong>The WPM formula:</strong><br>
+Words Per Minute = (Total characters typed ÷ 5) ÷ minutes elapsed</p>
+<p><strong>Industry benchmarks:</strong></p>`,},
+          {type:'table',headers:['WPM Range','Level','Suitable For'],rows:[['0-20 WPM','Beginner','Learning phase'],['20-35 WPM','Developing','Entry-level data capture'],['35-50 WPM','Competent','Most office positions'],['50-70 WPM','Proficient','Data capture specialist'],['70+ WPM','Expert','Medical transcription, court reporting']]},
+          {type:'typing',target:"The quick brown fox jumps over the lazy dog near the riverbank."}
+        ]
+      },
+      {
+        title:'Data Accuracy & Validation',type:'lesson',xp:70,
+        blocks:[
+          {type:'text',content:`<h3>ACCURACY — THE SKILL THAT GETS YOU HIRED</h3>
+<p>In data capture, a single error can corrupt an entire database, cause billing mistakes, or fail a government system. Employers care about accuracy more than speed.</p>
+<p><strong>Professional accuracy techniques:</strong></p>
+<ul>
+  <li><strong>Read-back method</strong> — After entering data, re-read it against the source before moving on</li>
+  <li><strong>Double-entry verification</strong> — Critical data is entered twice and compared</li>
+  <li><strong>Format validation</strong> — Check: dates look like dates, ID numbers are 13 digits, phone numbers have correct length</li>
+  <li><strong>Spell check</strong> — Always run spell check on any text field</li>
+  <li><strong>Case consistency</strong> — If names are in Title Case, keep ALL names in Title Case</li>
+</ul>
+<div class="tip">💡 SA ID Number check: 13 digits. First 6 = date of birth (YYMMDD). Next 4 = gender (0000-4999 female, 5000-9999 male). If it doesn't follow this pattern — query it before capturing.</div>`},
+          {type:'quiz',question:'How many digits does a valid South African ID number have?',opts:['11','12','13','14'],correct:2,explanation:'SA ID numbers are exactly 13 digits: YYMMDD (date of birth) + 4 digits (gender) + 1 digit (SA citizen/permanent resident) + 1 checksum digit. Always validate this when capturing ID numbers.'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'office-admin', icon:'🏢', name:'Office Administration', level:'int',
+    levelLabel:'INTERMEDIATE', color:'purple', duration:'5 Days', lessons:4,
+    desc:'Filing, scheduling, reception, document handling, and the full picture of how a professional office runs.',
+    jobs:'Office Admin, Receptionist, PA, Secretary',
+    topics:['Filing systems','Reception duties','Meeting management','Business correspondence','Procurement basics'],
+    lessonData:[
+      {
+        title:'Professional Filing Systems',type:'lesson',xp:70,
+        blocks:[
+          {type:'text',content:`<h3>FILING — THE BACKBONE OF EVERY OFFICE</h3>
+<p>A poor filing system causes missed deadlines, lost documents, and embarrassment. A good one makes you look indispensable.</p>
+<p><strong>Filing system types:</strong></p>
+<ul>
+  <li><strong>Alphabetical</strong> — By name/company. Most common. Easy for anyone to use.</li>
+  <li><strong>Numerical</strong> — By reference number. Used for large volumes (legal files, medical records)</li>
+  <li><strong>Chronological</strong> — By date. Used for correspondence and financial records</li>
+  <li><strong>Subject/Category</strong> — By topic (HR, Finance, Suppliers). Best for diverse document types</li>
+</ul>
+<div class="highlight">📁 BEST PRACTICE: Most offices use a combination — Subject folders, alphabetically organised within each, with documents filed chronologically inside each folder.</div>
+<p><strong>Digital filing rules:</strong></p>
+<ul>
+  <li>File names must be descriptive: "2024-06-15_Invoice_ABC_Suppliers.pdf" not "document1.pdf"</li>
+  <li>Use YYYY-MM-DD date format so files sort in date order automatically</li>
+  <li>Create backups — save important files to cloud storage (OneDrive, Google Drive)</li>
+</ul>`},
+          {type:'quiz',question:'Which filing system organises documents by name or company name?',opts:['Numerical','Chronological','Alphabetical','Geographic'],correct:2,explanation:'Alphabetical filing organises by name (surname first) or company name. It\'s the most common system because anyone in the office can find a document without knowing the reference number or date.'}
+        ]
+      },
+      {
+        title:'Reception & Front Desk Excellence',type:'lesson',xp:80,
+        blocks:[
+          {type:'text',content:`<h3>THE RECEPTION ROLE — FIRST IMPRESSION IS EVERYTHING</h3>
+<p>The receptionist is the face of the company. A visitor's first 30 seconds at reception determines how they feel about the entire organisation.</p>
+<p><strong>Reception responsibilities:</strong></p>
+<ul>
+  <li>Greeting visitors warmly and professionally</li>
+  <li>Signing in and directing visitors</li>
+  <li>Answering and routing telephone calls</li>
+  <li>Managing the front desk appearance</li>
+  <li>Handling incoming/outgoing mail and deliveries</li>
+  <li>Scheduling appointments and managing calendars</li>
+</ul>
+<p><strong>Telephone etiquette:</strong></p>
+<ul>
+  <li>Answer within 3 rings</li>
+  <li>Greeting format: "[Company Name], [Your Name] speaking, how may I help you?"</li>
+  <li>Never say "Who's calling?" — say "May I ask who's calling, please?"</li>
+  <li>Take accurate messages: name, number, time, message, your name</li>
+  <li>Put callers on hold only with permission: "May I place you on hold for a moment?"</li>
+</ul>
+<div class="tip">💡 Smile when you answer the phone — people can hear it in your voice. This isn't a cliché — it genuinely changes your tone.</div>`},
+          {type:'quiz',question:'What is the correct telephone greeting format for a receptionist?',opts:['"Hello, who is this?"','"Yeah, hold on"','"[Company Name], [Your Name] speaking, how may I help you?"','"[Your Name] here, what do you want?"'],correct:2,explanation:'A professional telephone greeting identifies the company, introduces you by name, and offers assistance. This immediately tells callers they\'ve reached the right place and that they will be helped professionally.'}
+        ]
+      },
+      {
+        title:'Meeting Management & Minutes',type:'lesson',xp:90,
+        blocks:[
+          {type:'text',content:`<h3>MEETINGS — RUNNING THEM RIGHT</h3>
+<p>Poorly managed meetings waste everyone's time. A professional administrator makes meetings run smoothly before, during, and after.</p>
+<p><strong>Before the meeting:</strong></p>
+<ul>
+  <li>Send agenda at least 24 hours in advance</li>
+  <li>Book and set up the venue</li>
+  <li>Confirm attendees and circulate pre-reading materials</li>
+  <li>Prepare attendance register, writing materials, refreshments</li>
+</ul>
+<p><strong>During — Writing Minutes:</strong></p>
+<ul>
+  <li>Record: meeting name, date, time, venue, attendees, apologies</li>
+  <li>Note each agenda item discussed</li>
+  <li>Capture <strong>decisions made</strong> (not the full discussion)</li>
+  <li>Capture <strong>action items</strong>: who does what by when</li>
+</ul>
+<div class="highlight">✍️ Minutes are NOT a word-for-word transcript. They are a concise record of DECISIONS and ACTION ITEMS. Keep them factual, brief, and clear.</div>`,},
+          {type:'practice',task:'In minutes writing, what are the TWO most important things to capture?',hint:'Think: what was decided, and what needs to happen next',placeholder:'Type your answer...',answer:'decisions and action items',points:40}
+        ]
+      },
+      {
+        title:'Business Correspondence',type:'lesson',xp:80,
+        blocks:[
+          {type:'text',content:`<h3>PROFESSIONAL WRITTEN COMMUNICATION</h3>
+<p>In an office, everything written represents the company. Every email, memo, and letter reflects on the organisation — and on you personally.</p>
+<p><strong>Types of business correspondence:</strong></p>
+<ul>
+  <li><strong>Email</strong> — Day-to-day communication. Fast, traceable, professional</li>
+  <li><strong>Memo (Internal Memorandum)</strong> — Internal announcements and information sharing</li>
+  <li><strong>Business letter</strong> — Formal external communication</li>
+  <li><strong>Report</strong> — Detailed information for decision-making</li>
+  <li><strong>Invoice</strong> — Billing document for goods/services rendered</li>
+</ul>
+<p><strong>Memo format:</strong></p>`,},
+          {type:'table',headers:['Section','Content'],rows:[['TO:','Name(s) of recipient(s)'],['FROM:','Your name and title'],['DATE:','Full date e.g. 15 June 2025'],['RE: / SUBJECT:','Brief, clear topic description'],['Body','Clear, concise message'],['Action required','What you need recipients to do']]},
+          {type:'quiz',question:'What does "RE:" stand for in a business memo or email?',opts:['Reply Expected','Regarding (the subject)','Return to Sender','Required Evidence'],correct:1,explanation:'"RE:" stands for "Regarding" — it introduces the subject of the communication. Some older references say it stands for the Latin "res" (matter/thing). In practice, it always introduces the topic.'}
+        ]
+      }
+    ]
+  },
+  {
+    id:'computer-literacy', icon:'💡', name:'Computer Literacy', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'2 Days', lessons:3,
+    desc:'Hardware, software, operating systems, and tech fundamentals. The foundation everything else builds on.',
+    jobs:'All roles — foundation level',
+    topics:['Hardware vs software','Operating systems','Input & output devices','Digital safety'],
+    lessonData:[
+      {title:'Hardware vs Software',type:'lesson',xp:50,blocks:[{type:'text',content:`<h3>HARDWARE & SOFTWARE — KNOW THE DIFFERENCE</h3><p><strong>Hardware</strong> is anything physical — the parts you can touch: monitor, keyboard, mouse, CPU, hard drive, printer.</p><p><strong>Software</strong> is the programs and instructions that run on hardware: Windows, Word, Chrome, Antivirus.</p><div class="highlight">💡 ANALOGY: Hardware is the car (the physical machine). Software is the driver and the GPS (the instructions that make it go somewhere).</div><p><strong>Types of software:</strong></p><ul><li><strong>Operating System</strong> — Windows, macOS, Linux. Manages all hardware and software</li><li><strong>Application Software</strong> — Word, Excel, Chrome. Programs you use to do work</li><li><strong>Utility Software</strong> — Antivirus, disk cleaner, backup tools</li></ul>`},{type:'quiz',question:'Which of these is HARDWARE?',opts:['Microsoft Word','Windows 11','A computer mouse','Google Chrome'],correct:2,explanation:'A mouse is physical hardware you can touch. Word, Windows, and Chrome are all software — programs with no physical form. Software runs ON hardware.'}]},
+      {title:'Input & Output Devices',type:'lesson',xp:50,blocks:[{type:'text',content:`<h3>HOW COMPUTERS COMMUNICATE WITH YOU</h3><p><strong>Input devices</strong> send information INTO the computer:</p><ul><li>Keyboard, Mouse, Scanner, Microphone, Webcam, USB drive</li></ul><p><strong>Output devices</strong> send information OUT to you:</p><ul><li>Monitor, Printer, Speakers, Projector, Headphones</li></ul><p><strong>Storage devices</strong> hold information:</p><ul><li>Hard Drive (HDD), SSD, USB flash drive, DVD, Cloud storage</li></ul><div class="tip">💡 Some devices are both input AND output: USB drives (read and write), touchscreens (display and accept touch input), network cards (send and receive data).</div>`},{type:'quiz',question:'Which of these is an OUTPUT device?',opts:['Keyboard','Scanner','Microphone','Printer'],correct:3,explanation:'A printer outputs information from the computer onto paper. Keyboards, scanners, and microphones all send data INTO the computer — they are input devices.'}]},
+      {title:'Digital Safety Basics',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>STAYING SAFE IN THE DIGITAL WORLD</h3><p>Digital safety isn't just for IT people. Every computer user needs to know these basics to protect themselves and their employer.</p><p><strong>Password rules:</strong></p><ul><li>Minimum 8 characters</li><li>Mix of uppercase, lowercase, numbers, and symbols</li><li>Never use your name, birthday, or "password"</li><li>Never share passwords with anyone — including IT staff</li><li>Use different passwords for different accounts</li></ul><p><strong>Email threats to know:</strong></p><ul><li><strong>Phishing</strong> — Fake emails pretending to be a bank, SARS, or a known contact. Never click links in suspicious emails</li><li><strong>Spam</strong> — Unwanted bulk email. Don't unsubscribe from suspicious sources — it confirms your email is active</li><li><strong>Malware attachments</strong> — Never open .exe files sent via email</li></ul><div class="highlight">🔐 SARS, your bank, and government departments NEVER ask for passwords, PIN numbers, or personal details via email. If you receive such a request — it is a scam.</div>`},{type:'quiz',question:'What should you do if you receive an email from "SARS" asking for your bank password?',opts:['Provide the password as requested','Forward it to your manager','Delete it — it is a phishing scam','Reply asking for more details'],correct:2,explanation:'SARS, banks, and government bodies NEVER ask for passwords by email. This is a phishing attack. Delete it immediately. If you\'re unsure, call the organisation directly using a number from their official website.'}]}
+    ]
+  },
+  {
+    id:'business-english', icon:'🗣️', name:'Business English', level:'int',
+    levelLabel:'INTERMEDIATE', color:'purple', duration:'3 Days', lessons:4,
+    desc:'Grammar, professional vocabulary, email writing, and workplace communication that elevates every other skill.',
+    jobs:'All professional roles — boosts every position',
+    topics:['Professional grammar','Email writing','Report language','Verbal communication'],
+    lessonData:[
+      {title:'Professional Email Writing',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>EMAIL — YOUR PROFESSIONAL VOICE IN WRITING</h3><p>Every email you send is a reflection of your professionalism. One poorly-written email can undo a great first impression.</p><p><strong>The anatomy of a professional email:</strong></p><ul><li><strong>Subject line</strong> — Specific and informative: "Meeting Rescheduled — 15 June 2025" not just "Meeting"</li><li><strong>Greeting</strong> — "Dear Mr Dlamini," (formal) or "Good morning Thabo," (professional-casual)</li><li><strong>Opening sentence</strong> — State your purpose immediately. Don't bury the reason for the email</li><li><strong>Body</strong> — Keep it focused. One topic per email. Short paragraphs (3-4 lines maximum)</li><li><strong>Closing</strong> — "Kind regards," / "Yours sincerely," / "Best regards,"</li><li><strong>Signature</strong> — Full name, job title, company, phone number</li></ul><div class="highlight">❌ NEVER start a professional email with "Hey" or "Howzit" to someone you don't know well. ✅ "Good morning" works in any professional context.</div>`},{type:'practice',task:'Write a one-line subject for: "Email to confirm your job interview tomorrow at 10am"',hint:'Be specific — include the date and purpose',placeholder:'Type the subject line...',answer:'Job Interview Confirmation — 15 June 2025',points:35}]},
+      {title:'Common Grammar Mistakes to Avoid',type:'lesson',xp:70,blocks:[{type:'text',content:`<h3>GRAMMAR THAT COSTS YOU CREDIBILITY</h3><p>You don't need to be a grammar expert. You need to avoid the mistakes that make professional readers doubt your competence.</p>`,},{type:'table',headers:['WRONG ❌','CORRECT ✅','Rule'],rows:[['I has completed the report','I have completed the report','Subject-verb agreement'],['There going to the office','They\'re going to the office','There/Their/They\'re'],['The manager, he said...','The manager said...','Avoid redundant pronouns'],['Attached please find','Please find attached','Formal standard phrase'],['As per my last email','As mentioned in my previous email','Less passive-aggressive'],['I am currently busy','I am currently unavailable','More professional'],['Please revert','Please respond/reply','Outdated South African-ism']]},{type:'quiz',question:'Which is the CORRECT professional closing for a formal email?',opts:['"Cheers!"','"Bye for now"','"Kind regards,"','"Laters"'],correct:2,explanation:'"Kind regards," is a standard professional email closing. Always followed by a comma, then your full name and signature on the next line. Other accepted options: "Yours sincerely," "Best regards," "Warm regards,"'}]},
+      {title:'Writing Reports & Memos',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>REPORT WRITING — STRUCTURED PROFESSIONAL COMMUNICATION</h3><p>Reports are used to inform decision-makers. A good report is clear, factual, and logically structured.</p><p><strong>Standard report structure:</strong></p><ul><li><strong>Title Page</strong> — Report title, date, author, prepared for</li><li><strong>Table of Contents</strong> — For reports longer than 5 pages</li><li><strong>Executive Summary</strong> — 1 paragraph: what this report is about and the key findings</li><li><strong>Introduction</strong> — Background and purpose of the report</li><li><strong>Body/Findings</strong> — The main content, using headings and subheadings</li><li><strong>Conclusions</strong> — What the findings mean</li><li><strong>Recommendations</strong> — What should be done based on the findings</li><li><strong>References/Appendices</strong> — Sources and supporting material</li></ul><div class="tip">💡 Write the Executive Summary LAST — even though it appears first. You can only summarise once you know the full content.</div>`},{type:'quiz',question:'Which section of a report should you write LAST, even though it appears near the beginning?',opts:['Introduction','Table of Contents','Executive Summary','Recommendations'],correct:2,explanation:'The Executive Summary summarises the entire report including conclusions and recommendations. You can only write it accurately once the full report is complete. Write it last, place it first.'}]},
+      {title:'Verbal Communication in the Workplace',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>SPEAKING PROFESSIONALLY</h3><p>How you speak at work directly impacts how you're perceived, promoted, and paid. These aren't soft skills — they're career skills.</p><p><strong>Professional verbal habits:</strong></p><ul><li>Speak clearly — don't mumble or rush</li><li>Use people's names — it shows respect and builds rapport</li><li>Listen actively — nod, maintain eye contact, don't interrupt</li><li>Avoid filler words — "um," "like," "you know" undermine confidence</li><li>Confirm understanding — "Let me confirm what you need: [summary]. Is that correct?"</li></ul><p><strong>When things go wrong (professional recovery):</strong></p><ul><li>"I apologise for the misunderstanding. Let me clarify..."</li><li>"I made an error — here's how I'm correcting it..."</li><li>"I wasn't able to complete that by the deadline. Here's the current status and my revised timeline..."</li></ul><div class="highlight">💬 Taking responsibility calmly and with a solution is MORE impressive than being perfect. Everyone makes mistakes. How you handle them defines your reputation.</div>`},{type:'quiz',question:'Which phrase shows the MOST professional handling of a mistake at work?',opts:['"It wasn\'t my fault"','"Nobody told me"','"I made an error — here\'s how I\'m correcting it"','"Sorry, sorry, so sorry"'],correct:2,explanation:'Professionals take ownership AND offer solutions. "I made an error — here\'s how I\'m correcting it" shows accountability, self-awareness, and problem-solving ability. Excessive apologies without action are equally unprofessional.'}]}
+    ]
+  },
+  {
+    id:'email-internet', icon:'📧', name:'Email & Internet', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'1-2 Days', lessons:3,
+    desc:'Professional email etiquette, Gmail, Outlook, internet research, and safe browsing habits.',
+    jobs:'All office roles — universal requirement',
+    topics:['Email setup & use','CC and BCC','Inbox management','Internet research','Online safety'],
+    lessonData:[
+      {title:'Setting Up & Using Email',type:'lesson',xp:50,blocks:[{type:'text',content:`<h3>EMAIL — PROFESSIONAL COMMUNICATION STANDARD</h3><p>Email is how business communicates. Whether you use Gmail, Outlook, or a company email system, the principles are the same.</p><p><strong>Understanding CC and BCC:</strong></p><ul><li><strong>TO:</strong> — The main recipient. They should take action or respond</li><li><strong>CC: (Carbon Copy)</strong> — Others who need to be informed but don't need to respond. Everyone can see who was CCed</li><li><strong>BCC: (Blind Carbon Copy)</strong> — Hidden copy. Recipient doesn't see who else received it. Use for mass emails or privacy</li></ul><div class="highlight">📌 RULE: Only CC people who genuinely need to know. Unnecessary CC creates inbox clutter and can appear passive-aggressive ("I'm copying your manager...")</div>`},{type:'quiz',question:'If you BCC someone on an email, what happens?',opts:['They get a copy and everyone can see their name','They get a copy but the other recipients cannot see their name','They get a notification only','The email fails to send'],correct:1,explanation:'BCC (Blind Carbon Copy) sends a hidden copy. The main recipients and CC recipients cannot see who was BCC\'d. Useful for protecting privacy in mass emails or when escalating to management discreetly.'}]},
+      {title:'Inbox Management & Organisation',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>INBOX ZERO — THE PROFESSIONAL STANDARD</h3><p>An overflowing inbox with thousands of unread emails is a productivity killer. Professional email management keeps you on top of everything.</p><p><strong>The 4D system for every email:</strong></p><ul><li><strong>Delete</strong> — If you don't need it, delete it immediately</li><li><strong>Do</strong> — If it takes under 2 minutes, do it now</li><li><strong>Delegate</strong> — If someone else should handle it, forward it now</li><li><strong>Defer</strong> — If it requires time, move it to a "To Do" folder and schedule it</li></ul><p><strong>Folder structure that works:</strong></p><ul><li>INBOX — Only unprocessed, unread email</li><li>ACTION REQUIRED — Items needing your attention</li><li>WAITING — Emails you're waiting on a response for</li><li>REFERENCE — Emails you need to keep for later</li><li>Archive folders by year/project</li></ul><div class="tip">💡 Use rules/filters to automatically sort incoming emails. In Outlook: Home → Rules → Create Rule. In Gmail: Settings → Filters and Blocked Addresses.</div>`},{type:'quiz',question:'According to the 4D system, what should you do with an email that takes under 2 minutes to handle?',opts:['Defer it to later','Delete it','Do it immediately','Delegate it'],correct:2,explanation:'The "Do" rule: if an email requires less than 2 minutes of action, handle it immediately. Processing it twice (once to read, once to action later) wastes more time than just doing it now.'}]},
+      {title:'Internet Research & Safe Browsing',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>THE INTERNET — USING IT PROFESSIONALLY</h3><p>The internet contains everything — including dangerous content. Knowing how to search effectively and stay safe is a professional skill.</p><p><strong>Effective Google searching:</strong></p><ul><li>Use specific keywords: "Excel VLOOKUP tutorial 2024" not just "excel help"</li><li>Use quotes for exact phrases: "office administration courses Pretoria"</li><li>Use site: to search a specific site: site:gov.za "learnership"</li><li>Use minus (-) to exclude: jobs -sales -commission</li></ul><p><strong>Evaluating online sources:</strong></p><ul><li>Government (.gov.za) and education (.ac.za) sites are generally reliable</li><li>Check the date — is the information current?</li><li>Look for the author — is there a named, credible source?</li><li>Cross-reference — does another reliable source say the same thing?</li></ul><div class="highlight">🛡️ SAFE BROWSING: Check for HTTPS (padlock icon) before entering any personal information. HTTP (no S, no padlock) = not secure. Never enter passwords or banking details on HTTP sites.</div>`},{type:'quiz',question:'What does the padlock icon in your browser address bar tell you?',opts:['The website is government-owned','The website is free to use','The connection is encrypted (HTTPS)','The website is verified by Google'],correct:2,explanation:'The padlock indicates HTTPS — Hypertext Transfer Protocol Secure. Your connection to the site is encrypted, meaning data you enter (passwords, forms) cannot be intercepted. Always check for this before entering sensitive information.'}]}
+    ]
+  },
+  {
+    id:'windows-files', icon:'🗂️', name:'Windows & File Management', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'1 Day', lessons:3,
+    desc:'Navigate Windows like you own it. File structures, drives, backups, shortcuts, and system settings.',
+    jobs:'All roles — saves hours every week',
+    topics:['File Explorer','Organising files','Search & shortcuts','System settings'],
+    lessonData:[
+      {title:'Mastering File Explorer',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>FILE EXPLORER — YOUR CONTROL CENTRE</h3><p>File Explorer (Windows key + E) is where you manage everything on your computer. Most people barely know 20% of what it can do.</p><p><strong>The File Explorer layout:</strong></p><ul><li><strong>Navigation pane (left)</strong> — Quick Access, This PC, drives, network locations</li><li><strong>Address bar (top)</strong> — Shows and lets you type the current folder path</li><li><strong>Search bar (top right)</strong> — Search within the current folder</li><li><strong>Content area (right)</strong> — The files and folders in the current location</li><li><strong>View options</strong> — Switch between Large Icons, Details, List view</li></ul><div class="tip">💡 Use "Details" view in File Explorer (View → Details). This shows file size, type, and date modified — all crucial for managing files properly.</div>`},{type:'quiz',question:'What keyboard shortcut opens File Explorer instantly?',opts:['Ctrl+E','Windows+E','Alt+E','Ctrl+F'],correct:1,explanation:'Windows key + E opens File Explorer immediately from anywhere in Windows. This is one of the most-used shortcuts in any office environment — worth memorising on day one.'}]},
+      {title:'File Naming & Organisation',type:'lesson',xp:70,blocks:[{type:'text',content:`<h3>FILE NAMING THAT SAVES YOUR LIFE</h3><p>Good file names mean you can find anything in seconds. Bad file names mean searching for 10 minutes for a document you know you saved somewhere.</p><p><strong>Professional file naming convention:</strong></p><p>Format: <strong>YYYY-MM-DD_Description_Version.extension</strong></p><ul><li>2025-06-15_Meeting_Minutes_AGM.docx</li><li>2025-06_Invoice_ABC_Suppliers.pdf</li><li>CV_Nomsa_Mokoena_Updated.docx</li></ul><p><strong>Rules:</strong></p><ul><li>No spaces in filenames (use underscores _)</li><li>Dates first so files sort chronologically automatically</li><li>Be descriptive — "Report" tells you nothing; "Q2_Sales_Report_2025" tells you everything</li><li>Include version if multiple versions exist: _v1, _v2, _FINAL</li></ul><div class="highlight">📌 NEVER name a file "Final_Final_FINAL2_USE_THIS_ONE.docx" — we've all seen it. Use version numbers and dates instead.</div>`},{type:'practice',task:'Rename this file properly: "document new version copy (2).docx"',hint:'Use date first, then description, then version',placeholder:'Type the new filename...',answer:'2025-06-15_Document_Name_v2.docx',points:40}]},
+      {title:'Search, Shortcuts & System Settings',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>WINDOWS POWER USER SHORTCUTS</h3><p>These shortcuts are known by people who've been using computers for years. You're learning them now — which puts you ahead immediately.</p>`,},{type:'shortcuts',items:[{key:'Windows + E',desc:'File Explorer'},{key:'Windows + D',desc:'Show desktop'},{key:'Windows + L',desc:'Lock screen'},{key:'Windows + I',desc:'Settings'},{key:'Windows + PrtScn',desc:'Screenshot + save'},{key:'Alt + Tab',desc:'Switch between apps'},{key:'Windows + Tab',desc:'Task view / virtual desktops'},{key:'Ctrl + Shift + Esc',desc:'Task Manager'}]},{type:'quiz',question:'Which shortcut locks your computer screen immediately?',opts:['Windows + D','Ctrl + Alt + Del','Windows + L','Alt + F4'],correct:2,explanation:'Windows + L locks your screen instantly, requiring your password to unlock. ALWAYS lock your screen when leaving your desk — it\'s a professional security habit and required in most office environments.'}]}
+    ]
+  },
+  {
+    id:'advanced-computers', icon:'⚡', name:'Advanced Computers', level:'adv',
+    levelLabel:'ADVANCED', color:'purple', duration:'5 Days', lessons:4,
+    desc:'Networking, cloud storage, security, troubleshooting, and productivity tools for the serious digital professional.',
+    jobs:'Tech Support, Senior Admin, IT Junior',
+    topics:['Networking basics','Cloud platforms','Cybersecurity','System maintenance','Productivity tools'],
+    lessonData:[
+      {title:'Networking Fundamentals',type:'lesson',xp:90,blocks:[{type:'text',content:`<h3>HOW NETWORKS WORK</h3><p>Every office runs on a network. Understanding how networks function makes you the most valuable person in any room.</p><p><strong>Key networking concepts:</strong></p><ul><li><strong>IP Address</strong> — The unique address of every device on a network (e.g. 192.168.1.5)</li><li><strong>Router</strong> — Connects your network to the internet and assigns IP addresses</li><li><strong>Switch</strong> — Connects multiple devices on the same local network</li><li><strong>DNS</strong> — Domain Name System. Translates website names (google.com) to IP addresses</li><li><strong>DHCP</strong> — Automatically assigns IP addresses to devices joining the network</li></ul><div class="highlight">🌐 PRACTICAL: When you type "google.com" in a browser: your computer asks the DNS server for Google's IP address → connects to that IP → Google's server responds with the webpage. This happens in milliseconds.</div>`},{type:'quiz',question:'What does DNS stand for and what does it do?',opts:['Data Network Switch — connects devices','Domain Name System — translates website names to IP addresses','Digital Network Security — protects your connection','Direct Network Signal — boosts Wi-Fi strength'],correct:1,explanation:'DNS = Domain Name System. It\'s like the internet\'s phone book — when you type a website name, DNS finds its IP address so your computer knows where to connect. Without DNS, you\'d need to type IP addresses for every website.'}]},
+      {title:'Cloud Storage & Collaboration',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>THE CLOUD — WORK FROM ANYWHERE</h3><p>Cloud storage means your files live on servers over the internet — accessible from any device, anywhere. This has transformed how offices work.</p><p><strong>Main cloud platforms:</strong></p>`,},{type:'table',headers:['Platform','Provider','Best For'],rows:[['OneDrive','Microsoft','Office 365 users, Windows'],['Google Drive','Google','Gmail users, cross-platform'],['Dropbox','Dropbox Inc','File sharing with external parties'],['iCloud','Apple','Mac and iPhone users']]},{type:'text',content:`<p><strong>Cloud benefits:</strong></p><ul><li>Access files from any device — PC, phone, tablet</li><li>Automatic backup — files are safe even if your PC dies</li><li>Real-time collaboration — multiple people edit the same document simultaneously</li><li>Easy sharing — send a link instead of emailing large files</li></ul><div class="tip">💡 OneDrive comes free with Windows. Make it a habit to save important work documents to OneDrive — not just the local hard drive. If your PC crashes, cloud files are safe.</div>`},{type:'quiz',question:'What is the main advantage of saving files to cloud storage instead of only your local hard drive?',opts:['Files are larger','Files are accessible from any device and are backed up automatically','Files are deleted faster','Files are private and cannot be shared'],correct:1,explanation:'Cloud storage provides automatic backup and accessibility from any device. If your hard drive fails (and they do fail), locally-saved-only files are gone. Cloud files survive hardware failure because they live on remote servers.'}]},
+      {title:'Cybersecurity Essentials',type:'lesson',xp:100,blocks:[{type:'text',content:`<h3>CYBERSECURITY — PROTECTING YOU AND YOUR EMPLOYER</h3><p>Cyberattacks cost South African businesses billions of rands annually. A single employee clicking a malicious link can compromise an entire organisation.</p><p><strong>The main threats:</strong></p><ul><li><strong>Ransomware</strong> — Malware that encrypts all your files and demands payment to unlock them</li><li><strong>Phishing</strong> — Fake emails designed to steal credentials or install malware</li><li><strong>Social engineering</strong> — Manipulating people (not systems) to gain unauthorised access</li><li><strong>Weak passwords</strong> — The #1 cause of data breaches</li><li><strong>Unpatched software</strong> — Outdated software contains vulnerabilities that hackers exploit</li></ul><div class="highlight">🔐 THE MOST POWERFUL SECURITY HABIT: Enable Two-Factor Authentication (2FA) on every important account. Even if your password is stolen, the attacker cannot log in without the second factor (usually an SMS code).</div>`},{type:'quiz',question:'What is Two-Factor Authentication (2FA)?',opts:['Using two different passwords','A login method requiring both a password AND a second verification (e.g. SMS code)','Having two email accounts','Changing your password twice a month'],correct:1,explanation:'2FA = Two-Factor Authentication. After entering your password (factor 1), you must verify with something you have — like a code sent to your phone (factor 2). Even if a hacker steals your password, they cannot access your account without your phone.'}]},
+      {title:'System Maintenance & Optimisation',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>KEEPING YOUR SYSTEM FAST & HEALTHY</h3><p>A poorly maintained computer slows down, crashes, and becomes a source of daily frustration. Preventive maintenance takes 15 minutes and saves hours.</p><p><strong>Weekly habits:</strong></p><ul><li>Close programs you're not using</li><li>Empty the Recycle Bin</li><li>Run Windows Update (Settings → Update & Security → Windows Update)</li></ul><p><strong>Monthly maintenance:</strong></p><ul><li>Run Disk Cleanup (search "Disk Cleanup" in Start Menu)</li><li>Check startup programs (Task Manager → Startup tab) — disable unnecessary ones</li><li>Run a malware scan</li><li>Check available disk space — keep at least 15% free</li></ul><div class="tip">💡 If your PC is slow: Press Ctrl+Shift+Esc to open Task Manager → click "CPU" or "Memory" column to sort → identify what's using the most resources. A programme consuming 90% CPU when it should use 2% is your problem.</div>`},{type:'quiz',question:'In Task Manager, what keyboard shortcut opens it directly?',opts:['Ctrl+Alt+T','Ctrl+Shift+Esc','Windows+T','Alt+Ctrl+M'],correct:1,explanation:'Ctrl+Shift+Esc opens Task Manager directly. Ctrl+Alt+Del opens the security screen where you can then choose Task Manager. Ctrl+Shift+Esc is faster — saves one extra step.'}]}
+    ]
+  },
+  {
+    id:'cv-creation', icon:'📝', name:'CV Creation', level:'beg',
+    levelLabel:'BEGINNER', color:'teal', duration:'Half Day', lessons:2,
+    desc:'Build a professional South African CV from scratch. The document between you and your next job — done right.',
+    jobs:'Job seekers — all fields',
+    topics:['CV structure','Personal statement','Skills section','Work experience formatting'],
+    lessonData:[
+      {title:'CV Structure & Layout',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>THE WINNING CV FORMULA</h3><p>Your CV has 10-15 seconds to make an impression. South African employers expect a specific format. Here it is.</p><p><strong>Non-negotiable sections:</strong></p><ul><li><strong>Header</strong> — Full name (large, bold), phone, email, location, ID number</li><li><strong>Personal Profile/Statement</strong> — 3-4 sentences. Who you are + key skill + career goal</li><li><strong>Key Skills</strong> — Bullet list of 6-8 most relevant skills for the role</li><li><strong>Work Experience</strong> — Reverse chronological. For each: dates, company, title, 3-5 bullet duties</li><li><strong>Education</strong> — Reverse chronological. Year, institution, qualification, subjects if relevant</li><li><strong>Certifications/Courses</strong> — PixelProTech certifications go here ✅</li><li><strong>References</strong> — "Available upon request" is acceptable</li></ul><div class="highlight">📄 LENGTH: 2 pages maximum for less than 5 years experience. 3 pages maximum for senior roles. Hiring managers do not read past page 2 for junior positions.</div>`},{type:'quiz',question:'What is the maximum recommended CV length for someone with less than 5 years of work experience?',opts:['1 page','2 pages','4 pages','As long as needed'],correct:1,explanation:'2 pages maximum for entry-level and junior positions. Recruiters and HR managers screen hundreds of CVs — they will not read page 3 of a junior candidate\'s CV. Keep it tight, relevant, and focused.'}]},
+      {title:'Writing Your Personal Statement',type:'practice',xp:80,blocks:[{type:'text',content:`<h3>THE PERSONAL STATEMENT — YOUR 30-SECOND PITCH</h3><p>This is the paragraph at the top of your CV. It's the first thing read and sets the tone for everything that follows. Write it last — after you know what the rest of your CV contains.</p><p><strong>Formula that works:</strong></p><p>[Job title/field] with [X years / recent training] in [key skills]. [2-3 sentence description of what you bring and what you're looking for].</p><p><strong>Example (entry level, data capture):</strong></p><p><em>"Motivated and detail-oriented administrative professional with recent training in data capture, Microsoft Office, and computer literacy from PixelProTech Solutions. I bring strong keyboard accuracy, a professional approach to data handling, and a genuine commitment to accuracy and efficiency. I am seeking an entry-level data capture or administrative role where I can contribute immediately and grow within an organisation."</em></p><div class="tip">💡 Tailor your personal statement for each application. Change the role title and add one specific detail from the job advertisement. It takes 3 minutes and dramatically improves your response rate.</div>`},{type:'practice',task:'Write the OPENING sentence of a personal statement for someone applying for a receptionist position',hint:'Include your field, training, and a key strength',placeholder:'Write your opening sentence...',answer:'Professionally trained receptionist and office administrator',points:50}]}
+    ]
+  },
+  {
+    id:'digital-job-prep', icon:'💼', name:'Digital Job Preparation', level:'int',
+    levelLabel:'INTERMEDIATE', color:'purple', duration:'2 Days', lessons:3,
+    desc:'Interview skills, digital portfolio, LinkedIn, online job searching, and how to present yourself digitally.',
+    jobs:'All job seekers',
+    topics:['Interview preparation','LinkedIn basics','Online job searching','Digital first impressions'],
+    lessonData:[
+      {title:'Interview Preparation',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>THE JOB INTERVIEW — YOUR PERFORMANCE</h3><p>Interviews are not tests of who you are — they are performances of your professional best. Preparation is what separates candidates who get offers from those who wonder what went wrong.</p><p><strong>The STAR method for answering questions:</strong></p><ul><li><strong>S — Situation:</strong> Describe the context</li><li><strong>T — Task:</strong> What was your responsibility</li><li><strong>A — Action:</strong> What you specifically did</li><li><strong>R — Result:</strong> What happened because of your action</li></ul><p><strong>Questions to prepare for:</strong></p><ul><li>"Tell me about yourself" — 60-second professional summary</li><li>"Why do you want this role?" — Researched, specific answer about THEIR company</li><li>"What are your strengths?" — 2-3 backed by evidence</li><li>"What's your weakness?" — Real weakness + how you're addressing it</li><li>"Do you have questions for us?" — ALWAYS have 2-3 prepared questions</li></ul><div class="highlight">💡 RESEARCH THE COMPANY before every interview. Check their website, recent news, and LinkedIn page. Reference something specific you found: "I read that your company recently expanded to three new provinces — I'd love to be part of that growth."</div>`},{type:'quiz',question:'What does the "R" stand for in the STAR interview technique?',opts:['Responsibility','Reasoning','Result','Role'],correct:2,explanation:'STAR = Situation, Task, Action, RESULT. The Result is the most important part — it shows the impact of your actions. Interviewers want evidence that your actions lead to positive outcomes.'}]},
+      {title:'LinkedIn — Your Digital Professional Profile',type:'lesson',xp:70,blocks:[{type:'text',content:`<h3>LINKEDIN — WHERE EMPLOYERS FIND YOU</h3><p>LinkedIn has over 900 million users. South African employers and recruiters actively search it daily. Not being on LinkedIn means being invisible to a huge slice of the job market.</p><p><strong>Profile essentials:</strong></p><ul><li><strong>Professional photo</strong> — Head and shoulders, plain background, business dress, smile</li><li><strong>Headline</strong> — Not just your job title: "Admin Professional | Data Capture | Microsoft Office Specialist | PixelProTech Certified"</li><li><strong>Summary (About section)</strong> — Your personal statement, 3-5 sentences</li><li><strong>Work Experience</strong> — Same as your CV, with descriptions</li><li><strong>Skills section</strong> — Add all your technical skills, request endorsements</li><li><strong>Certifications</strong> — Add PixelProTech courses here</li></ul><div class="tip">💡 CONNECTION STRATEGY: Connect with everyone you meet professionally. A second-degree connection to a recruiter can be the difference between getting seen and being filtered out. Quality AND quantity matter on LinkedIn.</div>`},{type:'quiz',question:'On LinkedIn, what should your headline include beyond just your job title?',opts:['Your salary expectations','Key skills and certifications','Your personal interests','Your home address'],correct:1,explanation:'Your LinkedIn headline is searchable. Including key skills, certifications, and specialisations means recruiters searching for "Data Capture Pretoria" or "Office Admin Microsoft Office" are more likely to find your profile. Maximise keyword coverage.'}]},
+      {title:'Online Job Searching in South Africa',type:'lesson',xp:60,blocks:[{type:'text',content:`<h3>WHERE TO FIND JOBS IN SOUTH AFRICA</h3><p>Most job seekers use 1-2 platforms. Professional job seekers use a multi-channel approach across 5+ platforms simultaneously.</p>`,},{type:'table',headers:['Platform','Type','Best For'],rows:[['LinkedIn','Professional network','Professional, corporate, remote'],['PNet (pnet.co.za)','Job board','All industries, all levels'],['Indeed (indeed.co.za)','Job aggregator','Volume searching across many sites'],['Careers24','Job board','SA-focused, all sectors'],['ESSA (essa.org.za)','Government','Government learnerships & jobs'],['Company websites','Direct','Apply directly — less competition']]},{type:'quiz',question:'Why is applying directly on company websites often MORE effective than job boards?',opts:['Company websites are easier to use','There is less competition from other applicants','Company websites have better job descriptions','Job boards charge application fees'],correct:1,explanation:'When you apply via a company\'s own careers page, your application isn\'t competing with thousands on a job board — it goes directly to HR. Companies also often post roles internally and on their own site before listing on job boards.'}]}
+    ]
+  },
+  {
+    id:'tech-support', icon:'🔧', name:'Tech Support Basics', level:'tech',
+    levelLabel:'TECH', color:'orange', duration:'3 Days', lessons:3,
+    desc:'First-level IT support: diagnosing problems, user assistance, documentation, and the entry point to IT careers.',
+    jobs:'Helpdesk, Junior IT Support, Tech Support Agent',
+    topics:['Support processes','Diagnosing issues','User communication','Ticketing basics'],
+    lessonData:[
+      {title:'The IT Support Process',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>HOW IT SUPPORT WORKS</h3><p>IT support follows a structured process. Understanding this process is the difference between a professional tech support agent and someone who just "messes around with computers."</p><p><strong>The support tier structure:</strong></p><ul><li><strong>Tier 1 (You)</strong> — First contact. Handles 80% of issues: password resets, software installs, common errors, connectivity</li><li><strong>Tier 2</strong> — Escalated technical issues: advanced software, hardware replacement, network configuration</li><li><strong>Tier 3</strong> — Specialised: vendors, engineers, development team</li></ul><p><strong>The support process for every issue:</strong></p><ul><li><strong>1. Identify</strong> — What exactly is the problem? Get specifics, not "the computer is broken"</li><li><strong>2. Gather info</strong> — Error messages, when it started, what changed recently</li><li><strong>3. Isolate</strong> — Is it the hardware, software, network, or user?</li><li><strong>4. Research</strong> — Check knowledge base, search the error message</li><li><strong>5. Resolve</strong> — Apply the fix</li><li><strong>6. Document</strong> — Record the problem, cause, and solution in the ticketing system</li></ul><div class="highlight">📋 DOCUMENTATION is as important as the fix. Future problems are solved faster when solutions are documented. "I fixed it" is not documentation.</div>`},{type:'quiz',question:'What percentage of IT support issues are typically resolved at Tier 1 (first contact)?',opts:['20%','50%','80%','100%'],correct:2,explanation:'Well-run IT helpdesks resolve approximately 80% of issues at Tier 1 (first contact). These are common, repeatable issues: password resets, software not opening, printer not working, connectivity issues. Tier 1 agents who can handle this volume are extremely valuable.'}]},
+      {title:'Diagnosing Common PC Problems',type:'lesson',xp:90,blocks:[{type:'text',content:`<h3>THE DIAGNOSTIC MINDSET</h3><p>Great tech support people think like detectives. Every problem has a cause. Find the cause, fix the symptom.</p>`,},{type:'table',headers:['Symptom','First Question','Common Causes'],rows:[['PC won\'t start','Any lights/sounds?','Power supply, power cable, hardware failure'],['Blue Screen (BSOD)','What\'s the error code?','Driver issue, RAM fault, overheating'],['Slow performance','When did this start?','Malware, full disk, too many startup programs'],['No internet','Others affected?','Router issue, NIC driver, IP conflict, ISP outage'],['Can\'t print','Is it online in Devices?','Driver, offline status, print queue stuck'],['USB not detected','Tried another port?','Driver issue, USB controller, device fault']]},{type:'practice',task:'A user says "my internet is not working." What is the FIRST question you ask?',hint:'Think about isolating whether the problem is on their device or the whole network',placeholder:'Type your diagnostic question...',answer:'Is anyone else in the office also unable to connect?',points:40}]},
+      {title:'User Communication in Support',type:'lesson',xp:70,blocks:[{type:'text',content:`<h3>TECH SUPPORT IS PEOPLE WORK</h3><p>The technical skills get you the job. The communication skills keep you there and get you promoted. Frustrated users are not interested in technical explanations — they want their problem solved.</p><p><strong>Language that helps:</strong></p><ul><li>"I understand this is frustrating — let's get it sorted now."</li><li>"I can fix that for you right away."</li><li>"Let me check on that and get back to you within the hour."</li><li>"I've resolved the issue — here's what was causing it and what I did."</li></ul><p><strong>Language that hurts:</strong></p><ul><li>"Did you try turning it off and on again?" (condescending)</li><li>"That's not our problem." (never say this)</li><li>"I don't know." (say "Let me find out.")</li><li>Jargon-heavy explanations to non-technical users</li></ul><div class="tip">💡 RULE: Explain technical solutions to non-technical users using analogies they understand. "Your hard drive is 95% full — like a filing cabinet so full you can't close the drawer" is more useful than discussing disk fragmentation.</div>`},{type:'quiz',question:'A user angrily says their PC has been broken for 3 days. What is the BEST opening response?',opts:['"That\'s not my fault."','"I understand this has been frustrating — let\'s fix it right now."','"Did you try turning it off and on?"','"Log a ticket in the system."'],correct:1,explanation:'Acknowledge the frustration first, then take immediate action. "I understand this has been frustrating" validates their experience. "Let\'s fix it right now" shows urgency and ownership. This de-escalates the situation and builds trust instantly.'}]}
+    ]
+  },
+  {
+    id:'pc-troubleshooting', icon:'🛠️', name:'PC Troubleshooting', level:'tech',
+    levelLabel:'TECH', color:'orange', duration:'2 Days', lessons:3,
+    desc:'Diagnose and fix common PC problems. Slow systems, crashes, startup errors, driver issues. Real fix-it skills.',
+    jobs:'Freelance Tech, Junior IT Support',
+    topics:['Startup problems','Performance issues','Software errors','Hardware diagnostics'],
+    lessonData:[
+      {title:'PC Won\'t Start — Diagnosis Guide',type:'lesson',xp:90,blocks:[{type:'text',content:`<h3>PC WON'T BOOT — STEP BY STEP</h3><p>A PC that won't start is every user's worst nightmare. Work through this systematically and you'll find the cause every time.</p><p><strong>Step 1 — Check the obvious first:</strong></p><ul><li>Is it plugged in? Is the power strip on?</li><li>Is the monitor connected and on? (separate from the PC not starting)</li><li>Press the power button — any lights? Any fans spinning? Any beeps?</li></ul><p><strong>Step 2 — Interpret what you see/hear:</strong></p><ul><li><strong>No power at all</strong> (no lights, no fans) — Power supply or power cable issue</li><li><strong>Fans spin, no display</strong> — RAM, GPU, or monitor issue</li><li><strong>Beep codes</strong> — BIOS is communicating error codes through beeps (count them)</li><li><strong>Starts then restarts in a loop</strong> — Windows boot file corruption, hardware failure</li></ul><div class="highlight">🔧 THE "MINIMUM BOOT" TEST: Remove all non-essential hardware (extra RAM sticks, USB devices, additional drives). If it boots with minimum hardware, add components back one at a time to identify the fault.</div>`},{type:'quiz',question:'A PC powers on (fans spin, lights come on) but no image appears on screen. What should you check FIRST?',opts:['Reinstall Windows','Check the RAM is properly seated and the monitor cable is connected','Replace the hard drive','Update the drivers'],correct:1,explanation:'When a PC powers on but shows nothing on screen, the most common causes are: loose monitor cable, monitor not set to correct input, or RAM not fully seated. Check these physically first before any software diagnosis.'}]},
+      {title:'Slow PC — Finding & Fixing the Cause',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>DIAGNOSING A SLOW COMPUTER</h3><p>A slow PC has a cause. Find the cause, fix the cause. Never just "clean up" randomly without knowing what's causing the slowdown.</p><p><strong>Use Task Manager to diagnose (Ctrl+Shift+Esc):</strong></p><ul><li>Click the <strong>Performance tab</strong> — see real-time CPU, Memory, Disk, and Network usage</li><li>Click the <strong>Processes tab</strong> — see exactly which programs are using the most resources</li><li>Sort by CPU or Memory column to find the culprit</li></ul><p><strong>Common causes and fixes:</strong></p>`,},{type:'table',headers:['Cause','How to Identify','Fix'],rows:[['Too many startup programs','Task Manager → Startup tab','Disable unnecessary startup items'],['Malware','Antivirus scan, high CPU usage by unknown process','Run Malwarebytes scan'],['Full hard drive (under 15% free)','File Explorer → This PC → check free space','Delete files, run Disk Cleanup'],['Too little RAM','Task Manager → Memory usage at 90%+','Close tabs/programs, or upgrade RAM'],['Overheating','PC fan very loud, thermal throttling','Clean dust from fans, check temps']]},{type:'quiz',question:'Which Task Manager tab shows you which programs are slowing down your PC RIGHT NOW?',opts:['Services tab','Users tab','Processes tab','Details tab'],correct:2,explanation:'The Processes tab in Task Manager shows all running programs and their real-time CPU, Memory, Disk, and Network usage. Sort by CPU or Memory column (click the column header) to instantly identify what\'s consuming the most resources.'}]},
+      {title:'Software Errors & Crash Recovery',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>WHEN SOFTWARE BREAKS</h3><p>Software errors are the most common IT support request. Most have simple solutions once you know what to look for.</p><p><strong>The universal first steps:</strong></p><ul><li><strong>Restart the application</strong> — Close completely (Task Manager if needed), reopen</li><li><strong>Restart Windows</strong> — Clears temporary files and resets system state. Fixes 40% of software issues</li><li><strong>Check for updates</strong> — Outdated software has bugs. Update it.</li><li><strong>Run as Administrator</strong> — Right-click the program → "Run as administrator"</li><li><strong>Repair the installation</strong> — Settings → Apps → select the program → Modify/Repair</li><li><strong>Uninstall and reinstall</strong> — Last resort for software issues</li></ul><div class="highlight">🔍 SEARCH THE ERROR MESSAGE: Copy the exact error message text and search it on Google with "Windows 10" or "Windows 11" added. The answer almost always exists on Microsoft's support site or a tech forum.</div>`},{type:'quiz',question:'What percentage of software problems are typically solved by simply restarting Windows?',opts:['5%','15%','40%','90%'],correct:2,explanation:'A Windows restart clears temporary files, resets RAM allocation, restarts background services, and applies pending updates. Approximately 40% of "my program isn\'t working" issues are resolved by a simple restart — which is why it\'s always the first recommendation.'}]}
+    ]
+  },
+  {
+    id:'windows-install', icon:'💿', name:'Windows Installation', level:'tech',
+    levelLabel:'TECH', color:'orange', duration:'1-2 Days', lessons:3,
+    desc:'Install Windows 10/11 from scratch. Bootable USB, BIOS, partitioning, drivers. A paid skill in high demand.',
+    jobs:'Freelance Tech, Junior IT Support',
+    topics:['Bootable USB creation','BIOS settings','Windows installation','Driver setup'],
+    lessonData:[
+      {title:'Creating a Bootable USB',type:'lesson',xp:90,blocks:[{type:'text',content:`<h3>BOOTABLE USB — YOUR INSTALLATION TOOL</h3><p>A bootable USB is a flash drive that contains a complete Windows installer. When you plug it in and start the PC from it, it loads the Windows setup — even if Windows isn't installed at all.</p><p><strong>What you need:</strong></p><ul><li>USB flash drive — minimum 8GB (16GB recommended), formatted (will be wiped)</li><li>A working PC to create the USB on</li><li>Internet connection to download Windows media creation tool</li></ul><p><strong>Creating using Windows Media Creation Tool (official Microsoft method):</strong></p><ul><li>Download "Media Creation Tool" from microsoft.com/software-download/windows11</li><li>Run it and select "Create installation media for another PC"</li><li>Select Language, Edition (Windows 11), Architecture (64-bit)</li><li>Select "USB flash drive" → select your USB → tool downloads and creates bootable USB</li><li>Process takes 20-40 minutes depending on internet speed</li></ul><div class="highlight">⚠️ ALL DATA ON THE USB WILL BE DELETED during this process. Back up anything on the USB before you start.</div>`},{type:'quiz',question:'What is the minimum recommended USB size for creating a Windows bootable drive?',opts:['2GB','4GB','8GB','32GB'],correct:2,explanation:'Windows 11 installation files are approximately 5.5GB. An 8GB USB is the minimum functional size, but 16GB is recommended to ensure there\'s enough space and to accommodate any updates included in newer ISO versions.'}]},
+      {title:'BIOS & Boot Order',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>BIOS — THE PC'S COMMAND BEFORE WINDOWS</h3><p>The BIOS (or UEFI on modern PCs) is the firmware that runs before Windows. It controls hardware settings and decides what the PC boots from.</p><p><strong>Accessing BIOS:</strong></p><ul><li>Press the BIOS key immediately when the PC starts (before Windows loads)</li><li>Common keys: <strong>F2, F12, DEL, F10</strong> (depends on manufacturer)</li><li>Look for the key on screen during startup — it shows briefly</li></ul><p><strong>Changing the boot order to boot from USB:</strong></p><ul><li>In BIOS, find "Boot" tab or "Boot Order" section</li><li>Move "USB Drive" or "Removable Drive" to position #1 (before Hard Drive)</li><li>Save and exit (usually F10 → Save Changes)</li><li>PC restarts and loads from USB instead of hard drive</li></ul><div class="tip">💡 FASTER METHOD: Most modern PCs have a one-time Boot Menu. Press F12 (or F8/F11) at startup to select the boot device without changing BIOS settings permanently.</div>`},{type:'quiz',question:'Which key commonly opens the one-time Boot Menu to select a boot device without changing BIOS settings?',opts:['F1','F5','F12','Escape'],correct:2,explanation:'F12 opens the Boot Menu on most Dell, Lenovo, and other PC brands. This lets you choose a boot device (USB, DVD, Hard Drive) for one boot only — without permanently changing BIOS boot order. Different manufacturers use different keys: check your screen at startup.'}]},
+      {title:'Windows Installation Walkthrough',type:'lesson',xp:100,blocks:[{type:'text',content:`<h3>INSTALLING WINDOWS — STEP BY STEP</h3><p>Once you've booted from the USB, the Windows installer guides you. But knowing what each step means prevents expensive mistakes — especially when partitioning.</p><p><strong>The installation steps:</strong></p><ul><li><strong>1. Language & region</strong> — Select language, time format, keyboard layout → Next</li><li><strong>2. Install Now</strong> — Click the Install Now button</li><li><strong>3. Product Key</strong> — Enter your Windows key or click "I don't have a product key" (activates later)</li><li><strong>4. Select Edition</strong> — Windows 11 Home or Pro (match your licence)</li><li><strong>5. Accept license</strong> — Accept → Next</li><li><strong>6. Installation type</strong> — Choose "Custom: Install Windows only (advanced)"</li><li><strong>7. Partitioning</strong> — Select the drive. Delete all old partitions if clean install. Click "New" to create fresh partition → Next</li><li><strong>8. Installing</strong> — Process takes 15-30 minutes. PC restarts several times</li><li><strong>9. Initial setup (OOBE)</strong> — Set region, keyboard, account (use local account for work PCs)</li></ul><div class="highlight">⚠️ CRITICAL: Step 7 — Partitioning DELETES ALL DATA on that drive. Confirm you have backed up or that the drive is intentionally being wiped. There is no undo.</div>`},{type:'quiz',question:'During Windows installation, which installation type should you choose for a clean install?',opts:['Upgrade: Keep files and settings','Custom: Install Windows only (advanced)','Express Install','Basic Install'],correct:1,explanation:'"Custom: Install Windows only (advanced)" gives you full control over partitioning and performs a completely clean installation. "Upgrade" keeps your files and settings but can carry over old problems. For a fresh start or new drive, always use Custom.'}]}
+    ]
+  },
+  {
+    id:'printer-setup', icon:'🖨️', name:'Printer Setup', level:'tech',
+    levelLabel:'TECH', color:'orange', duration:'Half Day', lessons:2,
+    desc:'Install, configure, and troubleshoot printers — wired, wireless, and network. Every office needs this skill.',
+    jobs:'Office Tech Support, Freelance, Admin',
+    topics:['USB printer install','Wireless printer setup','Network printing','Troubleshooting'],
+    lessonData:[
+      {title:'Installing a Printer',type:'lesson',xp:70,blocks:[{type:'text',content:`<h3>PRINTER SETUP — WIRED & WIRELESS</h3><p>Printers are a source of endless office frustration. The person who can set them up and fix them is invaluable in any workplace.</p><p><strong>USB (Wired) Printer:</strong></p><ul><li>Connect USB cable from printer to PC</li><li>Turn printer on</li><li>Windows usually auto-installs — wait for notification</li><li>If not: Settings → Bluetooth & Devices → Printers & Scanners → Add Device</li><li>If driver needed: go to manufacturer's website (hp.com, epson.com, canon.com) → Support → Drivers → enter model number</li></ul><p><strong>Wireless Printer:</strong></p><ul><li>On the printer's display: Settings/Network → Wireless Setup Wizard → select your Wi-Fi network → enter password</li><li>On Windows: Settings → Bluetooth & Devices → Printers & Scanners → Add Device → select printer</li><li>Alternatively: install manufacturer's app (HP Smart, Epson iPrint) which guides you through setup</li></ul><div class="tip">💡 IMPORTANT: The printer and the PC must be on the SAME Wi-Fi network for wireless printing to work. This is the #1 cause of "my wireless printer won't work."</div>`},{type:'quiz',question:'What is the most common reason a wireless printer fails to print?',opts:['The ink is low','The printer driver is outdated','The printer and computer are on different Wi-Fi networks','The USB cable is disconnected'],correct:2,explanation:'Wireless printers and computers must be on the same network. A printer connected to "Home_WiFi_2" cannot communicate with a laptop on "Home_WiFi_5GHz". This is the first thing to check — and the most commonly overlooked.'}]},
+      {title:'Print Queue & Troubleshooting',type:'lesson',xp:70,blocks:[{type:'text',content:`<h3>WHEN PRINTING GOES WRONG</h3><p>Printer problems follow predictable patterns. Know the patterns, fix the problems fast.</p><p><strong>The stuck print queue fix (most common printer issue):</strong></p><ul><li>Open <strong>Settings → Bluetooth & Devices → Printers & Scanners</strong></li><li>Click the printer → <strong>Open Print Queue</strong></li><li>Select all jobs → Delete</li><li>If queue won't clear: open <strong>Services</strong> (search in Start) → find <strong>Print Spooler</strong> → right-click → <strong>Stop</strong></li><li>Go to <strong>C:\\Windows\\System32\\spool\\PRINTERS</strong> → delete all files inside (not the folder)</li><li>Go back to Services → Start the Print Spooler service</li><li>Try printing again</li></ul><p><strong>Printer showing as "Offline":</strong></p><ul><li>Right-click the printer → "See what's printing" → Printer menu → uncheck "Use Printer Offline"</li><li>Restart both printer and PC</li><li>Re-add the printer if issue persists</li></ul>`},{type:'quiz',question:'What Windows service must be stopped and restarted to clear a stuck print queue?',opts:['Windows Print Manager','Print Spooler','Document Queue Service','Printer Driver Service'],correct:1,explanation:'The Print Spooler service manages all print jobs. When it gets stuck (common after a failed print job), stopping the service, deleting files in the PRINTERS folder, and restarting it clears the jam. This fix works on 90% of stuck-queue problems.'}]}
+    ]
+  },
+  {
+    id:'networking-basics', icon:'🌐', name:'Internet & Networking Basics', level:'tech',
+    levelLabel:'TECH', color:'orange', duration:'2 Days', lessons:3,
+    desc:'How networks work, router setup, Wi-Fi troubleshooting, IP addresses, and basic LAN configuration.',
+    jobs:'Junior IT Support, Network Assistant',
+    topics:['How the internet works','IP addresses','Router setup','Wi-Fi troubleshooting','Network sharing'],
+    lessonData:[
+      {title:'How the Internet Works',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>THE INTERNET — UNDERSTANDING THE INFRASTRUCTURE</h3><p>The internet is a massive global network of interconnected computers. Understanding how data travels helps you diagnose connection problems.</p><p><strong>The journey of a webpage request:</strong></p><ul><li>You type "google.com" → your browser asks your <strong>DNS server</strong> for Google's IP address</li><li>DNS returns the IP address (e.g. 142.250.80.46)</li><li>Your browser sends a request to that IP address</li><li>The request travels through your router → your ISP → multiple internet routers → Google's servers</li><li>Google's server sends back the webpage data</li><li>Your browser assembles and displays the page</li><li>This entire process happens in under 200 milliseconds</li></ul><p><strong>Key infrastructure elements:</strong></p><ul><li><strong>ISP (Internet Service Provider)</strong> — Telkom, Vodacom, MTN — your connection to the internet backbone</li><li><strong>Router</strong> — Your home/office gateway between your local network and the ISP</li><li><strong>Modem</strong> — Converts ISP signal (fibre, ADSL, LTE) to Ethernet/Wi-Fi</li></ul>`},{type:'quiz',question:'What does ISP stand for?',opts:['Internal Server Protocol','Internet Service Provider','Integrated System Port','Internet Security Program'],correct:1,explanation:'ISP = Internet Service Provider. In South Africa: Telkom, Vodacom, MTN, Rain, Openserve, Vumatel (for fibre). Your ISP connects your home or office to the global internet backbone. The quality and speed of your connection depends primarily on your ISP and your plan.'}]},
+      {title:'IP Addresses & Network Configuration',type:'lesson',xp:90,blocks:[{type:'text',content:`<h3>IP ADDRESSES — THE INTERNET'S POSTAL SYSTEM</h3><p>Every device on a network has an IP address — its unique identifier. Without IP addresses, data wouldn't know where to go.</p><p><strong>Two types of IP addresses:</strong></p><ul><li><strong>Public IP</strong> — Your network's address on the internet. Assigned by your ISP. Changes periodically. One address for your entire home/office.</li><li><strong>Private/Local IP</strong> — Your device's address on your local network. Assigned by your router. e.g. 192.168.1.x or 10.0.0.x</li></ul><p><strong>Finding your IP address:</strong></p><ul><li><strong>Local IP</strong> — Open Command Prompt → type <strong>ipconfig</strong> → look for IPv4 Address</li><li><strong>Public IP</strong> — Go to whatismyip.com</li></ul><div class="highlight">🔧 COMMON FIX: "IP address conflict" error means two devices on the network have the same IP. Fix: Open Command Prompt → type "ipconfig /release" then "ipconfig /renew" — this requests a new IP from the router's DHCP.</div>`},{type:'practice',task:'What command do you type in Command Prompt to see your computer\'s local IP address?',hint:'It\'s a short command showing IP configuration',placeholder:'Type the command...',answer:'ipconfig',points:30}]},
+      {title:'Wi-Fi Troubleshooting',type:'lesson',xp:80,blocks:[{type:'text',content:`<h3>WI-FI PROBLEMS — SYSTEMATIC FIXES</h3><p>Wi-Fi issues are the most common tech support call. Work through this process and resolve them every time.</p><p><strong>The troubleshooting order (most to least likely cause):</strong></p><ul><li><strong>1. Is anyone else affected?</strong> — Yes: router/ISP issue. No: your device issue</li><li><strong>2. Restart your device</strong> — Fixes 30% of Wi-Fi issues</li><li><strong>3. Restart the router</strong> — Unplug power for 30 seconds, plug back in, wait 2 minutes</li><li><strong>4. Forget and rejoin the network</strong> — Settings → Wi-Fi → your network → Forget → reconnect with password</li><li><strong>5. Check for IP conflict</strong> — ipconfig /release then /renew in Command Prompt</li><li><strong>6. Update network adapter driver</strong> — Device Manager → Network Adapters → right-click → Update driver</li><li><strong>7. Run Windows Network Troubleshooter</strong> — Settings → System → Troubleshoot → Internet Connections</li></ul><div class="tip">💡 SPEED ISSUE (not connectivity): Test at fast.com or speedtest.net. If speed is much lower than your package, try connecting by Ethernet cable. If wired speed is fine but Wi-Fi is slow, the issue is Wi-Fi range, interference, or the wireless adapter.</div>`},{type:'quiz',question:'When troubleshooting Wi-Fi, what does it mean if EVERYONE in the office is affected?',opts:['All computers need driver updates','The problem is with the router or ISP — not individual devices','All devices need to be restarted','The Wi-Fi password has changed'],correct:1,explanation:'If multiple people/devices are all affected simultaneously, the problem is upstream from the devices — either the router (restart it) or the ISP (call your provider). Updating drivers or restarting individual PCs would be a waste of time.'}]}
+    ]
+  }
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let state = {
+  xp: 0,
+  streak: 1,
+  currentCourse: null,
+  currentLesson: null,
+  view: 'home', // home | course | lesson
+  progress: {} // courseId: { completed: [lessonIndex,...], started: true }
+};
+
+function getProgress(courseId) {
+  if (!state.progress[courseId]) state.progress[courseId] = { completed: [] };
+  return state.progress[courseId];
+}
+
+function isLessonComplete(courseId, idx) {
+  return getProgress(courseId).completed.includes(idx);
+}
+
+function completeLesson(courseId, idx, xpVal) {
+  const p = getProgress(courseId);
+  if (!p.completed.includes(idx)) {
+    p.completed.push(idx);
+    state.xp += xpVal;
+    updateXPDisplay();
+    updateOverallProgress();
+    updateSidebar();
+  }
+}
+
+function updateXPDisplay() {
+  document.getElementById('xpDisplay').textContent = state.xp;
+  document.getElementById('totalXP').textContent = state.xp + ' XP';
+}
+
+function updateOverallProgress() {
+  const totalLessons = COURSES.reduce((a, c) => a + c.lessonData.length, 0);
+  const doneLessons = Object.values(state.progress).reduce((a, p) => a + p.completed.length, 0);
+  const pct = Math.round((doneLessons / totalLessons) * 100);
+  document.getElementById('overallBar').style.width = pct + '%';
+  document.getElementById('overallPct').textContent = pct + '%';
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+function buildSidebar() {
+  const nav = document.getElementById('sidebarNav');
+  nav.innerHTML = `<div class="nav-section-label">— HOME</div>
+  <div class="nav-item ${state.view==='home'?'active':''}" onclick="showHome()">
+    <span class="nav-icon">🏠</span><span class="nav-text">Dashboard</span>
+  </div>
+  <div class="nav-item ${state.view==='tests'?'active':''}" onclick="showTestCentre()">
+    <span class="nav-icon">🧪</span><span class="nav-text">Test Centre</span>
+    <span class="nav-badge" style="background:rgba(255,179,71,.15);color:#ffb347;border-color:rgba(255,179,71,.3);">${Object.values(state.progress).filter(p=>p.testPassed).length}/${TESTS.length}</span>
+  </div>
+  <div class="nav-section-label">— ALL COURSES</div>`;
+
+  COURSES.forEach(c => {
+    const prog = getProgress(c.id);
+    const done = prog.completed.length;
+    const total = c.lessonData.length;
+    const isActive = state.currentCourse?.id === c.id;
+    const isDone = done === total;
+    nav.innerHTML += `<div class="nav-item ${isActive?'active':''} ${isDone?'completed':''}" onclick="openCourse('${c.id}')">
+      <span class="nav-icon">${c.icon}</span>
+      <span class="nav-text">${c.name}</span>
+      ${isDone ? '<span class="nav-check">✓</span>' : `<span class="nav-badge ${done>0?'done':'locked'}">${done}/${total}</span>`}
+    </div>`;
+  });
+}
+
+function updateSidebar() { buildSidebar(); }
+
+/* ============================================================
+   VIEWS
+   ============================================================ */
+function setTopbar(title, course) {
+  document.getElementById('topbarTitle').textContent = title;
+  document.getElementById('topbarCourse').textContent = course;
+}
+
+function showHome() {
+  state.view = 'home';
+  state.currentCourse = null;
+  state.currentLesson = null;
+  setTopbar('ACADEMY HOME', 'PIXELPROTECH SOLUTIONS');
+  updateSidebar();
+
+  const doneLessons = Object.values(state.progress).reduce((a, p) => a + p.completed.length, 0);
+  const totalLessons = COURSES.reduce((a, c) => a + c.lessonData.length, 0);
+  const doneCourses = COURSES.filter(c => getProgress(c.id).completed.length === c.lessonData.length).length;
+
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = `
+  <div class="home-hero">
+    <div class="hh-greeting">— WELCOME BACK TO PIXELPROTECH</div>
+    <h1 class="hh-title">YOUR SKILLS.<br><span>YOUR FUTURE.</span></h1>
+    <p class="hh-sub">Every lesson you complete is a skill added to your toolbox. Pick a course and let's go — no gatekeeping here.</p>
+    <div class="hh-stats">
+      <div class="hh-stat"><div class="hh-stat-num">${state.xp}</div><div class="hh-stat-label">XP EARNED</div></div>
+      <div class="hh-stat"><div class="hh-stat-num">${doneLessons}</div><div class="hh-stat-label">LESSONS DONE</div></div>
+      <div class="hh-stat"><div class="hh-stat-num">${totalLessons - doneLessons}</div><div class="hh-stat-label">REMAINING</div></div>
+      <div class="hh-stat"><div class="hh-stat-num">${doneCourses}</div><div class="hh-stat-label">COURSES COMPLETE</div></div>
+    </div>
+  </div>
+  <div class="section-head"><div class="s-label">— CHOOSE YOUR PATH</div><div class="s-title">ALL 18 COURSES</div></div>
+  <div class="dash-grid">
+    ${COURSES.map(c => {
+      const prog = getProgress(c.id);
+      const pct = Math.round((prog.completed.length / c.lessonData.length) * 100);
+      return `<div class="dash-card" onclick="openCourse('${c.id}')">
+        <span class="dc-level dl-${c.level}">${c.levelLabel}</span>
+        <div class="dc-icon">${c.icon}</div>
+        <div class="dc-name">${c.name}</div>
+        <div class="dc-desc">${c.desc}</div>
+        <div class="dc-progress"><div class="dc-prog-fill" style="width:${pct}%"></div></div>
+        <div class="dc-meta">
+          <span>${c.duration}</span>
+          <span class="${pct===100?'done':''}">${prog.completed.length}/${c.lessonData.length} lessons ${pct===100?'✓ COMPLETE':''}</span>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+}
+
+function openCourse(courseId) {
+  const course = COURSES.find(c => c.id === courseId);
+  state.currentCourse = course;
+  state.currentLesson = null;
+  state.view = 'course';
+  setTopbar(course.name.toUpperCase(), '— COURSE OVERVIEW');
+  updateSidebar();
+
+  const prog = getProgress(courseId);
+  const pct = Math.round((prog.completed.length / course.lessonData.length) * 100);
+
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = `
+  <div class="course-hero">
+    <div class="ch-badge">— ${course.levelLabel} · ${course.duration}</div>
+    <h1 class="ch-title">${course.name.replace(' ',' <span>')} </span></h1>
+    <p class="ch-desc">${course.desc}</p>
+    <div class="ch-meta">
+      <div class="ch-meta-item">📚 <span>${course.lessonData.length} LESSONS</span></div>
+      <div class="ch-meta-item">🎯 <span>${course.jobs}</span></div>
+      <div class="ch-meta-item">⚡ <span>${course.lessonData.reduce((a,l)=>a+l.xp,0)} XP AVAILABLE</span></div>
+    </div>
+    <div class="ch-progress">
+      <div class="ch-prog-label"><span>YOUR PROGRESS</span><span>${pct}%</span></div>
+      <div class="ch-prog-bar"><div class="ch-prog-fill" style="width:${pct}%"></div></div>
+    </div>
+    <button class="btn-start" onclick="openLesson('${courseId}', ${prog.completed.length >= course.lessonData.length ? 0 : Math.min(prog.completed.length, course.lessonData.length - 1)})">
+      ${pct === 0 ? '▶ START COURSE' : pct === 100 ? '↩ REVIEW COURSE' : '▶ CONTINUE LEARNING'}
+    </button>
+    <button class="btn-secondary" onclick="showHome()">← BACK TO DASHBOARD</button>
+  </div>
+
+  <div class="section-head"><div class="s-label">— COURSE CONTENT</div><div class="s-title">LESSONS</div></div>
+  <div class="lesson-list">
+    ${course.lessonData.map((lesson, i) => {
+      const done = isLessonComplete(courseId, i);
+      const typeMap = {lesson:'lt-lesson',quiz:'lt-quiz',practice:'lt-practice',challenge:'lt-challenge'};
+      return `<div class="lesson-item ${done?'done-lesson':''}" onclick="openLesson('${courseId}', ${i})">
+        <div class="lesson-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="lesson-info">
+          <div class="lesson-name">${lesson.title}</div>
+          <div class="lesson-desc">${lesson.blocks.length} blocks · ${lesson.xp} XP</div>
+        </div>
+        <div class="lesson-type ${typeMap[lesson.type]||'lt-lesson'}">${lesson.type.toUpperCase()}</div>
+        <div class="lesson-status">${done ? '✅' : '○'}</div>
+        <div class="lesson-xp">+${lesson.xp} XP</div>
+      </div>`;
+    }).join('')}
+  </div>`;
+
+  document.getElementById('mainContent').scrollTop = 0;
+  window.scrollTo(0, 0);
+}
+
+function openLesson(courseId, lessonIdx) {
+  const course = COURSES.find(c => c.id === courseId);
+  const lesson = course.lessonData[lessonIdx];
+  state.currentLesson = lessonIdx;
+  setTopbar(lesson.title.toUpperCase(), course.name + ' — LESSON ' + (lessonIdx + 1));
+  updateSidebar();
+
+  const isLast = lessonIdx === course.lessonData.length - 1;
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = `
+  <div class="lv-header">
+    <button class="lv-back" onclick="openCourse('${courseId}')">← BACK TO COURSE</button>
+    <h2 class="lv-title">${lesson.title}</h2>
+    <div class="lv-meta">
+      <span class="lesson-xp">+${lesson.xp} XP on completion</span>
+    </div>
+  </div>
+  <div class="content-blocks" id="contentBlocks">
+    ${lesson.blocks.map((b, bi) => renderBlock(b, courseId, lessonIdx, bi)).join('')}
+  </div>
+  <div class="lesson-nav-btns">
+    ${lessonIdx > 0 ? `<button class="btn-prev" onclick="openLesson('${courseId}', ${lessonIdx-1})">← PREVIOUS</button>` : ''}
+    ${isLast
+      ? `<button class="btn-complete" onclick="completeLessonUI('${courseId}', ${lessonIdx}, ${lesson.xp})">COMPLETE COURSE MODULE ✓</button>`
+      : `<button class="btn-next" onclick="completeLessonUI('${courseId}', ${lessonIdx}, ${lesson.xp})">COMPLETE & NEXT →</button>`
+    }
+  </div>`;
+
+  window.scrollTo(0, 0);
+  initTypingTests();
+}
+
+/* ============================================================
+   BLOCK RENDERER
+   ============================================================ */
+function renderBlock(block, courseId, lessonIdx, bi) {
+  switch(block.type) {
+    case 'text':
+      return `<div class="block block-text">${block.content}</div>`;
+
+    case 'table':
+      return `<div class="block block-visual">
+        <div class="visual-label">— REFERENCE TABLE</div>
+        <table class="table-demo">
+          <thead><tr>${block.headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead>
+          <tbody>${block.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+        </table>
+      </div>`;
+
+    case 'shortcuts':
+      return `<div class="block block-visual">
+        <div class="visual-label">— KEYBOARD SHORTCUTS</div>
+        <div class="shortcut-grid">
+          ${block.items.map(s=>`<div class="shortcut-item"><span class="shortcut-key">${s.key}</span><span class="shortcut-desc">${s.desc}</span></div>`).join('')}
+        </div>
+      </div>`;
+
+    case 'visual':
+      if (block.content === 'parts') {
+        return `<div class="block block-visual">
+          <div class="visual-label">— COMPUTER COMPONENTS</div>
+          <div class="shortcut-grid">
+            <div class="shortcut-item"><span class="shortcut-key">CPU</span><span class="shortcut-desc">The brain — processes everything</span></div>
+            <div class="shortcut-item"><span class="shortcut-key">RAM</span><span class="shortcut-desc">Short-term memory — speed</span></div>
+            <div class="shortcut-item"><span class="shortcut-key">HDD/SSD</span><span class="shortcut-desc">Long-term storage — saves files</span></div>
+            <div class="shortcut-item"><span class="shortcut-key">GPU</span><span class="shortcut-desc">Graphics card — visuals</span></div>
+            <div class="shortcut-item"><span class="shortcut-key">Monitor</span><span class="shortcut-desc">Output — shows everything</span></div>
+            <div class="shortcut-item"><span class="shortcut-key">Motherboard</span><span class="shortcut-desc">Connects all components</span></div>
+          </div>
+        </div>`;
+      }
+      return `<div class="block block-visual"><div class="visual-label">${block.label||'VISUAL'}</div></div>`;
+
+    case 'quiz':
+      return `<div class="block block-quiz" id="quiz_${bi}">
+        <div class="quiz-q">❓ ${block.question}</div>
+        <div class="quiz-opts">
+          ${block.opts.map((o,oi)=>`<div class="quiz-opt" id="qo_${bi}_${oi}" onclick="answerQuiz(${bi},${oi},${block.correct})">
+            <div class="quiz-letter">${['A','B','C','D'][oi]}</div>
+            <span>${o}</span>
+          </div>`).join('')}
+        </div>
+        <div class="quiz-feedback" id="qfb_${bi}"></div>
+      </div>`;
+
+    case 'practice':
+      return `<div class="block block-practice" id="prac_${bi}">
+        <div class="practice-label">— PRACTICE EXERCISE</div>
+        <div class="practice-task">${block.task}</div>
+        <div class="practice-hint">💡 Hint: ${block.hint}</div>
+        <input class="practice-input" id="pinput_${bi}" type="text" placeholder="${block.placeholder||'Type your answer here...'}" onkeydown="if(event.key==='Enter')checkPractice(${bi},'${escapeAnswer(block.answer)}',${block.points||30})"/>
+        <div class="practice-btns">
+          <button class="btn-check" onclick="checkPractice(${bi},'${escapeAnswer(block.answer)}',${block.points||30})">CHECK ANSWER</button>
+          <button class="btn-hint" onclick="showHint(${bi},'${escapeAnswer(block.hint)}')">SHOW HINT</button>
+        </div>
+        <div class="practice-result" id="pres_${bi}"></div>
+      </div>`;
+
+    case 'typing':
+      return `<div class="block block-practice">
+        <div class="practice-label">— TYPING SPEED TEST</div>
+        <div class="practice-task">Type the following text as fast and accurately as you can:</div>
+        <div class="typing-area">
+          <div class="typing-target" id="typingTarget_${bi}">${block.target}</div>
+          <input class="typing-field" id="typingField_${bi}" data-target="${block.target}" data-block="${bi}" placeholder="Start typing here..." autocomplete="off" autocorrect="off" spellcheck="false"/>
+        </div>
+        <div class="typing-stats" id="typingStats_${bi}">
+          <span>WPM: <span id="wpm_${bi}">0</span></span>
+          <span>Accuracy: <span id="acc_${bi}">100</span>%</span>
+          <span>Progress: <span id="tprog_${bi}">0</span>/${block.target.length} chars</span>
+        </div>
+      </div>`;
+
+    default:
+      return '';
+  }
+}
+
+function escapeAnswer(s) {
+  return (s || '').replace(/'/g, "\\'").toLowerCase();
+}
+
+/* ============================================================
+   INTERACTIONS
+   ============================================================ */
+function answerQuiz(bi, chosen, correct) {
+  const opts = document.querySelectorAll(`#qo_${bi}_0, #qo_${bi}_1, #qo_${bi}_2, #qo_${bi}_3`);
+  opts.forEach((el, i) => {
+    el.onclick = null;
+    if (i === correct) el.classList.add('correct');
+    else if (i === chosen && chosen !== correct) el.classList.add('wrong');
+  });
+  const fb = document.getElementById(`qfb_${bi}`);
+  const blocks = state.currentCourse?.lessonData[state.currentLesson]?.blocks;
+  const explanation = blocks?.[bi]?.explanation || '';
+  if (chosen === correct) {
+    fb.className = 'quiz-feedback correct';
+    fb.textContent = '✅ Correct! ' + explanation;
+    showXPToast('+10 XP');
+  } else {
+    fb.className = 'quiz-feedback wrong';
+    fb.textContent = '❌ Not quite. ' + explanation;
+  }
+}
+
+function checkPractice(bi, answer, points) {
+  const input = document.getElementById(`pinput_${bi}`);
+  const result = document.getElementById(`pres_${bi}`);
+  const userAnswer = input.value.trim().toLowerCase();
+  const correctAnswer = answer.toLowerCase();
+
+  if (userAnswer.includes(correctAnswer) || correctAnswer.includes(userAnswer)) {
+    input.classList.add('correct-ans');
+    result.className = 'practice-result show ok';
+    result.textContent = '✅ Great answer! +' + points + ' XP';
+    showXPToast('+' + points + ' XP');
+  } else {
+    input.classList.add('wrong-ans');
+    result.className = 'practice-result show no';
+    result.textContent = '❌ Not quite right. Try again or check the hint above.';
+    setTimeout(() => { input.classList.remove('wrong-ans'); input.value = ''; }, 1500);
+  }
+}
+
+function showHint(bi, hint) {
+  const res = document.getElementById(`pres_${bi}`);
+  res.className = 'practice-result show ok';
+  res.style.color = 'var(--warning)';
+  res.textContent = '💡 Hint: ' + hint;
+}
+
+function completeLessonUI(courseId, idx, xpVal) {
+  const course = COURSES.find(c => c.id === courseId);
+  const wasComplete = isLessonComplete(courseId, idx);
+  completeLesson(courseId, idx, wasComplete ? 0 : xpVal);
+  const isLast = idx === course.lessonData.length - 1;
+
+  if (!wasComplete) {
+    showAchievement(
+      isLast ? '🏆' : '⚡',
+      isLast ? 'COURSE MODULE COMPLETE!' : 'LESSON COMPLETE!',
+      isLast ? course.name + ' — all lessons done.' : 'Keep the momentum going.',
+      '+' + xpVal + ' XP',
+      () => {
+        if (isLast) openCourse(courseId);
+        else openLesson(courseId, idx + 1);
+      }
+    );
+  } else {
+    if (isLast) openCourse(courseId);
+    else openLesson(courseId, idx + 1);
+  }
+}
+
+/* ============================================================
+   TYPING TEST
+   ============================================================ */
+function initTypingTests() {
+  document.querySelectorAll('.typing-field').forEach(field => {
+    const bi = field.dataset.block;
+    const target = field.dataset.target;
+    let startTime = null;
+
+    field.addEventListener('input', function() {
+      if (!startTime) startTime = Date.now();
+      const typed = this.value;
+      const elapsed = (Date.now() - startTime) / 1000 / 60;
+
+      let correct = 0, wrong = 0;
+      let html = '';
+      for (let i = 0; i < target.length; i++) {
+        if (i < typed.length) {
+          if (typed[i] === target[i]) { html += `<span class="correct-char">${target[i]}</span>`; correct++; }
+          else { html += `<span class="wrong-char">${target[i]}</span>`; wrong++; }
+        } else if (i === typed.length) {
+          html += `<span class="current-char">${target[i]}</span>`;
+        } else {
+          html += target[i];
+        }
+      }
+
+      document.getElementById(`typingTarget_${bi}`).innerHTML = html;
+      const wpm = elapsed > 0 ? Math.round((typed.split(' ').length) / elapsed) : 0;
+      const acc = typed.length > 0 ? Math.round((correct / typed.length) * 100) : 100;
+      document.getElementById(`wpm_${bi}`).textContent = wpm;
+      document.getElementById(`acc_${bi}`).textContent = acc;
+      document.getElementById(`tprog_${bi}`).textContent = typed.length;
+
+      if (typed.length >= target.length) {
+        showXPToast('TYPING TEST DONE! ' + wpm + ' WPM');
+      }
+    });
+  });
+}
+
+/* ============================================================
+   TOASTS & POPUPS
+   ============================================================ */
+let achCallback = null;
+function showAchievement(emoji, title, sub, xp, cb) {
+  document.getElementById('achEmoji').textContent = emoji;
+  document.getElementById('achTitle').textContent = title;
+  document.getElementById('achSub').textContent = sub;
+  document.getElementById('achXp').textContent = xp;
+  document.getElementById('achPopup').classList.add('show');
+  document.getElementById('overlay').classList.add('show');
+  achCallback = cb;
+}
+function closeAchievement() {
+  document.getElementById('achPopup').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+  if (achCallback) { achCallback(); achCallback = null; }
+}
+
+function showXPToast(msg) {
+  const t = document.getElementById('xpToast');
+  document.getElementById('xpToastText').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+/* ============================================================
+   CURSOR
+   ============================================================ */
+const cur = document.getElementById('cur');
+const curRing = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.transform = `translate(${mx-5}px,${my-5}px)`;
+});
+(function animRing() {
+  rx += (mx-rx)*.1; ry += (my-ry)*.1;
+  curRing.style.transform = `translate(${rx-17}px,${ry-17}px)`;
+  requestAnimationFrame(animRing);
+})();
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ============================================================
+   TEST CENTRE DATA — 2-option per question, all 18 courses
+   ============================================================ */
+const TESTS = [
+  {
+    courseId:'basic-computers',
+    title:'Basic Computers',
+    icon:'🖥️',
+    desc:'Test your knowledge of computer fundamentals, hardware, and Windows basics.',
+    questions:[
+      {q:'A computer HARD DRIVE is best described as:',a:'Long-term permanent storage for all your files',b:'Short-term memory that only works when powered on',correct:'a'},
+      {q:'Which part of the computer is known as "the brain"?',a:'RAM',b:'CPU (Processor)',correct:'b'},
+      {q:'What does RAM stand for?',a:'Random Access Memory',b:'Rapid Application Mode',correct:'a'},
+      {q:'Which keyboard shortcut copies selected text?',a:'Ctrl + V',b:'Ctrl + C',correct:'b'},
+      {q:'The Recycle Bin on your desktop:',a:'Permanently deletes files immediately',b:'Temporarily holds deleted files until you empty it',correct:'b'},
+      {q:'Which shortcut pastes copied content?',a:'Ctrl + V',b:'Ctrl + X',correct:'a'},
+      {q:'To UNDO your last action in any Windows program:',a:'Ctrl + Z',b:'Ctrl + U',correct:'a'},
+      {q:'Double-clicking a file or program icon will:',a:'Delete it',b:'Open it',correct:'b'},
+    ]
+  },
+  {
+    courseId:'ms-word',
+    title:'Microsoft Word',
+    icon:'📄',
+    desc:'Test your Word formatting, documents, and professional writing skills.',
+    questions:[
+      {q:'Which shortcut makes selected text BOLD?',a:'Ctrl + B',b:'Ctrl + D',correct:'a'},
+      {q:'To save a document for the first time, you press:',a:'Ctrl + P',b:'Ctrl + S',correct:'b'},
+      {q:'Mail Merge in Word is used to:',a:'Send bulk personalised letters/emails using a data list',b:'Merge two separate Word documents into one file',correct:'a'},
+      {q:'In a business letter, "Yours sincerely" is used when:',a:'You know the recipient\'s name',b:'You wrote "Dear Sir/Madam"',correct:'a'},
+      {q:'How do you move to the next cell in a Word table?',a:'Press Enter',b:'Press Tab',correct:'b'},
+      {q:'F7 in Microsoft Word opens:',a:'Find & Replace',b:'Spell Check',correct:'b'},
+      {q:'A CV should be a maximum of how many pages for an entry-level candidate?',a:'2 pages',b:'5 pages',correct:'a'},
+      {q:'Which shortcut opens Find & Replace in Word?',a:'Ctrl + H',b:'Ctrl + G',correct:'a'},
+    ]
+  },
+  {
+    courseId:'ms-excel',
+    title:'Microsoft Excel',
+    icon:'📊',
+    desc:'Test your Excel formulas, functions, and spreadsheet skills.',
+    questions:[
+      {q:'Every Excel formula must begin with:',a:'An equals sign (=)',b:'A plus sign (+)',correct:'a'},
+      {q:'The formula =SUM(A1:A10) will:',a:'Add only cells A1 and A10',b:'Add all cells from A1 through to A10',correct:'b'},
+      {q:'Cell reference "D7" means:',a:'Row D, Column 7',b:'Column D, Row 7',correct:'b'},
+      {q:'Which function calculates the average of a range?',a:'=AVERAGE()',b:'=MEAN()',correct:'a'},
+      {q:'Ctrl+Shift+L in Excel toggles:',a:'AutoFilter on/off',b:'AutoSum on/off',correct:'a'},
+      {q:'Which chart type is BEST for showing a trend over time?',a:'Pie chart',b:'Line chart',correct:'b'},
+      {q:'The =MAX() function returns:',a:'The highest value in a range',b:'The most common value in a range',correct:'a'},
+      {q:'To freeze the top row in Excel so it stays visible while scrolling:',a:'View tab → Freeze Panes → Freeze Top Row',b:'Home tab → Lock → Top Row',correct:'a'},
+    ]
+  },
+  {
+    courseId:'powerpoint',
+    title:'PowerPoint',
+    icon:'🎞️',
+    desc:'Test your presentation design and delivery knowledge.',
+    questions:[
+      {q:'The 6x6 rule in presentations means:',a:'Max 6 slides per presentation',b:'Max 6 bullet points and 6 words per bullet, per slide',correct:'b'},
+      {q:'Speaker notes in PowerPoint are:',a:'Visible to the audience on the main screen',b:'Only visible to the presenter — the audience cannot see them',correct:'b'},
+      {q:'Which transition is most professional for business presentations?',a:'Fade',b:'Vortex',correct:'a'},
+      {q:'Body text in a presentation should never be smaller than:',a:'18pt',b:'10pt',correct:'a'},
+      {q:'To add a NEW slide in PowerPoint, press:',a:'Ctrl + N',b:'Ctrl + M',correct:'b'},
+      {q:'The best way to make bullet points appear one at a time during a presentation is:',a:'Use "Appear" or "Fade" entrance animations on each bullet',b:'Copy the slide multiple times with one extra bullet each time',correct:'a'},
+      {q:'Where are speaker notes typed in PowerPoint?',a:'In a text box on the slide itself',b:'In the Notes panel below the main slide editing area',correct:'b'},
+      {q:'To apply the same transition to ALL slides at once:',a:'Right-click each slide individually',b:'Click "Apply to All" in the Transitions tab',correct:'b'},
+    ]
+  },
+  {
+    courseId:'data-capture',
+    title:'Data Capture',
+    icon:'⌨️',
+    desc:'Test your data entry accuracy, speed, and validation knowledge.',
+    questions:[
+      {q:'The "home row" for your LEFT hand on a standard keyboard is:',a:'Q, W, E, R',b:'A, S, D, F',correct:'b'},
+      {q:'A South African ID number has exactly how many digits?',a:'13 digits',b:'11 digits',correct:'a'},
+      {q:'In professional data capture, which comes FIRST?',a:'Speed — enter as much as possible quickly',b:'Accuracy — correct data entry every time',correct:'b'},
+      {q:'WPM stands for:',a:'Words Per Minute',b:'Written Page Measurement',correct:'a'},
+      {q:'The small bumps on the F and J keys help you:',a:'Type function key shortcuts faster',b:'Find the home row position without looking at the keyboard',correct:'b'},
+      {q:'A competent data capturer typically types at:',a:'35–50 WPM',b:'10–15 WPM',correct:'a'},
+      {q:'When capturing an ID number that doesn\'t follow the correct format, you should:',a:'Capture it anyway and move on',b:'Query it before capturing — don\'t enter incorrect data',correct:'b'},
+      {q:'The "read-back method" in data capture means:',a:'Re-reading data against the source after entry to verify accuracy',b:'Reading the instructions before you start typing',correct:'a'},
+    ]
+  },
+  {
+    courseId:'office-admin',
+    title:'Office Administration',
+    icon:'🏢',
+    desc:'Test your admin, filing, reception, and business communication knowledge.',
+    questions:[
+      {q:'Alphabetical filing organises documents by:',a:'Date received',b:'Name or company name',correct:'b'},
+      {q:'When answering a business telephone, the correct format is:',a:'"Yeah, hold on"',b:'"[Company Name], [Your Name] speaking, how may I help you?"',correct:'b'},
+      {q:'Meeting minutes should capture:',a:'A word-for-word transcript of everything said',b:'Decisions made and action items — who does what by when',correct:'b'},
+      {q:'In a business memo, "RE:" introduces:',a:'The recipient\'s name',b:'The subject/topic of the memo',correct:'b'},
+      {q:'How many rings should a receptionist wait before answering a call?',a:'Answer within 3 rings',b:'Wait for 6 rings minimum',correct:'a'},
+      {q:'The best digital file naming convention for business documents is:',a:'YYYY-MM-DD_Description_Version',b:'document_new_final_copy2',correct:'a'},
+      {q:'An invoice is:',a:'A billing document sent after goods or services are delivered',b:'A document requesting permission to purchase something',correct:'a'},
+      {q:'You should put a caller on hold by saying:',a:'"Hold on" and immediately pressing hold',b:'"May I place you on hold for a moment?" — always ask first',correct:'b'},
+    ]
+  },
+  {
+    courseId:'computer-literacy',
+    title:'Computer Literacy',
+    icon:'💡',
+    desc:'Test your understanding of hardware, software, and digital basics.',
+    questions:[
+      {q:'Software is best described as:',a:'Physical components you can touch inside a computer',b:'Programs and instructions that run on hardware',correct:'b'},
+      {q:'A PRINTER is an example of:',a:'An output device',b:'An input device',correct:'a'},
+      {q:'Which of these is an INPUT device?',a:'Monitor',b:'Keyboard',correct:'b'},
+      {q:'SARS or your bank will NEVER ask for your password:',a:'Only via phone call',b:'Via email — any such request is a phishing scam',correct:'b'},
+      {q:'An operating system (like Windows) is responsible for:',a:'Managing all hardware and software on the computer',b:'Only running Microsoft Office programs',correct:'a'},
+      {q:'A USB flash drive is an example of:',a:'A storage device',b:'An output device',correct:'a'},
+      {q:'HTTPS in a website address means:',a:'The website is free to use',b:'The connection is encrypted and secure',correct:'b'},
+      {q:'"Utility software" includes programs like:',a:'Microsoft Word and Excel',b:'Antivirus, disk cleanup, and backup tools',correct:'b'},
+    ]
+  },
+  {
+    courseId:'business-english',
+    title:'Business English',
+    icon:'🗣️',
+    desc:'Test your professional communication, grammar, and writing skills.',
+    questions:[
+      {q:'Which is the correct professional email closing?',a:'Cheers!',b:'Kind regards,',correct:'b'},
+      {q:'"Yours sincerely" is used when:',a:'You know the recipient\'s name (Dear Mr Dlamini)',b:'You wrote "Dear Sir/Madam"',correct:'a'},
+      {q:'An Executive Summary in a report should be written:',a:'First — before the rest of the report',b:'Last — after the full report is complete',correct:'b'},
+      {q:'Which subject line is MORE professional?',a:'"Meeting"',b:'"Budget Meeting Rescheduled — 20 June 2025"',correct:'b'},
+      {q:'The phrase "Please revert" in South African offices means:',a:'Please respond/reply — though "please respond" is more standard',b:'Please delete this email',correct:'a'},
+      {q:'When you make a mistake at work, the most professional response is:',a:'"It wasn\'t my fault"',b:'"I made an error — here\'s how I\'m correcting it"',correct:'b'},
+      {q:'In business writing, paragraphs should be:',a:'As long and detailed as possible to show thoroughness',b:'Short (3–4 lines), focused, and one topic each',correct:'b'},
+      {q:'Starting a professional email with "Hey" is:',a:'Fine for casual business emails',b:'Unprofessional — use "Good morning" or "Dear [Name]"',correct:'b'},
+    ]
+  },
+  {
+    courseId:'email-internet',
+    title:'Email & Internet',
+    icon:'📧',
+    desc:'Test your email etiquette, inbox management, and safe browsing knowledge.',
+    questions:[
+      {q:'BCC (Blind Carbon Copy) means:',a:'The recipient gets a copy but other recipients cannot see their name',b:'The email is blocked and cannot be read',correct:'a'},
+      {q:'The padlock icon in your browser address bar means:',a:'The website is government-owned',b:'The connection is encrypted (HTTPS) — safe to enter information',correct:'b'},
+      {q:'According to the 4D system, an email taking under 2 minutes should be:',a:'Deferred to later in the day',b:'Done immediately',correct:'b'},
+      {q:'CC (Carbon Copy) in email means:',a:'The person should take action and respond',b:'They are informed but don\'t necessarily need to respond',correct:'b'},
+      {q:'To search for an exact phrase on Google, you:',a:'Type it normally',b:'Put it in quotation marks: "exact phrase here"',correct:'b'},
+      {q:'A phishing email is designed to:',a:'Advertise products and services',b:'Steal your personal information or install malware',correct:'b'},
+      {q:'When you receive spam email from an unknown sender, you should:',a:'Click "unsubscribe" to stop the emails',b:'Delete it — unsubscribing confirms your email is active',correct:'b'},
+      {q:'The "To:" field in an email is for:',a:'People who need to take action or are the main recipient',b:'People who just need to be kept informed',correct:'a'},
+    ]
+  },
+  {
+    courseId:'windows-files',
+    title:'Windows & File Management',
+    icon:'🗂️',
+    desc:'Test your Windows navigation, file organisation, and shortcut knowledge.',
+    questions:[
+      {q:'Which shortcut opens File Explorer instantly?',a:'Ctrl + E',b:'Windows + E',correct:'b'},
+      {q:'Windows + L on your keyboard will:',a:'Log you out of Windows completely',b:'Lock your screen immediately',correct:'b'},
+      {q:'The best date format for file names so they sort chronologically is:',a:'DD-MM-YYYY (e.g. 15-06-2025)',b:'YYYY-MM-DD (e.g. 2025-06-15)',correct:'b'},
+      {q:'Ctrl + Shift + Esc opens:',a:'Task Manager directly',b:'The Windows Security screen',correct:'a'},
+      {q:'To view a file\'s size, type, and date modified in File Explorer:',a:'Use "Details" view (View → Details)',b:'Right-click the desktop and select Properties',correct:'a'},
+      {q:'Alt + Tab in Windows:',a:'Closes the current window',b:'Switches between open applications',correct:'b'},
+      {q:'A file named "2025-06_Report_Sales_FINAL.xlsx" is a better name than "report.xlsx" because:',a:'It\'s longer so easier to find',b:'It includes the date, topic, and version making it instantly identifiable',correct:'b'},
+      {q:'Windows + D shortcut:',a:'Deletes selected files to Recycle Bin',b:'Shows the desktop instantly (minimises all windows)',correct:'b'},
+    ]
+  },
+  {
+    courseId:'advanced-computers',
+    title:'Advanced Computers',
+    icon:'⚡',
+    desc:'Test your networking, security, cloud, and advanced Windows knowledge.',
+    questions:[
+      {q:'DNS (Domain Name System) translates:',a:'Website names (like google.com) to IP addresses',b:'English commands into computer code',correct:'a'},
+      {q:'Two-Factor Authentication (2FA) requires:',a:'Two different passwords',b:'A password PLUS a second verification like an SMS code',correct:'b'},
+      {q:'OneDrive is:',a:'A hard drive brand made by Microsoft',b:'Microsoft\'s cloud storage service — files accessible from any device',correct:'b'},
+      {q:'Ransomware is a type of malware that:',a:'Slows down your internet connection',b:'Encrypts your files and demands payment to unlock them',correct:'b'},
+      {q:'To see which program is using the most CPU right now, you open:',a:'Task Manager → Processes tab (sort by CPU)',b:'File Explorer → Details view',correct:'a'},
+      {q:'DHCP in networking automatically:',a:'Assigns IP addresses to devices joining the network',b:'Blocks unauthorised devices from connecting',correct:'a'},
+      {q:'Keeping Windows updated is important because:',a:'Updates add decorative features to Windows',b:'Updates patch security vulnerabilities that hackers exploit',correct:'b'},
+      {q:'A hard drive should have at least how much free space to run properly?',a:'At least 15% free space',b:'At least 1% free space',correct:'a'},
+    ]
+  },
+  {
+    courseId:'cv-creation',
+    title:'CV Creation',
+    icon:'📝',
+    desc:'Test your CV writing and professional presentation knowledge.',
+    questions:[
+      {q:'Work experience on a CV should be listed:',a:'Oldest job first (chronological order)',b:'Most recent job first (reverse chronological)',correct:'b'},
+      {q:'Maximum CV length for an entry-level candidate is:',a:'2 pages',b:'6 pages',correct:'a'},
+      {q:'The Executive Summary / Personal Statement on a CV should be written:',a:'First — it\'s the most important section',b:'Last — once you know the full content of your CV',correct:'b'},
+      {q:'PixelProTech certifications should be placed under:',a:'The Work Experience section',b:'The Courses & Certifications section',correct:'b'},
+      {q:'"References available upon request" on a CV means:',a:'You have no references',b:'You have references and will provide them when asked',correct:'b'},
+      {q:'For a receptionist role, the MOST relevant skills to highlight are:',a:'Python programming and database management',b:'Microsoft Word, email etiquette, and office administration',correct:'b'},
+      {q:'A Personal Statement on a CV should be:',a:'3–4 sentences covering who you are, key skills, and career goal',b:'A full page detailing your entire life story',correct:'a'},
+      {q:'When applying for multiple jobs, your Personal Statement should be:',a:'Identical for every application to save time',b:'Tailored to each specific role and company',correct:'b'},
+    ]
+  },
+  {
+    courseId:'digital-job-prep',
+    title:'Digital Job Preparation',
+    icon:'💼',
+    desc:'Test your interview, LinkedIn, and job searching knowledge.',
+    questions:[
+      {q:'The STAR interview technique stands for:',a:'Skills, Training, Achievements, Results',b:'Situation, Task, Action, Result',correct:'b'},
+      {q:'Before a job interview, you should:',a:'Just show up and answer questions honestly',b:'Research the company — check their website, recent news, LinkedIn',correct:'b'},
+      {q:'On LinkedIn, your Headline should include:',a:'Only your current job title',b:'Key skills and certifications to maximise searchability',correct:'b'},
+      {q:'When asked "What is your weakness?" in an interview:',a:'Say you have no weaknesses',b:'Give a real weakness AND describe how you are addressing it',correct:'b'},
+      {q:'Applying directly on a company\'s own careers page is effective because:',a:'It\'s faster to fill in the form',b:'There is less competition than on public job boards',correct:'b'},
+      {q:'The question "Do you have any questions for us?" at an interview end means:',a:'The interview is over and it\'s a formality — just say "No thank you"',b:'Always have 2–3 prepared questions — it shows genuine interest',correct:'b'},
+      {q:'LinkedIn connections help your job search because:',a:'More connections directly increases your salary',b:'Second-degree connections to recruiters increase your profile visibility',correct:'b'},
+      {q:'PNet (pnet.co.za) is best described as:',a:'A government employment website',b:'A South African job board for all industries and levels',correct:'b'},
+    ]
+  },
+  {
+    courseId:'tech-support',
+    title:'Tech Support Basics',
+    icon:'🔧',
+    desc:'Test your IT support process and user communication knowledge.',
+    questions:[
+      {q:'Tier 1 IT support typically resolves approximately:',a:'80% of all support issues',b:'20% of all support issues',correct:'a'},
+      {q:'When a user reports "the internet isn\'t working", your FIRST question should be:',a:'"Have you restarted your computer?"',b:'"Is anyone else in the office also affected?"',correct:'b'},
+      {q:'The best opening response when an angry user says their PC has been broken for 3 days:',a:'"That\'s not my fault."',b:'"I understand this has been frustrating — let\'s fix it right now."',correct:'b'},
+      {q:'Documentation in IT support means:',a:'Writing down the problem, cause, and solution in the ticketing system',b:'Printing all your emails for physical record-keeping',correct:'a'},
+      {q:'When a non-technical user needs a technical explanation, you should:',a:'Use full technical terminology so they learn',b:'Use simple analogies they can relate to — avoid jargon',correct:'b'},
+      {q:'Instead of saying "I don\'t know" to a user, a professional says:',a:'"Google it yourself"',b:'"Let me find out for you"',correct:'b'},
+      {q:'The IT support phrase "Did you try turning it off and on again?" is considered:',a:'The most professional first response',b:'Condescending — rephrase as "Let\'s start with a restart to rule that out"',correct:'b'},
+      {q:'An IT support ticket should always include:',a:'Only the solution — to keep it brief',b:'The problem reported, steps taken, cause identified, and resolution',correct:'b'},
+    ]
+  },
+  {
+    courseId:'pc-troubleshooting',
+    title:'PC Troubleshooting',
+    icon:'🛠️',
+    desc:'Test your PC diagnosis and repair knowledge.',
+    questions:[
+      {q:'A PC that powers on (fans spin) but shows no image on screen — first check:',a:'Reinstall Windows immediately',b:'Monitor cable connection and RAM seating',correct:'b'},
+      {q:'To identify what\'s slowing down a PC right now, open:',a:'File Explorer → This PC',b:'Task Manager → Processes tab, sort by CPU or Memory',correct:'b'},
+      {q:'Approximately what percentage of software issues are resolved by restarting Windows?',a:'40%',b:'5%',correct:'a'},
+      {q:'A PC that turns on and immediately restarts in a loop is likely:',a:'A Windows boot file corruption or hardware failure',b:'A monitor that needs replacing',correct:'a'},
+      {q:'To repair a software installation without fully reinstalling:',a:'Delete the program folder manually',b:'Settings → Apps → select program → Modify/Repair',correct:'b'},
+      {q:'When a hard drive is under 15% free space:',a:'The PC will shut down automatically',b:'PC performance slows — free up space with Disk Cleanup',correct:'b'},
+      {q:'A "Blue Screen of Death" (BSOD) is most commonly caused by:',a:'Too many browser tabs open',b:'Driver issues, RAM faults, or overheating',correct:'b'},
+      {q:'Searching the exact error message text on Google is:',a:'Unreliable — error messages are too technical',b:'One of the fastest ways to find the correct fix',correct:'b'},
+    ]
+  },
+  {
+    courseId:'windows-install',
+    title:'Windows Installation',
+    icon:'💿',
+    desc:'Test your Windows installation, BIOS, and USB creation knowledge.',
+    questions:[
+      {q:'Minimum recommended USB flash drive size for a Windows bootable drive:',a:'8GB',b:'1GB',correct:'a'},
+      {q:'To create a bootable Windows USB, the official Microsoft tool is:',a:'Windows Media Creation Tool from microsoft.com',b:'Format the USB and copy the Windows folder manually',correct:'a'},
+      {q:'The BIOS/UEFI runs:',a:'After Windows loads',b:'Before Windows loads — controls hardware and boot settings',correct:'b'},
+      {q:'The F12 key at startup on most PCs opens:',a:'The Windows Recovery Environment',b:'A one-time Boot Menu to select a boot device',correct:'b'},
+      {q:'During Windows installation, "Custom: Install Windows only" is chosen for:',a:'A clean fresh installation with full partition control',b:'Keeping your existing files and settings',correct:'a'},
+      {q:'The partitioning step during Windows installation:',a:'Can be undone easily if you make a mistake',b:'DELETES ALL DATA on that drive — no undo',correct:'b'},
+      {q:'After Windows is installed, what must be done before the PC performs properly?',a:'Install all hardware drivers (graphics, network, audio)',b:'Nothing — Windows includes all drivers automatically',correct:'a'},
+      {q:'To change the boot order permanently (so USB boots before hard drive), you go to:',a:'Windows Settings → System → Boot',b:'BIOS/UEFI settings → Boot tab → change boot order',correct:'b'},
+    ]
+  },
+  {
+    courseId:'printer-setup',
+    title:'Printer Setup',
+    icon:'🖨️',
+    desc:'Test your printer installation and troubleshooting knowledge.',
+    questions:[
+      {q:'The most common reason a wireless printer fails to print:',a:'The ink is empty',b:'The printer and PC are on different Wi-Fi networks',correct:'b'},
+      {q:'To clear a stuck print queue when jobs won\'t delete:',a:'Restart the PC and hope it clears',b:'Stop the Print Spooler service, delete files in PRINTERS folder, restart the service',correct:'b'},
+      {q:'To add a printer in Windows 11, you go to:',a:'Settings → Bluetooth & Devices → Printers & Scanners',b:'Control Panel → Hardware → Devices',correct:'a'},
+      {q:'If a printer driver is not found automatically, you should:',a:'Buy a new printer',b:'Go to the manufacturer\'s website and download the driver for your model',correct:'b'},
+      {q:'A printer showing "Offline" status can often be fixed by:',a:'Printer menu → untick "Use Printer Offline" and restart both devices',b:'Deleting and reinstalling Windows',correct:'a'},
+      {q:'For wireless printing to work, the printer and computer must be:',a:'Connected to the same Wi-Fi network',b:'Both plugged into the same power strip',correct:'a'},
+      {q:'The Windows service that manages all print jobs is called:',a:'Print Spooler',b:'Document Manager',correct:'a'},
+      {q:'When installing a USB printer, Windows usually:',a:'Requires you to manually configure all settings first',b:'Auto-installs the driver when you connect and turn on the printer',correct:'b'},
+    ]
+  },
+  {
+    courseId:'networking-basics',
+    title:'Internet & Networking',
+    icon:'🌐',
+    desc:'Test your networking, IP addresses, and Wi-Fi troubleshooting knowledge.',
+    questions:[
+      {q:'ISP stands for:',a:'Internet Service Provider',b:'Internal System Protocol',correct:'a'},
+      {q:'The command to see your local IP address in Windows is:',a:'ipconfig',b:'netstat',correct:'a'},
+      {q:'If EVERYONE in the office loses internet at the same time, the problem is likely:',a:'All computers need driver updates',b:'The router or ISP — not individual devices',correct:'b'},
+      {q:'DNS converts:',a:'Your Wi-Fi password into a network key',b:'Website names (google.com) into IP addresses',correct:'b'},
+      {q:'A private/local IP address (like 192.168.1.x) is assigned by:',a:'Your ISP',b:'Your router (via DHCP)',correct:'b'},
+      {q:'To release and renew your IP address in Command Prompt:',a:'ipconfig /release then ipconfig /renew',b:'ipconfig /reset then ipconfig /start',correct:'a'},
+      {q:'To test your actual internet speed, you go to:',a:'Task Manager → Performance → Network',b:'speedtest.net or fast.com',correct:'b'},
+      {q:'HTTPS vs HTTP — the key difference is:',a:'HTTPS sites load faster',b:'HTTPS encrypts data between you and the website — HTTP does not',correct:'b'},
+    ]
+  }
+];
+
+/* ============================================================
+   TEST ENGINE
+   ============================================================ */
+let testState = {
+  active: false,
+  courseId: null,
+  questions: [],
+  current: 0,
+  score: 0,
+  answers: [],
+  startTime: null
+};
+
+function showTestCentre() {
+  state.view = 'tests';
+  state.currentCourse = null;
+  setTopbar('TEST CENTRE', '— PROVE WHAT YOU KNOW');
+  updateSidebar();
+
+  const doneLessons = Object.values(state.progress).reduce((a,p)=>a+p.completed.length,0);
+
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = `
+  <div class="home-hero" style="background:linear-gradient(135deg,rgba(123,47,255,.12),rgba(0,212,170,.06));">
+    <div class="hh-greeting">— TEST CENTRE · PIXELPROTECH ACADEMY</div>
+    <h1 class="hh-title">PROVE WHAT<br><span>YOU KNOW.</span></h1>
+    <p class="hh-sub">Pick a course test. 8 questions. 2 options each. No guessing — only knowledge. Pass with 6/8 or higher to earn your badge.</p>
+    <div class="hh-stats">
+      <div class="hh-stat"><div class="hh-stat-num">${TESTS.length}</div><div class="hh-stat-label">TESTS AVAILABLE</div></div>
+      <div class="hh-stat"><div class="hh-stat-num">${Object.values(state.progress).filter(p=>p.testPassed).length}</div><div class="hh-stat-label">TESTS PASSED</div></div>
+      <div class="hh-stat"><div class="hh-stat-num">6/8</div><div class="hh-stat-label">PASS MARK</div></div>
+      <div class="hh-stat"><div class="hh-stat-num">+200</div><div class="hh-stat-label">XP PER PASS</div></div>
+    </div>
+  </div>
+  <div class="section-head"><div class="s-label">— SELECT A TEST</div><div class="s-title">ALL 18 COURSE TESTS</div></div>
+  <div class="dash-grid">
+    ${TESTS.map(t => {
+      const prog = getProgress(t.courseId);
+      const passed = prog.testPassed;
+      const attempted = prog.testScore !== undefined;
+      return `<div class="dash-card" onclick="startTest('${t.courseId}')" style="${passed?'border-color:rgba(0,212,170,.3);':''}">
+        ${passed ? '<span class="dc-level dl-beg" style="top:16px;right:16px;">✓ PASSED</span>' : attempted ? '<span class="dc-level dl-adv" style="top:16px;right:16px;">RETRY</span>' : '<span class="dc-level dl-int" style="top:16px;right:16px;">TAKE TEST</span>'}
+        <div class="dc-icon">${t.icon}</div>
+        <div class="dc-name">${t.title}</div>
+        <div class="dc-desc">${t.desc}</div>
+        <div class="dc-progress"><div class="dc-prog-fill" style="width:${passed?100:0}%"></div></div>
+        <div class="dc-meta">
+          <span>8 Questions · 2 Options</span>
+          <span class="${passed?'done':''}">${passed?'PASSED — '+prog.testScore+'/8':attempted?'Last: '+prog.testScore+'/8':'Not attempted'}</span>
+        </div>
+      </div>`;
+    }).join('')}
+  </div>`;
+  window.scrollTo(0,0);
+}
+
+function startTest(courseId) {
+  const test = TESTS.find(t => t.courseId === courseId);
+  testState = {
+    active: true,
+    courseId,
+    questions: [...test.questions].sort(() => Math.random() - 0.5),
+    current: 0,
+    score: 0,
+    answers: [],
+    startTime: Date.now()
+  };
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const test = TESTS.find(t => t.courseId === testState.courseId);
+  const q = testState.questions[testState.current];
+  const num = testState.current + 1;
+  const total = testState.questions.length;
+  const pct = Math.round(((num-1)/total)*100);
+
+  setTopbar(`QUESTION ${num} OF ${total}`, test.title.toUpperCase() + ' TEST');
+
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = `
+  <div style="max-width:680px;margin:0 auto;">
+    <!-- progress -->
+    <div style="margin-bottom:32px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);">QUESTION ${num} OF ${total}</span>
+        <span style="font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);">${testState.score} CORRECT SO FAR</span>
+      </div>
+      <div style="height:6px;background:var(--border);border-radius:3px;overflow:hidden;">
+        <div style="height:100%;width:${pct}%;background:var(--grad);border-radius:3px;transition:width .5s ease;"></div>
+      </div>
+      <div style="display:flex;gap:6px;margin-top:10px;">
+        ${testState.questions.map((_,i) => `<div style="flex:1;height:4px;border-radius:2px;background:${i < testState.current ? (testState.answers[i]==='correct'?'var(--teal)':'var(--danger)') : i===testState.current ? 'var(--purple)' : 'var(--border)'};transition:background .3s;"></div>`).join('')}
+      </div>
+    </div>
+
+    <!-- question card -->
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:16px;padding:40px;margin-bottom:24px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad);"></div>
+      <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--purple);margin-bottom:16px;">${test.icon} ${test.title.toUpperCase()}</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(22px,4vw,32px);line-height:1.2;margin-bottom:8px;">${q.q}</div>
+    </div>
+
+    <!-- two options -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" id="optionsGrid">
+      <div class="test-opt" id="optA" onclick="selectAnswer('a','${q.correct}')" style="background:var(--card);border:2px solid var(--border);border-radius:12px;padding:28px 24px;cursor:none;transition:all .25s;position:relative;overflow:hidden;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(123,47,255,.15);position:absolute;top:8px;right:16px;line-height:1;">A</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--purple);margin-bottom:10px;">OPTION A</div>
+        <div style="font-size:14px;line-height:1.7;font-weight:500;">${q.a}</div>
+      </div>
+      <div class="test-opt" id="optB" onclick="selectAnswer('b','${q.correct}')" style="background:var(--card);border:2px solid var(--border);border-radius:12px;padding:28px 24px;cursor:none;transition:all .25s;position:relative;overflow:hidden;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:rgba(0,212,170,.12);position:absolute;top:8px;right:16px;line-height:1;">B</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--teal);margin-bottom:10px;">OPTION B</div>
+        <div style="font-size:14px;line-height:1.7;font-weight:500;">${q.b}</div>
+      </div>
+    </div>
+
+    <!-- hint -->
+    <div style="text-align:center;margin-top:20px;">
+      <button onclick="showTestCentre()" style="background:none;border:none;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.2);cursor:none;transition:color .2s;" onmouseover="this.style.color='var(--muted)'" onmouseout="this.style.color='rgba(255,255,255,.2)'">← EXIT TEST</button>
+    </div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+
+function selectAnswer(chosen, correct) {
+  // Lock options
+  document.querySelectorAll('.test-opt').forEach(el => el.onclick = null);
+
+  const isCorrect = chosen === correct;
+  if (isCorrect) testState.score++;
+  testState.answers.push(isCorrect ? 'correct' : 'wrong');
+
+  // Visual feedback
+  const chosenEl = document.getElementById(chosen === 'a' ? 'optA' : 'optB');
+  const correctEl = document.getElementById(correct === 'a' ? 'optA' : 'optB');
+
+  if (isCorrect) {
+    chosenEl.style.borderColor = 'var(--teal)';
+    chosenEl.style.background = 'rgba(0,212,170,.1)';
+    showXPToast('✅ CORRECT! +15 XP');
+    state.xp += 15;
+    updateXPDisplay();
+  } else {
+    chosenEl.style.borderColor = 'var(--danger)';
+    chosenEl.style.background = 'rgba(255,77,109,.08)';
+    correctEl.style.borderColor = 'var(--teal)';
+    correctEl.style.background = 'rgba(0,212,170,.08)';
+    showXPToast('❌ Wrong — correct was ' + correct.toUpperCase());
+  }
+
+  // Add feedback label
+  const fb = document.createElement('div');
+  fb.style.cssText = `text-align:center;margin-top:20px;font-family:'Space Mono',monospace;font-size:12px;color:${isCorrect?'var(--teal)':'var(--danger)'};letter-spacing:1px;`;
+  fb.textContent = isCorrect ? '✅ CORRECT!' : '❌ INCORRECT — Study this one again.';
+  document.querySelector('#optionsGrid').after(fb);
+
+  // Next question after delay
+  setTimeout(() => {
+    if (testState.current < testState.questions.length - 1) {
+      testState.current++;
+      renderQuestion();
+    } else {
+      showTestResult();
+    }
+  }, 1200);
+}
+
+function showTestResult() {
+  const test = TESTS.find(t => t.courseId === testState.courseId);
+  const score = testState.score;
+  const total = testState.questions.length;
+  const passed = score >= 6;
+  const pct = Math.round((score/total)*100);
+  const timeTaken = Math.round((Date.now() - testState.startTime) / 1000);
+  const mins = Math.floor(timeTaken/60);
+  const secs = timeTaken % 60;
+
+  // Save result
+  const prog = getProgress(testState.courseId);
+  prog.testScore = score;
+  if (passed && !prog.testPassed) {
+    prog.testPassed = true;
+    state.xp += 200;
+    updateXPDisplay();
+  }
+  updateSidebar();
+
+  setTopbar('TEST COMPLETE', test.title.toUpperCase());
+
+  const mc = document.getElementById('mainContent');
+  mc.innerHTML = `
+  <div style="max-width:600px;margin:0 auto;text-align:center;">
+
+    <!-- result card -->
+    <div style="background:var(--card);border:2px solid ${passed?'rgba(0,212,170,.4)':'rgba(255,77,109,.3)'};border-radius:20px;padding:48px 40px;margin-bottom:24px;position:relative;overflow:hidden;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,${passed?'rgba(0,212,170,.08)':'rgba(255,77,109,.06)'},transparent 60%);pointer-events:none;"></div>
+
+      <div style="font-size:72px;margin-bottom:16px;filter:drop-shadow(0 0 20px ${passed?'rgba(0,212,170,.4)':'rgba(255,77,109,.3)'})">${passed?'🏆':'💡'}</div>
+
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,6vw,56px);line-height:1;margin-bottom:8px;background:${passed?'var(--grad)':'linear-gradient(90deg,#ff4d6d,#ff8c42)'};-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+        ${passed ? 'TEST PASSED!' : 'KEEP STUDYING'}
+      </div>
+
+      <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:32px;letter-spacing:1px;">
+        ${test.icon} ${test.title.toUpperCase()}
+      </div>
+
+      <!-- big score -->
+      <div style="display:flex;justify-content:center;align-items:baseline;gap:8px;margin-bottom:8px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:96px;line-height:1;color:${passed?'var(--teal)':'var(--danger)'};">${score}</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:var(--muted);">/ ${total}</span>
+      </div>
+      <div style="font-family:'Space Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:32px;">${pct}% CORRECT · ${mins}m ${secs}s</div>
+
+      <!-- answer breakdown -->
+      <div style="display:flex;gap:6px;justify-content:center;margin-bottom:28px;">
+        ${testState.answers.map((a,i) => `<div style="width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;background:${a==='correct'?'rgba(0,212,170,.15)':'rgba(255,77,109,.15)'};border:1px solid ${a==='correct'?'rgba(0,212,170,.3)':'rgba(255,77,109,.3)'};">${a==='correct'?'✓':'✗'}</div>`).join('')}
+      </div>
+
+      ${passed ? `<div style="background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.3);border-radius:8px;padding:16px;margin-bottom:24px;font-family:'Space Mono',monospace;font-size:11px;color:var(--teal);letter-spacing:1px;">🏅 +200 XP EARNED · COURSE BADGE UNLOCKED</div>` : `<div style="background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.2);border-radius:8px;padding:16px;margin-bottom:24px;font-family:'Space Mono',monospace;font-size:11px;color:#ff4d6d;letter-spacing:1px;">Need 6/8 to pass · Review the lessons and try again</div>`}
+
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-start" onclick="startTest('${testState.courseId}')">🔄 RETRY TEST</button>
+        <button class="btn-secondary" onclick="openCourse('${testState.courseId}')">📚 REVIEW LESSONS</button>
+        <button class="btn-secondary" onclick="showTestCentre()">← ALL TESTS</button>
+      </div>
+    </div>
+
+    <!-- motivational message -->
+    <div style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);line-height:1.8;letter-spacing:1px;">
+      ${passed
+        ? '"The skill is yours now. Nobody can take knowledge away from you." — Keep going.'
+        : '"Every wrong answer is a gap you now know about. Study it. Nail it next time."'
+      }
+    </div>
+  </div>`;
+  window.scrollTo(0,0);
+}
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+buildSidebar();
+showHome();
+updateXPDisplay();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.log('SW registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>

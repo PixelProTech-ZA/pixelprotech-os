@@ -1,0 +1,4121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PixelProTech Technician Command Centre</title>
+<meta name="theme-color" content="#0A0A0F">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>:root{
+  --bg:#0A0A0F;
+  --surface:#1A1A2E;
+  --surface-2:#22223a;
+  --purple:#7B2FFF;
+  --teal:#00D4AA;
+  --text:#FFFFFF;
+  --text-dim:#9b9bb0;
+  --danger:#FF4D6D;
+  --warn:#FFB020;
+  --ok:#00D4AA;
+  --gradient: linear-gradient(90deg, var(--purple), var(--teal));
+  --radius: 16px;
+  --radius-sm: 10px;
+  --glow-purple: 0 0 24px rgba(123,47,255,.35);
+  --glow-teal: 0 0 24px rgba(0,212,170,.30);
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 600px at 90% -10%, rgba(123,47,255,.16), transparent 60%),
+    radial-gradient(1000px 500px at -10% 110%, rgba(0,212,170,.14), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+}
+h1,h2,h3,h4{font-family:var(--font-display); margin:0 0 6px;}
+p{margin:0 0 8px; color:var(--text-dim); line-height:1.5;}
+button, input, select, textarea{font-family:inherit; color:inherit;}
+a{color:var(--teal);}
+
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-thumb{background:#33334f;border-radius:8px;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+}
+
+/* ---------- Layout shell ---------- */
+#app{display:flex; min-height:100vh;}
+
+.sidebar{
+  width:240px; flex-shrink:0;
+  background:rgba(26,26,46,.6);
+  border-right:1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(14px);
+  padding:20px 14px;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+  display:flex; flex-direction:column; gap:18px;
+}
+.brand{display:flex; align-items:center; gap:10px; padding:0 6px;}
+.brand-mark{
+  width:34px;height:34px;border-radius:9px;background:var(--gradient);
+  display:flex;align-items:center;justify-content:center;font-weight:800;
+  box-shadow:var(--glow-purple);
+}
+.brand-name{font-family:var(--font-display); font-weight:700; font-size:14.5px; line-height:1.2;}
+.brand-sub{font-size:10.5px; color:var(--text-dim); letter-spacing:.06em; text-transform:uppercase;}
+
+.nav-group{display:flex;flex-direction:column;gap:2px;}
+.nav-label{font-size:10.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em; padding:10px 10px 4px;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:var(--radius-sm);
+  color:var(--text-dim); cursor:pointer; font-size:13.5px; font-weight:500;
+  border:1px solid transparent; transition:.15s ease;
+}
+.nav-item:hover{background:rgba(255,255,255,.04); color:var(--text);}
+.nav-item.active{
+  background:linear-gradient(90deg, rgba(123,47,255,.18), rgba(0,212,170,.10));
+  border-color:rgba(123,47,255,.35); color:#fff;
+}
+.nav-icon{width:18px;text-align:center;}
+
+.main{flex:1; min-width:0; display:flex; flex-direction:column;}
+.topbar{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 22px; border-bottom:1px solid rgba(255,255,255,.06);
+  background:rgba(10,10,15,.5); backdrop-filter:blur(10px);
+  position:sticky; top:0; z-index:20;
+}
+.topbar-title{font-family:var(--font-display); font-size:18px; font-weight:700;}
+.topbar-right{display:flex; align-items:center; gap:12px;}
+.pill{
+  font-size:11px; padding:5px 10px; border-radius:999px;
+  background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08);
+  color:var(--text-dim); display:flex; align-items:center; gap:6px;
+}
+.pill.online{color:var(--teal); border-color:rgba(0,212,170,.4);}
+.pill.offline{color:var(--warn); border-color:rgba(255,176,32,.4);}
+.dot{width:7px;height:7px;border-radius:50%; background:currentColor; box-shadow:0 0 8px currentColor;}
+
+.view{padding:20px 22px 90px; max-width:1180px; width:100%; margin:0 auto;}
+.view[hidden]{display:none;}
+
+/* ---------- Cards / glass ---------- */
+.card{
+  background:linear-gradient(160deg, rgba(255,255,255,.045), rgba(255,255,255,.015)), var(--surface);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--radius);
+  padding:18px;
+  backdrop-filter: blur(6px);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card.hoverable:hover{transform:translateY(-2px); border-color:rgba(123,47,255,.4); box-shadow:var(--glow-purple);}
+.grid{display:grid; gap:16px;}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.grid-3{grid-template-columns:repeat(3,1fr);}
+.grid-2{grid-template-columns:repeat(2,1fr);}
+@media (max-width:980px){.grid-4{grid-template-columns:repeat(2,1fr);} .grid-3{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:640px){.grid-4,.grid-3,.grid-2{grid-template-columns:1fr;}}
+
+.stat-card .stat-label{font-size:11.5px; color:var(--text-dim); text-transform:uppercase; letter-spacing:.05em;}
+.stat-card .stat-value{font-family:var(--font-display); font-size:26px; font-weight:700; margin-top:4px;}
+.stat-card .stat-value.grad{background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+.section-title{display:flex; align-items:center; justify-content:space-between; margin:26px 0 12px;}
+.section-title h3{font-size:15px; letter-spacing:.02em;}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  border:none; cursor:pointer; border-radius:var(--radius-sm);
+  padding:11px 18px; font-weight:600; font-size:13.5px;
+  transition:.15s ease; white-space:nowrap;
+}
+.btn-primary{background:var(--gradient); color:#08080c; box-shadow:var(--glow-purple);}
+.btn-primary:hover{filter:brightness(1.08); transform:translateY(-1px);}
+.btn-ghost{background:rgba(255,255,255,.05); color:var(--text); border:1px solid rgba(255,255,255,.1);}
+.btn-ghost:hover{background:rgba(255,255,255,.09);}
+.btn-danger{background:rgba(255,77,109,.15); color:#ff9fb0; border:1px solid rgba(255,77,109,.4);}
+.btn-sm{padding:7px 12px; font-size:12px;}
+.btn-block{width:100%;}
+.btn:disabled{opacity:.4; cursor:not-allowed; transform:none !important;}
+.quick-actions{display:flex; flex-wrap:wrap; gap:10px;}
+
+/* ---------- Forms ---------- */
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:14px;}
+.field label{font-size:12px; color:var(--text-dim); font-weight:600; letter-spacing:.02em;}
+.field .hint{font-size:11px; color:var(--text-dim); font-weight:400;}
+input[type=text], input[type=email], input[type=tel], input[type=number], input[type=date], input[type=time], input[type=datetime-local], select, textarea{
+  background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--radius-sm); padding:10px 12px; font-size:13.5px; color:var(--text);
+  outline:none; transition:.15s ease;
+}
+input:focus, select:focus, textarea:focus{border-color:var(--teal); box-shadow:0 0 0 3px rgba(0,212,170,.15);}
+textarea{resize:vertical; min-height:90px;}
+.form-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:0 16px;}
+@media (max-width:640px){.form-grid{grid-template-columns:1fr;}}
+
+.check-row{display:flex; align-items:flex-start; gap:10px; padding:8px 0;}
+.check-row input[type=checkbox]{width:18px;height:18px; accent-color:var(--teal); margin-top:2px;}
+.chip-grid{display:flex; flex-wrap:wrap; gap:8px;}
+.chip{
+  padding:8px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.03); font-size:12.5px; cursor:pointer; user-select:none;
+}
+.chip.selected{background:linear-gradient(90deg, rgba(123,47,255,.28), rgba(0,212,170,.18)); border-color:var(--purple); color:#fff;}
+
+/* ---------- Wizard ---------- */
+.wizard-steps{display:flex; gap:6px; overflow-x:auto; padding-bottom:10px; margin-bottom:8px;}
+.wizard-step{
+  flex-shrink:0; font-size:11px; padding:7px 12px; border-radius:999px;
+  background:rgba(255,255,255,.04); color:var(--text-dim); border:1px solid rgba(255,255,255,.08);
+  cursor:pointer;
+}
+.wizard-step.active{background:var(--gradient); color:#08080c; font-weight:700;}
+.wizard-step.done{border-color:var(--teal); color:var(--teal);}
+.wizard-nav{display:flex; justify-content:space-between; margin-top:20px; gap:10px;}
+
+.warning-box{
+  border:1px solid rgba(255,77,109,.45); background:rgba(255,77,109,.08);
+  border-radius:var(--radius); padding:18px; margin:14px 0;
+}
+.warning-box h4{color:#ff9fb0;}
+.warning-box ul{margin:8px 0; padding-left:18px; color:var(--text);}
+.warning-box ul li{margin-bottom:3px;}
+
+/* ---------- Signature pad ---------- */
+.sig-wrap{border:1px dashed rgba(255,255,255,.2); border-radius:var(--radius-sm); background:rgba(255,255,255,.03); position:relative;}
+.sig-wrap canvas{width:100%; height:160px; display:block; touch-action:none; cursor:crosshair;}
+.sig-placeholder{position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:var(--text-dim); font-size:12px; pointer-events:none;}
+
+/* ---------- Camera / photo grid ---------- */
+.photo-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(110px,1fr)); gap:10px;}
+.photo-slot{
+  aspect-ratio:1; border-radius:var(--radius-sm); border:1px dashed rgba(255,255,255,.15);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:6px;
+  background:rgba(255,255,255,.03); font-size:11px; color:var(--text-dim); cursor:pointer; overflow:hidden; position:relative;
+}
+.photo-slot img{width:100%; height:100%; object-fit:cover;}
+.photo-slot .cap-time{position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,.55); font-size:9px; padding:3px 5px; color:#fff;}
+
+/* ---------- Tables ---------- */
+table{width:100%; border-collapse:collapse; font-size:13px;}
+th{text-align:left; font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--text-dim); padding:8px 10px; border-bottom:1px solid rgba(255,255,255,.08);}
+td{padding:10px; border-bottom:1px solid rgba(255,255,255,.05);}
+tr:hover td{background:rgba(255,255,255,.02);}
+
+/* ---------- Status badges ---------- */
+.badge{display:inline-flex; align-items:center; gap:5px; font-size:11px; padding:4px 10px; border-radius:999px; font-weight:600;}
+.badge-pass{background:rgba(0,212,170,.15); color:var(--teal);}
+.badge-fail{background:rgba(255,77,109,.15); color:#ff9fb0;}
+.badge-pending{background:rgba(255,176,32,.15); color:var(--warn);}
+.badge-neutral{background:rgba(255,255,255,.08); color:var(--text-dim);}
+
+/* ---------- Test grid ---------- */
+.test-row{display:flex; align-items:center; justify-content:space-between; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.05);}
+.test-row:last-child{border-bottom:none;}
+.test-name{font-size:13px;}
+.test-toggle{display:flex; gap:6px;}
+.test-btn{padding:5px 10px; font-size:11px; border-radius:8px; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03); cursor:pointer; color:var(--text-dim);}
+.test-btn.pass.on{background:rgba(0,212,170,.2); color:var(--teal); border-color:var(--teal);}
+.test-btn.fail.on{background:rgba(255,77,109,.2); color:#ff9fb0; border-color:#ff4d6d;}
+.test-btn.na.on{background:rgba(255,255,255,.1); color:#fff;}
+
+/* ---------- Empty state ---------- */
+.empty{text-align:center; padding:50px 20px; color:var(--text-dim);}
+.empty .emoji{font-size:34px; margin-bottom:10px;}
+
+/* ---------- Toast ---------- */
+#toast-host{position:fixed; bottom:20px; left:50%; transform:translateX(-50%); z-index:999; display:flex; flex-direction:column; gap:8px; align-items:center;}
+.toast{
+  background:var(--surface); border:1px solid rgba(255,255,255,.12); color:#fff;
+  padding:11px 18px; border-radius:12px; font-size:13px; box-shadow:0 8px 30px rgba(0,0,0,.4);
+  animation: toast-in .25s ease;
+}
+@keyframes toast-in{from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);}}
+
+/* ---------- Loading skeleton ---------- */
+.skel{background:linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.09), rgba(255,255,255,.04)); background-size:200% 100%; animation:skel 1.3s ease infinite; border-radius:8px;}
+@keyframes skel{0%{background-position:200% 0;} 100%{background-position:-200% 0;}}
+
+/* ---------- Login screen ---------- */
+#login-view{
+  min-height:100vh; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:22px; padding:20px;
+}
+.login-card{width:100%; max-width:360px; text-align:center;}
+.pin-dots{display:flex; gap:12px; justify-content:center; margin:18px 0;}
+.pin-dot{width:14px;height:14px;border-radius:50%; border:1.5px solid rgba(255,255,255,.25);}
+.pin-dot.filled{background:var(--gradient); border-color:transparent;}
+.pin-pad{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:280px; margin:0 auto;}
+.pin-key{padding:16px 0; border-radius:12px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); font-size:18px; cursor:pointer;}
+.pin-key:active{background:rgba(255,255,255,.12);}
+
+/* ---------- Mobile bottom nav ---------- */
+.bottom-nav{display:none;}
+@media (max-width:860px){
+  .sidebar{display:none;}
+  .bottom-nav{
+    display:flex; position:fixed; bottom:0; left:0; right:0; z-index:30;
+    background:rgba(15,15,24,.92); backdrop-filter:blur(14px);
+    border-top:1px solid rgba(255,255,255,.08); padding:8px 4px 10px;
+    justify-content:space-around;
+  }
+  .bn-item{display:flex; flex-direction:column; align-items:center; gap:3px; font-size:9.5px; color:var(--text-dim); cursor:pointer; flex:1;}
+  .bn-item.active{color:var(--teal);}
+  .bn-icon{font-size:18px;}
+  .view{padding-bottom:100px;}
+}
+
+/* ---------- Fade transition ---------- */
+.fade-in{animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+/* ---------- Diagnostic tree ---------- */
+.diag-tree{display:flex; flex-direction:column; align-items:center; gap:4px;}
+.diag-node{
+  padding:9px 16px; border-radius:10px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+  font-size:12.5px; min-width:180px; text-align:center;
+}
+.diag-node.active{border-color:var(--teal); box-shadow:var(--glow-teal); color:var(--teal);}
+.diag-node.checked{border-color:var(--purple); color:#c9a8ff;}
+.diag-arrow{color:var(--text-dim); font-size:14px;}
+.confidence-ring{
+  width:120px; height:120px; border-radius:50%;
+  background:conic-gradient(var(--teal) calc(var(--pct,0)*1%), rgba(255,255,255,.08) 0);
+  display:flex; align-items:center; justify-content:center; margin:0 auto;
+}
+.confidence-ring span{background:var(--bg); width:92px; height:92px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; font-size:20px;}
+
+/* ---------- Utility ---------- */
+.flex{display:flex;}
+.flex-between{display:flex; align-items:center; justify-content:space-between;}
+.gap-8{gap:8px;} .gap-12{gap:12px;} .mt-8{margin-top:8px;} .mt-16{margin-top:16px;} .mb-0{margin-bottom:0;}
+.text-dim{color:var(--text-dim);}
+.text-sm{font-size:12px;}
+.w-full{width:100%;}
+.divider{height:1px; background:rgba(255,255,255,.07); margin:16px 0;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div id="toast-host"></div>
+
+<!-- ============ LOGIN ============ -->
+<div id="login-view">
+  <div class="card login-card">
+    <div class="brand" style="justify-content:center; margin-bottom:14px;">
+      <div class="brand-mark">P</div>
+      <div style="text-align:left;">
+        <div class="brand-name">PixelProTech</div>
+        <div class="brand-sub">Command Centre</div>
+      </div>
+    </div>
+    <h2 id="login-title">Technician Sign In</h2>
+    <p class="text-sm">Enter your 4-digit PIN</p>
+    <div class="pin-dots" id="pin-dots">
+      <span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span>
+    </div>
+    <div class="pin-pad" id="pin-pad"></div>
+    <div id="login-user-select" class="field mt-16" style="text-align:left;">
+      <label>Technician</label>
+      <select id="login-technician"></select>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP SHELL ============ -->
+<div id="app" hidden>
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">P</div>
+      <div>
+        <div class="brand-name">PixelProTech</div>
+        <div class="brand-sub">Command Centre</div>
+      </div>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Operations</div>
+      <div class="nav-item" data-view="dashboard"><span class="nav-icon">◆</span>Dashboard</div>
+      <div class="nav-item" data-view="newjob"><span class="nav-icon">＋</span>New Job</div>
+      <div class="nav-item" data-view="jobs"><span class="nav-icon">▤</span>Job List</div>
+      <div class="nav-item" data-view="customers"><span class="nav-icon">◐</span>Customers</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Resources</div>
+      <div class="nav-item" data-view="inventory"><span class="nav-icon">▣</span>Inventory</div>
+      <div class="nav-item" data-view="kb"><span class="nav-icon">▦</span>Knowledge Base</div>
+    </div>
+    <div class="nav-group">
+      <div class="nav-label">Management</div>
+      <div class="nav-item" data-view="admin"><span class="nav-icon">▲</span>Admin Dashboard</div>
+      <div class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>Settings</div>
+    </div>
+
+    <div style="margin-top:auto;">
+      <div class="divider"></div>
+      <div class="nav-item" id="logout-btn"><span class="nav-icon">⏻</span>Sign Out</div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title" id="topbar-title">Dashboard</div>
+      </div>
+      <div class="topbar-right">
+        <span class="pill" id="sync-pill"><span class="dot"></span><span id="sync-text">Online</span></span>
+        <span class="pill"><span id="tech-name">—</span></span>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="view" id="view-dashboard" hidden>
+      <div class="grid grid-4" id="dash-stats"></div>
+      <div class="section-title"><h3>Quick Actions</h3></div>
+      <div class="quick-actions">
+        <button class="btn btn-primary" data-view="newjob">+ New Job</button>
+        <button class="btn btn-ghost" data-action="scan-device">Scan Device</button>
+        <button class="btn btn-ghost" data-view="jobs">Open Previous Job</button>
+        <button class="btn btn-ghost" data-view="customers">Search Customer</button>
+        <button class="btn btn-ghost" data-action="quick-invoice">Generate Invoice</button>
+        <button class="btn btn-ghost" data-view="inventory">Parts Inventory</button>
+      </div>
+      <div class="section-title"><h3>Recent Jobs</h3></div>
+      <div class="card" id="dash-recent"><div class="empty">No jobs yet — start with <b>New Job</b>.</div></div>
+    </div>
+
+    <!-- NEW JOB WIZARD -->
+    <div class="view" id="view-newjob" hidden>
+      <div class="wizard-steps" id="wizard-steps"></div>
+      <div class="card" id="wizard-body"></div>
+      <div class="wizard-nav">
+        <button class="btn btn-ghost" id="wiz-prev">← Back</button>
+        <div class="text-dim text-sm" id="wiz-progress"></div>
+        <button class="btn btn-primary" id="wiz-next">Next →</button>
+      </div>
+    </div>
+
+    <!-- JOB LIST -->
+    <div class="view" id="view-jobs" hidden>
+      <div class="flex-between mb-0">
+        <input type="text" id="job-search" placeholder="Search job #, customer, device serial…" style="max-width:340px;">
+        <button class="btn btn-ghost btn-sm" id="export-jobs-csv">Export CSV</button>
+      </div>
+      <div class="card mt-16" style="overflow-x:auto;">
+        <table id="jobs-table"><thead><tr>
+          <th>Job #</th><th>Date</th><th>Customer</th><th>Device</th><th>Status</th><th>Priority</th><th></th>
+        </tr></thead><tbody id="jobs-tbody"></tbody></table>
+      </div>
+    </div>
+
+    <!-- JOB DETAIL / DISPUTE SHIELD -->
+    <div class="view" id="view-jobdetail" hidden></div>
+
+    <!-- CUSTOMERS -->
+    <div class="view" id="view-customers" hidden>
+      <input type="text" id="customer-search" placeholder="Search name, phone, email…" style="max-width:340px;">
+      <div class="grid grid-3 mt-16" id="customers-grid"></div>
+    </div>
+
+    <!-- INVENTORY -->
+    <div class="view" id="view-inventory" hidden>
+      <div class="flex-between">
+        <h3 class="mb-0">Parts Inventory</h3>
+        <button class="btn btn-primary btn-sm" id="add-part-btn">+ Add Part</button>
+      </div>
+      <div class="card mt-16" style="overflow-x:auto;">
+        <table id="inventory-table"><thead><tr>
+          <th>Part</th><th>Supplier</th><th>Stock</th><th>Low-stock at</th><th>Purchased</th><th></th>
+        </tr></thead><tbody id="inventory-tbody"></tbody></table>
+      </div>
+    </div>
+
+    <!-- KNOWLEDGE BASE -->
+    <div class="view" id="view-kb" hidden>
+      <div class="flex-between">
+        <h3 class="mb-0">Internal Repair Library</h3>
+        <button class="btn btn-primary btn-sm" id="add-kb-btn">+ New Article</button>
+      </div>
+      <div class="chip-grid mt-16" id="kb-filter-chips"></div>
+      <div class="grid grid-3 mt-16" id="kb-grid"></div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div class="view" id="view-admin" hidden>
+      <div class="grid grid-4" id="admin-stats"></div>
+      <div class="section-title"><h3>Technician Performance</h3></div>
+      <div class="card" style="overflow-x:auto;">
+        <table id="admin-tech-table"><thead><tr><th>Technician</th><th>Jobs Completed</th><th>Avg. Completion</th><th>Revenue</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="section-title"><h3>Most Common Repairs</h3></div>
+      <div class="card" id="admin-repairs"></div>
+    </div>
+
+    <!-- SETTINGS -->
+    <div class="view" id="view-settings" hidden>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3>Technicians</h3>
+          <div id="settings-tech-list"></div>
+          <button class="btn btn-ghost btn-sm mt-16" id="add-tech-btn">+ Add Technician</button>
+        </div>
+        <div class="card">
+          <h3>Data</h3>
+          <p class="text-sm">All data is stored locally on this device (IndexedDB). Nothing leaves the browser unless you export it.</p>
+          <button class="btn btn-ghost btn-sm" id="export-all-btn">Export Full Backup (JSON)</button>
+          <div class="mt-8"></div>
+          <button class="btn btn-danger btn-sm" id="wipe-btn">Wipe Local Data</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- WARRANTY VERIFY (deep link target) -->
+    <div class="view" id="view-verify" hidden></div>
+
+  </main>
+</div>
+
+<nav class="bottom-nav">
+  <div class="bn-item" data-view="dashboard"><span class="bn-icon">◆</span>Home</div>
+  <div class="bn-item" data-view="newjob"><span class="bn-icon">＋</span>New</div>
+  <div class="bn-item" data-view="jobs"><span class="bn-icon">▤</span>Jobs</div>
+  <div class="bn-item" data-view="inventory"><span class="bn-icon">▣</span>Parts</div>
+  <div class="bn-item" data-view="settings"><span class="bn-icon">⚙</span>More</div>
+</nav>
+
+<script>//---------------------------------------------------------------------
+//
+// QR Code Generator for JavaScript
+//
+// Copyright (c) 2009 Kazuhiko Arase
+//
+// URL: http://www.d-project.com/
+//
+// Licensed under the MIT license:
+//  http://www.opensource.org/licenses/mit-license.php
+//
+// The word 'QR Code' is registered trademark of
+// DENSO WAVE INCORPORATED
+//  http://www.denso-wave.com/qrcode/faqpatent-e.html
+//
+//---------------------------------------------------------------------
+
+var qrcode = function() {
+
+  //---------------------------------------------------------------------
+  // qrcode
+  //---------------------------------------------------------------------
+
+  /**
+   * qrcode
+   * @param typeNumber 1 to 40
+   * @param errorCorrectionLevel 'L','M','Q','H'
+   */
+  var qrcode = function(typeNumber, errorCorrectionLevel) {
+
+    var PAD0 = 0xEC;
+    var PAD1 = 0x11;
+
+    var _typeNumber = typeNumber;
+    var _errorCorrectionLevel = QRErrorCorrectionLevel[errorCorrectionLevel];
+    var _modules = null;
+    var _moduleCount = 0;
+    var _dataCache = null;
+    var _dataList = [];
+
+    var _this = {};
+
+    var makeImpl = function(test, maskPattern) {
+
+      _moduleCount = _typeNumber * 4 + 17;
+      _modules = function(moduleCount) {
+        var modules = new Array(moduleCount);
+        for (var row = 0; row < moduleCount; row += 1) {
+          modules[row] = new Array(moduleCount);
+          for (var col = 0; col < moduleCount; col += 1) {
+            modules[row][col] = null;
+          }
+        }
+        return modules;
+      }(_moduleCount);
+
+      setupPositionProbePattern(0, 0);
+      setupPositionProbePattern(_moduleCount - 7, 0);
+      setupPositionProbePattern(0, _moduleCount - 7);
+      setupPositionAdjustPattern();
+      setupTimingPattern();
+      setupTypeInfo(test, maskPattern);
+
+      if (_typeNumber >= 7) {
+        setupTypeNumber(test);
+      }
+
+      if (_dataCache == null) {
+        _dataCache = createData(_typeNumber, _errorCorrectionLevel, _dataList);
+      }
+
+      mapData(_dataCache, maskPattern);
+    };
+
+    var setupPositionProbePattern = function(row, col) {
+
+      for (var r = -1; r <= 7; r += 1) {
+
+        if (row + r <= -1 || _moduleCount <= row + r) continue;
+
+        for (var c = -1; c <= 7; c += 1) {
+
+          if (col + c <= -1 || _moduleCount <= col + c) continue;
+
+          if ( (0 <= r && r <= 6 && (c == 0 || c == 6) )
+              || (0 <= c && c <= 6 && (r == 0 || r == 6) )
+              || (2 <= r && r <= 4 && 2 <= c && c <= 4) ) {
+            _modules[row + r][col + c] = true;
+          } else {
+            _modules[row + r][col + c] = false;
+          }
+        }
+      }
+    };
+
+    var getBestMaskPattern = function() {
+
+      var minLostPoint = 0;
+      var pattern = 0;
+
+      for (var i = 0; i < 8; i += 1) {
+
+        makeImpl(true, i);
+
+        var lostPoint = QRUtil.getLostPoint(_this);
+
+        if (i == 0 || minLostPoint > lostPoint) {
+          minLostPoint = lostPoint;
+          pattern = i;
+        }
+      }
+
+      return pattern;
+    };
+
+    var setupTimingPattern = function() {
+
+      for (var r = 8; r < _moduleCount - 8; r += 1) {
+        if (_modules[r][6] != null) {
+          continue;
+        }
+        _modules[r][6] = (r % 2 == 0);
+      }
+
+      for (var c = 8; c < _moduleCount - 8; c += 1) {
+        if (_modules[6][c] != null) {
+          continue;
+        }
+        _modules[6][c] = (c % 2 == 0);
+      }
+    };
+
+    var setupPositionAdjustPattern = function() {
+
+      var pos = QRUtil.getPatternPosition(_typeNumber);
+
+      for (var i = 0; i < pos.length; i += 1) {
+
+        for (var j = 0; j < pos.length; j += 1) {
+
+          var row = pos[i];
+          var col = pos[j];
+
+          if (_modules[row][col] != null) {
+            continue;
+          }
+
+          for (var r = -2; r <= 2; r += 1) {
+
+            for (var c = -2; c <= 2; c += 1) {
+
+              if (r == -2 || r == 2 || c == -2 || c == 2
+                  || (r == 0 && c == 0) ) {
+                _modules[row + r][col + c] = true;
+              } else {
+                _modules[row + r][col + c] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+
+    var setupTypeNumber = function(test) {
+
+      var bits = QRUtil.getBCHTypeNumber(_typeNumber);
+
+      for (var i = 0; i < 18; i += 1) {
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+        _modules[Math.floor(i / 3)][i % 3 + _moduleCount - 8 - 3] = mod;
+      }
+
+      for (var i = 0; i < 18; i += 1) {
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+        _modules[i % 3 + _moduleCount - 8 - 3][Math.floor(i / 3)] = mod;
+      }
+    };
+
+    var setupTypeInfo = function(test, maskPattern) {
+
+      var data = (_errorCorrectionLevel << 3) | maskPattern;
+      var bits = QRUtil.getBCHTypeInfo(data);
+
+      // vertical
+      for (var i = 0; i < 15; i += 1) {
+
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+
+        if (i < 6) {
+          _modules[i][8] = mod;
+        } else if (i < 8) {
+          _modules[i + 1][8] = mod;
+        } else {
+          _modules[_moduleCount - 15 + i][8] = mod;
+        }
+      }
+
+      // horizontal
+      for (var i = 0; i < 15; i += 1) {
+
+        var mod = (!test && ( (bits >> i) & 1) == 1);
+
+        if (i < 8) {
+          _modules[8][_moduleCount - i - 1] = mod;
+        } else if (i < 9) {
+          _modules[8][15 - i - 1 + 1] = mod;
+        } else {
+          _modules[8][15 - i - 1] = mod;
+        }
+      }
+
+      // fixed module
+      _modules[_moduleCount - 8][8] = (!test);
+    };
+
+    var mapData = function(data, maskPattern) {
+
+      var inc = -1;
+      var row = _moduleCount - 1;
+      var bitIndex = 7;
+      var byteIndex = 0;
+      var maskFunc = QRUtil.getMaskFunction(maskPattern);
+
+      for (var col = _moduleCount - 1; col > 0; col -= 2) {
+
+        if (col == 6) col -= 1;
+
+        while (true) {
+
+          for (var c = 0; c < 2; c += 1) {
+
+            if (_modules[row][col - c] == null) {
+
+              var dark = false;
+
+              if (byteIndex < data.length) {
+                dark = ( ( (data[byteIndex] >>> bitIndex) & 1) == 1);
+              }
+
+              var mask = maskFunc(row, col - c);
+
+              if (mask) {
+                dark = !dark;
+              }
+
+              _modules[row][col - c] = dark;
+              bitIndex -= 1;
+
+              if (bitIndex == -1) {
+                byteIndex += 1;
+                bitIndex = 7;
+              }
+            }
+          }
+
+          row += inc;
+
+          if (row < 0 || _moduleCount <= row) {
+            row -= inc;
+            inc = -inc;
+            break;
+          }
+        }
+      }
+    };
+
+    var createBytes = function(buffer, rsBlocks) {
+
+      var offset = 0;
+
+      var maxDcCount = 0;
+      var maxEcCount = 0;
+
+      var dcdata = new Array(rsBlocks.length);
+      var ecdata = new Array(rsBlocks.length);
+
+      for (var r = 0; r < rsBlocks.length; r += 1) {
+
+        var dcCount = rsBlocks[r].dataCount;
+        var ecCount = rsBlocks[r].totalCount - dcCount;
+
+        maxDcCount = Math.max(maxDcCount, dcCount);
+        maxEcCount = Math.max(maxEcCount, ecCount);
+
+        dcdata[r] = new Array(dcCount);
+
+        for (var i = 0; i < dcdata[r].length; i += 1) {
+          dcdata[r][i] = 0xff & buffer.getBuffer()[i + offset];
+        }
+        offset += dcCount;
+
+        var rsPoly = QRUtil.getErrorCorrectPolynomial(ecCount);
+        var rawPoly = qrPolynomial(dcdata[r], rsPoly.getLength() - 1);
+
+        var modPoly = rawPoly.mod(rsPoly);
+        ecdata[r] = new Array(rsPoly.getLength() - 1);
+        for (var i = 0; i < ecdata[r].length; i += 1) {
+          var modIndex = i + modPoly.getLength() - ecdata[r].length;
+          ecdata[r][i] = (modIndex >= 0)? modPoly.getAt(modIndex) : 0;
+        }
+      }
+
+      var totalCodeCount = 0;
+      for (var i = 0; i < rsBlocks.length; i += 1) {
+        totalCodeCount += rsBlocks[i].totalCount;
+      }
+
+      var data = new Array(totalCodeCount);
+      var index = 0;
+
+      for (var i = 0; i < maxDcCount; i += 1) {
+        for (var r = 0; r < rsBlocks.length; r += 1) {
+          if (i < dcdata[r].length) {
+            data[index] = dcdata[r][i];
+            index += 1;
+          }
+        }
+      }
+
+      for (var i = 0; i < maxEcCount; i += 1) {
+        for (var r = 0; r < rsBlocks.length; r += 1) {
+          if (i < ecdata[r].length) {
+            data[index] = ecdata[r][i];
+            index += 1;
+          }
+        }
+      }
+
+      return data;
+    };
+
+    var createData = function(typeNumber, errorCorrectionLevel, dataList) {
+
+      var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, errorCorrectionLevel);
+
+      var buffer = qrBitBuffer();
+
+      for (var i = 0; i < dataList.length; i += 1) {
+        var data = dataList[i];
+        buffer.put(data.getMode(), 4);
+        buffer.put(data.getLength(), QRUtil.getLengthInBits(data.getMode(), typeNumber) );
+        data.write(buffer);
+      }
+
+      // calc num max data.
+      var totalDataCount = 0;
+      for (var i = 0; i < rsBlocks.length; i += 1) {
+        totalDataCount += rsBlocks[i].dataCount;
+      }
+
+      if (buffer.getLengthInBits() > totalDataCount * 8) {
+        throw 'code length overflow. ('
+          + buffer.getLengthInBits()
+          + '>'
+          + totalDataCount * 8
+          + ')';
+      }
+
+      // end code
+      if (buffer.getLengthInBits() + 4 <= totalDataCount * 8) {
+        buffer.put(0, 4);
+      }
+
+      // padding
+      while (buffer.getLengthInBits() % 8 != 0) {
+        buffer.putBit(false);
+      }
+
+      // padding
+      while (true) {
+
+        if (buffer.getLengthInBits() >= totalDataCount * 8) {
+          break;
+        }
+        buffer.put(PAD0, 8);
+
+        if (buffer.getLengthInBits() >= totalDataCount * 8) {
+          break;
+        }
+        buffer.put(PAD1, 8);
+      }
+
+      return createBytes(buffer, rsBlocks);
+    };
+
+    _this.addData = function(data, mode) {
+
+      mode = mode || 'Byte';
+
+      var newData = null;
+
+      switch(mode) {
+      case 'Numeric' :
+        newData = qrNumber(data);
+        break;
+      case 'Alphanumeric' :
+        newData = qrAlphaNum(data);
+        break;
+      case 'Byte' :
+        newData = qr8BitByte(data);
+        break;
+      case 'Kanji' :
+        newData = qrKanji(data);
+        break;
+      default :
+        throw 'mode:' + mode;
+      }
+
+      _dataList.push(newData);
+      _dataCache = null;
+    };
+
+    _this.isDark = function(row, col) {
+      if (row < 0 || _moduleCount <= row || col < 0 || _moduleCount <= col) {
+        throw row + ',' + col;
+      }
+      return _modules[row][col];
+    };
+
+    _this.getModuleCount = function() {
+      return _moduleCount;
+    };
+
+    _this.make = function() {
+      if (_typeNumber < 1) {
+        var typeNumber = 1;
+
+        for (; typeNumber < 40; typeNumber++) {
+          var rsBlocks = QRRSBlock.getRSBlocks(typeNumber, _errorCorrectionLevel);
+          var buffer = qrBitBuffer();
+
+          for (var i = 0; i < _dataList.length; i++) {
+            var data = _dataList[i];
+            buffer.put(data.getMode(), 4);
+            buffer.put(data.getLength(), QRUtil.getLengthInBits(data.getMode(), typeNumber) );
+            data.write(buffer);
+          }
+
+          var totalDataCount = 0;
+          for (var i = 0; i < rsBlocks.length; i++) {
+            totalDataCount += rsBlocks[i].dataCount;
+          }
+
+          if (buffer.getLengthInBits() <= totalDataCount * 8) {
+            break;
+          }
+        }
+
+        _typeNumber = typeNumber;
+      }
+
+      makeImpl(false, getBestMaskPattern() );
+    };
+
+    _this.createTableTag = function(cellSize, margin) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var qrHtml = '';
+
+      qrHtml += '<table style="';
+      qrHtml += ' border-width: 0px; border-style: none;';
+      qrHtml += ' border-collapse: collapse;';
+      qrHtml += ' padding: 0px; margin: ' + margin + 'px;';
+      qrHtml += '">';
+      qrHtml += '<tbody>';
+
+      for (var r = 0; r < _this.getModuleCount(); r += 1) {
+
+        qrHtml += '<tr>';
+
+        for (var c = 0; c < _this.getModuleCount(); c += 1) {
+          qrHtml += '<td style="';
+          qrHtml += ' border-width: 0px; border-style: none;';
+          qrHtml += ' border-collapse: collapse;';
+          qrHtml += ' padding: 0px; margin: 0px;';
+          qrHtml += ' width: ' + cellSize + 'px;';
+          qrHtml += ' height: ' + cellSize + 'px;';
+          qrHtml += ' background-color: ';
+          qrHtml += _this.isDark(r, c)? '#000000' : '#ffffff';
+          qrHtml += ';';
+          qrHtml += '"/>';
+        }
+
+        qrHtml += '</tr>';
+      }
+
+      qrHtml += '</tbody>';
+      qrHtml += '</table>';
+
+      return qrHtml;
+    };
+
+    _this.createSvgTag = function(cellSize, margin, alt, title) {
+
+      var opts = {};
+      if (typeof arguments[0] == 'object') {
+        // Called by options.
+        opts = arguments[0];
+        // overwrite cellSize and margin.
+        cellSize = opts.cellSize;
+        margin = opts.margin;
+        alt = opts.alt;
+        title = opts.title;
+      }
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      // Compose alt property surrogate
+      alt = (typeof alt === 'string') ? {text: alt} : alt || {};
+      alt.text = alt.text || null;
+      alt.id = (alt.text) ? alt.id || 'qrcode-description' : null;
+
+      // Compose title property surrogate
+      title = (typeof title === 'string') ? {text: title} : title || {};
+      title.text = title.text || null;
+      title.id = (title.text) ? title.id || 'qrcode-title' : null;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var c, mc, r, mr, qrSvg='', rect;
+
+      rect = 'l' + cellSize + ',0 0,' + cellSize +
+        ' -' + cellSize + ',0 0,-' + cellSize + 'z ';
+
+      qrSvg += '<svg version="1.1" xmlns="http://www.w3.org/2000/svg"';
+      qrSvg += !opts.scalable ? ' width="' + size + 'px" height="' + size + 'px"' : '';
+      qrSvg += ' viewBox="0 0 ' + size + ' ' + size + '" ';
+      qrSvg += ' preserveAspectRatio="xMinYMin meet"';
+      qrSvg += (title.text || alt.text) ? ' role="img" aria-labelledby="' +
+          escapeXml([title.id, alt.id].join(' ').trim() ) + '"' : '';
+      qrSvg += '>';
+      qrSvg += (title.text) ? '<title id="' + escapeXml(title.id) + '">' +
+          escapeXml(title.text) + '</title>' : '';
+      qrSvg += (alt.text) ? '<description id="' + escapeXml(alt.id) + '">' +
+          escapeXml(alt.text) + '</description>' : '';
+      qrSvg += '<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>';
+      qrSvg += '<path d="';
+
+      for (r = 0; r < _this.getModuleCount(); r += 1) {
+        mr = r * cellSize + margin;
+        for (c = 0; c < _this.getModuleCount(); c += 1) {
+          if (_this.isDark(r, c) ) {
+            mc = c*cellSize+margin;
+            qrSvg += 'M' + mc + ',' + mr + rect;
+          }
+        }
+      }
+
+      qrSvg += '" stroke="transparent" fill="black"/>';
+      qrSvg += '</svg>';
+
+      return qrSvg;
+    };
+
+    _this.createDataURL = function(cellSize, margin) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      return createDataURL(size, size, function(x, y) {
+        if (min <= x && x < max && min <= y && y < max) {
+          var c = Math.floor( (x - min) / cellSize);
+          var r = Math.floor( (y - min) / cellSize);
+          return _this.isDark(r, c)? 0 : 1;
+        } else {
+          return 1;
+        }
+      } );
+    };
+
+    _this.createImgTag = function(cellSize, margin, alt) {
+
+      cellSize = cellSize || 2;
+      margin = (typeof margin == 'undefined')? cellSize * 4 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+
+      var img = '';
+      img += '<img';
+      img += '\u0020src="';
+      img += _this.createDataURL(cellSize, margin);
+      img += '"';
+      img += '\u0020width="';
+      img += size;
+      img += '"';
+      img += '\u0020height="';
+      img += size;
+      img += '"';
+      if (alt) {
+        img += '\u0020alt="';
+        img += escapeXml(alt);
+        img += '"';
+      }
+      img += '/>';
+
+      return img;
+    };
+
+    var escapeXml = function(s) {
+      var escaped = '';
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charAt(i);
+        switch(c) {
+        case '<': escaped += '&lt;'; break;
+        case '>': escaped += '&gt;'; break;
+        case '&': escaped += '&amp;'; break;
+        case '"': escaped += '&quot;'; break;
+        default : escaped += c; break;
+        }
+      }
+      return escaped;
+    };
+
+    var _createHalfASCII = function(margin) {
+      var cellSize = 1;
+      margin = (typeof margin == 'undefined')? cellSize * 2 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      var y, x, r1, r2, p;
+
+      var blocks = {
+        '██': '█',
+        '█ ': '▀',
+        ' █': '▄',
+        '  ': ' '
+      };
+
+      var blocksLastLineNoMargin = {
+        '██': '▀',
+        '█ ': '▀',
+        ' █': ' ',
+        '  ': ' '
+      };
+
+      var ascii = '';
+      for (y = 0; y < size; y += 2) {
+        r1 = Math.floor((y - min) / cellSize);
+        r2 = Math.floor((y + 1 - min) / cellSize);
+        for (x = 0; x < size; x += 1) {
+          p = '█';
+
+          if (min <= x && x < max && min <= y && y < max && _this.isDark(r1, Math.floor((x - min) / cellSize))) {
+            p = ' ';
+          }
+
+          if (min <= x && x < max && min <= y+1 && y+1 < max && _this.isDark(r2, Math.floor((x - min) / cellSize))) {
+            p += ' ';
+          }
+          else {
+            p += '█';
+          }
+
+          // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
+          ascii += (margin < 1 && y+1 >= max) ? blocksLastLineNoMargin[p] : blocks[p];
+        }
+
+        ascii += '\n';
+      }
+
+      if (size % 2 && margin > 0) {
+        return ascii.substring(0, ascii.length - size - 1) + Array(size+1).join('▀');
+      }
+
+      return ascii.substring(0, ascii.length-1);
+    };
+
+    _this.createASCII = function(cellSize, margin) {
+      cellSize = cellSize || 1;
+
+      if (cellSize < 2) {
+        return _createHalfASCII(margin);
+      }
+
+      cellSize -= 1;
+      margin = (typeof margin == 'undefined')? cellSize * 2 : margin;
+
+      var size = _this.getModuleCount() * cellSize + margin * 2;
+      var min = margin;
+      var max = size - margin;
+
+      var y, x, r, p;
+
+      var white = Array(cellSize+1).join('██');
+      var black = Array(cellSize+1).join('  ');
+
+      var ascii = '';
+      var line = '';
+      for (y = 0; y < size; y += 1) {
+        r = Math.floor( (y - min) / cellSize);
+        line = '';
+        for (x = 0; x < size; x += 1) {
+          p = 1;
+
+          if (min <= x && x < max && min <= y && y < max && _this.isDark(r, Math.floor((x - min) / cellSize))) {
+            p = 0;
+          }
+
+          // Output 2 characters per pixel, to create full square. 1 character per pixels gives only half width of square.
+          line += p ? white : black;
+        }
+
+        for (r = 0; r < cellSize; r += 1) {
+          ascii += line + '\n';
+        }
+      }
+
+      return ascii.substring(0, ascii.length-1);
+    };
+
+    _this.renderTo2dContext = function(context, cellSize) {
+      cellSize = cellSize || 2;
+      var length = _this.getModuleCount();
+      for (var row = 0; row < length; row++) {
+        for (var col = 0; col < length; col++) {
+          context.fillStyle = _this.isDark(row, col) ? 'black' : 'white';
+          context.fillRect(col * cellSize, row * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrcode.stringToBytes
+  //---------------------------------------------------------------------
+
+  qrcode.stringToBytesFuncs = {
+    'default' : function(s) {
+      var bytes = [];
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charCodeAt(i);
+        bytes.push(c & 0xff);
+      }
+      return bytes;
+    }
+  };
+
+  qrcode.stringToBytes = qrcode.stringToBytesFuncs['default'];
+
+  //---------------------------------------------------------------------
+  // qrcode.createStringToBytes
+  //---------------------------------------------------------------------
+
+  /**
+   * @param unicodeData base64 string of byte array.
+   * [16bit Unicode],[16bit Bytes], ...
+   * @param numChars
+   */
+  qrcode.createStringToBytes = function(unicodeData, numChars) {
+
+    // create conversion map.
+
+    var unicodeMap = function() {
+
+      var bin = base64DecodeInputStream(unicodeData);
+      var read = function() {
+        var b = bin.read();
+        if (b == -1) throw 'eof';
+        return b;
+      };
+
+      var count = 0;
+      var unicodeMap = {};
+      while (true) {
+        var b0 = bin.read();
+        if (b0 == -1) break;
+        var b1 = read();
+        var b2 = read();
+        var b3 = read();
+        var k = String.fromCharCode( (b0 << 8) | b1);
+        var v = (b2 << 8) | b3;
+        unicodeMap[k] = v;
+        count += 1;
+      }
+      if (count != numChars) {
+        throw count + ' != ' + numChars;
+      }
+
+      return unicodeMap;
+    }();
+
+    var unknownChar = '?'.charCodeAt(0);
+
+    return function(s) {
+      var bytes = [];
+      for (var i = 0; i < s.length; i += 1) {
+        var c = s.charCodeAt(i);
+        if (c < 128) {
+          bytes.push(c);
+        } else {
+          var b = unicodeMap[s.charAt(i)];
+          if (typeof b == 'number') {
+            if ( (b & 0xff) == b) {
+              // 1byte
+              bytes.push(b);
+            } else {
+              // 2bytes
+              bytes.push(b >>> 8);
+              bytes.push(b & 0xff);
+            }
+          } else {
+            bytes.push(unknownChar);
+          }
+        }
+      }
+      return bytes;
+    };
+  };
+
+  //---------------------------------------------------------------------
+  // QRMode
+  //---------------------------------------------------------------------
+
+  var QRMode = {
+    MODE_NUMBER :    1 << 0,
+    MODE_ALPHA_NUM : 1 << 1,
+    MODE_8BIT_BYTE : 1 << 2,
+    MODE_KANJI :     1 << 3
+  };
+
+  //---------------------------------------------------------------------
+  // QRErrorCorrectionLevel
+  //---------------------------------------------------------------------
+
+  var QRErrorCorrectionLevel = {
+    L : 1,
+    M : 0,
+    Q : 3,
+    H : 2
+  };
+
+  //---------------------------------------------------------------------
+  // QRMaskPattern
+  //---------------------------------------------------------------------
+
+  var QRMaskPattern = {
+    PATTERN000 : 0,
+    PATTERN001 : 1,
+    PATTERN010 : 2,
+    PATTERN011 : 3,
+    PATTERN100 : 4,
+    PATTERN101 : 5,
+    PATTERN110 : 6,
+    PATTERN111 : 7
+  };
+
+  //---------------------------------------------------------------------
+  // QRUtil
+  //---------------------------------------------------------------------
+
+  var QRUtil = function() {
+
+    var PATTERN_POSITION_TABLE = [
+      [],
+      [6, 18],
+      [6, 22],
+      [6, 26],
+      [6, 30],
+      [6, 34],
+      [6, 22, 38],
+      [6, 24, 42],
+      [6, 26, 46],
+      [6, 28, 50],
+      [6, 30, 54],
+      [6, 32, 58],
+      [6, 34, 62],
+      [6, 26, 46, 66],
+      [6, 26, 48, 70],
+      [6, 26, 50, 74],
+      [6, 30, 54, 78],
+      [6, 30, 56, 82],
+      [6, 30, 58, 86],
+      [6, 34, 62, 90],
+      [6, 28, 50, 72, 94],
+      [6, 26, 50, 74, 98],
+      [6, 30, 54, 78, 102],
+      [6, 28, 54, 80, 106],
+      [6, 32, 58, 84, 110],
+      [6, 30, 58, 86, 114],
+      [6, 34, 62, 90, 118],
+      [6, 26, 50, 74, 98, 122],
+      [6, 30, 54, 78, 102, 126],
+      [6, 26, 52, 78, 104, 130],
+      [6, 30, 56, 82, 108, 134],
+      [6, 34, 60, 86, 112, 138],
+      [6, 30, 58, 86, 114, 142],
+      [6, 34, 62, 90, 118, 146],
+      [6, 30, 54, 78, 102, 126, 150],
+      [6, 24, 50, 76, 102, 128, 154],
+      [6, 28, 54, 80, 106, 132, 158],
+      [6, 32, 58, 84, 110, 136, 162],
+      [6, 26, 54, 82, 110, 138, 166],
+      [6, 30, 58, 86, 114, 142, 170]
+    ];
+    var G15 = (1 << 10) | (1 << 8) | (1 << 5) | (1 << 4) | (1 << 2) | (1 << 1) | (1 << 0);
+    var G18 = (1 << 12) | (1 << 11) | (1 << 10) | (1 << 9) | (1 << 8) | (1 << 5) | (1 << 2) | (1 << 0);
+    var G15_MASK = (1 << 14) | (1 << 12) | (1 << 10) | (1 << 4) | (1 << 1);
+
+    var _this = {};
+
+    var getBCHDigit = function(data) {
+      var digit = 0;
+      while (data != 0) {
+        digit += 1;
+        data >>>= 1;
+      }
+      return digit;
+    };
+
+    _this.getBCHTypeInfo = function(data) {
+      var d = data << 10;
+      while (getBCHDigit(d) - getBCHDigit(G15) >= 0) {
+        d ^= (G15 << (getBCHDigit(d) - getBCHDigit(G15) ) );
+      }
+      return ( (data << 10) | d) ^ G15_MASK;
+    };
+
+    _this.getBCHTypeNumber = function(data) {
+      var d = data << 12;
+      while (getBCHDigit(d) - getBCHDigit(G18) >= 0) {
+        d ^= (G18 << (getBCHDigit(d) - getBCHDigit(G18) ) );
+      }
+      return (data << 12) | d;
+    };
+
+    _this.getPatternPosition = function(typeNumber) {
+      return PATTERN_POSITION_TABLE[typeNumber - 1];
+    };
+
+    _this.getMaskFunction = function(maskPattern) {
+
+      switch (maskPattern) {
+
+      case QRMaskPattern.PATTERN000 :
+        return function(i, j) { return (i + j) % 2 == 0; };
+      case QRMaskPattern.PATTERN001 :
+        return function(i, j) { return i % 2 == 0; };
+      case QRMaskPattern.PATTERN010 :
+        return function(i, j) { return j % 3 == 0; };
+      case QRMaskPattern.PATTERN011 :
+        return function(i, j) { return (i + j) % 3 == 0; };
+      case QRMaskPattern.PATTERN100 :
+        return function(i, j) { return (Math.floor(i / 2) + Math.floor(j / 3) ) % 2 == 0; };
+      case QRMaskPattern.PATTERN101 :
+        return function(i, j) { return (i * j) % 2 + (i * j) % 3 == 0; };
+      case QRMaskPattern.PATTERN110 :
+        return function(i, j) { return ( (i * j) % 2 + (i * j) % 3) % 2 == 0; };
+      case QRMaskPattern.PATTERN111 :
+        return function(i, j) { return ( (i * j) % 3 + (i + j) % 2) % 2 == 0; };
+
+      default :
+        throw 'bad maskPattern:' + maskPattern;
+      }
+    };
+
+    _this.getErrorCorrectPolynomial = function(errorCorrectLength) {
+      var a = qrPolynomial([1], 0);
+      for (var i = 0; i < errorCorrectLength; i += 1) {
+        a = a.multiply(qrPolynomial([1, QRMath.gexp(i)], 0) );
+      }
+      return a;
+    };
+
+    _this.getLengthInBits = function(mode, type) {
+
+      if (1 <= type && type < 10) {
+
+        // 1 - 9
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 10;
+        case QRMode.MODE_ALPHA_NUM : return 9;
+        case QRMode.MODE_8BIT_BYTE : return 8;
+        case QRMode.MODE_KANJI     : return 8;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else if (type < 27) {
+
+        // 10 - 26
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 12;
+        case QRMode.MODE_ALPHA_NUM : return 11;
+        case QRMode.MODE_8BIT_BYTE : return 16;
+        case QRMode.MODE_KANJI     : return 10;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else if (type < 41) {
+
+        // 27 - 40
+
+        switch(mode) {
+        case QRMode.MODE_NUMBER    : return 14;
+        case QRMode.MODE_ALPHA_NUM : return 13;
+        case QRMode.MODE_8BIT_BYTE : return 16;
+        case QRMode.MODE_KANJI     : return 12;
+        default :
+          throw 'mode:' + mode;
+        }
+
+      } else {
+        throw 'type:' + type;
+      }
+    };
+
+    _this.getLostPoint = function(qrcode) {
+
+      var moduleCount = qrcode.getModuleCount();
+
+      var lostPoint = 0;
+
+      // LEVEL1
+
+      for (var row = 0; row < moduleCount; row += 1) {
+        for (var col = 0; col < moduleCount; col += 1) {
+
+          var sameCount = 0;
+          var dark = qrcode.isDark(row, col);
+
+          for (var r = -1; r <= 1; r += 1) {
+
+            if (row + r < 0 || moduleCount <= row + r) {
+              continue;
+            }
+
+            for (var c = -1; c <= 1; c += 1) {
+
+              if (col + c < 0 || moduleCount <= col + c) {
+                continue;
+              }
+
+              if (r == 0 && c == 0) {
+                continue;
+              }
+
+              if (dark == qrcode.isDark(row + r, col + c) ) {
+                sameCount += 1;
+              }
+            }
+          }
+
+          if (sameCount > 5) {
+            lostPoint += (3 + sameCount - 5);
+          }
+        }
+      };
+
+      // LEVEL2
+
+      for (var row = 0; row < moduleCount - 1; row += 1) {
+        for (var col = 0; col < moduleCount - 1; col += 1) {
+          var count = 0;
+          if (qrcode.isDark(row, col) ) count += 1;
+          if (qrcode.isDark(row + 1, col) ) count += 1;
+          if (qrcode.isDark(row, col + 1) ) count += 1;
+          if (qrcode.isDark(row + 1, col + 1) ) count += 1;
+          if (count == 0 || count == 4) {
+            lostPoint += 3;
+          }
+        }
+      }
+
+      // LEVEL3
+
+      for (var row = 0; row < moduleCount; row += 1) {
+        for (var col = 0; col < moduleCount - 6; col += 1) {
+          if (qrcode.isDark(row, col)
+              && !qrcode.isDark(row, col + 1)
+              &&  qrcode.isDark(row, col + 2)
+              &&  qrcode.isDark(row, col + 3)
+              &&  qrcode.isDark(row, col + 4)
+              && !qrcode.isDark(row, col + 5)
+              &&  qrcode.isDark(row, col + 6) ) {
+            lostPoint += 40;
+          }
+        }
+      }
+
+      for (var col = 0; col < moduleCount; col += 1) {
+        for (var row = 0; row < moduleCount - 6; row += 1) {
+          if (qrcode.isDark(row, col)
+              && !qrcode.isDark(row + 1, col)
+              &&  qrcode.isDark(row + 2, col)
+              &&  qrcode.isDark(row + 3, col)
+              &&  qrcode.isDark(row + 4, col)
+              && !qrcode.isDark(row + 5, col)
+              &&  qrcode.isDark(row + 6, col) ) {
+            lostPoint += 40;
+          }
+        }
+      }
+
+      // LEVEL4
+
+      var darkCount = 0;
+
+      for (var col = 0; col < moduleCount; col += 1) {
+        for (var row = 0; row < moduleCount; row += 1) {
+          if (qrcode.isDark(row, col) ) {
+            darkCount += 1;
+          }
+        }
+      }
+
+      var ratio = Math.abs(100 * darkCount / moduleCount / moduleCount - 50) / 5;
+      lostPoint += ratio * 10;
+
+      return lostPoint;
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // QRMath
+  //---------------------------------------------------------------------
+
+  var QRMath = function() {
+
+    var EXP_TABLE = new Array(256);
+    var LOG_TABLE = new Array(256);
+
+    // initialize tables
+    for (var i = 0; i < 8; i += 1) {
+      EXP_TABLE[i] = 1 << i;
+    }
+    for (var i = 8; i < 256; i += 1) {
+      EXP_TABLE[i] = EXP_TABLE[i - 4]
+        ^ EXP_TABLE[i - 5]
+        ^ EXP_TABLE[i - 6]
+        ^ EXP_TABLE[i - 8];
+    }
+    for (var i = 0; i < 255; i += 1) {
+      LOG_TABLE[EXP_TABLE[i] ] = i;
+    }
+
+    var _this = {};
+
+    _this.glog = function(n) {
+
+      if (n < 1) {
+        throw 'glog(' + n + ')';
+      }
+
+      return LOG_TABLE[n];
+    };
+
+    _this.gexp = function(n) {
+
+      while (n < 0) {
+        n += 255;
+      }
+
+      while (n >= 256) {
+        n -= 255;
+      }
+
+      return EXP_TABLE[n];
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // qrPolynomial
+  //---------------------------------------------------------------------
+
+  function qrPolynomial(num, shift) {
+
+    if (typeof num.length == 'undefined') {
+      throw num.length + '/' + shift;
+    }
+
+    var _num = function() {
+      var offset = 0;
+      while (offset < num.length && num[offset] == 0) {
+        offset += 1;
+      }
+      var _num = new Array(num.length - offset + shift);
+      for (var i = 0; i < num.length - offset; i += 1) {
+        _num[i] = num[i + offset];
+      }
+      return _num;
+    }();
+
+    var _this = {};
+
+    _this.getAt = function(index) {
+      return _num[index];
+    };
+
+    _this.getLength = function() {
+      return _num.length;
+    };
+
+    _this.multiply = function(e) {
+
+      var num = new Array(_this.getLength() + e.getLength() - 1);
+
+      for (var i = 0; i < _this.getLength(); i += 1) {
+        for (var j = 0; j < e.getLength(); j += 1) {
+          num[i + j] ^= QRMath.gexp(QRMath.glog(_this.getAt(i) ) + QRMath.glog(e.getAt(j) ) );
+        }
+      }
+
+      return qrPolynomial(num, 0);
+    };
+
+    _this.mod = function(e) {
+
+      if (_this.getLength() - e.getLength() < 0) {
+        return _this;
+      }
+
+      var ratio = QRMath.glog(_this.getAt(0) ) - QRMath.glog(e.getAt(0) );
+
+      var num = new Array(_this.getLength() );
+      for (var i = 0; i < _this.getLength(); i += 1) {
+        num[i] = _this.getAt(i);
+      }
+
+      for (var i = 0; i < e.getLength(); i += 1) {
+        num[i] ^= QRMath.gexp(QRMath.glog(e.getAt(i) ) + ratio);
+      }
+
+      // recursive call
+      return qrPolynomial(num, 0).mod(e);
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // QRRSBlock
+  //---------------------------------------------------------------------
+
+  var QRRSBlock = function() {
+
+    var RS_BLOCK_TABLE = [
+
+      // L
+      // M
+      // Q
+      // H
+
+      // 1
+      [1, 26, 19],
+      [1, 26, 16],
+      [1, 26, 13],
+      [1, 26, 9],
+
+      // 2
+      [1, 44, 34],
+      [1, 44, 28],
+      [1, 44, 22],
+      [1, 44, 16],
+
+      // 3
+      [1, 70, 55],
+      [1, 70, 44],
+      [2, 35, 17],
+      [2, 35, 13],
+
+      // 4
+      [1, 100, 80],
+      [2, 50, 32],
+      [2, 50, 24],
+      [4, 25, 9],
+
+      // 5
+      [1, 134, 108],
+      [2, 67, 43],
+      [2, 33, 15, 2, 34, 16],
+      [2, 33, 11, 2, 34, 12],
+
+      // 6
+      [2, 86, 68],
+      [4, 43, 27],
+      [4, 43, 19],
+      [4, 43, 15],
+
+      // 7
+      [2, 98, 78],
+      [4, 49, 31],
+      [2, 32, 14, 4, 33, 15],
+      [4, 39, 13, 1, 40, 14],
+
+      // 8
+      [2, 121, 97],
+      [2, 60, 38, 2, 61, 39],
+      [4, 40, 18, 2, 41, 19],
+      [4, 40, 14, 2, 41, 15],
+
+      // 9
+      [2, 146, 116],
+      [3, 58, 36, 2, 59, 37],
+      [4, 36, 16, 4, 37, 17],
+      [4, 36, 12, 4, 37, 13],
+
+      // 10
+      [2, 86, 68, 2, 87, 69],
+      [4, 69, 43, 1, 70, 44],
+      [6, 43, 19, 2, 44, 20],
+      [6, 43, 15, 2, 44, 16],
+
+      // 11
+      [4, 101, 81],
+      [1, 80, 50, 4, 81, 51],
+      [4, 50, 22, 4, 51, 23],
+      [3, 36, 12, 8, 37, 13],
+
+      // 12
+      [2, 116, 92, 2, 117, 93],
+      [6, 58, 36, 2, 59, 37],
+      [4, 46, 20, 6, 47, 21],
+      [7, 42, 14, 4, 43, 15],
+
+      // 13
+      [4, 133, 107],
+      [8, 59, 37, 1, 60, 38],
+      [8, 44, 20, 4, 45, 21],
+      [12, 33, 11, 4, 34, 12],
+
+      // 14
+      [3, 145, 115, 1, 146, 116],
+      [4, 64, 40, 5, 65, 41],
+      [11, 36, 16, 5, 37, 17],
+      [11, 36, 12, 5, 37, 13],
+
+      // 15
+      [5, 109, 87, 1, 110, 88],
+      [5, 65, 41, 5, 66, 42],
+      [5, 54, 24, 7, 55, 25],
+      [11, 36, 12, 7, 37, 13],
+
+      // 16
+      [5, 122, 98, 1, 123, 99],
+      [7, 73, 45, 3, 74, 46],
+      [15, 43, 19, 2, 44, 20],
+      [3, 45, 15, 13, 46, 16],
+
+      // 17
+      [1, 135, 107, 5, 136, 108],
+      [10, 74, 46, 1, 75, 47],
+      [1, 50, 22, 15, 51, 23],
+      [2, 42, 14, 17, 43, 15],
+
+      // 18
+      [5, 150, 120, 1, 151, 121],
+      [9, 69, 43, 4, 70, 44],
+      [17, 50, 22, 1, 51, 23],
+      [2, 42, 14, 19, 43, 15],
+
+      // 19
+      [3, 141, 113, 4, 142, 114],
+      [3, 70, 44, 11, 71, 45],
+      [17, 47, 21, 4, 48, 22],
+      [9, 39, 13, 16, 40, 14],
+
+      // 20
+      [3, 135, 107, 5, 136, 108],
+      [3, 67, 41, 13, 68, 42],
+      [15, 54, 24, 5, 55, 25],
+      [15, 43, 15, 10, 44, 16],
+
+      // 21
+      [4, 144, 116, 4, 145, 117],
+      [17, 68, 42],
+      [17, 50, 22, 6, 51, 23],
+      [19, 46, 16, 6, 47, 17],
+
+      // 22
+      [2, 139, 111, 7, 140, 112],
+      [17, 74, 46],
+      [7, 54, 24, 16, 55, 25],
+      [34, 37, 13],
+
+      // 23
+      [4, 151, 121, 5, 152, 122],
+      [4, 75, 47, 14, 76, 48],
+      [11, 54, 24, 14, 55, 25],
+      [16, 45, 15, 14, 46, 16],
+
+      // 24
+      [6, 147, 117, 4, 148, 118],
+      [6, 73, 45, 14, 74, 46],
+      [11, 54, 24, 16, 55, 25],
+      [30, 46, 16, 2, 47, 17],
+
+      // 25
+      [8, 132, 106, 4, 133, 107],
+      [8, 75, 47, 13, 76, 48],
+      [7, 54, 24, 22, 55, 25],
+      [22, 45, 15, 13, 46, 16],
+
+      // 26
+      [10, 142, 114, 2, 143, 115],
+      [19, 74, 46, 4, 75, 47],
+      [28, 50, 22, 6, 51, 23],
+      [33, 46, 16, 4, 47, 17],
+
+      // 27
+      [8, 152, 122, 4, 153, 123],
+      [22, 73, 45, 3, 74, 46],
+      [8, 53, 23, 26, 54, 24],
+      [12, 45, 15, 28, 46, 16],
+
+      // 28
+      [3, 147, 117, 10, 148, 118],
+      [3, 73, 45, 23, 74, 46],
+      [4, 54, 24, 31, 55, 25],
+      [11, 45, 15, 31, 46, 16],
+
+      // 29
+      [7, 146, 116, 7, 147, 117],
+      [21, 73, 45, 7, 74, 46],
+      [1, 53, 23, 37, 54, 24],
+      [19, 45, 15, 26, 46, 16],
+
+      // 30
+      [5, 145, 115, 10, 146, 116],
+      [19, 75, 47, 10, 76, 48],
+      [15, 54, 24, 25, 55, 25],
+      [23, 45, 15, 25, 46, 16],
+
+      // 31
+      [13, 145, 115, 3, 146, 116],
+      [2, 74, 46, 29, 75, 47],
+      [42, 54, 24, 1, 55, 25],
+      [23, 45, 15, 28, 46, 16],
+
+      // 32
+      [17, 145, 115],
+      [10, 74, 46, 23, 75, 47],
+      [10, 54, 24, 35, 55, 25],
+      [19, 45, 15, 35, 46, 16],
+
+      // 33
+      [17, 145, 115, 1, 146, 116],
+      [14, 74, 46, 21, 75, 47],
+      [29, 54, 24, 19, 55, 25],
+      [11, 45, 15, 46, 46, 16],
+
+      // 34
+      [13, 145, 115, 6, 146, 116],
+      [14, 74, 46, 23, 75, 47],
+      [44, 54, 24, 7, 55, 25],
+      [59, 46, 16, 1, 47, 17],
+
+      // 35
+      [12, 151, 121, 7, 152, 122],
+      [12, 75, 47, 26, 76, 48],
+      [39, 54, 24, 14, 55, 25],
+      [22, 45, 15, 41, 46, 16],
+
+      // 36
+      [6, 151, 121, 14, 152, 122],
+      [6, 75, 47, 34, 76, 48],
+      [46, 54, 24, 10, 55, 25],
+      [2, 45, 15, 64, 46, 16],
+
+      // 37
+      [17, 152, 122, 4, 153, 123],
+      [29, 74, 46, 14, 75, 47],
+      [49, 54, 24, 10, 55, 25],
+      [24, 45, 15, 46, 46, 16],
+
+      // 38
+      [4, 152, 122, 18, 153, 123],
+      [13, 74, 46, 32, 75, 47],
+      [48, 54, 24, 14, 55, 25],
+      [42, 45, 15, 32, 46, 16],
+
+      // 39
+      [20, 147, 117, 4, 148, 118],
+      [40, 75, 47, 7, 76, 48],
+      [43, 54, 24, 22, 55, 25],
+      [10, 45, 15, 67, 46, 16],
+
+      // 40
+      [19, 148, 118, 6, 149, 119],
+      [18, 75, 47, 31, 76, 48],
+      [34, 54, 24, 34, 55, 25],
+      [20, 45, 15, 61, 46, 16]
+    ];
+
+    var qrRSBlock = function(totalCount, dataCount) {
+      var _this = {};
+      _this.totalCount = totalCount;
+      _this.dataCount = dataCount;
+      return _this;
+    };
+
+    var _this = {};
+
+    var getRsBlockTable = function(typeNumber, errorCorrectionLevel) {
+
+      switch(errorCorrectionLevel) {
+      case QRErrorCorrectionLevel.L :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 0];
+      case QRErrorCorrectionLevel.M :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 1];
+      case QRErrorCorrectionLevel.Q :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 2];
+      case QRErrorCorrectionLevel.H :
+        return RS_BLOCK_TABLE[(typeNumber - 1) * 4 + 3];
+      default :
+        return undefined;
+      }
+    };
+
+    _this.getRSBlocks = function(typeNumber, errorCorrectionLevel) {
+
+      var rsBlock = getRsBlockTable(typeNumber, errorCorrectionLevel);
+
+      if (typeof rsBlock == 'undefined') {
+        throw 'bad rs block @ typeNumber:' + typeNumber +
+            '/errorCorrectionLevel:' + errorCorrectionLevel;
+      }
+
+      var length = rsBlock.length / 3;
+
+      var list = [];
+
+      for (var i = 0; i < length; i += 1) {
+
+        var count = rsBlock[i * 3 + 0];
+        var totalCount = rsBlock[i * 3 + 1];
+        var dataCount = rsBlock[i * 3 + 2];
+
+        for (var j = 0; j < count; j += 1) {
+          list.push(qrRSBlock(totalCount, dataCount) );
+        }
+      }
+
+      return list;
+    };
+
+    return _this;
+  }();
+
+  //---------------------------------------------------------------------
+  // qrBitBuffer
+  //---------------------------------------------------------------------
+
+  var qrBitBuffer = function() {
+
+    var _buffer = [];
+    var _length = 0;
+
+    var _this = {};
+
+    _this.getBuffer = function() {
+      return _buffer;
+    };
+
+    _this.getAt = function(index) {
+      var bufIndex = Math.floor(index / 8);
+      return ( (_buffer[bufIndex] >>> (7 - index % 8) ) & 1) == 1;
+    };
+
+    _this.put = function(num, length) {
+      for (var i = 0; i < length; i += 1) {
+        _this.putBit( ( (num >>> (length - i - 1) ) & 1) == 1);
+      }
+    };
+
+    _this.getLengthInBits = function() {
+      return _length;
+    };
+
+    _this.putBit = function(bit) {
+
+      var bufIndex = Math.floor(_length / 8);
+      if (_buffer.length <= bufIndex) {
+        _buffer.push(0);
+      }
+
+      if (bit) {
+        _buffer[bufIndex] |= (0x80 >>> (_length % 8) );
+      }
+
+      _length += 1;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrNumber
+  //---------------------------------------------------------------------
+
+  var qrNumber = function(data) {
+
+    var _mode = QRMode.MODE_NUMBER;
+    var _data = data;
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _data.length;
+    };
+
+    _this.write = function(buffer) {
+
+      var data = _data;
+
+      var i = 0;
+
+      while (i + 2 < data.length) {
+        buffer.put(strToNum(data.substring(i, i + 3) ), 10);
+        i += 3;
+      }
+
+      if (i < data.length) {
+        if (data.length - i == 1) {
+          buffer.put(strToNum(data.substring(i, i + 1) ), 4);
+        } else if (data.length - i == 2) {
+          buffer.put(strToNum(data.substring(i, i + 2) ), 7);
+        }
+      }
+    };
+
+    var strToNum = function(s) {
+      var num = 0;
+      for (var i = 0; i < s.length; i += 1) {
+        num = num * 10 + chatToNum(s.charAt(i) );
+      }
+      return num;
+    };
+
+    var chatToNum = function(c) {
+      if ('0' <= c && c <= '9') {
+        return c.charCodeAt(0) - '0'.charCodeAt(0);
+      }
+      throw 'illegal char :' + c;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrAlphaNum
+  //---------------------------------------------------------------------
+
+  var qrAlphaNum = function(data) {
+
+    var _mode = QRMode.MODE_ALPHA_NUM;
+    var _data = data;
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _data.length;
+    };
+
+    _this.write = function(buffer) {
+
+      var s = _data;
+
+      var i = 0;
+
+      while (i + 1 < s.length) {
+        buffer.put(
+          getCode(s.charAt(i) ) * 45 +
+          getCode(s.charAt(i + 1) ), 11);
+        i += 2;
+      }
+
+      if (i < s.length) {
+        buffer.put(getCode(s.charAt(i) ), 6);
+      }
+    };
+
+    var getCode = function(c) {
+
+      if ('0' <= c && c <= '9') {
+        return c.charCodeAt(0) - '0'.charCodeAt(0);
+      } else if ('A' <= c && c <= 'Z') {
+        return c.charCodeAt(0) - 'A'.charCodeAt(0) + 10;
+      } else {
+        switch (c) {
+        case ' ' : return 36;
+        case '$' : return 37;
+        case '%' : return 38;
+        case '*' : return 39;
+        case '+' : return 40;
+        case '-' : return 41;
+        case '.' : return 42;
+        case '/' : return 43;
+        case ':' : return 44;
+        default :
+          throw 'illegal char :' + c;
+        }
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qr8BitByte
+  //---------------------------------------------------------------------
+
+  var qr8BitByte = function(data) {
+
+    var _mode = QRMode.MODE_8BIT_BYTE;
+    var _data = data;
+    var _bytes = qrcode.stringToBytes(data);
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return _bytes.length;
+    };
+
+    _this.write = function(buffer) {
+      for (var i = 0; i < _bytes.length; i += 1) {
+        buffer.put(_bytes[i], 8);
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // qrKanji
+  //---------------------------------------------------------------------
+
+  var qrKanji = function(data) {
+
+    var _mode = QRMode.MODE_KANJI;
+    var _data = data;
+
+    var stringToBytes = qrcode.stringToBytesFuncs['SJIS'];
+    if (!stringToBytes) {
+      throw 'sjis not supported.';
+    }
+    !function(c, code) {
+      // self test for sjis support.
+      var test = stringToBytes(c);
+      if (test.length != 2 || ( (test[0] << 8) | test[1]) != code) {
+        throw 'sjis not supported.';
+      }
+    }('\u53cb', 0x9746);
+
+    var _bytes = stringToBytes(data);
+
+    var _this = {};
+
+    _this.getMode = function() {
+      return _mode;
+    };
+
+    _this.getLength = function(buffer) {
+      return ~~(_bytes.length / 2);
+    };
+
+    _this.write = function(buffer) {
+
+      var data = _bytes;
+
+      var i = 0;
+
+      while (i + 1 < data.length) {
+
+        var c = ( (0xff & data[i]) << 8) | (0xff & data[i + 1]);
+
+        if (0x8140 <= c && c <= 0x9FFC) {
+          c -= 0x8140;
+        } else if (0xE040 <= c && c <= 0xEBBF) {
+          c -= 0xC140;
+        } else {
+          throw 'illegal char at ' + (i + 1) + '/' + c;
+        }
+
+        c = ( (c >>> 8) & 0xff) * 0xC0 + (c & 0xff);
+
+        buffer.put(c, 13);
+
+        i += 2;
+      }
+
+      if (i < data.length) {
+        throw 'illegal char at ' + (i + 1);
+      }
+    };
+
+    return _this;
+  };
+
+  //=====================================================================
+  // GIF Support etc.
+  //
+
+  //---------------------------------------------------------------------
+  // byteArrayOutputStream
+  //---------------------------------------------------------------------
+
+  var byteArrayOutputStream = function() {
+
+    var _bytes = [];
+
+    var _this = {};
+
+    _this.writeByte = function(b) {
+      _bytes.push(b & 0xff);
+    };
+
+    _this.writeShort = function(i) {
+      _this.writeByte(i);
+      _this.writeByte(i >>> 8);
+    };
+
+    _this.writeBytes = function(b, off, len) {
+      off = off || 0;
+      len = len || b.length;
+      for (var i = 0; i < len; i += 1) {
+        _this.writeByte(b[i + off]);
+      }
+    };
+
+    _this.writeString = function(s) {
+      for (var i = 0; i < s.length; i += 1) {
+        _this.writeByte(s.charCodeAt(i) );
+      }
+    };
+
+    _this.toByteArray = function() {
+      return _bytes;
+    };
+
+    _this.toString = function() {
+      var s = '';
+      s += '[';
+      for (var i = 0; i < _bytes.length; i += 1) {
+        if (i > 0) {
+          s += ',';
+        }
+        s += _bytes[i];
+      }
+      s += ']';
+      return s;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // base64EncodeOutputStream
+  //---------------------------------------------------------------------
+
+  var base64EncodeOutputStream = function() {
+
+    var _buffer = 0;
+    var _buflen = 0;
+    var _length = 0;
+    var _base64 = '';
+
+    var _this = {};
+
+    var writeEncoded = function(b) {
+      _base64 += String.fromCharCode(encode(b & 0x3f) );
+    };
+
+    var encode = function(n) {
+      if (n < 0) {
+        // error.
+      } else if (n < 26) {
+        return 0x41 + n;
+      } else if (n < 52) {
+        return 0x61 + (n - 26);
+      } else if (n < 62) {
+        return 0x30 + (n - 52);
+      } else if (n == 62) {
+        return 0x2b;
+      } else if (n == 63) {
+        return 0x2f;
+      }
+      throw 'n:' + n;
+    };
+
+    _this.writeByte = function(n) {
+
+      _buffer = (_buffer << 8) | (n & 0xff);
+      _buflen += 8;
+      _length += 1;
+
+      while (_buflen >= 6) {
+        writeEncoded(_buffer >>> (_buflen - 6) );
+        _buflen -= 6;
+      }
+    };
+
+    _this.flush = function() {
+
+      if (_buflen > 0) {
+        writeEncoded(_buffer << (6 - _buflen) );
+        _buffer = 0;
+        _buflen = 0;
+      }
+
+      if (_length % 3 != 0) {
+        // padding
+        var padlen = 3 - _length % 3;
+        for (var i = 0; i < padlen; i += 1) {
+          _base64 += '=';
+        }
+      }
+    };
+
+    _this.toString = function() {
+      return _base64;
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // base64DecodeInputStream
+  //---------------------------------------------------------------------
+
+  var base64DecodeInputStream = function(str) {
+
+    var _str = str;
+    var _pos = 0;
+    var _buffer = 0;
+    var _buflen = 0;
+
+    var _this = {};
+
+    _this.read = function() {
+
+      while (_buflen < 8) {
+
+        if (_pos >= _str.length) {
+          if (_buflen == 0) {
+            return -1;
+          }
+          throw 'unexpected end of file./' + _buflen;
+        }
+
+        var c = _str.charAt(_pos);
+        _pos += 1;
+
+        if (c == '=') {
+          _buflen = 0;
+          return -1;
+        } else if (c.match(/^\s$/) ) {
+          // ignore if whitespace.
+          continue;
+        }
+
+        _buffer = (_buffer << 6) | decode(c.charCodeAt(0) );
+        _buflen += 6;
+      }
+
+      var n = (_buffer >>> (_buflen - 8) ) & 0xff;
+      _buflen -= 8;
+      return n;
+    };
+
+    var decode = function(c) {
+      if (0x41 <= c && c <= 0x5a) {
+        return c - 0x41;
+      } else if (0x61 <= c && c <= 0x7a) {
+        return c - 0x61 + 26;
+      } else if (0x30 <= c && c <= 0x39) {
+        return c - 0x30 + 52;
+      } else if (c == 0x2b) {
+        return 62;
+      } else if (c == 0x2f) {
+        return 63;
+      } else {
+        throw 'c:' + c;
+      }
+    };
+
+    return _this;
+  };
+
+  //---------------------------------------------------------------------
+  // gifImage (B/W)
+  //---------------------------------------------------------------------
+
+  var gifImage = function(width, height) {
+
+    var _width = width;
+    var _height = height;
+    var _data = new Array(width * height);
+
+    var _this = {};
+
+    _this.setPixel = function(x, y, pixel) {
+      _data[y * _width + x] = pixel;
+    };
+
+    _this.write = function(out) {
+
+      //---------------------------------
+      // GIF Signature
+
+      out.writeString('GIF87a');
+
+      //---------------------------------
+      // Screen Descriptor
+
+      out.writeShort(_width);
+      out.writeShort(_height);
+
+      out.writeByte(0x80); // 2bit
+      out.writeByte(0);
+      out.writeByte(0);
+
+      //---------------------------------
+      // Global Color Map
+
+      // black
+      out.writeByte(0x00);
+      out.writeByte(0x00);
+      out.writeByte(0x00);
+
+      // white
+      out.writeByte(0xff);
+      out.writeByte(0xff);
+      out.writeByte(0xff);
+
+      //---------------------------------
+      // Image Descriptor
+
+      out.writeString(',');
+      out.writeShort(0);
+      out.writeShort(0);
+      out.writeShort(_width);
+      out.writeShort(_height);
+      out.writeByte(0);
+
+      //---------------------------------
+      // Local Color Map
+
+      //---------------------------------
+      // Raster Data
+
+      var lzwMinCodeSize = 2;
+      var raster = getLZWRaster(lzwMinCodeSize);
+
+      out.writeByte(lzwMinCodeSize);
+
+      var offset = 0;
+
+      while (raster.length - offset > 255) {
+        out.writeByte(255);
+        out.writeBytes(raster, offset, 255);
+        offset += 255;
+      }
+
+      out.writeByte(raster.length - offset);
+      out.writeBytes(raster, offset, raster.length - offset);
+      out.writeByte(0x00);
+
+      //---------------------------------
+      // GIF Terminator
+      out.writeString(';');
+    };
+
+    var bitOutputStream = function(out) {
+
+      var _out = out;
+      var _bitLength = 0;
+      var _bitBuffer = 0;
+
+      var _this = {};
+
+      _this.write = function(data, length) {
+
+        if ( (data >>> length) != 0) {
+          throw 'length over';
+        }
+
+        while (_bitLength + length >= 8) {
+          _out.writeByte(0xff & ( (data << _bitLength) | _bitBuffer) );
+          length -= (8 - _bitLength);
+          data >>>= (8 - _bitLength);
+          _bitBuffer = 0;
+          _bitLength = 0;
+        }
+
+        _bitBuffer = (data << _bitLength) | _bitBuffer;
+        _bitLength = _bitLength + length;
+      };
+
+      _this.flush = function() {
+        if (_bitLength > 0) {
+          _out.writeByte(_bitBuffer);
+        }
+      };
+
+      return _this;
+    };
+
+    var getLZWRaster = function(lzwMinCodeSize) {
+
+      var clearCode = 1 << lzwMinCodeSize;
+      var endCode = (1 << lzwMinCodeSize) + 1;
+      var bitLength = lzwMinCodeSize + 1;
+
+      // Setup LZWTable
+      var table = lzwTable();
+
+      for (var i = 0; i < clearCode; i += 1) {
+        table.add(String.fromCharCode(i) );
+      }
+      table.add(String.fromCharCode(clearCode) );
+      table.add(String.fromCharCode(endCode) );
+
+      var byteOut = byteArrayOutputStream();
+      var bitOut = bitOutputStream(byteOut);
+
+      // clear code
+      bitOut.write(clearCode, bitLength);
+
+      var dataIndex = 0;
+
+      var s = String.fromCharCode(_data[dataIndex]);
+      dataIndex += 1;
+
+      while (dataIndex < _data.length) {
+
+        var c = String.fromCharCode(_data[dataIndex]);
+        dataIndex += 1;
+
+        if (table.contains(s + c) ) {
+
+          s = s + c;
+
+        } else {
+
+          bitOut.write(table.indexOf(s), bitLength);
+
+          if (table.size() < 0xfff) {
+
+            if (table.size() == (1 << bitLength) ) {
+              bitLength += 1;
+            }
+
+            table.add(s + c);
+          }
+
+          s = c;
+        }
+      }
+
+      bitOut.write(table.indexOf(s), bitLength);
+
+      // end code
+      bitOut.write(endCode, bitLength);
+
+      bitOut.flush();
+
+      return byteOut.toByteArray();
+    };
+
+    var lzwTable = function() {
+
+      var _map = {};
+      var _size = 0;
+
+      var _this = {};
+
+      _this.add = function(key) {
+        if (_this.contains(key) ) {
+          throw 'dup key:' + key;
+        }
+        _map[key] = _size;
+        _size += 1;
+      };
+
+      _this.size = function() {
+        return _size;
+      };
+
+      _this.indexOf = function(key) {
+        return _map[key];
+      };
+
+      _this.contains = function(key) {
+        return typeof _map[key] != 'undefined';
+      };
+
+      return _this;
+    };
+
+    return _this;
+  };
+
+  var createDataURL = function(width, height, getPixel) {
+    var gif = gifImage(width, height);
+    for (var y = 0; y < height; y += 1) {
+      for (var x = 0; x < width; x += 1) {
+        gif.setPixel(x, y, getPixel(x, y) );
+      }
+    }
+
+    var b = byteArrayOutputStream();
+    gif.write(b);
+
+    var base64 = base64EncodeOutputStream();
+    var bytes = b.toByteArray();
+    for (var i = 0; i < bytes.length; i += 1) {
+      base64.writeByte(bytes[i]);
+    }
+    base64.flush();
+
+    return 'data:image/gif;base64,' + base64;
+  };
+
+  //---------------------------------------------------------------------
+  // returns qrcode function.
+
+  return qrcode;
+}();
+
+// multibyte support
+!function() {
+
+  qrcode.stringToBytesFuncs['UTF-8'] = function(s) {
+    // http://stackoverflow.com/questions/18729405/how-to-convert-utf8-string-to-byte-array
+    function toUTF8Array(str) {
+      var utf8 = [];
+      for (var i=0; i < str.length; i++) {
+        var charcode = str.charCodeAt(i);
+        if (charcode < 0x80) utf8.push(charcode);
+        else if (charcode < 0x800) {
+          utf8.push(0xc0 | (charcode >> 6),
+              0x80 | (charcode & 0x3f));
+        }
+        else if (charcode < 0xd800 || charcode >= 0xe000) {
+          utf8.push(0xe0 | (charcode >> 12),
+              0x80 | ((charcode>>6) & 0x3f),
+              0x80 | (charcode & 0x3f));
+        }
+        // surrogate pair
+        else {
+          i++;
+          // UTF-16 encodes 0x10000-0x10FFFF by
+          // subtracting 0x10000 and splitting the
+          // 20 bits of 0x0-0xFFFFF into two halves
+          charcode = 0x10000 + (((charcode & 0x3ff)<<10)
+            | (str.charCodeAt(i) & 0x3ff));
+          utf8.push(0xf0 | (charcode >>18),
+              0x80 | ((charcode>>12) & 0x3f),
+              0x80 | ((charcode>>6) & 0x3f),
+              0x80 | (charcode & 0x3f));
+        }
+      }
+      return utf8;
+    }
+    return toUTF8Array(s);
+  };
+
+}();
+
+(function (factory) {
+  if (typeof define === 'function' && define.amd) {
+      define([], factory);
+  } else if (typeof exports === 'object') {
+      module.exports = factory();
+  }
+}(function () {
+    return qrcode;
+}));
+</script>
+<script>/* ==========================================================================
+   PixelProTech Technician Command Centre — app.js
+   Local-first: all data lives in IndexedDB in this browser. No server.
+   ========================================================================== */
+
+const DB_NAME = 'ppt-command-centre';
+const DB_VERSION = 1;
+let db = null;
+let session = { technicianId: null, technicianName: null };
+let onlineStatus = navigator.onLine;
+
+/* ---------------------------------------------------------------------- */
+/* IndexedDB layer                                                        */
+/* ---------------------------------------------------------------------- */
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VERSION);
+    req.onupgradeneeded = (e) => {
+      const _db = e.target.result;
+      if (!_db.objectStoreNames.contains('users')) _db.createObjectStore('users', { keyPath: 'id' });
+      if (!_db.objectStoreNames.contains('jobs')) {
+        const s = _db.createObjectStore('jobs', { keyPath: 'id' });
+        s.createIndex('jobNumber', 'jobNumber', { unique: false });
+        s.createIndex('status', 'status', { unique: false });
+      }
+      if (!_db.objectStoreNames.contains('customers')) _db.createObjectStore('customers', { keyPath: 'id' });
+      if (!_db.objectStoreNames.contains('inventory')) _db.createObjectStore('inventory', { keyPath: 'id' });
+      if (!_db.objectStoreNames.contains('kb')) _db.createObjectStore('kb', { keyPath: 'id' });
+      if (!_db.objectStoreNames.contains('meta')) _db.createObjectStore('meta', { keyPath: 'key' });
+    };
+    req.onsuccess = (e) => { resolve(e.target.result); };
+    req.onerror = (e) => reject(e.target.error);
+  });
+}
+
+function tx(store, mode = 'readonly') {
+  return db.transaction(store, mode).objectStore(store);
+}
+function idbGetAll(store) {
+  return new Promise((resolve, reject) => {
+    const r = tx(store).getAll();
+    r.onsuccess = () => resolve(r.result || []);
+    r.onerror = () => reject(r.error);
+  });
+}
+function idbGet(store, key) {
+  return new Promise((resolve, reject) => {
+    const r = tx(store).get(key);
+    r.onsuccess = () => resolve(r.result || null);
+    r.onerror = () => reject(r.error);
+  });
+}
+function idbPut(store, value) {
+  return new Promise((resolve, reject) => {
+    const r = tx(store, 'readwrite').put(value);
+    r.onsuccess = () => resolve(value);
+    r.onerror = () => reject(r.error);
+  });
+}
+function idbDelete(store, key) {
+  return new Promise((resolve, reject) => {
+    const r = tx(store, 'readwrite').delete(key);
+    r.onsuccess = () => resolve();
+    r.onerror = () => reject(r.error);
+  });
+}
+async function idbClearAll() {
+  const stores = ['users', 'jobs', 'customers', 'inventory', 'kb', 'meta'];
+  for (const s of stores) {
+    await new Promise((resolve) => { const r = tx(s, 'readwrite').clear(); r.onsuccess = resolve; r.onerror = resolve; });
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Utilities                                                               */
+/* ---------------------------------------------------------------------- */
+function uid(prefix = '') { return prefix + Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
+function nowISO() { return new Date().toISOString(); }
+function fmtDate(d = new Date()) { return d.toLocaleDateString(); }
+function fmtTime(d = new Date()) { return d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }
+function fmtDateTime(iso) { if (!iso) return '—'; const d = new Date(iso); return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); }
+function esc(s) { return (s ?? '').toString().replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c])); }
+
+function toast(msg, kind = '') {
+  const host = document.getElementById('toast-host');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  host.appendChild(el);
+  setTimeout(() => el.remove(), 3200);
+}
+
+async function nextJobNumber() {
+  const meta = (await idbGet('meta', 'jobCounter')) || { key: 'jobCounter', value: 0 };
+  meta.value += 1;
+  await idbPut('meta', meta);
+  const year = new Date().getFullYear();
+  return `PPT-${year}-${String(meta.value).padStart(4, '0')}`;
+}
+
+function captureGPS() {
+  return new Promise((resolve) => {
+    if (!navigator.geolocation) return resolve(null);
+    navigator.geolocation.getCurrentPosition(
+      (pos) => resolve({ lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy, ts: nowISO() }),
+      () => resolve(null),
+      { enableHighAccuracy: true, timeout: 8000 }
+    );
+  });
+}
+function mapsLink(gps) { return gps ? `https://maps.google.com/?q=${gps.lat},${gps.lng}` : ''; }
+
+function fileToDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+/* ---------------------------------------------------------------------- */
+/* Signature pad component                                                */
+/* ---------------------------------------------------------------------- */
+function attachSignaturePad(canvas) {
+  const ctx = canvas.getContext('2d');
+  let drawing = false, last = null, hasInk = false;
+  function resize() {
+    const rect = canvas.getBoundingClientRect();
+    const ratio = window.devicePixelRatio || 1;
+    const prevData = hasInk ? canvas.toDataURL() : null;
+    canvas.width = rect.width * ratio;
+    canvas.height = rect.height * ratio;
+    ctx.scale(ratio, ratio);
+    ctx.lineWidth = 2.2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#ffffff';
+    if (prevData) { const img = new Image(); img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height); img.src = prevData; }
+  }
+  function pos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const t = e.touches ? e.touches[0] : e;
+    return { x: t.clientX - rect.left, y: t.clientY - rect.top };
+  }
+  function start(e) { drawing = true; hasInk = true; last = pos(e); e.preventDefault(); }
+  function move(e) {
+    if (!drawing) return;
+    const p = pos(e);
+    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+    last = p; e.preventDefault();
+  }
+  function end() { drawing = false; }
+  canvas.addEventListener('mousedown', start); canvas.addEventListener('mousemove', move); window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, { passive: false }); canvas.addEventListener('touchmove', move, { passive: false }); canvas.addEventListener('touchend', end);
+  window.addEventListener('resize', resize);
+  resize();
+  return {
+    clear() { ctx.clearRect(0, 0, canvas.width, canvas.height); hasInk = false; },
+    isEmpty() { return !hasInk; },
+    getDataURL() { return hasInk ? canvas.toDataURL('image/png') : null; }
+  };
+}
+
+/* ---------------------------------------------------------------------- */
+/* Router                                                                  */
+/* ---------------------------------------------------------------------- */
+const VIEW_TITLES = {
+  dashboard: 'Dashboard', newjob: 'New Job', jobs: 'Job List', jobdetail: 'Job File',
+  customers: 'Customers', inventory: 'Parts Inventory', kb: 'Knowledge Base',
+  admin: 'Admin Dashboard', settings: 'Settings', verify: 'Warranty Verification'
+};
+let currentView = 'dashboard';
+function showView(name, opts = {}) {
+  currentView = name;
+  document.querySelectorAll('.view').forEach(v => v.hidden = true);
+  document.querySelectorAll('.nav-item, .bn-item').forEach(n => n.classList.toggle('active', n.dataset.view === name));
+  const el = document.getElementById('view-' + name);
+  if (el) { el.hidden = false; el.classList.add('fade-in'); }
+  document.getElementById('topbar-title').textContent = VIEW_TITLES[name] || name;
+  const renderers = {
+    dashboard: renderDashboard, newjob: () => startNewJobWizard(opts.jobId), jobs: renderJobsList,
+    customers: renderCustomers, inventory: renderInventory, kb: renderKB, admin: renderAdmin, settings: renderSettings
+  };
+  if (renderers[name]) renderers[name]();
+}
+document.addEventListener('click', (e) => {
+  const nav = e.target.closest('[data-view]');
+  if (nav) showView(nav.dataset.view);
+});
+
+/* ---------------------------------------------------------------------- */
+/* Auth / PIN login                                                        */
+/* ---------------------------------------------------------------------- */
+let pinBuffer = '';
+function renderPinPad() {
+  const pad = document.getElementById('pin-pad');
+  pad.innerHTML = '';
+  ['1', '2', '3', '4', '5', '6', '7', '8', '9', '⌫', '0', '✓'].forEach(k => {
+    const b = document.createElement('div');
+    b.className = 'pin-key'; b.textContent = k;
+    b.onclick = () => handlePinKey(k);
+    pad.appendChild(b);
+  });
+}
+function updatePinDots() {
+  document.querySelectorAll('#pin-dots .pin-dot').forEach((d, i) => d.classList.toggle('filled', i < pinBuffer.length));
+}
+async function handlePinKey(k) {
+  if (k === '⌫') { pinBuffer = pinBuffer.slice(0, -1); updatePinDots(); return; }
+  if (k === '✓') { return attemptLogin(); }
+  if (pinBuffer.length < 4) { pinBuffer += k; updatePinDots(); }
+  if (pinBuffer.length === 4) setTimeout(attemptLogin, 120);
+}
+async function attemptLogin() {
+  const techId = document.getElementById('login-technician').value;
+  const user = await idbGet('users', techId);
+  if (!user) { toast('Select a technician'); return; }
+  if (user.pin !== pinBuffer) { toast('Incorrect PIN'); pinBuffer = ''; updatePinDots(); return; }
+  session = { technicianId: user.id, technicianName: user.name };
+  document.getElementById('login-view').hidden = true;
+  document.getElementById('app').hidden = false;
+  document.getElementById('tech-name').textContent = user.name;
+  showView('dashboard');
+}
+async function populateTechnicianSelect(selectEl) {
+  const users = await idbGetAll('users');
+  selectEl.innerHTML = users.map(u => `<option value="${u.id}">${esc(u.name)} — ${esc(u.role)}</option>`).join('');
+}
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  session = { technicianId: null, technicianName: null };
+  document.getElementById('app').hidden = true;
+  document.getElementById('login-view').hidden = false;
+  pinBuffer = ''; updatePinDots();
+});
+
+/* ---------------------------------------------------------------------- */
+/* Online/offline indicator                                               */
+/* ---------------------------------------------------------------------- */
+function updateOnlinePill() {
+  const pill = document.getElementById('sync-pill');
+  const text = document.getElementById('sync-text');
+  onlineStatus = navigator.onLine;
+  pill.className = 'pill ' + (onlineStatus ? 'online' : 'offline');
+  text.textContent = onlineStatus ? 'Online' : 'Offline — saving locally';
+}
+window.addEventListener('online', updateOnlinePill);
+window.addEventListener('offline', updateOnlinePill);
+
+/* ---------------------------------------------------------------------- */
+/* Seed data (first run)                                                  */
+/* ---------------------------------------------------------------------- */
+async function seedIfEmpty() {
+  const users = await idbGetAll('users');
+  if (users.length === 0) {
+    await idbPut('users', { id: uid('u_'), name: 'Admin Technician', role: 'Admin', pin: '1234' });
+    await idbPut('users', { id: uid('u_'), name: 'Bench Tech 1', role: 'Technician', pin: '0000' });
+  }
+  const inv = await idbGetAll('inventory');
+  if (inv.length === 0) {
+    await idbPut('inventory', { id: uid('inv_'), partName: 'SATA SSD 256GB', supplier: 'Local Distributor', stock: 8, lowStock: 3, purchaseDate: nowISO(), costPrice: 0, sellPrice: 0 });
+    await idbPut('inventory', { id: uid('inv_'), partName: 'Laptop Battery (Generic)', supplier: 'Local Distributor', stock: 4, lowStock: 2, purchaseDate: nowISO(), costPrice: 0, sellPrice: 0 });
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Boot                                                                    */
+/* ---------------------------------------------------------------------- */
+async function boot() {
+  db = await openDB();
+  await seedIfEmpty();
+  await populateTechnicianSelect(document.getElementById('login-technician'));
+  renderPinPad();
+  updateOnlinePill();
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+}
+boot();
+
+/* ---------------------------------------------------------------------- */
+/* Dashboard                                                               */
+/* ---------------------------------------------------------------------- */
+async function renderDashboard() {
+  const jobs = await idbGetAll('jobs');
+  const today = new Date().toDateString();
+  const todays = jobs.filter(j => new Date(j.createdAt).toDateString() === today);
+  const pending = jobs.filter(j => j.status !== 'Collected' && j.status !== 'Cancelled');
+  const completed = jobs.filter(j => j.status === 'Collected');
+  const revenueToday = todays.reduce((s, j) => s + (j.payment?.amountPaid || 0), 0);
+  const avgTime = (() => {
+    const done = jobs.filter(j => j.collection?.time && j.createdAt);
+    if (!done.length) return '—';
+    const total = done.reduce((s, j) => s + (new Date(j.collection.time) - new Date(j.createdAt)), 0);
+    const hrs = total / done.length / 3600000;
+    return hrs < 1 ? Math.round(hrs * 60) + ' min' : hrs.toFixed(1) + ' hrs';
+  })();
+  const repairCounts = {};
+  jobs.forEach(j => { const t = j.jobInfo?.jobType || 'Other'; repairCounts[t] = (repairCounts[t] || 0) + 1; });
+  const topRepair = Object.entries(repairCounts).sort((a, b) => b[1] - a[1])[0];
+  const warrantyClaims = jobs.filter(j => j.jobInfo?.warranty).length;
+  const custCount = new Set(jobs.map(j => j.customerId)).size;
+
+  const stats = [
+    ["Today's Jobs", todays.length, true],
+    ['Pending Jobs', pending.length, false],
+    ['Completed Jobs', completed.length, true],
+    ['Revenue Today', 'R ' + revenueToday.toFixed(2), true],
+    ['Avg. Repair Time', avgTime, false],
+    ['Warranty Claims', warrantyClaims, false],
+    ['Most Common Repair', topRepair ? topRepair[0] : '—', false],
+    ['Recent Customers', custCount, false],
+  ];
+  document.getElementById('dash-stats').innerHTML = stats.map(([label, val, grad]) => `
+    <div class="card stat-card hoverable">
+      <div class="stat-label">${label}</div>
+      <div class="stat-value ${grad ? 'grad' : ''}">${val}</div>
+    </div>`).join('');
+
+  const recent = [...jobs].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 6);
+  const recentHost = document.getElementById('dash-recent');
+  if (!recent.length) { recentHost.innerHTML = '<div class="empty"><div class="emoji">Q</div>No jobs yet — start with <b>New Job</b>.</div>'; return; }
+  const customers = await idbGetAll('customers');
+  const custMap = Object.fromEntries(customers.map(c => [c.id, c]));
+  recentHost.innerHTML = `<table><thead><tr><th>Job #</th><th>Customer</th><th>Device</th><th>Status</th><th></th></tr></thead><tbody>
+    ${recent.map(j => `<tr>
+      <td>${esc(j.jobNumber)}</td>
+      <td>${esc(custMap[j.customerId]?.fullName || '—')}</td>
+      <td>${esc(j.device?.brand || '')} ${esc(j.device?.model || '')}</td>
+      <td>${statusBadge(j.status)}</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="openJobDetail('${j.id}')">Open</button></td>
+    </tr>`).join('')}
+  </tbody></table>`;
+}
+function statusBadge(status) {
+  const map = { 'Intake': 'badge-pending', 'In Progress': 'badge-pending', 'Awaiting Parts': 'badge-pending', 'Ready for Collection': 'badge-pass', 'Collected': 'badge-pass', 'Cancelled': 'badge-fail' };
+  return `<span class="badge ${map[status] || 'badge-neutral'}">${esc(status || 'Intake')}</span>`;
+}
+
+/* ---------------------------------------------------------------------- */
+/* NEW JOB WIZARD                                                          */
+/* ---------------------------------------------------------------------- */
+let draft = null;
+let wizStepIndex = 0;
+let sigPads = {};   // live signature pad instances keyed by canvas id, rebuilt per render
+let testDefs = ['Keyboard','Touchpad','Display','Touch Screen','Dead Pixels','Camera','Microphone','Speakers',
+  'WiFi','Bluetooth','Ethernet','HDMI','USB Ports','Charging','Battery','Fingerprint Reader','Face Unlock',
+  'SSD SMART Status','RAM Test','CPU Temperature','GPU Temperature','Fan Speed','Internet Connectivity'];
+let damageDefs = ['Cracked Screen','Deep Scratch','Dent','Broken Hinge','Loose Hinge','Missing Screws',
+  'Liquid Damage','Missing Rubber Feet','Battery Swelling','Frame Damage','Broken Camera','Broken USB Port'];
+let inspectionAngles = ['Front','Rear','Left Side','Right Side','Top','Bottom','Display','Keyboard','Ports','Accessories','Serial Number Label','Existing Damage'];
+let deviceTypes = ['Laptop','Desktop','Mac','Phone','Tablet','Printer','Router','POS','Server','TV','Other'];
+let accessoryDefs = ['Power Supply','Bag','Dock','Mouse','Keyboard','SIM Card','Memory Card','Other'];
+let workflowTemplates = {
+  'Windows Installation': ['Confirm backup complete / customer sign-off obtained','Boot installation media','Partition & format drive','Install OS','Install chipset & driver package','Install customer-approved software','Apply Windows Updates','Activate license','Run post-install QC tests'],
+  'Screen Replacement': ['Photograph existing damage','Power down & remove battery/disconnect power','Remove bezel / frame','Disconnect display cable','Fit replacement panel','Reconnect & test display before reassembly','Reassemble chassis','Run display QC tests'],
+  'Battery Replacement': ['Run battery health diagnostic (before)','Power down device','Remove old battery safely','Fit replacement battery','Calibrate battery (full charge/discharge cycle if required)','Run battery health diagnostic (after)'],
+  'Keyboard Replacement': ['Photograph existing damage','Remove bottom chassis','Disconnect keyboard ribbon','Fit replacement keyboard','Test every key','Reassemble chassis'],
+  'Motherboard Repair': ['Diagnose fault (visual + multimeter)','Isolate faulty component/section','Order / fit replacement part','Reflow / resolder as required','Power-on test','Full QC pass'],
+  'Virus / Malware Removal': ['Isolate device from network','Run full malware scan','Quarantine / remove threats','Check startup items & scheduled tasks','Update OS & software','Re-scan to confirm clean','Restore network access'],
+  'Network / Router Setup': ['Confirm ISP line status','Factory reset / firmware update router','Configure SSID & security','Test WAN & LAN throughput','Confirm client devices connect'],
+  'Printer Repair': ['Diagnose fault (paper path / print head / board)','Clean or replace faulty part','Run test print (all colours)','Confirm network/USB connectivity'],
+  'POS Repair': ['Diagnose fault (hardware / software)','Back up transaction data','Repair / replace faulty component','Restore configuration','Run full transaction test'],
+  'Phone Repair': ['Photograph existing damage','Power down & remove battery connector','Replace faulty component','Reassemble & seal','Run full functional QC test'],
+  'Other': ['Diagnose fault','Carry out repair','Run QC tests']
+};
+
+const STEPS = [
+  { id: 'jobinfo', label: 'Job Info' },
+  { id: 'customer', label: 'Customer' },
+  { id: 'device', label: 'Device' },
+  { id: 'problem', label: 'Problem' },
+  { id: 'dataprotection', label: 'Data Protection' },
+  { id: 'inspection', label: 'Inspection' },
+  { id: 'damage', label: 'Damage Report' },
+  { id: 'pretest', label: 'Pre-Repair Tests' },
+  { id: 'diagnostic', label: 'AI Diagnostic' },
+  { id: 'workflow', label: 'Repair Workflow' },
+  { id: 'parts', label: 'Parts Used' },
+  { id: 'qc', label: 'Quality Control' },
+  { id: 'collection', label: 'Collection' },
+  { id: 'payment', label: 'Payment' },
+  { id: 'warranty', label: 'Warranty' },
+  { id: 'evidence', label: 'Dispute Shield' },
+];
+
+function blankDraft() {
+  return {
+    id: uid('job_'), jobNumber: null, status: 'Intake', createdAt: nowISO(),
+    jobInfo: { date: fmtDate(), time: fmtTime(), technician: session.technicianName, gpsArrival: null, priority: 'Normal', jobType: 'Windows Installation', warranty: false },
+    customerId: null, customer: { fullName: '', phone: '', altPhone: '', email: '', type: 'Home', company: '', address: '', gps: null, signature: null, photo: null },
+    device: { type: 'Laptop', brand: '', model: '', serial: '', imei: '', asset: '', os: '', cpu: '', ram: '', storage: '', ssdHealth: '', batteryHealth: '', accessories: [] },
+    problem: { notes: '', diagnosisNotes: '', images: [] },
+    dataProtection: { choice: '', folders: [], cloud: [], destination: '', understood: false, custSig: null, techSig: null, signedAt: null },
+    inspection: { photos: {} },
+    damage: { items: damageDefs.map(d => ({ key: d, selected: false, photo: null, notes: '' })), custSig: null },
+    pretest: { results: Object.fromEntries(testDefs.map(t => [t, null])) },
+    diagnostic: { path: [], finalDiagnosis: '', confidence: 0, recommendation: '' },
+    workflow: { type: 'Windows Installation', steps: workflowTemplates['Windows Installation'].map(s => ({ label: s, done: false })) },
+    parts: { items: [] },
+    qc: { results: Object.fromEntries(testDefs.map(t => [t, null])) },
+    collection: { checklist: { Working: false, Satisfied: false, RepairExplained: false, WarrantyExplained: false, AccessoriesReturned: false }, custSig: null, techSig: null, time: null },
+    payment: { method: 'Cash', labour: 0, deposit: 0, discount: 0, outstanding: 0, amountPaid: 0, receiptNo: null },
+    warranty: { start: null, end: null, covered: '', notCovered: '', verifyId: uid('war_') },
+    evidence: { versionHistory: [{ editor: session.technicianName, date: nowISO(), reason: 'Job created' }] },
+  };
+}
+
+async function startNewJobWizard(jobId) {
+  wizStepIndex = 0;
+  if (jobId) {
+    draft = await idbGet('jobs', jobId);
+  } else {
+    draft = blankDraft();
+  }
+  renderWizardSteps();
+  renderWizardStep();
+}
+
+function renderWizardSteps() {
+  const host = document.getElementById('wizard-steps');
+  host.innerHTML = STEPS.map((s, i) => `<div class="wizard-step ${i === wizStepIndex ? 'active' : ''} ${i < wizStepIndex ? 'done' : ''}" data-idx="${i}">${i + 1}. ${s.label}</div>`).join('');
+  host.querySelectorAll('.wizard-step').forEach(el => el.onclick = () => { if (saveCurrentStep()) { wizStepIndex = +el.dataset.idx; renderWizardSteps(); renderWizardStep(); } });
+}
+async function persistDraft() {
+  draft.status = draft.status === 'Intake' && wizStepIndex > 3 ? 'In Progress' : draft.status;
+  await idbPut('jobs', draft);
+}
+function renderWizardStep() {
+  const step = STEPS[wizStepIndex];
+  document.getElementById('wizard-body').innerHTML = STEP_RENDERERS[step.id]();
+  STEP_INIT[step.id] && STEP_INIT[step.id]();
+  document.getElementById('wiz-progress').textContent = `Step ${wizStepIndex + 1} of ${STEPS.length}`;
+  document.getElementById('wiz-prev').disabled = wizStepIndex === 0;
+  document.getElementById('wiz-next').textContent = wizStepIndex === STEPS.length - 1 ? 'Save & Finish' : 'Next →';
+}
+function saveCurrentStep() {
+  const step = STEPS[wizStepIndex];
+  const fn = STEP_SAVE[step.id];
+  const ok = fn ? fn() : true;
+  if (ok) persistDraft();
+  return ok;
+}
+document.getElementById('wiz-prev').addEventListener('click', () => { if (saveCurrentStep()) { wizStepIndex = Math.max(0, wizStepIndex - 1); renderWizardSteps(); renderWizardStep(); } });
+document.getElementById('wiz-next').addEventListener('click', async () => {
+  if (!saveCurrentStep()) return;
+  if (wizStepIndex === STEPS.length - 1) {
+    await finalizeJob();
+    return;
+  }
+  wizStepIndex++;
+  renderWizardSteps(); renderWizardStep();
+});
+
+const STEP_RENDERERS = {};
+const STEP_SAVE = {};
+const STEP_INIT = {};
+
+/* ---- STEP: Job Info ---- */
+STEP_RENDERERS.jobinfo = () => `
+  <h3>Job Information</h3>
+  <p>Auto-generated fields lock once the job is saved.</p>
+  <div class="form-grid mt-16">
+    <div class="field"><label>Job Number</label><input type="text" value="${esc(draft.jobNumber || 'Assigned on save')}" disabled></div>
+    <div class="field"><label>Date / Time</label><input type="text" value="${esc(draft.jobInfo.date)} ${esc(draft.jobInfo.time)}" disabled></div>
+    <div class="field"><label>Technician</label><input type="text" value="${esc(draft.jobInfo.technician)}" disabled></div>
+    <div class="field"><label>GPS Arrival</label>
+      <div class="flex gap-8">
+        <input type="text" id="f-gps" value="${draft.jobInfo.gpsArrival ? draft.jobInfo.gpsArrival.lat.toFixed(5) + ', ' + draft.jobInfo.gpsArrival.lng.toFixed(5) : 'Not captured'}" disabled>
+        <button class="btn btn-ghost btn-sm" id="btn-capture-gps" type="button">Capture</button>
+      </div>
+    </div>
+    <div class="field"><label>Priority</label>
+      <select id="f-priority"><option ${draft.jobInfo.priority==='Low'?'selected':''}>Low</option><option ${draft.jobInfo.priority==='Normal'?'selected':''}>Normal</option><option ${draft.jobInfo.priority==='High'?'selected':''}>High</option><option ${draft.jobInfo.priority==='Urgent'?'selected':''}>Urgent</option></select>
+    </div>
+    <div class="field"><label>Job Type</label>
+      <select id="f-jobtype">${Object.keys(workflowTemplates).map(t => `<option ${draft.jobInfo.jobType===t?'selected':''}>${t}</option>`).join('')}</select>
+    </div>
+  </div>
+  <div class="check-row"><input type="checkbox" id="f-warranty" ${draft.jobInfo.warranty?'checked':''}><label for="f-warranty">This job is a warranty claim</label></div>
+`;
+STEP_INIT.jobinfo = () => {
+  document.getElementById('btn-capture-gps').onclick = async () => {
+    toast('Capturing GPS…');
+    const gps = await captureGPS();
+    if (gps) { draft.jobInfo.gpsArrival = gps; toast('GPS captured'); renderWizardStep(); } else toast('Location unavailable');
+  };
+};
+STEP_SAVE.jobinfo = () => {
+  draft.jobInfo.priority = val('f-priority'); draft.jobInfo.jobType = val('f-jobtype'); draft.jobInfo.warranty = checked('f-warranty');
+  if (!draft.jobNumber) return nextJobNumber().then(n => { draft.jobNumber = n; });
+  return true;
+};
+function val(id) { return document.getElementById(id).value; }
+function checked(id) { return document.getElementById(id).checked; }
+
+/* ---- STEP: Customer ---- */
+STEP_RENDERERS.customer = () => `
+  <h3>Customer Details</h3>
+  <div class="chip-grid mt-8 mb-0">
+    ${['Home','Business','School'].map(t => `<div class="chip ${draft.customer.type===t?'selected':''}" data-ctype="${t}">${t}</div>`).join('')}
+  </div>
+  <div class="form-grid mt-16">
+    <div class="field"><label>Full Name *</label><input type="text" id="f-cname" value="${esc(draft.customer.fullName)}"></div>
+    <div class="field"><label>Phone Number *</label><input type="tel" id="f-cphone" value="${esc(draft.customer.phone)}"></div>
+    <div class="field"><label>Alternative Number</label><input type="tel" id="f-caltphone" value="${esc(draft.customer.altPhone)}"></div>
+    <div class="field"><label>Email</label><input type="email" id="f-cemail" value="${esc(draft.customer.email)}"></div>
+    <div class="field"><label>Company / School (if applicable)</label><input type="text" id="f-ccompany" value="${esc(draft.customer.company)}"></div>
+    <div class="field"><label>Physical Address</label><input type="text" id="f-caddress" value="${esc(draft.customer.address)}"></div>
+  </div>
+  <div class="field">
+    <label>GPS Location</label>
+    <div class="flex gap-8">
+      <input type="text" id="f-cgps" value="${draft.customer.gps ? mapsLink(draft.customer.gps) : 'Not captured'}" disabled>
+      <button class="btn btn-ghost btn-sm" id="btn-capture-cgps" type="button">Capture</button>
+    </div>
+  </div>
+  <div class="field"><label>Customer Photo (optional)</label>
+    <input type="file" accept="image/*" capture="environment" id="f-cphoto">
+    ${draft.customer.photo ? `<img src="${draft.customer.photo}" style="max-width:140px;border-radius:10px;margin-top:6px;">` : ''}
+  </div>
+  <div class="field"><label>Customer Signature — intake acknowledgement</label>
+    <div class="sig-wrap"><canvas id="sig-customer"></canvas><div class="sig-placeholder" id="sig-customer-ph">${draft.customer.signature ? '' : 'Sign here'}</div></div>
+    <div class="flex gap-8 mt-8"><button class="btn btn-ghost btn-sm" id="clear-sig-customer" type="button">Clear</button></div>
+  </div>
+`;
+STEP_INIT.customer = () => {
+  document.querySelectorAll('[data-ctype]').forEach(el => el.onclick = () => { draft.customer.type = el.dataset.ctype; renderWizardStep(); });
+  document.getElementById('btn-capture-cgps').onclick = async () => {
+    toast('Capturing GPS…'); const gps = await captureGPS();
+    if (gps) { draft.customer.gps = gps; toast('Location captured'); renderWizardStep(); } else toast('Location unavailable');
+  };
+  document.getElementById('f-cphoto').onchange = async (e) => { if (e.target.files[0]) { draft.customer.photo = await fileToDataURL(e.target.files[0]); renderWizardStep(); } };
+  const canvas = document.getElementById('sig-customer');
+  sigPads.customer = attachSignaturePad(canvas);
+  if (draft.customer.signature) { const img = new Image(); img.onload = () => canvas.getContext('2d').drawImage(img, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height); img.src = draft.customer.signature; }
+  document.getElementById('clear-sig-customer').onclick = () => { sigPads.customer.clear(); document.getElementById('sig-customer-ph').textContent = 'Sign here'; };
+};
+STEP_SAVE.customer = () => {
+  draft.customer.fullName = val('f-cname'); draft.customer.phone = val('f-cphone'); draft.customer.altPhone = val('f-caltphone');
+  draft.customer.email = val('f-cemail'); draft.customer.company = val('f-ccompany'); draft.customer.address = val('f-caddress');
+  if (!sigPads.customer.isEmpty()) draft.customer.signature = sigPads.customer.getDataURL();
+  if (!draft.customer.fullName || !draft.customer.phone) { toast('Full name and phone are required'); return false; }
+  if (!draft.customerId) draft.customerId = uid('cust_');
+  saveCustomerRecord();
+  return true;
+};
+async function saveCustomerRecord() {
+  await idbPut('customers', { id: draft.customerId, fullName: draft.customer.fullName, phone: draft.customer.phone, altPhone: draft.customer.altPhone, email: draft.customer.email, type: draft.customer.type, company: draft.customer.company, address: draft.customer.address, updatedAt: nowISO() });
+}
+
+/* ---- STEP: Device ---- */
+STEP_RENDERERS.device = () => `
+  <h3>Device Information</h3>
+  <div class="chip-grid mt-8">
+    ${deviceTypes.map(t => `<div class="chip ${draft.device.type===t?'selected':''}" data-dtype="${t}">${t}</div>`).join('')}
+  </div>
+  <div class="form-grid mt-16">
+    <div class="field"><label>Brand</label><input type="text" id="f-brand" value="${esc(draft.device.brand)}"></div>
+    <div class="field"><label>Model</label><input type="text" id="f-model" value="${esc(draft.device.model)}"></div>
+    <div class="field"><label>Serial Number</label><input type="text" id="f-serial" value="${esc(draft.device.serial)}"></div>
+    <div class="field"><label>IMEI (if applicable)</label><input type="text" id="f-imei" value="${esc(draft.device.imei)}"></div>
+    <div class="field"><label>Asset Number</label><input type="text" id="f-asset" value="${esc(draft.device.asset)}"></div>
+    <div class="field"><label>Operating System</label><input type="text" id="f-os" value="${esc(draft.device.os)}"></div>
+    <div class="field"><label>Processor</label><input type="text" id="f-cpu" value="${esc(draft.device.cpu)}"></div>
+    <div class="field"><label>RAM</label><input type="text" id="f-ram" value="${esc(draft.device.ram)}"></div>
+    <div class="field"><label>Storage</label><input type="text" id="f-storage" value="${esc(draft.device.storage)}"></div>
+    <div class="field"><label>SSD Health (%)</label><input type="number" id="f-ssdh" value="${esc(draft.device.ssdHealth)}"></div>
+    <div class="field"><label>Battery Health (%)</label><input type="number" id="f-bath" value="${esc(draft.device.batteryHealth)}"></div>
+  </div>
+  <div class="field"><label>Accessories Received</label>
+    <div class="chip-grid">${accessoryDefs.map(a => `<div class="chip ${draft.device.accessories.includes(a)?'selected':''}" data-acc="${a}">${a}</div>`).join('')}</div>
+  </div>
+`;
+STEP_INIT.device = () => {
+  document.querySelectorAll('[data-dtype]').forEach(el => el.onclick = () => { draft.device.type = el.dataset.dtype; renderWizardStep(); });
+  document.querySelectorAll('[data-acc]').forEach(el => el.onclick = () => {
+    const a = el.dataset.acc; const i = draft.device.accessories.indexOf(a);
+    if (i > -1) draft.device.accessories.splice(i, 1); else draft.device.accessories.push(a);
+    renderWizardStep();
+  });
+};
+STEP_SAVE.device = () => {
+  ['brand','model','serial','imei','asset','os','cpu','ram','storage'].forEach(k => draft.device[k] = val('f-' + (k==='asset'?'asset':k)));
+  draft.device.ssdHealth = val('f-ssdh'); draft.device.batteryHealth = val('f-bath');
+  return true;
+};
+
+/* ---- STEP: Problem ---- */
+STEP_RENDERERS.problem = () => `
+  <h3>Customer Problem</h3>
+  <div class="field"><label>Customer's description of the issue</label><textarea id="f-pnotes" rows="4">${esc(draft.problem.notes)}</textarea></div>
+  <div class="field"><label>Technician's initial diagnosis</label><textarea id="f-pdiag" rows="3">${esc(draft.problem.diagnosisNotes)}</textarea></div>
+  <div class="field"><label>Attach photos / videos of the issue</label><input type="file" accept="image/*,video/*" capture="environment" multiple id="f-pimg"></div>
+  <div class="photo-grid mt-8" id="problem-photo-grid">
+    ${draft.problem.images.map((img, i) => `<div class="photo-slot"><img src="${img}"><button class="btn btn-ghost btn-sm" style="position:absolute;top:4px;right:4px;" onclick="removeProblemImage(${i})">✕</button></div>`).join('')}
+  </div>
+`;
+STEP_INIT.problem = () => {
+  document.getElementById('f-pimg').onchange = async (e) => {
+    for (const file of e.target.files) draft.problem.images.push(await fileToDataURL(file));
+    renderWizardStep();
+  };
+};
+window.removeProblemImage = (i) => { draft.problem.images.splice(i, 1); renderWizardStep(); };
+STEP_SAVE.problem = () => { draft.problem.notes = val('f-pnotes'); draft.problem.diagnosisNotes = val('f-pdiag'); return true; };
+
+/* ---- STEP: Data Protection (mandatory legal step) ---- */
+const backupFolders = ['Desktop','Documents','Downloads','Pictures','Videos','Music','Projects','Accounting','School Work'];
+const cloudAccounts = ['OneDrive','Google Drive','Dropbox','Mega','Terabox','iCloud'];
+STEP_RENDERERS.dataprotection = () => `
+  <h3>Data Protection <span class="badge badge-fail" style="margin-left:8px;">Mandatory</span></h3>
+  <div class="chip-grid mt-8">
+    ${['Backup Everything','Backup Selected Files','No Backup Required'].map(c => `<div class="chip ${draft.dataProtection.choice===c?'selected':''}" data-dpchoice="${c}">${c}</div>`).join('')}
+  </div>
+  ${draft.dataProtection.choice === 'Backup Selected Files' ? `
+  <div class="field mt-16"><label>Folders to back up</label>
+    <div class="chip-grid">${backupFolders.map(f => `<div class="chip ${draft.dataProtection.folders.includes(f)?'selected':''}" data-dpfolder="${f}">${f}</div>`).join('')}
+    <div class="chip ${draft.dataProtection.folders.includes('Custom')?'selected':''}" data-dpfolder="Custom">Custom Folder</div></div>
+  </div>
+  <div class="field"><label>Cloud accounts involved</label>
+    <div class="chip-grid">${cloudAccounts.map(c => `<div class="chip ${draft.dataProtection.cloud.includes(c)?'selected':''}" data-dpcloud="${c}">${c}</div>`).join('')}</div>
+  </div>` : ''}
+  ${draft.dataProtection.choice && draft.dataProtection.choice !== 'No Backup Required' ? `
+  <div class="field"><label>Backup destination</label>
+    <select id="f-dpdest"><option value="">Select…</option>${['External HDD','USB','Cloud','Another PC'].map(d => `<option ${draft.dataProtection.destination===d?'selected':''}>${d}</option>`).join('')}</select>
+  </div>` : ''}
+
+  <div class="warning-box">
+    <h4>⚠ Critical Warning</h4>
+    <p>A clean Windows installation, factory reset, or full repair will remove:</p>
+    <ul><li>Documents</li><li>Photos</li><li>Videos</li><li>Desktop files</li><li>Downloads</li><li>Installed programs</li><li>User accounts</li><li>Settings</li><li>Saved passwords</li><li>Browser profiles</li></ul>
+    <p><b>Unless backed up first.</b> This cannot be undone after the repair proceeds.</p>
+  </div>
+  <div class="check-row"><input type="checkbox" id="f-dpunderstood" ${draft.dataProtection.understood?'checked':''}><label for="f-dpunderstood"><b>I understand</b> — the customer confirms they have read and understood the warning above.</label></div>
+
+  <div class="grid grid-2 mt-16">
+    <div class="field"><label>Customer Signature</label>
+      <div class="sig-wrap"><canvas id="sig-dp-cust"></canvas><div class="sig-placeholder" id="sig-dp-cust-ph">${draft.dataProtection.custSig ? '' : 'Sign here'}</div></div>
+      <button class="btn btn-ghost btn-sm mt-8" id="clear-sig-dpcust" type="button">Clear</button>
+    </div>
+    <div class="field"><label>Technician Signature</label>
+      <div class="sig-wrap"><canvas id="sig-dp-tech"></canvas><div class="sig-placeholder" id="sig-dp-tech-ph">${draft.dataProtection.techSig ? '' : 'Sign here'}</div></div>
+      <button class="btn btn-ghost btn-sm mt-8" id="clear-sig-dptech" type="button">Clear</button>
+    </div>
+  </div>
+  <p class="text-sm mt-8">Repair cannot proceed past this step until both signatures and the acknowledgement checkbox are complete.</p>
+`;
+STEP_INIT.dataprotection = () => {
+  document.querySelectorAll('[data-dpchoice]').forEach(el => el.onclick = () => { draft.dataProtection.choice = el.dataset.dpchoice; renderWizardStep(); });
+  document.querySelectorAll('[data-dpfolder]').forEach(el => el.onclick = () => { const f = el.dataset.dpfolder; const i = draft.dataProtection.folders.indexOf(f); if (i > -1) draft.dataProtection.folders.splice(i, 1); else draft.dataProtection.folders.push(f); renderWizardStep(); });
+  document.querySelectorAll('[data-dpcloud]').forEach(el => el.onclick = () => { const c = el.dataset.dpcloud; const i = draft.dataProtection.cloud.indexOf(c); if (i > -1) draft.dataProtection.cloud.splice(i, 1); else draft.dataProtection.cloud.push(c); renderWizardStep(); });
+  ['cust', 'tech'].forEach(who => {
+    const canvas = document.getElementById(`sig-dp-${who}`);
+    if (!canvas) return;
+    sigPads['dp' + who] = attachSignaturePad(canvas);
+    const existing = who === 'cust' ? draft.dataProtection.custSig : draft.dataProtection.techSig;
+    if (existing) { const img = new Image(); img.onload = () => canvas.getContext('2d').drawImage(img, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height); img.src = existing; }
+    document.getElementById(`clear-sig-dp${who}`).onclick = () => sigPads['dp' + who].clear();
+  });
+};
+STEP_SAVE.dataprotection = () => {
+  if (!draft.dataProtection.choice) { toast('Select a data protection option'); return false; }
+  if (document.getElementById('f-dpdest')) draft.dataProtection.destination = val('f-dpdest');
+  draft.dataProtection.understood = checked('f-dpunderstood');
+  if (!sigPads.dpcust.isEmpty()) draft.dataProtection.custSig = sigPads.dpcust.getDataURL();
+  if (!sigPads.dptech.isEmpty()) draft.dataProtection.techSig = sigPads.dptech.getDataURL();
+  if (!draft.dataProtection.understood || !draft.dataProtection.custSig || !draft.dataProtection.techSig) {
+    toast('Acknowledgement + both signatures are required before continuing'); return false;
+  }
+  draft.dataProtection.signedAt = nowISO();
+  return true;
+};
+
+/* ---- STEP: Device Inspection (timestamped + GPS-stamped photos) ---- */
+STEP_RENDERERS.inspection = () => `
+  <h3>Device Inspection</h3>
+  <p>Capture a photo for each angle. Every photo is timestamped and GPS-stamped automatically.</p>
+  <div class="photo-grid mt-16">
+    ${inspectionAngles.map(a => {
+      const p = draft.inspection.photos[a];
+      return `<div class="photo-slot" data-angle="${esc(a)}">
+        ${p ? `<img src="${p.dataURL}"><div class="cap-time">${fmtDateTime(p.ts)}</div>` : `<span>📷</span><span>${a}</span>`}
+      </div>`;
+    }).join('')}
+  </div>
+  <input type="file" accept="image/*" capture="environment" id="f-inspect-input" style="display:none">
+`;
+STEP_INIT.inspection = () => {
+  const input = document.getElementById('f-inspect-input');
+  let activeAngle = null;
+  document.querySelectorAll('#view-newjob .photo-slot').forEach(slot => slot.onclick = () => { activeAngle = slot.dataset.angle; input.click(); });
+  input.onchange = async (e) => {
+    if (!e.target.files[0]) return;
+    const dataURL = await fileToDataURL(e.target.files[0]);
+    const gps = await captureGPS();
+    draft.inspection.photos[activeAngle] = { dataURL, ts: nowISO(), gps };
+    renderWizardStep();
+  };
+};
+STEP_SAVE.inspection = () => true;
+
+/* ---- STEP: Existing Damage Report ---- */
+STEP_RENDERERS.damage = () => `
+  <h3>Existing Damage Report</h3>
+  <p>Tick anything present before repair. Each ticked item needs a photo — the customer signs to confirm this record.</p>
+  ${draft.damage.items.map((d, i) => `
+    <div class="card mt-16">
+      <div class="check-row"><input type="checkbox" data-dmg="${i}" ${d.selected?'checked':''}><label>${esc(d.key)}</label></div>
+      ${d.selected ? `
+        <div class="form-grid">
+          <div class="field"><label>Notes</label><input type="text" data-dmgnote="${i}" value="${esc(d.notes)}"></div>
+          <div class="field"><label>Photo</label><input type="file" accept="image/*" capture="environment" data-dmgphoto="${i}"></div>
+        </div>
+        ${d.photo ? `<img src="${d.photo}" style="max-width:120px;border-radius:8px;">` : '<p class="text-sm" style="color:var(--warn)">Photo required</p>'}
+      ` : ''}
+    </div>`).join('')}
+  <div class="field mt-16"><label>Customer Signature — confirms this damage record is accurate</label>
+    <div class="sig-wrap"><canvas id="sig-damage"></canvas><div class="sig-placeholder" id="sig-damage-ph">${draft.damage.custSig ? '' : 'Sign here'}</div></div>
+    <button class="btn btn-ghost btn-sm mt-8" id="clear-sig-damage" type="button">Clear</button>
+  </div>
+`;
+STEP_INIT.damage = () => {
+  document.querySelectorAll('[data-dmg]').forEach(el => el.onchange = () => { draft.damage.items[+el.dataset.dmg].selected = el.checked; renderWizardStep(); });
+  document.querySelectorAll('[data-dmgnote]').forEach(el => el.onchange = () => { draft.damage.items[+el.dataset.dmgnote].notes = el.value; });
+  document.querySelectorAll('[data-dmgphoto]').forEach(el => el.onchange = async () => { draft.damage.items[+el.dataset.dmgphoto].photo = await fileToDataURL(el.files[0]); renderWizardStep(); });
+  const canvas = document.getElementById('sig-damage');
+  sigPads.damage = attachSignaturePad(canvas);
+  if (draft.damage.custSig) { const img = new Image(); img.onload = () => canvas.getContext('2d').drawImage(img, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height); img.src = draft.damage.custSig; }
+  document.getElementById('clear-sig-damage').onclick = () => sigPads.damage.clear();
+};
+STEP_SAVE.damage = () => { if (!sigPads.damage.isEmpty()) draft.damage.custSig = sigPads.damage.getDataURL(); return true; };
+
+/* ---- STEP: Pre-Repair Tests ---- */
+function renderTestGrid(results) {
+  return testDefs.map(t => `
+    <div class="test-row">
+      <div class="test-name">${t}</div>
+      <div class="test-toggle" data-test="${t}">
+        <div class="test-btn pass ${results[t]==='pass'?'on':''}" data-val="pass">Pass</div>
+        <div class="test-btn fail ${results[t]==='fail'?'on':''}" data-val="fail">Fail</div>
+        <div class="test-btn na ${results[t]==='na'?'on':''}" data-val="na">N/T</div>
+      </div>
+    </div>`).join('');
+}
+STEP_RENDERERS.pretest = () => `<h3>Pre-Repair Tests</h3><p>Baseline test pass before any repair work begins.</p><div class="card mt-16">${renderTestGrid(draft.pretest.results)}</div>`;
+STEP_INIT.pretest = () => {
+  document.querySelectorAll('#view-newjob [data-test]').forEach(row => {
+    row.querySelectorAll('.test-btn').forEach(btn => btn.onclick = () => { draft.pretest.results[row.dataset.test] = btn.dataset.val; renderWizardStep(); });
+  });
+};
+STEP_SAVE.pretest = () => true;
+
+/* ---- STEP: AI Diagnostic (rule-based decision tree — not a live ML model) ---- */
+const diagChain = ['SSD / Storage SMART','RAM','CPU','Thermals','Windows Event Logs','Malware Scan','Drivers','Windows Updates'];
+const diagOutcomes = {
+  'SSD / Storage SMART': { diagnosis: 'Failing storage drive', confidence: 90, recommendation: 'Replace SSD/HDD; clone or restore from backup before returning device.' },
+  'RAM': { diagnosis: 'Memory (RAM) fault', confidence: 85, recommendation: 'Reseat or replace the faulty RAM module; re-run memory test after.' },
+  'CPU': { diagnosis: 'CPU instability / thermal throttling', confidence: 80, recommendation: 'Inspect cooling, repaste, verify power delivery.' },
+  'Thermals': { diagnosis: 'Cooling system fault', confidence: 75, recommendation: 'Clean fans and heatsink, replace thermal paste, check fan speed under load.' },
+  'Windows Event Logs': { diagnosis: 'OS / driver instability', confidence: 70, recommendation: 'Review crash logs, roll back recent driver or update, consider in-place repair install.' },
+  'Malware Scan': { diagnosis: 'Malware / unwanted software', confidence: 85, recommendation: 'Full malware removal workflow, then harden with updated definitions.' },
+  'Drivers': { diagnosis: 'Outdated or corrupt drivers', confidence: 65, recommendation: 'Reinstall chipset, GPU and peripheral drivers from vendor sources.' },
+  'Windows Updates': { diagnosis: 'Missing OS updates', confidence: 55, recommendation: 'Apply all pending Windows updates and reboot.' },
+};
+STEP_RENDERERS.diagnostic = () => {
+  if (draft.diagnostic.finalDiagnosis) {
+    return `<h3>AI Diagnostic <span class="text-sm text-dim">(rule-based elimination — not a live AI model)</span></h3>
+      <div class="confidence-ring mt-16" style="--pct:${draft.diagnostic.confidence}"><span>${draft.diagnostic.confidence}%</span></div>
+      <div class="card mt-16">
+        <p class="text-sm mb-0">Diagnosis</p><h3>${esc(draft.diagnostic.finalDiagnosis)}</h3>
+        <div class="divider"></div>
+        <p class="text-sm mb-0">Recommended repair</p><p style="color:#fff">${esc(draft.diagnostic.recommendation)}</p>
+      </div>
+      <button class="btn btn-ghost btn-sm mt-16" id="diag-restart" type="button">Restart diagnostic</button>`;
+  }
+  const idx = draft.diagnostic.path.length;
+  return `<h3>AI Diagnostic <span class="text-sm text-dim">(rule-based elimination — not a live AI model)</span></h3>
+    <p>Answer each check based on what you observe. First failing check ends the chain with a diagnosis.</p>
+    <div class="diag-tree mt-16">
+      ${diagChain.map((n, i) => `<div class="diag-node ${i===idx?'active':''} ${i<idx?'checked':''}">${n}${i<idx?' — '+draft.diagnostic.path[i].result.toUpperCase():''}</div>${i<diagChain.length-1?'<div class="diag-arrow">↓</div>':''}`).join('')}
+    </div>
+    ${idx < diagChain.length ? `<div class="flex gap-8 mt-16">
+      <button class="btn btn-primary" data-diag="pass">✓ OK</button>
+      <button class="btn btn-danger" data-diag="fail">✕ Fault Found</button>
+    </div>` : `<p class="mt-16">All checks passed — no fault isolated in this chain. Consider inspecting software conflicts, user workflow, or peripherals.</p>`}
+  `;
+};
+STEP_INIT.diagnostic = () => {
+  document.querySelectorAll('[data-diag]').forEach(btn => btn.onclick = () => {
+    const idx = draft.diagnostic.path.length;
+    const node = diagChain[idx];
+    draft.diagnostic.path.push({ node, result: btn.dataset.diag });
+    if (btn.dataset.diag === 'fail') {
+      const o = diagOutcomes[node];
+      draft.diagnostic.finalDiagnosis = o.diagnosis; draft.diagnostic.confidence = o.confidence; draft.diagnostic.recommendation = o.recommendation;
+    } else if (draft.diagnostic.path.length === diagChain.length) {
+      draft.diagnostic.finalDiagnosis = 'No fault isolated in this chain'; draft.diagnostic.confidence = 40;
+      draft.diagnostic.recommendation = 'Investigate software conflicts, user workflow, or peripherals separately.';
+    }
+    renderWizardStep();
+  });
+  const restart = document.getElementById('diag-restart');
+  if (restart) restart.onclick = () => { draft.diagnostic = { path: [], finalDiagnosis: '', confidence: 0, recommendation: '' }; renderWizardStep(); };
+};
+STEP_SAVE.diagnostic = () => true;
+
+/* ---- STEP: Repair Workflow (cannot skip steps) ---- */
+STEP_RENDERERS.workflow = () => `
+  <h3>Repair Workflow</h3>
+  <div class="field"><label>Workflow type</label>
+    <select id="f-wftype">${Object.keys(workflowTemplates).map(t => `<option ${draft.workflow.type===t?'selected':''}>${t}</option>`).join('')}</select>
+  </div>
+  <div class="card mt-16">
+    ${draft.workflow.steps.map((s, i) => {
+      const locked = i > 0 && !draft.workflow.steps[i - 1].done;
+      return `<div class="check-row"><input type="checkbox" data-wf="${i}" ${s.done?'checked':''} ${locked?'disabled':''}><label style="${locked?'opacity:.4':''}">${i+1}. ${esc(s.label)}</label></div>`;
+    }).join('')}
+  </div>
+`;
+STEP_INIT.workflow = () => {
+  document.getElementById('f-wftype').onchange = (e) => {
+    draft.workflow.type = e.target.value;
+    draft.workflow.steps = workflowTemplates[e.target.value].map(s => ({ label: s, done: false }));
+    renderWizardStep();
+  };
+  document.querySelectorAll('[data-wf]').forEach(el => el.onchange = () => { draft.workflow.steps[+el.dataset.wf].done = el.checked; renderWizardStep(); });
+};
+STEP_SAVE.workflow = () => true;
+
+/* ---- STEP: Parts Used ---- */
+STEP_RENDERERS.parts = () => `
+  <h3>Parts Used</h3>
+  <div class="card mt-8">
+    ${draft.parts.items.length ? `<table><thead><tr><th>Part</th><th>Supplier</th><th>Serial</th><th>Warranty</th><th>Cost</th><th>Sell</th><th>Qty</th><th></th></tr></thead>
+    <tbody>${draft.parts.items.map((p, i) => `<tr><td>${esc(p.name)}</td><td>${esc(p.supplier)}</td><td>${esc(p.serial)}</td><td>${esc(p.warranty)}</td><td>R${(+p.cost).toFixed(2)}</td><td>R${(+p.sell).toFixed(2)}</td><td>${p.qty}</td><td><button class="btn btn-ghost btn-sm" onclick="removePart(${i})">✕</button></td></tr>`).join('')}</tbody></table>`
+    : '<div class="empty">No parts added yet.</div>'}
+  </div>
+  <div class="card mt-16">
+    <h4>Add Part</h4>
+    <div class="field"><label>From inventory (optional)</label><select id="f-part-inv"><option value="">— manual entry —</option></select></div>
+    <div class="form-grid">
+      <div class="field"><label>Part Name</label><input type="text" id="f-part-name"></div>
+      <div class="field"><label>Supplier</label><input type="text" id="f-part-supplier"></div>
+      <div class="field"><label>Serial Number</label><input type="text" id="f-part-serial"></div>
+      <div class="field"><label>Warranty</label><input type="text" id="f-part-warranty" placeholder="e.g. 12 months"></div>
+      <div class="field"><label>Cost Price (R)</label><input type="number" id="f-part-cost" value="0"></div>
+      <div class="field"><label>Selling Price (R)</label><input type="number" id="f-part-sell" value="0"></div>
+      <div class="field"><label>Quantity</label><input type="number" id="f-part-qty" value="1"></div>
+    </div>
+    <button class="btn btn-primary btn-sm" id="add-part-row">+ Add Part</button>
+  </div>
+`;
+STEP_INIT.parts = async () => {
+  const inv = await idbGetAll('inventory');
+  const sel = document.getElementById('f-part-inv');
+  sel.innerHTML = '<option value="">— manual entry —</option>' + inv.map(p => `<option value="${p.id}">${esc(p.partName)} (${p.stock} in stock)</option>`).join('');
+  sel.onchange = () => {
+    const p = inv.find(x => x.id === sel.value);
+    if (p) { document.getElementById('f-part-name').value = p.partName; document.getElementById('f-part-supplier').value = p.supplier; document.getElementById('f-part-cost').value = p.costPrice; document.getElementById('f-part-sell').value = p.sellPrice; }
+  };
+  document.getElementById('add-part-row').onclick = async () => {
+    const name = val('f-part-name'); if (!name) { toast('Part name required'); return; }
+    draft.parts.items.push({ name, supplier: val('f-part-supplier'), serial: val('f-part-serial'), warranty: val('f-part-warranty'), cost: +val('f-part-cost') || 0, sell: +val('f-part-sell') || 0, qty: +val('f-part-qty') || 1 });
+    const invId = sel.value;
+    if (invId) { const p = inv.find(x => x.id === invId); if (p) { p.stock = Math.max(0, p.stock - (+val('f-part-qty') || 1)); await idbPut('inventory', p); } }
+    renderWizardStep();
+  };
+};
+window.removePart = (i) => { draft.parts.items.splice(i, 1); renderWizardStep(); };
+STEP_SAVE.parts = () => true;
+
+/* ---- STEP: Quality Control (re-run tests, diff vs pre-repair) ---- */
+STEP_RENDERERS.qc = () => {
+  const diffs = testDefs.filter(t => draft.qc.results[t] && draft.pretest.results[t] && draft.qc.results[t] !== draft.pretest.results[t]);
+  const allSet = testDefs.every(t => draft.qc.results[t]);
+  return `<h3>Quality Control</h3><p>Re-run every test. Differences from the pre-repair baseline are highlighted automatically.</p>
+  <div class="card mt-16">${renderTestGrid(draft.qc.results)}</div>
+  ${diffs.length ? `<div class="warning-box mt-16"><h4>⚠ ${diffs.length} change(s) vs. baseline</h4><ul>${diffs.map(d => `<li>${d}: ${draft.pretest.results[d]} → ${draft.qc.results[d]}</li>`).join('')}</ul></div>` : ''}
+  ${!allSet ? '<p class="text-sm mt-8" style="color:var(--warn)">All tests must be completed before the repair can be marked finished.</p>' : ''}
+  `;
+};
+STEP_INIT.qc = () => {
+  document.querySelectorAll('#view-newjob [data-test]').forEach(row => {
+    row.querySelectorAll('.test-btn').forEach(btn => btn.onclick = () => { draft.qc.results[row.dataset.test] = btn.dataset.val; renderWizardStep(); });
+  });
+};
+STEP_SAVE.qc = () => {
+  const allSet = testDefs.every(t => draft.qc.results[t]);
+  if (!allSet) { toast('Complete every QC test before continuing'); return false; }
+  return true;
+};
+
+/* ---- STEP: Customer Collection ---- */
+STEP_RENDERERS.collection = () => `
+  <h3>Customer Collection</h3>
+  <p>Customer powers on the device and checks everything before signing.</p>
+  <div class="card mt-16">
+    ${Object.entries({ Working: 'Device is working as expected', Satisfied: 'Customer is satisfied with the repair', RepairExplained: 'Repair carried out has been explained', WarrantyExplained: 'Warranty terms have been explained', AccessoriesReturned: 'All accessories have been returned' }).map(([k, label]) => `
+      <div class="check-row"><input type="checkbox" data-coll="${k}" ${draft.collection.checklist[k]?'checked':''}><label>${label}</label></div>`).join('')}
+  </div>
+  <div class="grid grid-2 mt-16">
+    <div class="field"><label>Customer Signature</label>
+      <div class="sig-wrap"><canvas id="sig-coll-cust"></canvas><div class="sig-placeholder" id="sig-coll-cust-ph">${draft.collection.custSig?'':'Sign here'}</div></div>
+      <button class="btn btn-ghost btn-sm mt-8" id="clear-sig-collcust" type="button">Clear</button>
+    </div>
+    <div class="field"><label>Technician Signature</label>
+      <div class="sig-wrap"><canvas id="sig-coll-tech"></canvas><div class="sig-placeholder" id="sig-coll-tech-ph">${draft.collection.techSig?'':'Sign here'}</div></div>
+      <button class="btn btn-ghost btn-sm mt-8" id="clear-sig-colltech" type="button">Clear</button>
+    </div>
+  </div>
+`;
+STEP_INIT.collection = () => {
+  document.querySelectorAll('[data-coll]').forEach(el => el.onchange = () => { draft.collection.checklist[el.dataset.coll] = el.checked; });
+  ['cust', 'tech'].forEach(who => {
+    const canvas = document.getElementById(`sig-coll-${who}`);
+    sigPads['coll' + who] = attachSignaturePad(canvas);
+    const existing = who === 'cust' ? draft.collection.custSig : draft.collection.techSig;
+    if (existing) { const img = new Image(); img.onload = () => canvas.getContext('2d').drawImage(img, 0, 0, canvas.getBoundingClientRect().width, canvas.getBoundingClientRect().height); img.src = existing; }
+    document.getElementById(`clear-sig-coll${who}`).onclick = () => sigPads['coll' + who].clear();
+  });
+};
+STEP_SAVE.collection = () => {
+  if (!sigPads.collcust.isEmpty()) draft.collection.custSig = sigPads.collcust.getDataURL();
+  if (!sigPads.colltech.isEmpty()) draft.collection.techSig = sigPads.colltech.getDataURL();
+  draft.collection.time = nowISO();
+  return true;
+};
+
+/* ---- STEP: Payment ---- */
+STEP_RENDERERS.payment = () => {
+  const partsTotal = draft.parts.items.reduce((s, p) => s + p.sell * p.qty, 0);
+  const subtotal = partsTotal + (+draft.payment.labour || 0);
+  const total = Math.max(0, subtotal - (+draft.payment.discount || 0));
+  const outstanding = Math.max(0, total - (+draft.payment.deposit || 0) - (+draft.payment.amountPaid || 0));
+  return `<h3>Payment</h3>
+  <div class="chip-grid mt-8">${['Cash','EFT','Card','Invoice'].map(m => `<div class="chip ${draft.payment.method===m?'selected':''}" data-pmethod="${m}">${m}</div>`).join('')}</div>
+  <div class="form-grid mt-16">
+    <div class="field"><label>Parts total (auto)</label><input type="text" value="R ${partsTotal.toFixed(2)}" disabled></div>
+    <div class="field"><label>Labour (R)</label><input type="number" id="f-labour" value="${draft.payment.labour}"></div>
+    <div class="field"><label>Deposit already paid (R)</label><input type="number" id="f-deposit" value="${draft.payment.deposit}"></div>
+    <div class="field"><label>Discount (R)</label><input type="number" id="f-discount" value="${draft.payment.discount}"></div>
+    <div class="field"><label>Amount paid now (R)</label><input type="number" id="f-amountpaid" value="${draft.payment.amountPaid}"></div>
+    <div class="field"><label>Outstanding balance (auto)</label><input type="text" value="R ${outstanding.toFixed(2)}" disabled></div>
+  </div>
+  <div class="card mt-8"><div class="flex-between"><span>Total due</span><b>R ${total.toFixed(2)}</b></div></div>
+  <button class="btn btn-primary mt-16" id="gen-receipt-btn" type="button">Generate Receipt</button>
+  `;
+};
+STEP_INIT.payment = () => {
+  document.querySelectorAll('[data-pmethod]').forEach(el => el.onclick = () => { draft.payment.method = el.dataset.pmethod; renderWizardStep(); });
+  document.getElementById('gen-receipt-btn').onclick = () => { saveCurrentStep(); draft.payment.receiptNo = draft.payment.receiptNo || ('RCP-' + draft.jobNumber); persistDraft(); printReceipt(draft); };
+};
+STEP_SAVE.payment = () => {
+  draft.payment.labour = +val('f-labour') || 0; draft.payment.deposit = +val('f-deposit') || 0;
+  draft.payment.discount = +val('f-discount') || 0; draft.payment.amountPaid = +val('f-amountpaid') || 0;
+  const partsTotal = draft.parts.items.reduce((s, p) => s + p.sell * p.qty, 0);
+  const total = Math.max(0, partsTotal + draft.payment.labour - draft.payment.discount);
+  draft.payment.outstanding = Math.max(0, total - draft.payment.deposit - draft.payment.amountPaid);
+  return true;
+};
+
+/* ---- STEP: Warranty ---- */
+const warrantyDurationDays = { 'Windows Installation': 30, 'Screen Replacement': 90, 'Battery Replacement': 180, 'Keyboard Replacement': 90, 'Motherboard Repair': 90, 'Virus / Malware Removal': 14, 'Network / Router Setup': 30, 'Printer Repair': 30, 'POS Repair': 30, 'Phone Repair': 90, 'Other': 30 };
+STEP_RENDERERS.warranty = () => {
+  if (!draft.warranty.start) {
+    const start = new Date();
+    const days = warrantyDurationDays[draft.workflow.type] || 30;
+    const end = new Date(start.getTime() + days * 86400000);
+    draft.warranty.start = start.toISOString(); draft.warranty.end = end.toISOString();
+  }
+  return `<h3>Warranty</h3>
+  <div class="form-grid mt-8">
+    <div class="field"><label>Warranty begins</label><input type="text" value="${fmtDate(new Date(draft.warranty.start))}" disabled></div>
+    <div class="field"><label>Warranty ends</label><input type="text" value="${fmtDate(new Date(draft.warranty.end))}" disabled></div>
+  </div>
+  <div class="field"><label>Covered items</label><textarea id="f-war-covered" rows="2">${esc(draft.warranty.covered || (draft.workflow.type + ' — parts and labour for this repair'))}</textarea></div>
+  <div class="field"><label>Not covered</label><textarea id="f-war-notcovered" rows="2">${esc(draft.warranty.notCovered || 'Liquid damage, physical damage after collection, third-party software issues.')}</textarea></div>
+  <div class="flex-between mt-16">
+    <div id="qr-host"></div>
+    <button class="btn btn-ghost btn-sm" id="gen-warranty-btn" type="button">Generate Warranty PDF</button>
+  </div>
+  `;
+};
+STEP_INIT.warranty = () => {
+  try {
+    const qr = qrcode(0, 'L');
+    qr.addData(`PPT-WARRANTY|job:${draft.jobNumber}|id:${draft.warranty.verifyId}|until:${draft.warranty.end}`);
+    qr.make();
+    document.getElementById('qr-host').innerHTML = qr.createSvgTag(4, 0);
+  } catch (e) { /* QR generation best-effort */ }
+  document.getElementById('gen-warranty-btn').onclick = () => { saveCurrentStep(); printWarranty(draft); };
+};
+STEP_SAVE.warranty = () => { draft.warranty.covered = val('f-war-covered'); draft.warranty.notCovered = val('f-war-notcovered'); return true; };
+
+/* ---- STEP: Dispute Shield (evidence review + immutable log) ---- */
+STEP_RENDERERS.evidence = () => {
+  const photoCount = Object.keys(draft.inspection.photos).length + draft.damage.items.filter(d => d.photo).length + draft.problem.images.length;
+  return `<h3>Dispute Shield — Evidence Summary</h3>
+  <p>This is the permanent evidence record for this job. It cannot be deleted; every edit after this point is logged below with editor, date and reason.</p>
+  <div class="grid grid-3 mt-16">
+    <div class="card"><div class="stat-label">Photos on file</div><div class="stat-value grad">${photoCount}</div></div>
+    <div class="card"><div class="stat-label">Signatures captured</div><div class="stat-value grad">${[draft.customer.signature, draft.dataProtection.custSig, draft.dataProtection.techSig, draft.damage.custSig, draft.collection.custSig, draft.collection.techSig].filter(Boolean).length}/6</div></div>
+    <div class="card"><div class="stat-label">GPS stamps</div><div class="stat-value grad">${[draft.jobInfo.gpsArrival, draft.customer.gps].filter(Boolean).length}</div></div>
+  </div>
+  <div class="section-title"><h3>Version History</h3></div>
+  <div class="card">${draft.evidence.versionHistory.map(v => `<div class="flex-between text-sm" style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span>${esc(v.editor)}</span><span>${fmtDateTime(v.date)}</span><span class="text-dim">${esc(v.reason)}</span></div>`).join('')}</div>
+  <button class="btn btn-ghost mt-16" id="export-evidence-btn" type="button">Export Evidence Report (Print / PDF)</button>
+  `;
+};
+STEP_INIT.evidence = () => { document.getElementById('export-evidence-btn').onclick = () => printEvidence(draft); };
+STEP_SAVE.evidence = () => true;
+
+async function finalizeJob() {
+  draft.status = 'Ready for Collection';
+  draft.evidence.versionHistory.push({ editor: session.technicianName, date: nowISO(), reason: 'Job finalized through wizard' });
+  await persistDraft();
+  toast('Job saved to Dispute Shield');
+  showView('jobs');
+}
+
+/* ---------------------------------------------------------------------- */
+/* Print-based export helpers (receipt / warranty / evidence report)      */
+/* ---------------------------------------------------------------------- */
+function openPrintWindow(title, bodyHTML) {
+  const w = window.open('', '_blank');
+  if (!w) { toast('Allow pop-ups to export documents'); return; }
+  w.document.write(`<!DOCTYPE html><html><head><title>${esc(title)}</title>
+    <style>
+      body{font-family:Arial,Helvetica,sans-serif;color:#111;padding:32px;max-width:760px;margin:0 auto;}
+      h1{font-size:20px;margin-bottom:0;} h2{font-size:15px;color:#444;margin-top:2px;}
+      .brand{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+      .brand .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(90deg,#7B2FFF,#00D4AA);}
+      table{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;}
+      th,td{border:1px solid #ccc;padding:6px 8px;text-align:left;}
+      .sig-block{display:flex;gap:24px;margin-top:24px;}
+      .sig-block img{max-height:70px;border-bottom:1px solid #333;}
+      .muted{color:#666;font-size:12px;}
+      @media print{ body{padding:8mm;} }
+    </style></head><body>
+    <div class="brand"><div class="mark"></div><div><h1>PixelProTech Solutions</h1><h2>${esc(title)}</h2></div></div>
+    ${bodyHTML}
+    <p class="muted mt-16">Generated ${fmtDateTime(nowISO())} by ${esc(session.technicianName || '—')}</p>
+    <script>window.onload = () => window.print();</` + `script>
+  </body></html>`);
+  w.document.close();
+}
+
+function printReceipt(job) {
+  const partsTotal = job.parts.items.reduce((s, p) => s + p.sell * p.qty, 0);
+  const total = Math.max(0, partsTotal + (+job.payment.labour || 0) - (+job.payment.discount || 0));
+  openPrintWindow('Receipt ' + (job.payment.receiptNo || ''), `
+    <p><b>Job #</b> ${esc(job.jobNumber)} &nbsp; <b>Date</b> ${esc(job.jobInfo.date)}</p>
+    <p><b>Customer</b> ${esc(job.customer.fullName)} &nbsp; ${esc(job.customer.phone)}</p>
+    <p><b>Device</b> ${esc(job.device.brand)} ${esc(job.device.model)} (${esc(job.device.serial)})</p>
+    <table><thead><tr><th>Part</th><th>Qty</th><th>Unit Price</th><th>Line Total</th></tr></thead>
+    <tbody>${job.parts.items.map(p => `<tr><td>${esc(p.name)}</td><td>${p.qty}</td><td>R${(+p.sell).toFixed(2)}</td><td>R${(p.sell*p.qty).toFixed(2)}</td></tr>`).join('') || '<tr><td colspan="4">No parts</td></tr>'}
+    <tr><td colspan="3">Labour</td><td>R${(+job.payment.labour||0).toFixed(2)}</td></tr>
+    <tr><td colspan="3">Discount</td><td>-R${(+job.payment.discount||0).toFixed(2)}</td></tr>
+    <tr><td colspan="3"><b>Total</b></td><td><b>R${total.toFixed(2)}</b></td></tr>
+    <tr><td colspan="3">Deposit / Paid</td><td>R${((+job.payment.deposit||0)+(+job.payment.amountPaid||0)).toFixed(2)}</td></tr>
+    <tr><td colspan="3"><b>Outstanding</b></td><td><b>R${(+job.payment.outstanding||0).toFixed(2)}</b></td></tr>
+    </tbody></table>
+    <p><b>Payment method:</b> ${esc(job.payment.method)}</p>
+  `);
+}
+function printWarranty(job) {
+  let qrSvg = '';
+  try { const qr = qrcode(0, 'L'); qr.addData(`PPT-WARRANTY|job:${job.jobNumber}|id:${job.warranty.verifyId}`); qr.make(); qrSvg = qr.createSvgTag(3, 0); } catch (e) {}
+  openPrintWindow('Warranty Certificate', `
+    <p><b>Job #</b> ${esc(job.jobNumber)} &nbsp; <b>Customer</b> ${esc(job.customer.fullName)}</p>
+    <p><b>Device</b> ${esc(job.device.brand)} ${esc(job.device.model)} — Serial ${esc(job.device.serial)}</p>
+    <p><b>Repair type</b> ${esc(job.workflow.type)}</p>
+    <p><b>Warranty period</b> ${fmtDate(new Date(job.warranty.start))} — ${fmtDate(new Date(job.warranty.end))}</p>
+    <p><b>Covered:</b> ${esc(job.warranty.covered)}</p>
+    <p><b>Not covered:</b> ${esc(job.warranty.notCovered)}</p>
+    <div style="margin-top:16px;">${qrSvg}</div>
+    <p class="muted">Scan to verify this warranty record. Verification ID: ${esc(job.warranty.verifyId)}</p>
+  `);
+}
+function printEvidence(job) {
+  const sigRow = (label, src) => src ? `<div><p class="muted">${label}</p><img src="${src}"></div>` : `<div><p class="muted">${label}</p><p class="muted">Not captured</p></div>`;
+  openPrintWindow('Dispute Shield Evidence Report', `
+    <p><b>Job #</b> ${esc(job.jobNumber)} &nbsp; <b>Status</b> ${esc(job.status)}</p>
+    <p><b>Customer</b> ${esc(job.customer.fullName)} — ${esc(job.customer.phone)} — ${esc(job.customer.address)}</p>
+    <p><b>Technician</b> ${esc(job.jobInfo.technician)} &nbsp; <b>GPS arrival</b> ${job.jobInfo.gpsArrival ? job.jobInfo.gpsArrival.lat.toFixed(5)+','+job.jobInfo.gpsArrival.lng.toFixed(5) : '—'}</p>
+    <p><b>Device</b> ${esc(job.device.brand)} ${esc(job.device.model)} — Serial ${esc(job.device.serial)}</p>
+    <p><b>Customer-reported problem:</b> ${esc(job.problem.notes)}</p>
+    <p><b>Technician diagnosis:</b> ${esc(job.problem.diagnosisNotes)}</p>
+    <p><b>AI diagnostic result:</b> ${esc(job.diagnostic.finalDiagnosis)} (${job.diagnostic.confidence}% confidence)</p>
+    <p><b>Data protection choice:</b> ${esc(job.dataProtection.choice)} — acknowledged ${fmtDateTime(job.dataProtection.signedAt)}</p>
+    <div class="sig-block">
+      ${sigRow('Customer intake signature', job.customer.signature)}
+      ${sigRow('Data protection — customer', job.dataProtection.custSig)}
+      ${sigRow('Data protection — technician', job.dataProtection.techSig)}
+      ${sigRow('Damage report — customer', job.damage.custSig)}
+      ${sigRow('Collection — customer', job.collection.custSig)}
+      ${sigRow('Collection — technician', job.collection.techSig)}
+    </div>
+    <h2>Version History</h2>
+    <table><thead><tr><th>Editor</th><th>Date</th><th>Reason</th></tr></thead><tbody>
+    ${job.evidence.versionHistory.map(v => `<tr><td>${esc(v.editor)}</td><td>${fmtDateTime(v.date)}</td><td>${esc(v.reason)}</td></tr>`).join('')}
+    </tbody></table>
+  `);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Job List / Job Detail                                                   */
+/* ---------------------------------------------------------------------- */
+async function renderJobsList() {
+  const jobs = (await idbGetAll('jobs')).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const customers = await idbGetAll('customers');
+  const custMap = Object.fromEntries(customers.map(c => [c.id, c]));
+  const draw = (list) => {
+    document.getElementById('jobs-tbody').innerHTML = list.map(j => `
+      <tr>
+        <td>${esc(j.jobNumber)}</td><td>${esc(j.jobInfo.date)}</td>
+        <td>${esc(custMap[j.customerId]?.fullName || '—')}</td>
+        <td>${esc(j.device.brand)} ${esc(j.device.model)}</td>
+        <td>${statusBadge(j.status)}</td><td>${esc(j.jobInfo.priority)}</td>
+        <td><button class="btn btn-ghost btn-sm" onclick="openJobDetail('${j.id}')">Open</button></td>
+      </tr>`).join('') || '<tr><td colspan="7"><div class="empty">No jobs found.</div></td></tr>';
+  };
+  draw(jobs);
+  document.getElementById('job-search').oninput = (e) => {
+    const q = e.target.value.toLowerCase();
+    draw(jobs.filter(j => [j.jobNumber, custMap[j.customerId]?.fullName, j.device.serial, j.device.brand, j.device.model].some(v => (v || '').toLowerCase().includes(q))));
+  };
+  document.getElementById('export-jobs-csv').onclick = () => exportCSV('jobs.csv', jobs.map(j => ({
+    JobNumber: j.jobNumber, Date: j.jobInfo.date, Customer: custMap[j.customerId]?.fullName || '', Phone: custMap[j.customerId]?.phone || '',
+    Device: `${j.device.brand} ${j.device.model}`, Serial: j.device.serial, Status: j.status, Priority: j.jobInfo.priority,
+    JobType: j.jobInfo.jobType, Outstanding: j.payment.outstanding || 0
+  })));
+}
+function exportCSV(filename, rows) {
+  if (!rows.length) { toast('Nothing to export'); return; }
+  const headers = Object.keys(rows[0]);
+  const csv = [headers.join(','), ...rows.map(r => headers.map(h => `"${(r[h] ?? '').toString().replace(/"/g, '""')}"`).join(','))].join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename; a.click();
+}
+
+window.openJobDetail = async (jobId) => {
+  const job = await idbGet('jobs', jobId);
+  const customer = await idbGet('customers', job.customerId);
+  showView('jobdetail');
+  document.getElementById('view-jobdetail').innerHTML = `
+    <div class="flex-between">
+      <div><h2 class="mb-0">${esc(job.jobNumber)}</h2><p class="mb-0">${esc(customer?.fullName || '')} — ${esc(job.device.brand)} ${esc(job.device.model)}</p></div>
+      <div class="flex gap-8">
+        <button class="btn btn-ghost btn-sm" id="jd-continue">Continue / Edit</button>
+        <button class="btn btn-ghost btn-sm" id="jd-evidence">Evidence Report</button>
+        <button class="btn btn-ghost btn-sm" id="jd-receipt">Receipt</button>
+        <button class="btn btn-ghost btn-sm" id="jd-warranty">Warranty</button>
+      </div>
+    </div>
+    <div class="grid grid-4 mt-16">
+      <div class="card"><div class="stat-label">Status</div><div class="mt-8">${statusBadge(job.status)}</div></div>
+      <div class="card"><div class="stat-label">Priority</div><div class="stat-value">${esc(job.jobInfo.priority)}</div></div>
+      <div class="card"><div class="stat-label">Job Type</div><div class="stat-value" style="font-size:16px">${esc(job.jobInfo.jobType)}</div></div>
+      <div class="card"><div class="stat-label">Outstanding</div><div class="stat-value grad">R ${(+job.payment.outstanding||0).toFixed(2)}</div></div>
+    </div>
+    <div class="section-title"><h3>Reported Problem</h3></div>
+    <div class="card">${esc(job.problem.notes) || '<span class="text-dim">None recorded</span>'}</div>
+    <div class="section-title"><h3>Diagnosis</h3></div>
+    <div class="card">${esc(job.diagnostic.finalDiagnosis) || '<span class="text-dim">Not run</span>'} ${job.diagnostic.finalDiagnosis ? `<span class="badge badge-neutral">${job.diagnostic.confidence}% confidence</span>` : ''}</div>
+    <div class="section-title"><h3>Version History (Dispute Shield)</h3></div>
+    <div class="card">${job.evidence.versionHistory.map(v => `<div class="flex-between text-sm" style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span>${esc(v.editor)}</span><span>${fmtDateTime(v.date)}</span><span class="text-dim">${esc(v.reason)}</span></div>`).join('')}</div>
+  `;
+  document.getElementById('jd-continue').onclick = () => showView('newjob', { jobId });
+  document.getElementById('jd-evidence').onclick = () => printEvidence(job);
+  document.getElementById('jd-receipt').onclick = () => printReceipt(job);
+  document.getElementById('jd-warranty').onclick = () => printWarranty(job);
+};
+
+/* ---------------------------------------------------------------------- */
+/* Customers                                                               */
+/* ---------------------------------------------------------------------- */
+async function renderCustomers() {
+  const customers = await idbGetAll('customers');
+  const jobs = await idbGetAll('jobs');
+  const draw = (list) => {
+    document.getElementById('customers-grid').innerHTML = list.map(c => {
+      const jobCount = jobs.filter(j => j.customerId === c.id).length;
+      return `<div class="card hoverable">
+        <h4 class="mb-0">${esc(c.fullName)}</h4>
+        <p class="text-sm mb-0">${esc(c.phone)} ${c.email ? '· ' + esc(c.email) : ''}</p>
+        <p class="text-sm">${esc(c.type)} ${c.company ? '· ' + esc(c.company) : ''}</p>
+        <div class="flex-between"><span class="badge badge-neutral">${jobCount} job${jobCount===1?'':'s'}</span></div>
+      </div>`;
+    }).join('') || '<div class="empty">No customers yet.</div>';
+  };
+  draw(customers);
+  document.getElementById('customer-search').oninput = (e) => {
+    const q = e.target.value.toLowerCase();
+    draw(customers.filter(c => [c.fullName, c.phone, c.email].some(v => (v || '').toLowerCase().includes(q))));
+  };
+}
+
+/* ---------------------------------------------------------------------- */
+/* Inventory                                                               */
+/* ---------------------------------------------------------------------- */
+async function renderInventory() {
+  const items = await idbGetAll('inventory');
+  document.getElementById('inventory-tbody').innerHTML = items.map(p => `
+    <tr>
+      <td>${esc(p.partName)}</td><td>${esc(p.supplier)}</td>
+      <td>${p.stock <= p.lowStock ? `<span class="badge badge-fail">${p.stock} — low stock</span>` : p.stock}</td>
+      <td>${p.lowStock}</td><td>${fmtDate(new Date(p.purchaseDate))}</td>
+      <td><button class="btn btn-ghost btn-sm" onclick="deletePart('${p.id}')">✕</button></td>
+    </tr>`).join('') || '<tr><td colspan="6"><div class="empty">No parts in inventory.</div></td></tr>';
+}
+window.deletePart = async (id) => { await idbDelete('inventory', id); renderInventory(); };
+document.getElementById('add-part-btn').addEventListener('click', async () => {
+  const name = prompt('Part name?'); if (!name) return;
+  const stock = +prompt('Starting stock quantity?', '1') || 1;
+  await idbPut('inventory', { id: uid('inv_'), partName: name, supplier: prompt('Supplier?') || '', stock, lowStock: Math.max(1, Math.floor(stock * 0.25)), purchaseDate: nowISO(), costPrice: 0, sellPrice: 0 });
+  renderInventory();
+});
+
+/* ---------------------------------------------------------------------- */
+/* Knowledge Base                                                          */
+/* ---------------------------------------------------------------------- */
+const kbCategories = ['Samsung','HP','Dell','Lenovo','Asus','Apple','Windows','Linux','Networking','POS','Printers','Routers'];
+let kbActiveFilter = null;
+async function renderKB() {
+  const articles = await idbGetAll('kb');
+  document.getElementById('kb-filter-chips').innerHTML = kbCategories.map(c => `<div class="chip ${kbActiveFilter===c?'selected':''}" data-kbfilter="${c}">${c}</div>`).join('');
+  document.querySelectorAll('[data-kbfilter]').forEach(el => el.onclick = () => { kbActiveFilter = kbActiveFilter === el.dataset.kbfilter ? null : el.dataset.kbfilter; renderKB(); });
+  const list = kbActiveFilter ? articles.filter(a => a.category === kbActiveFilter) : articles;
+  document.getElementById('kb-grid').innerHTML = list.map(a => `
+    <div class="card hoverable">
+      <span class="badge badge-neutral">${esc(a.category)}</span>
+      <h4 class="mt-8">${esc(a.title)}</h4>
+      <p class="text-sm">${esc((a.content || '').slice(0, 140))}${(a.content||'').length>140?'…':''}</p>
+    </div>`).join('') || '<div class="empty">No articles yet.</div>';
+}
+document.getElementById('add-kb-btn').addEventListener('click', async () => {
+  const title = prompt('Article title?'); if (!title) return;
+  const category = prompt('Category? (' + kbCategories.join(', ') + ')') || 'Windows';
+  const content = prompt('Content / notes?') || '';
+  await idbPut('kb', { id: uid('kb_'), title, category, content, createdAt: nowISO() });
+  renderKB();
+});
+
+/* ---------------------------------------------------------------------- */
+/* Admin Dashboard                                                         */
+/* ---------------------------------------------------------------------- */
+async function renderAdmin() {
+  const jobs = await idbGetAll('jobs');
+  const users = await idbGetAll('users');
+  const completed = jobs.filter(j => j.status === 'Collected');
+  const revenue = jobs.reduce((s, j) => s + (j.payment?.amountPaid || 0) + (j.payment?.deposit || 0), 0);
+  const cost = jobs.reduce((s, j) => s + j.parts.items.reduce((a, p) => a + p.cost * p.qty, 0), 0);
+  const profit = revenue - cost;
+  const stats = [['Total Jobs', jobs.length, false], ['Completed', completed.length, true], ['Revenue', 'R ' + revenue.toFixed(2), true], ['Profit', 'R ' + profit.toFixed(2), true]];
+  document.getElementById('admin-stats').innerHTML = stats.map(([label, val, grad]) => `<div class="card stat-card"><div class="stat-label">${label}</div><div class="stat-value ${grad?'grad':''}">${val}</div></div>`).join('');
+
+  const techRows = users.map(u => {
+    const theirs = jobs.filter(j => j.jobInfo.technician === u.name);
+    const done = theirs.filter(j => j.status === 'Collected');
+    const rev = theirs.reduce((s, j) => s + (j.payment?.amountPaid || 0) + (j.payment?.deposit || 0), 0);
+    return `<tr><td>${esc(u.name)}</td><td>${done.length}</td><td>—</td><td>R ${rev.toFixed(2)}</td></tr>`;
+  }).join('');
+  document.querySelector('#admin-tech-table tbody').innerHTML = techRows || '<tr><td colspan="4">No technicians yet.</td></tr>';
+
+  const repairCounts = {};
+  jobs.forEach(j => { const t = j.jobInfo.jobType || 'Other'; repairCounts[t] = (repairCounts[t] || 0) + 1; });
+  const sorted = Object.entries(repairCounts).sort((a, b) => b[1] - a[1]);
+  document.getElementById('admin-repairs').innerHTML = sorted.length ? sorted.map(([type, count]) => `<div class="flex-between text-sm" style="padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)"><span>${esc(type)}</span><b>${count}</b></div>`).join('') : '<div class="empty">No data yet.</div>';
+}
+
+/* ---------------------------------------------------------------------- */
+/* Settings                                                                */
+/* ---------------------------------------------------------------------- */
+async function renderSettings() {
+  const users = await idbGetAll('users');
+  document.getElementById('settings-tech-list').innerHTML = users.map(u => `
+    <div class="flex-between" style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05)">
+      <span>${esc(u.name)} <span class="text-dim text-sm">(${esc(u.role)})</span></span>
+      <button class="btn btn-ghost btn-sm" onclick="deleteTech('${u.id}')">Remove</button>
+    </div>`).join('');
+}
+window.deleteTech = async (id) => { await idbDelete('users', id); renderSettings(); };
+document.getElementById('add-tech-btn').addEventListener('click', async () => {
+  const name = prompt('Technician name?'); if (!name) return;
+  const pin = prompt('4-digit PIN?', '1234') || '1234';
+  const role = prompt('Role? (Admin / Technician)', 'Technician') || 'Technician';
+  await idbPut('users', { id: uid('u_'), name, role, pin });
+  renderSettings();
+  populateTechnicianSelect(document.getElementById('login-technician'));
+});
+document.getElementById('export-all-btn').addEventListener('click', async () => {
+  const data = {};
+  for (const s of ['users', 'jobs', 'customers', 'inventory', 'kb']) data[s] = await idbGetAll(s);
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `ppt-backup-${Date.now()}.json`; a.click();
+});
+document.getElementById('wipe-btn').addEventListener('click', async () => {
+  if (!confirm('This permanently deletes all local jobs, customers, inventory and knowledge base data on this device. Continue?')) return;
+  await idbClearAll();
+  await seedIfEmpty();
+  toast('Local data wiped');
+  showView('dashboard');
+});
+
+/* Dashboard "Scan Device" / "Generate Invoice" quick actions */
+document.addEventListener('click', (e) => {
+  if (e.target.dataset.action === 'scan-device') showView('newjob');
+  if (e.target.dataset.action === 'quick-invoice') showView('jobs');
+});
+</script>
+</body>
+</html>

@@ -1,8 +1,9 @@
-const CACHE_NAME = "pixelprotech-os-v0-5-0";
+const CACHE_NAME = "pixelprotech-os-v0-6-0";
 const SHELL_FILES = [
   "./",
   "./index.html",
-  "./manifest.json", "./pixel-fx.css", "./pixel-fx.js", "./pixel-apps.js",
+  "./manifest.json", "./pixel-fx.css", "./pixel-fx.js", "./pixel-apps.js", "./pixel-repos.js",
+  "./app-bulk-email.html", "./app-on-site-bios.html", "./app-onyx.html", "./app-pixel-calendar.html", "./app-office-hr.html", "./app-warehouse-pro.html", "./app-pixel-weather.html", "./app-mobile-academy.html", "./app-community-radar.html", "./app-invoice-pro.html", "./app-pixel-link.html", "./app-wake-os.html", "./app-smart-storage.html", "./app-pixelview-pro.html", "./app-technician-command.html", "./app-pixel-vault.html", "./app-free-tv.html", "./app-academy.html", "./app-cert-forge.html", "./app-cv-builder.html", "./app-diagnostic.html", "./app-remote-assistant.html", "./app-technician-os.html", "./app-html-workspace.html", "./app-pixel-code.html", "./app-pixel-diagnose.html", "./app-html-learning.html", "./app-pixel-rescue.html", "./app-pixel-wifi.html", "./app-pixel-office.html", "./app-globe-cameras.html",
   "./icon-192.png",
   "./icon-512.png",
   "./hamba-rides.html", "./hamba-rides.css", "./hamba-rides.js", "./hamba-rides-pwa.js", "./hamba-rides-icon.svg",

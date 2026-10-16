@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Pixel Weather</title>
+<meta name="description" content="Pixel Weather — a living weather instrument by PixelProTech Solutions." />
+<meta name="theme-color" content="#0A0A0F" />
+<link rel="manifest" href="data:application/manifest+json,%7B%7D" />
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAElElEQVR4nO3du3EbVwCFYYDjiAzEwC24BXfiElSAKlEBLsGduAW34IAMiNSOoJEgvHbvay/O96X2gJjh+fcuQJDa7zbm+fnTf6OfA20dDu/70c/haOgTMXaORkXR/YsaPbf0jKHbFzJ8luoRQvMvYPiUahlCswc2fGprEUL1BzR8WqsZwlOtB9rtjJ8+au6sSkmGzyilp0HxCWD8jFS6v6IAjJ8tKNnh6gCMny1Zu8dVARg/W7Rml4sDMH62bOk+FwVg/MxgyU7vDsD4mcm9e70rAONnRvfs9mYAxs/Mbu236kchYDZXA3D15xFc2/HFAIyfR3Jpz26BiHY2AFd/HtG5XTsBiPZTAK7+PLLTfTsBiPZDAK7+JPh+504Aon0LwNWfJMe9OwGIJgCi7Xc7tz/kcgIQTQBEEwDRBEC0Jy+ASeYEIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIg2i81H+zj4+3fmo8Hl7y8vP5a43H2Nf48uuEzSmkIxbdAxs9IpfvzGoBoRQG4+rMFJTt0AhBNAEQTANGKAqj1XiyUKNmhE4BoxQE4BRipdH9VfhJ85G1RetnURyFgVl4DEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAESr+mdR1vj4ePtr9HNgrJeX1z9Gfe1hnwUyfE6NCGHILZDxc86IXXgNQLTuAbj6c03vfTgBiCYAogmAaN0DGPmeL9vXex9OAKINCcApwDkjdjH8r0J4W5TIj0LAFngNQDQBEE0ARBMA0QRANAEQTQBEEwDRBEC04X8VYq3D33+OfgqceP798+insNh0H4Uw/O2bKYSpboGMfw4zfZ+mCgBqmyaAma4qzPP9miYAaEEARBMA0aYJYKa31pjn+zVNANDCVAHMclVJN9P3abqfBB/N8jZbkpmGfzRtAFDDVLdAUJsAiCYAogmAaNP+QszMvvz2dvG/ff3ntdvzwLtAXV0b/ikh9OEWqJMl41/z/7OOADpYO2YRtCeAxkpHLIK2BNBQrfGKoB0BEE0AjdS+ajsF2hAA0QRANAEQTQBEEwDRBEA0ATRS+8NsPhzXhgCIJoCGal21Xf3bEUBjpeM1/rYE0MHaERt/ewLoZOmYjb8PvxI5gN8J3g4BEM0tENEEQDQBEE0ARBMA0QRANAEQ7elweN+PfhIwihOAaAIgmgCIJgCiPe12u50XwiQ6HN73TgCiCYBo3wJwG0SS496dAET7IQCnAAm+37kTgGg/BeAU4JGd7tsJQLSzATgFeETndu0EINrFAJwCPJJLe756AoiAR3Btx26BiHYzAKcAM7u137tOABEwo3t2e/ctkAiYyb17XfQaQATMYMlOF78IFgFbtnSfq94FEgFbtGaXq98GFQFbsnaPRT8HEAFbULLD4h+EiYCRSvdXdbz+vTF6qXXhrfpRCKcBPdTcWbPBOg2orcUFtvkVWwiUanln0e2WRQgs1eOWuvs9uxC4pedryaEvWsXA0ag3UP4H6KtF82V1WLYAAAAASUVORK5CYII=" />
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAElElEQVR4nO3du3EbVwCFYYDjiAzEwC24BXfiElSAKlEBLsGduAW34IAMiNSOoJEgvHbvay/O96X2gJjh+fcuQJDa7zbm+fnTf6OfA20dDu/70c/haOgTMXaORkXR/YsaPbf0jKHbFzJ8luoRQvMvYPiUahlCswc2fGprEUL1BzR8WqsZwlOtB9rtjJ8+au6sSkmGzyilp0HxCWD8jFS6v6IAjJ8tKNnh6gCMny1Zu8dVARg/W7Rml4sDMH62bOk+FwVg/MxgyU7vDsD4mcm9e70rAONnRvfs9mYAxs/Mbu236kchYDZXA3D15xFc2/HFAIyfR3Jpz26BiHY2AFd/HtG5XTsBiPZTAK7+PLLTfTsBiPZDAK7+JPh+504Aon0LwNWfJMe9OwGIJgCi7Xc7tz/kcgIQTQBEEwDRBEC0Jy+ASeYEIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIg2i81H+zj4+3fmo8Hl7y8vP5a43H2Nf48uuEzSmkIxbdAxs9IpfvzGoBoRQG4+rMFJTt0AhBNAEQTANGKAqj1XiyUKNmhE4BoxQE4BRipdH9VfhJ85G1RetnURyFgVl4DEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAESr+mdR1vj4ePtr9HNgrJeX1z9Gfe1hnwUyfE6NCGHILZDxc86IXXgNQLTuAbj6c03vfTgBiCYAogmAaN0DGPmeL9vXex9OAKINCcApwDkjdjH8r0J4W5TIj0LAFngNQDQBEE0ARBMA0QRANAEQTQBEEwDRBEC04X8VYq3D33+OfgqceP798+insNh0H4Uw/O2bKYSpboGMfw4zfZ+mCgBqmyaAma4qzPP9miYAaEEARBMA0aYJYKa31pjn+zVNANDCVAHMclVJN9P3abqfBB/N8jZbkpmGfzRtAFDDVLdAUJsAiCYAogmAaNP+QszMvvz2dvG/ff3ntdvzwLtAXV0b/ikh9OEWqJMl41/z/7OOADpYO2YRtCeAxkpHLIK2BNBQrfGKoB0BEE0AjdS+ajsF2hAA0QRANAEQTQBEEwDRBEA0ATRS+8NsPhzXhgCIJoCGal21Xf3bEUBjpeM1/rYE0MHaERt/ewLoZOmYjb8PvxI5gN8J3g4BEM0tENEEQDQBEE0ARBMA0QRANAEQ7elweN+PfhIwihOAaAIgmgCIJgCiPe12u50XwiQ6HN73TgCiCYBo3wJwG0SS496dAET7IQCnAAm+37kTgGg/BeAU4JGd7tsJQLSzATgFeETndu0EINrFAJwCPJJLe756AoiAR3Btx26BiHYzAKcAM7u137tOABEwo3t2e/ctkAiYyb17XfQaQATMYMlOF78IFgFbtnSfq94FEgFbtGaXq98GFQFbsnaPRT8HEAFbULLD4h+EiYCRSvdXdbz+vTF6qXXhrfpRCKcBPdTcWbPBOg2orcUFtvkVWwiUanln0e2WRQgs1eOWuvs9uxC4pedryaEvWsXA0ag3UP4H6KtF82V1WLYAAAAASUVORK5CYII=" />
+<style>/* styles.css — Pixel Weather
+   Design intent: an instrument, not a dashboard. The canvas atmosphere
+   behind everything IS the interface; the UI is quiet, technical,
+   monospace-numeric, and gets out of the way. Palette and states are
+   taken directly from the product brief (this is a fixed brand, not a
+   free design choice), applied through: a warm-white / cool-cyan /
+   violet-storm trio, generous negative space, and a single distinct
+   moment of motion (the hourly rain bars) rather than scattered
+   hover/entrance animation.
+*/
+
+:root {
+  --base: #0a0a0f;
+  --surface: #1a1a2e;
+  --surface-2: rgba(26, 26, 46, 0.6);
+  --accent-teal: #00d4aa;
+  --accent-violet: #7b2fff;
+  --white: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.62);
+  --text-faint: rgba(255, 255, 255, 0.38);
+  --hairline: rgba(255, 255, 255, 0.1);
+  --error: #ff6b6b;
+
+  --font-display: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  background: var(--base);
+  color: var(--white);
+  font-family: var(--font-display);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+#atmosphereCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Dev / offline / error banners ---------- */
+
+.dev-banner {
+  position: relative;
+  z-index: 5;
+  background: var(--accent-violet);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 6px 10px;
+}
+
+.error-banner {
+  margin: 0 20px;
+  padding: 10px 14px;
+  border-radius: 4px;
+  background: rgba(255, 107, 107, 0.12);
+  border: 1px solid rgba(255, 107, 107, 0.35);
+  color: #ffb4b4;
+  font-size: 0.85rem;
+}
+
+/* ---------- Top bar ---------- */
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 16px 8px;
+}
+
+.brand {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brand-name {
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+
+.location-name {
+  font-size: 0.95rem;
+  color: var(--white);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.top-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  color: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.icon-button:hover { background: rgba(255, 255, 255, 0.08); }
+.icon-button:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-teal);
+  outline-offset: 2px;
+}
+
+/* ---------- Current conditions ---------- */
+
+#mainContent {
+  flex: 1;
+  padding: 0 20px 48px;
+  max-width: 640px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.current-block {
+  text-align: center;
+  padding: 36px 0 20px;
+}
+
+.pixel-state {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.32em;
+  color: var(--accent-teal);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.current-temp {
+  font-size: clamp(4.2rem, 18vw, 6.5rem);
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-line {
+  margin: 6px auto 0;
+  max-width: 34ch;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.status-line {
+  margin-top: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+}
+.status-line[data-tone="stale"] { color: #f5c56b; }
+.status-line[data-tone="error"] { color: var(--error); }
+
+/* ---------- Metrics row ---------- */
+
+.metrics-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  padding: 18px 4px;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 28px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.metric-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Panels ---------- */
+
+.panel { margin-bottom: 30px; }
+
+.panel-title {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  font-weight: 600;
+  margin: 0 0 14px;
+}
+
+/* Hourly timeline — the "instrument" moment */
+
+.hourly-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+
+.hour-col {
+  flex: 0 0 auto;
+  width: 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.hour-time {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-faint);
+}
+
+.hour-rain-bar {
+  width: 6px;
+  height: 60px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.hour-rain-bar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: var(--pct, 0%);
+  background: linear-gradient(180deg, var(--accent-teal), var(--accent-violet));
+  transition: height 0.4s ease;
+}
+
+.hour-temp {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hour-state {
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  text-align: center;
+}
+
+/* Decision windows ("CALLS") */
+
+.decision-windows {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--hairline);
+}
+
+.decision-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--hairline);
+  gap: 16px;
+}
+
+.decision-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  flex: 0 0 auto;
+}
+
+.decision-value {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+/* Daily forecast */
+
+.daily-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.daily-row {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto 2.6rem;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 2px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 0.85rem;
+}
+
+.daily-day {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+}
+
+.daily-state {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-teal);
+}
+
+.daily-temps {
+  font-variant-numeric: tabular-nums;
+}
+
+.daily-rain {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+/* ---------- Footer ---------- */
+
+.app-footer {
+  text-align: center;
+  padding-top: 20px;
+  color: var(--text-faint);
+  font-size: 0.7rem;
+  line-height: 1.7;
+}
+
+/* ---------- Overlays (search / settings) ---------- */
+
+.panel-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: rgba(6, 6, 10, 0.72);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.panel-overlay.open { opacity: 1; pointer-events: auto; }
+
+.panel-sheet {
+  width: 100%;
+  max-width: 480px;
+  max-height: 82vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border-top: 1px solid var(--hairline);
+  border-radius: 16px 16px 0 0;
+  padding: 18px 20px 28px;
+  transform: translateY(12px);
+  transition: transform 0.2s ease;
+}
+.panel-overlay.open .panel-sheet { transform: translateY(0); }
+
+@media (min-width: 640px) {
+  .panel-overlay { align-items: center; }
+  .panel-sheet { border-radius: 16px; max-height: 70vh; }
+}
+
+.panel-sheet-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.panel-sheet-title {
+  flex: 1;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
+}
+
+#locationInput {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  color: var(--white);
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+#locationInput::placeholder { color: var(--text-faint); }
+
+.use-location-button {
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--accent-teal);
+  padding: 12px 4px;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result {
+  padding: 12px 4px;
+  border-bottom: 1px solid var(--hairline);
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.search-result:hover, .search-result:focus-visible { color: var(--accent-teal); }
+
+.search-empty {
+  padding: 16px 4px;
+  color: var(--text-faint);
+  font-size: 0.85rem;
+}
+
+.settings-list { display: flex; flex-direction: column; }
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 0.9rem;
+}
+
+.setting-row input[type="checkbox"] {
+  width: 40px;
+  height: 24px;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.setting-row input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--white);
+  transition: transform 0.15s ease;
+}
+.setting-row input[type="checkbox"]:checked { background: var(--accent-teal); }
+.setting-row input[type="checkbox"]:checked::after { transform: translateX(16px); }
+
+.settings-note {
+  margin-top: 16px;
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  line-height: 1.6;
+}
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .panel-overlay, .panel-sheet, .hour-rain-bar::after { transition: none; }
+}
+
+@media (prefers-contrast: more) {
+  :root { --text-dim: rgba(255,255,255,0.85); --text-faint: rgba(255,255,255,0.6); --hairline: rgba(255,255,255,0.3); }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (min-width: 900px) {
+  #mainContent { max-width: 760px; }
+  .current-temp { font-size: 7rem; }
+}
+</style>
+</head>
+<body>
+
+<div id="devBanner" class="dev-banner" hidden role="status"></div>
+
+<canvas id="atmosphereCanvas" aria-hidden="true"></canvas>
+
+<div class="app-shell">
+
+  <header class="top-bar">
+    <button id="openSearch" class="icon-button" aria-label="Search for a location" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 105.29 14.03l4.84 4.84 1.41-1.41-4.84-4.84A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg>
+    </button>
+
+    <div class="brand">
+      <span class="brand-name">PIXEL WEATHER</span>
+      <span id="locationName" class="location-name">—</span>
+    </div>
+
+    <div class="top-actions">
+      <button id="installButton" class="icon-button" hidden aria-label="Install Pixel Weather">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 3v10.17l3.59-3.58L17 11l-5 5-5-5 1.41-1.41L12 13.17V3h0zM5 19h14v2H5z"/></svg>
+      </button>
+      <button id="openSettings" class="icon-button" aria-label="Open settings" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19.14 12.94a7.14 7.14 0 000-1.88l2.03-1.58a.5.5 0 00.12-.64l-1.92-3.32a.5.5 0 00-.6-.22l-2.39.96a7.3 7.3 0 00-1.63-.94l-.36-2.54a.5.5 0 00-.5-.42h-3.84a.5.5 0 00-.5.42l-.36 2.54c-.59.24-1.14.56-1.63.94l-2.39-.96a.5.5 0 00-.6.22L2.71 8.84a.5.5 0 00.12.64l2.03 1.58a7.14 7.14 0 000 1.88l-2.03 1.58a.5.5 0 00-.12.64l1.92 3.32c.14.24.42.32.6.22l2.39-.96c.49.38 1.04.7 1.63.94l.36 2.54c.05.25.26.42.5.42h3.84c.24 0 .45-.17.5-.42l.36-2.54c.59-.24 1.14-.56 1.63-.94l2.39.96c.24.1.46 0 .6-.22l1.92-3.32a.5.5 0 00-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1112 8.5a3.5 3.5 0 010 7z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="errorBanner" class="error-banner" hidden role="alert"></div>
+
+  <main id="mainContent">
+
+    <section class="current-block" aria-label="Current conditions">
+      <div id="pixelState" class="pixel-state">—</div>
+      <div id="currentTemp" class="current-temp">—°</div>
+      <p id="summaryLine1" class="summary-line"></p>
+      <p id="summaryLine2" class="summary-line"></p>
+      <p id="statusLine" class="status-line" data-tone="neutral"></p>
+    </section>
+
+    <section class="metrics-row" aria-label="Current metrics">
+      <div class="metric"><span class="metric-label">Feels like</span><span id="metricFeels" class="metric-value">—</span></div>
+      <div class="metric"><span class="metric-label">Humidity</span><span id="metricHumidity" class="metric-value">—</span></div>
+      <div class="metric"><span class="metric-label">Wind</span><span id="metricWind" class="metric-value">—</span></div>
+      <div class="metric"><span class="metric-label">Visibility</span><span id="metricVisibility" class="metric-value">—</span></div>
+      <div class="metric"><span class="metric-label">UV</span><span id="metricUV" class="metric-value">—</span></div>
+    </section>
+
+    <section class="panel" aria-label="Today">
+      <h2 class="panel-title">TODAY</h2>
+      <div id="hourlyTrack" class="hourly-track"></div>
+    </section>
+
+    <section class="panel" aria-label="Decision windows">
+      <h2 class="panel-title">CALLS</h2>
+      <div id="decisionWindows" class="decision-windows"></div>
+    </section>
+
+    <section class="panel" aria-label="Seven day forecast">
+      <h2 class="panel-title">NEXT 7 DAYS</h2>
+      <div id="dailyList" class="daily-list"></div>
+    </section>
+
+    <footer class="app-footer">
+      <p>PIXEL WEATHER by PixelProTech Solutions (Pty) Ltd</p>
+      <p>Weather data: Open-Meteo (open-meteo.com)</p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Search dialog -->
+<div id="searchPanel" class="panel-overlay" role="dialog" aria-modal="true" aria-label="Search for a location" aria-hidden="true">
+  <div class="panel-sheet">
+    <div class="panel-sheet-header">
+      <input id="locationInput" type="text" placeholder="Search for a place" autocomplete="off" aria-label="Location search" />
+      <button id="closeSearch" class="icon-button" aria-label="Close search">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.29-6.3z"/></svg>
+      </button>
+    </div>
+    <button id="useGeolocation" class="use-location-button">Use current location</button>
+    <ul id="searchResults" class="search-results" aria-label="Search results"></ul>
+  </div>
+</div>
+
+<!-- Settings dialog -->
+<div id="settingsPanel" class="panel-overlay" role="dialog" aria-modal="true" aria-label="Settings" aria-hidden="true">
+  <div class="panel-sheet">
+    <div class="panel-sheet-header">
+      <span class="panel-sheet-title">SETTINGS</span>
+      <button id="closeSettings" class="icon-button" aria-label="Close settings">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M18.3 5.71L12 12l6.3 6.29-1.41 1.42L10.59 13.4 4.3 19.71 2.88 18.3 9.17 12 2.88 5.71 4.3 4.29l6.29 6.3 6.29-6.3z"/></svg>
+      </button>
+    </div>
+    <div class="settings-list">
+      <label class="setting-row">
+        <span>Fahrenheit</span>
+        <input id="tempUnitToggle" type="checkbox" role="switch" />
+      </label>
+      <label class="setting-row">
+        <span>Wind in mph</span>
+        <input id="windUnitToggle" type="checkbox" role="switch" />
+      </label>
+      <label class="setting-row">
+        <span>Reduced motion</span>
+        <input id="reducedMotionToggle" type="checkbox" role="switch" />
+      </label>
+    </div>
+    <p class="settings-note">Weather data by Open-Meteo. Pixel Weather does not sell or share your location.</p>
+  </div>
+</div>
+
+
+<script>(()=>{var ke="https://api.open-meteo.com/v1/forecast",Ge="https://geocoding-api.open-meteo.com/v1/search",$e="https://geocoding-api.open-meteo.com/v1/reverse";var v=class extends Error{constructor(e,i="unknown"){super(e),this.name="WeatherProviderError",this.kind=i}};async function W(t,e=1e4){let i=new AbortController,n=setTimeout(()=>i.abort(),e);try{let r=await fetch(t,{signal:i.signal});if(!r.ok)throw new v(`Provider responded with ${r.status}`,"invalid");return await r.json()}catch(r){throw r.name==="AbortError"?new v("Request timed out","network"):r instanceof v?r:new v(r.message||"Network error","network")}finally{clearTimeout(n)}}async function K(t){if(!t||!t.trim())return[];let e=`${Ge}?name=${encodeURIComponent(t.trim())}&count=8&language=en&format=json`;return(await W(e)).results||[]}async function J(t,e){let i=`${$e}?latitude=${t}&longitude=${e}&language=en&format=json`;try{let n=await W(i);return n.results&&n.results[0]?n.results[0]:null}catch{return null}}async function Y(t,e,i="auto"){let n=new URLSearchParams({latitude:String(t),longitude:String(e),timezone:i,current:["temperature_2m","relative_humidity_2m","apparent_temperature","is_day","precipitation","rain","showers","weather_code","cloud_cover","pressure_msl","wind_speed_10m","wind_direction_10m","wind_gusts_10m"].join(","),hourly:["temperature_2m","precipitation_probability","precipitation","weather_code","cloud_cover","visibility","wind_speed_10m","wind_direction_10m","is_day"].join(","),daily:["weather_code","temperature_2m_max","temperature_2m_min","precipitation_sum","precipitation_probability_max","sunrise","sunset","wind_speed_10m_max","uv_index_max"].join(","),wind_speed_unit:"kmh",temperature_unit:"celsius",precipitation_unit:"mm",forecast_days:"8"}),r=`${ke}?${n.toString()}`;return W(r)}var We={0:"clear",1:"mainly_clear",2:"partly_cloudy",3:"overcast",45:"fog",48:"fog",51:"drizzle",53:"drizzle",55:"drizzle",56:"drizzle",57:"drizzle",61:"rain",63:"rain",65:"heavy_rain",66:"rain",67:"heavy_rain",71:"snow",73:"snow",75:"snow",77:"snow",80:"rain",81:"rain",82:"heavy_rain",85:"snow",86:"snow",95:"thunderstorm",96:"thunderstorm",99:"thunderstorm"};function E(t){return We[t]||"unknown"}function m(t,e=null){return t==null||Number.isNaN(t)?e:t}function X(t,e,i=Date.now()){if(!t||!t.current||!t.hourly||!t.daily)throw new Error("Malformed forecast payload \u2014 missing sections");let n=t.current,r=t.hourly,a=t.daily,l={name:e?.name||"Unknown location",admin1:e?.admin1||null,country:e?.country||null,latitude:m(e?.latitude??t.latitude),longitude:m(e?.longitude??t.longitude),timezone:t.timezone||"auto"},o={temperature:m(n.temperature_2m),feelsLike:m(n.apparent_temperature),humidity:m(n.relative_humidity_2m),pressure:m(n.pressure_msl),windSpeed:m(n.wind_speed_10m),windDirection:m(n.wind_direction_10m),windGusts:m(n.wind_gusts_10m),cloudCover:m(n.cloud_cover),precipitation:m(n.precipitation,0),visibility:null,weatherCode:m(n.weather_code),weatherGroup:E(n.weather_code),isDay:n.is_day===1,time:n.time||null},u=(r.time||[]).map((p,c)=>({timestamp:p,temperature:m(r.temperature_2m?.[c]),precipitation:m(r.precipitation?.[c],0),precipitationProbability:m(r.precipitation_probability?.[c]),cloudCover:m(r.cloud_cover?.[c]),visibility:m(r.visibility?.[c]),windSpeed:m(r.wind_speed_10m?.[c]),windDirection:m(r.wind_direction_10m?.[c]),weatherCode:m(r.weather_code?.[c]),weatherGroup:E(r.weather_code?.[c]),isDay:r.is_day?.[c]===1}));if(o.time){let p=u.find(c=>c.timestamp===o.time);p&&(o.visibility=p.visibility)}let d=(a.time||[]).map((p,c)=>({date:p,minTemperature:m(a.temperature_2m_min?.[c]),maxTemperature:m(a.temperature_2m_max?.[c]),precipitationSum:m(a.precipitation_sum?.[c],0),precipitationProbability:m(a.precipitation_probability_max?.[c]),sunrise:a.sunrise?.[c]||null,sunset:a.sunset?.[c]||null,windSpeedMax:m(a.wind_speed_10m_max?.[c]),uvIndexMax:m(a.uv_index_max?.[c]),weatherCode:m(a.weather_code?.[c]),weatherGroup:E(a.weather_code?.[c])}));return{location:l,current:o,hourly:u,daily:d,meta:{fetchedAt:i,source:"open-meteo",raw:null}}}var _={SETTINGS:"pw:settings",SAVED_LOCATIONS:"pw:savedLocations",RECENT_LOCATIONS:"pw:recentLocations",LAST_WEATHER:"pw:lastWeather",LAST_PLACE:"pw:lastPlace"};function M(t,e){try{let i=localStorage.getItem(t);return i?JSON.parse(i):e}catch{return e}}function D(t,e){try{return localStorage.setItem(t,JSON.stringify(e)),!0}catch{return!1}}var Fe={temperatureUnit:"celsius",windUnit:"kmh",reducedMotion:"auto",theme:"dark"};function q(){return{...Fe,...M(_.SETTINGS,{})}}function O(t){return D(_.SETTINGS,t)}function Q(){return M(_.SAVED_LOCATIONS,[])}function F(){return M(_.RECENT_LOCATIONS,[])}function Z(t){let e=F().filter(i=>!(i.latitude===t.latitude&&i.longitude===t.longitude));e.unshift(t),D(_.RECENT_LOCATIONS,e.slice(0,5))}function ee(){return M(_.LAST_WEATHER,null)}function te(t){return D(_.LAST_WEATHER,t)}function ne(){return M(_.LAST_PLACE,null)}function A(t){return D(_.LAST_PLACE,t)}var L=class{constructor({model:e,place:i,fetchedAt:n,isOffline:r,isStale:a,error:l}){this.model=e||null,this.place=i||null,this.fetchedAt=n||null,this.isOffline=!!r,this.isStale=!!a,this.error=l||null}get ok(){return!!this.model}};function re(){return typeof navigator>"u"?!0:navigator.onLine}async function ae(t){if(!t||t.latitude==null||t.longitude==null)return new L({error:{kind:"invalid",message:"Location not found."}});if(!re())return ie(t,"Offline \u2014 showing last available weather.");try{let e=await Y(t.latitude,t.longitude,t.timezone||"auto"),i=Date.now(),n=X(e,t,i);return te({model:n,place:t,fetchedAt:i}),A(t),Z(t),new L({model:n,place:t,fetchedAt:i,isOffline:!1,isStale:!1})}catch(e){let i=e instanceof v?e.kind:"unknown",n=i==="network"?"Weather connection unavailable.":"Weather service unavailable.";return ie(t,n,{kind:i,message:n})}}function ie(t,e,i){let n=ee();return n&&n.place&&Math.abs(n.place.latitude-t.latitude)<.05&&Math.abs(n.place.longitude-t.longitude)<.05?new L({model:n.model,place:n.place,fetchedAt:n.fetchedAt,isOffline:!re(),isStale:!0,error:i||null}):new L({error:i||{kind:"network",message:e}})}async function oe(t){try{return(await K(t)).map(le)}catch{return[]}}async function se(t,e){let i=await J(t,e);return i?le(i):{name:"Current location",admin1:null,country:null,latitude:t,longitude:e,timezone:"auto",approximate:!0}}function le(t){return{name:t.name,admin1:t.admin1||null,country:t.country||null,latitude:t.latitude,longitude:t.longitude,timezone:t.timezone||"auto"}}var y=(t,e,i)=>Math.min(i,Math.max(e,t));function ce(t){let e=t.weatherGroup;if(!new Set(["clear","mainly_clear","partly_cloudy","overcast","fog","drizzle","rain","heavy_rain","snow","thunderstorm"]).has(e))return"unknown";if(e==="clear"||e==="mainly_clear"){let n=t.cloudCover??0;return n>60?"cloudy":n>25?"partly_cloudy":"clear"}return e==="partly_cloudy"?"partly_cloudy":e==="overcast"?"cloudy":e}function Ue(t,e){let i=y((t.cloudCover??0)/100,0,1),n=t.precipitation??0,r=t.windSpeed??0,a=t.windGusts??r,l=t.visibility??24e3,o=y(n/10,0,1);e==="drizzle"&&(o=Math.max(o,.12)),e==="rain"&&(o=Math.max(o,.35)),e==="heavy_rain"&&(o=Math.max(o,.75)),e==="thunderstorm"&&(o=Math.max(o,.55));let u=y(r/70,0,1),d=y(a/90,0,1),p=y(l/2e4,0,1),c=t.isDay?1:.18;c-=i*(t.isDay?.45:.08),c-=o*(t.isDay?.25:.05),c=y(c,.05,1);let s=e==="thunderstorm"?y(.5+o*.5,.5,1):0,h=e==="fog"?y(1-p,.35,1):y((1-p)*.3,0,.3),x=e==="snow"?y(.3+o*.7,.2,1):o,C=t.windDirection??0,b=y(.3+u*.7+o*.3,.25,1.6),Pe=t.isDay?"day":"night";return{cloudCover:i,precipitationIntensity:o,windIntensity:u,gustIntensity:d,visibilityLevel:p,brightness:c,stormActivity:s,fogDensity:h,particleDensity:x,particleDirection:C,animationSpeed:b,dayNightMode:Pe}}function de(t){let e=ce(t.current),i=Ue(t.current,e);return{weatherState:e,atmosphere:i}}function ue(t,e,i=6){let n=e.slice(0,i);for(let r=0;r<n.length;r++){let a=n[r],l=ce({weatherGroup:a.weatherGroup,cloudCover:a.cloudCover});if(l!==t)return{fromState:t,toState:l,atHour:r+1,timestamp:a.timestamp}}return null}var g={CLEAR:"CLEAR",VEILED:"VEILED",LOADED:"LOADED",BREAKING:"BREAKING",FALLING:"FALLING",HEAVY:"HEAVY",ELECTRIC:"ELECTRIC",FOGGED:"FOGGED",STILL:"STILL",SETTLING:"SETTLING",COOLING:"COOLING",HEATING:"HEATING",OPENING:"OPENING"};function He(t,e){let i=Math.abs(e)%t.length;return t[i]}function ze(t){let e=t?.current?.time||"",i=0;for(let n=0;n<e.length;n++)i=i*31+e.charCodeAt(n)|0;return i}function R({weatherState:t,atmosphere:e,transition:i,isDay:n}){let{precipitationIntensity:r,cloudCover:a,stormActivity:l}=e;return t==="thunderstorm"||l>0?g.ELECTRIC:t==="fog"?g.FOGGED:t==="heavy_rain"?g.HEAVY:t==="rain"||t==="drizzle"||t==="snow"?g.FALLING:i&&i.toState&&pe(i.toState)?g.LOADED:i&&Be(t,i.toState)?g.BREAKING:t==="cloudy"?a>.85?g.STILL:g.VEILED:t==="partly_cloudy"?g.VEILED:t==="clear"?n?g.CLEAR:g.SETTLING:g.CLEAR}function pe(t){return["rain","heavy_rain","drizzle","thunderstorm","snow"].includes(t)}function Be(t,e){return(pe(t)||t==="cloudy")&&(e==="clear"||e==="partly_cloudy")}function me({pixelState:t,model:e,atmosphere:i,transition:n}){let r=ze(e),a=e.current.windSpeed??0,l=e.current.temperature,o={CLEAR:[["Clear air.","Temperatures are holding steady."],["Open sky.",`Conditions are settled at ${he(l)}\xB0.`]],VEILED:[["Cloud is holding overhead.","Rain signal remains low."],["A layer of cloud is sitting over the area.","No rain signal yet."]],LOADED:[["Cloud is building.","Rain signal is beginning to rise."],["Cloud cover is increasing.","Conditions are trending toward rain."]],BREAKING:[["Cloud is starting to break up.","Conditions are clearing."],["The system is easing.","Clearer sky is expected soon."]],FALLING:[["Rain is active.","Wind is pushing it through."],["Rain is currently falling.","Conditions remain manageable."]],HEAVY:[["Rain is coming down hard.","Visibility is reduced."],["Heavy rain is active.",`Wind is near ${he(a)} km/h.`]],ELECTRIC:[["Storm activity is active.","Conditions are unstable."],["Thunderstorm conditions are present.","Wind and rain are strengthening."]],FOGGED:[["Visibility is reduced.","The air is holding close to the ground."],["Fog is limiting visibility.","Conditions are slow to shift."]],STILL:[["Heavy cloud cover, no movement expected soon.","Light levels stay low."]],SETTLING:[["Clear air tonight.","Temperatures are easing down."],["Clear tonight.","The temperature is easing down."]],COOLING:[["Temperatures are dropping.","Conditions otherwise steady."]],HEATING:[["Temperatures are climbing.","Sky remains clear."]],OPENING:[["Sky is opening up.","Brightness is increasing."]]},u=o[t]||o.CLEAR;return He(u,r)}function he(t){return t==null?"\u2014":Math.round(t)}function I(t){if(!t)return"--:--";let e=new Date(t);return Number.isNaN(e.getTime())?"--:--":e.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",hour12:!1})}function fe(t){if(!t||t.length<6)return{available:!1,reason:"Not enough data to call this."};let e=-1,i=0,n=-1,r=0;if(t.forEach((o,u)=>{(o.precipitationProbability??0)<25&&(o.windSpeed??0)<35&&(o.visibility??2e4)>5e3?(r===0&&(n=u),r++,r>i&&(i=r,e=n)):r=0}),i<2)return{available:!1,reason:"Not enough data to call this."};let a=t[e],l=t[Math.min(e+i-1,t.length-1)];return{available:!0,startLabel:I(a.timestamp),endLabel:I(l.timestamp)}}function ge(t){if(!t||t.length<6)return{available:!1,reason:"Not enough data to call this."};let e=t.findIndex(n=>(n.precipitationProbability??0)>=50);if(e===-1)return{available:!1,reason:"No significant rain signal today."};let i=e;for(;i+1<t.length&&(t[i+1].precipitationProbability??0)>=40;)i++;return{available:!0,startLabel:I(t[e].timestamp),endLabel:I(t[Math.min(i+1,t.length-1)].timestamp)}}function ye(t){if(!t||t.length<6)return{available:!1,reason:"Not enough data to call this."};let e=t.findIndex((i,n)=>{if((i.windSpeed??0)<30)return!1;let r=t[n+1];return!r||(r.windSpeed??0)>=25});return e===-1?{available:!1,reason:"No notable wind build today."}:{available:!0,atLabel:I(t[e].timestamp)}}function we(t,e){if(!t||t.length<6||e==null)return{available:!1,reason:"Not enough data to call this."};let i=t.reduce((r,a)=>r+(a.precipitationProbability??0),0)/t.length,n=t.some(r=>(r.windSpeed??0)>8);return i>30||e>80?{available:!0,verdict:"poor",label:"Poor drying conditions"}:e<55&&n?{available:!0,verdict:"good",label:"Good drying conditions"}:{available:!0,verdict:"fair",label:"Fair drying conditions"}}function _e(t,e){let i=(t??0)>.1,n=(e||[]).slice(0,3).some(r=>(r.precipitationProbability??0)>=50);return i?{available:!0,label:"Wet-road risk: active rainfall now."}:n?{available:!0,label:"Wet-road risk increases during rainfall today."}:{available:!0,label:"No elevated wet-road risk from current data."}}function Ve(t){if(!t)return"unknown";let e=Date.now()-t;return e<=6e5?"live":e<=36e5?"recent":"stale"}function je(t){if(!t)return"unknown";let e=Math.round((Date.now()-t)/6e4);if(e<1)return"just now";if(e===1)return"1 min ago";if(e<60)return`${e} min ago`;let i=Math.round(e/60);return i===1?"1 hr ago":`${i} hrs ago`}function U(t,e){let i=Ve(t),n=je(t);return e?`Offline \u2014 showing last available weather (${n})`:i==="live"?`Updated ${n}`:i==="recent"?`Updated ${n}`:i==="stale"?`Weather data is stale \u2014 updated ${n}`:"Weather data unavailable"}function Ke(t,e){return e==null?null:t==="fahrenheit"?e*9/5+32:e}function N(t,e){let i=Ke(e,t);return i==null?"\u2014\xB0":`${Math.round(i)}\xB0`}function Je(t,e){return e==null?null:t==="mph"?e*.621371:e}function ve(t,e){let i=Je(e,t);return i==null?"\u2014":`${Math.round(i)} ${e==="mph"?"mph":"km/h"}`}function Se(t){return t==null?"\u2014":t>=1e4?`${Math.round(t/1e3)} km`:`${Math.round(t)} m`}function be(t){return t==null?"\u2014":["N","NE","E","SE","S","SW","W","NW"][Math.round(t/45)%8]}function Ee(t){let e=new Date(t);return Number.isNaN(e.getTime())?"--":e.toLocaleTimeString([],{hour:"2-digit",hour12:!1}).replace(/:00$/,"")}function xe(t,e){if(e===0)return"TODAY";let i=new Date(t+"T00:00:00");return Number.isNaN(i.getTime())?t:i.toLocaleDateString([],{weekday:"short"}).toUpperCase()}function H(t){if(!t)return"";let e=[t.name];return t.admin1&&t.admin1!==t.name&&e.push(t.admin1),t.country&&e.push(t.country),e.join(", ")}var f=(t,e=document)=>e.querySelector(t);function S(t,e="neutral"){let i=f("#statusLine");i.textContent=t,i.dataset.tone=e}function Le(t){f("#locationName").textContent=t?H(t):"\u2014"}function Ce(t,e,i,n){f("#currentTemp").textContent=N(t.current.temperature,n),f("#pixelState").textContent=e,f("#summaryLine1").textContent=i[0]||"",f("#summaryLine2").textContent=i[1]||""}function Me(t,e){f("#metricFeels").textContent=N(t.current.feelsLike,e.temperatureUnit),f("#metricHumidity").textContent=t.current.humidity!=null?`${Math.round(t.current.humidity)}%`:"\u2014",f("#metricWind").textContent=`${ve(t.current.windSpeed,e.windUnit)} ${be(t.current.windDirection)}`,f("#metricVisibility").textContent=Se(t.current.visibility);let i=t.daily?.[0]?.uvIndexMax;f("#metricUV").textContent=i!=null?Math.round(i):"\u2014"}function Ie(t){let e=f("#decisionWindows");e.innerHTML="";let i=[{label:"OUTDOOR WINDOW",data:t.outdoor,format:n=>`${n.startLabel}\u2013${n.endLabel}`},{label:"RAIN SIGNAL",data:t.rain,format:n=>`${n.startLabel}\u2013${n.endLabel}`},{label:"WIND",data:t.wind,format:n=>`Builds after ${n.atLabel}`},{label:"DRYING",data:t.drying,format:n=>n.label},{label:"DRIVING",data:t.driving,format:n=>n.label}];for(let n of i){let r=document.createElement("div");r.className="decision-row";let a=document.createElement("span");a.className="decision-label",a.textContent=n.label;let l=document.createElement("span");l.className="decision-value",l.textContent=n.data?.available?n.format(n.data):n.data?.reason||"Not enough data to call this.",r.append(a,l),e.appendChild(r)}}function Ne(t,e){let i=f("#hourlyTrack");i.innerHTML="",t.slice(0,12).forEach((n,r)=>{let a=document.createElement("div");a.className="hour-col";let l=document.createElement("div");l.className="hour-time",l.textContent=r===0?"NOW":Ee(n.timestamp);let o=document.createElement("div");o.className="hour-rain-bar";let u=Math.min(100,Math.round(n.precipitationProbability??0));o.style.setProperty("--pct",`${u}%`),o.title=`${u}% precipitation chance`;let d=document.createElement("div");d.className="hour-temp",d.textContent=n.temperature!=null?`${Math.round(n.temperature)}\xB0`:"\u2014";let p=document.createElement("div");p.className="hour-state",p.textContent=e[r]||"",a.append(l,o,d,p),i.appendChild(a)})}function Te(t,e){let i=f("#dailyList");i.innerHTML="",t.forEach((n,r)=>{let a=document.createElement("div");a.className="daily-row";let l=document.createElement("span");l.className="daily-day",l.textContent=xe(n.date,r);let o=document.createElement("span");o.className="daily-state",o.textContent=n._pixelState||"";let u=document.createElement("span");u.className="daily-temps",u.textContent=`${N(n.maxTemperature,e)} / ${N(n.minTemperature,e)}`;let d=document.createElement("span");d.className="daily-rain",d.textContent=n.precipitationProbability!=null?`${Math.round(n.precipitationProbability)}%`:"\u2014",a.append(l,o,u,d),i.appendChild(a)})}function w(t){let e=f("#errorBanner");if(!t){e.hidden=!0,e.textContent="";return}e.hidden=!1,e.textContent=t}function z(t,e){let i=f("#searchResults");if(i.innerHTML="",!t.length){i.innerHTML='<li class="search-empty">No matching locations.</li>';return}t.forEach(n=>{let r=document.createElement("li");r.className="search-result",r.textContent=H(n),r.tabIndex=0,r.addEventListener("click",()=>e(n)),r.addEventListener("keydown",a=>{(a.key==="Enter"||a.key===" ")&&e(n)}),i.appendChild(r)})}function T(t){f("#searchPanel").classList.toggle("open",t),f("#searchPanel").setAttribute("aria-hidden",String(!t)),t&&f("#locationInput").focus()}function B(t){f("#settingsPanel").classList.toggle("open",t),f("#settingsPanel").setAttribute("aria-hidden",String(!t))}var P=class{constructor(){this.particles=[],this.kind="rain"}setKind(e){e!==this.kind&&(this.kind=e,this.particles=[])}resize(e,i,n){let r=Math.round(420*Math.max(.03,n));for(;this.particles.length<r;)this.particles.push(this._spawn(e,i));this.particles.length>r&&(this.particles.length=r)}_spawn(e,i,n=!1){let r=this.kind==="snow";return{x:Math.random()*e,y:n?-10:Math.random()*i,len:r?0:8+Math.random()*14,radius:r?1.5+Math.random()*2.5:0,speed:r?.4+Math.random()*.6:4+Math.random()*5,drift:Math.random()*.6-.3,opacity:r?.5+Math.random()*.5:.25+Math.random()*.35}}step(e,i,n,r,a,l,o){if(this.particles.length===0)return;let u=(r+180)*Math.PI/180,d=Math.sin(u)*a*60,p=this.kind==="snow";e.lineCap="round";for(let c=0;c<this.particles.length;c++){let s=this.particles[c],h=s.speed*l*60*o;if(s.y+=h,s.x+=(s.drift*20+d)*o,s.y>n+20&&Object.assign(s,this._spawn(i,n,!0)),s.x<-20&&(s.x=i+20),s.x>i+20&&(s.x=-20),p)e.beginPath(),e.globalAlpha=s.opacity,e.fillStyle="#ffffff",e.arc(s.x,s.y,s.radius,0,Math.PI*2),e.fill();else{let x=Math.atan2(h,(s.drift*20+d)*o||.001),C=Math.cos(x)*s.len,b=Math.sin(x)*s.len;e.globalAlpha=s.opacity,e.strokeStyle="#bcd4ff",e.lineWidth=1.1,e.beginPath(),e.moveTo(s.x-C,s.y-b),e.lineTo(s.x,s.y),e.stroke()}}e.globalAlpha=1}};var k=class{constructor(e=3){this.layerCount=e,this.blobs=[],this._seeded=!1}_seed(e,i){this.blobs=[];for(let n=0;n<this.layerCount;n++){let r=3+n;for(let a=0;a<r;a++)this.blobs.push({layer:n,x:Math.random()*e*1.4-e*.2,y:i*(.08+n*.09)+Math.random()*i*.12,rx:90+Math.random()*160+n*30,ry:30+Math.random()*34+n*6,baseOpacity:.5-n*.12})}this._seeded=!0}step(e,i,n,r,a,l,o,u,d){if(this._seeded||this._seed(i,n),r<=.02)return;let p=(a+180)*Math.PI/180,c=Math.sin(p),s=u>.55?"230,235,245":u>.3?"170,180,200":"90,96,120";for(let h of this.blobs){let x=6+h.layer*10;h.x+=c*x*l*o*d+2*o*d,h.x>i+h.rx&&(h.x=-h.rx),h.x<-h.rx*1.5&&(h.x=i+h.rx);let C=h.baseOpacity*Math.min(1,r*1.4),b=e.createRadialGradient(h.x,h.y,0,h.x,h.y,h.rx);b.addColorStop(0,`rgba(${s},${C})`),b.addColorStop(1,`rgba(${s},0)`),e.fillStyle=b,e.beginPath(),e.ellipse(h.x,h.y,h.rx,h.ry,0,0,Math.PI*2),e.fill()}}};var G=class{constructor(){this.nextFlashAt=0,this.flashUntil=0,this.flashOpacity=0}reset(){this.nextFlashAt=0,this.flashUntil=0,this.flashOpacity=0}update(e,i,n){if(e<=0||n)return this.flashOpacity=0,0;if(this.nextFlashAt===0&&this._scheduleNext(i,e),i>=this.nextFlashAt&&i>this.flashUntil&&(this.flashUntil=i+90+Math.random()*70,this._scheduleNext(i,e)),i<this.flashUntil){let r=this.flashUntil-i;this.flashOpacity=Math.min(.35,r/160*.35)}else this.flashOpacity=0;return this.flashOpacity}_scheduleNext(e,i){let n=4e3-i*1500,r=11e3-i*3e3,a=n+Math.random()*(r-n);this.nextFlashAt=e+a}};var $=class{constructor(e){this.canvas=e,this.ctx=e.getContext("2d",{alpha:!0}),this.particles=new P,this.clouds=new k(3),this.lightning=new G,this.state=null,this.reducedMotion=!1,this.running=!1,this._lastTs=0,this._raf=null,this._dpr=Math.min(window.devicePixelRatio||1,2),this._onResize=this._onResize.bind(this),this._loop=this._loop.bind(this),this._onVisibility=this._onVisibility.bind(this),window.addEventListener("resize",this._onResize),document.addEventListener("visibilitychange",this._onVisibility),this._onResize()}setReducedMotion(e){this.reducedMotion=e,e&&this.lightning.reset()}update(e,i){this.state={weatherState:e,atmosphere:i},this.particles.setKind(e==="snow"?"snow":"rain")}start(){this.running||(this.running=!0,this._lastTs=performance.now(),this._raf=requestAnimationFrame(this._loop))}stop(){this.running=!1,this._raf&&cancelAnimationFrame(this._raf),this._raf=null}destroy(){this.stop(),window.removeEventListener("resize",this._onResize),document.removeEventListener("visibilitychange",this._onVisibility)}_onVisibility(){document.hidden?this.stop():this.start()}_onResize(){let e=this.canvas.getBoundingClientRect();this.width=Math.max(1,e.width),this.height=Math.max(1,e.height),this.canvas.width=Math.round(this.width*this._dpr),this.canvas.height=Math.round(this.height*this._dpr),this.ctx.setTransform(this._dpr,0,0,this._dpr,0,0)}_loop(e){if(!this.running)return;let i=Math.min(.05,(e-this._lastTs)/1e3);this._lastTs=e,this._render(i,e),this._raf=requestAnimationFrame(this._loop)}_render(e,i){let n=this.ctx,{width:r,height:a}=this;if(n.clearRect(0,0,r,a),!this.state)return;let{weatherState:l,atmosphere:o}=this.state,u=this.reducedMotion?.08:1,d=o.animationSpeed*u;if(this._drawSky(n,r,a,o),this.clouds.step(n,r,a,o.cloudCover,o.particleDirection,o.windIntensity,d,o.brightness,e),["rain","heavy_rain","drizzle","thunderstorm","snow"].includes(l)?(this.particles.resize(r,a,o.particleDensity),this.particles.step(n,r,a,o.particleDirection,o.windIntensity,d,e)):this.particles.resize(r,a,0),o.fogDensity>.05&&this._drawFog(n,r,a,o.fogDensity),l==="thunderstorm"){let p=this.lightning.update(o.stormActivity,i,this.reducedMotion);p>0&&(n.fillStyle=`rgba(230,235,255,${p})`,n.fillRect(0,0,r,a))}else this.lightning.reset()}_drawSky(e,i,n,r){let a=r.brightness,l=r.dayNightMode==="night",o,u;if(l)o="rgba(6,8,20,1)",u="rgba(16,18,36,1)";else{let p=a,c=Math.round(20+60*p),s=Math.round(30+90*p),h=Math.round(60+120*p);o=`rgba(${c},${s},${h},1)`,u="rgba(10,10,15,1)"}let d=e.createLinearGradient(0,0,0,n);d.addColorStop(0,o),d.addColorStop(1,u),e.fillStyle=d,e.fillRect(0,0,i,n)}_drawFog(e,i,n,r){let a=e.createLinearGradient(0,n*.35,0,n);a.addColorStop(0,"rgba(200,205,215,0)"),a.addColorStop(1,`rgba(200,205,215,${Math.min(.55,r)})`),e.fillStyle=a,e.fillRect(0,n*.35,i,n*.65)}};var V={clear:{weatherCode:0,cloudCover:5,precipitation:0,windSpeed:8,isDay:!0},cloudy:{weatherCode:3,cloudCover:90,precipitation:0,windSpeed:14,isDay:!0},rain:{weatherCode:61,cloudCover:80,precipitation:2.4,windSpeed:18,isDay:!0},heavy_rain:{weatherCode:65,cloudCover:95,precipitation:9,windSpeed:30,isDay:!0},thunderstorm:{weatherCode:95,cloudCover:98,precipitation:6,windSpeed:38,isDay:!0},fog:{weatherCode:45,cloudCover:60,precipitation:0,windSpeed:4,isDay:!0},wind:{weatherCode:2,cloudCover:40,precipitation:0,windSpeed:48,isDay:!0},snow:{weatherCode:73,cloudCover:85,precipitation:3,windSpeed:12,isDay:!0},sunrise:{weatherCode:1,cloudCover:20,precipitation:0,windSpeed:6,isDay:!0,dawn:!0},sunset:{weatherCode:1,cloudCover:25,precipitation:0,windSpeed:6,isDay:!0,dusk:!0},night:{weatherCode:0,cloudCover:10,precipitation:0,windSpeed:5,isDay:!1},unavailable:null,offline:"offline"};function De(){return Object.keys(V)}function Oe(t){let e=V[t];if(!e||e==="offline")return null;let i=new Date,n=i.toISOString(),r=Array.from({length:24},(l,o)=>{let u=new Date(i.getTime()+o*3600*1e3).toISOString(),d=Math.sin(o/3)*10+10;return{timestamp:u,temperature:18+d*.3,precipitation:e.precipitation>0?Math.max(0,e.precipitation-o*.3):0,precipitationProbability:e.precipitation>0?Math.max(0,80-o*6):Math.max(0,15-o),cloudCover:e.cloudCover,visibility:e.weatherCode===45?800:2e4,windSpeed:e.windSpeed,windDirection:210,weatherCode:e.weatherCode,weatherGroup:E(e.weatherCode),isDay:o<12}}),a=Array.from({length:7},(l,o)=>({date:new Date(i.getTime()+o*864e5).toISOString().slice(0,10),minTemperature:12+o,maxTemperature:24+o,precipitationSum:e.precipitation,precipitationProbability:e.precipitation>0?60:10,sunrise:n,sunset:n,windSpeedMax:e.windSpeed,uvIndexMax:6,weatherCode:e.weatherCode,weatherGroup:E(e.weatherCode)}));return{location:{name:"Simulated Location",admin1:"Gauteng",country:"South Africa",latitude:-26.2041,longitude:28.0473,timezone:"Africa/Johannesburg"},current:{temperature:21,feelsLike:20,humidity:55,pressure:1013,windSpeed:e.windSpeed,windDirection:210,windGusts:e.windSpeed*1.3,cloudCover:e.cloudCover,precipitation:e.precipitation,visibility:e.weatherCode===45?800:2e4,weatherCode:e.weatherCode,weatherGroup:E(e.weatherCode),isDay:e.isDay,time:n},hourly:r,daily:a,meta:{fetchedAt:Date.now(),source:"simulator",raw:null}}}function Ae(t){return V[t]==="offline"}function Re(t){return t==="unavailable"}var Xe={name:"Johannesburg",admin1:"Gauteng",country:"South Africa",latitude:-26.2041,longitude:28.0473,timezone:"Africa/Johannesburg"},qe=10*60*1e3,j=class{constructor(){this.settings=q(),this.currentPlace=null,this.currentModel=null,this.simMode=!1,this.refreshTimer=null,this.canvas=document.getElementById("atmosphereCanvas"),this.atmosphere=new $(this.canvas),this._bindUI(),this._applyReducedMotionPreference(),this._registerServiceWorker(),this._checkSimMode()}async init(){if(this.simMode)return;this.atmosphere.start(),window.addEventListener("online",()=>this._refresh()),window.addEventListener("offline",()=>this._refresh());let e=ne(),i=e||Xe;await this._loadPlace(i,{announce:!e}),this.refreshTimer=setInterval(()=>this._refresh(),qe)}async _loadPlace(e,{announce:i=!1}={}){S("Loading weather\u2026","neutral"),w(null);let n=await ae(e);if(!n.ok){w(n.error?.message||"Weather service unavailable."),S("Weather data unavailable","error");return}this.currentPlace=n.place,this.currentModel=n.model,A(n.place),n.error?w(n.error.message):w(null),this._renderModel(n.model,n.place,{fetchedAt:n.fetchedAt,isOffline:n.isOffline,isStale:n.isStale}),i&&S(U(n.fetchedAt,n.isOffline),n.isStale?"stale":"neutral")}async _refresh(){!this.currentPlace||this.simMode||await this._loadPlace(this.currentPlace)}_renderModel(e,i,n){let{weatherState:r,atmosphere:a}=de(e),l=ue(r,e.hourly,6),o=R({weatherState:r,atmosphere:a,transition:l,isDay:e.current.isDay}),u=me({pixelState:o,model:e,atmosphere:a,transition:l});this.atmosphere.update(r,a),Le(i),Ce(e,o,u,this.settings.temperatureUnit),Me(e,this.settings),S(U(n.fetchedAt,n.isOffline),n.isStale?"stale":"neutral");let d=e.hourly.slice(0,18),p={outdoor:fe(d),rain:ge(d),wind:ye(d),drying:we(d,e.current.humidity),driving:_e(e.current.precipitation,d)};Ie(p);let c=e.hourly.slice(0,12).map(s=>{let h=s.weatherGroup==="clear"&&(s.cloudCover??0)>60?"cloudy":s.weatherGroup;return R({weatherState:h,atmosphere:{...a,precipitationIntensity:(s.precipitation??0)/10,cloudCover:(s.cloudCover??0)/100,stormActivity:h==="thunderstorm"?.6:0},transition:null,isDay:s.isDay})});Ne(e.hourly,c),e.daily.forEach(s=>{s._pixelState=R({weatherState:s.weatherGroup,atmosphere:{...a,precipitationIntensity:(s.precipitationSum??0)/10,cloudCover:.5,stormActivity:s.weatherGroup==="thunderstorm"?.6:0},transition:null,isDay:!0})}),Te(e.daily,this.settings.temperatureUnit),document.title=`${Math.round(e.current.temperature)}\xB0 \xB7 ${o} \u2014 Pixel Weather`}_bindUI(){document.getElementById("openSearch").addEventListener("click",()=>{T(!0),this._renderLocationLists()}),document.getElementById("closeSearch").addEventListener("click",()=>T(!1)),document.getElementById("openSettings").addEventListener("click",()=>B(!0)),document.getElementById("closeSettings").addEventListener("click",()=>B(!1));let e=document.getElementById("locationInput"),i;e.addEventListener("input",()=>{clearTimeout(i);let n=e.value;i=setTimeout(async()=>{if(!n.trim())return this._renderLocationLists();let r=await oe(n);z(r,a=>this._onPickPlace(a))},300)}),document.getElementById("useGeolocation").addEventListener("click",()=>this._useGeolocation()),document.getElementById("tempUnitToggle").addEventListener("change",n=>{this.settings.temperatureUnit=n.target.checked?"fahrenheit":"celsius",O(this.settings),this.currentModel&&this._renderModel(this.currentModel,this.currentPlace,{fetchedAt:Date.now(),isOffline:!1,isStale:!1})}),document.getElementById("tempUnitToggle").checked=this.settings.temperatureUnit==="fahrenheit",document.getElementById("windUnitToggle").addEventListener("change",n=>{this.settings.windUnit=n.target.checked?"mph":"kmh",O(this.settings),this.currentModel&&this._renderModel(this.currentModel,this.currentPlace,{fetchedAt:Date.now(),isOffline:!1,isStale:!1})}),document.getElementById("windUnitToggle").checked=this.settings.windUnit==="mph",document.getElementById("reducedMotionToggle").addEventListener("change",n=>{this.settings.reducedMotion=n.target.checked?"on":"auto",O(this.settings),this._applyReducedMotionPreference()}),document.getElementById("reducedMotionToggle").checked=this.settings.reducedMotion==="on",window.matchMedia("(prefers-reduced-motion: reduce)").addEventListener("change",()=>this._applyReducedMotionPreference())}_renderLocationLists(){let e=Q(),i=F(),n=[...e,...i.filter(r=>!e.some(a=>a.latitude===r.latitude&&a.longitude===r.longitude))];z(n,r=>this._onPickPlace(r))}async _onPickPlace(e){T(!1),await this._loadPlace(e)}_useGeolocation(){if(!("geolocation"in navigator)){w("Location access is unavailable in this browser.");return}S("Requesting location\u2026","neutral"),navigator.geolocation.getCurrentPosition(async e=>{let i=await se(e.coords.latitude,e.coords.longitude);T(!1),await this._loadPlace(i)},()=>{w("Location access is off. Search for a place instead.")},{maximumAge:5*60*1e3,timeout:8e3})}_applyReducedMotionPreference(){let e=window.matchMedia("(prefers-reduced-motion: reduce)").matches,i=this.settings.reducedMotion==="on"||this.settings.reducedMotion==="auto"&&e;this.atmosphere.setReducedMotion(i)}_registerServiceWorker(){"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("./sw.js").catch(()=>{})});let e=null;window.addEventListener("beforeinstallprompt",i=>{i.preventDefault(),e=i;let n=document.getElementById("installButton");n.hidden=!1,n.addEventListener("click",async()=>{n.hidden=!0,e.prompt(),e=null})}),window.addEventListener("appinstalled",()=>{document.getElementById("installButton").hidden=!0})}_checkSimMode(){let i=new URLSearchParams(window.location.search).get("sim");if(!i)return;if(this.simMode=!0,document.getElementById("devBanner").hidden=!1,document.getElementById("devBanner").textContent=`SIMULATED DATA \u2014 scenario: ${i}`,Ae(i)){w("Offline \u2014 showing last available weather (simulated)."),S("Offline \u2014 showing last available weather (simulated)","stale"),this.atmosphere.start();return}if(Re(i)){w("Weather service unavailable."),S("Weather data unavailable","error");return}let n=Oe(i);if(!n){w(`Unknown simulator scenario "${i}". Options: ${De().join(", ")}`);return}this.atmosphere.start(),this.currentPlace=n.location,this.currentModel=n,this._renderModel(n,n.location,{fetchedAt:n.meta.fetchedAt,isOffline:!1,isStale:!1})}},Qe=new j;Qe.init();})();
+</script></body>
+</html>

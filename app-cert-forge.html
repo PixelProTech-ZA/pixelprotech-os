@@ -1,0 +1,3043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PixelProTech Certificate Forge | Forge Your Achievement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   PIXEL PRO TECH CERTIFICATE FORGE — MASTER STYLESHEET
+   ============================================================ */
+:root {
+  --neon-cyan: #00d4aa;
+  --neon-gold: #ffd700;
+  --neon-pink: #ff2d78;
+  --neon-green: #39ff14;
+  --neon-purple: #7b2fff;
+  --neon-orange: #ff6b00;
+  --dark-bg: #0a0a0f;
+  --dark-card: #0d0d1a;
+  --dark-panel: #1a1a2e;
+  --dark-border: #2a2a45;
+  --glass-bg: rgba(26,26,46,0.88);
+  --glass-border: rgba(0,212,170,0.18);
+  --text-primary: #f0f0ff;
+  --text-secondary: #9090b8;
+  --text-accent: #00d4aa;
+  --gold-gradient: linear-gradient(135deg, #ffd700, #ff9500, #ffd700);
+  --cyber-gradient: linear-gradient(135deg, #00d4aa, #7b2fff);
+  --dark-gradient: linear-gradient(180deg, #0a0a0f 0%, #0d0d1a 50%, #0a0a0f 100%);
+  --panel-gradient: linear-gradient(135deg, rgba(0,212,170,0.05), rgba(123,47,255,0.03));
+  --font-display: 'Orbitron', monospace;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --font-cert: 'Cinzel', serif;
+  --glow-cyan: 0 0 20px rgba(0,212,170,0.5), 0 0 60px rgba(0,212,170,0.2);
+  --glow-gold: 0 0 20px rgba(255,215,0,0.5), 0 0 60px rgba(255,215,0,0.2);
+  --glow-pink: 0 0 20px rgba(255,45,120,0.5), 0 0 60px rgba(255,45,120,0.2);
+  --glow-purple: 0 0 20px rgba(123,47,255,0.5), 0 0 60px rgba(123,47,255,0.2);
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: #0a0a0f;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--dark-bg); }
+::-webkit-scrollbar-thumb { background: #00d4aa; border-radius: 3px; }
+
+/* ── SELECTION ── */
+::selection { background: rgba(0,212,170,0.25); color: #fff; }
+
+/* ── CANVAS BACKGROUND ── */
+#particle-canvas {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0; pointer-events: none; opacity: 0.6;
+}
+
+/* ── LAYOUT ── */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+.section { padding: 80px 0; }
+
+/* ── GLITCH EFFECT ── */
+@keyframes glitch {
+  0%,100% { clip-path: polygon(0 0,100% 0,100% 100%,0 100%); transform: skew(0); }
+  10% { clip-path: polygon(0 15%,100% 15%,100% 40%,0 40%); transform: skew(-3deg); }
+  20% { clip-path: polygon(0 60%,100% 60%,100% 80%,0 80%); transform: skew(2deg); }
+  30% { clip-path: polygon(0 0,100% 0,100% 100%,0 100%); transform: skew(0); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(3deg); }
+}
+
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 10px rgba(0,212,170,0.25); }
+  50% { box-shadow: 0 0 40px rgba(0,212,170,0.8), 0 0 80px rgba(0,212,170,0.4); }
+}
+
+@keyframes neon-flicker {
+  0%,100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.6; }
+  94% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counter-rotate {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes data-stream {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+@keyframes slide-in-left {
+  from { transform: translateX(-60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slide-in-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes badge-float {
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  33% { transform: translateY(-15px) rotate(2deg); }
+  66% { transform: translateY(-8px) rotate(-1deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes xp-pop {
+  0% { transform: scale(0) translateY(0); opacity: 1; }
+  50% { transform: scale(1.3) translateY(-30px); opacity: 1; }
+  100% { transform: scale(1) translateY(-60px); opacity: 0; }
+}
+
+@keyframes holographic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── NAVIGATION ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(3,8,16,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--dark-border);
+  transition: var(--transition);
+}
+
+.nav.scrolled { border-bottom-color: rgba(0,212,170,0.25); }
+
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 24px; max-width: 1280px; margin: 0 auto;
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px; text-decoration: none;
+}
+
+.logo-icon {
+  width: 40px; height: 40px; position: relative;
+  border: 2px solid #00d4aa;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  animation: pulse-glow 3s ease-in-out infinite;
+  background: rgba(0,212,170,0.05);
+}
+
+.logo-icon::before {
+  content: 'PPT';
+  font-family: var(--font-display);
+  font-size: 9px; font-weight: 700;
+  color: #00d4aa;
+  letter-spacing: -1px;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 14px; font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.logo-text span { color: #00d4aa; }
+
+.nav-links {
+  display: flex; align-items: center; gap: 8px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.nav-links a:hover {
+  color: #00d4aa;
+  border-color: rgba(0,212,170,0.25);
+  background: rgba(0,212,170,0.05);
+  text-shadow: var(--glow-cyan);
+}
+
+.nav-cta {
+  background: linear-gradient(135deg, #00d4aa, #7b2fff) !important;
+  color: var(--dark-bg) !important;
+  font-weight: 700 !important;
+  border: none !important;
+}
+
+.nav-cta:hover { box-shadow: var(--glow-cyan); transform: translateY(-1px); }
+
+.nav-xp {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--font-display); font-size: 11px;
+  color: var(--neon-gold);
+  background: rgba(255,215,0,0.1);
+  border: 1px solid rgba(255,215,0,0.3);
+  padding: 6px 12px; border-radius: 20px;
+}
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 4px;
+}
+
+.hamburger span {
+  width: 24px; height: 2px;
+  background: var(--neon-cyan);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+/* ── MOBILE NAV ── */
+.mobile-menu {
+  display: none; position: fixed; top: 72px; left: 0; right: 0;
+  background: rgba(3,8,16,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--dark-border);
+  z-index: 999; padding: 20px;
+  flex-direction: column; gap: 12px;
+}
+
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: var(--text-secondary); text-decoration: none;
+  font-family: var(--font-display); font-size: 13px; letter-spacing: 1px;
+  padding: 12px 16px; border-radius: 8px; transition: var(--transition);
+  border: 1px solid transparent;
+}
+.mobile-menu a:hover { color: #00d4aa; border-color: rgba(0,212,170,0.25); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  padding: 100px 0 60px;
+  position: relative; overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,212,170,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 50%, rgba(123,47,255,0.06) 0%, transparent 60%);
+}
+
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 3px;
+  color: #00d4aa; text-transform: uppercase;
+  background: rgba(0,212,170,0.08);
+  border: 1px solid rgba(0,212,170,0.25);
+  padding: 8px 16px; border-radius: 20px;
+  margin-bottom: 24px;
+  animation: slide-in-up 0.8s ease both;
+}
+
+.eyebrow-dot {
+  width: 6px; height: 6px;
+  background: var(--neon-cyan); border-radius: 50%;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 900; line-height: 1.05;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+  animation: slide-in-up 0.8s 0.1s ease both;
+}
+
+.hero-title .line1 { color: var(--text-primary); display: block; }
+.hero-title .line2 {
+  display: block;
+  background: linear-gradient(135deg, #00d4aa, #7b2fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  animation: holographic 4s ease infinite;
+  background-size: 300% 300%;
+}
+
+.hero-sub {
+  font-size: 18px; color: var(--text-secondary);
+  line-height: 1.6; margin-bottom: 36px;
+  max-width: 520px;
+  animation: slide-in-up 0.8s 0.2s ease both;
+}
+
+.hero-actions {
+  display: flex; gap: 16px; flex-wrap: wrap;
+  animation: slide-in-up 0.8s 0.3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, #00d4aa, #7b2fff);
+  color: var(--dark-bg); font-family: var(--font-display);
+  font-size: 13px; font-weight: 700; letter-spacing: 1px;
+  padding: 16px 32px; border-radius: 8px;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.btn-primary:hover::before { transform: translateX(100%); }
+.btn-primary:hover { box-shadow: var(--glow-cyan); transform: translateY(-2px); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: transparent;
+  color: #00d4aa; font-family: var(--font-display);
+  font-size: 13px; font-weight: 600; letter-spacing: 1px;
+  padding: 16px 32px; border-radius: 8px;
+  border: 1px solid rgba(0,212,170,0.4); cursor: pointer;
+  text-decoration: none; transition: var(--transition);
+}
+
+.btn-secondary:hover {
+  background: rgba(0,212,170,0.08);
+  border-color: #00d4aa;
+  box-shadow: var(--glow-cyan);
+}
+
+/* ── HERO VISUAL SIDE ── */
+.hero-visual {
+  position: relative; animation: slide-in-right 0.8s 0.2s ease both;
+}
+
+.hero-cert-preview {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 32px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  position: relative;
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+.hero-cert-preview::before {
+  content: '';
+  position: absolute; inset: -2px;
+  background: linear-gradient(135deg, var(--neon-cyan), transparent, var(--neon-purple), transparent, var(--neon-cyan));
+  border-radius: 18px; z-index: -1;
+  animation: holographic 4s ease infinite;
+  background-size: 300% 300%;
+}
+
+.cert-preview-inner {
+  background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+  border-radius: 12px; padding: 28px;
+  border: 1px solid rgba(255,215,0,0.2);
+  text-align: center; position: relative;
+  overflow: hidden;
+}
+
+.cert-preview-inner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 40px,
+    rgba(255,215,0,0.02) 40px, rgba(255,215,0,0.02) 41px
+  ), repeating-linear-gradient(
+    90deg, transparent, transparent 40px,
+    rgba(255,215,0,0.02) 40px, rgba(255,215,0,0.02) 41px
+  );
+}
+
+.cert-preview-badge {
+  width: 60px; height: 60px; margin: 0 auto 16px;
+  background: var(--gold-gradient);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  box-shadow: var(--glow-gold);
+  animation: rotate-slow 10s linear infinite;
+}
+
+.cert-preview-org {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 3px;
+  color: var(--neon-gold); text-transform: uppercase; margin-bottom: 8px;
+}
+
+.cert-preview-title {
+  font-family: var(--font-cert); font-size: 22px; font-weight: 700;
+  color: var(--neon-gold); margin-bottom: 4px;
+  text-shadow: 0 0 20px rgba(255,215,0,0.5);
+}
+
+.cert-preview-sub {
+  font-family: var(--font-cert); font-size: 13px;
+  color: var(--text-secondary); margin-bottom: 16px;
+}
+
+.cert-preview-name {
+  font-family: var(--font-cert); font-size: 26px; font-weight: 700;
+  color: #fff; margin-bottom: 8px;
+  text-shadow: 0 0 30px rgba(0,212,170,0.6);
+}
+
+.cert-preview-course {
+  font-family: var(--font-body); font-size: 14px;
+  color: var(--text-secondary); margin-bottom: 20px;
+}
+
+.cert-preview-seal {
+  width: 50px; height: 50px; margin: 0 auto;
+  border: 3px solid var(--neon-cyan);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  animation: counter-rotate 8s linear infinite;
+  position: relative;
+}
+
+.cert-preview-seal::before {
+  content: 'VERIFIED · PIXELPROTECH · CERTIFIED ·';
+  position: absolute;
+  font-family: var(--font-display); font-size: 6px; letter-spacing: 1px;
+  color: #00d4aa;
+  width: 80px; height: 80px;
+  top: -15px; left: -15px;
+  display: flex; align-items: center; justify-content: center;
+  animation: rotate-slow 8s linear infinite;
+}
+
+/* ── FLOATING BADGES ── */
+.hero-badges {
+  position: absolute; inset: 0; pointer-events: none;
+}
+
+.hero-badge {
+  position: absolute;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-family: var(--font-display); font-size: 10px;
+  letter-spacing: 1px; color: #00d4aa;
+  display: flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.hero-badge span { font-size: 14px; }
+
+.badge-1 { top: -20px; left: -40px; animation: badge-float 5s 0s ease-in-out infinite; border-color: rgba(255,215,0,0.3); color: var(--neon-gold); }
+.badge-2 { top: 20%; right: -50px; animation: badge-float 5s 0.8s ease-in-out infinite; border-color: rgba(57,255,20,0.3); color: var(--neon-green); }
+.badge-3 { bottom: 30%; left: -60px; animation: badge-float 5s 1.6s ease-in-out infinite; border-color: rgba(255,45,120,0.3); color: var(--neon-pink); }
+.badge-4 { bottom: -10px; right: -30px; animation: badge-float 5s 2.4s ease-in-out infinite; border-color: rgba(123,47,255,0.3); color: var(--neon-purple); }
+.badge-5 { top: 60%; left: -70px; animation: badge-float 5s 3.2s ease-in-out infinite; border-color: rgba(255,107,0,0.3); color: var(--neon-orange); }
+
+/* ── STATS BAR ── */
+.stats-bar {
+  background: var(--dark-panel);
+  border-top: 1px solid var(--dark-border);
+  border-bottom: 1px solid var(--dark-border);
+  padding: 24px 0;
+  position: relative; z-index: 2;
+}
+
+.stats-inner {
+  display: flex; align-items: center; justify-content: space-around;
+  gap: 20px; flex-wrap: wrap;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-display); font-size: 32px; font-weight: 900;
+  background: var(--cyber-gradient); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 2px;
+  color: var(--text-secondary); text-transform: uppercase; margin-top: 4px;
+}
+
+.stat-divider {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--dark-border), transparent);
+}
+
+/* ── SECTION HEADERS ── */
+.section-header { text-align: center; margin-bottom: 60px; }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 3px;
+  color: #00d4aa; text-transform: uppercase;
+  background: rgba(0,212,170,0.08);
+  border: 1px solid rgba(0,212,170,0.2);
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900; line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.section-title .accent {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  font-size: 17px; color: var(--text-secondary); max-width: 600px; margin: 0 auto;
+}
+
+/* ── TABS ── */
+.tab-nav {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center; margin-bottom: 40px;
+}
+
+.tab-btn {
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 1px;
+  padding: 10px 20px; border-radius: 8px; border: 1px solid var(--dark-border);
+  background: transparent; color: var(--text-secondary);
+  cursor: pointer; transition: var(--transition);
+  white-space: nowrap;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  border-color: #00d4aa; color: #00d4aa;
+  background: rgba(0,212,170,0.08);
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ── CERTIFICATE GENERATOR ── */
+.generator-layout {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: start;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 32px;
+  backdrop-filter: blur(20px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+}
+
+.glass-card:hover {
+  border-color: rgba(0,212,170,0.25);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.form-section-title {
+  font-family: var(--font-display); font-size: 13px; font-weight: 700;
+  letter-spacing: 2px; color: #00d4aa;
+  text-transform: uppercase; margin-bottom: 24px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--dark-border);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.form-group { margin-bottom: 20px; }
+
+.form-label {
+  display: block; font-family: var(--font-display); font-size: 10px;
+  letter-spacing: 2px; color: var(--text-secondary);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%; background: rgba(0,0,0,0.3);
+  border: 1px solid var(--dark-border);
+  border-radius: 8px; padding: 12px 16px;
+  color: var(--text-primary); font-family: var(--font-body);
+  font-size: 15px; transition: var(--transition);
+  outline: none;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: #00d4aa;
+  box-shadow: 0 0 0 3px rgba(0,212,170,0.1);
+  background: rgba(0,212,170,0.03);
+}
+
+.form-select { cursor: pointer; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2300d4aa' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.form-select option { background: var(--dark-panel); }
+
+.form-textarea { resize: vertical; min-height: 80px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.cert-id-display {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--neon-green); letter-spacing: 1px;
+  background: rgba(57,255,20,0.08); border: 1px solid rgba(57,255,20,0.2);
+  border-radius: 6px; padding: 10px 14px;
+}
+
+/* ── SIGNATURE STYLES ── */
+.sig-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+
+.sig-option {
+  border: 1px solid var(--dark-border); border-radius: 8px;
+  padding: 12px; cursor: pointer; transition: var(--transition);
+  text-align: center;
+}
+
+.sig-option:hover, .sig-option.selected {
+  border-color: #00d4aa;
+  background: rgba(0,212,170,0.08);
+}
+
+.sig-preview {
+  font-size: 18px; color: var(--neon-gold); margin-bottom: 6px; line-height: 1.3;
+}
+
+.sig-label {
+  font-family: var(--font-display); font-size: 9px; letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+/* ── LOGO UPLOAD ── */
+.upload-area {
+  border: 2px dashed var(--dark-border); border-radius: 8px;
+  padding: 24px; text-align: center; cursor: pointer;
+  transition: var(--transition);
+}
+
+.upload-area:hover, .upload-area.dragover {
+  border-color: #00d4aa;
+  background: rgba(0,212,170,0.05);
+}
+
+.upload-icon { font-size: 32px; margin-bottom: 8px; }
+.upload-text { font-family: var(--font-display); font-size: 11px; letter-spacing: 1px; color: var(--text-secondary); }
+#logo-input { display: none; }
+#logo-preview { max-width: 100px; max-height: 60px; margin: 10px auto 0; display: none; border-radius: 4px; }
+
+/* ── LIVE CERTIFICATE PREVIEW ── */
+.preview-sticky { position: sticky; top: 90px; }
+
+.preview-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.preview-label {
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 2px;
+  color: #00d4aa; text-transform: uppercase;
+  display: flex; align-items: center; gap: 6px;
+}
+
+.live-dot {
+  width: 8px; height: 8px; background: var(--neon-green); border-radius: 50%;
+  animation: pulse-glow 1.5s ease-in-out infinite;
+}
+
+.preview-actions { display: flex; gap: 8px; }
+
+.preview-btn {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 1px;
+  padding: 8px 14px; border-radius: 6px; cursor: pointer;
+  transition: var(--transition); border: 1px solid;
+}
+
+.preview-btn-generate {
+  background: linear-gradient(135deg, var(--neon-gold), #ff9500);
+  border-color: var(--neon-gold); color: var(--dark-bg); font-weight: 700;
+}
+
+.preview-btn-generate:hover { box-shadow: var(--glow-gold); }
+
+.preview-btn-dl {
+  background: transparent; border-color: var(--dark-border); color: var(--text-secondary);
+}
+.preview-btn-dl:hover { border-color: #00d4aa; color: #00d4aa; }
+
+/* ── CERTIFICATE CANVAS ── */
+#cert-canvas-wrapper {
+  position: relative; perspective: 1000px;
+}
+
+#cert-canvas-wrapper:hover .cert-live-preview {
+  transform: rotateY(2deg) rotateX(1deg);
+}
+
+.cert-live-preview {
+  width: 100%;
+  aspect-ratio: 1.414 / 1; /* A4 landscape ish */
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* ── TEMPLATE CARDS ── */
+.template-tabs {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  margin-bottom: 32px; border-bottom: 1px solid var(--dark-border);
+  padding-bottom: 16px;
+}
+
+.tmpl-tab {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 1px;
+  padding: 8px 16px; border-radius: 20px; border: 1px solid var(--dark-border);
+  background: transparent; color: var(--text-secondary); cursor: pointer;
+  transition: var(--transition); white-space: nowrap;
+}
+
+.tmpl-tab.active, .tmpl-tab:hover {
+  border-color: #00d4aa; color: #00d4aa;
+  background: rgba(0,212,170,0.08);
+}
+
+.templates-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.template-card {
+  border-radius: 12px; overflow: hidden;
+  border: 2px solid var(--dark-border); cursor: pointer;
+  transition: var(--transition); position: relative;
+}
+
+.template-card:hover, .template-card.selected {
+  border-color: #00d4aa;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), var(--glow-cyan);
+}
+
+.template-thumb {
+  width: 100%; aspect-ratio: 1.414/1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-cert); font-size: 11px; text-align: center;
+  padding: 12px; position: relative; overflow: hidden;
+}
+
+.template-thumb::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+}
+
+.template-name {
+  position: absolute; bottom: 8px; left: 0; right: 0;
+  text-align: center; z-index: 1;
+  font-family: var(--font-display); font-size: 9px; letter-spacing: 1px;
+  color: #fff; padding: 0 8px;
+}
+
+.template-badge {
+  position: absolute; top: 8px; right: 8px; z-index: 2;
+  font-family: var(--font-display); font-size: 8px; letter-spacing: 1px;
+  padding: 3px 8px; border-radius: 10px;
+}
+
+.badge-gold { background: rgba(255,215,0,0.9); color: #000; }
+.badge-silver { background: rgba(192,192,192,0.9); color: #000; }
+.badge-neon { background: rgba(0,212,170,0.9); color: #000; }
+
+.template-selected-check {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--neon-cyan); color: var(--dark-bg);
+  display: none; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: bold;
+}
+
+.template-card.selected .template-selected-check { display: flex; }
+
+/* ── TEMPLATE THEMES ── */
+.tmpl-gold {
+  background: linear-gradient(135deg, #1a0f00, #2d1a00, #1a0f00);
+  border-color: rgba(255,215,0,0.3) !important;
+}
+.tmpl-cyber {
+  background: linear-gradient(135deg, #0a0a0f, #001433, #0a0a0f);
+  border-color: rgba(0,212,170,0.25) !important;
+}
+.tmpl-violet {
+  background: linear-gradient(135deg, #100020, #1a0030, #100020);
+  border-color: rgba(123,47,255,0.3) !important;
+}
+.tmpl-emerald {
+  background: linear-gradient(135deg, #001a10, #002d18, #001a10);
+  border-color: rgba(57,255,20,0.3) !important;
+}
+.tmpl-crimson {
+  background: linear-gradient(135deg, #1a0008, #2d000f, #1a0008);
+  border-color: rgba(255,45,120,0.3) !important;
+}
+.tmpl-steel {
+  background: linear-gradient(135deg, #0a0e14, #141c28, #0a0e14);
+  border-color: rgba(150,180,220,0.3) !important;
+}
+
+/* ── VERIFICATION PAGE ── */
+.verify-center {
+  max-width: 600px; margin: 0 auto; text-align: center;
+}
+
+.verify-input-wrapper {
+  display: flex; gap: 12px; margin: 32px 0;
+}
+
+.verify-input {
+  flex: 1; background: rgba(0,0,0,0.3); border: 1px solid var(--dark-border);
+  border-radius: 8px; padding: 16px 20px; color: var(--text-primary);
+  font-family: var(--font-mono); font-size: 16px; outline: none;
+  transition: var(--transition); letter-spacing: 2px;
+}
+
+.verify-input:focus { border-color: #00d4aa; box-shadow: 0 0 0 3px rgba(0,212,170,0.1); }
+
+.verify-result {
+  border-radius: 16px; padding: 32px; margin-top: 24px;
+  display: none;
+}
+
+.verify-result.valid {
+  display: block;
+  background: rgba(57,255,20,0.05);
+  border: 1px solid rgba(57,255,20,0.3);
+}
+
+.verify-result.invalid {
+  display: block;
+  background: rgba(255,45,120,0.05);
+  border: 1px solid rgba(255,45,120,0.3);
+}
+
+/* ── GAMIFICATION ── */
+.xp-bar-wrapper { max-width: 600px; margin: 0 auto 40px; }
+
+.xp-bar-label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.xp-label-left { color: var(--neon-gold); }
+.xp-label-right { color: var(--text-secondary); }
+
+.xp-bar-track {
+  height: 12px; background: rgba(255,255,255,0.05);
+  border-radius: 6px; overflow: hidden; border: 1px solid var(--dark-border);
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4aa, #7b2fff);
+  border-radius: 6px;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  position: relative; overflow: hidden;
+}
+
+.xp-bar-fill::after {
+  content: '';
+  position: absolute; top: 0; left: -100%; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+  background-size: 200% 100%;
+}
+
+.achievements-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px; margin-top: 32px;
+}
+
+.achievement-card {
+  background: var(--dark-panel); border: 1px solid var(--dark-border);
+  border-radius: 12px; padding: 20px; text-align: center;
+  transition: var(--transition); cursor: pointer;
+}
+
+.achievement-card.unlocked {
+  border-color: rgba(255,215,0,0.4);
+  background: rgba(255,215,0,0.05);
+}
+
+.achievement-card:hover { transform: translateY(-3px); }
+
+.achievement-icon {
+  font-size: 36px; margin-bottom: 10px;
+  filter: grayscale(1) opacity(0.4);
+}
+
+.achievement-card.unlocked .achievement-icon { filter: none; }
+
+.achievement-name {
+  font-family: var(--font-display); font-size: 10px; letter-spacing: 1px;
+  color: var(--text-secondary); margin-bottom: 4px;
+}
+
+.achievement-card.unlocked .achievement-name { color: var(--neon-gold); }
+
+.achievement-desc {
+  font-size: 11px; color: var(--text-secondary); line-height: 1.4;
+}
+
+.leaderboard { max-width: 700px; margin: 0 auto; }
+
+.leaderboard-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 20px; border-radius: 10px;
+  margin-bottom: 8px; border: 1px solid var(--dark-border);
+  background: var(--dark-panel); transition: var(--transition);
+}
+
+.leaderboard-row:hover { border-color: rgba(0,212,170,0.2); }
+.leaderboard-row:nth-child(1) { border-color: rgba(255,215,0,0.4); background: rgba(255,215,0,0.05); }
+.leaderboard-row:nth-child(2) { border-color: rgba(192,192,192,0.3); background: rgba(192,192,192,0.03); }
+.leaderboard-row:nth-child(3) { border-color: rgba(205,127,50,0.3); background: rgba(205,127,50,0.03); }
+
+.lb-rank {
+  font-family: var(--font-display); font-size: 18px; font-weight: 900;
+  width: 32px; text-align: center;
+}
+
+.lb-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--cyber-gradient); display: flex; align-items: center;
+  justify-content: center; font-size: 18px; flex-shrink: 0;
+}
+
+.lb-info { flex: 1; }
+.lb-name { font-family: var(--font-display); font-size: 13px; color: var(--text-primary); margin-bottom: 2px; }
+.lb-sub { font-size: 12px; color: var(--text-secondary); }
+
+.lb-xp {
+  font-family: var(--font-display); font-size: 14px; font-weight: 700;
+  color: var(--neon-gold);
+}
+
+/* ── TICKER ── */
+.ticker-wrapper {
+  background: var(--dark-panel); border-top: 1px solid var(--dark-border);
+  border-bottom: 1px solid var(--dark-border); padding: 12px 0;
+  overflow: hidden; position: relative; z-index: 2;
+}
+
+.ticker-inner {
+  display: flex; white-space: nowrap;
+  animation: ticker-scroll 40s linear infinite;
+  gap: 60px;
+}
+
+.ticker-inner:hover { animation-play-state: paused; }
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 11px; letter-spacing: 1px;
+  color: var(--text-secondary); flex-shrink: 0;
+}
+
+.ticker-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── BUSINESS SECTION ── */
+.plans-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.plan-card {
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 16px; padding: 32px; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+
+.plan-card.featured {
+  border-color: rgba(255,215,0,0.4);
+  background: rgba(255,215,0,0.03);
+}
+
+.plan-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--dark-border); transition: var(--transition);
+}
+
+.plan-card:hover::before, .plan-card.featured::before {
+  background: linear-gradient(90deg, #00d4aa, #7b2fff);
+}
+
+.plan-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+
+.plan-badge {
+  display: inline-block; font-family: var(--font-display); font-size: 10px;
+  letter-spacing: 2px; padding: 4px 12px; border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.plan-badge-free { background: rgba(57,255,20,0.15); color: var(--neon-green); border: 1px solid rgba(57,255,20,0.3); }
+.plan-badge-pro { background: rgba(255,215,0,0.15); color: var(--neon-gold); border: 1px solid rgba(255,215,0,0.3); }
+.plan-badge-institution { background: rgba(123,47,255,0.15); color: var(--neon-purple); border: 1px solid rgba(123,47,255,0.3); }
+
+.plan-name {
+  font-family: var(--font-display); font-size: 20px; font-weight: 700;
+  color: var(--text-primary); margin-bottom: 8px;
+}
+
+.plan-price {
+  font-family: var(--font-display); font-size: 36px; font-weight: 900;
+  color: #00d4aa; margin-bottom: 16px;
+  display: flex; align-items: flex-end; gap: 6px;
+}
+
+.plan-price-period { font-size: 14px; color: var(--text-secondary); font-weight: 400; margin-bottom: 8px; }
+
+.plan-features { list-style: none; margin-bottom: 24px; }
+.plan-features li {
+  font-size: 14px; color: var(--text-secondary); padding: 8px 0;
+  border-bottom: 1px solid var(--dark-border);
+  display: flex; align-items: center; gap: 8px;
+}
+
+.plan-features li::before { content: '✓'; color: var(--neon-green); font-size: 12px; }
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 40px; align-items: center;
+}
+
+.contact-item {
+  display: flex; align-items: center; gap: 16px;
+  background: var(--dark-panel); border: 1px solid var(--dark-border);
+  border-radius: 12px; padding: 20px; margin-bottom: 16px;
+  transition: var(--transition);
+}
+
+.contact-item:hover { border-color: rgba(0,212,170,0.25); }
+
+.contact-icon { font-size: 28px; }
+.contact-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; color: var(--text-secondary); margin-bottom: 4px; }
+.contact-value { font-family: var(--font-mono); font-size: 14px; color: var(--text-primary); }
+
+/* ── DISCLAIMER ── */
+.disclaimer-box {
+  background: rgba(255,215,0,0.05);
+  border: 1px solid rgba(255,215,0,0.2);
+  border-radius: 12px; padding: 24px 28px;
+  display: flex; gap: 16px; align-items: flex-start;
+  margin-top: 40px;
+}
+
+.disclaimer-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.disclaimer-text { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+.disclaimer-title { font-family: var(--font-display); font-size: 11px; letter-spacing: 2px; color: var(--neon-gold); margin-bottom: 8px; }
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark-panel);
+  border-top: 1px solid var(--dark-border);
+  padding: 40px 0;
+  margin-top: 80px;
+}
+
+.footer-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+
+.footer-brand { font-family: var(--font-display); font-size: 12px; color: var(--text-secondary); }
+.footer-brand strong { color: #00d4aa; }
+.footer-links { display: flex; gap: 20px; }
+.footer-links a { font-family: var(--font-display); font-size: 10px; letter-spacing: 1px; color: var(--text-secondary); text-decoration: none; transition: var(--transition); }
+.footer-links a:hover { color: #00d4aa; }
+
+/* ── CONFETTI ── */
+.confetti-piece {
+  position: fixed; z-index: 9999; width: 10px; height: 10px;
+  border-radius: 2px; pointer-events: none;
+  animation: confetti-fall var(--duration, 3s) ease-in forwards;
+}
+
+/* ── XP POP ── */
+.xp-popup {
+  position: fixed; z-index: 9998; pointer-events: none;
+  font-family: var(--font-display); font-size: 16px; font-weight: 700;
+  color: var(--neon-gold); text-shadow: var(--glow-gold);
+  animation: xp-pop 1.5s ease forwards;
+}
+
+/* ── MODALS ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.modal-overlay.open { display: flex; }
+
+.modal-box {
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border); border-radius: 20px;
+  padding: 40px; max-width: 600px; width: 100%;
+  position: relative; animation: slide-in-up 0.3s ease;
+}
+
+.modal-close {
+  position: absolute; top: 20px; right: 20px;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--dark-border); background: transparent;
+  color: var(--text-secondary); cursor: pointer; font-size: 18px;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition);
+}
+
+.modal-close:hover { border-color: var(--neon-pink); color: var(--neon-pink); }
+
+/* ── QR CODE PLACEHOLDER ── */
+.qr-display {
+  width: 100px; height: 100px;
+  background: repeating-conic-gradient(#fff 0% 25%, transparent 0% 50%) 0 / 8px 8px;
+  margin: 12px auto 0; border: 2px solid var(--dark-border); border-radius: 4px;
+  image-rendering: pixelated;
+}
+
+/* ── KEYBOARD SHORTCUTS PANEL ── */
+.shortcuts-panel {
+  position: fixed; bottom: 80px; right: 20px; z-index: 500;
+  background: var(--glass-bg); border: 1px solid var(--glass-border);
+  border-radius: 12px; padding: 16px 20px; backdrop-filter: blur(20px);
+  display: none; min-width: 240px;
+}
+
+.shortcuts-panel.open { display: block; }
+.shortcuts-title { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; color: #00d4aa; margin-bottom: 12px; }
+.shortcut-item { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; gap: 20px; }
+.shortcut-key { font-family: var(--font-mono); font-size: 11px; color: var(--neon-gold); background: rgba(255,215,0,0.1); border: 1px solid rgba(255,215,0,0.3); padding: 2px 8px; border-radius: 4px; }
+.shortcut-action { font-size: 12px; color: var(--text-secondary); }
+
+/* ── FAB ── */
+.fab-cluster {
+  position: fixed; bottom: 24px; right: 24px; z-index: 500;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
+}
+
+.fab {
+  width: 50px; height: 50px; border-radius: 50%;
+  border: none; cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); position: relative;
+}
+
+.fab-main {
+  width: 58px; height: 58px;
+  background: linear-gradient(135deg, #00d4aa, #7b2fff);
+  box-shadow: var(--glow-cyan);
+}
+
+.fab-main:hover { transform: scale(1.1) rotate(10deg); }
+
+.fab-sound {
+  background: rgba(255,215,0,0.1);
+  border: 1px solid rgba(255,215,0,0.3);
+  font-size: 18px;
+}
+.fab-sound:hover { background: rgba(255,215,0,0.2); }
+
+.fab-shortcuts {
+  background: rgba(0,212,170,0.1);
+  border: 1px solid rgba(0,212,170,0.25);
+  font-size: 18px;
+}
+.fab-shortcuts:hover { background: rgba(0,212,170,0.2); }
+
+/* ── LOADING SCREEN ── */
+#loading-screen {
+  position: fixed; inset: 0; z-index: 99999;
+  background: var(--dark-bg);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#loading-screen.hidden { opacity: 0; visibility: hidden; }
+
+.loading-logo {
+  font-family: var(--font-display); font-size: 28px; font-weight: 900;
+  letter-spacing: 3px; margin-bottom: 8px;
+  background: var(--cyber-gradient); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: neon-flicker 2s ease infinite;
+}
+
+.loading-sub { font-family: var(--font-mono); font-size: 12px; color: var(--text-secondary); letter-spacing: 2px; margin-bottom: 40px; }
+
+.loading-bar-track { width: 280px; height: 4px; background: var(--dark-border); border-radius: 2px; overflow: hidden; }
+.loading-bar-fill { height: 100%; background: linear-gradient(90deg, #00d4aa, #7b2fff); border-radius: 2px; width: 0%; transition: width 0.1s ease; }
+.loading-percent { font-family: var(--font-display); font-size: 12px; color: #00d4aa; margin-top: 12px; letter-spacing: 2px; }
+
+/* ── STREAM DATA DISPLAY ── */
+.data-streams {
+  position: fixed; right: 0; top: 80px; bottom: 0; width: 60px; z-index: 1;
+  overflow: hidden; pointer-events: none; opacity: 0.3;
+}
+
+.data-col {
+  position: absolute; font-family: var(--font-mono); font-size: 10px;
+  color: #00d4aa; line-height: 1.4; top: 0;
+  animation: data-stream 6s linear infinite;
+}
+
+/* ── GRID OVERLAY ── */
+.grid-overlay {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,212,170,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,170,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.8;
+}
+
+/* ── SCANLINE ── */
+.scanline {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ── CERTIFICATE TEMPLATES RENDERING ── */
+.cert-render {
+  width: 100%; height: 100%; display: flex;
+  flex-direction: column; align-items: center; justify-content: center;
+  padding: 5%;
+  position: relative;
+}
+
+/* TEMPLATE: Cyber Gold */
+.cert-tmpl-1 {
+  background: linear-gradient(135deg, #100800, #1a1000, #2a1a00, #1a1000);
+  border: 3px solid rgba(255,215,0,0.6);
+}
+
+.cert-tmpl-1::before {
+  content: '';
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(255,215,0,0.3);
+  border-radius: 4px;
+}
+
+/* TEMPLATE: Cyber Tech */
+.cert-tmpl-2 {
+  background: linear-gradient(135deg, #0a0a0f, #0a0a0f, #000614);
+  border: 2px solid rgba(0,212,170,0.5);
+}
+
+/* TEMPLATE: Royal Purple */
+.cert-tmpl-3 {
+  background: linear-gradient(135deg, #0a001a, #120028, #0a001a);
+  border: 2px solid rgba(123,47,255,0.5);
+}
+
+/* TEMPLATE: Nature Green */
+.cert-tmpl-4 {
+  background: linear-gradient(135deg, #001208, #002010, #001208);
+  border: 2px solid rgba(57,255,20,0.4);
+}
+
+/* TEMPLATE: Crimson */
+.cert-tmpl-5 {
+  background: linear-gradient(135deg, #150005, #22000a, #150005);
+  border: 2px solid rgba(255,45,120,0.5);
+}
+
+/* TEMPLATE: Steel Blue */
+.cert-tmpl-6 {
+  background: linear-gradient(135deg, #050a14, #0a1428, #050a14);
+  border: 2px solid rgba(100,150,220,0.4);
+}
+
+/* ── LIVE CERT TEXT ── */
+.lc-org { font-family: var(--font-display); font-size: clamp(5px,1.2vw,10px); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4%; }
+.lc-present { font-family: var(--font-cert); font-size: clamp(6px,1.5vw,12px); margin-bottom: 2%; opacity: 0.7; }
+.lc-name { font-family: var(--font-cert); font-size: clamp(12px,3vw,28px); font-weight: 700; margin-bottom: 3%; line-height: 1.1; }
+.lc-for { font-family: var(--font-body); font-size: clamp(5px,1vw,9px); letter-spacing: 2px; margin-bottom: 2%; opacity: 0.6; text-transform: uppercase; }
+.lc-course { font-family: var(--font-cert); font-size: clamp(8px,1.8vw,16px); margin-bottom: 4%; }
+.lc-divider { width: 60%; height: 1px; margin: 0 auto 4%; }
+.lc-meta { display: flex; justify-content: space-around; width: 100%; font-size: clamp(4px,0.9vw,8px); font-family: var(--font-display); letter-spacing: 1px; opacity: 0.7; }
+.lc-seal { font-size: clamp(16px,4vw,40px); margin-bottom: 3%; animation: rotate-slow 10s linear infinite; }
+.lc-id { font-family: var(--font-mono); font-size: clamp(4px,0.8vw,7px); opacity: 0.5; margin-top: 3%; }
+
+/* ── PROGRESS METER ── */
+.progress-meter {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  justify-content: center; margin: 24px 0;
+}
+
+.progress-step {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+
+.progress-circle {
+  width: 48px; height: 48px; border-radius: 50%;
+  border: 2px solid var(--dark-border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 12px;
+  color: var(--text-secondary); transition: var(--transition);
+  background: var(--dark-panel);
+}
+
+.progress-circle.done {
+  border-color: var(--neon-green); color: var(--neon-green);
+  background: rgba(57,255,20,0.1);
+  box-shadow: 0 0 15px rgba(57,255,20,0.3);
+}
+
+.progress-circle.active {
+  border-color: #00d4aa; color: #00d4aa;
+  background: rgba(0,212,170,0.1); animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.progress-line { flex: 1; height: 2px; background: var(--dark-border); border-radius: 1px; margin-top: 24px; }
+.progress-line.done { background: var(--neon-green); }
+
+.progress-label { font-family: var(--font-display); font-size: 9px; letter-spacing: 1px; color: var(--text-secondary); text-align: center; max-width: 70px; }
+
+/* ── STREAK ── */
+.streak-display {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--dark-panel); border: 1px solid rgba(255,107,0,0.3);
+  border-radius: 12px; padding: 20px 28px;
+  justify-content: center; flex-wrap: wrap; margin-bottom: 32px;
+}
+
+.streak-icon { font-size: 40px; }
+.streak-count { font-family: var(--font-display); font-size: 48px; font-weight: 900; color: var(--neon-orange); line-height: 1; }
+.streak-info { }
+.streak-label { font-family: var(--font-display); font-size: 10px; letter-spacing: 2px; color: var(--text-secondary); }
+.streak-sub { font-size: 12px; color: var(--neon-orange); margin-top: 4px; }
+
+/* ── SCROLL ANIMATIONS ── */
+.fade-up {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .generator-layout { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .form-row { grid-template-columns: 1fr; }
+  .data-streams { display: none; }
+  .templates-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 60px 0; }
+  .stats-inner { gap: 12px; }
+  .stat-divider { display: none; }
+  .fab-cluster { bottom: 16px; right: 16px; }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen">
+  <div class="loading-logo">PIXELPROTECH</div>
+  <div class="loading-sub">CERTIFICATE FORGE · INITIALIZING</div>
+  <div class="loading-bar-track">
+    <div class="loading-bar-fill" id="loading-bar"></div>
+  </div>
+  <div class="loading-percent" id="loading-percent">0%</div>
+</div>
+
+<!-- BACKGROUND LAYERS -->
+<canvas id="particle-canvas"></canvas>
+<div class="grid-overlay"></div>
+<div class="scanline"></div>
+<div class="data-streams" id="data-streams"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon"></div>
+      <span class="logo-text">Pixel<span>Pro</span>Tech</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#generator">Generator</a></li>
+      <li><a href="#templates">Templates</a></li>
+      <li><a href="#verify">Verify</a></li>
+      <li><a href="#gamify">XP Lab</a></li>
+      <li><a href="#business">Plans</a></li>
+      <li><a href="#generator" class="nav-cta">Forge Now</a></li>
+    </ul>
+    <div class="nav-xp">⚡ <span id="nav-xp-count">0</span> XP</div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#generator" onclick="closeMenu()">⚙ Generator</a>
+  <a href="#templates" onclick="closeMenu()">🎨 Templates</a>
+  <a href="#verify" onclick="closeMenu()">✅ Verify</a>
+  <a href="#gamify" onclick="closeMenu()">🎮 XP Lab</a>
+  <a href="#business" onclick="closeMenu()">💼 Plans</a>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot"></span>
+          PixelProTech Certificate Forge v2.0
+        </div>
+        <h1 class="hero-title">
+          <span class="line1">Forge Your</span>
+          <span class="line2">Achievement</span>
+        </h1>
+        <p class="hero-sub">Create professional training and skill certificates in seconds. Built for educators, communities, workshops, and digital champions across South Africa.</p>
+        <div class="hero-actions">
+          <a href="#generator" class="btn-primary">⚡ Generate Certificate</a>
+          <a href="#templates" class="btn-secondary">🎨 Browse Templates</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div style="position:relative;">
+          <div class="hero-badges">
+            <div class="hero-badge badge-1"><span>🏆</span> Typing Elite</div>
+            <div class="hero-badge badge-2"><span>💼</span> Office Ready</div>
+            <div class="hero-badge badge-3"><span>📊</span> Data Capture Certified</div>
+            <div class="hero-badge badge-4"><span>✅</span> Digital Skills Verified</div>
+            <div class="hero-badge badge-5"><span>⌨</span> Coding Practice Award</div>
+          </div>
+          <div class="hero-cert-preview">
+            <div class="cert-preview-inner">
+              <div class="cert-preview-badge">🏅</div>
+              <div class="cert-preview-org">PixelProTech Academy</div>
+              <div class="cert-preview-title">Certificate of Achievement</div>
+              <div class="cert-preview-sub">This certifies that</div>
+              <div class="cert-preview-name">Thabo Nkosi</div>
+              <div class="cert-preview-course">Advanced Digital Skills & Computer Literacy</div>
+              <div class="cert-preview-seal">🔐</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrapper">
+  <div class="ticker-inner" id="ticker-inner">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number" data-target="12847">0</div>
+        <div class="stat-label">Certificates Generated</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="100">0</div>
+        <div class="stat-label">Templates Available</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="4200">0</div>
+        <div class="stat-label">Users Served</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="10">0</div>
+        <div class="stat-label">Template Categories</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="98">0</div>
+        <div class="stat-label">% Satisfaction Rate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CERTIFICATE GENERATOR -->
+<section class="section" id="generator">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">⚙ Certificate Engine</div>
+      <h2 class="section-title">Certificate <span class="accent">Generator</span></h2>
+      <p class="section-desc">Fill in the details, pick your template, and watch your professional certificate come to life in real time.</p>
+    </div>
+
+    <!-- PROGRESS METER -->
+    <div class="progress-meter fade-up" id="progress-meter">
+      <div class="progress-step">
+        <div class="progress-circle active" id="step-1">1</div>
+        <div class="progress-label">Details</div>
+      </div>
+      <div class="progress-line" id="line-1"></div>
+      <div class="progress-step">
+        <div class="progress-circle" id="step-2">2</div>
+        <div class="progress-label">Template</div>
+      </div>
+      <div class="progress-line" id="line-2"></div>
+      <div class="progress-step">
+        <div class="progress-circle" id="step-3">3</div>
+        <div class="progress-label">Preview</div>
+      </div>
+      <div class="progress-line" id="line-3"></div>
+      <div class="progress-step">
+        <div class="progress-circle" id="step-4">4</div>
+        <div class="progress-label">Export</div>
+      </div>
+    </div>
+
+    <div class="generator-layout">
+      <!-- FORM PANEL -->
+      <div>
+        <div class="glass-card fade-up" style="margin-bottom:24px;">
+          <div class="form-section-title">👤 Recipient Details</div>
+
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" class="form-input" id="cert-name" placeholder="e.g. Thabo Nkosi" oninput="updatePreview()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Course / Training Title *</label>
+            <input type="text" class="form-input" id="cert-course" placeholder="e.g. Advanced Computer Literacy" oninput="updatePreview()">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Instructor / Trainer</label>
+              <input type="text" class="form-input" id="cert-instructor" placeholder="e.g. Ms. Zinhle Dlamini" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date Completed</label>
+              <input type="date" class="form-input" id="cert-date" oninput="updatePreview()">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Score / Achievement</label>
+              <input type="text" class="form-input" id="cert-score" placeholder="e.g. 95% — Distinction" oninput="updatePreview()">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organisation</label>
+              <input type="text" class="form-input" id="cert-org" placeholder="PixelProTech Academy" oninput="updatePreview()">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Certificate ID (Auto-Generated)</label>
+            <div class="cert-id-display" id="cert-id-display">PPT-2024-XXXX-XXXX</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">AI Wording Suggestion</label>
+            <button class="btn-secondary" style="width:100%;justify-content:center;" onclick="aiWordingSuggestion()">🤖 Generate AI Description</button>
+            <div id="ai-suggestion" style="margin-top:8px;font-size:13px;color:var(--text-secondary);display:none;padding:10px;border:1px solid var(--dark-border);border-radius:6px;line-height:1.6;"></div>
+          </div>
+        </div>
+
+        <div class="glass-card fade-up" style="margin-bottom:24px;">
+          <div class="form-section-title">✍ Signature Style</div>
+          <div class="sig-grid" id="sig-grid">
+            <div class="sig-option selected" data-sig="0" onclick="selectSig(this)">
+              <div class="sig-preview" style="font-family:'Brush Script MT',cursive;">J. Williams</div>
+              <div class="sig-label">Classic Script</div>
+            </div>
+            <div class="sig-option" data-sig="1" onclick="selectSig(this)">
+              <div class="sig-preview" style="font-family:var(--font-mono);font-size:14px;">Z.Dlamini</div>
+              <div class="sig-label">Digital Mono</div>
+            </div>
+            <div class="sig-option" data-sig="2" onclick="selectSig(this)">
+              <div class="sig-preview" style="font-family:var(--font-display);font-size:13px;color:var(--neon-cyan);">T. NKOSI</div>
+              <div class="sig-label">Cyber Style</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card fade-up">
+          <div class="form-section-title">🖼 Logo Upload (Optional)</div>
+          <div class="upload-area" id="upload-area" onclick="document.getElementById('logo-input').click()"
+            ondragover="event.preventDefault();this.classList.add('dragover')"
+            ondragleave="this.classList.remove('dragover')"
+            ondrop="handleLogoDrop(event)">
+            <div class="upload-icon">📤</div>
+            <div class="upload-text">Click to upload or drag & drop<br>PNG, JPG, SVG — max 2MB</div>
+            <img id="logo-preview" src="" alt="logo">
+          </div>
+          <input type="file" id="logo-input" accept="image/*" onchange="handleLogoUpload(event)">
+        </div>
+      </div>
+
+      <!-- PREVIEW PANEL -->
+      <div class="preview-sticky">
+        <div class="glass-card">
+          <div class="preview-header">
+            <div class="preview-label">
+              <span class="live-dot"></span> Live Preview
+            </div>
+            <div class="preview-actions">
+              <button class="preview-btn preview-btn-generate" onclick="generateCertificate()">🏆 Generate</button>
+              <button class="preview-btn preview-btn-generate" onclick="showDonateModal()" style="background:linear-gradient(135deg,#7b2fff,#00d4aa);border:none;">💜 Download</button>
+            </div>
+          </div>
+
+          <div id="cert-canvas-wrapper">
+            <div class="cert-live-preview cert-tmpl-1" id="live-cert" onmousemove="handleTilt(event)" onmouseleave="resetTilt()">
+              <div class="cert-render" id="cert-render">
+                <div id="lc-logo-wrap" style="display:none;margin-bottom:4%;">
+                  <img id="lc-logo" src="" alt="logo" style="max-height:clamp(28px,5%,48px);max-width:40%;object-fit:contain;border-radius:4px;filter:drop-shadow(0 0 8px rgba(0,212,170,0.5));">
+                </div>
+                <div class="lc-org" id="lc-org" style="color:var(--neon-gold)">PIXELPROTECH ACADEMY</div>
+                <div class="lc-seal" id="lc-seal">🏅</div>
+                <div class="lc-present" style="color:rgba(255,215,0,0.7)">This certificate is proudly awarded to</div>
+                <div class="lc-name" id="lc-name" style="color:#ffd700;text-shadow:0 0 30px rgba(255,215,0,0.5)">Your Full Name</div>
+                <div class="lc-for" style="color:rgba(255,215,0,0.5)">in recognition of successful completion of</div>
+                <div class="lc-course" id="lc-course" style="color:rgba(255,255,255,0.8)">Course / Training Title</div>
+                <div class="lc-divider" style="background:rgba(255,215,0,0.3)"></div>
+                <div class="lc-meta">
+                  <span id="lc-date">Date: —</span>
+                  <span id="lc-score">Achievement: —</span>
+                  <span id="lc-instructor">Trainer: —</span>
+                </div>
+                <div class="lc-id" id="lc-id" style="color:rgba(255,215,0,0.4)">ID: PPT-2024-XXXX-XXXX</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="preview-btn preview-btn-dl" style="flex:1;justify-content:center;display:flex;" onclick="copyToClipboard()">📋 Copy ID</button>
+            <button class="preview-btn preview-btn-dl" style="flex:1;justify-content:center;display:flex;" onclick="showQR()">📱 QR Code</button>
+            <button class="preview-btn preview-btn-dl" style="flex:1;justify-content:center;display:flex;" onclick="screenshotMode()">📸 Screenshot</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATES SECTION -->
+<section class="section" id="templates" style="background:rgba(0,0,0,0.3);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">🎨 Template Library</div>
+      <h2 class="section-title">100+ <span class="accent">Premium Templates</span></h2>
+      <p class="section-desc">Choose from expertly crafted templates across every training category.</p>
+    </div>
+
+    <div class="template-tabs fade-up" id="tmpl-tabs">
+      <button class="tmpl-tab active" data-cat="all" onclick="filterTemplates(this,'all')">All Templates</button>
+      <button class="tmpl-tab" data-cat="typing" onclick="filterTemplates(this,'typing')">⌨ Typing</button>
+      <button class="tmpl-tab" data-cat="office" onclick="filterTemplates(this,'office')">💼 Office Skills</button>
+      <button class="tmpl-tab" data-cat="data" onclick="filterTemplates(this,'data')">📊 Data Capture</button>
+      <button class="tmpl-tab" data-cat="coding" onclick="filterTemplates(this,'coding')">💻 Coding</button>
+      <button class="tmpl-tab" data-cat="school" onclick="filterTemplates(this,'school')">🏫 School</button>
+      <button class="tmpl-tab" data-cat="church" onclick="filterTemplates(this,'church')">⛪ Church</button>
+      <button class="tmpl-tab" data-cat="community" onclick="filterTemplates(this,'community')">🌍 Community</button>
+      <button class="tmpl-tab" data-cat="ai" onclick="filterTemplates(this,'ai')">🤖 AI & Tech</button>
+      <button class="tmpl-tab" data-cat="cv" onclick="filterTemplates(this,'cv')">📄 CV & Career</button>
+      <button class="tmpl-tab" data-cat="literacy" onclick="filterTemplates(this,'literacy')">💡 Literacy</button>
+    </div>
+
+    <div class="templates-grid fade-up" id="templates-grid">
+      <!-- generated by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- VERIFICATION SECTION -->
+<section class="section" id="verify">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">✅ Verification Hub</div>
+      <h2 class="section-title">Verify Your <span class="accent">Certificate</span></h2>
+      <p class="section-desc">Enter any PixelProTech Certificate ID to instantly verify its authenticity.</p>
+    </div>
+
+    <div class="verify-center fade-up">
+      <div class="glass-card">
+        <div style="text-align:center;font-size:48px;margin-bottom:16px;">🔐</div>
+        <div class="form-section-title" style="justify-content:center;">Certificate Verification System</div>
+        <p style="color:var(--text-secondary);font-size:14px;text-align:center;margin-bottom:24px;line-height:1.6;">All PixelProTech certificates carry a unique verification code. Enter it below to confirm authenticity and view full certificate details.</p>
+        <div class="verify-input-wrapper">
+          <input type="text" class="verify-input" id="verify-input" placeholder="PPT-2024-XXXX-XXXX" maxlength="18" oninput="this.value=this.value.toUpperCase()">
+          <button class="btn-primary" onclick="verifyCertificate()" style="white-space:nowrap;">Verify</button>
+        </div>
+        <div class="verify-result" id="verify-result"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMIFICATION SECTION -->
+<section class="section" id="gamify" style="background:rgba(0,0,0,0.2);">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">🎮 XP Laboratory</div>
+      <h2 class="section-title">Level Up Your <span class="accent">Creator Journey</span></h2>
+      <p class="section-desc">Earn XP, unlock achievements, and climb the leaderboard as you forge certificates.</p>
+    </div>
+
+    <div class="fade-up">
+      <!-- STREAK -->
+      <div class="streak-display">
+        <div class="streak-icon">🔥</div>
+        <div class="streak-count" id="streak-count">0</div>
+        <div class="streak-info">
+          <div class="streak-label">DAY CREATOR STREAK</div>
+          <div class="streak-sub" id="streak-sub">Start creating to build your streak!</div>
+        </div>
+      </div>
+
+      <!-- XP BAR -->
+      <div class="xp-bar-wrapper">
+        <div class="xp-bar-label">
+          <div class="xp-label-left">⚡ Level <span id="xp-level">1</span> — <span id="xp-title">Apprentice</span></div>
+          <div class="xp-label-right"><span id="xp-current">0</span> / <span id="xp-next">500</span> XP</div>
+        </div>
+        <div class="xp-bar-track">
+          <div class="xp-bar-fill" id="xp-bar-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <h3 style="font-family:var(--font-display);font-size:14px;letter-spacing:2px;color:var(--neon-cyan);text-align:center;margin-bottom:24px;">🏆 ACHIEVEMENT VAULT</h3>
+      <div class="achievements-grid" id="achievements-grid">
+        <!-- generated by JS -->
+      </div>
+
+      <!-- LEADERBOARD -->
+      <h3 style="font-family:var(--font-display);font-size:14px;letter-spacing:2px;color:var(--neon-gold);text-align:center;margin:48px 0 24px;">👑 TOP CREATOR LEADERBOARD</h3>
+      <div class="leaderboard" id="leaderboard">
+        <!-- generated by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS SECTION -->
+<section class="section" id="business">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">💼 Enterprise</div>
+      <h2 class="section-title">Power Up Your <span class="accent">Institution</span></h2>
+      <p class="section-desc">From free community use to full institutional branding — we have a plan for everyone.</p>
+    </div>
+
+    <div class="plans-grid fade-up">
+      <div class="plan-card">
+        <div class="plan-badge plan-badge-free">FREE FOREVER</div>
+        <div class="plan-name">Community</div>
+        <div class="plan-price">R0 <span class="plan-price-period">/month</span></div>
+        <ul class="plan-features">
+          <li>Unlimited certificate generation</li>
+          <li>6 template categories</li>
+          <li>PDF export</li>
+          <li>QR code verification</li>
+          <li>Basic certificate ID</li>
+          <li>PixelProTech watermark</li>
+        </ul>
+        <a href="#generator" class="btn-secondary" style="width:100%;justify-content:center;display:flex;">Start Free</a>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="plan-badge plan-badge-pro">⭐ PREMIUM</div>
+        <div class="plan-name">Professional</div>
+        <div class="plan-price">R149 <span class="plan-price-period">/month</span></div>
+        <ul class="plan-features">
+          <li>Everything in Community</li>
+          <li>All 100+ templates</li>
+          <li>Custom branding & logo</li>
+          <li>Remove watermark</li>
+          <li>Holographic seal options</li>
+          <li>Bulk generation (50/month)</li>
+          <li>Priority WhatsApp support</li>
+        </ul>
+        <a href="https://wa.me/27651971461" target="_blank" class="btn-primary" style="width:100%;justify-content:center;display:flex;">Get Pro</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-badge plan-badge-institution">🏢 INSTITUTION</div>
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">Custom</div>
+        <ul class="plan-features">
+          <li>Everything in Professional</li>
+          <li>Unlimited bulk generation</li>
+          <li>Custom template design</li>
+          <li>White-label solution</li>
+          <li>API integration</li>
+          <li>Dedicated account manager</li>
+          <li>SLA support</li>
+        </ul>
+        <a href="mailto:pixelprotechsolutions@gmail.com" class="btn-secondary" style="width:100%;justify-content:center;display:flex;">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div style="margin-top:80px;">
+      <div class="section-header fade-up">
+        <div class="section-tag">📞 Contact</div>
+        <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+      </div>
+      <div class="contact-grid fade-up">
+        <div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label">WhatsApp / Call</div>
+              <div class="contact-value">065 197 1461</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">pixelprotechsolutions@gmail.com</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌍</div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">South Africa — Nationwide Service</div>
+            </div>
+          </div>
+        </div>
+        <div class="glass-card" style="text-align:center;padding:40px;">
+          <div style="font-size:48px;margin-bottom:16px;">💬</div>
+          <h3 style="font-family:var(--font-display);font-size:18px;color:var(--text-primary);margin-bottom:12px;">Need Custom Certificates?</h3>
+          <p style="color:var(--text-secondary);font-size:14px;line-height:1.6;margin-bottom:24px;">We build custom templates for schools, churches, training centres, NGOs, and businesses across South Africa. Fast turnaround. Affordable pricing.</p>
+          <a href="https://wa.me/27651971461?text=Hi%20PixelProTech!%20I%20need%20custom%20certificate%20templates." target="_blank" class="btn-primary" style="display:inline-flex;">WhatsApp Us Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer-box fade-up">
+      <div class="disclaimer-icon">⚠️</div>
+      <div>
+        <div class="disclaimer-title">Important Disclaimer</div>
+        <div class="disclaimer-text">PixelProTech certificates represent training participation, practice achievements, workshops, and independently issued recognition awards. They are not official government-accredited qualifications unless explicitly stated by a verified training partner. PixelProTech is an independent certificate creation and recognition platform. All certificates are issued at the discretion of the creator and are intended for motivational, commemorative, and internal training recognition purposes only.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <strong>PixelProTech</strong> Certificate Forge &copy; 2024<br>
+        <span style="font-size:11px;">Built with 🔥 by PixelProTech Solutions, South Africa</span>
+      </div>
+      <div class="footer-links">
+        <a href="#generator">Generator</a>
+        <a href="#templates">Templates</a>
+        <a href="#verify">Verify</a>
+        <a href="#gamify">XP Lab</a>
+        <a href="#business">Plans</a>
+      </div>
+      <div style="font-family:var(--font-display);font-size:11px;color:var(--text-secondary);">
+        <span style="color:var(--neon-cyan)">●</span> System Online
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- DONATE MODAL -->
+<div class="modal-overlay" id="donate-modal">
+  <div class="modal-box" style="max-width:480px;text-align:center;">
+    <button class="modal-close" onclick="closeModal('donate-modal')">✕</button>
+
+    <div style="font-size:52px;margin-bottom:12px;">💜</div>
+    <div style="font-family:var(--font-display);font-size:10px;letter-spacing:3px;color:#00d4aa;margin-bottom:8px;">SUPPORT PIXELPROTECH</div>
+    <h3 style="font-family:var(--font-display);font-size:20px;color:#fff;margin-bottom:10px;">Download Your Certificate</h3>
+    <p style="color:#9090b8;font-size:14px;line-height:1.7;margin-bottom:24px;">
+      This tool is free to use. To download your certificate, please support PixelProTech with a small donation — any amount helps keep this platform running for communities across South Africa. 🇿🇦
+    </p>
+
+    <!-- BANK DETAILS CARD -->
+    <div style="background:#1a1a2e;border:1px solid rgba(123,47,255,0.4);border-radius:14px;padding:24px;margin-bottom:20px;text-align:left;">
+      <div style="font-family:var(--font-display);font-size:9px;letter-spacing:3px;color:#00d4aa;margin-bottom:16px;">PAYMENT DETAILS</div>
+
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+        <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#003087,#0066cc);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;">🏦</div>
+        <div>
+          <div style="font-family:var(--font-display);font-size:11px;color:#9090b8;letter-spacing:1px;">BANK</div>
+          <div style="font-family:var(--font-display);font-size:15px;color:#fff;font-weight:700;">Capitec Bank</div>
+        </div>
+      </div>
+
+      <div style="background:rgba(0,212,170,0.06);border:1px solid rgba(0,212,170,0.2);border-radius:10px;padding:14px;margin-bottom:12px;">
+        <div style="font-family:var(--font-display);font-size:9px;letter-spacing:2px;color:#9090b8;margin-bottom:4px;">ACCOUNT / CELLPHONE NUMBER</div>
+        <div style="font-family:var(--font-mono);font-size:22px;color:#00d4aa;font-weight:700;letter-spacing:3px;">0636444766</div>
+        <button onclick="navigator.clipboard.writeText('0636444766').then(()=>showXPPopup('📋 Copied!'))" style="margin-top:8px;font-family:var(--font-display);font-size:9px;letter-spacing:1px;background:rgba(0,212,170,0.1);border:1px solid rgba(0,212,170,0.3);color:#00d4aa;padding:5px 14px;border-radius:20px;cursor:pointer;">📋 COPY NUMBER</button>
+      </div>
+
+      <div style="font-family:var(--font-display);font-size:10px;color:#9090b8;line-height:1.8;">
+        <span style="color:#fff;">Account Name:</span> PixelProTech Solutions<br>
+        <span style="color:#fff;">Reference:</span> <span style="color:#00d4aa;">CERT DOWNLOAD</span><br>
+        <span style="color:#fff;">Amount:</span> <span style="color:#ffd700;">Any amount you can 🙏</span>
+      </div>
+    </div>
+
+    <!-- AFTER PAYMENT -->
+    <div style="background:rgba(57,255,20,0.05);border:1px solid rgba(57,255,20,0.25);border-radius:12px;padding:18px;margin-bottom:24px;">
+      <div style="font-family:var(--font-display);font-size:9px;letter-spacing:2px;color:#39ff14;margin-bottom:10px;">STEP 2 — AFTER PAYMENT</div>
+      <p style="font-size:13px;color:#9090b8;line-height:1.7;margin-bottom:14px;">
+        Send your <strong style="color:#fff;">proof of payment screenshot</strong> to WhatsApp and we'll confirm within minutes:
+      </p>
+      <a href="https://wa.me/27651971461?text=Hi%20PixelProTech!%20I%27ve%20made%20a%20donation%20and%20would%20like%20to%20download%20my%20certificate.%20Proof%20of%20payment%20attached%20%F0%9F%99%8F"
+        target="_blank"
+        style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:1px;padding:14px 24px;border-radius:10px;text-decoration:none;transition:all 0.3s;">
+        <span style="font-size:20px;">💬</span> SEND PROOF — 065 197 1461
+      </a>
+    </div>
+
+    <!-- SKIP / ALREADY DONATED -->
+    <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:18px;">
+      <p style="font-size:12px;color:#9090b8;margin-bottom:12px;">Already donated and confirmed? Click below to download.</p>
+      <button onclick="closeModal('donate-modal');downloadCertificate();"
+        style="font-family:var(--font-display);font-size:11px;letter-spacing:1px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:#9090b8;padding:10px 24px;border-radius:8px;cursor:pointer;transition:all 0.3s;"
+        onmouseover="this.style.borderColor='#00d4aa';this.style.color='#00d4aa';"
+        onmouseout="this.style.borderColor='rgba(255,255,255,0.15)';this.style.color='#9090b8';">
+        ✅ I've Donated — Download Now
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- QR MODAL -->
+<div class="modal-overlay" id="qr-modal">
+  <div class="modal-box" style="text-align:center;max-width:400px;">
+    <button class="modal-close" onclick="closeModal('qr-modal')">✕</button>
+    <div style="font-size:36px;margin-bottom:12px;">📱</div>
+    <h3 style="font-family:var(--font-display);font-size:16px;margin-bottom:8px;color:var(--neon-cyan);">QR Verification Code</h3>
+    <p style="color:var(--text-secondary);font-size:13px;margin-bottom:16px;">Scan to verify this certificate online</p>
+    <div class="qr-display" id="qr-display"></div>
+    <div style="margin-top:16px;font-family:var(--font-mono);font-size:12px;color:var(--neon-green);" id="qr-cert-id">PPT-2024-XXXX-XXXX</div>
+    <div style="margin-top:20px;color:var(--text-secondary);font-size:12px;line-height:1.6;">This QR code links to the PixelProTech verification system. Share it with employers or institutions to instantly validate this certificate.</div>
+  </div>
+</div>
+
+<!-- ACHIEVEMENT UNLOCK MODAL -->
+<div class="modal-overlay" id="achievement-modal">
+  <div class="modal-box" style="text-align:center;max-width:400px;">
+    <div style="font-size:64px;margin-bottom:16px;" id="achievement-modal-icon">🏆</div>
+    <div style="font-family:var(--font-display);font-size:11px;letter-spacing:3px;color:var(--neon-gold);margin-bottom:8px;">ACHIEVEMENT UNLOCKED</div>
+    <h3 style="font-family:var(--font-display);font-size:20px;color:var(--text-primary);margin-bottom:8px;" id="achievement-modal-name">Achievement Name</h3>
+    <p style="color:var(--text-secondary);font-size:14px;margin-bottom:24px;" id="achievement-modal-desc">Description here</p>
+    <div style="font-family:var(--font-display);font-size:14px;color:var(--neon-gold);">+<span id="achievement-modal-xp">100</span> XP Earned!</div>
+    <button class="btn-primary" style="margin-top:20px;" onclick="closeModal('achievement-modal')">🚀 Continue Forging</button>
+  </div>
+</div>
+
+<!-- KEYBOARD SHORTCUTS PANEL -->
+<div class="shortcuts-panel" id="shortcuts-panel">
+  <div class="shortcuts-title">⌨ KEYBOARD SHORTCUTS</div>
+  <div class="shortcut-item"><span class="shortcut-key">G</span><span class="shortcut-action">Go to Generator</span></div>
+  <div class="shortcut-item"><span class="shortcut-key">T</span><span class="shortcut-action">Browse Templates</span></div>
+  <div class="shortcut-item"><span class="shortcut-key">V</span><span class="shortcut-action">Verify Certificate</span></div>
+  <div class="shortcut-item"><span class="shortcut-key">Enter</span><span class="shortcut-action">Generate Certificate</span></div>
+  <div class="shortcut-item"><span class="shortcut-key">D</span><span class="shortcut-action">Download PDF</span></div>
+  <div class="shortcut-item"><span class="shortcut-key">?</span><span class="shortcut-action">Toggle Shortcuts</span></div>
+</div>
+
+<!-- FAB -->
+<div class="fab-cluster">
+  <button class="fab fab-sound" id="sound-fab" onclick="toggleSound()" title="Toggle Sound">🔊</button>
+  <button class="fab fab-shortcuts" onclick="toggleShortcuts()" title="Keyboard Shortcuts">⌨</button>
+  <button class="fab fab-main" onclick="scrollToSection('generator')" title="Generate Certificate">⚡</button>
+</div>
+
+<script>
+// ============================================================
+//  PIXELPROTECH CERTIFICATE FORGE — MASTER SCRIPT
+// ============================================================
+
+// ── STATE ──
+const STATE = {
+  xp: parseInt(localStorage.getItem('ppt-xp') || '0'),
+  streak: parseInt(localStorage.getItem('ppt-streak') || '0'),
+  lastVisit: localStorage.getItem('ppt-last-visit') || '',
+  certsGenerated: parseInt(localStorage.getItem('ppt-certs') || '0'),
+  achievements: JSON.parse(localStorage.getItem('ppt-achievements') || '[]'),
+  selectedTemplate: 0,
+  selectedSig: 0,
+  soundEnabled: true,
+  uploadedLogo: null,
+  certId: generateCertId(),
+};
+
+const XP_LEVELS = [
+  { level:1, title:'Apprentice', min:0, max:500 },
+  { level:2, title:'Creator', min:500, max:1500 },
+  { level:3, title:'Specialist', min:1500, max:3500 },
+  { level:4, title:'Expert', min:3500, max:7000 },
+  { level:5, title:'Master Forger', min:7000, max:15000 },
+  { level:6, title:'Legend', min:15000, max:999999 },
+];
+
+const ACHIEVEMENTS_DATA = [
+  { id:'first-cert', name:'First Forge', desc:'Generate your first certificate', icon:'🏅', xp:100 },
+  { id:'five-certs', name:'Prolific Creator', desc:'Generate 5 certificates', icon:'⭐', xp:250 },
+  { id:'ten-certs', name:'Certificate Master', desc:'Generate 10 certificates', icon:'🌟', xp:500 },
+  { id:'used-ai', name:'AI Whisperer', desc:'Used AI wording suggestions', icon:'🤖', xp:75 },
+  { id:'tried-template', name:'Template Explorer', desc:'Tried 3 different templates', icon:'🎨', xp:100 },
+  { id:'verified', name:'Verified Legit', desc:'Used the verification system', icon:'✅', xp:50 },
+  { id:'qr-scan', name:'QR Champion', desc:'Generated a QR code', icon:'📱', xp:75 },
+  { id:'streak-3', name:'On Fire!', desc:'3-day creation streak', icon:'🔥', xp:200 },
+  { id:'uploaded-logo', name:'Brand Builder', desc:'Uploaded a custom logo', icon:'🖼', xp:100 },
+  { id:'screenshot', name:'Screenshot Master', desc:'Used screenshot export mode', icon:'📸', xp:50 },
+  { id:'shared', name:'Community Leader', desc:'Copied certificate ID', icon:'🌍', xp:50 },
+  { id:'explorer', name:'Deep Diver', desc:'Visited all sections', icon:'🔭', xp:150 },
+];
+
+const TEMPLATES = [
+  // Typing
+  { id:1, name:'Typing Champion', cat:'typing', theme:'gold', badge:'gold', emoji:'⌨', color:'#ffd700' },
+  { id:2, name:'Speed Typer Elite', cat:'typing', theme:'cyber', badge:'neon', emoji:'⚡', color:'#00d4aa' },
+  { id:3, name:'Keyboard Warrior', cat:'typing', theme:'crimson', badge:'silver', emoji:'🎯', color:'#ff2d78' },
+  // Office
+  { id:4, name:'Office Professional', cat:'office', theme:'steel', badge:'gold', emoji:'💼', color:'#96b4dc' },
+  { id:5, name:'MS Office Master', cat:'office', theme:'violet', badge:'neon', emoji:'📋', color:'#7b2fff' },
+  { id:6, name:'Office Ready Pro', cat:'office', theme:'gold', badge:'silver', emoji:'🖥', color:'#ffd700' },
+  // Data
+  { id:7, name:'Data Capture Certified', cat:'data', theme:'emerald', badge:'gold', emoji:'📊', color:'#39ff14' },
+  { id:8, name:'Data Entry Expert', cat:'data', theme:'cyber', badge:'neon', emoji:'💾', color:'#00d4aa' },
+  { id:9, name:'Database Pro', cat:'data', theme:'violet', badge:'silver', emoji:'🗄', color:'#7b2fff' },
+  // Coding
+  { id:10, name:'Coding Bootcamp', cat:'coding', theme:'cyber', badge:'neon', emoji:'💻', color:'#00d4aa' },
+  { id:11, name:'Python Practice', cat:'coding', theme:'emerald', badge:'gold', emoji:'🐍', color:'#39ff14' },
+  { id:12, name:'Web Dev Achievement', cat:'coding', theme:'gold', badge:'gold', emoji:'🌐', color:'#ffd700' },
+  // School
+  { id:13, name:'School Workshop', cat:'school', theme:'gold', badge:'gold', emoji:'🏫', color:'#ffd700' },
+  { id:14, name:'Academic Excellence', cat:'school', theme:'violet', badge:'silver', emoji:'📚', color:'#7b2fff' },
+  { id:15, name:'Student Achievement', cat:'school', theme:'emerald', badge:'neon', emoji:'🎓', color:'#39ff14' },
+  // Church
+  { id:16, name:'Church Training', cat:'church', theme:'gold', badge:'gold', emoji:'⛪', color:'#ffd700' },
+  { id:17, name:'Faith Leadership', cat:'church', theme:'violet', badge:'silver', emoji:'✝', color:'#7b2fff' },
+  // Community
+  { id:18, name:'Community Leader', cat:'community', theme:'emerald', badge:'gold', emoji:'🌍', color:'#39ff14' },
+  { id:19, name:'Township Tech Award', cat:'community', theme:'cyber', badge:'neon', emoji:'🏘', color:'#00d4aa' },
+  { id:20, name:'Ubuntu Achievement', cat:'community', theme:'gold', badge:'gold', emoji:'🤝', color:'#ffd700' },
+  // AI & Tech
+  { id:21, name:'AI Fundamentals', cat:'ai', theme:'cyber', badge:'neon', emoji:'🤖', color:'#00d4aa' },
+  { id:22, name:'Tech Innovation', cat:'ai', theme:'violet', badge:'neon', emoji:'🚀', color:'#7b2fff' },
+  { id:23, name:'Digital Transformation', cat:'ai', theme:'crimson', badge:'gold', emoji:'⚡', color:'#ff2d78' },
+  // CV
+  { id:24, name:'CV Workshop', cat:'cv', theme:'steel', badge:'gold', emoji:'📄', color:'#96b4dc' },
+  { id:25, name:'Career Ready', cat:'cv', theme:'gold', badge:'gold', emoji:'🎯', color:'#ffd700' },
+  // Literacy
+  { id:26, name:'Computer Literacy', cat:'literacy', theme:'emerald', badge:'gold', emoji:'💡', color:'#39ff14' },
+  { id:27, name:'Digital Literacy', cat:'literacy', theme:'cyber', badge:'neon', emoji:'🌐', color:'#00d4aa' },
+  { id:28, name:'Tech Foundations', cat:'literacy', theme:'violet', badge:'silver', emoji:'🔬', color:'#7b2fff' },
+];
+
+// pad templates to 100+
+for (let i = TEMPLATES.length + 1; i <= 100; i++) {
+  const cats = ['typing','office','data','coding','school','church','community','ai','cv','literacy'];
+  const themes = ['gold','cyber','violet','emerald','crimson','steel'];
+  const badges = ['gold','silver','neon'];
+  const emojis = ['🏅','⭐','🌟','🎖','🏆','✅','💫','🔥','💎','👑'];
+  const cat = cats[(i-1) % cats.length];
+  const theme = themes[i % themes.length];
+  const badge = badges[i % badges.length];
+  const emoji = emojis[i % emojis.length];
+  const colors = { gold:'#ffd700', cyber:'#00d4aa', violet:'#7b2fff', emerald:'#39ff14', crimson:'#ff2d78', steel:'#96b4dc' };
+  TEMPLATES.push({ id:i, name:`Premium ${cat.charAt(0).toUpperCase()+cat.slice(1)} #${i}`, cat, theme, badge, emoji, color: colors[theme] });
+}
+
+const LEADERBOARD_DATA = [
+  { name:'Lungelo M.', area:'Soweto', certs:247, xp:12400, emoji:'👑' },
+  { name:'Zanele K.', area:'Cape Town', certs:198, xp:9900, emoji:'🌟' },
+  { name:'Sipho T.', area:'Durban', certs:174, xp:8700, emoji:'🔥' },
+  { name:'Nomvula P.', area:'Pretoria', certs:156, xp:7800, emoji:'⭐' },
+  { name:'Thabo N.', area:'Johannesburg', certs:133, xp:6650, emoji:'💎' },
+  { name:'Ayanda B.', area:'Bloemfontein', certs:121, xp:6050, emoji:'🚀' },
+  { name:'Precious D.', area:'Port Elizabeth', certs:98, xp:4900, emoji:'✨' },
+];
+
+const TICKER_ITEMS = [
+  { name:'Nomsa Dlamini', course:'Computer Literacy Certificate', color:'#00d4aa' },
+  { name:'Sipho Mokoena', course:'Data Capture Specialist', color:'#ffd700' },
+  { name:'Zanele Khumalo', course:'Typing Elite Certificate', color:'#39ff14' },
+  { name:'Thabo Sithole', course:'Microsoft Office Professional', color:'#7b2fff' },
+  { name:'Ayanda Nkosi', course:'AI Fundamentals Completion', color:'#ff6b00' },
+  { name:'Precious Molefe', course:'Community Training Award', color:'#ff2d78' },
+  { name:'Lungelo Bhengu', course:'Web Development Bootcamp', color:'#00d4aa' },
+  { name:'Nomvula Cele', course:'CV Workshop Achievement', color:'#ffd700' },
+  { name:'Mandla Zulu', course:'Digital Skills Verified', color:'#39ff14' },
+  { name:'Lerato Mthembu', course:'Church Leadership Training', color:'#7b2fff' },
+];
+
+// ── LOADING SCREEN ──
+(function initLoading() {
+  let pct = 0;
+  const fill = document.getElementById('loading-bar');
+  const pctEl = document.getElementById('loading-percent');
+  const interval = setInterval(() => {
+    pct += Math.random() * 15 + 5;
+    if (pct >= 100) { pct = 100; clearInterval(interval); finish(); }
+    fill.style.width = pct + '%';
+    pctEl.textContent = Math.round(pct) + '%';
+  }, 120);
+  function finish() {
+    setTimeout(() => {
+      document.getElementById('loading-screen').classList.add('hidden');
+      initApp();
+    }, 400);
+  }
+})();
+
+function initApp() {
+  initParticles();
+  initDataStreams();
+  initTicker();
+  initTemplates();
+  initAchievements();
+  initLeaderboard();
+  initStats();
+  initStreak();
+  updateXPDisplay();
+  updatePreview();
+  initScrollAnimations();
+  setDefaultDate();
+  document.getElementById('cert-id-display').textContent = STATE.certId;
+  // keyboard shortcuts
+  document.addEventListener('keydown', handleKeyboard);
+  window.addEventListener('scroll', handleScroll);
+}
+
+// ── PARTICLES ──
+function initParticles() {
+  const canvas = document.getElementById('particle-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+  const particles = [];
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+      r: Math.random() * 2 + 0.5,
+      dx: (Math.random() - 0.5) * 0.4, dy: (Math.random() - 0.5) * 0.4,
+      alpha: Math.random() * 0.5 + 0.1,
+      color: ['#00d4aa','#7b2fff','#00d4aa','#7b2fff'][Math.floor(Math.random()*4)]
+    });
+  }
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha; ctx.fill();
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    // draw connecting lines
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i+1; j < particles.length; j++) {
+        const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = '#00d4aa';
+          ctx.globalAlpha = (1 - dist/120) * 0.08;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+}
+
+// ── DATA STREAMS ──
+function initDataStreams() {
+  const container = document.getElementById('data-streams');
+  const chars = '01アイウエオカキクケコサシスセソ@#$%';
+  for (let col = 0; col < 3; col++) {
+    const div = document.createElement('div');
+    div.className = 'data-col';
+    div.style.left = (col * 20) + 'px';
+    div.style.animationDelay = (col * 2) + 's';
+    div.style.animationDuration = (6 + col * 2) + 's';
+    let text = '';
+    for (let i = 0; i < 30; i++) text += chars[Math.floor(Math.random()*chars.length)] + '\n';
+    div.textContent = text;
+    container.appendChild(div);
+  }
+}
+
+// ── TICKER ──
+function initTicker() {
+  const container = document.getElementById('ticker-inner');
+  const items = [...TICKER_ITEMS, ...TICKER_ITEMS];
+  container.innerHTML = items.map(item => `
+    <div class="ticker-item">
+      <span class="ticker-dot" style="background:${item.color}"></span>
+      <span>🎓 <strong style="color:${item.color}">${item.name}</strong> just earned: ${item.course}</span>
+    </div>
+  `).join('');
+}
+
+// ── STATS COUNTER ──
+function initStats() {
+  const els = document.querySelectorAll('[data-target]');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const step = target / 80;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current).toLocaleString() + (el.dataset.target === '98' ? '%' : '+');
+        if (current >= target) clearInterval(timer);
+      }, 20);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  els.forEach(el => observer.observe(el));
+}
+
+// ── TEMPLATES ──
+function initTemplates() {
+  renderTemplates('all');
+}
+
+function filterTemplates(btn, cat) {
+  document.querySelectorAll('.tmpl-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTemplates(cat);
+}
+
+function renderTemplates(cat) {
+  const grid = document.getElementById('templates-grid');
+  const filtered = cat === 'all' ? TEMPLATES : TEMPLATES.filter(t => t.cat === cat);
+  grid.innerHTML = filtered.slice(0, 40).map(t => `
+    <div class="template-card ${STATE.selectedTemplate === t.id ? 'selected' : ''}" onclick="selectTemplate(${t.id})" data-cat="${t.cat}">
+      <div class="template-thumb tmpl-${t.theme}">
+        <div style="text-align:center;position:relative;z-index:1;">
+          <div style="font-size:28px;margin-bottom:6px;">${t.emoji}</div>
+          <div style="font-family:var(--font-cert);font-size:10px;color:${t.color};letter-spacing:1px;">Certificate of<br>Achievement</div>
+        </div>
+      </div>
+      <div class="template-name">${t.name}</div>
+      <div class="template-badge badge-${t.badge}">${t.badge.toUpperCase()}</div>
+      <div class="template-selected-check">✓</div>
+    </div>
+  `).join('');
+}
+
+function selectTemplate(id) {
+  const prev = STATE.selectedTemplate;
+  STATE.selectedTemplate = id;
+  const tmpl = TEMPLATES.find(t => t.id === id);
+  if (tmpl) applyTemplate(tmpl);
+  document.querySelectorAll('.template-card').forEach(c => {
+    const cid = parseInt(c.onclick.toString().match(/\d+/)[0]);
+    c.classList.toggle('selected', cid === id);
+    c.querySelector('.template-selected-check').style.display = cid === id ? 'flex' : 'none';
+  });
+  if (prev === 0) {
+    trackAchievement('tried-template');
+    setTimeout(() => trackAchievement('tried-template'), 0);
+  }
+  scrollToSection('generator');
+  addXP(25, 'Template selected!');
+}
+
+function applyTemplate(tmpl) {
+  const cert = document.getElementById('live-cert');
+  cert.className = `cert-live-preview cert-tmpl-${tmpl.theme === 'gold' ? 1 : tmpl.theme === 'cyber' ? 2 : tmpl.theme === 'violet' ? 3 : tmpl.theme === 'emerald' ? 4 : tmpl.theme === 'crimson' ? 5 : 6}`;
+  const color = tmpl.color;
+  document.getElementById('lc-org').style.color = color;
+  document.getElementById('lc-name').style.color = color;
+  document.getElementById('lc-name').style.textShadow = `0 0 30px ${color}80`;
+  document.getElementById('lc-seal').textContent = tmpl.emoji;
+}
+
+// ── ACHIEVEMENTS ──
+function initAchievements() {
+  const grid = document.getElementById('achievements-grid');
+  grid.innerHTML = ACHIEVEMENTS_DATA.map(a => `
+    <div class="achievement-card ${STATE.achievements.includes(a.id) ? 'unlocked' : ''}" id="ach-${a.id}">
+      <div class="achievement-icon">${a.icon}</div>
+      <div class="achievement-name">${a.name}</div>
+      <div class="achievement-desc">${a.desc}<br><span style="color:var(--neon-gold)">+${a.xp} XP</span></div>
+    </div>
+  `).join('');
+}
+
+function trackAchievement(id) {
+  if (STATE.achievements.includes(id)) return;
+  STATE.achievements.push(id);
+  localStorage.setItem('ppt-achievements', JSON.stringify(STATE.achievements));
+  const ach = ACHIEVEMENTS_DATA.find(a => a.id === id);
+  if (!ach) return;
+  const card = document.getElementById(`ach-${id}`);
+  if (card) card.classList.add('unlocked');
+  addXP(ach.xp, `🏆 ${ach.name}!`);
+  showAchievementModal(ach);
+}
+
+function showAchievementModal(ach) {
+  document.getElementById('achievement-modal-icon').textContent = ach.icon;
+  document.getElementById('achievement-modal-name').textContent = ach.name;
+  document.getElementById('achievement-modal-desc').textContent = ach.desc;
+  document.getElementById('achievement-modal-xp').textContent = ach.xp;
+  document.getElementById('achievement-modal').classList.add('open');
+}
+
+// ── LEADERBOARD ──
+function initLeaderboard() {
+  const medals = ['🥇','🥈','🥉','4️⃣','5️⃣','6️⃣','7️⃣'];
+  const lb = document.getElementById('leaderboard');
+  const sortedData = [...LEADERBOARD_DATA];
+  // insert current user
+  const userEntry = { name:'You 🎮', area:'Creating Now', certs: STATE.certsGenerated, xp: STATE.xp, emoji:'⚡' };
+  sortedData.push(userEntry);
+  sortedData.sort((a,b) => b.xp - a.xp);
+  lb.innerHTML = sortedData.slice(0,8).map((p, i) => `
+    <div class="leaderboard-row">
+      <div class="lb-rank" style="color:${i===0?'#ffd700':i===1?'#c0c0c0':i===2?'#cd7f32':'var(--text-secondary)'}">
+        ${medals[i] || (i+1)}
+      </div>
+      <div class="lb-avatar">${p.emoji}</div>
+      <div class="lb-info">
+        <div class="lb-name">${p.name}</div>
+        <div class="lb-sub">${p.area} · ${p.certs} certificates</div>
+      </div>
+      <div class="lb-xp">⚡ ${p.xp.toLocaleString()}</div>
+    </div>
+  `).join('');
+}
+
+// ── STREAK ──
+function initStreak() {
+  const today = new Date().toDateString();
+  const yesterday = new Date(Date.now() - 86400000).toDateString();
+  if (STATE.lastVisit === yesterday) {
+    STATE.streak++;
+    STATE.lastVisit = today;
+  } else if (STATE.lastVisit !== today) {
+    STATE.streak = STATE.lastVisit ? 1 : 0;
+    STATE.lastVisit = today;
+  }
+  localStorage.setItem('ppt-streak', STATE.streak);
+  localStorage.setItem('ppt-last-visit', today);
+  document.getElementById('streak-count').textContent = STATE.streak;
+  document.getElementById('streak-sub').textContent = STATE.streak === 0 ? 'Visit again tomorrow to start your streak!' : `Keep it up! ${STATE.streak} day${STATE.streak!==1?'s':''} strong 💪`;
+  if (STATE.streak >= 3) trackAchievement('streak-3');
+}
+
+// ── XP SYSTEM ──
+function addXP(amount, label = '') {
+  STATE.xp += amount;
+  localStorage.setItem('ppt-xp', STATE.xp);
+  updateXPDisplay();
+  if (label) showXPPopup(`+${amount} XP`);
+}
+
+function updateXPDisplay() {
+  const level = getCurrentLevel();
+  document.getElementById('xp-level').textContent = level.level;
+  document.getElementById('xp-title').textContent = level.title;
+  document.getElementById('xp-current').textContent = STATE.xp.toLocaleString();
+  document.getElementById('xp-next').textContent = level.max.toLocaleString();
+  document.getElementById('nav-xp-count').textContent = STATE.xp.toLocaleString();
+  const pct = Math.min(((STATE.xp - level.min) / (level.max - level.min)) * 100, 100);
+  document.getElementById('xp-bar-fill').style.width = pct + '%';
+}
+
+function getCurrentLevel() {
+  for (let i = XP_LEVELS.length - 1; i >= 0; i--) {
+    if (STATE.xp >= XP_LEVELS[i].min) return XP_LEVELS[i];
+  }
+  return XP_LEVELS[0];
+}
+
+function showXPPopup(text) {
+  const el = document.createElement('div');
+  el.className = 'xp-popup';
+  el.textContent = text;
+  el.style.left = (Math.random() * 60 + 20) + 'vw';
+  el.style.top = '60vh';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1500);
+}
+
+// ── CERTIFICATE GENERATION ──
+function generateCertId() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  const seg = () => Array.from({length:4}, () => chars[Math.floor(Math.random()*chars.length)]).join('');
+  return `PPT-${new Date().getFullYear()}-${seg()}-${seg()}`;
+}
+
+function setDefaultDate() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('cert-date').value = today;
+  updatePreview();
+}
+
+function updatePreview() {
+  const name = document.getElementById('cert-name').value || 'Your Full Name';
+  const course = document.getElementById('cert-course').value || 'Course / Training Title';
+  const instructor = document.getElementById('cert-instructor').value || '—';
+  const date = document.getElementById('cert-date').value;
+  const score = document.getElementById('cert-score').value || '—';
+  const org = document.getElementById('cert-org').value || 'PixelProTech Academy';
+  const dateStr = date ? new Date(date + 'T00:00').toLocaleDateString('en-ZA', {day:'numeric',month:'long',year:'numeric'}) : '—';
+
+  document.getElementById('lc-name').textContent = name;
+  document.getElementById('lc-course').textContent = course;
+  document.getElementById('lc-org').textContent = org.toUpperCase();
+  document.getElementById('lc-date').textContent = 'Date: ' + dateStr;
+  document.getElementById('lc-score').textContent = 'Achievement: ' + score;
+  document.getElementById('lc-instructor').textContent = 'Trainer: ' + instructor;
+  document.getElementById('lc-id').textContent = 'ID: ' + STATE.certId;
+  document.getElementById('qr-cert-id').textContent = STATE.certId;
+
+  updateProgressSteps();
+}
+
+function updateProgressSteps() {
+  const name = document.getElementById('cert-name').value;
+  const course = document.getElementById('cert-course').value;
+  const done1 = name && course;
+  const done2 = STATE.selectedTemplate > 0;
+
+  setStep(1, done1 ? 'done' : 'active');
+  setStep(2, done1 ? (done2 ? 'done' : 'active') : 'pending');
+  setStep(3, (done1 && done2) ? 'active' : 'pending');
+  if (done1) setLine(1, true);
+  if (done2) setLine(2, true);
+}
+
+function setStep(n, state) {
+  const el = document.getElementById(`step-${n}`);
+  el.className = 'progress-circle';
+  if (state === 'done') { el.classList.add('done'); el.innerHTML = '✓'; }
+  else if (state === 'active') { el.classList.add('active'); el.textContent = n; }
+  else { el.textContent = n; }
+}
+
+function setLine(n, done) {
+  const el = document.getElementById(`line-${n}`);
+  if (done) el.classList.add('done');
+  else el.classList.remove('done');
+}
+
+function generateCertificate() {
+  const name = document.getElementById('cert-name').value;
+  const course = document.getElementById('cert-course').value;
+  if (!name.trim() || !course.trim()) {
+    alert('Please enter at least the recipient name and course title to generate a certificate.');
+    document.getElementById('cert-name').focus();
+    return;
+  }
+
+  STATE.certsGenerated++;
+  localStorage.setItem('ppt-certs', STATE.certsGenerated);
+  addXP(150, '🏆 Certificate Forged!');
+
+  if (STATE.certsGenerated === 1) trackAchievement('first-cert');
+  if (STATE.certsGenerated >= 5) trackAchievement('five-certs');
+  if (STATE.certsGenerated >= 10) trackAchievement('ten-certs');
+
+  setStep(4, 'done');
+  setLine(3, true);
+
+  confetti();
+  playSound('generate');
+  updatePreview();
+  initLeaderboard();
+
+  const btn = document.querySelector('.preview-btn-generate');
+  const orig = btn.textContent;
+  btn.textContent = '✅ Generated!';
+  setTimeout(() => btn.textContent = orig, 2000);
+}
+
+function showDonateModal() {
+  document.getElementById('donate-modal').classList.add('open');
+  addXP(10, '💜 Supporting PPT!');
+}
+
+function downloadCertificate() {
+  const name = document.getElementById('cert-name').value || 'Certificate';
+  const certEl = document.getElementById('live-cert');
+  
+  // Create a simple downloadable HTML certificate
+  const certHTML = buildDownloadableHTML();
+  const blob = new Blob([certHTML], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `PixelProTech-Certificate-${name.replace(/\s+/g,'-')}-${STATE.certId}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+
+  addXP(50, '⬇ Certificate saved!');
+  playSound('success');
+}
+
+function buildDownloadableHTML() {
+  const name = document.getElementById('cert-name').value || 'Recipient Name';
+  const course = document.getElementById('cert-course').value || 'Training Program';
+  const instructor = document.getElementById('cert-instructor').value || '';
+  const date = document.getElementById('cert-date').value;
+  const score = document.getElementById('cert-score').value || '';
+  const org = document.getElementById('cert-org').value || 'PixelProTech Academy';
+  const dateStr = date ? new Date(date + 'T00:00').toLocaleDateString('en-ZA', {day:'numeric',month:'long',year:'numeric'}) : new Date().toLocaleDateString('en-ZA');
+  const tmpl = TEMPLATES.find(t => t.id === STATE.selectedTemplate) || TEMPLATES[0];
+  const color = tmpl ? tmpl.color : '#ffd700';
+  const emoji = tmpl ? tmpl.emoji : '🏅';
+
+  return `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Certificate — ${name}</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;600&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; display:flex; align-items:center; justify-content:center; min-height:100vh; padding:20px; font-family:'Rajdhani',sans-serif; }
+  .cert { width:800px; background:linear-gradient(135deg,#0a0800,#140f00,#0a0800); border:4px solid ${color}; border-radius:12px; padding:60px; text-align:center; position:relative; }
+  .cert::before { content:''; position:absolute; inset:12px; border:1px solid ${color}40; border-radius:8px; }
+  .org { font-family:'Orbitron',monospace; font-size:12px; letter-spacing:4px; color:${color}; margin-bottom:20px; }
+  .seal { font-size:56px; margin-bottom:20px; }
+  .title { font-family:'Cinzel',serif; font-size:36px; color:${color}; margin-bottom:8px; }
+  .subtitle { font-family:'Cinzel',serif; font-size:14px; color:${color}80; margin-bottom:30px; }
+  .present { font-size:15px; color:#ffffff80; margin-bottom:12px; }
+  .name { font-family:'Cinzel',serif; font-size:52px; font-weight:700; color:#fff; margin-bottom:12px; text-shadow:0 0 30px ${color}80; }
+  .for { font-size:13px; letter-spacing:2px; color:#ffffff60; margin-bottom:12px; }
+  .course { font-family:'Cinzel',serif; font-size:22px; color:${color}cc; margin-bottom:30px; }
+  .divider { width:60%; height:1px; background:${color}40; margin:0 auto 30px; }
+  .meta { display:flex; justify-content:space-around; font-size:12px; color:#ffffff60; font-family:'Orbitron',monospace; letter-spacing:1px; margin-bottom:20px; }
+  .cert-id { font-family:monospace; font-size:11px; color:${color}60; margin-top:20px; }
+  .watermark { font-family:'Orbitron',monospace; font-size:10px; color:#ffffff20; margin-top:24px; letter-spacing:2px; }
+  @media print { body { background:#fff; } .cert { border-color:#333; } }
+</style>
+</head>
+<body>
+<div class="cert">
+  ${STATE.uploadedLogo ? `<div style="margin-bottom:20px;"><img src="${STATE.uploadedLogo}" style="max-height:60px;max-width:160px;object-fit:contain;border-radius:4px;filter:drop-shadow(0 0 8px ${color}80);"></div>` : ''}
+  <div class="org">${org.toUpperCase()}</div>
+  <div class="seal">${emoji}</div>
+  <div class="title">Certificate of Achievement</div>
+  <div class="subtitle">Excellence in Training & Development</div>
+  <div class="present">This certificate is proudly awarded to</div>
+  <div class="name">${name}</div>
+  <div class="for">IN RECOGNITION OF SUCCESSFUL COMPLETION OF</div>
+  <div class="course">${course}</div>
+  <div class="divider"></div>
+  <div class="meta">
+    <span>📅 ${dateStr}</span>
+    ${score ? `<span>🏆 ${score}</span>` : ''}
+    ${instructor ? `<span>👤 ${instructor}</span>` : ''}
+  </div>
+  <div class="cert-id">Certificate ID: ${STATE.certId}</div>
+  <div class="watermark">PIXELPROTECH ACADEMY · Verify at PixelProTech</div>
+</div>
+</body>
+</html>`;
+}
+
+// ── VERIFICATION ──
+function verifyCertificate() {
+  const input = document.getElementById('verify-input').value.trim();
+  const result = document.getElementById('verify-result');
+  trackAchievement('verified');
+
+  if (!input) return;
+
+  const allCerts = JSON.parse(localStorage.getItem('ppt-verified-certs') || '{}');
+  const found = allCerts[input];
+
+  if (input === STATE.certId || found) {
+    const data = found || {
+      name: document.getElementById('cert-name').value || 'Unknown Recipient',
+      course: document.getElementById('cert-course').value || 'Training Program',
+      org: document.getElementById('cert-org').value || 'PixelProTech Academy',
+      date: document.getElementById('cert-date').value || new Date().toISOString().split('T')[0],
+    };
+    const dateStr = new Date(data.date + 'T00:00').toLocaleDateString('en-ZA', {day:'numeric',month:'long',year:'numeric'});
+    result.className = 'verify-result valid';
+    result.innerHTML = `
+      <div style="font-size:48px;margin-bottom:12px;">✅</div>
+      <div style="font-family:var(--font-display);font-size:12px;letter-spacing:2px;color:var(--neon-green);margin-bottom:12px;">CERTIFICATE VERIFIED</div>
+      <div style="font-family:var(--font-cert);font-size:22px;color:var(--text-primary);margin-bottom:8px;">${data.name}</div>
+      <div style="font-size:14px;color:var(--text-secondary);margin-bottom:4px;">${data.course}</div>
+      <div style="font-size:13px;color:var(--text-secondary);">Issued by ${data.org} · ${dateStr}</div>
+      <div style="margin-top:16px;font-family:var(--font-mono);font-size:11px;color:var(--neon-green);">ID: ${input}</div>
+    `;
+  } else {
+    result.className = 'verify-result invalid';
+    result.innerHTML = `
+      <div style="font-size:48px;margin-bottom:12px;">❌</div>
+      <div style="font-family:var(--font-display);font-size:12px;letter-spacing:2px;color:var(--neon-pink);margin-bottom:12px;">CERTIFICATE NOT FOUND</div>
+      <div style="font-size:14px;color:var(--text-secondary);">The certificate ID "<strong style="color:var(--neon-pink)">${input}</strong>" was not found in our system.<br><br>Please check the ID and try again. Only certificates generated on this platform are verifiable.</div>
+    `;
+  }
+}
+
+// ── TILT EFFECT ──
+function handleTilt(e) {
+  const cert = document.getElementById('live-cert');
+  const rect = cert.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width - 0.5;
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+  cert.style.transform = `perspective(1000px) rotateY(${x*8}deg) rotateX(${-y*5}deg) scale(1.02)`;
+}
+
+function resetTilt() {
+  document.getElementById('live-cert').style.transform = '';
+}
+
+// ── AI WORDING ──
+function aiWordingSuggestion() {
+  const course = document.getElementById('cert-course').value || 'training program';
+  const name = document.getElementById('cert-name').value || 'the participant';
+  const suggestions = [
+    `${name} has demonstrated exceptional dedication and outstanding achievement in completing the ${course}. Their commitment to excellence reflects a genuine passion for continuous learning and professional growth.`,
+    `Through hard work, persistence, and remarkable skill development, ${name} has successfully mastered all aspects of the ${course}. This achievement marks a significant milestone in their professional journey.`,
+    `This certificate recognises the extraordinary effort and discipline shown by ${name} in completing the ${course}. Their performance has set a benchmark for excellence within our learning community.`,
+    `${name} has exemplified the values of lifelong learning by completing the ${course} with distinction. We congratulate them on this achievement and look forward to seeing them apply these skills in the real world.`,
+  ];
+  const sug = suggestions[Math.floor(Math.random() * suggestions.length)];
+  const el = document.getElementById('ai-suggestion');
+  el.style.display = 'block';
+  el.textContent = '';
+  let i = 0;
+  const timer = setInterval(() => {
+    el.textContent += sug[i++];
+    if (i >= sug.length) clearInterval(timer);
+  }, 20);
+  trackAchievement('used-ai');
+  addXP(30, '🤖 AI Used!');
+}
+
+// ── LOGO UPLOAD ──
+function handleLogoUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const dataUrl = ev.target.result;
+    STATE.uploadedLogo = dataUrl;
+
+    // Show thumbnail in upload area
+    const preview = document.getElementById('logo-preview');
+    preview.src = dataUrl;
+    preview.style.display = 'block';
+
+    // ✅ Show logo ON the live certificate preview
+    const lcLogo = document.getElementById('lc-logo');
+    const lcLogoWrap = document.getElementById('lc-logo-wrap');
+    if (lcLogo && lcLogoWrap) {
+      lcLogo.src = dataUrl;
+      lcLogoWrap.style.display = 'block';
+    }
+
+    // Update upload label feedback
+    const uploadText = document.querySelector('#upload-area .upload-text');
+    if (uploadText) uploadText.innerHTML = '✅ Logo on certificate!<br><span style="font-size:10px;color:#00d4aa;">Click to replace</span>';
+
+    trackAchievement('uploaded-logo');
+    addXP(50, '🖼 Logo added!');
+    showXPPopup('🖼 Logo on cert!');
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleLogoDrop(e) {
+  e.preventDefault();
+  document.getElementById('upload-area').classList.remove('dragover');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) {
+    const fakeEvent = { target: { files: [file] } };
+    handleLogoUpload(fakeEvent);
+  }
+}
+
+// ── SIGNATURE ──
+function selectSig(el) {
+  document.querySelectorAll('.sig-option').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  STATE.selectedSig = parseInt(el.dataset.sig);
+}
+
+// ── QR CODE ──
+function showQR() {
+  document.getElementById('qr-modal').classList.add('open');
+  // Render a simple pixel QR visual
+  renderFakeQR();
+  trackAchievement('qr-scan');
+  addXP(25, '📱 QR Generated!');
+}
+
+function renderFakeQR() {
+  const canvas = document.createElement('canvas');
+  canvas.width = 100; canvas.height = 100;
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0,0,100,100);
+  ctx.fillStyle = '#000';
+  // Finder patterns
+  [[0,0],[63,0],[0,63]].forEach(([ox,oy]) => {
+    ctx.fillRect(ox,oy,21,21);
+    ctx.fillStyle='#fff'; ctx.fillRect(ox+3,oy+3,15,15);
+    ctx.fillStyle='#000'; ctx.fillRect(ox+6,oy+6,9,9);
+    ctx.fillStyle='#000';
+  });
+  // Random data modules
+  const id = STATE.certId;
+  for (let i = 0; i < id.length * 3; i++) {
+    const code = id.charCodeAt(i % id.length);
+    const x = (code * 7 + i * 13) % 100;
+    const y = (code * 11 + i * 7) % 100;
+    if (x > 24 || y > 24) ctx.fillRect(Math.floor(x/3)*3, Math.floor(y/3)*3, 3, 3);
+  }
+  const qrEl = document.getElementById('qr-display');
+  qrEl.style.background = `url(${canvas.toDataURL()}) center/contain no-repeat`;
+}
+
+// ── CLIPBOARD ──
+function copyToClipboard() {
+  navigator.clipboard.writeText(STATE.certId).then(() => {
+    showXPPopup('📋 Copied!');
+    trackAchievement('shared');
+  }).catch(() => {
+    alert('Certificate ID: ' + STATE.certId);
+  });
+}
+
+// ── SCREENSHOT MODE ──
+function screenshotMode() {
+  const cert = document.getElementById('live-cert');
+  cert.style.boxShadow = '0 0 60px rgba(0,212,170,0.8), 0 0 120px rgba(0,212,170,0.4)';
+  setTimeout(() => cert.style.boxShadow = '', 3000);
+  showXPPopup('📸 Screenshot mode!');
+  trackAchievement('screenshot');
+  addXP(25, '📸 Screenshot!');
+}
+
+// ── CONFETTI ──
+function confetti() {
+  const colors = ['#00d4aa','#ffd700','#ff2d78','#39ff14','#7b2fff','#ff6b00'];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.cssText = `
+        left:${Math.random()*100}vw;
+        top:-10px;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        width:${Math.random()*10+6}px;
+        height:${Math.random()*10+6}px;
+        --duration:${Math.random()*2+2}s;
+        border-radius:${Math.random()>0.5?'50%':'2px'};
+      `;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 4000);
+    }, i * 40);
+  }
+}
+
+// ── SOUND ──
+let audioCtx = null;
+function getAudioCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function playSound(type) {
+  if (!STATE.soundEnabled) return;
+  try {
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    if (type === 'generate') {
+      osc.frequency.setValueAtTime(523, ctx.currentTime);
+      osc.frequency.setValueAtTime(659, ctx.currentTime + 0.1);
+      osc.frequency.setValueAtTime(784, ctx.currentTime + 0.2);
+      gain.gain.setValueAtTime(0.15, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+      osc.start(); osc.stop(ctx.currentTime + 0.5);
+    } else if (type === 'success') {
+      osc.frequency.setValueAtTime(784, ctx.currentTime);
+      osc.frequency.setValueAtTime(1047, ctx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+      osc.start(); osc.stop(ctx.currentTime + 0.4);
+    } else if (type === 'click') {
+      osc.frequency.setValueAtTime(440, ctx.currentTime);
+      gain.gain.setValueAtTime(0.05, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+      osc.start(); osc.stop(ctx.currentTime + 0.1);
+    }
+  } catch(e) {}
+}
+
+function toggleSound() {
+  STATE.soundEnabled = !STATE.soundEnabled;
+  document.getElementById('sound-fab').textContent = STATE.soundEnabled ? '🔊' : '🔇';
+}
+
+// ── MODALS ──
+function closeModal(id) {
+  document.getElementById(id).classList.remove('open');
+}
+
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+});
+
+// ── KEYBOARD SHORTCUTS ──
+function handleKeyboard(e) {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
+  switch(e.key.toLowerCase()) {
+    case 'g': scrollToSection('generator'); break;
+    case 't': scrollToSection('templates'); break;
+    case 'v': scrollToSection('verify'); break;
+    case 'enter': generateCertificate(); break;
+    case 'd': downloadCertificate(); break;
+    case '?': toggleShortcuts(); break;
+  }
+}
+
+function toggleShortcuts() {
+  document.getElementById('shortcuts-panel').classList.toggle('open');
+}
+
+// ── SCROLL ──
+function handleScroll() {
+  const navbar = document.getElementById('navbar');
+  if (window.scrollY > 80) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+}
+
+// ── SCROLL ANIMATIONS ──
+function initScrollAnimations() {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+// ── HELPERS ──
+function scrollToSection(id) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+}
+
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+function closeMenu() {
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+
+// ── NAV ACTIVE STATE ──
+window.addEventListener('scroll', () => {
+  const sections = ['home','generator','templates','verify','gamify','business'];
+  const current = sections.find(s => {
+    const el = document.getElementById(s);
+    if (!el) return false;
+    const rect = el.getBoundingClientRect();
+    return rect.top <= 100 && rect.bottom >= 100;
+  });
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.style.color = '';
+    if (current && a.href.includes(current)) a.style.color = 'var(--neon-cyan)';
+  });
+});
+
+// ── ADD XP ON SECTION VISIT ──
+let visitedSections = new Set();
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !visitedSections.has(entry.target.id)) {
+      visitedSections.add(entry.target.id);
+      if (visitedSections.size >= 5) trackAchievement('explorer');
+    }
+  });
+});
+document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+
+// ── AUTO-TICKER REFRESH ──
+setInterval(() => {
+  const items = document.querySelectorAll('.ticker-item');
+  if (items.length) {
+    const randomNames = ['Bongani N.','Siyanda M.','Nokuthula Z.','Mthokozisi D.','Nomcebo T.'];
+    const randomCourses = ['Certificate in AI Tools','Typing Speed 80 WPM','Data Capture Level 3','Digital Marketing Basics','Online Safety Training'];
+    const colors = ['#00d4aa','#ffd700','#39ff14','#7b2fff','#ff6b00'];
+    const rName = randomNames[Math.floor(Math.random()*randomNames.length)];
+    const rCourse = randomCourses[Math.floor(Math.random()*randomCourses.length)];
+    const rColor = colors[Math.floor(Math.random()*colors.length)];
+  }
+}, 8000);
+
+console.log('%c⚡ PIXELPROTECH CERTIFICATE FORGE', 'color:#00d4aa;font-family:monospace;font-size:16px;font-weight:bold;');
+console.log('%cBuilt with 🔥 by PixelProTech Solutions, South Africa', 'color:#ffd700;font-family:monospace;');
+console.log('%cWhatsApp: 065 197 1461 | pixelprotechsolutions@gmail.com', 'color:#39ff14;font-family:monospace;');
+</script>
+</body>
+</html>

@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="description" content="PixelProTech Solutions - Smart Mobile Storage Assistant for technicians and everyday users">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>PixelProTech Solutions</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D" id="manifest-link">
+<style>
+  :root {
+    --bg-primary: #0a0a0f;
+    --bg-secondary: #0d0d1a;
+    --bg-card: rgba(26, 26, 46, 0.8);
+    --blue-primary: #00d4aa;
+    --blue-bright: #33ddcc;
+    --blue-deep: #7b2fff;
+    --blue-glow: rgba(123, 47, 255, 0.12);
+    --silver: #e0e0f0;
+    --silver-dim: #7b7b99;
+    --white: #e8f0ff;
+    --success: #00ff88;
+    --warning: #ffaa00;
+    --danger: #ff4466;
+    --glass: rgba(26,26,46,0.5);
+    --glass-border: rgba(123,47,255,0.25);
+    --font-display: 'Courier New', Courier, monospace;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* BACKGROUND GRID */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    top: -30%;
+    left: -20%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(123,47,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse-bg 6s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-bg {
+    from { opacity: 0.5; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.1); }
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0 16px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .nav-logo {
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, #7b2fff, #00d4aa);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    box-shadow: 0 0 15px rgba(0,212,170,0.4);
+  }
+
+  .nav-title {
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .nav-title span {
+    display: block;
+    color: var(--silver-dim);
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  #install-btn {
+    background: linear-gradient(135deg, #7b2fff, #00d4aa);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    display: none;
+    letter-spacing: 0.5px;
+    box-shadow: 0 0 15px rgba(0,212,170,0.3);
+    transition: var(--transition);
+  }
+
+  #install-btn:hover { box-shadow: 0 0 25px rgba(0,212,170,0.5); transform: scale(1.03); }
+
+  /* BOTTOM NAV */
+  .bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(10,10,15,0.92);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    display: flex;
+    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+  }
+
+  .nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 6px 4px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    background: none;
+    color: var(--silver-dim);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .nav-item.active, .nav-item:hover { color: var(--blue-primary); }
+
+  .nav-item .nav-icon { font-size: 20px; transition: var(--transition); }
+  .nav-item.active .nav-icon { filter: drop-shadow(0 0 6px var(--blue-primary)); }
+  .nav-item .nav-label { font-size: 9px; letter-spacing: 0.5px; font-weight: 600; text-transform: uppercase; }
+
+  /* MAIN */
+  main {
+    position: relative;
+    z-index: 1;
+    padding-top: 60px;
+    padding-bottom: 80px;
+    min-height: 100vh;
+  }
+
+  /* SECTIONS */
+  .section {
+    display: none;
+    padding: 20px 16px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .section.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 30px 16px 20px;
+  }
+
+  .hero-logo {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #3b0fa0, #00d4aa);
+    border-radius: 20px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    box-shadow: 0 0 40px rgba(0,212,170,0.4), 0 0 80px rgba(0,212,170,0.1);
+    animation: logo-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes logo-pulse {
+    0%, 100% { box-shadow: 0 0 40px rgba(0,212,170,0.4), 0 0 80px rgba(0,212,170,0.1); }
+    50% { box-shadow: 0 0 60px rgba(0,212,170,0.6), 0 0 120px rgba(0,212,170,0.2); }
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    text-shadow: 0 0 20px rgba(0,212,170,0.5);
+  }
+
+  .hero h2 {
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--silver-dim);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .hero-tagline {
+    font-size: 13px;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+
+  /* STORAGE RING */
+  .storage-ring-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+  }
+
+  .storage-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+  }
+
+  .storage-ring svg {
+    transform: rotate(-90deg);
+    width: 140px;
+    height: 140px;
+  }
+
+  .ring-track { fill: none; stroke: rgba(0,212,170,0.1); stroke-width: 10; }
+
+  .ring-fill {
+    fill: none;
+    stroke: url(#ringGrad);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 345;
+    stroke-dashoffset: 345;
+    animation: ring-draw 2s 0.5s ease-out forwards;
+  }
+
+  @keyframes ring-draw {
+    to { stroke-dashoffset: 120; }
+  }
+
+  .ring-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ring-pct {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--blue-primary);
+    line-height: 1;
+    text-shadow: 0 0 15px rgba(0,212,170,0.6);
+  }
+
+  .ring-label { font-size: 9px; color: var(--silver-dim); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 18px 14px;
+    cursor: pointer;
+    transition: var(--transition);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,212,170,0.05) 0%, transparent 60%);
+    opacity: 0;
+    transition: var(--transition);
+  }
+
+  .card:hover::before, .card:active::before { opacity: 1; }
+  .card:hover { border-color: var(--blue-primary); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(0,212,170,0.15); }
+  .card:active { transform: scale(0.97); }
+
+  .card-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+  .card-title { font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: 0.3px; margin-bottom: 4px; }
+  .card-desc { font-size: 10px; color: var(--silver-dim); line-height: 1.5; }
+
+  .card-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+    background: linear-gradient(135deg, #7b2fff, #00d4aa);
+    border-radius: 20px;
+    padding: 2px 7px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  /* SECTION HEADERS */
+  .section-header {
+    margin-bottom: 20px;
+  }
+
+  .section-header h2 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .section-header p { font-size: 12px; color: var(--silver-dim); }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: var(--silver-dim);
+  }
+
+  .breadcrumb span { color: var(--blue-primary); cursor: pointer; }
+
+  /* GLASS PANELS */
+  .glass-panel {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(10px);
+  }
+
+  .panel-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--blue-primary);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .panel-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--glass-border);
+  }
+
+  /* UPLOAD ZONE */
+  .upload-zone {
+    border: 2px dashed var(--glass-border);
+    border-radius: var(--radius);
+    padding: 30px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .upload-zone:hover, .upload-zone.dragover {
+    border-color: var(--blue-primary);
+    background: var(--blue-glow);
+  }
+
+  .upload-zone input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0;
+  }
+
+  .upload-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.7; }
+  .upload-text { font-size: 13px; color: var(--silver); margin-bottom: 4px; font-weight: 600; }
+  .upload-sub { font-size: 11px; color: var(--silver-dim); }
+
+  /* PROGRESS BARS */
+  .progress-item { margin-bottom: 14px; }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+
+  .progress-label { color: var(--silver); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+  .progress-value { color: var(--blue-primary); font-family: var(--font-display); font-size: 11px; }
+
+  .progress-track {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+  }
+
+  .fill-image { background: linear-gradient(90deg, #7b2fff, #00d4aa); }
+  .fill-video { background: linear-gradient(90deg, #6600cc, #aa00ff); }
+  .fill-doc { background: linear-gradient(90deg, #006633, #00cc66); }
+  .fill-audio { background: linear-gradient(90deg, #cc6600, #ff9900); }
+  .fill-other { background: linear-gradient(90deg, #333, #666); }
+  .fill-blue { background: linear-gradient(90deg, #7b2fff, #00d4aa); }
+
+  /* RECOMMENDATIONS */
+  .rec-list { list-style: none; }
+
+  .rec-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 12px;
+    color: var(--silver);
+    line-height: 1.5;
+  }
+
+  .rec-item:last-child { border-bottom: none; }
+  .rec-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  /* STEP CARDS */
+  .step-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    margin-bottom: 10px;
+    backdrop-filter: blur(10px);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #7b2fff, #00d4aa);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: bold;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(0,212,170,0.3);
+  }
+
+  .step-content h4 { font-size: 13px; font-weight: 700; margin-bottom: 3px; color: var(--white); }
+  .step-content p { font-size: 11px; color: var(--silver-dim); line-height: 1.5; }
+
+  /* BRAND TABS */
+  .brand-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    margin-bottom: 16px;
+    scrollbar-width: none;
+  }
+
+  .brand-tabs::-webkit-scrollbar { display: none; }
+
+  .brand-tab {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--silver-dim);
+    cursor: pointer;
+    transition: var(--transition);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .brand-tab.active {
+    background: linear-gradient(135deg, #7b2fff, #00d4aa);
+    border-color: var(--blue-primary);
+    color: white;
+    box-shadow: 0 0 12px rgba(0,212,170,0.3);
+  }
+
+  /* DEVICE GUIDE */
+  .device-guide { display: none; }
+  .device-guide.active { display: block; animation: fadeIn 0.3s ease; }
+
+  /* WARNING BANNER */
+  .warning-banner {
+    background: rgba(255,170,0,0.1);
+    border: 1px solid rgba(255,170,0,0.3);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: #ffcc66;
+    line-height: 1.6;
+  }
+
+  .warning-banner .warn-icon { font-size: 18px; flex-shrink: 0; }
+
+  /* DUPLICATE GRID */
+  .dup-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .dup-pair {
+    background: var(--glass);
+    border: 1px solid rgba(255,68,102,0.3);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .dup-pair .dup-img-wrap {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .dup-pair img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .dup-pair .dup-badge {
+    position: absolute;
+    top: 6px; right: 6px;
+    background: var(--danger);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 8px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  .dup-info {
+    padding: 10px;
+    font-size: 10px;
+    color: var(--silver-dim);
+  }
+
+  .dup-info strong { color: var(--white); display: block; margin-bottom: 2px; font-size: 11px; }
+
+  /* BATTERY */
+  .battery-visual {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .battery-outer {
+    width: 100px;
+    height: 180px;
+    border: 3px solid var(--blue-primary);
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,212,170,0.3), inset 0 0 20px rgba(0,212,170,0.05);
+  }
+
+  .battery-cap {
+    width: 30px;
+    height: 8px;
+    background: var(--blue-primary);
+    border-radius: 4px 4px 0 0;
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0,212,170,0.4);
+  }
+
+  .battery-fill {
+    position: absolute;
+    bottom: 4px; left: 4px; right: 4px;
+    height: 60%;
+    background: linear-gradient(to top, var(--blue-deep), var(--blue-primary));
+    border-radius: 8px;
+    animation: battery-glow 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 15px rgba(0,212,170,0.4);
+  }
+
+  @keyframes battery-glow {
+    from { box-shadow: 0 0 15px rgba(0,212,170,0.3); }
+    to { box-shadow: 0 0 30px rgba(0,212,170,0.6); }
+  }
+
+  .battery-pct {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,212,170,0.8);
+    z-index: 1;
+  }
+
+  /* TIP ITEMS */
+  .tip-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .tip-item:last-child { border-bottom: none; }
+  .tip-icon-wrap {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, var(--blue-deep), rgba(0,212,170,0.3));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,212,170,0.2);
+  }
+
+  .tip-content h4 { font-size: 13px; font-weight: 700; margin-bottom: 2px; color: var(--white); }
+  .tip-content p { font-size: 11px; color: var(--silver-dim); line-height: 1.5; }
+
+  /* STAT ROW */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .stat-box {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 12px 10px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--blue-primary);
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(0,212,170,0.4);
+  }
+
+  .stat-lbl { font-size: 9px; color: var(--silver-dim); letter-spacing: 0.5px; margin-top: 2px; text-transform: uppercase; }
+
+  /* CATEGORY PILLS */
+  .cat-pills {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .cat-pill {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: 1px solid;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  /* FILE LIST */
+  .file-list { list-style: none; }
+
+  .file-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 12px;
+  }
+
+  .file-item:last-child { border-bottom: none; }
+
+  .file-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .file-details { flex: 1; min-width: 0; }
+  .file-name { color: var(--white); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .file-meta { color: var(--silver-dim); font-size: 10px; margin-top: 2px; }
+  .file-size { color: var(--blue-primary); font-family: var(--font-display); font-size: 11px; }
+
+  /* BTN */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    letter-spacing: 0.5px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #7b2fff, #00d4aa);
+    color: white;
+    box-shadow: 0 4px 20px rgba(0,212,170,0.3);
+    width: 100%;
+    justify-content: center;
+    margin-top: 14px;
+  }
+
+  .btn-primary:hover { box-shadow: 0 4px 30px rgba(0,212,170,0.5); transform: translateY(-1px); }
+  .btn-primary:active { transform: scale(0.97); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--blue-primary);
+    border: 1px solid var(--blue-primary);
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+
+  .btn-outline:hover { background: var(--blue-glow); }
+
+  /* WHATSAPP GUIDE */
+  .wa-tip {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+  }
+
+  .wa-tip:hover { border-color: rgba(0,200,100,0.4); }
+
+  .wa-tip-icon {
+    width: 40px; height: 40px;
+    background: rgba(0,200,80,0.1);
+    border: 1px solid rgba(0,200,80,0.3);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .wa-tip-content h4 { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .wa-tip-content p { font-size: 11px; color: var(--silver-dim); line-height: 1.6; }
+
+  /* SCAN ANIMATION */
+  .scan-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue-primary), transparent);
+    animation: scan 2s linear infinite;
+    opacity: 0;
+  }
+
+  .scanning .scan-line { opacity: 1; }
+
+  @keyframes scan {
+    from { top: 0; }
+    to { top: 100%; }
+  }
+
+  /* FOOTER */
+  footer {
+    background: rgba(10,10,15,0.9);
+    border-top: 1px solid var(--glass-border);
+    padding: 24px 16px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--blue-primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .footer-tagline { font-size: 10px; color: var(--silver-dim); margin-bottom: 8px; }
+  .footer-note { font-size: 9px; color: rgba(107,122,153,0.6); letter-spacing: 0.5px; }
+
+  /* EMPTY STATE */
+  .empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--silver-dim);
+  }
+
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.5; }
+  .empty-state h3 { font-size: 14px; color: var(--silver); margin-bottom: 6px; }
+  .empty-state p { font-size: 11px; line-height: 1.6; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 2px; }
+
+  /* NOTIFICATION */
+  .toast {
+    position: fixed;
+    bottom: 90px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: rgba(13,17,30,0.95);
+    border: 1px solid var(--blue-primary);
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 12px;
+    color: var(--white);
+    z-index: 9999;
+    opacity: 0;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(0,212,170,0.3);
+  }
+
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* SORT CONTROLS */
+  .sort-controls {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .sort-controls::-webkit-scrollbar { display: none; }
+
+  .sort-btn {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    font-size: 10px;
+    color: var(--silver-dim);
+    cursor: pointer;
+    font-weight: 700;
+    transition: var(--transition);
+  }
+
+  .sort-btn.active {
+    border-color: var(--blue-primary);
+    color: var(--blue-primary);
+    background: var(--blue-glow);
+  }
+
+  /* RESPONSIVE */
+  @media (min-width: 480px) {
+    .cards-grid { grid-template-columns: repeat(3, 1fr); }
+    .section { padding: 24px 20px; }
+  }
+
+  @media (min-width: 768px) {
+    nav { padding: 0 24px; }
+    .section { max-width: 640px; margin: 0 auto; }
+    .cards-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-logo">⚡</div>
+    <div class="nav-title">
+      PixelProTech
+      <span>Solutions</span>
+    </div>
+  </div>
+  <button id="install-btn">⬇ Install App</button>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<main>
+
+  <!-- ===== HOME ===== -->
+  <section class="section active" id="sec-home">
+    <div class="hero">
+      <div class="hero-logo">📱</div>
+      <h1>PixelProTech</h1>
+      <h2>Solutions</h2>
+      <p class="hero-tagline">Smart Storage Management<br>&amp; Mobile Maintenance</p>
+    </div>
+
+    <div class="storage-ring-wrapper">
+      <div class="storage-ring">
+        <svg viewBox="0 0 140 140">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#7b2fff"/>
+              <stop offset="100%" stop-color="#00d4aa"/>
+            </linearGradient>
+          </defs>
+          <circle class="ring-track" cx="70" cy="70" r="55"/>
+          <circle class="ring-fill" cx="70" cy="70" r="55"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-pct">65%</div>
+          <div class="ring-label">Used</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-num">64GB</div>
+        <div class="stat-lbl">Total</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">41GB</div>
+        <div class="stat-lbl">Used</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">23GB</div>
+        <div class="stat-lbl">Free</div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="card" onclick="goTo('storage')">
+        <span class="card-icon">🗂️</span>
+        <div class="card-title">Storage Analyzer</div>
+        <div class="card-desc">Scan &amp; categorize your files</div>
+        <div class="card-badge">Scan</div>
+      </div>
+      <div class="card" onclick="goTo('whatsapp')">
+        <span class="card-icon">💬</span>
+        <div class="card-title">WhatsApp Cleaner</div>
+        <div class="card-desc">Free up media storage</div>
+      </div>
+      <div class="card" onclick="goTo('downloads')">
+        <span class="card-icon">📥</span>
+        <div class="card-title">Downloads Org.</div>
+        <div class="card-desc">Sort &amp; manage downloads</div>
+      </div>
+      <div class="card" onclick="goTo('cache')">
+        <span class="card-icon">🧹</span>
+        <div class="card-title">Cache Guides</div>
+        <div class="card-desc">Device-specific guides</div>
+      </div>
+      <div class="card" onclick="goTo('duplicates')">
+        <span class="card-icon">🔍</span>
+        <div class="card-title">Duplicate Finder</div>
+        <div class="card-desc">Find identical images</div>
+        <div class="card-badge">AI</div>
+      </div>
+      <div class="card" onclick="goTo('battery')">
+        <span class="card-icon">🔋</span>
+        <div class="card-title">Battery Care</div>
+        <div class="card-desc">Extend battery life</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STORAGE ANALYZER ===== -->
+  <section class="section" id="sec-storage">
+    <div class="breadcrumb"><span onclick="goTo('home')">🏠 Home</span> › Storage Analyzer</div>
+    <div class="section-header">
+      <h2>🗂️ Storage Analyzer</h2>
+      <p>Select files or folders to analyze storage usage</p>
+    </div>
+
+    <div class="glass-panel">
+      <div class="panel-title">📂 Select Files to Analyze</div>
+      <div class="upload-zone" id="storage-zone">
+        <input type="file" multiple id="storage-files" onchange="analyzeFiles(this.files)">
+        <div class="upload-icon">📁</div>
+        <div class="upload-text">Tap to select files</div>
+        <div class="upload-sub">Select any files to analyze size &amp; type breakdown</div>
+      </div>
+    </div>
+
+    <div class="glass-panel" id="storage-results" style="display:none;">
+      <div class="panel-title">📊 Analysis Results</div>
+
+      <div class="stat-row" id="storage-stats">
+        <div class="stat-box"><div class="stat-num" id="stat-total">0 B</div><div class="stat-lbl">Total</div></div>
+        <div class="stat-box"><div class="stat-num" id="stat-count">0</div><div class="stat-lbl">Files</div></div>
+        <div class="stat-box"><div class="stat-num" id="stat-largest">0 B</div><div class="stat-lbl">Largest</div></div>
+      </div>
+
+      <div id="storage-bars"></div>
+    </div>
+
+    <div class="glass-panel" id="storage-recs" style="display:none;">
+      <div class="panel-title">✅ Recommendations</div>
+      <ul class="rec-list" id="rec-list"></ul>
+    </div>
+
+    <div class="glass-panel" id="storage-filelist" style="display:none;">
+      <div class="panel-title">📋 File Details</div>
+      <ul class="file-list" id="file-list-ul"></ul>
+    </div>
+  </section>
+
+  <!-- ===== WHATSAPP ===== -->
+  <section class="section" id="sec-whatsapp">
+    <div class="breadcrumb"><span onclick="goTo('home')">🏠 Home</span> › WhatsApp Storage Rescue</div>
+    <div class="section-header">
+      <h2>💬 WhatsApp Storage Rescue</h2>
+      <p>Step-by-step guides to recover storage from WhatsApp</p>
+    </div>
+
+    <div class="glass-panel" style="text-align:center; padding: 16px;">
+      <div style="font-size:40px; margin-bottom:8px;">💾</div>
+      <div style="font-family:var(--font-display); font-size:13px; color:var(--blue-primary);">WhatsApp can use 5–15GB</div>
+      <div style="font-size:11px; color:var(--silver-dim); margin-top:4px;">Videos, images, and status downloads accumulate silently</div>
+    </div>
+
+    <div class="wa-tip">
+      <div class="wa-tip-icon">🎬</div>
+      <div class="wa-tip-content">
+        <h4>Delete Unnecessary Videos</h4>
+        <p>Open WhatsApp → Storage &amp; Data → Manage Storage → Select videos over 5MB → Review &amp; delete. Videos are the biggest storage consumers.</p>
+      </div>
+    </div>
+
+    <div class="wa-tip">
+      <div class="wa-tip-icon">📨</div>
+      <div class="wa-tip-content">
+        <h4>Remove Forwarded Media</h4>
+        <p>In WhatsApp Manage Storage, filter by "Forwarded many times". These viral videos and images are usually safe to delete as you can always re-receive them.</p>
+      </div>
+    </div>
+
+    <div class="wa-tip">
+      <div class="wa-tip-icon">👁️</div>
+      <div class="wa-tip-content">
+        <h4>Clean Status Downloads</h4>
+        <p>Status media saves to your phone automatically if auto-download is on. Check your WhatsApp folder: WhatsApp/Media/.Statuses in your file manager and remove old ones.</p>
+      </div>
+    </div>
+
+    <div class="wa-tip">
+      <div class="wa-tip-icon">📢</div>
+      <div class="wa-tip-content">
+        <h4>Manage Channel &amp; Group Media</h4>
+        <p>Leave high-traffic channels and groups that send lots of media. In each group: tap group name → Media, Links &amp; Docs → clear what you don't need.</p>
+      </div>
+    </div>
+
+    <div class="wa-tip">
+      <div class="wa-tip-icon">☁️</div>
+      <div class="wa-tip-content">
+        <h4>Backup Chats Before Deleting</h4>
+        <p>Always go to Settings → Chats → Chat Backup → Back Up Now before clearing large amounts of media. This ensures your messages are safe on Google Drive.</p>
+      </div>
+    </div>
+
+    <div class="wa-tip">
+      <div class="wa-tip-icon">⚙️</div>
+      <div class="wa-tip-content">
+        <h4>Disable Auto-Download</h4>
+        <p>Settings → Storage &amp; Data → Media auto-download. Set all three (Mobile, Wi-Fi, Roaming) to No media or Photos only. This prevents future storage buildup.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOWNLOADS ===== -->
+  <section class="section" id="sec-downloads">
+    <div class="breadcrumb"><span onclick="goTo('home')">🏠 Home</span> › Downloads Organizer</div>
+    <div class="section-header">
+      <h2>📥 Downloads Organizer</h2>
+      <p>Select downloaded files to categorize and sort</p>
+    </div>
+
+    <div class="glass-panel">
+      <div class="panel-title">📂 Select Download Files</div>
+      <div class="upload-zone">
+        <input type="file" multiple id="download-files" onchange="organizeDownloads(this.files)">
+        <div class="upload-icon">📥</div>
+        <div class="upload-text">Tap to select files</div>
+        <div class="upload-sub">Select files from your Downloads folder to organize</div>
+      </div>
+    </div>
+
+    <div id="download-results" style="display:none;">
+      <div class="sort-controls">
+        <button class="sort-btn active" onclick="setSortDownload('type',this)">By Type</button>
+        <button class="sort-btn" onclick="setSortDownload('size',this)">By Size</button>
+        <button class="sort-btn" onclick="setSortDownload('name',this)">By Name</button>
+      </div>
+
+      <div class="cat-pills" id="download-cat-pills"></div>
+
+      <div class="glass-panel" id="download-breakdown"></div>
+
+      <div class="glass-panel">
+        <div class="panel-title">💡 Safe to Remove</div>
+        <ul class="rec-list" id="download-recs"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CACHE GUIDES ===== -->
+  <section class="section" id="sec-cache">
+    <div class="breadcrumb"><span onclick="goTo('home')">🏠 Home</span> › Cache Cleaning Guides</div>
+    <div class="section-header">
+      <h2>🧹 Cache Cleaning Guides</h2>
+      <p>Device-specific step-by-step instructions</p>
+    </div>
+
+    <div class="warning-banner">
+      <div class="warn-icon">⚠️</div>
+      <div>System cache cleaning procedures vary by device and Android version. Screenshots may differ from your exact device.</div>
+    </div>
+
+    <div class="brand-tabs">
+      <button class="brand-tab active" onclick="showBrand('samsung',this)">Samsung</button>
+      <button class="brand-tab" onclick="showBrand('xiaomi',this)">Xiaomi</button>
+      <button class="brand-tab" onclick="showBrand('huawei',this)">Huawei</button>
+      <button class="brand-tab" onclick="showBrand('vivo',this)">Vivo</button>
+      <button class="brand-tab" onclick="showBrand('oppo',this)">Oppo</button>
+      <button class="brand-tab" onclick="showBrand('realme',this)">Realme</button>
+    </div>
+
+    <div class="device-guide active" id="guide-samsung">
+      <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+        <div style="font-size:32px;">📱</div>
+        <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary); margin-top:6px;">SAMSUNG ONE UI</div>
+        <div style="font-size:10px; color:var(--silver-dim);">Galaxy S / A / M / F Series</div>
+      </div>
+      <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>Open Settings</h4><p>Swipe down from top → Tap the ⚙️ gear icon, or find Settings in your app drawer.</p></div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>Battery and Device Care</h4><p>Scroll down and tap "Battery and device care" (older: Device Maintenance).</p></div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>Storage</h4><p>Tap the "Storage" option. Review what's using your space.</p></div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>Apps</h4><p>Go back to Settings → Apps. Choose any app using large cache.</p></div></div>
+      <div class="step-card"><div class="step-num">5</div><div class="step-content"><h4>Clear Cache</h4><p>Inside the app: tap Storage → Clear Cache. Repeat for heavy apps like Chrome, Instagram, TikTok.</p></div></div>
+    </div>
+
+    <div class="device-guide" id="guide-xiaomi">
+      <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+        <div style="font-size:32px;">📱</div>
+        <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary); margin-top:6px;">XIAOMI MIUI / HyperOS</div>
+        <div style="font-size:10px; color:var(--silver-dim);">Redmi / POCO / Mi Series</div>
+      </div>
+      <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>Open Phone Manager</h4><p>Find the "Phone Manager" or "Security" app on your home screen or drawer.</p></div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>Cleaner / Clear Cache</h4><p>Tap "Cleaner" or "Clear Cache". MIUI will scan for junk files automatically.</p></div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>Review &amp; Confirm</h4><p>Review what will be deleted. Tap "Clean Up" to remove junk files safely.</p></div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>Per-App Cache</h4><p>Settings → Apps → Manage Apps → select any app → Clear Data → Clear Cache.</p></div></div>
+      <div class="step-card"><div class="step-num">5</div><div class="step-content"><h4>Deep Clean</h4><p>In Phone Manager → Cleaner, tap "Deep Clean" for a thorough scan of large files.</p></div></div>
+    </div>
+
+    <div class="device-guide" id="guide-huawei">
+      <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+        <div style="font-size:32px;">📱</div>
+        <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary); margin-top:6px;">HUAWEI EMUI / HarmonyOS</div>
+        <div style="font-size:10px; color:var(--silver-dim);">P / Mate / Nova Series</div>
+      </div>
+      <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>Open Phone Manager</h4><p>Open the "Phone Manager" app from your home screen.</p></div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>Storage Cleaner</h4><p>Tap "Storage Cleaner" and let it scan your device for junk files.</p></div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>Clean Up</h4><p>Review the scan results and tap "Clean Up" to safely remove cache and temporary files.</p></div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>Per-App via Settings</h4><p>Settings → Apps → App List → select app → Storage → Clear Cache.</p></div></div>
+    </div>
+
+    <div class="device-guide" id="guide-vivo">
+      <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+        <div style="font-size:32px;">📱</div>
+        <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary); margin-top:6px;">VIVO FUNTOUCH OS / OriginOS</div>
+        <div style="font-size:10px; color:var(--silver-dim);">V / Y / X / T Series</div>
+      </div>
+      <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>i-Manager</h4><p>Open "i-Manager" app or "iManager" from your home screen.</p></div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>Memory Cleaner</h4><p>Tap "Memory Cleaner" or "Junk Cleaner" to start scanning.</p></div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>One-Tap Clean</h4><p>Tap the clean button to clear junk files, cache, and temporary data.</p></div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>Per-App</h4><p>Settings → More Settings → Applications → All Apps → select app → Clear Cache.</p></div></div>
+    </div>
+
+    <div class="device-guide" id="guide-oppo">
+      <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+        <div style="font-size:32px;">📱</div>
+        <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary); margin-top:6px;">OPPO ColorOS</div>
+        <div style="font-size:10px; color:var(--silver-dim);">Reno / A / Find Series</div>
+      </div>
+      <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>Phone Manager</h4><p>Open "Phone Manager" from your home screen or app drawer.</p></div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>Storage Space</h4><p>Tap "Storage Space" to see a breakdown of what's using storage.</p></div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>Junk Files</h4><p>Tap "Clean Up" or "Junk Files". Review before tapping Clean.</p></div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>Per-App Cache</h4><p>Settings → App Management → All Apps → select app → Storage Usage → Clear Cache.</p></div></div>
+    </div>
+
+    <div class="device-guide" id="guide-realme">
+      <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+        <div style="font-size:32px;">📱</div>
+        <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary); margin-top:6px;">REALME UI</div>
+        <div style="font-size:10px; color:var(--silver-dim);">Narzo / Number / C Series</div>
+      </div>
+      <div class="step-card"><div class="step-num">1</div><div class="step-content"><h4>Phone Manager</h4><p>Open "Phone Manager" or find the built-in cleaner on your home screen.</p></div></div>
+      <div class="step-card"><div class="step-num">2</div><div class="step-content"><h4>Clean &amp; Boost</h4><p>Tap "Clean" and allow the scan to complete. This covers junk, cache, and temp files.</p></div></div>
+      <div class="step-card"><div class="step-num">3</div><div class="step-content"><h4>Confirm Cleaning</h4><p>Review the breakdown, uncheck anything you want to keep, then tap "Clean".</p></div></div>
+      <div class="step-card"><div class="step-num">4</div><div class="step-content"><h4>Per-App</h4><p>Settings → App Management → App List → select app → Usage &amp; Storage → Clear Cache.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ===== DUPLICATES ===== -->
+  <section class="section" id="sec-duplicates">
+    <div class="breadcrumb"><span onclick="goTo('home')">🏠 Home</span> › Duplicate Image Detector</div>
+    <div class="section-header">
+      <h2>🔍 Duplicate Image Detector</h2>
+      <p>Select multiple images to find exact duplicates</p>
+    </div>
+
+    <div class="glass-panel">
+      <div class="panel-title">🖼️ Select Images to Scan</div>
+      <div class="upload-zone" id="dup-zone" style="position:relative;">
+        <input type="file" multiple accept="image/*" id="dup-files" onchange="findDuplicates(this.files)">
+        <div class="scan-line" id="scan-line"></div>
+        <div class="upload-icon">🔍</div>
+        <div class="upload-text" id="dup-zone-text">Tap to select images</div>
+        <div class="upload-sub" id="dup-zone-sub">Select multiple photos to detect duplicates</div>
+      </div>
+    </div>
+
+    <div id="dup-results" style="display:none;">
+      <div class="glass-panel">
+        <div class="panel-title">📊 Scan Summary</div>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-num" id="dup-total">0</div><div class="stat-lbl">Scanned</div></div>
+          <div class="stat-box"><div class="stat-num" id="dup-found">0</div><div class="stat-lbl">Duplicates</div></div>
+          <div class="stat-box"><div class="stat-num" id="dup-saved">0B</div><div class="stat-lbl">Recoverable</div></div>
+        </div>
+      </div>
+
+      <div id="dup-pairs-section" style="display:none;">
+        <div class="glass-panel">
+          <div class="panel-title">⚠️ Duplicate Sets Found</div>
+          <p style="font-size:11px; color:var(--silver-dim); margin-bottom:12px;">These images are identical. Keep one copy and safely remove the others using your file manager.</p>
+          <div class="dup-grid" id="dup-pairs"></div>
+        </div>
+      </div>
+
+      <div id="dup-clean-section" style="display:none;">
+        <div class="glass-panel" style="text-align:center; padding:24px;">
+          <div style="font-size:40px; margin-bottom:8px;">✅</div>
+          <div style="font-size:14px; color:var(--success); font-weight:700; margin-bottom:4px;">No Duplicates Found</div>
+          <div style="font-size:11px; color:var(--silver-dim);">All selected images appear to be unique.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BATTERY ===== -->
+  <section class="section" id="sec-battery">
+    <div class="breadcrumb"><span onclick="goTo('home')">🏠 Home</span> › Battery Care Center</div>
+    <div class="section-header">
+      <h2>🔋 Battery Care Center</h2>
+      <p>Expert guidance to extend your battery lifespan</p>
+    </div>
+
+    <div class="battery-visual">
+      <div class="battery-outer">
+        <div class="battery-cap"></div>
+        <div class="battery-fill"></div>
+        <div class="battery-pct">60%</div>
+      </div>
+    </div>
+
+    <div class="glass-panel" style="text-align:center; padding:14px; margin-bottom:14px;">
+      <div style="font-family:var(--font-display); font-size:12px; color:var(--blue-primary);">OPTIMAL CHARGE RANGE</div>
+      <div style="font-size:22px; font-weight:700; margin: 8px 0; color:var(--white);">20% — 80%</div>
+      <div style="font-size:11px; color:var(--silver-dim);">Staying in this range maximizes your battery's cycle count and long-term capacity.</div>
+    </div>
+
+    <div class="glass-panel">
+      <div class="panel-title">🔋 Battery Care Tips</div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">🌡️</div>
+        <div class="tip-content">
+          <h4>Avoid Extreme Heat</h4>
+          <p>Don't leave your phone in direct sunlight or hot cars. Heat above 35°C permanently degrades battery capacity faster than anything else.</p>
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">🔌</div>
+        <div class="tip-content">
+          <h4>Use Quality Chargers</h4>
+          <p>Use your manufacturer's original charger or a reputable brand. Cheap chargers deliver unstable voltages that damage the battery over time.</p>
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">🌙</div>
+        <div class="tip-content">
+          <h4>Avoid Overnight Charging</h4>
+          <p>Keeping your phone plugged in at 100% for hours generates heat and stress. Use battery limit features or charge before bed to 80%.</p>
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">📶</div>
+        <div class="tip-content">
+          <h4>Manage Background Apps</h4>
+          <p>Go to Settings → Battery → Background App Refresh and disable it for apps that don't need it. This reduces constant drain on your battery.</p>
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">✈️</div>
+        <div class="tip-content">
+          <h4>Use Airplane Mode When Low Signal</h4>
+          <p>Your phone burns battery searching for signal in weak areas. Switch to Airplane Mode or Wi-Fi only when possible to conserve charge.</p>
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">🔆</div>
+        <div class="tip-content">
+          <h4>Lower Screen Brightness</h4>
+          <p>The display is your biggest power consumer. Use auto-brightness, reduce timeout to 30 seconds, and use Dark Mode — it saves significant battery on AMOLED screens.</p>
+        </div>
+      </div>
+
+      <div class="tip-item">
+        <div class="tip-icon-wrap">🔄</div>
+        <div class="tip-content">
+          <h4>Calibrate Monthly</h4>
+          <p>Once a month, let the battery drain to around 10%, then charge uninterrupted to 100%. This helps the battery management system read capacity accurately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="bottom-nav">
+  <button class="nav-item active" onclick="goTo('home')" id="nav-home">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-label">Home</span>
+  </button>
+  <button class="nav-item" onclick="goTo('storage')" id="nav-storage">
+    <span class="nav-icon">🗂️</span>
+    <span class="nav-label">Analyze</span>
+  </button>
+  <button class="nav-item" onclick="goTo('duplicates')" id="nav-duplicates">
+    <span class="nav-icon">🔍</span>
+    <span class="nav-label">Dupes</span>
+  </button>
+  <button class="nav-item" onclick="goTo('cache')" id="nav-cache">
+    <span class="nav-icon">🧹</span>
+    <span class="nav-label">Guides</span>
+  </button>
+  <button class="nav-item" onclick="goTo('battery')" id="nav-battery">
+    <span class="nav-icon">🔋</span>
+    <span class="nav-label">Battery</span>
+  </button>
+</nav>
+
+<footer>
+  <div class="footer-logo">PixelProTech Solutions</div>
+  <div class="footer-tagline">Smart Mobile Maintenance &amp; Storage Management</div>
+  <div style="margin: 12px 0;">
+    <a href="https://wa.me/27651971461" target="_blank" style="display:inline-flex; align-items:center; gap:8px; background:linear-gradient(135deg,#7b2fff,#00d4aa); border-radius:25px; padding:10px 22px; text-decoration:none; color:white; font-size:13px; font-weight:700; letter-spacing:0.5px; box-shadow:0 0 20px rgba(0,212,170,0.3);">
+      💬 WhatsApp Us · 065 197 1461
+    </a>
+  </div>
+  <div style="font-size:10px; color:#7b7b99; margin-bottom:6px;">pixelprotechsolutions@gmail.com</div>
+  <div class="footer-note">Built for everyday users and technicians · v1.0.0</div>
+</footer>
+
+<script>
+// ==================== NAVIGATION ====================
+const sectionMap = {
+  home: 'sec-home',
+  storage: 'sec-storage',
+  whatsapp: 'sec-whatsapp',
+  downloads: 'sec-downloads',
+  cache: 'sec-cache',
+  duplicates: 'sec-duplicates',
+  battery: 'sec-battery'
+};
+
+const navMap = {
+  home: 'nav-home',
+  storage: 'nav-storage',
+  duplicates: 'nav-duplicates',
+  cache: 'nav-cache',
+  battery: 'nav-battery'
+};
+
+function goTo(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+  const sec = document.getElementById(sectionMap[id]);
+  if (sec) { sec.classList.add('active'); }
+
+  const nav = document.getElementById('nav-' + id);
+  if (nav) { nav.classList.add('active'); }
+
+  window.scrollTo(0, 0);
+}
+
+// ==================== FILE UTILS ====================
+function formatSize(bytes) {
+  if (bytes === 0) return '0 B';
+  const k = 1024;
+  const sizes = ['B','KB','MB','GB'];
+  const i = Math.floor(Math.log(bytes) / Math.log(k));
+  return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
+}
+
+function getFileType(name) {
+  const ext = name.split('.').pop().toLowerCase();
+  const types = {
+    image: ['jpg','jpeg','png','gif','webp','bmp','svg','heic','heif'],
+    video: ['mp4','avi','mkv','mov','wmv','flv','3gp','m4v','webm'],
+    audio: ['mp3','wav','flac','aac','ogg','m4a','wma','opus'],
+    document: ['pdf','doc','docx','xls','xlsx','ppt','pptx','txt','csv','odt','ods'],
+    archive: ['zip','rar','7z','tar','gz','bz2','xz']
+  };
+  for (const [type, exts] of Object.entries(types)) {
+    if (exts.includes(ext)) return type;
+  }
+  return 'other';
+}
+
+function getFileIcon(type) {
+  const icons = { image:'🖼️', video:'🎬', audio:'🎵', document:'📄', archive:'📦', other:'📎' };
+  return icons[type] || '📎';
+}
+
+function getFileBg(type) {
+  const colors = {
+    image: 'rgba(100,30,220,0.2)',
+    video: 'rgba(102,0,204,0.2)',
+    audio: 'rgba(204,102,0,0.2)',
+    document: 'rgba(0,102,51,0.2)',
+    archive: 'rgba(102,51,0,0.2)',
+    other: 'rgba(50,50,50,0.3)'
+  };
+  return colors[type] || colors.other;
+}
+
+// ==================== STORAGE ANALYZER ====================
+function analyzeFiles(files) {
+  if (!files || files.length === 0) return;
+
+  const arr = Array.from(files);
+  const cats = { image:0, video:0, audio:0, document:0, archive:0, other:0 };
+  let totalSize = 0;
+  let largest = 0;
+
+  arr.forEach(f => {
+    const type = getFileType(f.name);
+    cats[type] += f.size;
+    totalSize += f.size;
+    if (f.size > largest) largest = f.size;
+  });
+
+  document.getElementById('stat-total').textContent = formatSize(totalSize);
+  document.getElementById('stat-count').textContent = arr.length;
+  document.getElementById('stat-largest').textContent = formatSize(largest);
+
+  const barsEl = document.getElementById('storage-bars');
+  const catConfig = [
+    { key:'image',    label:'Images',    cls:'fill-image',   icon:'🖼️' },
+    { key:'video',    label:'Videos',    cls:'fill-video',   icon:'🎬' },
+    { key:'document', label:'Documents', cls:'fill-doc',     icon:'📄' },
+    { key:'audio',    label:'Audio',     cls:'fill-audio',   icon:'🎵' },
+    { key:'archive',  label:'Archives',  cls:'fill-other',   icon:'📦' },
+    { key:'other',    label:'Other',     cls:'fill-other',   icon:'📎' }
+  ];
+
+  barsEl.innerHTML = catConfig.map(c => {
+    const pct = totalSize > 0 ? Math.round((cats[c.key] / totalSize) * 100) : 0;
+    if (pct === 0) return '';
+    return `
+      <div class="progress-item">
+        <div class="progress-header">
+          <div class="progress-label">${c.icon} ${c.label}</div>
+          <div class="progress-value">${formatSize(cats[c.key])} · ${pct}%</div>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill ${c.cls}" style="width:0%" data-target="${pct}%"></div>
+        </div>
+      </div>`;
+  }).join('');
+
+  setTimeout(() => {
+    document.querySelectorAll('.progress-fill[data-target]').forEach(el => {
+      el.style.width = el.dataset.target;
+    });
+  }, 100);
+
+  // Recommendations
+  const recs = [];
+  if (cats.video > 50 * 1024 * 1024) recs.push({ icon:'🎬', text:`You have ${formatSize(cats.video)} of videos. Consider moving large videos to cloud storage or an external drive.` });
+  if (cats.image > 100 * 1024 * 1024) recs.push({ icon:'🖼️', text:`${formatSize(cats.image)} in images. Delete old screenshots and blurry photos. Enable Google Photos backup to free local storage.` });
+  if (cats.archive > 0) recs.push({ icon:'📦', text:`Found ${formatSize(cats.archive)} in archives. Once you've extracted what you need, the original zip/rar files are usually safe to delete.` });
+  if (arr.length > 50) recs.push({ icon:'📋', text:`${arr.length} files analyzed. Consider organizing into folders by date or project to make future cleanup easier.` });
+  recs.push({ icon:'☁️', text:'Always backup important files to Google Drive, Dropbox, or your PC before making any deletions.' });
+
+  const recList = document.getElementById('rec-list');
+  recList.innerHTML = recs.map(r => `<li class="rec-item"><span class="rec-icon">${r.icon}</span>${r.text}</li>`).join('');
+
+  // File list (top 20)
+  const sorted = arr.sort((a,b) => b.size - a.size).slice(0,20);
+  const fileUl = document.getElementById('file-list-ul');
+  fileUl.innerHTML = sorted.map(f => {
+    const type = getFileType(f.name);
+    return `
+      <li class="file-item">
+        <div class="file-icon" style="background:${getFileBg(type)}">${getFileIcon(type)}</div>
+        <div class="file-details">
+          <div class="file-name">${f.name}</div>
+          <div class="file-meta">${type.toUpperCase()} · ${new Date(f.lastModified).toLocaleDateString()}</div>
+        </div>
+        <div class="file-size">${formatSize(f.size)}</div>
+      </li>`;
+  }).join('');
+
+  document.getElementById('storage-results').style.display = 'block';
+  document.getElementById('storage-recs').style.display = 'block';
+  document.getElementById('storage-filelist').style.display = 'block';
+
+  showToast(`✅ Analyzed ${arr.length} file${arr.length !== 1 ? 's' : ''}`);
+}
+
+// ==================== DOWNLOADS ORGANIZER ====================
+let downloadFiles = [];
+let downloadSort = 'type';
+
+function organizeDownloads(files) {
+  if (!files || files.length === 0) return;
+  downloadFiles = Array.from(files);
+  renderDownloads();
+  document.getElementById('download-results').style.display = 'block';
+  showToast(`📥 Organized ${downloadFiles.length} files`);
+}
+
+function setSortDownload(sort, btn) {
+  downloadSort = sort;
+  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderDownloads();
+}
+
+function renderDownloads() {
+  const cats = {};
+  downloadFiles.forEach(f => {
+    const type = getFileType(f.name);
+    if (!cats[type]) cats[type] = [];
+    cats[type].push(f);
+  });
+
+  let sorted = [...downloadFiles];
+  if (downloadSort === 'size') sorted.sort((a,b) => b.size - a.size);
+  else if (downloadSort === 'name') sorted.sort((a,b) => a.name.localeCompare(b.name));
+  else sorted.sort((a,b) => getFileType(a.name).localeCompare(getFileType(b.name)));
+
+  const catColors = {
+    image: '#00d4aa', video: '#aa00ff', audio: '#ff9900',
+    document: '#00cc66', archive: '#ff6600', other: '#666'
+  };
+
+  const pillsEl = document.getElementById('download-cat-pills');
+  pillsEl.innerHTML = Object.entries(cats).map(([type, files]) =>
+    `<div class="cat-pill" style="border-color:${catColors[type] || '#666'}; color:${catColors[type] || '#666'}">
+      ${getFileIcon(type)} ${type} (${files.length})
+    </div>`
+  ).join('');
+
+  const breakdownEl = document.getElementById('download-breakdown');
+  breakdownEl.innerHTML = `<div class="panel-title">📋 Files</div>` +
+    sorted.map(f => {
+      const type = getFileType(f.name);
+      return `<div class="file-item">
+        <div class="file-icon" style="background:${getFileBg(type)}">${getFileIcon(type)}</div>
+        <div class="file-details">
+          <div class="file-name">${f.name}</div>
+          <div class="file-meta">${type.toUpperCase()}</div>
+        </div>
+        <div class="file-size">${formatSize(f.size)}</div>
+      </div>`;
+    }).join('');
+
+  const recs = [];
+  const large = downloadFiles.filter(f => f.size > 50 * 1024 * 1024);
+  if (large.length > 0) recs.push({ icon:'📦', text:`${large.length} file(s) over 50MB found. If already used, these are likely safe to delete.` });
+  const archives = downloadFiles.filter(f => getFileType(f.name) === 'archive');
+  if (archives.length > 0) recs.push({ icon:'🗜️', text:`${archives.length} archive file(s). If already extracted, delete the originals to save space.` });
+  recs.push({ icon:'📅', text:'Old downloads from 6+ months ago are usually safe to delete if you no longer need them.' });
+  recs.push({ icon:'☁️', text:'Move important documents to Google Drive before deleting local copies.' });
+
+  document.getElementById('download-recs').innerHTML =
+    recs.map(r => `<li class="rec-item"><span class="rec-icon">${r.icon}</span>${r.text}</li>`).join('');
+}
+
+// ==================== DUPLICATE FINDER ====================
+async function findDuplicates(files) {
+  if (!files || files.length < 2) {
+    showToast('⚠️ Select 2 or more images to compare');
+    return;
+  }
+
+  const arr = Array.from(files);
+  const zone = document.getElementById('dup-zone');
+  zone.classList.add('scanning');
+  document.getElementById('scan-line').style.opacity = '1';
+  document.getElementById('dup-zone-text').textContent = `Scanning ${arr.length} images...`;
+  document.getElementById('dup-zone-sub').textContent = 'Computing fingerprints...';
+
+  const hashes = {};
+  const duplicateSets = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    const file = arr[i];
+    try {
+      const hash = await computeImageHash(file);
+      if (hashes[hash]) {
+        duplicateSets.push({ original: hashes[hash], duplicate: file });
+      } else {
+        hashes[hash] = file;
+      }
+    } catch(e) {
+      // skip unreadable files
+    }
+  }
+
+  zone.classList.remove('scanning');
+  document.getElementById('scan-line').style.opacity = '0';
+  document.getElementById('dup-zone-text').textContent = `✅ Scan complete`;
+  document.getElementById('dup-zone-sub').textContent = `${arr.length} images scanned`;
+
+  document.getElementById('dup-total').textContent = arr.length;
+  document.getElementById('dup-found').textContent = duplicateSets.length;
+
+  let recoverableBytes = 0;
+  duplicateSets.forEach(d => { recoverableBytes += d.duplicate.size; });
+  document.getElementById('dup-saved').textContent = formatSize(recoverableBytes);
+
+  document.getElementById('dup-results').style.display = 'block';
+
+  if (duplicateSets.length > 0) {
+    const pairsEl = document.getElementById('dup-pairs');
+    pairsEl.innerHTML = '';
+    for (const set of duplicateSets) {
+      const orig = await fileToDataURL(set.original);
+      const dup = await fileToDataURL(set.duplicate);
+      pairsEl.innerHTML += `
+        <div class="dup-pair">
+          <div class="dup-img-wrap">
+            <img src="${orig}" alt="Original">
+          </div>
+          <div class="dup-info">
+            <strong>Original</strong>
+            ${set.original.name.substring(0,18)}...<br>${formatSize(set.original.size)}
+          </div>
+        </div>
+        <div class="dup-pair">
+          <div class="dup-img-wrap">
+            <img src="${dup}" alt="Duplicate">
+            <div class="dup-badge">DUPE</div>
+          </div>
+          <div class="dup-info">
+            <strong>Duplicate</strong>
+            ${set.duplicate.name.substring(0,18)}...<br>${formatSize(set.duplicate.size)}
+          </div>
+        </div>`;
+    }
+    document.getElementById('dup-pairs-section').style.display = 'block';
+    document.getElementById('dup-clean-section').style.display = 'none';
+    showToast(`🔍 Found ${duplicateSets.length} duplicate set(s)`);
+  } else {
+    document.getElementById('dup-pairs-section').style.display = 'none';
+    document.getElementById('dup-clean-section').style.display = 'block';
+    showToast('✅ No duplicates found!');
+  }
+}
+
+function fileToDataURL(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = e => resolve(e.target.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function computeImageHash(file) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 16; canvas.height = 16;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, 16, 16);
+      const data = ctx.getImageData(0, 0, 16, 16).data;
+      URL.revokeObjectURL(url);
+      // Simple difference hash
+      let hash = '';
+      for (let i = 0; i < data.length; i += 16) {
+        hash += Math.floor((data[i] + data[i+1] + data[i+2]) / 3).toString(16).padStart(2,'0');
+      }
+      resolve(hash);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(); };
+    img.src = url;
+  });
+}
+
+// ==================== CACHE GUIDES ====================
+function showBrand(brand, btn) {
+  document.querySelectorAll('.device-guide').forEach(g => g.classList.remove('active'));
+  document.querySelectorAll('.brand-tab').forEach(b => b.classList.remove('active'));
+  const guide = document.getElementById('guide-' + brand);
+  if (guide) guide.classList.add('active');
+  btn.classList.add('active');
+}
+
+// ==================== TOAST ====================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// ==================== PWA ====================
+const manifestData = {
+  name: 'PixelProTech Solutions',
+  short_name: 'PixelProTech',
+  description: 'Smart Mobile Storage Assistant',
+  start_url: '/',
+  display: 'standalone',
+  background_color: '#0a0a0f',
+  theme_color: '#7b2fff',
+  icons: [{
+    src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237b2fff'/><text y='.9em' font-size='80' x='10'>⚡</text></svg>",
+    sizes: '192x192',
+    type: 'image/svg+xml'
+  }]
+};
+
+const manifestBlob = new Blob([JSON.stringify(manifestData)], { type: 'application/json' });
+const manifestURL = URL.createObjectURL(manifestBlob);
+document.getElementById('manifest-link').href = manifestURL;
+
+// Service Worker
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    const CACHE = 'pixelprotech-v1';
+    self.addEventListener('install', e => {
+      e.waitUntil(caches.open(CACHE).then(c => c.addAll(['/'])));
+      self.skipWaiting();
+    });
+    self.addEventListener('fetch', e => {
+      e.respondWith(caches.match(e.request).then(r => r || fetch(e.request).catch(() => new Response('Offline'))));
+    });
+  `;
+  const swBlob = new Blob([swCode], { type: 'application/javascript' });
+  const swURL = URL.createObjectURL(swBlob);
+  navigator.serviceWorker.register(swURL).catch(() => {});
+}
+
+// Install Prompt
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('install-btn').style.display = 'block';
+});
+
+document.getElementById('install-btn').addEventListener('click', () => {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+      document.getElementById('install-btn').style.display = 'none';
+    });
+  }
+});
+
+window.addEventListener('appinstalled', () => {
+  showToast('✅ App installed successfully!');
+  document.getElementById('install-btn').style.display = 'none';
+});
+</script>
+</body>
+</html>
