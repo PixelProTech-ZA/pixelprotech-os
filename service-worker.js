@@ -1,43 +1,83 @@
-const CACHE_NAME = "pixelprotech-os-v0-7-0";
+/* PixelProTech OS service worker v0.8
+   - Precaches only the small shell (~300 KB) so first install is fast on mobile data.
+   - Apps and their files are saved the first time they are opened (stale-while-revalidate).
+   - The apps cache survives version bumps, so a new OS version does NOT re-download every app.
+   - Settings > "Download all apps" sends PRECACHE with every file listed in os-files.json. */
+const VERSION = "0-8-0";
+const SHELL_CACHE = "pixelprotech-os-shell-v" + VERSION;
+const APPS_CACHE = "pixelprotech-os-apps";
 const SHELL_FILES = [
-  "./",
-  "./index.html",
-  "./manifest.json", "./pixel-fx.css", "./pixel-fx.js", "./pixel-apps.js", "./pixel-repos.js",
-  "./app-bulk-email.html", "./app-on-site-bios.html", "./app-onyx.html", "./app-pixel-calendar.html", "./app-office-hr.html", "./app-warehouse-pro.html", "./app-pixel-weather.html", "./app-mobile-academy.html", "./app-community-radar.html", "./app-invoice-pro.html", "./app-pixel-link.html", "./app-wake-os.html", "./app-smart-storage.html", "./app-pixelview-pro.html", "./app-technician-command.html", "./app-pixel-vault.html", "./app-free-tv.html", "./app-academy.html", "./app-cert-forge.html", "./app-cv-builder.html", "./app-diagnostic.html", "./app-remote-assistant.html", "./app-technician-os.html", "./app-html-workspace.html", "./app-pixel-code.html", "./app-pixel-diagnose.html", "./app-html-learning.html", "./app-pixel-rescue.html", "./app-pixel-wifi.html", "./app-pixel-office.html", "./app-globe-cameras.html", "./app-retail-key.html", "./app-pixel-packet.html", "./app-let-it-breathe.html", "./app-pixel-core.html", "./app-know-your-freedom.html", "./app-open-library.html", "./app-oops-academy.html", "./app-pixel-app.html", "./app-openway.html", "./app-status-studio.html", "./app-gatekeeper.html", "./app-pixel-scan.html", "./app-pixel-protect.html", "./app-save-it.html", "./app-world-pixel.html", "./app-typing-machine.html", "./app-pixel-fix-pro.html", "./app-archive-swallow.html", "./app-pixel-imprint.html", "./app-world-os.html", "./app-pixel-signal.html", "./app-pixelfix-pro.html", "./app-file-converter.html", "./app-mastering-engine.html", "./app-organic-sound.html", "./app-doppler-lab.html", "./app-mix-trauma-scanner.html", "./app-sonic-triage.html", "./app-the-room.html", "./app-sound-design-lab.html", "./app-audio-hospital.html", "./app-aux-surgery-lab.html", "./app-frequency-dna.html", "./app-hospital-mix-checker.html", "./app-sonic-operating-room.html", "./app-certified-engine.html", "./app-every-city.html", "./app-field-school.html", "./app-oasis-player.html", "./app-frequency-rooms.html", "./app-oasis-theory.html", "./app-more-out-there.html", "./app-world-signal.html", "./app-fo-player.html", "./app-sonic-sanctuary.html", "./app-soul-generator.html",
-  "./icon-192.png",
-  "./icon-512.png",
-  "./hamba-rides.html", "./hamba-rides.css", "./hamba-rides.js", "./hamba-rides-pwa.js", "./hamba-rides-icon.svg",
-  "./homebase.html", "./homebase.css", "./homebase-icon.svg", "./homebase-00_core.js", "./homebase-10_audio.js", "./homebase-20_input.js", "./homebase-30_gfx.js", "./homebase-40_world.js", "./homebase-50_entities.js", "./homebase-60_ui.js", "./homebase-65_combat.js", "./homebase-70_ops.js", "./homebase-85_screens.js", "./homebase-88_aura.js", "./homebase-90_main.js",
-  "./orchard-shift.html", "./orchard-shift.css", "./orchard-shift.js", "./orchard-shift-icon.svg",
+  "./", "./index.html", "./manifest.json", "./os-files.json",
+  "./pixel-fx.css", "./pixel-fx.js", "./pixel-apps.js", "./pixel-repos.js",
+  "./icon-192.png", "./icon-512.png"
 ];
-
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(SHELL_FILES)).then(() => self.skipWaiting())
+    caches.open(SHELL_CACHE)
+      .then((cache) => Promise.all(SHELL_FILES.map((u) => cache.add(u).catch(() => null))))
+      .then(() => self.skipWaiting())
   );
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    ).then(() => self.clients.claim())
+    caches.keys()
+      .then((keys) => Promise.all(keys
+        .filter((k) => k.startsWith("pixelprotech-os-") && k !== SHELL_CACHE && k !== APPS_CACHE)
+        .map((k) => caches.delete(k))))
+      .then(() => self.clients.claim())
   );
 });
 
-// App-shell strategy: serve the local shell from cache so PixelProTech OS
-// boots offline. This never intercepts or fakes third-party/network requests —
-// only the exact local files this app shipped with are cached.
 self.addEventListener("fetch", (event) => {
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return; // don't touch fonts/CDN/external calls
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) return cached;
-      return fetch(event.request).catch(() =>
-        caches.match("./index.html")
-      );
-    })
-  );
+  const req = event.request;
+  if (req.method !== "GET" || req.headers.has("range")) return;
+  const url = new URL(req.url);
+  if (url.origin !== self.location.origin) return;
+  const isShell = SHELL_FILES.some((f) => new URL(f, self.location).pathname === url.pathname);
+  event.respondWith(staleWhileRevalidate(req, isShell ? SHELL_CACHE : APPS_CACHE));
+});
+
+async function staleWhileRevalidate(req, cacheName) {
+  const cache = await caches.open(cacheName);
+  const cached = await cache.match(req, { ignoreSearch: true });
+  const network = fetch(req).then((res) => {
+    if (res && res.ok && res.type === "basic") cache.put(req, res.clone()).catch(() => {});
+    return res;
+  });
+  if (cached) { network.catch(() => {}); return cached; }
+  try { return await network; }
+  catch (e) {
+    if (req.mode === "navigate") {
+      const shell = await caches.match("./index.html");
+      if (shell) return shell;
+    }
+    return new Response("Offline and not saved yet. Open this app once while online.", { status: 503, headers: { "Content-Type": "text/plain" } });
+  }
+}
+
+self.addEventListener("message", (event) => {
+  const d = event.data;
+  if (!d || d.type !== "PRECACHE" || !Array.isArray(d.urls)) return;
+  const port = event.ports && event.ports[0];
+  event.waitUntil((async () => {
+    const cache = await caches.open(APPS_CACHE);
+    const total = d.urls.length; let done = 0, failed = 0;
+    const queue = d.urls.slice();
+    async function worker() {
+      while (queue.length) {
+        const u = queue.shift();
+        try {
+          const res = await fetch(u, { cache: "reload" });
+          if (!res.ok) throw new Error(res.status);
+          await cache.put(u, res);
+          done++;
+        } catch (e) { failed++; }
+        port && port.postMessage({ type: "progress", done: done, failed: failed, total: total });
+      }
+    }
+    await Promise.all([worker(), worker(), worker()]);
+    port && port.postMessage({ type: "done", done: done, failed: failed, total: total });
+  })());
 });
