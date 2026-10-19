@@ -1,4 +1,4 @@
-/* PIXEL REPOS — every PixelProTech-ZA web repo, running inside PixelProTech OS.
+/* PIXEL REPOS — every PixelProTech-ZA, AudioHospital and frequencyoasis web repo, running inside PixelProTech OS.
    Each repo was compiled into ONE offline file (app-<name>.html); the OS opens it in a window.
    Repos that cannot run in a browser (native desktop / Android) are listed honestly, never faked. */
 (function(){
@@ -7,6 +7,7 @@ const OS=window.PixelOS;
 if(!OS||!OS.api) return;
 const {registerApp,openWindow,escapeHtml:esc}=OS.api;
 const ORG="https://github.com/PixelProTech-ZA/";
+const repoUrl=a=>"https://github.com/"+(a.org||"PixelProTech-ZA")+"/"+a.repo;
 const REPOS=[
 {
 "id": "app-bulk-email",
@@ -18,7 +19,8 @@ const REPOS=[
 "file": "app-bulk-email.html",
 "desc": "Batch recipient lists into mailto links.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-on-site-bios",
@@ -30,7 +32,8 @@ const REPOS=[
 "file": "app-on-site-bios.html",
 "desc": "Field diagnostic and decision system for on-site computer technicians.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-onyx",
@@ -42,7 +45,8 @@ const REPOS=[
 "file": "app-onyx.html",
 "desc": "Onyx — an operating workspace for browsing, projects, knowledge and development, by PixelProTech Solutions.",
 "note": "Desktop (Electron) features need the native build; the web view runs here.",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-calendar",
@@ -54,7 +58,8 @@ const REPOS=[
 "file": "app-pixel-calendar.html",
 "desc": "Pixel Calendar — a local-first temporal instrument by PixelProTech Solutions.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-office-hr",
@@ -66,7 +71,8 @@ const REPOS=[
 "file": "app-office-hr.html",
 "desc": "HR admin for small offices.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-warehouse-pro",
@@ -78,7 +84,8 @@ const REPOS=[
 "file": "app-warehouse-pro.html",
 "desc": "Browser-based warehouse receiving, inventory and barcode scanning platform by PixelProTech Solutions.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-weather",
@@ -90,7 +97,8 @@ const REPOS=[
 "file": "app-pixel-weather.html",
 "desc": "Pixel Weather — a living weather instrument by PixelProTech Solutions.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-mobile-academy",
@@ -102,7 +110,8 @@ const REPOS=[
 "file": "app-mobile-academy.html",
 "desc": "PixelProTech Mobile Academy Pro — Learn, Diagnose, Repair, Upgrade smartphones professionally.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-community-radar",
@@ -114,7 +123,8 @@ const REPOS=[
 "file": "app-community-radar.html",
 "desc": "Live community intelligence platform. See what",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-invoice-pro",
@@ -126,7 +136,8 @@ const REPOS=[
 "file": "app-invoice-pro.html",
 "desc": "Business & invoicing academy.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-link",
@@ -138,7 +149,8 @@ const REPOS=[
 "file": "app-pixel-link.html",
 "desc": "Securely connect and sync your desktop and phone — files, clipboard, notes, camera, and more, peer-to-peer.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-wake-os",
@@ -150,7 +162,8 @@ const REPOS=[
 "file": "app-wake-os.html",
 "desc": "The morning operating system. Built by PixelProTech Solutions.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-smart-storage",
@@ -162,7 +175,8 @@ const REPOS=[
 "file": "app-smart-storage.html",
 "desc": "PixelProTech Solutions - Smart Mobile Storage Assistant for technicians and everyday users",
 "note": "Android build (Capacitor) is the native form; the web app runs here.",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixelview-pro",
@@ -174,7 +188,8 @@ const REPOS=[
 "file": "app-pixelview-pro.html",
 "desc": "View, organise, explore.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-technician-command",
@@ -186,7 +201,8 @@ const REPOS=[
 "file": "app-technician-command.html",
 "desc": "Repair intake, diagnostics and dispute-shield evidence.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-vault",
@@ -198,7 +214,8 @@ const REPOS=[
 "file": "app-pixel-vault.html",
 "desc": "Local-first idea, code, and knowledge vault. Built by PixelProTech Solutions.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-free-tv",
@@ -210,7 +227,8 @@ const REPOS=[
 "file": "app-free-tv.html",
 "desc": "South Africa",
 "note": "Streams need a network connection.",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-academy",
@@ -222,7 +240,8 @@ const REPOS=[
 "file": "app-academy.html",
 "desc": "Digital skills courses.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-cert-forge",
@@ -234,7 +253,8 @@ const REPOS=[
 "file": "app-cert-forge.html",
 "desc": "Forge certificates.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-cv-builder",
@@ -246,7 +266,8 @@ const REPOS=[
 "file": "app-cv-builder.html",
 "desc": "Free CV Builder by Pixel Pro Tech Solutions – Build a professional CV in 60 seconds. South Africa",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-diagnostic",
@@ -258,7 +279,8 @@ const REPOS=[
 "file": "app-diagnostic.html",
 "desc": "System diagnostic scan.",
 "note": "Hardware scan needs the desktop (Electron) build; this window says so honestly when it is missing.",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-remote-assistant",
@@ -270,7 +292,8 @@ const REPOS=[
 "file": "app-remote-assistant.html",
 "desc": "Professional remote device diagnostics — camera, microphone, speaker, screen, network, GPS, motion and AI-assisted reporting, installable on any device.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-technician-os",
@@ -282,7 +305,8 @@ const REPOS=[
 "file": "app-technician-os.html",
 "desc": "Technician workstation toolkit.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-html-workspace",
@@ -294,7 +318,8 @@ const REPOS=[
 "file": "app-html-workspace.html",
 "desc": "Write, run, and understand HTML. Learn at your own pace, or just get the job done.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-code",
@@ -306,7 +331,8 @@ const REPOS=[
 "file": "app-pixel-code.html",
 "desc": "Learn real JavaScript on a signal bench — every lesson",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-diagnose",
@@ -318,7 +344,8 @@ const REPOS=[
 "file": "app-pixel-diagnose.html",
 "desc": "Real repair case files. Investigate a broken machine, find the fault, learn what every part actually does.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-html-learning",
@@ -330,7 +357,8 @@ const REPOS=[
 "file": "app-html-learning.html",
 "desc": "Pixel HTML Learning — build it, see it, understand it.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-rescue",
@@ -342,7 +370,8 @@ const REPOS=[
 "file": "app-pixel-rescue.html",
 "desc": "First aid for dead devices: what to stop, what is safe to try, when to hand over.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-wifi",
@@ -354,7 +383,8 @@ const REPOS=[
 "file": "app-pixel-wifi.html",
 "desc": "A real Wi-Fi and network diagnostic laboratory. See your connection, understand your network, know what to do next.",
 "note": "Deep readings need the optional local bridge; without it the app reports NOT TESTABLE.",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-pixel-office",
@@ -366,7 +396,8 @@ const REPOS=[
 "file": "app-pixel-office.html",
 "desc": "Office suite for schools and labs.",
 "note": "",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-globe-cameras",
@@ -378,7 +409,8 @@ const REPOS=[
 "file": "app-globe-cameras.html",
 "desc": "Explore legitimate public cameras from around the world on one geographic interface. Real feeds, honest status, no fake data.",
 "note": "Camera streams need a network connection.",
-"mode": "capsule"
+"mode": "capsule",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-drive-manager",
@@ -390,7 +422,8 @@ const REPOS=[
 "file": "",
 "desc": "Python desktop tool for USB and drive work (Windows).",
 "note": "NATIVE BRIDGE REQUIRED",
-"mode": "native"
+"mode": "native",
+"org": "PixelProTech-ZA"
 },
 {
 "id": "app-freetv-android",
@@ -402,6 +435,618 @@ const REPOS=[
 "file": "",
 "desc": "Android APK wrapper of Free TV. The same content already runs in the OS as Free TV.",
 "note": "ANDROID PACKAGE",
+"mode": "native",
+"org": "PixelProTech-ZA"
+},
+{
+"id": "app-retail-key",
+"repo": "retail-key",
+"org": "PixelProTech-ZA",
+"name": "Retail Key",
+"cat": "Life",
+"w": 440,
+"h": 720,
+"file": "app-retail-key.html",
+"desc": "Loyalty card wallet: track points, cashback and stamps, and show the right barcode at the till.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-packet",
+"repo": "-PIXEL-PACKET",
+"org": "PixelProTech-ZA",
+"name": "Pixel Packet",
+"cat": "Learn",
+"w": 1000,
+"h": 700,
+"file": "app-pixel-packet.html",
+"desc": "Interactive networking course that follows one packet from the wire to the web.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-let-it-breathe",
+"repo": "LET-IT-BREATHE.",
+"org": "PixelProTech-ZA",
+"name": "Let It Breathe",
+"cat": "Audio",
+"w": 520,
+"h": 700,
+"file": "app-let-it-breathe.html",
+"desc": "A sharper approach to speaker recovery: diagnose muffled, quiet or distorted speakers and get a next step.",
+"note": "Concept tool. Not a certified diagnostic or cleaning tool; effectiveness is untested.",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-core",
+"repo": "pixel-core",
+"org": "PixelProTech-ZA",
+"name": "Pixel Core",
+"cat": "Tools",
+"w": 640,
+"h": 700,
+"file": "app-pixel-core.html",
+"desc": "Technology, without the noise. A concise technology answer engine. Text only.",
+"note": "The interface runs offline. Answers need the Pixel Core backend online, which is not yet verified live.",
+"mode": "capsule"
+},
+{
+"id": "app-know-your-freedom",
+"repo": "Know-Your-Freedom-South-Africa",
+"org": "PixelProTech-ZA",
+"name": "Know Your Freedom",
+"cat": "Life",
+"w": 900,
+"h": 680,
+"file": "app-know-your-freedom.html",
+"desc": "South African law in plain language. Read the law. See the doubt. Find the door.",
+"note": "Independent, not government, not legal advice.",
+"mode": "capsule"
+},
+{
+"id": "app-open-library",
+"repo": "-PixelProTech-Solutions-Open-Library",
+"org": "PixelProTech-ZA",
+"name": "Open Library",
+"cat": "Learn",
+"w": 960,
+"h": 680,
+"file": "app-open-library.html",
+"desc": "Good books. Fewer dead ends. Free books and textbooks, each linked to its official source.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-oops-academy",
+"repo": "OOPS-ACADEMY",
+"org": "PixelProTech-ZA",
+"name": "Oops Academy",
+"cat": "Learn",
+"w": 900,
+"h": 680,
+"file": "app-oops-academy.html",
+"desc": "Funny disasters, clever kids, real learning for Grade R to Grade 2.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-app",
+"repo": "PIXEL-APP-PixelProTech-Solutions-",
+"org": "PixelProTech-ZA",
+"name": "Pixel App",
+"cat": "Dev",
+"w": 1100,
+"h": 720,
+"file": "app-pixel-app.html",
+"desc": "Offline-capable website construction engine with project, page, layer and inspector panels.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-openway",
+"repo": "Openway",
+"org": "PixelProTech-ZA",
+"name": "Openway",
+"cat": "Life",
+"w": 440,
+"h": 720,
+"file": "app-openway.html",
+"desc": "No matric. Still a future. Find work you can apply for, prepare for the interview, keep the job.",
+"note": "Prototype: all vacancies are test data.",
+"mode": "capsule"
+},
+{
+"id": "app-status-studio",
+"repo": "STATUS-STUDIO",
+"org": "PixelProTech-ZA",
+"name": "Status Studio",
+"cat": "Office",
+"w": 900,
+"h": 680,
+"file": "app-status-studio.html",
+"desc": "Create, queue and export themed status posts, track results and set up WhatsApp quick replies.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-gatekeeper",
+"repo": "PixelProTech-Gatekeeper",
+"org": "PixelProTech-ZA",
+"name": "Gatekeeper",
+"cat": "Security",
+"w": 1000,
+"h": 700,
+"file": "app-gatekeeper.html",
+"desc": "Staff attendance, visitor appointments, security alerts and emergency roll-call.",
+"note": "Demo prototype. Face and voice verification, door controllers and notifications are not connected.",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-scan",
+"repo": "PIXEL-SCAN",
+"org": "PixelProTech-ZA",
+"name": "Pixel Scan",
+"cat": "Security",
+"w": 520,
+"h": 720,
+"file": "app-pixel-scan.html",
+"desc": "Scan your digital life. Know what needs attention. Inspect, understand, protect.",
+"note": "Not antivirus and does not detect malware.",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-protect",
+"repo": "PIXEL-PROTECT-v1",
+"org": "PixelProTech-ZA",
+"name": "Pixel Protect",
+"cat": "Security",
+"w": 900,
+"h": 680,
+"file": "app-pixel-protect.html",
+"desc": "Visual cybersecurity education and personal protection.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-save-it",
+"repo": "Save-it.-Keep-it.-Find-it.",
+"org": "PixelProTech-ZA",
+"name": "Save It. Keep It. Find It.",
+"cat": "Tools",
+"w": 560,
+"h": 700,
+"file": "app-save-it.html",
+"desc": "A permanent home for the links worth keeping. Local-first.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-world-pixel",
+"repo": "-WORLD-PIXEL",
+"org": "PixelProTech-ZA",
+"name": "World Pixel",
+"cat": "Internet",
+"w": 960,
+"h": 680,
+"file": "app-world-pixel.html",
+"desc": "Where Gauteng learns computers. Find real computer-training places near you, ordered by distance.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-typing-machine",
+"repo": "pixelprotech-typing-machine",
+"org": "PixelProTech-ZA",
+"name": "Typing Machine",
+"cat": "Learn",
+"w": 1000,
+"h": 700,
+"file": "app-typing-machine.html",
+"desc": "Typing trainer for South Africa: 7 modes, XP system, keyboard heatmap and daily missions.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-fix-pro",
+"repo": "pixel-fix-proZA",
+"org": "PixelProTech-ZA",
+"name": "Pixel Fix Pro ZA",
+"cat": "Field Tech",
+"w": 1000,
+"h": 700,
+"file": "app-pixel-fix-pro.html",
+"desc": "On-site IT repair and tech support site for Johannesburg and Pretoria, with diagnostic intake.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-archive-swallow",
+"repo": "ARCHIVE-SWALLOW-PixelProTech-Solutions",
+"org": "PixelProTech-ZA",
+"name": "Pixel Archive Swallow",
+"cat": "Office",
+"w": 1000,
+"h": 700,
+"file": "app-archive-swallow.html",
+"desc": "Scan, OCR and classify physical document archives.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-imprint",
+"repo": "-PIXEL-IMPRINT",
+"org": "PixelProTech-ZA",
+"name": "Pixel Imprint",
+"cat": "Tools",
+"w": 560,
+"h": 700,
+"file": "app-pixel-imprint.html",
+"desc": "Local-first personal text memory. Capture it. Leave the imprint. Recall it.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-world-os",
+"repo": "-PIXEL-WORLD-OS-by-PixelProTech-Solutions",
+"org": "PixelProTech-ZA",
+"name": "Pixel World OS",
+"cat": "Learn",
+"w": 1000,
+"h": 700,
+"file": "app-world-os.html",
+"desc": "A discovery lab for PC operating systems beyond the default.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-signal",
+"repo": "-PIXEL-SIGNAL-POINT-IT-LOCK-IT-UNDERSTAND-IT",
+"org": "PixelProTech-ZA",
+"name": "Pixel Signal",
+"cat": "Network",
+"w": 1000,
+"h": 700,
+"file": "app-pixel-signal.html",
+"desc": "Satellite dish alignment lab: point it, lock it, understand it.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixelfix-pro",
+"repo": "Launch-PixelFix-Pro-ZA-v3.1-ULTRA",
+"org": "PixelProTech-ZA",
+"name": "PixelFix Pro v3.1",
+"cat": "Media",
+"w": 1000,
+"h": 700,
+"file": "app-pixelfix-pro.html",
+"desc": "Photo resize and ID photo toolkit.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-file-converter",
+"repo": "PixelProTech-File-Converter-v3.",
+"org": "PixelProTech-ZA",
+"name": "File Converter v3",
+"cat": "Office",
+"w": 960,
+"h": 680,
+"file": "app-file-converter.html",
+"desc": "Browser-based file converter: PDF, DOCX, XLSX, JPG and more. No uploads, no servers.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-mastering-engine",
+"repo": "AUDIO-HOSPITAL-MASTERING-ENGINE-LET-THE-TRACK-BREATHE-LET-THE-TRACK-HIT",
+"org": "AudioHospital",
+"name": "Mastering Engine",
+"cat": "Audio",
+"w": 1100,
+"h": 720,
+"file": "app-mastering-engine.html",
+"desc": "Analyze, classify, decide, process, measure, verify.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-organic-sound",
+"repo": "Audio-Hospital-Organic-Sound-Treatment-Facility",
+"org": "AudioHospital",
+"name": "Organic Sound Treatment Facility",
+"cat": "Audio",
+"w": 1100,
+"h": 720,
+"file": "app-organic-sound.html",
+"desc": "A real audio engineering workspace for EQ, dynamics, space and harmonic treatment.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-doppler-lab",
+"repo": "DOPPLER-LAB",
+"org": "AudioHospital",
+"name": "Doppler Lab",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-doppler-lab.html",
+"desc": "Interactive acoustic physics instrument: hear, see and calculate the Doppler effect.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-mix-trauma-scanner",
+"repo": "MIX-TRAUMA-SCANNER",
+"org": "AudioHospital",
+"name": "Mix Trauma Scanner",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-mix-trauma-scanner.html",
+"desc": "Detects problem frequencies in a mix.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-sonic-triage",
+"repo": "SONIC-TRIAGE",
+"org": "AudioHospital",
+"name": "Sonic Triage",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-sonic-triage.html",
+"desc": "Listen, inspect, isolate, diagnose and treat audio problems with real FFT analysis.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-the-room",
+"repo": "THE-ROOM",
+"org": "AudioHospital",
+"name": "The Room",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-the-room.html",
+"desc": "Forensic mix reconstruction and producer education.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-sound-design-lab",
+"repo": "The-Sound-Design-Lab",
+"org": "AudioHospital",
+"name": "The Sound Design Lab",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-sound-design-lab.html",
+"desc": "Learn, hear, build. A sound design academy where every lesson has a playable audio lab.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-audio-hospital",
+"repo": "audio-hospital",
+"org": "AudioHospital",
+"name": "Audio Hospital",
+"cat": "Audio",
+"w": 1100,
+"h": 720,
+"file": "app-audio-hospital.html",
+"desc": "Loudness Trauma Unit: surgical loudness mastering in your browser.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-aux-surgery-lab",
+"repo": "aux-surgery-lab",
+"org": "AudioHospital",
+"name": "Aux Surgery Lab",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-aux-surgery-lab.html",
+"desc": "Cinematic reverb and delay education.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-frequency-dna",
+"repo": "frequency-dna-scanner",
+"org": "AudioHospital",
+"name": "Frequency DNA Scanner",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-frequency-dna.html",
+"desc": "Spectral fingerprint analysis for your mix.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-hospital-mix-checker",
+"repo": "hospital-mix-checker",
+"org": "AudioHospital",
+"name": "Hospital Mix Checker",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-hospital-mix-checker.html",
+"desc": "Professional audio mix checker with a full diagnostic report.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-sonic-operating-room",
+"repo": "sonic-operating-room",
+"org": "AudioHospital",
+"name": "Sonic Operating Room",
+"cat": "Audio",
+"w": 1100,
+"h": 720,
+"file": "app-sonic-operating-room.html",
+"desc": "3D real-time mix diagnostics operating room.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-certified-engine",
+"repo": "Certified-Engine",
+"org": "frequencyoasis",
+"name": "Certified Engine",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-certified-engine.html",
+"desc": "A certified sound engine that generates a world of music for you.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-every-city",
+"repo": "Every-city-has-a-heartbeat.",
+"org": "frequencyoasis",
+"name": "Every City Has a Heartbeat",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-every-city.html",
+"desc": "World Signal: a living atmosphere of Earth, live radio from around the globe.",
+"note": "Live radio streams need internet.",
+"mode": "capsule"
+},
+{
+"id": "app-field-school",
+"repo": "Frequency-Oasis-Field-School-001",
+"org": "frequencyoasis",
+"name": "Field School 001",
+"cat": "Audio",
+"w": 1100,
+"h": 720,
+"file": "app-field-school.html",
+"desc": "Spatial sound engineering: move equipment through a room, read the geometry and hear it.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-oasis-player",
+"repo": "Frequency-Oasis-Player",
+"org": "frequencyoasis",
+"name": "Frequency Oasis Player",
+"cat": "Audio",
+"w": 720,
+"h": 680,
+"file": "app-oasis-player.html",
+"desc": "Personal music vault player.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-frequency-rooms",
+"repo": "Frequency-Rooms",
+"org": "frequencyoasis",
+"name": "Frequency Rooms",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-frequency-rooms.html",
+"desc": "Creative rooms built around sound and ideas, not timelines.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-oasis-theory",
+"repo": "OASIS-THEORY",
+"org": "frequencyoasis",
+"name": "Oasis Theory",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-oasis-theory.html",
+"desc": "Idea to sound: a playable instrument and music theory lab.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-more-out-there",
+"repo": "There-Is-More-Out-There",
+"org": "frequencyoasis",
+"name": "There Is More Out There",
+"cat": "Audio",
+"w": 960,
+"h": 680,
+"file": "app-more-out-there.html",
+"desc": "An underground map of legitimate, overlooked music resources.",
+"note": "Resource links open external sites and need internet.",
+"mode": "capsule"
+},
+{
+"id": "app-world-signal",
+"repo": "World-Signal-A-Living-Atlas-of-Radio",
+"org": "frequencyoasis",
+"name": "World Signal",
+"cat": "Audio",
+"w": 1100,
+"h": 720,
+"file": "app-world-signal.html",
+"desc": "A living atlas of the world's radio on a dot-projected globe.",
+"note": "Live radio streams need internet.",
+"mode": "capsule"
+},
+{
+"id": "app-fo-player",
+"repo": "fo-player",
+"org": "frequencyoasis",
+"name": "FO Player",
+"cat": "Audio",
+"w": 960,
+"h": 680,
+"file": "app-fo-player.html",
+"desc": "Local media inspection, comparison and review instrument.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-sonic-sanctuary",
+"repo": "sonicsanctuarylab",
+"org": "frequencyoasis",
+"name": "Sonic Sanctuary Lab",
+"cat": "Audio",
+"w": 1000,
+"h": 700,
+"file": "app-sonic-sanctuary.html",
+"desc": "Where sound becomes architecture: an experimental mixing lab.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-soul-generator",
+"repo": "soul-generator",
+"org": "frequencyoasis",
+"name": "Soul Generator",
+"cat": "Audio",
+"w": 900,
+"h": 680,
+"file": "app-soul-generator.html",
+"desc": "Generative sound textures.",
+"note": "",
+"mode": "capsule"
+},
+{
+"id": "app-pixel-pair",
+"repo": "PIXEL-PAIR",
+"org": "PixelProTech-ZA",
+"name": "Pixel Pair",
+"cat": "Network",
+"w": 900,
+"h": 640,
+"file": "",
+"desc": "Turn your phone into a wireless trackpad and keyboard for a Windows PC over your local network.",
+"note": "Windows companion app: it needs a local PC agent, so it cannot run in a browser window. The GitHub repo is currently empty.",
 "mode": "native"
 }
 ];
@@ -443,7 +1088,7 @@ REPOS.forEach(a=>{
         body.innerHTML=`<div class="rp-native"><div class="rp-badge">${a.icon}</div><h3>${esc(a.name)}</h3>
           <div class="rp-tag warn">${esc(a.note)}</div><p>${esc(a.desc)}</p>
           <p class="rp-dim">This repo is not a browser app, so it cannot run inside a browser window. The OS does not pretend otherwise.</p>
-          <a class="rp-btn" href="${ORG+a.repo}" target="_blank" rel="noopener">OPEN SOURCE REPO ↗</a></div>`;
+          <a class="rp-btn" href="${repoUrl(a)}" target="_blank" rel="noopener">OPEN SOURCE REPO ↗</a></div>`;
       }
     }
   });
@@ -492,7 +1137,7 @@ document.head.appendChild(css);
 registerApp({
   id:"pixel-apps",name:"Pixel Apps",category:"System",
   icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><path d="M16.75 13.5l3.25 3.25-3.25 3.25-3.25-3.25z"/></svg>',
-  desc:"Directory of every PixelProTech-ZA app that runs in this OS.",width:940,height:640,
+  desc:"Directory of every PixelProTech, Audio Hospital and Frequency Oasis app that runs in this OS.",width:940,height:640,
   launch(body){
     body.classList.add("bleed");
     const cats=["ALL",...[...new Set(REPOS.map(a=>a.cat))].sort()];
@@ -509,7 +1154,7 @@ registerApp({
         <p>${esc(a.desc)}</p>
         <span class="rp-tag${a.mode==="capsule"?"":" warn"}">${a.mode==="capsule"?"RUNS OFFLINE IN OS":esc(a.note)}</span>
         ${a.mode==="capsule"&&a.note?`<div class="rp-note">${esc(a.note)}</div>`:""}
-        <div class="rp-act"><button class="rp-btn" data-o="${a.id}">${a.mode==="capsule"?"OPEN":"DETAILS"}</button><a class="rp-btn ghost" href="${ORG+a.repo}" target="_blank" rel="noopener">REPO ↗</a></div></div>`).join(""):`<div class="rp-empty">NO APPS MATCH</div>`;
+        <div class="rp-act"><button class="rp-btn" data-o="${a.id}">${a.mode==="capsule"?"OPEN":"DETAILS"}</button><a class="rp-btn ghost" href="${repoUrl(a)}" target="_blank" rel="noopener">REPO ↗</a></div></div>`).join(""):`<div class="rp-empty">NO APPS MATCH</div>`;
     }
     chips.addEventListener("click",e=>{const b=e.target.closest(".rp-chip");if(b){cat=b.dataset.c;draw();}});
     grid.addEventListener("click",e=>{const b=e.target.closest("[data-o]");if(b)openWindow(b.dataset.o);});
