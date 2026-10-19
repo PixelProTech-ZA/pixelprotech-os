@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en"><head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script><meta charset="utf-8"><title>OOPS ACADEMY</title>
+<meta name="description" content="OOPS ACADEMY: funny disasters, clever kids, real learning for Grade R to Grade 2. By PixelProTech Solutions.">
+<meta name="theme-color" content="#07070a"><link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOmI3MWQ0OWEwLWVmMDUtNDJjMy05ZmE5LTQ3M2FlZjQxNjg2OAAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoKY8IzZhGrz0J0DC/hQM65gAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6N2MzYzI2ZDYtNDhkNi00YzMyLWEyYjAtYjEyOTgzOWUzMzAwbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaIAr4rFXjJcOcCFXaYTqTQcAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIKWzQffppsY7DH+EECy7hYi0ajePxZbg1eg3KAkJsrPGpGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2hR6cnbflHMCfu02EbvaOSnAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggcp0WsIJk7inClclFaghxpa7dMkwaSzDz0SNG7mDwMrRkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTpiNzFkNDlhMC1lZjA1LTQyYzMtOWZhOS00NzNhZWY0MTY4NjgvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDoyNTU3OWY5YS01MjI4LTQ3ODktYTA4MS0wMDgzOGJmZTEwOTVyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggpbNB9+mmxjsMf4QQLLuFiLRqN4/FluDV6DcoCQmys8aiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIHojlOJ14b/FJVcMoYO3+kReZy9uLgIwYeu53lCEwozZomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYIPJxbwBN/+18+usaGf6evjHR/2lP9kECb8b7sEEae9ocdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="OOPS"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#07070a;--ink:#f1eefa;--card:#1c1a25;--pink:#00d4aa;--teal:#12b5a6;--sun:#c7c1da;--vio:#00d4aa;--ok:#1a9d4b;--bad:#e5484d;--line:#524b6a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Chalkboard SE","Comic Sans MS","Trebuchet MS",sans-serif;font-size:18px;min-height:100vh}
+main{max-width:760px;margin:0 auto;padding:14px}
+h1{font-size:clamp(34px,9vw,56px);margin:6px 0;line-height:1;transform:rotate(-2deg);color:var(--pink);text-shadow:3px 3px 0 var(--sun)}
+h1 small{display:block;font-size:.4em;color:var(--ink);text-shadow:none;transform:rotate(2deg);margin-top:6px}
+button{font:inherit;cursor:pointer;border:3px solid var(--ink);border-radius:18px;background:var(--card);color:var(--ink);padding:12px 16px;box-shadow:0 5px 0 var(--ink);transition:transform .1s}
+button:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+button:focus-visible{outline:4px solid var(--vio);outline-offset:3px}
+.row{display:flex;gap:10px;flex-wrap:wrap}.grow{flex:1 1 150px}
+.grades button.on{background:var(--sun)}
+.subj{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0}
+.subj button{padding:16px;text-align:left}
+.subj .e{font-size:48px;display:block}
+.subj b{display:block;font-size:20px}
+.stage{background:var(--card);border:3px solid var(--ink);border-radius:24px;padding:16px;margin:12px 0}
+.who{display:flex;align-items:center;gap:12px}
+.face{font-size:72px;line-height:1}
+.bubble{background:var(--sun);color:#2a1b4d;border-radius:18px;padding:10px 14px;flex:1}
+.shake{animation:shake .5s}.hop{animation:hop .6s}
+@keyframes shake{20%{transform:rotate(-14deg)}40%{transform:rotate(14deg)}60%{transform:rotate(-10deg)}80%{transform:rotate(8deg)}}
+@keyframes hop{40%{transform:translateY(-24px) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.shake,.hop{animation:none}}
+.q{font-size:24px;margin:14px 0}.teach{background:#c9f3ee}
+.vis{font-size:34px;letter-spacing:4px;word-break:break-all;margin:8px 0}
+.opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.opts button{font-size:22px;min-height:64px}
+.opts button.good{background:#b8f2c9;color:#0b3a1c}.opts button.no{background:#ffc9cb;color:#5c0d10}
+.bar{height:16px;border:3px solid var(--ink);border-radius:10px;overflow:hidden;background:var(--card)}
+.bar i{display:block;height:100%;background:var(--teal);transition:width .3s}
+.stars{font-size:40px}
+.note{font-size:14px;opacity:.85;margin-top:14px}
+.tools{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+.tools button{padding:6px 12px;font-size:15px}
+body{font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif}
+h1{color:var(--ink);text-shadow:none;transform:none;letter-spacing:.02em;border-left:6px solid #00d4aa;padding-left:12px}
+h1 small{color:#c7c1da;transform:none;font-weight:400;letter-spacing:.04em}
+button{border:2px solid var(--line);box-shadow:0 4px 0 #000;border-radius:16px}
+button:hover{border-color:#00d4aa}
+.grades button.on{background:#00d4aa;color:#07070a;border-color:#00d4aa;font-weight:700}
+.stage{border:2px solid var(--line);border-radius:22px}
+.bar{border:2px solid var(--line)}
+.bubble{background:#2a2640;color:#f1eefa}
+.teach{background:#053d34;color:#d6fff5}
+.opts button.good{background:#044d41;color:#b9fff0;border-color:#00d4aa}
+.opts button.no{background:#3b1d26;color:#ffc9cb;border-color:#e5484d}
+.brandbar{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.22em;color:#00d4aa;margin:4px 0 14px}
+.brandbar::before{content:"";width:28px;height:2px;background:#00d4aa}
+.brandbar span{color:#9a90b8}
+footer.brand{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:#c7c1da;line-height:1.7}
+footer.brand b{color:#f1eefa;letter-spacing:.08em}
+footer.brand a{color:#00d4aa;text-decoration:none}
+footer.brand small{display:block;color:#9a90b8;margin-top:8px}
+input.nm{font:inherit;font-size:28px;width:100%;padding:12px;border-radius:16px;border:2px solid var(--line);background:#07070a;color:var(--ink);text-align:center}
+.go{background:#00d4aa;color:#07070a;font-weight:700;border-color:#00d4aa}
+</style></head><body><main id="app" aria-live="polite"></main>
+<script>
+/* ---------- i18n: add a language by adding a UI block + a CONTENT block ---------- */
+const UI={en:{tag:"Funny disasters. Clever kids. Real learning.",grade:"Choose your grade",gR:"Grade R",g1:"Grade 1",g2:"Grade 2",pick:"Pick a disaster to fix!",back:"Back",read:"Listen",mic:"Say it",sound:"Voice",ok:["Yes, {n}! Good job!","Well done, {n}! That is right!","Brilliant, {n}! Yes, good!","Hooray, {n}! You got it!"],calm:"Not quite, {n}. That is okay!",done:"Chaos fixed!",again:"Play again",home:"Home",hint:"Tap the right answer, or press Say it and use your voice."}};
+const CHARS=[
+{n:"Professor Cluckles",e:"🐔",p:1.6,r:1.0,intro:"I am a genius teacher! Mostly. Please help me!"},
+{n:"Captain Zingo",e:"🦥",p:.6,r:.75,intro:"I am a super-slow superhero. Help me, Hero!"},
+{n:"Mimi Muddle",e:"🦒",p:1.3,r:1.05,intro:"I wore my shoes on my ears again. Oops! Help!"},
+{n:"Bolt the Robot",e:"🤖",p:.8,r:.9,intro:"Beep boop. My spelling chip is broken. Fix me!"}];
+const SUBJ=[{id:"math",e:"🥚",n:"Egg-splosive Maths",c:0},{id:"eng",e:"🔤",n:"Word Wobbles",c:3},{id:"talk",e:"💬",n:"Talk Time Trouble",c:2},{id:"safe",e:"🛡️",n:"Super Safe Squad",c:1}];
+/* item: [grades,char,story,question,correct,wrong1,wrong2,funny] ; math is generated */
+const CONTENT={en:{
+eng:[
+[[0],3,"Bolt says: the word BALL starts with Z! That cannot be right.","Which sound does BALL start with?","B","Z","M","B-b-ball! Bolt's chip goes boing."],
+[[0],3,"Bolt wants a sandwich for his big sister S.","Which word starts with S?","sun","bat","dog","Sun! Bolt made a sun sandwich. Hot!"],
+[[0,1],3,"Bolt is writing a poem and got stuck!","Which word rhymes with HAT?","cat","dog","sun","Cat and hat! Bolt did a happy dance."],
+[[0],3,"Bolt is singing a rhyme and got it wrong.","Which word rhymes with SUN?","run","cat","bed","Sun, run, fun! Bolt rolled away."],
+[[0,1],3,"Bolt typed a word on his screen.","Which one spells THE?","the","teh","hte","T-H-E! Bolt's screen sparkled."],
+[[1,2],3,"Bolt wrote: i like cake","What does the sentence need at the start?","A capital letter","A hat","A banana","Capital letters start sentences. Cake time!"],
+[[1,2],0,"Cluckles laid one egg. Then another!","One egg, two ...","eggs","eggss","egges","Eggs! Cluckles is egg-cited."],
+[[1,2],3,"Bolt is very, very SLOW today.","What is the opposite of slow?","fast","soft","tall","Fast! Bolt zoomed off the page."],
+[[2],3,"Bolt lost his left sock and wants to ask for help.","Which one is asking a question?","Where is my sock?","I lost my sock.","My sock is red.","A question asks something. It ends with a question mark!"],
+[[1,2],3,"Bolt forgot something at the end of his sentence.","What goes at the end of a telling sentence?","A full stop","A sock","A wiggle","A full stop! Bolt stamped it with his foot."]],
+talk:[
+[[0,1,2],2,"Mimi meets a new girl at school and just stares at her shoes.","What is a friendly thing to say?","Hi! I'm Mimi. Want to play?","Go away!","(say nothing and run)","A friendly hello makes a new friend!"],
+[[0,1,2],2,"Mimi needs the toilet in the middle of the lesson!","What do you say to the teacher?","Please may I go to the toilet?","Look at my shoes!","Nothing. I will hop.","Asking politely works best. Hop-hop-no!"],
+[[0,1,2],2,"Mimi's gran gives her a present, and Mimi grabs it with her teeth!","What should Mimi say?","Thank you!","Gimme more!","Yuck!","Thank you makes people happy!"],
+[[0,1,2],2,"Mimi wants to tell Zingo something, but he is talking.","What is the polite thing to do?","Wait, then say 'Excuse me'","Shout louder","Stand on his head","Waiting for your turn is good manners."],
+[[0,1,2],2,"Mimi feels sad because her friend would not share.","How can she tell her friend?","I feel sad when you don't share.","I will hide in a bin.","Pull a face and stomp","Using words about feelings really helps!"],
+[[1,2],2,"Mimi forgot her lunch and is hungry.","Who could she ask for help?","Her teacher","A pigeon","A tree","Teachers help! Mimi got a sandwich."]],
+safe:[
+[[0,1,2],1,"A stranger says to Zingo: 'Come in my car, I have sweets!'","What should Zingo do?","Say NO loudly and tell a trusted grown-up","Climb into the car","Take the sweets and smile","NO! Strangers should not ask kids to go with them. Great job!"],
+[[0,1,2],1,"Someone says: 'This is our secret. Do not tell anyone!' and it makes Zingo's tummy feel funny.","What should Zingo do?","Tell a trusted grown-up","Keep it secret forever","Hide in a bush","Funny-tummy secrets must be told to a trusted adult."],
+[[0,1,2],1,"A friend wants to hug Zingo, but Zingo does not want a hug.","What can Zingo say?","No thank you. I don't want a hug.","Nothing. Just freeze.","Sure, whatever","Your body is yours. You can always say NO!"],
+[[0,1,2],1,"Zingo needs help and wants to find a trusted adult.","Who is a trusted adult?","Mom, Dad, Gran or my teacher","Someone I just met","A stranger on the street","Trusted adults are people your family knows and trusts."],
+[[0,1,2],1,"Someone online asks Zingo: 'Where do you live?'","What should Zingo do?","Not answer and tell a grown-up","Type his address","Send a photo of his house","Never share where you live. Tell a grown-up!"],
+[[1,2],1,"Zingo feels scared and unsafe.","What is the best thing to do?","Go to a trusted adult and tell them","Keep it inside","Run away alone","Telling a trusted adult is brave and smart!"]]
+}};
+/* ---------- helpers ---------- */
+const $=(s)=>document.querySelector(s);
+const rnd=n=>Math.floor(Math.random()*n);
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
+const pick=a=>a[rnd(a.length)];
+let lang="en",S={grade:1,voice:true,sfx:true,subj:null,qs:[],i:0,stars:0,tries:0,done:false};
+try{const v=localStorage.getItem("oops.grade");if(v!==null)S.grade=+v;S.name=localStorage.getItem("oops.name")||"";}catch(e){S.name=""}
+/* one pending timer at a time; home() clears it so Back can never be hijacked */
+let T=null;const later=(f,ms)=>{clearTimeout(T);T=setTimeout(f,ms)};
+/* c = character index (0..3) for that character's voice; -1 or undefined = Teacher Thandi */
+function utter(t,c){const ch=(c>=0&&CHARS[c])||{p:1,r:1};const u=new SpeechSynthesisUtterance(t);const vs=speechSynthesis.getVoices();u.voice=vs.find(v=>v.lang==="en-ZA")||vs.find(v=>/female|samantha|zira|susan|karen|moira/i.test(v.name)&&v.lang.startsWith("en"))||vs.find(v=>v.lang.startsWith("en"))||null;u.lang="en-ZA";u.pitch=Math.min(2,Math.max(.1,ch.p));u.rate=Math.min(1.2,Math.max(.55,.85*ch.r));speechSynthesis.speak(u);return u}
+function speakParts(parts,force,cb){let fired=false;const done=()=>{if(!fired){fired=true;cb&&cb()}};
+if((!S.voice&&!force)||!window.speechSynthesis){cb&&setTimeout(done,0);return}
+try{speechSynthesis.cancel();let last=null;parts.forEach(p=>{last=utter(tts(p[0]),p[1])});if(cb&&last){last.onend=done;last.onerror=done;setTimeout(done,20000)}}catch(e){done()}}
+function speak(t,c,force,cb){speakParts([[t,c]],force,cb)}
+/* ---------- classroom crowd: synthesized in the browser (no audio files) ----------
+   level 1 = small clap (right after a retry), 2 = class cheers (first try), 3 = whole school roars (4-5 stars) */
+let AC=null;
+function cheer(level){if(!S.sfx)return;try{
+const A=window.AudioContext||window.webkitAudioContext;if(!A)return;AC=AC||new A();if(AC.state==="suspended")AC.resume();
+const t0=AC.currentTime+.02,dur=level===1?1.1:level===2?2.4:3.6,master=AC.createGain();
+master.gain.setValueAtTime(0,t0);master.gain.linearRampToValueAtTime(level===1?.16:.26,t0+.08);master.gain.setValueAtTime(level===1?.16:.26,t0+dur-.5);master.gain.linearRampToValueAtTime(0,t0+dur);master.connect(AC.destination);
+/* applause: lots of tiny noise claps, density swells then fades */
+const len=Math.floor(AC.sampleRate*.05),nb=AC.createBuffer(1,len,AC.sampleRate),d=nb.getChannelData(0);
+for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/len,3);
+const claps=Math.round(dur*(level===1?30:level===2?55:75));
+for(let i=0;i<claps;i++){const at=t0+Math.pow(Math.random(),.8)*(dur-.1),s=AC.createBufferSource(),f=AC.createBiquadFilter(),g=AC.createGain();
+s.buffer=nb;f.type="bandpass";f.frequency.value=1200+Math.random()*3800;f.Q.value=.7+Math.random()*1.5;g.gain.value=.35+Math.random()*.65;
+s.connect(f);f.connect(g);g.connect(master);s.start(at)}
+/* kids cheering "yaaay": several high voices gliding up through vowel-like filters */
+if(level>=2){const voices=level===2?5:9;for(let v=0;v<voices;v++){const at=t0+.05+Math.random()*.35,base=520+Math.random()*420,len2=.7+Math.random()*.6;
+const o=AC.createOscillator(),o2=AC.createOscillator(),f1=AC.createBiquadFilter(),f2=AC.createBiquadFilter(),g=AC.createGain(),vib=AC.createOscillator(),vg=AC.createGain();
+o.type="sawtooth";o2.type="square";o.frequency.setValueAtTime(base*.85,at);o.frequency.exponentialRampToValueAtTime(base*1.35,at+len2*.5);o.frequency.exponentialRampToValueAtTime(base*1.1,at+len2);
+o2.frequency.value=base*.5;vib.frequency.value=5+Math.random()*2;vg.gain.value=base*.02;vib.connect(vg);vg.connect(o.frequency);
+f1.type="bandpass";f1.frequency.setValueAtTime(700,at);f1.frequency.linearRampToValueAtTime(1000,at+len2*.6);f1.Q.value=5;
+f2.type="bandpass";f2.frequency.value=2400;f2.Q.value=6;
+g.gain.setValueAtTime(0,at);g.gain.linearRampToValueAtTime(.09,at+.12);g.gain.setValueAtTime(.09,at+len2*.6);g.gain.linearRampToValueAtTime(0,at+len2);
+o.connect(f1);o2.connect(f1);o.connect(f2);f1.connect(g);f2.connect(g);g.connect(master);
+o.start(at);o2.start(at);vib.start(at);o.stop(at+len2+.05);o2.stop(at+len2+.05);vib.stop(at+len2+.05)}}
+}catch(e){}}
+/* ---------- microphone: ask once (the browser remembers), then listen automatically after each question ---------- */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+let MIC={ok:false,denied:false},REC=null;
+try{S.auto=localStorage.getItem("oops.auto")!=="0"}catch(e){S.auto=true}
+function stopMic(){try{REC&&REC.abort()}catch(e){}REC=null}
+async function askMic(){if(!SR)return"unsupported";if(MIC.ok)return"granted";
+try{if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){const st=await navigator.mediaDevices.getUserMedia({audio:true});st.getTracks().forEach(t=>t.stop())}MIC.ok=true;MIC.denied=false;return"granted"}
+catch(e){MIC.ok=false;MIC.denied=/NotAllowed|Security|Permission/i.test((e&&e.name)||"");return MIC.denied?"denied":"error"}}
+function micErr(c){return c==="not-allowed"||c==="service-not-allowed"?"The microphone is blocked. Tap the lock icon next to the web address, set Microphone to Allow, then reload.":c==="no-speech"?"I did not hear anything. Press Say it and try again!":c==="audio-capture"?"I cannot find a microphone on this device. Please tap an answer!":c==="network"?"This browser cannot reach its voice service. Chrome or Edge can. Please tap an answer!":"I could not hear that. Please tap an answer!"}
+function setBub(t){const b=$("#bub");if(b)b.innerHTML="<b>Teacher Thandi:</b> "+t}
+function micPanel(){let h;
+if(!SR)h="🎤 Voice answers need Chrome or Edge. In this browser, tap the answers instead.";
+else if(MIC.ok)h=`🎤 Microphone is on. <button id="al" style="padding:4px 10px;font-size:14px">Auto-listen: ${S.auto?"On":"Off"}</button>`;
+else if(MIC.denied)h="🎤 The microphone is blocked. Tap the lock icon next to the web address, set Microphone to Allow, then reload this page.";
+else h=`<button id="mon" class="go">🎤 Turn on microphone</button> <span class="note">Your browser asks once. Tap Allow and it remembers.</span>`;
+return `<div class="stage" id="mcs" style="padding:10px 14px">${h}</div>`}
+function matchOpt(o,h){const LET={a:"ay",b:"bee",c:"see",d:"dee",m:"em",s:"ess",z:"zed"},W="zero one two three four five six seven eight nine ten".split(" ");
+if(o.length===1&&!/\d/.test(o))return h===o||h===LET[o]||h==="the letter "+o;
+return h.includes(o)||(/^\d+$/.test(o)&&W[+o]===h)||(o.includes(h)&&h.length>2)}
+function autoListen(q,my){if(S.auto&&MIC.ok&&SR&&S.qid===my&&!document.querySelector("#nx"))listen(q,true)}
+function listen(q,auto){const my=S.qid;
+if(!SR){setBub("Voice answers are not supported in this browser. Chrome or Edge can do it. Please tap an answer!");return}
+if(REC){if(auto)return;stopMic();setBub("OK. Tap an answer, or press Say it to talk.");return}
+if(!auto&&!MIC.ok){askMic().then(st=>{if(S.qid!==my)return;if(st==="granted")listen(q,false);else setBub(micErr(st==="denied"?"not-allowed":"x"))});return}
+const r=new SR();REC=r;r.lang=S.rl||"en-ZA";r.interimResults=false;r.maxAlternatives=3;let got=false;
+r.onresult=e=>{got=true;if(S.qid!==my)return;
+const alts=[...e.results[0]].map(a=>a.transcript.toLowerCase().replace(/[.,!?]/g,"").trim());
+const m=[...document.querySelectorAll("[data-o]")].filter(b=>!b.disabled).find(b=>alts.some(h=>matchOpt(b.dataset.o.toLowerCase(),h)));
+if(m)m.click();else setBub('I heard "'+esc(alts[0])+'". Try again or tap an answer!')};
+r.onerror=e=>{const c=e.error;
+if(c==="language-not-supported"&&S.rl!=="en-US"){S.rl="en-US";r.retryLang=true;return}
+if(c==="not-allowed"||c==="service-not-allowed"){MIC.ok=false;MIC.denied=true;r.fatal=true}
+if(c==="audio-capture"||c==="network")r.fatal=true;
+if(c==="aborted")return;
+if(c==="no-speech"&&auto&&(S.micTry||0)<2)return;
+if(S.qid===my)setBub(micErr(c))};
+r.onend=()=>{if(REC===r)REC=null;if(S.qid!==my||document.querySelector("#nx"))return;
+if(r.retryLang){listen(q,auto);return}
+if(auto&&!got&&!r.fatal&&(S.micTry=(S.micTry||0)+1)<3)setTimeout(()=>{if(S.qid===my&&!document.querySelector("#nx"))listen(q,true)},500)};
+try{r.start();setBub("🎤 Listening... say your answer!")}catch(e){REC=null}}
+/* make maths speakable: "3 + 4 = ?" -> "3 plus 4 equals what?" */
+function tts(s){return String(s).replace("= ?","equals what?").replace(/ \+ /g," plus ").replace(/ − /g," minus ")}
+function distract(c,lo,hi){const s=new Set([c]);while(s.size<3){const d=c+pick([-2,-1,1,2,3]);if(d>=lo&&d<=hi)s.add(d)}return [...s]}
+function mathQ(g){let c,story,q,vis="";
+if(g===0){const n=1+rnd(9);vis="🥚".repeat(n);story="Professor Cluckles laid a pile of eggs and forgot how to count them!";q="How many eggs can you count?";c=n;}
+else if(g===1){const a=1+rnd(9),b=1+rnd(10);story=`Professor Cluckles has ${a} eggs. Then she finds ${b} more under her hat!`;q=`${a} + ${b} = ?`;c=a+b;vis="🥚".repeat(a)+" ➕ "+"🥚".repeat(b);}
+else if(rnd(2)){const a=10+rnd(30),b=1+rnd(15);story=`Professor Cluckles has ${a} eggs. She sits on ${b} more by mistake!`;q=`${a} + ${b} = ?`;c=a+b;}
+else{const a=15+rnd(30),b=1+rnd(12);story=`Cluckles had ${a} eggs but ${b} rolled down the hill. Oops!`;q=`${a} − ${b} = ?`;c=a-b;}
+return{c:0,story,q,vis,ans:String(c),opts:(g===0?distract(c,1,12):distract(c,0,99)).map(String),fun:"Cluckles counted: "+c+"! Eggs-cellent!"};}
+function build(subj,g){if(subj.id==="math")return Array.from({length:5},()=>({ch:0,...mathQ(g)}));
+let pool=CONTENT[lang][subj.id].filter(x=>x[0].includes(g));
+return shuf(pool).slice(0,5).map(x=>({ch:x[1],story:x[2],q:x[3],vis:"",ans:x[4],opts:[x[4],x[5],x[6]],fun:x[7]}));}
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function saveName(v){v=v.trim().replace(/[<>&"'`]/g,"").slice(0,16);if(!v)return;S.name=v.charAt(0).toUpperCase()+v.slice(1);try{localStorage.setItem("oops.name",S.name)}catch(e){}if(SR&&!MIC.ok&&!MIC.denied)askMic().then(home,home);else home();}
+function nameScreen(){const t=UI[lang],hi="Hello! I am Teacher Thandi. What is your name?";
+$("#app").innerHTML=`<div class="brandbar">PIXELPROTECH <span>SOLUTIONS</span></div><h1>OOPS ACADEMY<small>${t.tag}</small></h1>
+<div class="stage"><div class="who"><div class="face" style="font-size:60px">👩🏾‍🏫</div><div class="bubble teach"><b>Teacher Thandi:</b> ${hi}</div></div>
+<p><input id="nm" class="nm" maxlength="16" placeholder="Type your name" autocomplete="given-name" aria-label="Your name"></p>
+<div class="row"><button id="hr" class="grow">🔊 ${t.read}</button><button id="nmic" class="grow">🎤 Say my name</button><button id="ngo" class="grow go">Let's go!</button></div></div>`;
+$("#nm").addEventListener("keydown",e=>{if(e.key==="Enter")saveName($("#nm").value)});
+$("#ngo").onclick=()=>saveName($("#nm").value);$("#hr").onclick=()=>speak(hi,-1,true);
+$("#nmic").onclick=async()=>{if(!SR){$("#nm").placeholder="Please type your name";return}
+const st=await askMic();if(st!=="granted"){$("#nm").placeholder=micErr(st==="denied"?"not-allowed":"x");return}
+const r=new SR();r.lang=S.rl||"en-ZA";r.onresult=e=>{$("#nm").value=e.results[0][0].transcript.replace(/^(my name is|i am|i'm|it's)\s+/i,"").replace(/[.,!?]/g,"")};
+r.onerror=e=>{$("#nm").placeholder=micErr(e.error)};try{r.start();$("#nm").placeholder="Listening..."}catch(e){}};
+later(()=>speak(hi,-1),400);}
+/* ---------- screens ---------- */
+function home(){clearTimeout(T);S.qid=(S.qid||0)+1;stopMic();window.speechSynthesis&&speechSynthesis.cancel();if(!S.name)return nameScreen();const t=UI[lang];
+$("#app").innerHTML=`<div class="tools"><button id="inst" hidden>📲 Install app</button><button id="ct">👏 Cheers: ${S.sfx?"On":"Off"}</button><button id="vt">🔊 ${t.sound}: ${S.voice?"On":"Off"}</button></div>
+<div class="brandbar">PIXELPROTECH <span>SOLUTIONS</span></div><h1>OOPS ACADEMY<small>${t.tag}</small></h1>
+<div class="stage"><b>${t.grade}</b><div class="row grades" style="margin-top:10px">${[0,1,2].map(g=>`<button class="grow ${S.grade===g?"on":""}" data-g="${g}">${t[g?"g"+g:"gR"]}</button>`).join("")}</div></div>
+${micPanel()}<b>Hi ${esc(S.name)}! ${t.pick}</b> <button id="cn" style="padding:4px 10px;font-size:14px">Change name</button><div class="subj">${SUBJ.map(s=>`<button data-s="${s.id}"><span class="e">${CHARS[s.c].e}${s.e}</span><b>${s.n}</b>${CHARS[s.c].n}</button>`).join("")}</div>
+<p class="note">For parents: Super Safe Squad teaches saying no and telling a trusted adult. In South Africa, children can call Childline free on 116. No account needed. Only the grade and your child's first name are saved, on this device only, and nothing is sent to us. The microphone (the "Say it" button and Auto-listen) uses your browser's speech service, and Chrome sends that audio to Google. Switch Auto-listen off, or just tap answers, if you prefer. Voice works best in Chrome or Edge.</p><footer class="brand"><b>PIXELPROTECH SOLUTIONS (PTY) LTD</b><br>Field IT engineering &amp; digital systems<br>Johannesburg &bull; Pretoria &bull; Centurion &bull; Gauteng<br><a href="https://pixelprotechsolutions.co.za" target="_blank" rel="noopener">pixelprotechsolutions.co.za</a><br><a href="mailto:pixelprotechsolutions@proton.me">pixelprotechsolutions@proton.me</a> &nbsp; <a href="tel:0651971461">065 197 1461</a><small>Reg 2026/622131/07 &middot; OOPS ACADEMY is a PixelProTech digital system.</small></footer>`;
+$("#vt").onclick=()=>{S.voice=!S.voice;home()};$("#ct").onclick=()=>{S.sfx=!S.sfx;if(S.sfx)cheer(1);home()};const mo=$("#mon");if(mo)mo.onclick=async()=>{await askMic();home()};const al=$("#al");if(al)al.onclick=()=>{S.auto=!S.auto;try{localStorage.setItem("oops.auto",S.auto?"1":"0")}catch(e){}home()};$("#cn").onclick=()=>{S.name="";try{localStorage.removeItem("oops.name")}catch(e){}nameScreen()};
+if(dp)$("#inst").hidden=false;$("#inst").onclick=async()=>{dp.prompt();await dp.userChoice;dp=null;$("#inst").hidden=true};
+document.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{S.grade=+b.dataset.g;try{localStorage.setItem("oops.grade",S.grade)}catch(e){}home()});
+document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>start(SUBJ.find(s=>s.id===b.dataset.s)));}
+function start(s){S.subj=s;S.qs=build(s,S.grade);S.i=0;S.stars=0;S.tries=0;question();}
+function question(){const t=UI[lang],q=S.qs[S.i],c=CHARS[q.ch];const my=S.qid=(S.qid||0)+1;stopMic();S.micTry=0;S.tries=0;q.shown=shuf(q.opts);
+$("#app").innerHTML=`<div class="row" style="justify-content:space-between;align-items:center"><button id="bk">← ${t.back}</button><div class="tools"><button id="rd">🔊 ${t.read}</button><button id="mc">🎤 ${t.mic}</button></div></div>
+<div class="bar" style="margin:12px 0"><i style="width:${S.i/S.qs.length*100}%"></i></div>
+<div class="stage"><div class="who"><div class="face" id="face">${c.e}</div><div class="bubble"><b>${c.n}:</b> ${q.story}</div></div><div class="who" style="margin-top:12px"><div class="face" style="font-size:60px">👩🏾‍🏫</div><div class="bubble teach" id="bub"><b>Teacher Thandi:</b> Listen carefully, then pick the answer.</div></div>
+${q.vis?`<div class="vis" aria-hidden="true">${q.vis}</div>`:""}<div class="q">${q.q}</div>
+<div class="opts">${q.shown.map(o=>`<button data-o="${o.replace(/"/g,"&quot;")}">${o}</button>`).join("")}</div></div><p class="note">${t.hint}</p>`;
+const say=(force,cb)=>speakParts([[q.story,q.ch],[q.q+". "+q.shown.join(". Or. "),-1]],force===true,cb);
+$("#bk").onclick=home;$("#rd").onclick=()=>say(true);$("#mc").onclick=()=>listen(q);
+document.querySelectorAll("[data-o]").forEach(b=>b.onclick=()=>answer(b,q));
+later(()=>say(false,()=>autoListen(q,my)),300);}
+function react(cls,text,q,cb){const f=$("#face");f.className="face";void f.offsetWidth;f.className="face "+cls;$("#bub").innerHTML=`<b>Teacher Thandi:</b> ${text}`;speak(text,-1,false,cb);}
+/* the child decides when to move on: no timers, so speech is never cut off and Back always works */
+function showNext(){const last=S.i>=S.qs.length-1;const st=document.querySelector(".stage");
+st.insertAdjacentHTML("beforeend",`<div class="row" style="justify-content:center;margin-top:14px"><button id="nx" class="grow go">${last?"See my stars ⭐":"Next ➜"}</button></div>`);
+const b=$("#nx");b.onclick=()=>{window.speechSynthesis&&speechSynthesis.cancel();next()};try{b.focus()}catch(e){}}
+const STRAT={math:"Count slowly. Touch each one and count out loud, or use your fingers.",eng:"Say the word out loud, slowly, sound by sound.",talk:"Think: what would be kind and polite? How would your friend feel?",safe:"Ask yourself: do I feel safe? A trusted grown-up can always help."};
+function next(){stopMic();S.i++;S.i<S.qs.length?question():finish()}
+function answer(btn,q){const my=S.qid;stopMic();const t=UI[lang],val=btn.dataset.o,n=S.name,all=document.querySelectorAll("[data-o]");
+if(val===q.ans){btn.classList.add("good");if(S.tries===0)S.stars++;all.forEach(b=>b.disabled=true);
+cheer(S.tries===0?2:1);react("hop",pick(t.ok).replace("{n}",n)+" "+q.fun,q);showNext();}
+else{S.tries++;btn.classList.add("no");btn.disabled=true;
+if(S.tries>=2){all.forEach(b=>{b.disabled=true;if(b.dataset.o===q.ans)b.classList.add("good")});
+react("hop",`That's okay, ${n}. Let's learn it together. The answer is ${q.ans}. ${q.fun}`,q);showNext();}
+else react("shake",t.calm.replace("{n}",n)+" "+STRAT[S.subj.id]+" Then try again.",q,()=>{S.micTry=0;autoListen(q,my)});}}
+function finish(){const t=UI[lang],n=S.stars,c=CHARS[S.subj.c];
+$("#app").innerHTML=`<h1>${t.done}</h1><div class="stage" style="text-align:center"><div class="face hop">${c.e}</div>
+<div class="stars" aria-label="${n} stars">${"⭐".repeat(n)}${"☆".repeat(5-n)}</div>
+<p>${esc(S.name)}, ${n>=4?"you are a true Oops Hero!":n>=2?"great work! Try for more stars!":"good try! Practice makes heroes."}</p>
+<div class="row" style="justify-content:center"><button id="ag">${t.again}</button><button id="hm">${t.home}</button></div></div>`;
+if(n>=4)cheer(3);speak(n>=4?`${S.name}, you are a true Oops Hero!`:`Well done, ${S.name}! Let's play again!`,S.subj.c);
+$("#ag").onclick=()=>start(S.subj);$("#hm").onclick=home;}
+if(window.speechSynthesis)speechSynthesis.getVoices();
+let dp=null;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;const b=$("#inst");if(b)b.hidden=false});
+if("serviceWorker" in navigator&&location.protocol.startsWith("http"))addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+try{navigator.permissions&&navigator.permissions.query({name:"microphone"}).then(pm=>{const u=()=>{MIC.ok=pm.state==="granted";MIC.denied=pm.state==="denied"};u();pm.onchange=()=>{u();if(document.querySelector("#mcs"))home()};if(document.querySelector("#mcs"))home()}).catch(()=>{})}catch(e){}
+home();
+</script></body></html>

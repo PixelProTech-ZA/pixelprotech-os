@@ -1,0 +1,3884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>DOPPLER LAB — Motion → Frequency → Understanding</title>
+<meta name="description" content="An interactive acoustic physics instrument. Hear, see, calculate, and investigate the Doppler effect." />
+<meta name="theme-color" content="#0A0C10" />
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAAIb0lEQVR4nO2dTZLkJhBGGYdXbi/mGD5TH9Bn6ot47wURCoWqpALy7/uSfMuZagnBU4JQgn799ffvVhSr/BFdgIKbEqgQUQIVIkqgQkQJVIgogQoRJVAhogQqRJRAhYgSqBBRAhUiSqBCRAlUiCiBChElUCHiz+gCaPLfv/9M/f7r+8eoJPvwizqhbNaYZ8qnBfgE0pXmjpJpEBqBRryZbXWLY+4GukDPbazbup7nSgOuQHfN6dOQsWcnAlGgt40X1XJQhQEESyDY1oItWDgoAr22EGbzsJTTDQiBLq2C3yR0BbYjWCDqlqAuvBaR78LYG+BSYJ8ZTjRiIhC7OheSXc4UAREoX3XvHIq8I9C5chOocyH31b3FT6B8gectm1zmgZNAu92a+1yvxxhon9o8OF9m7iGRuUAb2tPZxCFbgba1p7ODQ4YCbW5PJ71DVgKVPQe5HTIRqOy5kNgh/cd4QHtAcp8Ba0aOskAgdSS/y40KD1I/ilgtLAypHcXe4TiU7oV8ff9UF3aLUaWPn/eOkfKoHGSQqIqyQE2gkOBst3bCdFVGpo5MRyD/GnHLcjc6URqHlAVyfpY5sD6vxUlzdGQKAsXa41n76mdP4JBUILdQjLOeRrEkCToytZloT3u+vn8Cq/v17MtP5qTSnBFFIJ8IjHybqpSNuiNbj0A+E2LI9jTtl1yMc4wKXZhdu4Lb05E7BHtpIywK5BB1KezpKDpEF4RAd2k9CwpuT+dcTjoJJKwIZB1+eAeVEodI/YOLQLz2dEg9WGZaINMGZrens+wQo3xAEYio1sZJeVFn5gSyixBEz1wjLD+X0QUhiAiUzJ5O4kT6MxMCOQxQ0tjTWbscriAU/7GVkGryTGA9zpjs9uiMvkw16mWcOy/J9IzKSQePRtSnT0cgo+txziVa+NvlEi6sxCBavBHZhTnU0cMpHoR4+1f9H+UpiOARZZahLsxo+Oz2SuRg4URa+YcLF0sxrRr2GG89o62VxPg2/3CfV10fgZgH0sUi/1UxjTUZn7swi1BBPaMtOcXsheP3Yp8jUL/5YC/gjM/T7yZTzINEbjRuNCRXP/Ir+7zq+kiSMZD/zJtPHMIXzlsgi4qImrcVOgTrxBRhEUirpWNn/RccohhNjpOkC2txDZNMiFlcBVIfPoM85c6OVKZ+Dz4MIo5AmBWKWSo7XF+mMr7JHy/Dbup0ID66u4Bdb3jGdKJ5/McgPfVb4jMSY3kOG2gtB5gNQjkG0mrX8U7HYnQ8Dpo0Z/aNQK8v7Z9/A3j3I8AXgVS24blMP96ZcfmvqUyg8bx96tE3n0AHFlk+kp8dP5YVigw+gbTGPbPHyREw1OETqAmSDIWj71mHdlCNUqA1dJtzbb2H6XlD4HgK01oaofK3IU0IO9ONHoHuHnxml0ZY5yGtkWBcBS3Qx2oNWaq823PWM7gC6Q5UnVs9QWgZBFQgi+6JZW0JF6ACgbNPgPkIokDbJqgzgihQQUQJVIgogQoRJVAhogQqRCAKtDBbUxM8USAKhA9asn0goAJNNcz4Zk01XaQOqEBtWIuFnZcd2CdE4QrUBmpfZddV/yNkAlqgdv8GdPbNqEUkUNzEnjdQcWQkqm+Gt3zAqPADG/bQI5AiuhbObnTvcN4QKAVafp4SpmHM9jhojW0Bn0DC+3vZoQTjFQv4BDpQX+Ms/NnxY1mhyOAYRJ+RL3DpIeQ4yMNneEY2YHg+ywM5QhqfQFpcRBzfC6E4Q9mFaaUkq2+Z4LAJPxr7RqDOs4toUQetPI13j8SGN4Yw2iBx9sfOeO8TbfFKHCHCI5QhBMoxUAfwdmyopbLDVSD19XggC/xMPyOH3H816gh0oV5zhhD/0V0hsd8PXPhWUDLhvAWyzsvxbB7hl6Ywu6RZknRh/g75fKcMfADUQgRy2M7d2qFle/CFmOWzQEaTNxb4OOQTe1gYmom2uG/s7kXJK3TTI5s+7UeRZAx05lLdKuHz9SDIjepJ/Ed3Lfqa1zUbyxq9VUeynCiZeaMvU017Md3D3p3iwlpWvHCH/PEjsAgXmc7hsHn2JfnwzOypVRoS3IYFpgWSLKryP2xH0l0qrh40/ZMoJvKBHNLt3G5QtwTWtatj6b8aQkZiyFcg/BsGX4U1Jp7CHHIniEL3CD7LF2OBmAeKfaNuxCYT1nMC2QWhZA7t87IMIgJ1WKpsipQXdWZaIOsZZLuDu7EcRejCT4OKQB12hxglkLAikHUb8zoksYfUPLgI1Dk7RKHRuZxcBghZFMghSBA9l8mf2HnlU4hAmzukaA8j6wL53CvgDunOFtKFnybfXMEn9gJmA2oVibfz6qgNok3Dg0WW6jKK6a2AMXUWhe1dPO+h1xr3vHHVz84efprW/kCxDjmc1+KkCexp6gI1r+pw08joRGne1avtUAaVWGiXh6pyaWnsabpb3EXFZJX8VLck15al8+oo75EYWzWmCQJaZLKn2eVEm66yuEPxBYv/OjVS9HdpBezgR5rN+fkRpGbkmGzzm7KmhGStE5N0DvAXWP5ktafZ5QOVQweJ7WmmCWXlUMtuT7POSNzcofT2NIeU1m0d2sGe5pMTvaFDm9jTPL/WA5gUZsEml3ng/bmn3Ldm7qt7S8D3wlLeoykvaoTIjcY7CUZF29rTYr9YmKDeE1yCkMiVqeyhqOxpIN9MpWsJugLbASFQi15uMQ5LOd1AEagTsuJiBNiChYMlUAeqtaAKAwiiQB3TdRHgZycCV6DO86OZ3Zbn1udKA7pABxZ5zSC50tTQCHTgM11U3gzCJ9AZXZlKmgW4BboQ8gWnzUklUOEP6C6tBQslUCGiBCpElECFiBKoEFECFSJKoEJECVSIKIEKESVQIaIEKkSUQIWIEqgQUQIVIkqgQsT/sBE/Ev/4w2sAAAAASUVORK5CYII=">
+
+
+<style>/* ==========================================================================
+   DOPPLER LAB — CORE
+   Design tokens for a precision-instrumentation aesthetic: dark, technical,
+   restrained. Numeric readouts carry as much visual identity as any chrome.
+   ========================================================================== */
+
+:root {
+  /* -- color -------------------------------------------------------- */
+  --bg: #0A0C10;
+  --bg-panel: #12151B;
+  --bg-panel-raised: #171B22;
+  --bg-sunken: #0D0F13;
+  --line: #232833;
+  --line-strong: #2E3542;
+
+  --text: #E8ECF1;
+  --text-dim: #8892A0;
+  --text-faint: #545C68;
+
+  --amber: #FFB238;
+  --amber-dim: #8A6326;
+  --teal: #4FD1C5;
+  --teal-dim: #2C6E68;
+  --warm: #FF8A50;
+  --red: #FF5C5C;
+
+  /* -- type ----------------------------------------------------------- */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", "Consolas", monospace;
+
+  /* -- spacing / radius ------------------------------------------------ */
+  --radius: 3px;
+  --gap: 16px;
+  --panel-pad: 18px;
+
+  --transition-fast: 120ms ease;
+  --transition-med: 220ms ease;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.hidden { display: none !important; }
+
+button, select, input {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a { color: var(--amber); }
+
+::selection { background: var(--amber); color: #0A0C10; }
+
+/* focus visibility — never rely on color alone */
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* -- reduced motion --------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* -- scrollbars (webkit) ------------------------------------------------ */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 4px; }
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+.btn {
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  background: var(--bg-panel-raised);
+  padding: 10px 16px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+.btn:hover { border-color: var(--amber); }
+.btn:active { transform: translateY(1px); }
+
+.btn--primary {
+  background: var(--amber);
+  color: #14100a;
+  border-color: var(--amber);
+  font-weight: 600;
+}
+.btn--primary:hover { background: #ffc25e; }
+
+.btn--small { padding: 6px 12px; font-size: 12px; }
+
+.btn--icon {
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  padding: 0;
+}
+
+.btn--danger { border-color: var(--red); color: var(--red); }
+.btn--danger:hover { background: rgba(255,92,92,0.1); }
+
+/* ==========================================================================
+   PANELS
+   ========================================================================== */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--panel-pad);
+}
+
+.panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.panel__title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   LANDING
+   ========================================================================== */
+.landing {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8vw;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,178,56,0.05), transparent 45%),
+    var(--bg);
+}
+
+.landing__mark {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+
+.landing__headline {
+  font-size: clamp(48px, 12vw, 128px);
+  line-height: 0.98;
+  font-weight: 700;
+  margin: 0 0 40px 0;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.landing__cta {
+  padding: 16px 32px;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+
+.landing__sub {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+}
+
+/* ==========================================================================
+   AUDIO PROMPT
+   ========================================================================== */
+.audio-prompt {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 500;
+  background: var(--bg-panel-raised);
+  border-top: 1px solid var(--amber-dim);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+/* ==========================================================================
+   APP SHELL
+   ========================================================================== */
+.app {
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  width: 168px;
+  flex-shrink: 0;
+  background: var(--bg-panel);
+  border-right: 1px solid var(--line);
+  padding: 18px 0;
+  overflow-y: auto;
+}
+
+.nav__brand {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  padding: 0 20px 18px 20px;
+  color: var(--text);
+  font-weight: 600;
+}
+.nav__brand span { color: var(--amber); }
+
+.nav__item {
+  text-align: left;
+  padding: 11px 20px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  border-left: 2px solid transparent;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+.nav__item:hover { color: var(--text); background: rgba(255,255,255,0.02); }
+.nav__item.is-active {
+  color: var(--amber);
+  border-left-color: var(--amber);
+  background: rgba(255,178,56,0.05);
+}
+
+.nav__item--settings {
+  margin-top: auto;
+  font-size: 16px;
+}
+
+.views {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.view { display: none; }
+.view.is-active { display: block; }
+
+/* ==========================================================================
+   DRAWER / MODAL
+   ========================================================================== */
+.drawer {
+  position: fixed;
+  top: 0; right: 0; bottom: 0;
+  width: 320px;
+  max-width: 90vw;
+  background: var(--bg-panel);
+  border-left: 1px solid var(--line);
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-med);
+}
+.drawer__head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+.drawer__body { padding: 18px; display: flex; flex-direction: column; gap: 18px; }
+.drawer__row { display: flex; align-items: center; gap: 10px; font-size: 13px; justify-content: space-between; }
+
+.modal {
+  position: fixed; inset: 0;
+  background: rgba(6,7,9,0.8);
+  z-index: 700;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.modal__box {
+  max-width: 560px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+</style>
+<style>/* ==========================================================================
+   INSTRUMENTATION
+   Large numeric readouts are part of the visual identity, not decoration.
+   ========================================================================== */
+
+.readout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.readout {
+  background: var(--bg-panel);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.readout--wide { grid-column: 1 / -1; }
+
+.readout--accent {
+  background: linear-gradient(180deg, rgba(255,178,56,0.08), transparent);
+}
+
+.readout__label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-faint);
+  font-weight: 600;
+}
+
+.readout__value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.readout--accent .readout__value {
+  color: var(--amber);
+  font-size: 30px;
+}
+
+.readout__unit {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.readout__value--state {
+  font-size: 18px;
+  letter-spacing: 0.06em;
+}
+.readout__value--state[data-state="APPROACHING"] { color: var(--warm); }
+.readout__value--state[data-state="RECEDING"] { color: var(--teal); }
+.readout__value--state[data-state="STATIONARY"] { color: var(--text-dim); }
+.readout__value--state[data-state="TANGENTIAL"] { color: var(--text); }
+
+/* -- badges -------------------------------------------------------- */
+.badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 4px 9px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  color: var(--text-dim);
+}
+.badge--valid { color: var(--teal); border-color: var(--teal-dim); }
+.badge--warning { color: var(--warm); border-color: var(--warm); }
+.badge--invalid { color: var(--red); border-color: var(--red); }
+
+/* -- transport ------------------------------------------------------- */
+.transport {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+.speed-control select, .speed-control input[type="range"] {
+  background: var(--bg-sunken);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+  font-size: 12px;
+}
+.speed-control input[type="range"] { padding: 0; width: 90px; accent-color: var(--amber); }
+
+/* -- model warning block ------------------------------------------------ */
+.model-warning {
+  margin-top: 16px;
+  border: 1px solid var(--warm);
+  background: rgba(255,138,80,0.06);
+  padding: 12px 14px;
+  border-radius: var(--radius);
+}
+.model-warning__title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--warm);
+  font-weight: 700;
+}
+.model-warning p { margin: 8px 0 0 0; font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+
+/* -- model inspector grid ------------------------------------------------ */
+.inspector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.inspector-grid .readout__value { font-size: 18px; }
+</style>
+<style>/* ==========================================================================
+   LABORATORY (LAB view)
+   ========================================================================== */
+
+.lab-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--gap);
+}
+
+.panel--stage { grid-column: 1; grid-row: 1; }
+.panel--instruments { grid-column: 2; grid-row: 1; }
+.panel--params { grid-column: 2; grid-row: 2; }
+.panel--scope { grid-column: 1; grid-row: 2; }
+
+.stage-canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+#wave-canvas { width: 100%; height: 100%; display: block; }
+
+.stage-controls { margin-top: 14px; }
+
+.scope-canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.scope-canvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: none;
+}
+.scope-canvas.is-active { display: block; }
+
+.scope-tabs { display: flex; gap: 2px; }
+.scope-tab {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 5px 10px;
+  color: var(--text-faint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.scope-tab.is-active { color: var(--amber); border-color: var(--amber-dim); background: rgba(255,178,56,0.06); }
+
+/* -- params ------------------------------------------------------------ */
+.param-row {
+  margin-bottom: 16px;
+}
+.param-row label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  margin-bottom: 7px;
+}
+.param-row label span { color: var(--amber); font-family: var(--font-mono); }
+
+.param-row select, .param-row input[type="range"] {
+  width: 100%;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  font-size: 13px;
+}
+.param-row input[type="range"] { padding: 0; accent-color: var(--amber); height: 28px; }
+
+.param-row--mute label { display: flex; align-items: center; gap: 8px; margin-bottom: 0; }
+.param-row--mute input { accent-color: var(--amber); }
+
+.param-hint {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin: 8px 0 0 0;
+  line-height: 1.5;
+}
+</style>
+<style>/* ==========================================================================
+   LEARN
+   ========================================================================== */
+
+.learn-shell {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.learn-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.learn-nav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  text-align: left;
+}
+.learn-nav__item.is-active { border-color: var(--amber-dim); color: var(--amber); }
+.learn-nav__item.is-complete .learn-nav__check { color: var(--teal); }
+.learn-nav__check { font-family: var(--font-mono); width: 14px; }
+
+.stage-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: var(--amber);
+  margin: 0 0 12px 0;
+}
+
+.stage-prompt {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 20px 0;
+  max-width: 62ch;
+}
+
+.stage-formula {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--amber);
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.stage-question {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.choice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 480px;
+}
+
+.choice {
+  text-align: left;
+  padding: 12px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--bg-sunken);
+  font-size: 13px;
+  color: var(--text);
+}
+.choice:hover { border-color: var(--amber); }
+.choice.is-correct { border-color: var(--teal); background: rgba(79,209,197,0.08); }
+.choice.is-incorrect { border-color: var(--red); background: rgba(255,92,92,0.06); }
+
+.stage-feedback {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  max-width: 62ch;
+}
+.stage-feedback.is-correct { border-color: var(--teal-dim); }
+.stage-feedback.is-incorrect { border-color: var(--red); }
+
+.stage-numeric-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.stage-numeric-input input {
+  background: var(--bg-sunken);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  width: 140px;
+}
+
+.stage-actions { margin-top: 20px; display: flex; gap: 10px; }
+
+/* ==========================================================================
+   PREDICT / RUN / COMPARE / EXPLAIN (shared, used in LEARN/CASES/CHALLENGE)
+   ========================================================================== */
+.prc-flow {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+.prc-step {
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text-faint);
+}
+.prc-step.is-active { color: var(--amber); border-color: var(--amber-dim); }
+.prc-step.is-done { color: var(--teal); }
+
+.compare-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  max-width: 480px;
+  margin: 14px 0;
+}
+.compare-cell {
+  background: var(--bg-panel);
+  padding: 12px 14px;
+}
+.compare-cell__label { font-size: 10px; color: var(--text-faint); letter-spacing: 0.08em; display: block; margin-bottom: 6px; }
+.compare-cell__value { font-family: var(--font-mono); font-size: 20px; color: var(--text); }
+.compare-cell--error .compare-cell__value { color: var(--warm); }
+
+textarea.explain-input {
+  width: 100%;
+  max-width: 62ch;
+  min-height: 100px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+/* ==========================================================================
+   PRACTICE
+   ========================================================================== */
+.practice-intro { color: var(--text-dim); font-size: 13px; margin-bottom: 20px; max-width: 62ch; line-height: 1.6; }
+
+.practice-tasks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.task-card {
+  text-align: left;
+  padding: 18px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.task-card:hover { border-color: var(--amber); }
+.task-card__title { font-size: 12px; letter-spacing: 0.06em; color: var(--amber); }
+.task-card__desc { font-size: 12px; color: var(--text-dim); }
+
+.practice-stage { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+
+/* ==========================================================================
+   PROGRESS
+   ========================================================================== */
+.progress-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+
+.progress-row {
+  display: grid;
+  grid-template-columns: 160px 1fr 46px;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+}
+.progress-row__label { color: var(--text-dim); letter-spacing: 0.03em; }
+.progress-row__bar {
+  height: 6px;
+  background: var(--bg-sunken);
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+.progress-row__fill {
+  height: 100%;
+  background: var(--amber);
+}
+.progress-row__pct { font-family: var(--font-mono); color: var(--text-dim); text-align: right; }
+.progress-row__pct[data-done="true"] { color: var(--teal); }
+
+.progress-target {
+  padding: 16px 18px;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.progress-target__name { font-family: var(--font-mono); color: var(--amber); font-size: 14px; letter-spacing: 0.06em; }
+.progress-target__hint { font-size: 12px; color: var(--text-dim); margin-top: 6px; }
+</style>
+<style>/* ==========================================================================
+   CASES (Sonic Forensics)
+   ========================================================================== */
+
+.cases-shell {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+
+.case-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 8px;
+  background: var(--bg-sunken);
+}
+.case-item:hover { border-color: var(--amber-dim); }
+.case-item.is-active { border-color: var(--amber); background: rgba(255,178,56,0.05); }
+.case-item__id { font-family: var(--font-mono); font-size: 10px; color: var(--text-faint); }
+.case-item__title { font-size: 13px; color: var(--text); letter-spacing: 0.03em; }
+.case-item__check { color: var(--teal); font-family: var(--font-mono); font-size: 11px; }
+
+.case-detail__empty { color: var(--text-faint); font-size: 13px; }
+
+.case-brief {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 62ch;
+  margin-bottom: 18px;
+}
+
+.case-question {
+  background: var(--bg-sunken);
+  border-left: 2px solid var(--amber);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 62ch;
+}
+
+.autopsy-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 14px 0 22px 0;
+}
+.autopsy-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.autopsy-row__t { font-family: var(--font-mono); color: var(--amber); }
+.autopsy-row__label { color: var(--text-dim); letter-spacing: 0.04em; }
+
+.mechanism-chain {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  margin: 14px 0;
+}
+.mechanism-chain span:not(.arrow) {
+  padding: 6px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+.mechanism-chain .arrow { color: var(--text-faint); }
+
+.ledger {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.9;
+  background: var(--bg-sunken);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  white-space: pre-wrap;
+  color: var(--text-dim);
+  max-width: 480px;
+}
+.ledger .ledger-key { color: var(--text-faint); }
+.ledger .ledger-val { color: var(--text); }
+.ledger .ledger-status-valid { color: var(--teal); }
+.ledger .ledger-status-warning { color: var(--warm); }
+.ledger .ledger-status-invalid { color: var(--red); }
+
+/* ==========================================================================
+   REVERSE
+   ========================================================================== */
+.reverse-config {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  max-width: 640px;
+  margin-bottom: 20px;
+}
+.reverse-config .readout { background: var(--bg-panel); }
+.reverse-unknown .readout__value { color: var(--warm); }
+.reverse-unknown .readout__value::after { content: " ?"; }
+
+/* ==========================================================================
+   CHALLENGE
+   ========================================================================== */
+.challenge-meta {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+}
+.challenge-result {
+  margin-top: 18px;
+  padding: 16px 18px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+}
+.challenge-result.is-pass { border-color: var(--teal-dim); background: rgba(79,209,197,0.05); }
+.challenge-result.is-fail { border-color: var(--red); background: rgba(255,92,92,0.05); }
+.challenge-result__title { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; margin-bottom: 8px; display: block; }
+.challenge-result.is-pass .challenge-result__title { color: var(--teal); }
+.challenge-result.is-fail .challenge-result__title { color: var(--red); }
+
+/* ==========================================================================
+   MODEL
+   ========================================================================== */
+.model-shell {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--gap);
+  align-items: start;
+}
+.model-assumptions p { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+.model-assumptions ul { margin: 0 0 6px 0; padding-left: 18px; }
+.model-assumptions li { font-size: 13px; color: var(--text-dim); line-height: 2; }
+</style>
+<style>/* ==========================================================================
+   RESPONSIVE — mobile-first touch design
+   ========================================================================== */
+
+@media (max-width: 860px) {
+
+  .app {
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+  }
+
+  .nav {
+    flex-direction: row;
+    width: 100%;
+    height: 60px;
+    order: 2;
+    border-right: none;
+    border-top: 1px solid var(--line);
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav__brand { display: none; }
+  .nav__item {
+    flex: 0 0 auto;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border-left: none;
+    border-top: 2px solid transparent;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .nav__item.is-active { border-left: none; border-top-color: var(--amber); }
+  .nav__item--settings { margin-top: 0; }
+
+  .views { order: 1; flex: 1; padding: 14px; padding-bottom: 8px; }
+
+  .lab-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .panel--stage, .panel--instruments, .panel--params, .panel--scope {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .readout-grid { grid-template-columns: 1fr 1fr; }
+  .readout__value { font-size: 21px; }
+  .readout--accent .readout__value { font-size: 24px; }
+
+  .learn-shell, .cases-shell, .model-shell {
+    grid-template-columns: 1fr;
+  }
+  .learn-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .learn-nav__item { flex: 0 0 auto; }
+
+  .stage-canvas-wrap { aspect-ratio: 4 / 3; }
+  .scope-canvas-wrap { aspect-ratio: 4 / 3; }
+
+  /* touch targets */
+  .btn, .choice, .task-card, .case-item {
+    min-height: 44px;
+  }
+  .btn--icon { width: 48px; height: 48px; }
+
+  .compare-table { grid-template-columns: 1fr; }
+  .reverse-config { grid-template-columns: 1fr 1fr; }
+
+  .landing { padding: 8vw 6vw; }
+}
+
+@media (max-width: 480px) {
+  .readout-grid { grid-template-columns: 1fr 1fr; }
+  .panel { padding: 14px; }
+  .landing__headline { font-size: clamp(40px, 15vw, 72px); }
+}
+
+/* -- high contrast mode toggle ------------------------------------------- */
+body.high-contrast {
+  --bg: #000000;
+  --bg-panel: #0A0A0A;
+  --bg-panel-raised: #141414;
+  --bg-sunken: #000000;
+  --line: #444444;
+  --line-strong: #666666;
+  --text: #FFFFFF;
+  --text-dim: #CCCCCC;
+  --text-faint: #999999;
+  --amber: #FFC14D;
+  --teal: #6FE9DC;
+  --warm: #FFA06B;
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- LANDING                                                       -->
+<!-- ============================================================ -->
+<section id="landing" class="landing">
+  <div class="landing__mark">DOPPLER LAB</div>
+  <h1 class="landing__headline">MOTION<br />BECOMES<br />SOUND.</h1>
+  <button id="enter-lab" class="btn btn--primary landing__cta">ENTER LAB</button>
+  <p class="landing__sub">Motion → Frequency → Understanding</p>
+</section>
+
+<!-- ============================================================ -->
+<!-- AUDIO UNLOCK PROMPT                                           -->
+<!-- ============================================================ -->
+<div id="audio-prompt" class="audio-prompt hidden" role="alert">
+  <span>AUDIO SUSPENDED — browser autoplay policy. Tap to start the instrument's audio.</span>
+  <button id="audio-prompt-btn" class="btn btn--small">START AUDIO</button>
+</div>
+
+<!-- ============================================================ -->
+<!-- APP SHELL                                                     -->
+<!-- ============================================================ -->
+<div id="app" class="app hidden">
+
+  <nav class="nav" aria-label="Primary">
+    <div class="nav__brand">DOPPLER<span>LAB</span></div>
+    <button class="nav__item is-active" data-view="lab" aria-current="page">LAB</button>
+    <button class="nav__item" data-view="learn">LEARN</button>
+    <button class="nav__item" data-view="practice">PRACTICE</button>
+    <button class="nav__item" data-view="cases">CASES</button>
+    <button class="nav__item" data-view="reverse">REVERSE</button>
+    <button class="nav__item" data-view="challenge">CHALLENGE</button>
+    <button class="nav__item" data-view="progress">PROGRESS</button>
+    <button class="nav__item" data-view="model">MODEL</button>
+    <button id="settings-btn" class="nav__item nav__item--settings" aria-label="Settings">⚙</button>
+  </nav>
+
+  <main class="views">
+
+    <!-- ============================================================ -->
+    <!-- LAB VIEW                                                      -->
+    <!-- ============================================================ -->
+    <section class="view is-active" data-view="lab">
+
+      <div class="lab-grid">
+
+        <div class="panel panel--stage">
+          <div class="panel__head">
+            <span class="panel__title">ACOUSTIC SPACE</span>
+            <span id="model-status-badge" class="badge badge--valid">MODEL VALID</span>
+          </div>
+          <div class="stage-canvas-wrap">
+            <canvas id="wave-canvas"></canvas>
+          </div>
+          <div class="stage-controls">
+            <div class="transport">
+              <button id="btn-play" class="btn btn--icon" aria-label="Play/Pause">▶</button>
+              <button id="btn-reset" class="btn btn--icon" aria-label="Reset">⟲</button>
+              <label class="speed-control">
+                <span>SPEED</span>
+                <select id="time-scale">
+                  <option value="0.25">0.25×</option>
+                  <option value="0.5">0.5×</option>
+                  <option value="1" selected>1×</option>
+                  <option value="2">2×</option>
+                </select>
+              </label>
+              <label class="speed-control">
+                <span>ZOOM</span>
+                <input type="range" id="zoom" min="2" max="12" step="0.5" value="6" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel--instruments">
+          <div class="panel__head"><span class="panel__title">LIVE PHYSICS</span></div>
+          <div class="readout-grid">
+            <div class="readout">
+              <span class="readout__label">SOURCE</span>
+              <span class="readout__value" id="ro-source-freq">800.00</span>
+              <span class="readout__unit">Hz</span>
+            </div>
+            <div class="readout">
+              <span class="readout__label">SOURCE VELOCITY</span>
+              <span class="readout__value" id="ro-source-vel">0.00</span>
+              <span class="readout__unit">km/h</span>
+            </div>
+            <div class="readout">
+              <span class="readout__label">LISTENER VELOCITY</span>
+              <span class="readout__value" id="ro-listener-vel">0.00</span>
+              <span class="readout__unit">km/h</span>
+            </div>
+            <div class="readout">
+              <span class="readout__label">RADIAL VELOCITY</span>
+              <span class="readout__value" id="ro-radial-vel">0.00</span>
+              <span class="readout__unit">m/s</span>
+            </div>
+            <div class="readout">
+              <span class="readout__label">DISTANCE</span>
+              <span class="readout__value" id="ro-distance">0.00</span>
+              <span class="readout__unit">m</span>
+            </div>
+            <div class="readout">
+              <span class="readout__label">DOPPLER FACTOR</span>
+              <span class="readout__value" id="ro-factor">1.0000</span>
+              <span class="readout__unit"></span>
+            </div>
+            <div class="readout readout--wide readout--accent">
+              <span class="readout__label">OBSERVED FREQUENCY</span>
+              <span class="readout__value" id="ro-observed">800.00</span>
+              <span class="readout__unit">Hz</span>
+            </div>
+            <div class="readout readout--wide">
+              <span class="readout__label">STATE</span>
+              <span class="readout__value readout__value--state" id="ro-state">STATIONARY</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel--params">
+          <div class="panel__head"><span class="panel__title">SCENARIO</span></div>
+          <div class="param-row">
+            <label>MODE</label>
+            <select id="lab-mode">
+              <option value="preset">TRAJECTORY PRESET</option>
+              <option value="scenario">REAL-WORLD SCENARIO</option>
+              <option value="manual">MANUAL CONTROL</option>
+            </select>
+          </div>
+          <div id="preset-controls" class="param-row">
+            <label>TRAJECTORY</label>
+            <select id="trajectory-select">
+              <option value="driveBy">Drive-by</option>
+              <option value="leftToRight">Left → Right</option>
+              <option value="rightToLeft">Right → Left</option>
+              <option value="towardListener">Toward listener</option>
+              <option value="awayFromListener">Away from listener</option>
+              <option value="diagonal">Diagonal</option>
+              <option value="circular">Circular</option>
+              <option value="movingListener">Moving listener</option>
+              <option value="stationary">Stationary</option>
+            </select>
+          </div>
+          <div id="scenario-controls" class="param-row hidden">
+            <label>SCENARIO</label>
+            <select id="scenario-select"></select>
+            <p id="scenario-description" class="param-hint"></p>
+          </div>
+
+          <div class="param-row">
+            <label for="param-source-freq">SOURCE FREQUENCY <span id="val-source-freq">800</span> Hz</label>
+            <input type="range" id="param-source-freq" min="100" max="2000" step="1" value="800" />
+          </div>
+          <div class="param-row">
+            <label for="param-speed">SPEED <span id="val-speed">80</span> km/h</label>
+            <input type="range" id="param-speed" min="0" max="300" step="1" value="80" />
+          </div>
+          <div class="param-row">
+            <label for="param-offset">PASS DISTANCE <span id="val-offset">12</span> m</label>
+            <input type="range" id="param-offset" min="1" max="60" step="1" value="12" />
+          </div>
+          <div class="param-row">
+            <label for="param-c">SPEED OF SOUND <span id="val-c">343</span> m/s</label>
+            <input type="range" id="param-c" min="80" max="343" step="1" value="343" />
+          </div>
+          <div class="param-row">
+            <label for="param-waveform">WAVEFORM</label>
+            <select id="param-waveform">
+              <option value="sine">Sine</option>
+              <option value="triangle">Triangle</option>
+              <option value="sawtooth">Sawtooth</option>
+              <option value="square">Square</option>
+            </select>
+          </div>
+          <div class="param-row param-row--mute">
+            <label><input type="checkbox" id="param-mute" /> MUTE</label>
+          </div>
+        </div>
+
+        <div class="panel panel--scope">
+          <div class="panel__head">
+            <span class="panel__title">INSTRUMENT</span>
+            <div class="scope-tabs">
+              <button class="scope-tab is-active" data-scope="trace">TRACE</button>
+              <button class="scope-tab" data-scope="spectrum">SPECTRUM</button>
+              <button class="scope-tab" data-scope="waveform">WAVEFORM</button>
+            </div>
+          </div>
+          <div class="scope-canvas-wrap">
+            <canvas id="trace-canvas" class="scope-canvas is-active"></canvas>
+            <canvas id="spectrum-canvas" class="scope-canvas"></canvas>
+            <canvas id="waveform-canvas" class="scope-canvas"></canvas>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- LEARN VIEW                                                    -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="learn">
+      <div class="learn-shell">
+        <aside class="learn-nav" id="learn-nav"></aside>
+        <div class="learn-content panel" id="learn-content">
+          <!-- populated by ui.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PRACTICE VIEW (Sonic Practice / ear training)                 -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="practice">
+      <div class="panel practice-panel">
+        <div class="panel__head"><span class="panel__title">SONIC PRACTICE</span></div>
+        <p class="practice-intro">Listen carefully. Each task uses a real generated tone — nothing pre-recorded.</p>
+        <div class="practice-tasks">
+          <button class="task-card" data-task="direction">
+            <span class="task-card__title">IDENTIFY DIRECTION</span>
+            <span class="task-card__desc">Approaching, stationary, or receding?</span>
+          </button>
+          <button class="task-card" data-task="magnitude">
+            <span class="task-card__title">IDENTIFY MAGNITUDE</span>
+            <span class="task-card__desc">Which of two tones has the greater shift?</span>
+          </button>
+          <button class="task-card" data-task="estimate">
+            <span class="task-card__title">ESTIMATE FREQUENCY</span>
+            <span class="task-card__desc">Listen, then estimate the observed frequency.</span>
+          </button>
+        </div>
+        <div id="practice-stage" class="practice-stage hidden"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CASES VIEW (Sonic Forensics)                                  -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="cases">
+      <div class="cases-shell">
+        <aside class="cases-list panel" id="cases-list">
+          <div class="panel__head"><span class="panel__title">SONIC FORENSICS</span></div>
+        </aside>
+        <div class="panel case-detail" id="case-detail">
+          <p class="case-detail__empty">Select a case to begin the investigation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- REVERSE VIEW                                                  -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="reverse">
+      <div class="panel reverse-panel" id="reverse-panel">
+        <div class="panel__head"><span class="panel__title">REVERSE</span></div>
+        <p class="practice-intro">Given the output, find the cause. Solve for the unknown variable.</p>
+        <div id="reverse-content"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CHALLENGE VIEW                                                -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="challenge">
+      <div class="panel challenge-panel" id="challenge-panel">
+        <div class="panel__head"><span class="panel__title">CHALLENGE</span></div>
+        <div id="challenge-content"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- PROGRESS VIEW                                                 -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="progress">
+      <div class="panel progress-panel">
+        <div class="panel__head"><span class="panel__title">DOPPLER FUNDAMENTALS</span></div>
+        <div id="progress-list" class="progress-list"></div>
+        <div class="panel__head"><span class="panel__title">NEXT PRACTICE TARGET</span></div>
+        <div id="progress-target" class="progress-target"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MODEL VIEW (Model Inspector + boundaries)                     -->
+    <!-- ============================================================ -->
+    <section class="view" data-view="model">
+      <div class="model-shell">
+        <div class="panel model-inspector">
+          <div class="panel__head"><span class="panel__title">MODEL INSPECTOR</span></div>
+          <div class="inspector-grid" id="inspector-grid"></div>
+        </div>
+        <div class="panel model-assumptions">
+          <div class="panel__head"><span class="panel__title">MODEL</span></div>
+          <p>Classical acoustic Doppler effect in a uniform, non-moving medium.</p>
+          <div class="panel__head"><span class="panel__title">ASSUMPTIONS</span></div>
+          <ul>
+            <li>Uniform medium</li>
+            <li>Constant speed of sound</li>
+            <li>Classical (non-relativistic) velocities</li>
+            <li>Idealized point source</li>
+            <li>Idealized point listener</li>
+          </ul>
+          <div id="model-warning-block" class="model-warning hidden">
+            <span class="model-warning__title">MODEL WARNING</span>
+            <p id="model-warning-text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============================================================ -->
+<!-- SETTINGS DRAWER                                               -->
+<!-- ============================================================ -->
+<div id="settings-drawer" class="drawer hidden">
+  <div class="drawer__head">
+    <span>SETTINGS</span>
+    <button id="settings-close" class="btn btn--icon" aria-label="Close">✕</button>
+  </div>
+  <div class="drawer__body">
+    <label class="drawer__row"><input type="checkbox" id="setting-reduced-motion" /> Reduce motion (disable animated wavefronts)</label>
+    <label class="drawer__row"><input type="checkbox" id="setting-high-contrast" /> High contrast</label>
+    <label class="drawer__row">
+      <span>Master volume</span>
+      <input type="range" id="setting-volume" min="0" max="1" step="0.01" value="0.35" />
+    </label>
+    <button id="setting-reset-progress" class="btn btn--small btn--danger">RESET PROGRESS</button>
+  </div>
+</div>
+
+<div id="predict-modal" class="modal hidden">
+  <div class="modal__box panel" id="predict-modal-box"></div>
+</div>
+
+<script>/**
+ * DOPPLER ENGINE
+ * ---------------------------------------------------------------------------
+ * The single source of truth for every physical quantity in DOPPLER LAB.
+ *
+ * No other module may independently compute a Doppler shift, a radial
+ * velocity, or an observed frequency. Every subsystem (audio, wavefronts,
+ * graphs, UI, learning, forensics) reads its numbers from the snapshot this
+ * engine produces on a fixed physics clock.
+ *
+ * MODEL
+ *   Classical acoustic Doppler effect in a uniform, non-moving medium.
+ *   f_observed = f_source * (c + v_listener_toward_source) / (c - v_source_toward_listener)
+ *
+ *   Where, with r_hat the unit vector pointing from the source to the
+ *   listener:
+ *     v_source_toward_listener  = sourceVelocity · r_hat
+ *     v_listener_toward_source  = listenerVelocity · (-r_hat)
+ *
+ * This reduces exactly to the textbook forms:
+ *     approaching source (stationary listener): f' = f * c / (c - vs)
+ *     receding source    (stationary listener): f' = f * c / (c + vs)
+ */
+
+const DopplerEngine = (() => {
+
+  // Assumption boundaries of the classical model. Exposed so the UI/learning
+  // system can render honest MODEL WARNING banners instead of silently
+  // producing misleading numbers.
+  const MODEL_ASSUMPTIONS = Object.freeze({
+    maxMachNumberBeforeWarning: 0.7,   // |v|/c at which we start to warn
+    maxMachNumberHardLimit: 0.98,      // |v|/c at which the classical model breaks down (singularity at 1.0)
+  });
+
+  function vec(x = 0, y = 0) { return { x, y }; }
+  function sub(a, b) { return vec(a.x - b.x, a.y - b.y); }
+  function add(a, b) { return vec(a.x + b.x, a.y + b.y); }
+  function scale(a, s) { return vec(a.x * s, a.y * s); }
+  function dot(a, b) { return a.x * b.x + a.y * b.y; }
+  function length(a) { return Math.hypot(a.x, a.y); }
+  function normalize(a) {
+    const l = length(a);
+    if (l < 1e-9) return vec(0, 0);
+    return vec(a.x / l, a.y / l);
+  }
+
+  class Body {
+    constructor({ x = 0, y = 0, vx = 0, vy = 0 } = {}) {
+      this.position = vec(x, y);
+      this.velocity = vec(vx, vy);
+    }
+    get speed() { return length(this.velocity); }
+  }
+
+  class DopplerEngine {
+    constructor() {
+      this.time = 0;
+      this.speedOfSound = 343; // m/s, dry air ~20C
+      this.source = new Body({ x: -40, y: 0, vx: 0, vy: 0 });
+      this.listener = new Body({ x: 0, y: 0, vx: 0, vy: 0 });
+      this.sourceFrequency = 800; // Hz
+      this.waveform = "sine";
+
+      // Driver function: (state, dt) -> void, mutates source/listener each tick.
+      // Set by spatial-engine / scenario presets. Null = static / manual control.
+      this.motionDriver = null;
+
+      this._history = []; // ring buffer of past snapshots for graphing / autopsy
+      this._historyLimit = 2400; // ~40s at 60Hz, trimmed by consumers as needed
+      this._listeners = new Set();
+
+      this._lastSnapshot = null;
+      this.reset();
+    }
+
+    // ---- subscription -------------------------------------------------
+    subscribe(fn) { this._listeners.add(fn); return () => this._listeners.delete(fn); }
+    _emit(snapshot) { for (const fn of this._listeners) fn(snapshot); }
+
+    // ---- configuration --------------------------------------------------
+    setSpeedOfSound(c) { this.speedOfSound = Math.max(1, c); }
+    setSourceFrequency(f) { this.sourceFrequency = Math.max(20, Math.min(20000, f)); }
+    setWaveform(type) { this.waveform = type; }
+
+    setSourceState({ x, y, vx, vy }) {
+      if (x !== undefined) this.source.position.x = x;
+      if (y !== undefined) this.source.position.y = y;
+      if (vx !== undefined) this.source.velocity.x = vx;
+      if (vy !== undefined) this.source.velocity.y = vy;
+    }
+
+    setListenerState({ x, y, vx, vy }) {
+      if (x !== undefined) this.listener.position.x = x;
+      if (y !== undefined) this.listener.position.y = y;
+      if (vx !== undefined) this.listener.velocity.x = vx;
+      if (vy !== undefined) this.listener.velocity.y = vy;
+    }
+
+    setMotionDriver(fn) { this.motionDriver = fn; }
+    clearMotionDriver() { this.motionDriver = null; }
+
+    reset({ keepConfig = true } = {}) {
+      this.time = 0;
+      this._history = [];
+      if (!keepConfig) {
+        this.speedOfSound = 343;
+        this.sourceFrequency = 800;
+      }
+      this.source.position = vec(-40, 0);
+      this.source.velocity = vec(0, 0);
+      this.listener.position = vec(0, 0);
+      this.listener.velocity = vec(0, 0);
+      this._lastSnapshot = this._computeSnapshot();
+      this._pushHistory(this._lastSnapshot);
+    }
+
+    // ---- physics step ---------------------------------------------------
+    step(dt) {
+      if (dt <= 0) return this._lastSnapshot;
+      if (this.motionDriver) this.motionDriver(this, dt);
+      this.time += dt;
+      const snapshot = this._computeSnapshot();
+      this._lastSnapshot = snapshot;
+      this._pushHistory(snapshot);
+      this._emit(snapshot);
+      return snapshot;
+    }
+
+    _pushHistory(snapshot) {
+      this._history.push(snapshot);
+      if (this._history.length > this._historyLimit) this._history.shift();
+    }
+
+    getHistory() { return this._history; }
+    clearHistory() { this._history = []; }
+    getSnapshot() { return this._lastSnapshot; }
+
+    // ---- the actual physics ---------------------------------------------
+    _computeSnapshot() {
+      const c = this.speedOfSound;
+      const s = this.source, l = this.listener;
+
+      const toListener = sub(l.position, s.position);
+      const distance = Math.max(0.01, length(toListener));
+      const rHat = normalize(toListener); // points source -> listener
+
+      // Positive = source moving toward listener along line of sight.
+      const vSourceToward = dot(s.velocity, rHat);
+      // Positive = listener moving toward source along line of sight.
+      const vListenerToward = dot(l.velocity, scale(rHat, -1));
+
+      // Rate of change of separation distance (negative = closing / approaching)
+      const radialVelocity = dot(sub(l.velocity, s.velocity), rHat) * -1;
+      // (ddist/dt = rHat . (v_l - v_s); we store the sign so negative == approaching,
+      //  matching the convention used throughout the instrumentation and cases.)
+      const ddistDt = dot(sub(l.velocity, s.velocity), rHat);
+
+      const denom = c - vSourceToward;
+      const numer = c + vListenerToward;
+
+      // Guard the classical singularity as vSourceToward -> c (source at/above
+      // sound speed directly toward the listener). We never silently produce
+      // a nonsensical (negative/infinite) frequency — we clamp and flag it.
+      const machSource = Math.abs(vSourceToward) / c;
+      const machListener = Math.abs(vListenerToward) / c;
+      const machMax = Math.max(machSource, machListener);
+
+      let modelValid = true;
+      let modelState = "VALID";
+      if (machMax >= MODEL_ASSUMPTIONS.maxMachNumberHardLimit) {
+        modelValid = false;
+        modelState = "INVALID";
+      } else if (machMax >= MODEL_ASSUMPTIONS.maxMachNumberBeforeWarning) {
+        modelState = "WARNING";
+      }
+
+      let observedFrequency;
+      if (denom <= 0.5) {
+        // Source moving at/beyond the speed of sound toward the listener —
+        // the classical single-frequency model no longer applies (shock
+        // formation). Report the source frequency scaled to a clamped
+        // denominator rather than a divide-by-near-zero blowup, and mark
+        // the model invalid so the UI tells the truth about it.
+        observedFrequency = this.sourceFrequency * numer / 0.5;
+        modelValid = false;
+        modelState = "INVALID";
+      } else {
+        observedFrequency = this.sourceFrequency * (numer / denom);
+      }
+      observedFrequency = Math.max(1, observedFrequency);
+
+      const dopplerFactor = observedFrequency / this.sourceFrequency;
+
+      // Motion classification, based on the sign & magnitude of the closing
+      // rate (ddistDt), not merely "is something moving".
+      const speedThreshold = 0.05; // m/s deadband to avoid label flicker
+      let state;
+      if (Math.abs(ddistDt) < speedThreshold) {
+        state = (s.speed < speedThreshold && l.speed < speedThreshold) ? "STATIONARY" : "TANGENTIAL";
+      } else if (ddistDt < 0) {
+        state = "APPROACHING";
+      } else {
+        state = "RECEDING";
+      }
+
+      // Simple inverse-distance amplitude model for attenuation (relative,
+      // not absolute SPL) — used consistently by audio gain and any visual
+      // amplitude cues.
+      const referenceDistance = 5;
+      const amplitude = Math.min(1, referenceDistance / Math.max(referenceDistance, distance));
+
+      return {
+        time: this.time,
+        speedOfSound: c,
+        sourceFrequency: this.sourceFrequency,
+        waveform: this.waveform,
+        source: { x: s.position.x, y: s.position.y, vx: s.velocity.x, vy: s.velocity.y, speed: s.speed },
+        listener: { x: l.position.x, y: l.position.y, vx: l.velocity.x, vy: l.velocity.y, speed: l.speed },
+        distance,
+        rHat,
+        vSourceToward,
+        vListenerToward,
+        radialVelocity: ddistDt, // negative = approaching, matches instrumentation convention
+        observedFrequency,
+        dopplerFactor,
+        amplitude,
+        state,
+        machSource,
+        machListener,
+        modelValid,
+        modelState, // VALID | WARNING | INVALID
+      };
+    }
+
+    // ---- direct (non-stepped) evaluation, used by learning / reverse ----
+    // Evaluates the model for an arbitrary hypothetical configuration without
+    // touching engine state — used by prediction-checking and reverse solving
+    // so those subsystems still go through the exact same formula.
+    static evaluate({ sourceFrequency, speedOfSound, sourcePos, sourceVel, listenerPos, listenerVel }) {
+      const toListener = sub(listenerPos, sourcePos);
+      const distance = Math.max(0.01, length(toListener));
+      const rHat = normalize(toListener);
+      const vSourceToward = dot(sourceVel, rHat);
+      const vListenerToward = dot(listenerVel, scale(rHat, -1));
+      const denom = Math.max(0.5, speedOfSound - vSourceToward);
+      const numer = speedOfSound + vListenerToward;
+      const observedFrequency = Math.max(1, sourceFrequency * (numer / denom));
+      return { distance, observedFrequency, dopplerFactor: observedFrequency / sourceFrequency };
+    }
+  }
+
+  return { DopplerEngine, MODEL_ASSUMPTIONS, vecMath: { vec, sub, add, scale, dot, length, normalize } };
+})();
+</script>
+<script>/**
+ * AUDIO ENGINE
+ * ---------------------------------------------------------------------------
+ * Turns the physics snapshot into real, continuously generated sound.
+ * Never assigns oscillator.frequency.value directly on a hot loop — all
+ * parameter changes go through AudioParam automation to avoid zippering.
+ */
+
+const AudioEngine = (() => {
+
+  class AudioEngine {
+    constructor() {
+      this.ctx = null;
+      this.oscillator = null;
+      this.gain = null;
+      this.panner = null;
+      this.masterGain = null;
+      this.analyser = null;
+      this.ready = false;
+      this.running = false;
+      this._smoothing = 0.03; // seconds, param automation time constant
+      this._lastFreqTarget = null;
+    }
+
+    ensureContext() {
+      if (this.ctx) return this.ctx;
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      if (!Ctx) {
+        this.ready = false;
+        return null;
+      }
+      this.ctx = new Ctx();
+      this.masterGain = this.ctx.createGain();
+      this.masterGain.gain.value = 0.35;
+
+      this.analyser = this.ctx.createAnalyser();
+      this.analyser.fftSize = 2048;
+      this.analyser.smoothingTimeConstant = 0.6;
+
+      this.masterGain.connect(this.analyser);
+      this.analyser.connect(this.ctx.destination);
+      this.ready = true;
+      return this.ctx;
+    }
+
+    async resume() {
+      const ctx = this.ensureContext();
+      if (!ctx) return false;
+      if (ctx.state === "suspended") {
+        try { await ctx.resume(); } catch (e) { return false; }
+      }
+      return ctx.state === "running";
+    }
+
+    get isSuspended() {
+      return !this.ctx || this.ctx.state === "suspended";
+    }
+
+    start(waveform = "sine", frequency = 800) {
+      const ctx = this.ensureContext();
+      if (!ctx || this.running) return;
+
+      this.oscillator = ctx.createOscillator();
+      this.oscillator.type = waveform;
+      this.oscillator.frequency.value = frequency;
+
+      this.gain = ctx.createGain();
+      this.gain.gain.value = 0.0001;
+
+      this.panner = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+
+      this.oscillator.connect(this.gain);
+      if (this.panner) {
+        this.gain.connect(this.panner);
+        this.panner.connect(this.masterGain);
+      } else {
+        this.gain.connect(this.masterGain);
+      }
+
+      this.oscillator.start();
+      this.running = true;
+      this._lastFreqTarget = frequency;
+    }
+
+    stop() {
+      if (!this.running) return;
+      const now = this.ctx.currentTime;
+      try {
+        this.gain.gain.setTargetAtTime(0.0001, now, 0.05);
+        const osc = this.oscillator;
+        setTimeout(() => { try { osc.stop(); } catch (e) {} }, 150);
+      } catch (e) {}
+      this.running = false;
+      this.oscillator = null;
+      this.gain = null;
+    }
+
+    setWaveform(type) {
+      if (this.oscillator) this.oscillator.type = type;
+    }
+
+    /**
+     * Apply one physics snapshot to the live audio graph. This is the ONLY
+     * place oscillator frequency is set — always via smoothed AudioParam
+     * automation, never a hard assignment.
+     */
+    applySnapshot(snapshot, { muted = false } = {}) {
+      if (!this.running || !this.ctx) return;
+      const now = this.ctx.currentTime;
+
+      const freq = Math.max(20, Math.min(18000, snapshot.observedFrequency));
+      this.oscillator.frequency.setTargetAtTime(freq, now, this._smoothing);
+      this._lastFreqTarget = freq;
+
+      const targetGain = muted ? 0.0001 : Math.max(0.0001, Math.min(0.5, snapshot.amplitude * 0.4));
+      this.gain.gain.setTargetAtTime(targetGain, now, 0.08);
+
+      if (this.panner) {
+        // Pan based on source position relative to listener, purely as a
+        // perceptual cue — does not feed back into the physics.
+        const relX = snapshot.source.x - snapshot.listener.x;
+        const pan = Math.max(-1, Math.min(1, relX / 60));
+        this.panner.pan.setTargetAtTime(pan, now, 0.1);
+      }
+    }
+
+    getWaveformData(array) {
+      if (!this.analyser) return;
+      this.analyser.getByteTimeDomainData(array);
+    }
+
+    getFrequencyData(array) {
+      if (!this.analyser) return;
+      this.analyser.getByteFrequencyData(array);
+    }
+
+    get fftSize() { return this.analyser ? this.analyser.fftSize : 2048; }
+    get frequencyBinCount() { return this.analyser ? this.analyser.frequencyBinCount : 1024; }
+    get sampleRate() { return this.ctx ? this.ctx.sampleRate : 44100; }
+
+    setMasterVolume(v) {
+      if (this.masterGain) this.masterGain.gain.value = Math.max(0, Math.min(1, v));
+    }
+
+    /** Plays a short, self-contained tone for ear-training tasks without touching the live graph. */
+    playOneShot({ frequencyStart, frequencyEnd, duration = 1.4, waveform = "sine" }) {
+      const ctx = this.ensureContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const g = ctx.createGain();
+      osc.type = waveform;
+      const now = ctx.currentTime;
+      osc.frequency.setValueAtTime(frequencyStart, now);
+      osc.frequency.linearRampToValueAtTime(frequencyEnd, now + duration);
+      g.gain.setValueAtTime(0.0001, now);
+      g.gain.linearRampToValueAtTime(0.3, now + 0.05);
+      g.gain.setValueAtTime(0.3, now + duration - 0.1);
+      g.gain.linearRampToValueAtTime(0.0001, now + duration);
+      osc.connect(g);
+      g.connect(this.masterGain);
+      osc.start(now);
+      osc.stop(now + duration + 0.05);
+    }
+  }
+
+  return { AudioEngine };
+})();
+</script>
+<script>/**
+ * SPATIAL ENGINE
+ * ---------------------------------------------------------------------------
+ * Defines ACOUSTIC SPACE trajectory presets as pure motion-driver functions:
+ * (engine, dt) -> mutates engine.source / engine.listener.
+ *
+ * These do not compute Doppler shift themselves — they only move bodies.
+ * The physics engine derives everything else from the resulting positions
+ * and velocities.
+ */
+
+const SpatialEngine = (() => {
+
+  // Each preset factory returns a driver function AND metadata describing
+  // its total duration so the UI can show progress / loop it.
+  const presets = {
+
+    driveBy: ({ speedKmh = 80, passDistance = 12, span = 90 } = {}) => {
+      const speed = speedKmh / 3.6; // m/s
+      const duration = (span * 2) / speed;
+      return {
+        duration,
+        label: "Drive-by",
+        driver(engine, dt) {
+          const t = engine.time;
+          const x = -span + speed * t;
+          engine.setSourceState({ x, y: passDistance, vx: speed, vy: 0 });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+          if (t >= duration) engine.time = 0; // loop
+        },
+      };
+    },
+
+    leftToRight: ({ speedKmh = 60, offset = 10, span = 70 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const duration = (span * 2) / speed;
+      return {
+        duration, label: "Left → Right",
+        driver(engine, dt) {
+          const t = engine.time % duration;
+          engine.setSourceState({ x: -span + speed * t, y: offset, vx: speed, vy: 0 });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+        },
+      };
+    },
+
+    rightToLeft: ({ speedKmh = 60, offset = 10, span = 70 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const duration = (span * 2) / speed;
+      return {
+        duration, label: "Right → Left",
+        driver(engine, dt) {
+          const t = engine.time % duration;
+          engine.setSourceState({ x: span - speed * t, y: offset, vx: -speed, vy: 0 });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+        },
+      };
+    },
+
+    towardListener: ({ speedKmh = 50, startDistance = 80 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const duration = startDistance / speed;
+      return {
+        duration, label: "Toward listener",
+        driver(engine, dt) {
+          const reached = engine.time >= duration;
+          const t = Math.min(engine.time, duration);
+          const x = -startDistance + speed * t;
+          // Once the source reaches the listener it stops — velocity must
+          // drop to zero too, or radial velocity would keep reporting
+          // motion for a body that has visibly stopped.
+          engine.setSourceState({ x, y: 0.5, vx: reached ? 0 : speed, vy: 0 });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+        },
+      };
+    },
+
+    awayFromListener: ({ speedKmh = 50, endDistance = 80 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const duration = endDistance / speed;
+      return {
+        duration, label: "Away from listener",
+        driver(engine, dt) {
+          const reached = engine.time >= duration;
+          const t = Math.min(engine.time, duration);
+          const x = 0.5 + speed * t;
+          engine.setSourceState({ x, y: 0.5, vx: reached ? 0 : speed, vy: 0 });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+        },
+      };
+    },
+
+    diagonal: ({ speedKmh = 70, span = 60 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const duration = (span * 2) / speed;
+      const dir = { x: 0.85, y: 0.53 };
+      return {
+        duration, label: "Diagonal pass",
+        driver(engine, dt) {
+          const t = engine.time % duration;
+          const dist = -span + speed * t;
+          engine.setSourceState({
+            x: dist * dir.x, y: 15 + dist * dir.y * 0.3,
+            vx: speed * dir.x, vy: speed * dir.y * 0.3,
+          });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+        },
+      };
+    },
+
+    circular: ({ speedKmh = 90, radius = 30 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const omega = speed / radius;
+      const duration = (2 * Math.PI) / omega;
+      return {
+        duration, label: "Circular orbit",
+        driver(engine, dt) {
+          const theta = engine.time * omega;
+          const x = radius * Math.cos(theta);
+          const y = radius * Math.sin(theta);
+          const vx = -radius * omega * Math.sin(theta);
+          const vy = radius * omega * Math.cos(theta);
+          engine.setSourceState({ x, y, vx, vy });
+          engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+        },
+      };
+    },
+
+    movingListener: ({ speedKmh = 40, span = 60 } = {}) => {
+      const speed = speedKmh / 3.6;
+      const duration = (span * 2) / speed;
+      return {
+        duration, label: "Moving listener",
+        driver(engine, dt) {
+          const t = engine.time % duration;
+          engine.setSourceState({ x: 0, y: 0, vx: 0, vy: 0 });
+          engine.setListenerState({ x: -span + speed * t, y: 8, vx: speed, vy: 0 });
+        },
+      };
+    },
+
+    stationary: ({ distance = 30 } = {}) => ({
+      duration: Infinity, label: "Stationary",
+      driver(engine, dt) {
+        engine.setSourceState({ x: -distance, y: 0, vx: 0, vy: 0 });
+        engine.setListenerState({ x: 0, y: 0, vx: 0, vy: 0 });
+      },
+    }),
+
+  };
+
+  function build(name, params) {
+    const factory = presets[name];
+    if (!factory) throw new Error(`Unknown trajectory preset: ${name}`);
+    return factory(params);
+  }
+
+  return { presets, build };
+})();
+</script>
+<script>/**
+ * WAVE ENGINE
+ * ---------------------------------------------------------------------------
+ * Renders wavefronts on a canvas. Every ring drawn corresponds to a real
+ * emission event: the source emits a new wavefront every 1/f0 seconds, and
+ * each ring subsequently expands at the true speed of sound. Because the
+ * source itself is moving between emissions, compression ahead of it and
+ * expansion behind it fall directly out of the geometry — nothing is faked.
+ */
+
+const WaveEngine = (() => {
+
+  class WaveEngine {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext("2d");
+      this.emissions = []; // { x, y, t } world-space emission points/time
+      this._nextEmitTime = 0;
+      this.metersToPixels = 6; // world scale, adjustable by zoom
+      this.originOffset = { x: 0.5, y: 0.5 }; // fraction of canvas
+      this.reducedMotion = false;
+      this.maxRingAgeSeconds = 14;
+      this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    }
+
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      this.canvas.width = Math.max(1, Math.floor(rect.width * this.dpr));
+      this.canvas.height = Math.max(1, Math.floor(rect.height * this.dpr));
+    }
+
+    reset() {
+      this.emissions = [];
+      this._nextEmitTime = 0;
+    }
+
+    setZoom(pxPerMeter) { this.metersToPixels = pxPerMeter; }
+
+    /** Called every physics tick to register new wavefront emissions. */
+    update(snapshot) {
+      if (snapshot.time < this._nextEmitTime - 1e-6) return; // reset happened
+      const period = 1 / Math.max(1, snapshot.sourceFrequency / 40); // visually thinned: emit every N cycles
+      if (snapshot.time >= this._nextEmitTime) {
+        this.emissions.push({ x: snapshot.source.x, y: snapshot.source.y, t: snapshot.time });
+        this._nextEmitTime = snapshot.time + period;
+      }
+      // prune old rings
+      const cutoff = snapshot.time - this.maxRingAgeSeconds;
+      while (this.emissions.length && this.emissions[0].t < cutoff) this.emissions.shift();
+    }
+
+    worldToScreen(x, y) {
+      const w = this.canvas.width, h = this.canvas.height;
+      const scale = this.metersToPixels * this.dpr;
+      return {
+        x: w * this.originOffset.x + x * scale,
+        y: h * this.originOffset.y - y * scale,
+      };
+    }
+
+    render(snapshot) {
+      const ctx = this.ctx;
+      const w = this.canvas.width, h = this.canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // grid
+      this._drawGrid();
+
+      const c = snapshot.speedOfSound;
+      const scale = this.metersToPixels * this.dpr;
+
+      // wavefronts
+      if (!this.reducedMotion) {
+        for (const e of this.emissions) {
+          const age = snapshot.time - e.t;
+          if (age < 0) continue;
+          const radiusM = age * c;
+          if (radiusM * scale > Math.max(w, h)) continue;
+          const p = this.worldToScreen(e.x, e.y);
+          const alpha = Math.max(0, 1 - age / this.maxRingAgeSeconds);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, radiusM * scale, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(255,178,56,${alpha * 0.55})`;
+          ctx.lineWidth = 1.1 * this.dpr;
+          ctx.stroke();
+        }
+      }
+
+      // listener
+      const lp = this.worldToScreen(snapshot.listener.x, snapshot.listener.y);
+      ctx.beginPath();
+      ctx.arc(lp.x, lp.y, 6 * this.dpr, 0, Math.PI * 2);
+      ctx.fillStyle = "#4fd1c5";
+      ctx.fill();
+      ctx.font = `${11 * this.dpr}px var(--font-mono, monospace)`;
+      ctx.fillStyle = "rgba(232,236,241,0.65)";
+      ctx.fillText("LISTENER", lp.x + 10 * this.dpr, lp.y - 8 * this.dpr);
+
+      // source
+      const sp = this.worldToScreen(snapshot.source.x, snapshot.source.y);
+      const stateColor = snapshot.state === "APPROACHING" ? "#ff8a50"
+        : snapshot.state === "RECEDING" ? "#4fd1c5" : "#e8ecf1";
+      ctx.beginPath();
+      ctx.arc(sp.x, sp.y, 6 * this.dpr, 0, Math.PI * 2);
+      ctx.fillStyle = stateColor;
+      ctx.fill();
+
+      // velocity vector
+      if (snapshot.source.speed > 0.05) {
+        const vScale = 0.6;
+        const vx = sp.x + snapshot.source.vx * vScale * this.dpr;
+        const vy = sp.y - snapshot.source.vy * vScale * this.dpr;
+        ctx.beginPath();
+        ctx.moveTo(sp.x, sp.y);
+        ctx.lineTo(vx, vy);
+        ctx.strokeStyle = stateColor;
+        ctx.lineWidth = 2 * this.dpr;
+        ctx.stroke();
+        this._drawArrowHead(sp.x, sp.y, vx, vy, stateColor);
+      }
+      ctx.font = `${11 * this.dpr}px var(--font-mono, monospace)`;
+      ctx.fillStyle = "rgba(232,236,241,0.65)";
+      ctx.fillText("SOURCE", sp.x + 10 * this.dpr, sp.y - 8 * this.dpr);
+
+      // line of sight
+      ctx.beginPath();
+      ctx.moveTo(sp.x, sp.y);
+      ctx.lineTo(lp.x, lp.y);
+      ctx.strokeStyle = "rgba(232,236,241,0.12)";
+      ctx.lineWidth = 1 * this.dpr;
+      ctx.setLineDash([4 * this.dpr, 4 * this.dpr]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    _drawArrowHead(x0, y0, x1, y1, color) {
+      const ctx = this.ctx;
+      const angle = Math.atan2(y1 - y0, x1 - x0);
+      const size = 5 * this.dpr;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1 - size * Math.cos(angle - 0.4), y1 - size * Math.sin(angle - 0.4));
+      ctx.lineTo(x1 - size * Math.cos(angle + 0.4), y1 - size * Math.sin(angle + 0.4));
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    _drawGrid() {
+      const ctx = this.ctx;
+      const w = this.canvas.width, h = this.canvas.height;
+      const step = 10 * this.metersToPixels * this.dpr;
+      ctx.strokeStyle = "rgba(232,236,241,0.045)";
+      ctx.lineWidth = 1;
+      for (let x = (w / 2) % step; x < w; x += step) {
+        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+      }
+      for (let y = (h / 2) % step; y < h; y += step) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+    }
+  }
+
+  return { WaveEngine };
+})();
+</script>
+<script>/**
+ * GRAPH ENGINE
+ * ---------------------------------------------------------------------------
+ * Three instruments, all plotting real data:
+ *   - Frequency trace: source & observed frequency vs. time, from the
+ *     physics engine's own history buffer (never hard-coded shapes).
+ *   - Spectrum: live FFT of the actual generated audio signal.
+ *   - Waveform: live time-domain oscilloscope view of the actual signal.
+ */
+
+const GraphEngine = (() => {
+
+  class FrequencyTrace {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext("2d");
+      this.dpr = Math.min(2, window.devicePixelRatio || 1);
+      this.windowSeconds = 16;
+    }
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      this.canvas.width = Math.max(1, Math.floor(rect.width * this.dpr));
+      this.canvas.height = Math.max(1, Math.floor(rect.height * this.dpr));
+    }
+    render(history) {
+      const ctx = this.ctx, w = this.canvas.width, h = this.canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      if (!history.length) return;
+
+      const tNow = history[history.length - 1].time;
+      const tMin = tNow - this.windowSeconds;
+      const visible = history.filter(s => s.time >= tMin);
+      if (visible.length < 2) return;
+
+      // Fill the full canvas width with whatever span of real data exists so
+      // far, rather than leaving most of the canvas empty during the first
+      // windowSeconds of any run.
+      const span = Math.max(1, visible[visible.length - 1].time - visible[0].time);
+      const spanStart = visible[0].time;
+
+      let fMin = Infinity, fMax = -Infinity;
+      for (const s of visible) {
+        fMin = Math.min(fMin, s.sourceFrequency, s.observedFrequency);
+        fMax = Math.max(fMax, s.sourceFrequency, s.observedFrequency);
+      }
+      const pad = Math.max(10, (fMax - fMin) * 0.15);
+      fMin -= pad; fMax += pad;
+
+      const xOf = (t) => ((t - spanStart) / span) * w;
+      const yOf = (f) => h - ((f - fMin) / (fMax - fMin || 1)) * h;
+
+      // gridlines
+      ctx.strokeStyle = "rgba(232,236,241,0.06)";
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = (h / 4) * i;
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+      }
+
+      // source frequency (reference line)
+      this._drawLine(visible, xOf, s => yOf(s.sourceFrequency), "rgba(232,236,241,0.35)", 1.2, [4 * this.dpr, 4 * this.dpr]);
+
+      // observed frequency (live)
+      this._drawLine(visible, xOf, s => yOf(s.observedFrequency), "#ffb238", 2, []);
+
+      // labels
+      ctx.font = `${10 * this.dpr}px var(--font-mono, monospace)`;
+      ctx.fillStyle = "rgba(232,236,241,0.5)";
+      ctx.fillText(`${fMax.toFixed(0)} Hz`, 6 * this.dpr, 12 * this.dpr);
+      ctx.fillText(`${fMin.toFixed(0)} Hz`, 6 * this.dpr, h - 6 * this.dpr);
+    }
+    _drawLine(points, xOf, yOf, color, width, dash) {
+      const ctx = this.ctx;
+      ctx.beginPath();
+      ctx.setLineDash(dash);
+      points.forEach((s, i) => {
+        const x = xOf(s.time), y = yOf(s);
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width * this.dpr;
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+
+  class SpectrumView {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext("2d");
+      this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    }
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      this.canvas.width = Math.max(1, Math.floor(rect.width * this.dpr));
+      this.canvas.height = Math.max(1, Math.floor(rect.height * this.dpr));
+    }
+    render(freqData, sampleRate, markers = {}) {
+      const ctx = this.ctx, w = this.canvas.width, h = this.canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      if (!freqData || !freqData.length) return;
+
+      const maxBin = Math.floor(freqData.length * (4000 / (sampleRate / 2))); // show up to ~4kHz
+      const barW = w / maxBin;
+      for (let i = 0; i < maxBin; i++) {
+        const v = freqData[i] / 255;
+        const barH = v * h;
+        ctx.fillStyle = `rgba(255,178,56,${0.25 + v * 0.6})`;
+        ctx.fillRect(i * barW, h - barH, Math.max(1, barW - 1), barH);
+      }
+
+      const freqToX = (f) => (f / (sampleRate / 2)) * freqData.length * barW;
+      if (markers.source) this._marker(freqToX(markers.source), h, "rgba(232,236,241,0.6)", "SRC");
+      if (markers.observed) this._marker(freqToX(markers.observed), h, "#ffb238", "OBS");
+    }
+    _marker(x, h, color, label) {
+      const ctx = this.ctx;
+      ctx.beginPath();
+      ctx.moveTo(x, 0); ctx.lineTo(x, h);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5 * this.dpr;
+      ctx.setLineDash([3 * this.dpr, 3 * this.dpr]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.font = `${10 * this.dpr}px var(--font-mono, monospace)`;
+      ctx.fillStyle = color;
+      ctx.fillText(label, x + 4 * this.dpr, 12 * this.dpr);
+    }
+  }
+
+  class WaveformView {
+    constructor(canvas) {
+      this.canvas = canvas;
+      this.ctx = canvas.getContext("2d");
+      this.dpr = Math.min(2, window.devicePixelRatio || 1);
+    }
+    resize() {
+      const rect = this.canvas.getBoundingClientRect();
+      this.canvas.width = Math.max(1, Math.floor(rect.width * this.dpr));
+      this.canvas.height = Math.max(1, Math.floor(rect.height * this.dpr));
+    }
+    render(timeData) {
+      const ctx = this.ctx, w = this.canvas.width, h = this.canvas.height;
+      ctx.clearRect(0, 0, w, h);
+      if (!timeData || !timeData.length) return;
+      ctx.beginPath();
+      const sliceW = w / timeData.length;
+      let x = 0;
+      for (let i = 0; i < timeData.length; i++) {
+        const v = timeData[i] / 128.0 - 1.0;
+        const y = h / 2 + v * (h / 2) * 0.9;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        x += sliceW;
+      }
+      ctx.strokeStyle = "#4fd1c5";
+      ctx.lineWidth = 1.5 * this.dpr;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(0, h / 2); ctx.lineTo(w, h / 2);
+      ctx.strokeStyle = "rgba(232,236,241,0.08)";
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+  }
+
+  return { FrequencyTrace, SpectrumView, WaveformView };
+})();
+</script>
+<script>/**
+ * EXPERIMENT ENGINE
+ * ---------------------------------------------------------------------------
+ * Orchestrates a run: wires a spatial-engine trajectory into the physics
+ * engine, drives a fixed-timestep physics clock independent of rendering
+ * FPS, and feeds each physics snapshot to whichever subsystems are attached.
+ *
+ * This is the one place the physics clock actually ticks. Canvas rendering
+ * elsewhere reads the latest snapshot on requestAnimationFrame; it never
+ * re-derives physics itself.
+ */
+
+const ExperimentEngine = (() => {
+
+  class Runner {
+    constructor(engine) {
+      this.engine = engine;
+      this.playing = false;
+      this.timeScale = 1;
+      this._rafId = null;
+      this._lastNow = null;
+      this._onTick = null; // (snapshot) => void, set by UI
+      this._maxDt = 1 / 20; // clamp huge frame gaps (tab backgrounded etc.)
+    }
+
+    configure({ preset, params, sourceFrequency, speedOfSound = 343, waveform = "sine" }) {
+      this.engine.reset();
+      this.engine.setSourceFrequency(sourceFrequency);
+      this.engine.setSpeedOfSound(speedOfSound);
+      this.engine.setWaveform(waveform);
+      const built = SpatialEngine.build(preset, params);
+      this.engine.setMotionDriver(built.driver);
+      this.duration = built.duration;
+      this.label = built.label;
+      return built;
+    }
+
+    setManual() {
+      this.engine.clearMotionDriver();
+      this.duration = Infinity;
+    }
+
+    onTick(fn) { this._onTick = fn; }
+
+    play() {
+      if (this.playing) return;
+      this.playing = true;
+      this._lastNow = performance.now();
+      const loop = (now) => {
+        if (!this.playing) return;
+        let dt = (now - this._lastNow) / 1000;
+        this._lastNow = now;
+        dt = Math.min(dt, this._maxDt) * this.timeScale;
+        if (dt > 0) {
+          const snapshot = this.engine.step(dt);
+          if (this._onTick) this._onTick(snapshot);
+        }
+        this._rafId = requestAnimationFrame(loop);
+      };
+      this._rafId = requestAnimationFrame(loop);
+    }
+
+    pause() {
+      this.playing = false;
+      if (this._rafId) cancelAnimationFrame(this._rafId);
+    }
+
+    reset() {
+      this.pause();
+      this.engine.reset();
+      if (this._onTick) this._onTick(this.engine.getSnapshot());
+    }
+
+    step(seconds = 1 / 30) {
+      const snapshot = this.engine.step(seconds * this.timeScale);
+      if (this._onTick) this._onTick(snapshot);
+      return snapshot;
+    }
+
+    setTimeScale(scale) { this.timeScale = scale; }
+
+    /** Runs headlessly (no rAF) to a fixed duration, returning the full history. Used by cases/challenges to precompute a trace. */
+    runHeadless(durationSeconds, dt = 1 / 60) {
+      this.engine.reset();
+      const steps = Math.ceil(durationSeconds / dt);
+      for (let i = 0; i < steps; i++) this.engine.step(dt);
+      return this.engine.getHistory();
+    }
+  }
+
+  return { Runner };
+})();
+</script>
+<script>/**
+ * LEARNING ENGINE
+ * ---------------------------------------------------------------------------
+ * Content and evaluation logic for the eight-stage learning path:
+ * HEAR -> OBSERVE -> UNDERSTAND -> CALCULATE -> PREDICT -> RUN -> COMPARE -> EXPLAIN
+ *
+ * Prediction checking calls DopplerEngine.evaluate() directly — the same
+ * formula the live lab uses — so there is exactly one physics model in the
+ * whole application.
+ */
+
+const LearningEngine = (() => {
+
+  const stages = [
+    {
+      id: "hear",
+      concept: "observation",
+      title: "HEAR",
+      prompt: "Listen. A source moves past a stationary listener.",
+      question: "What changed as it passed?",
+      choices: [
+        { id: "pitch", label: "The pitch" },
+        { id: "volume", label: "The volume" },
+        { id: "speed", label: "The speed of the wave itself" },
+        { id: "both", label: "Both pitch and volume" },
+      ],
+      correct: "both",
+      explain: "Pitch shifts because the wave arrival rate changes with relative motion. Volume changes too, but only because distance is changing — that's a separate, simpler effect (attenuation).",
+    },
+    {
+      id: "observe",
+      concept: "wavefronts",
+      title: "OBSERVE",
+      prompt: "Watch the wavefronts as you change the source velocity.",
+      question: "What happens to wavefront spacing ahead of an approaching source?",
+      choices: [
+        { id: "compress", label: "It compresses" },
+        { id: "expands", label: "It expands" },
+        { id: "same", label: "It stays the same" },
+      ],
+      correct: "compress",
+      explain: "Each wavefront is emitted from a slightly closer position than the last, so successive fronts bunch together ahead of the source — and spread out behind it.",
+    },
+    {
+      id: "understand",
+      concept: "relativeMotion",
+      title: "UNDERSTAND",
+      prompt: "The listener doesn't experience the source's frequency directly — they experience the rate at which wavefronts arrive.",
+      question: "Which quantity actually determines the observed frequency?",
+      choices: [
+        { id: "sourcefreq", label: "The source's emitted frequency alone" },
+        { id: "arrival", label: "The rate wavefronts arrive at the listener" },
+        { id: "distance", label: "The absolute distance to the source" },
+      ],
+      correct: "arrival",
+      explain: "Relative radial motion between source and listener changes the spacing of wavefronts in the medium, which changes their arrival rate — that arrival rate is what's heard as pitch.",
+    },
+    {
+      id: "calculate",
+      concept: "calculation",
+      title: "CALCULATE",
+      prompt: "Now the equation. For a stationary listener and a source moving directly toward them at vₛ:",
+      formula: "f' = f × c / (c − vₛ)",
+      question: "If f = 800 Hz, c = 343 m/s, and vₛ = 20 m/s, what is f′ (to the nearest Hz)?",
+      inputType: "number",
+      compute: () => Math.round(800 * 343 / (343 - 20)),
+      explain: "f′ = 800 × 343 / (343 − 20) = 800 × 343 / 323 ≈ 850 Hz. The denominator shrinks as the source approaches, so f′ grows.",
+    },
+  ];
+
+  // PREDICT -> RUN -> COMPARE -> EXPLAIN uses a live configuration rather
+  // than static content — generated fresh each time from parameter ranges.
+  function generatePredictionScenario(rng = Math.random) {
+    const sourceFrequency = Math.round(300 + rng() * 900);
+    const speedOfSound = 343;
+    const speedKmh = Math.round(20 + rng() * 100);
+    const speed = speedKmh / 3.6;
+    const passDistance = Math.round(5 + rng() * 25);
+    const approaching = rng() > 0.5;
+    const sourcePos = approaching ? { x: -40, y: passDistance } : { x: 40, y: passDistance };
+    const sourceVel = { x: approaching ? speed : -speed, y: 0 };
+    const listenerPos = { x: 0, y: 0 };
+    const listenerVel = { x: 0, y: 0 };
+
+    const result = DopplerEngine.DopplerEngine.evaluate({
+      sourceFrequency, speedOfSound, sourcePos, sourceVel, listenerPos, listenerVel,
+    });
+
+    return {
+      sourceFrequency, speedOfSound, speedKmh, passDistance, approaching,
+      sourcePos, sourceVel, listenerPos, listenerVel,
+      engineObservedFrequency: result.observedFrequency,
+    };
+  }
+
+  function checkPrediction(scenario, predictedHz, tolerancePercent = 3) {
+    const actual = scenario.engineObservedFrequency;
+    const errorPercent = Math.abs(predictedHz - actual) / actual * 100;
+    const withinTolerance = errorPercent <= tolerancePercent;
+
+    let diagnostic = null;
+    if (!withinTolerance) {
+      const predictedDirection = predictedHz > scenario.sourceFrequency ? "higher" : predictedHz < scenario.sourceFrequency ? "lower" : "equal";
+      const actualDirection = actual > scenario.sourceFrequency ? "higher" : actual < scenario.sourceFrequency ? "lower" : "equal";
+      if (predictedDirection !== actualDirection) {
+        diagnostic = `The source is ${scenario.approaching ? "approaching" : "receding from"} the listener, so the observed frequency should be ${actualDirection} than the source frequency. Your prediction moved in the ${predictedDirection === "equal" ? "wrong" : "opposite"} direction.`;
+      } else {
+        diagnostic = `The direction of your prediction is right — ${actualDirection} than the source frequency — but the magnitude is off by ${errorPercent.toFixed(1)}%. Check the ratio c / (c ∓ vₛ) against the actual closing speed.`;
+      }
+    }
+
+    return { actual, errorPercent, withinTolerance, diagnostic };
+  }
+
+  function evaluateExplanation(text) {
+    const t = text.toLowerCase();
+    const concepts = {
+      relativeMotion: /relative (motion|velocity|speed)|motion between/.test(t),
+      wavefrontSpacing: /wavefront|compress|bunch|spac/.test(t),
+      arrivalRate: /arriv|rate (at which|of)/.test(t),
+      approachRecede: /approach|reced|toward|away/.test(t),
+      observedFrequency: /observed|pitch|frequency|hear/.test(t),
+    };
+    const hits = Object.values(concepts).filter(Boolean).length;
+    const total = Object.keys(concepts).length;
+    return { concepts, score: hits / total, hits, total };
+  }
+
+  return { stages, generatePredictionScenario, checkPrediction, evaluateExplanation };
+})();
+</script>
+<script>/**
+ * FORENSIC ENGINE
+ * ---------------------------------------------------------------------------
+ * SONIC FORENSICS: the learner receives an acoustic event with some
+ * variables hidden and must reconstruct what happened using the same
+ * instruments as the live lab (audio, waveform, spectrum, trace, wavefronts).
+ *
+ * Each case is a real physics configuration run through SpatialEngine +
+ * DopplerEngine — nothing is scripted or faked.
+ */
+
+const ForensicEngine = (() => {
+
+  const cases = [
+    {
+      id: "case001",
+      title: "APPROACH",
+      brief: "A single tone approaches a stationary listener and stops just short of arrival.",
+      preset: "towardListener",
+      params: { speedKmh: 54, startDistance: 70 },
+      sourceFrequency: 620,
+      hidden: [],
+      question: "Describe what the source is doing, and explain why the observed frequency is higher than 620 Hz.",
+      teaches: "relativeMotion",
+    },
+    {
+      id: "case002",
+      title: "RECESSION",
+      brief: "A tone moves away from a stationary listener.",
+      preset: "awayFromListener",
+      params: { speedKmh: 54, endDistance: 70 },
+      sourceFrequency: 620,
+      hidden: [],
+      question: "Why is the observed frequency lower than the source frequency here, and not the same drop you'd expect from volume alone?",
+      teaches: "relativeMotion",
+    },
+    {
+      id: "case003",
+      title: "THE PASSING TONE",
+      brief: "A source passes the listener at a fixed offset distance. Full drive-by.",
+      preset: "driveBy",
+      params: { speedKmh: 90, passDistance: 12, span: 80 },
+      sourceFrequency: 700,
+      hidden: [],
+      question: "Identify the moment of closest approach in the frequency trace. What is special about the observed frequency at that exact instant, and why?",
+      teaches: "relativeMotion",
+    },
+    {
+      id: "case004",
+      title: "UNKNOWN VELOCITY",
+      brief: "Source frequency, listener state and speed of sound are known. Source velocity is not.",
+      preset: "towardListener",
+      params: { speedKmh: 64.8, startDistance: 70 }, // ~18 m/s
+      sourceFrequency: 700,
+      hidden: ["sourceVelocity"],
+      question: "Using the observed frequency you measure, work out the source's velocity toward the listener. Show your reasoning.",
+      teaches: "reverseSolving",
+      solveFor: "sourceVelocity",
+    },
+    {
+      id: "case005",
+      title: "MOVING LISTENER",
+      brief: "The source is stationary. The listener is moving.",
+      preset: "movingListener",
+      params: { speedKmh: 45, span: 60 },
+      sourceFrequency: 800,
+      hidden: [],
+      question: "The source never moves. Explain how a frequency shift is still possible here.",
+      teaches: "relativeMotion",
+    },
+    {
+      id: "case006",
+      title: "TANGENTIAL MOTION",
+      brief: "The source moves in a circular path around the listener at constant radius.",
+      preset: "circular",
+      params: { speedKmh: 100, radius: 25 },
+      sourceFrequency: 750,
+      hidden: [],
+      question: "At the instant the source is moving purely tangentially (directly 'across' the listener's view), what happens to the observed frequency, and why?",
+      teaches: "relativeMotion",
+    },
+    {
+      id: "case007",
+      title: "CHANGING TRAJECTORY",
+      brief: "A diagonal pass — the radial component of velocity changes continuously.",
+      preset: "diagonal",
+      params: { speedKmh: 80, span: 65 },
+      sourceFrequency: 680,
+      hidden: [],
+      question: "Unlike a direct approach, the shift here rises and falls smoothly rather than switching abruptly. Why?",
+      teaches: "relativeMotion",
+    },
+    {
+      id: "case008",
+      title: "MODEL BOUNDARY",
+      brief: "A source approaches at a substantial fraction of the speed of sound.",
+      preset: "towardListener",
+      params: { speedKmh: 950, startDistance: 150 }, // ~264 m/s, Mach ~0.77 — clears the 0.7 warning threshold
+      sourceFrequency: 600,
+      hidden: [],
+      question: "Watch the MODEL STATUS indicator. At what point does the classical model stop being trustworthy, and what physically is starting to happen?",
+      teaches: "modelLimits",
+    },
+  ];
+
+  function getCase(id) { return cases.find(c => c.id === id); }
+
+  /** Builds a Sonic Autopsy timeline from a run's recorded history. */
+  function buildAutopsy(history) {
+    if (!history.length) return [];
+    const events = [];
+    events.push({ t: history[0].time, label: "SOURCE DETECTED" });
+
+    let lastState = history[0].state;
+    let closest = history[0];
+    for (const s of history) {
+      if (s.state !== lastState) {
+        if (s.state === "APPROACHING") events.push({ t: s.time, label: "APPROACH BEGINS" });
+        if (s.state === "RECEDING") events.push({ t: s.time, label: "RECESSION BEGINS" });
+        if (s.state === "TANGENTIAL") events.push({ t: s.time, label: "TANGENTIAL PHASE" });
+        lastState = s.state;
+      }
+      if (s.distance < closest.distance) closest = s;
+    }
+    events.push({ t: closest.time, label: "CLOSEST POINT" });
+    events.sort((a, b) => a.t - b.t);
+    return events;
+  }
+
+  /** Builds an inspectable PHYSICS LEDGER entry for a specific snapshot. */
+  function buildLedger(caseId, snapshot, prediction = null) {
+    const entry = {
+      caseId,
+      model: "Classical acoustic Doppler",
+      sourceFrequency: snapshot.sourceFrequency,
+      sourceVelocity: snapshot.source.speed,
+      listenerVelocity: snapshot.listener.speed,
+      speedOfSound: snapshot.speedOfSound,
+      radialVelocity: snapshot.radialVelocity,
+      observedFrequency: snapshot.observedFrequency,
+      modelState: snapshot.modelState,
+    };
+    if (prediction != null) {
+      entry.prediction = prediction;
+      entry.errorPercent = Math.abs(prediction - snapshot.observedFrequency) / snapshot.observedFrequency * 100;
+    }
+    return entry;
+  }
+
+  /** Reverse solving: given target observed frequency, solve for the unknown. */
+  const ReverseSolver = {
+    solveSourceVelocity({ sourceFrequency, observedFrequency, speedOfSound }) {
+      // f' = f*c/(c - vs)  =>  vs = c - f*c/f' = c*(1 - f/f')
+      return speedOfSound * (1 - sourceFrequency / observedFrequency);
+    },
+    solveSourceFrequency({ observedFrequency, speedOfSound, sourceVelocity }) {
+      // f = f' * (c - vs) / c
+      return observedFrequency * (speedOfSound - sourceVelocity) / speedOfSound;
+    },
+    solveSpeedOfSound({ sourceFrequency, observedFrequency, sourceVelocity }) {
+      // f' = f*c/(c-vs) => f'(c - vs) = f*c => c(f'-f) = f'*vs => c = f'*vs/(f'-f)
+      const denom = observedFrequency - sourceFrequency;
+      if (Math.abs(denom) < 1e-6) return Infinity;
+      return observedFrequency * sourceVelocity / denom;
+    },
+    solveListenerVelocity({ sourceFrequency, observedFrequency, speedOfSound }) {
+      // stationary source: f' = f*(c+vl)/c => vl = c*(f'/f - 1)
+      return speedOfSound * (observedFrequency / sourceFrequency - 1);
+    },
+  };
+
+  return { cases, getCase, buildAutopsy, buildLedger, ReverseSolver };
+})();
+</script>
+<script>/**
+ * SCENARIO ENGINE
+ * ---------------------------------------------------------------------------
+ * Real-world scenario packs. Each wraps a spatial-engine trajectory with
+ * a source frequency and framing appropriate to the scenario, so LAB and
+ * CHALLENGE can offer "Emergency Vehicle" instead of raw parameters.
+ */
+
+const ScenarioEngine = (() => {
+
+  const scenarios = [
+    {
+      id: "emergency",
+      title: "EMERGENCY VEHICLE",
+      description: "A siren approaches, passes, and recedes at urban speed.",
+      preset: "driveBy",
+      params: { speedKmh: 65, passDistance: 8, span: 70 },
+      sourceFrequency: 960,
+      waveform: "sawtooth",
+    },
+    {
+      id: "highway",
+      title: "HIGHWAY",
+      description: "A long-distance drive-by at high speed and wide offset.",
+      preset: "driveBy",
+      params: { speedKmh: 120, passDistance: 25, span: 140 },
+      sourceFrequency: 500,
+      waveform: "sine",
+    },
+    {
+      id: "train",
+      title: "TRAIN",
+      description: "A large, slower-moving source passing at close range.",
+      preset: "driveBy",
+      params: { speedKmh: 100, passDistance: 15, span: 100 },
+      sourceFrequency: 300,
+      waveform: "sawtooth",
+    },
+    {
+      id: "aircraft",
+      title: "AIRCRAFT",
+      description: "A fast diagonal pass with continuously changing geometry.",
+      preset: "diagonal",
+      params: { speedKmh: 400, span: 200 },
+      sourceFrequency: 400,
+      waveform: "sine",
+    },
+    {
+      id: "racetrack",
+      title: "RACE TRACK",
+      description: "A high-speed source on a circular track around the listener.",
+      preset: "circular",
+      params: { speedKmh: 220, radius: 40 },
+      sourceFrequency: 850,
+      waveform: "sawtooth",
+    },
+    {
+      id: "movingObserver",
+      title: "MOVING LISTENER",
+      description: "The observer moves past a stationary source instead.",
+      preset: "movingListener",
+      params: { speedKmh: 50, span: 60 },
+      sourceFrequency: 800,
+      waveform: "sine",
+    },
+  ];
+
+  function getScenario(id) { return scenarios.find(s => s.id === id); }
+
+  return { scenarios, getScenario };
+})();
+</script>
+<script>/**
+ * CHALLENGE ENGINE
+ * ---------------------------------------------------------------------------
+ * Assembles unassisted challenges from real configurations (reusing
+ * LearningEngine's scenario generator and ForensicEngine's cases) and scores
+ * the full predict -> run -> compare -> explain loop. No random-clicking
+ * credit: a challenge only counts as passed when prediction tolerance and
+ * explanation concept-coverage both clear their bars.
+ */
+
+const ChallengeEngine = (() => {
+
+  const PREDICTION_TOLERANCE_PERCENT = 5;
+  const EXPLANATION_SCORE_THRESHOLD = 0.6;
+
+  function generateChallenge(difficulty = "standard", rng = Math.random) {
+    const scenario = LearningEngine.generatePredictionScenario(rng);
+    const tolerance = difficulty === "hard" ? 3 : difficulty === "easy" ? 8 : PREDICTION_TOLERANCE_PERCENT;
+    return { ...scenario, tolerance, difficulty };
+  }
+
+  function score({ challenge, predictedHz, explanationText }) {
+    const predictionResult = LearningEngine.checkPrediction(challenge, predictedHz, challenge.tolerance);
+    const explanationResult = LearningEngine.evaluateExplanation(explanationText || "");
+    const passed = predictionResult.withinTolerance && explanationResult.score >= EXPLANATION_SCORE_THRESHOLD;
+    return {
+      predictionResult,
+      explanationResult,
+      passed,
+      summary: passed
+        ? "Prediction within tolerance and explanation covers the core mechanism."
+        : !predictionResult.withinTolerance
+          ? "Prediction outside tolerance — see diagnostic."
+          : "Prediction was fine, but the explanation is missing key concepts.",
+    };
+  }
+
+  return { generateChallenge, score, PREDICTION_TOLERANCE_PERCENT, EXPLANATION_SCORE_THRESHOLD };
+})();
+</script>
+<script>/**
+ * STORAGE
+ * ---------------------------------------------------------------------------
+ * Local-only persistence. No accounts, no network, no personal data.
+ */
+
+const Storage = (() => {
+  const KEY = "dopplerlab.v1";
+
+  const defaults = () => ({
+    preferences: {
+      units: "metric",
+      reducedMotion: false,
+      highContrast: false,
+      masterVolume: 0.35,
+    },
+    progress: {
+      concepts: {
+        observation: 0,
+        wavefronts: 0,
+        approach: 0,
+        recession: 0,
+        calculation: 0,
+        relativeMotion: 0,
+        reverseSolving: 0,
+        experimentDesign: 0,
+        modelLimits: 0,
+      },
+      stagesCompleted: [],
+      casesCompleted: [],
+      challengeResults: [],
+      predictions: [],
+    },
+  });
+
+  let state = load();
+
+  function load() {
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (!raw) return defaults();
+      const parsed = JSON.parse(raw);
+      return { ...defaults(), ...parsed, progress: { ...defaults().progress, ...(parsed.progress || {}) } };
+    } catch (e) {
+      return defaults();
+    }
+  }
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* storage unavailable */ }
+  }
+
+  function get() { return state; }
+
+  function setPreference(key, value) {
+    state.preferences[key] = value;
+    save();
+  }
+
+  function bumpConcept(name, amount) {
+    if (!(name in state.progress.concepts)) return;
+    state.progress.concepts[name] = Math.max(0, Math.min(100, state.progress.concepts[name] + amount));
+    save();
+  }
+
+  function completeStage(id) {
+    if (!state.progress.stagesCompleted.includes(id)) state.progress.stagesCompleted.push(id);
+    save();
+  }
+
+  function completeCase(id) {
+    if (!state.progress.casesCompleted.includes(id)) state.progress.casesCompleted.push(id);
+    save();
+  }
+
+  function recordPrediction(entry) {
+    state.progress.predictions.push({ ...entry, at: Date.now() });
+    if (state.progress.predictions.length > 200) state.progress.predictions.shift();
+    save();
+  }
+
+  function recordChallenge(entry) {
+    state.progress.challengeResults.push({ ...entry, at: Date.now() });
+    if (state.progress.challengeResults.length > 200) state.progress.challengeResults.shift();
+    save();
+  }
+
+  function reset() {
+    state = defaults();
+    save();
+  }
+
+  return { get, save, setPreference, bumpConcept, completeStage, completeCase, recordPrediction, recordChallenge, reset };
+})();
+</script>
+<script>/**
+ * UI
+ * ---------------------------------------------------------------------------
+ * Wires the DOM to the engines. This file owns rendering, not physics.
+ */
+
+const UI = (() => {
+
+  const engine = new DopplerEngine.DopplerEngine();
+  const audio = new AudioEngine.AudioEngine();
+  const runner = new ExperimentEngine.Runner(engine);
+
+  let waveEngine, freqTrace, spectrumView, waveformView;
+  let currentScope = "trace";
+  let currentView = "lab";
+  let muted = false;
+
+  // ---- DOM refs (filled on init) ----
+  const $ = (sel) => document.querySelector(sel);
+  const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+  let byteFreq, byteTime;
+
+  // ==========================================================================
+  // INIT
+  // ==========================================================================
+  async function init() {
+    waveEngine = new WaveEngine.WaveEngine($("#wave-canvas"));
+    freqTrace = new GraphEngine.FrequencyTrace($("#trace-canvas"));
+    spectrumView = new GraphEngine.SpectrumView($("#spectrum-canvas"));
+    waveformView = new GraphEngine.WaveformView($("#waveform-canvas"));
+
+    resizeCanvases();
+    window.addEventListener("resize", debounce(resizeCanvases, 150));
+
+    wireNav();
+    wireLab();
+    wireSettings();
+    wireLearn();
+    wirePractice();
+    wireCases();
+    wireReverse();
+    wireChallenge();
+    wireModel();
+
+    applyPreferences();
+
+    runner.onTick((snapshot) => {
+      audio.applySnapshot(snapshot, { muted });
+    });
+
+    startRenderLoop();
+
+    // default lab configuration
+    configureLabFromControls();
+
+    // Attempt to unlock audio using the "ENTER LAB" click's user gesture.
+    // This call chain runs synchronously off that click (no await ahead of
+    // it), which is what lets browsers honor it despite autoplay policy.
+    const audioOk = await ensureAudioRunning();
+    if (audioOk) {
+      audio.start($("#param-waveform").value, engine.sourceFrequency);
+      runner.play();
+      $("#btn-play").textContent = "⏸";
+    } else {
+      // Audio stayed suspended (policy blocked it even on this gesture, or
+      // Web Audio unsupported). Run the physics/visuals only; the audio
+      // prompt banner tells the learner how to start sound explicitly.
+      runner.play();
+      $("#btn-play").textContent = "⏸";
+    }
+
+    renderProgress();
+  }
+
+  function debounce(fn, ms) {
+    let t;
+    return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), ms); };
+  }
+
+  function resizeCanvases() {
+    waveEngine.resize();
+    freqTrace.resize();
+    spectrumView.resize();
+    waveformView.resize();
+  }
+
+  // ==========================================================================
+  // RENDER LOOP (rAF) — reads latest state, never recomputes physics
+  // ==========================================================================
+  function startRenderLoop() {
+    function loop() {
+      if (currentView === "lab") {
+        const snapshot = engine.getSnapshot();
+        if (snapshot) {
+          waveEngine.update(snapshot);
+          waveEngine.render(snapshot);
+          renderInstrumentation(snapshot);
+          renderModelBadge(snapshot);
+
+          if (currentScope === "trace") {
+            freqTrace.render(engine.getHistory());
+          } else if (currentScope === "spectrum" && audio.running) {
+            if (!byteFreq || byteFreq.length !== audio.frequencyBinCount) byteFreq = new Uint8Array(audio.frequencyBinCount);
+            audio.getFrequencyData(byteFreq);
+            spectrumView.render(byteFreq, audio.sampleRate, { source: snapshot.sourceFrequency, observed: snapshot.observedFrequency });
+          } else if (currentScope === "waveform" && audio.running) {
+            if (!byteTime || byteTime.length !== audio.fftSize) byteTime = new Uint8Array(audio.fftSize);
+            audio.getWaveformData(byteTime);
+            waveformView.render(byteTime);
+          }
+        }
+      }
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  }
+
+  function renderInstrumentation(s) {
+    setText("#ro-source-freq", s.sourceFrequency.toFixed(2));
+    setText("#ro-source-vel", (s.source.speed * 3.6).toFixed(2));
+    setText("#ro-listener-vel", (s.listener.speed * 3.6).toFixed(2));
+    setText("#ro-radial-vel", s.radialVelocity.toFixed(2));
+    setText("#ro-distance", s.distance.toFixed(2));
+    setText("#ro-factor", s.dopplerFactor.toFixed(4));
+    setText("#ro-observed", s.observedFrequency.toFixed(2));
+    const stateEl = $("#ro-state");
+    stateEl.textContent = s.state;
+    stateEl.setAttribute("data-state", s.state);
+  }
+
+  function renderModelBadge(s) {
+    const badge = $("#model-status-badge");
+    if (s.modelState === "VALID") {
+      badge.className = "badge badge--valid";
+      badge.textContent = "MODEL VALID";
+    } else if (s.modelState === "WARNING") {
+      badge.className = "badge badge--warning";
+      badge.textContent = "MODEL WARNING";
+    } else {
+      badge.className = "badge badge--invalid";
+      badge.textContent = "MODEL INVALID";
+    }
+  }
+
+  function setText(sel, val) { const el = $(sel); if (el) el.textContent = val; }
+
+  // ==========================================================================
+  // NAVIGATION
+  // ==========================================================================
+  function wireNav() {
+    $$(".nav__item[data-view]").forEach(btn => {
+      btn.addEventListener("click", () => switchView(btn.dataset.view));
+    });
+  }
+
+  function switchView(view) {
+    currentView = view;
+    $$(".nav__item[data-view]").forEach(b => b.classList.toggle("is-active", b.dataset.view === view));
+    $$(".view").forEach(v => v.classList.toggle("is-active", v.dataset.view === view));
+    if (view === "progress") renderProgress();
+    if (view === "model") renderModelInspector();
+    requestAnimationFrame(resizeCanvases);
+  }
+
+  // ==========================================================================
+  // LAB
+  // ==========================================================================
+  function configureLabFromControls() {
+    const mode = $("#lab-mode").value;
+    const waveform = $("#param-waveform").value;
+    const c = Number($("#param-c").value);
+    engine.setWaveform(waveform);
+
+    if (mode === "manual") {
+      runner.setManual();
+      engine.reset();
+      engine.setSpeedOfSound(c);
+      engine.setSourceFrequency(Number($("#param-source-freq").value));
+      return;
+    }
+
+    if (mode === "scenario") {
+      const id = $("#scenario-select").value;
+      const scenario = ScenarioEngine.getScenario(id);
+      if (!scenario) return;
+      $("#param-waveform").value = scenario.waveform;
+      runner.configure({
+        preset: scenario.preset,
+        params: scenario.params,
+        sourceFrequency: scenario.sourceFrequency,
+        speedOfSound: c,
+        waveform: scenario.waveform,
+      });
+      return;
+    }
+
+    // preset trajectory mode
+    const trajectory = $("#trajectory-select").value;
+    const speedKmh = Number($("#param-speed").value);
+    const passDistance = Number($("#param-offset").value);
+    const params = { speedKmh, passDistance, offset: passDistance, span: Math.max(40, passDistance * 4 + 30), radius: Math.max(8, passDistance) };
+    runner.configure({
+      preset: trajectory,
+      params,
+      sourceFrequency: Number($("#param-source-freq").value),
+      speedOfSound: c,
+      waveform,
+    });
+  }
+
+  function wireLab() {
+    $("#btn-play").addEventListener("click", async () => {
+      await ensureAudioRunning();
+      if (runner.playing) {
+        runner.pause();
+        audio.stop();
+        $("#btn-play").textContent = "▶";
+      } else {
+        audio.start($("#param-waveform").value, engine.sourceFrequency);
+        runner.play();
+        $("#btn-play").textContent = "⏸";
+      }
+    });
+
+    $("#btn-reset").addEventListener("click", () => {
+      runner.reset();
+      waveEngine.reset();
+    });
+
+    $("#time-scale").addEventListener("change", (e) => runner.setTimeScale(Number(e.target.value)));
+    $("#zoom").addEventListener("input", (e) => waveEngine.setZoom(Number(e.target.value)));
+
+    $("#lab-mode").addEventListener("change", (e) => {
+      const mode = e.target.value;
+      $("#preset-controls").classList.toggle("hidden", mode !== "preset");
+      $("#scenario-controls").classList.toggle("hidden", mode !== "scenario");
+      reconfigureAndRestart();
+    });
+
+    $("#trajectory-select").addEventListener("change", reconfigureAndRestart);
+
+    // populate scenarios
+    const scenarioSelect = $("#scenario-select");
+    ScenarioEngine.scenarios.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s.id; opt.textContent = s.title;
+      scenarioSelect.appendChild(opt);
+    });
+    scenarioSelect.addEventListener("change", () => {
+      const s = ScenarioEngine.getScenario(scenarioSelect.value);
+      $("#scenario-description").textContent = s ? s.description : "";
+      reconfigureAndRestart();
+    });
+    $("#scenario-description").textContent = ScenarioEngine.scenarios[0].description;
+
+    $("#param-source-freq").addEventListener("input", (e) => {
+      $("#val-source-freq").textContent = e.target.value;
+      engine.setSourceFrequency(Number(e.target.value));
+      if (audio.running) audio._lastFreqTarget = Number(e.target.value);
+    });
+    $("#param-speed").addEventListener("input", (e) => {
+      $("#val-speed").textContent = e.target.value;
+      reconfigureAndRestart();
+    });
+    $("#param-offset").addEventListener("input", (e) => {
+      $("#val-offset").textContent = e.target.value;
+      reconfigureAndRestart();
+    });
+    $("#param-c").addEventListener("input", (e) => {
+      $("#val-c").textContent = e.target.value;
+      engine.setSpeedOfSound(Number(e.target.value));
+    });
+    $("#param-waveform").addEventListener("change", (e) => {
+      engine.setWaveform(e.target.value);
+      audio.setWaveform(e.target.value);
+    });
+    $("#param-mute").addEventListener("change", (e) => { muted = e.target.checked; });
+
+    $$(".scope-tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        currentScope = tab.dataset.scope;
+        $$(".scope-tab").forEach(t => t.classList.toggle("is-active", t === tab));
+        $$(".scope-canvas").forEach(c => c.classList.remove("is-active"));
+        $(`#${currentScope}-canvas`).classList.add("is-active");
+        // A canvas that was hidden (display:none) had a 0×0 bounding rect
+        // at the last resize, so its backing buffer may still be 1×1.
+        // Re-measure now that it's actually visible.
+        requestAnimationFrame(resizeCanvases);
+      });
+    });
+  }
+
+  // Snapshot/restore the Lab's own configuration so that computing a case's
+  // ledger (which must run the shared physics engine headlessly) never
+  // leaks into whatever the interactive Lab view is currently showing.
+  function captureLabControls() {
+    return {
+      mode: $("#lab-mode").value,
+      trajectory: $("#trajectory-select").value,
+      scenario: $("#scenario-select").value,
+      sourceFreq: $("#param-source-freq").value,
+      speed: $("#param-speed").value,
+      offset: $("#param-offset").value,
+      c: $("#param-c").value,
+      waveform: $("#param-waveform").value,
+    };
+  }
+
+  function restoreLabControls(snapshot, wasPlaying) {
+    $("#lab-mode").value = snapshot.mode;
+    $("#trajectory-select").value = snapshot.trajectory;
+    $("#scenario-select").value = snapshot.scenario;
+    $("#param-source-freq").value = snapshot.sourceFreq;
+    $("#val-source-freq").textContent = snapshot.sourceFreq;
+    $("#param-speed").value = snapshot.speed;
+    $("#val-speed").textContent = snapshot.speed;
+    $("#param-offset").value = snapshot.offset;
+    $("#val-offset").textContent = snapshot.offset;
+    $("#param-c").value = snapshot.c;
+    $("#val-c").textContent = snapshot.c;
+    $("#param-waveform").value = snapshot.waveform;
+    configureLabFromControls();
+    waveEngine.reset();
+    if (wasPlaying) runner.play();
+  }
+
+  function reconfigureAndRestart() {
+    const wasPlaying = runner.playing;
+    configureLabFromControls();
+    waveEngine.reset();
+    if (wasPlaying) runner.play();
+  }
+
+  async function ensureAudioRunning() {
+    const ok = await audio.resume();
+    // Show the "tap to start audio" banner only when audio genuinely
+    // couldn't start (still suspended, or Web Audio unsupported).
+    $("#audio-prompt").classList.toggle("hidden", ok);
+    return ok;
+  }
+
+  // ==========================================================================
+  // SETTINGS
+  // ==========================================================================
+  function wireSettings() {
+    $("#settings-btn").addEventListener("click", () => $("#settings-drawer").classList.remove("hidden"));
+    $("#settings-close").addEventListener("click", () => $("#settings-drawer").classList.add("hidden"));
+
+    $("#setting-reduced-motion").addEventListener("change", (e) => {
+      waveEngine.reducedMotion = e.target.checked;
+      Storage.setPreference("reducedMotion", e.target.checked);
+    });
+    $("#setting-high-contrast").addEventListener("change", (e) => {
+      document.body.classList.toggle("high-contrast", e.target.checked);
+      Storage.setPreference("highContrast", e.target.checked);
+    });
+    $("#setting-volume").addEventListener("input", (e) => {
+      audio.setMasterVolume(Number(e.target.value));
+      Storage.setPreference("masterVolume", Number(e.target.value));
+    });
+    $("#setting-reset-progress").addEventListener("click", () => {
+      if (confirm("Reset all progress, case completions, and preferences?")) {
+        Storage.reset();
+        applyPreferences();
+        renderProgress();
+      }
+    });
+
+    $("#audio-prompt-btn").addEventListener("click", async () => {
+      const ok = await ensureAudioRunning();
+      if (ok && runner.playing && !audio.running) {
+        audio.start($("#param-waveform").value, engine.sourceFrequency);
+      }
+    });
+  }
+
+  function applyPreferences() {
+    const prefs = Storage.get().preferences;
+    $("#setting-reduced-motion").checked = prefs.reducedMotion;
+    $("#setting-high-contrast").checked = prefs.highContrast;
+    $("#setting-volume").value = prefs.masterVolume;
+    waveEngine.reducedMotion = prefs.reducedMotion;
+    document.body.classList.toggle("high-contrast", prefs.highContrast);
+    audio.setMasterVolume(prefs.masterVolume);
+  }
+
+  // ==========================================================================
+  // LEARN
+  // ==========================================================================
+  let learnStageIndex = 0;
+  function wireLearn() {
+    const nav = $("#learn-nav");
+    LearningEngine.stages.forEach((stage, i) => {
+      const btn = document.createElement("button");
+      btn.className = "learn-nav__item";
+      btn.innerHTML = `<span class="learn-nav__check">${isStageComplete(stage.id) ? "✓" : "·"}</span><span>${String(i + 1).padStart(2, "0")} ${stage.title}</span>`;
+      btn.addEventListener("click", () => { learnStageIndex = i; renderLearnStage(); });
+      nav.appendChild(btn);
+    });
+    // add PREDICT stage entry
+    const predictBtn = document.createElement("button");
+    predictBtn.className = "learn-nav__item";
+    predictBtn.innerHTML = `<span class="learn-nav__check">·</span><span>05 PREDICT → EXPLAIN</span>`;
+    predictBtn.addEventListener("click", () => { learnStageIndex = LearningEngine.stages.length; renderLearnStage(); });
+    nav.appendChild(predictBtn);
+
+    renderLearnStage();
+  }
+
+  function isStageComplete(id) { return Storage.get().progress.stagesCompleted.includes(id); }
+
+  function renderLearnStage() {
+    $$(".learn-nav__item").forEach((el, i) => el.classList.toggle("is-active", i === learnStageIndex));
+    const content = $("#learn-content");
+
+    if (learnStageIndex < LearningEngine.stages.length) {
+      renderChoiceStage(LearningEngine.stages[learnStageIndex], content);
+    } else {
+      renderPredictFlow(content);
+    }
+  }
+
+  function renderChoiceStage(stage, content) {
+    let html = `<div class="stage-title">STAGE ${String(LearningEngine.stages.indexOf(stage) + 1).padStart(2, "0")} — ${stage.title}</div>`;
+    html += `<p class="stage-prompt">${stage.prompt}</p>`;
+    if (stage.formula) html += `<div class="stage-formula">${stage.formula}</div>`;
+    html += `<p class="stage-question">${stage.question}</p>`;
+
+    if (stage.inputType === "number") {
+      html += `<div class="stage-numeric-input"><input type="number" id="stage-num-input" placeholder="Hz" /><button class="btn btn--primary" id="stage-num-submit">CHECK</button></div>`;
+    } else {
+      html += `<div class="choice-list">`;
+      stage.choices.forEach(c => html += `<button class="choice" data-id="${c.id}">${c.label}</button>`);
+      html += `</div>`;
+    }
+    html += `<div id="stage-feedback"></div>`;
+    html += `<div class="stage-actions"><button class="btn" id="stage-next">NEXT STAGE →</button></div>`;
+    content.innerHTML = html;
+
+    if (stage.inputType === "number") {
+      $("#stage-num-submit").addEventListener("click", () => {
+        const val = Number($("#stage-num-input").value);
+        const correct = stage.compute();
+        const errPct = Math.abs(val - correct) / correct * 100;
+        const ok = errPct <= 3;
+        const fb = $("#stage-feedback");
+        fb.className = `stage-feedback ${ok ? "is-correct" : "is-incorrect"}`;
+        fb.textContent = (ok ? "Correct. " : `Not quite (engine says ${correct} Hz). `) + stage.explain;
+        if (ok) { Storage.completeStage(stage.id); Storage.bumpConcept(stage.concept, 25); refreshLearnNav(); }
+      });
+    } else {
+      $$(".choice", content).forEach(btn => {
+        btn.addEventListener("click", () => {
+          const ok = btn.dataset.id === stage.correct;
+          $$(".choice", content).forEach(b => {
+            b.classList.remove("is-correct", "is-incorrect");
+            if (b.dataset.id === stage.correct) b.classList.add("is-correct");
+            else if (b === btn) b.classList.add("is-incorrect");
+          });
+          const fb = $("#stage-feedback");
+          fb.className = `stage-feedback ${ok ? "is-correct" : "is-incorrect"}`;
+          fb.textContent = stage.explain;
+          if (ok) { Storage.completeStage(stage.id); Storage.bumpConcept(stage.concept, 25); refreshLearnNav(); }
+        });
+      });
+    }
+
+    $("#stage-next").addEventListener("click", () => {
+      learnStageIndex = Math.min(learnStageIndex + 1, LearningEngine.stages.length);
+      renderLearnStage();
+    });
+  }
+
+  function refreshLearnNav() {
+    $$(".learn-nav__item .learn-nav__check").forEach((el, i) => {
+      if (i < LearningEngine.stages.length) {
+        el.textContent = isStageComplete(LearningEngine.stages[i].id) ? "✓" : "·";
+      }
+    });
+  }
+
+  function renderPredictFlow(content) {
+    const scenario = LearningEngine.generatePredictionScenario();
+    let phase = "predict";
+
+    function draw() {
+      let html = `<div class="stage-title">STAGE 05–08 — PREDICT → RUN → COMPARE → EXPLAIN</div>`;
+      html += `<div class="prc-flow">`;
+      ["predict", "run", "compare", "explain"].forEach(p => {
+        const cls = p === phase ? "is-active" : (["predict","run","compare","explain"].indexOf(p) < ["predict","run","compare","explain"].indexOf(phase) ? "is-done" : "");
+        html += `<span class="prc-step ${cls}">${p.toUpperCase()}</span>`;
+      });
+      html += `</div>`;
+
+      html += `<p class="stage-prompt">Source frequency <strong>${scenario.sourceFrequency} Hz</strong>, moving at <strong>${scenario.speedKmh} km/h</strong> ${scenario.approaching ? "toward" : "away from"} a stationary listener, passing at <strong>${scenario.passDistance} m</strong>. Speed of sound is ${scenario.speedOfSound} m/s.</p>`;
+
+      if (phase === "predict") {
+        html += `<p class="stage-question">What frequency will the listener hear at the moment of closest approach?</p>`;
+        html += `<div class="stage-numeric-input"><input type="number" id="predict-input" placeholder="Hz" /><button class="btn btn--primary" id="predict-submit">RUN EXPERIMENT</button></div>`;
+      } else {
+        html += `<div class="compare-table">
+          <div class="compare-cell"><span class="compare-cell__label">YOUR PREDICTION</span><span class="compare-cell__value">${content._prediction} Hz</span></div>
+          <div class="compare-cell"><span class="compare-cell__label">ENGINE</span><span class="compare-cell__value">${scenario.engineObservedFrequency.toFixed(1)} Hz</span></div>
+          <div class="compare-cell compare-cell--error"><span class="compare-cell__label">ERROR</span><span class="compare-cell__value">${content._result.errorPercent.toFixed(2)}%</span></div>
+        </div>`;
+        if (content._result.diagnostic) {
+          html += `<div class="stage-feedback is-incorrect">${content._result.diagnostic}</div>`;
+        } else {
+          html += `<div class="stage-feedback is-correct">Within tolerance. Good prediction.</div>`;
+        }
+        html += `<p class="stage-question" style="margin-top:20px;">Explain, in your own words, why the frequency changed.</p>`;
+        html += `<textarea class="explain-input" id="explain-input" placeholder="The frequency changed because..."></textarea>`;
+        html += `<div class="stage-actions"><button class="btn btn--primary" id="explain-submit">SUBMIT EXPLANATION</button></div>`;
+        html += `<div id="explain-feedback"></div>`;
+      }
+      content.innerHTML = html;
+
+      if (phase === "predict") {
+        $("#predict-submit").addEventListener("click", () => {
+          const val = Number($("#predict-input").value);
+          if (!Number.isFinite(val)) return;
+          content._prediction = val;
+          content._result = LearningEngine.checkPrediction(scenario, val);
+          Storage.recordPrediction({ scenario, predicted: val, ...content._result });
+          Storage.bumpConcept("relativeMotion", content._result.withinTolerance ? 15 : 5);
+          phase = "compare";
+          draw();
+        });
+      } else {
+        $("#explain-submit").addEventListener("click", () => {
+          const text = $("#explain-input").value;
+          const result = LearningEngine.evaluateExplanation(text);
+          const fb = $("#explain-feedback");
+          fb.className = `stage-feedback ${result.score >= 0.6 ? "is-correct" : "is-incorrect"}`;
+          fb.textContent = `Concept coverage: ${result.hits}/${result.total}. ` + (result.score >= 0.6 ? "Solid explanation." : "Try to mention relative motion, wavefront spacing, and arrival rate explicitly.");
+          Storage.bumpConcept("relativeMotion", result.score >= 0.6 ? 15 : 3);
+          renderProgress();
+        });
+      }
+    }
+    draw();
+  }
+
+  // ==========================================================================
+  // PRACTICE (Sonic Practice / ear training)
+  // ==========================================================================
+  function wirePractice() {
+    $$(".task-card").forEach(card => {
+      card.addEventListener("click", async () => {
+        await ensureAudioRunning();
+        runPracticeTask(card.dataset.task);
+      });
+    });
+  }
+
+  function runPracticeTask(task) {
+    const stage = $("#practice-stage");
+    stage.classList.remove("hidden");
+    const c = 343;
+    const f0 = Math.round(400 + Math.random() * 600);
+
+    if (task === "direction") {
+      const kind = ["approaching", "stationary", "receding"][Math.floor(Math.random() * 3)];
+      const vs = kind === "stationary" ? 0 : (20 + Math.random() * 40);
+      const target = kind === "approaching" ? f0 * c / (c - vs) : kind === "receding" ? f0 * c / (c + vs) : f0;
+      stage.innerHTML = `
+        <p class="stage-question">Listen, then choose the direction of motion.</p>
+        <button class="btn" id="play-tone">▶ PLAY TONE</button>
+        <div class="choice-list" style="margin-top:14px;">
+          <button class="choice" data-a="approaching">Approaching</button>
+          <button class="choice" data-a="stationary">Stationary</button>
+          <button class="choice" data-a="receding">Receding</button>
+        </div>
+        <div id="practice-feedback"></div>`;
+      $("#play-tone").addEventListener("click", () => audio.playOneShot({ frequencyStart: f0, frequencyEnd: target, duration: 1.6 }));
+      $$(".choice", stage).forEach(b => b.addEventListener("click", () => {
+        const ok = b.dataset.a === kind;
+        const fb = $("#practice-feedback");
+        fb.className = `stage-feedback ${ok ? "is-correct" : "is-incorrect"}`;
+        fb.textContent = ok ? `Correct — the source was ${kind}.` : `Not quite — the source was actually ${kind}.`;
+        Storage.bumpConcept("relativeMotion", ok ? 8 : 2);
+      }));
+    }
+
+    if (task === "magnitude") {
+      const vsA = 10 + Math.random() * 20, vsB = 30 + Math.random() * 60;
+      const [lowV, highV] = vsA < vsB ? [vsA, vsB] : [vsB, vsA];
+      const toneA = { start: f0, end: f0 * c / (c - lowV) };
+      const toneB = { start: f0, end: f0 * c / (c - highV) };
+      const aIsGreater = false; // B always greater by construction below (we'll randomize order)
+      const order = Math.random() > 0.5;
+      const first = order ? toneA : toneB;
+      const second = order ? toneB : toneA;
+      const answer = order ? "b" : "a";
+      stage.innerHTML = `
+        <p class="stage-question">Two approaching tones. Which has the greater Doppler shift?</p>
+        <div style="display:flex; gap:10px;">
+          <button class="btn" id="play-a">▶ TONE A</button>
+          <button class="btn" id="play-b">▶ TONE B</button>
+        </div>
+        <div class="choice-list" style="margin-top:14px;">
+          <button class="choice" data-a="a">Tone A</button>
+          <button class="choice" data-a="b">Tone B</button>
+        </div>
+        <div id="practice-feedback"></div>`;
+      $("#play-a").addEventListener("click", () => audio.playOneShot({ frequencyStart: first.start, frequencyEnd: first.end, duration: 1.4 }));
+      $("#play-b").addEventListener("click", () => audio.playOneShot({ frequencyStart: second.start, frequencyEnd: second.end, duration: 1.4 }));
+      $$(".choice", stage).forEach(b => b.addEventListener("click", () => {
+        const ok = b.dataset.a === answer;
+        const fb = $("#practice-feedback");
+        fb.className = `stage-feedback ${ok ? "is-correct" : "is-incorrect"}`;
+        fb.textContent = ok ? "Correct." : `Not quite — Tone ${answer.toUpperCase()} had the greater shift.`;
+        Storage.bumpConcept("relativeMotion", ok ? 8 : 2);
+      }));
+    }
+
+    if (task === "estimate") {
+      const vs = 15 + Math.random() * 50;
+      const target = f0 * c / (c - vs);
+      stage.innerHTML = `
+        <p class="stage-question">A source at ${f0} Hz approaches. Listen and estimate the observed frequency.</p>
+        <button class="btn" id="play-tone">▶ PLAY TONE</button>
+        <div class="stage-numeric-input" style="margin-top:14px;"><input type="number" id="est-input" placeholder="Hz" /><button class="btn btn--primary" id="est-submit">CHECK</button></div>
+        <div id="practice-feedback"></div>`;
+      $("#play-tone").addEventListener("click", () => audio.playOneShot({ frequencyStart: f0, frequencyEnd: target, duration: 1.6 }));
+      $("#est-submit").addEventListener("click", () => {
+        const val = Number($("#est-input").value);
+        const errPct = Math.abs(val - target) / target * 100;
+        const ok = errPct <= 8;
+        const fb = $("#practice-feedback");
+        fb.className = `stage-feedback ${ok ? "is-correct" : "is-incorrect"}`;
+        fb.textContent = `Engine value: ${target.toFixed(1)} Hz (${errPct.toFixed(1)}% error).`;
+        Storage.bumpConcept("relativeMotion", ok ? 8 : 2);
+      });
+    }
+  }
+
+  // ==========================================================================
+  // CASES (Sonic Forensics)
+  // ==========================================================================
+  let activeCaseId = null;
+  function wireCases() {
+    const list = $("#cases-list");
+    ForensicEngine.cases.forEach(c => {
+      const btn = document.createElement("button");
+      btn.className = "case-item";
+      btn.dataset.id = c.id;
+      const done = Storage.get().progress.casesCompleted.includes(c.id);
+      btn.innerHTML = `<span class="case-item__id">${c.id.toUpperCase()} ${done ? '<span class="case-item__check">✓</span>' : ""}</span><span class="case-item__title">${c.title}</span>`;
+      btn.addEventListener("click", () => openCase(c.id));
+      list.appendChild(btn);
+    });
+  }
+
+  function openCase(id) {
+    activeCaseId = id;
+    $$(".case-item").forEach(el => el.classList.toggle("is-active", el.dataset.id === id));
+    const c = ForensicEngine.getCase(id);
+    const detail = $("#case-detail");
+
+    // IMPORTANT: the ledger/autopsy must reflect THIS case's own physics
+    // configuration, not whatever the interactive Lab happens to be running.
+    // Configure the shared engine headlessly first, then restore the Lab's
+    // live run afterwards so switching to CASES never silently alters LAB.
+    const wasPlaying = runner.playing;
+    const labSnapshotBeforeCase = captureLabControls();
+    runner.configure({
+      preset: c.preset,
+      params: { ...c.params },
+      sourceFrequency: c.sourceFrequency,
+      speedOfSound: 343,
+      waveform: "sine",
+    });
+    const built = SpatialEngine.build(c.preset, c.params);
+    const runSeconds = Number.isFinite(built.duration) ? Math.min(built.duration + 1, 14) : 10;
+    const history = runner.runHeadless(runSeconds);
+    restoreLabControls(labSnapshotBeforeCase, wasPlaying);
+    const autopsy = ForensicEngine.buildAutopsy(history);
+    // The most informative moment for the ledger is peak shift magnitude,
+    // not literal closest distance — for a source that arrives and stops
+    // (towardListener/awayFromListener), closest distance coincides with
+    // the body having already come to rest, which would hide the very
+    // velocity a case like CASE004 asks the learner to recover.
+    const representative = history.reduce(
+      (a, b) => Math.abs(b.dopplerFactor - 1) > Math.abs(a.dopplerFactor - 1) ? b : a,
+      history[0]
+    );
+    const ledger = ForensicEngine.buildLedger(c.id, representative);
+
+    let html = `<div class="panel__head"><span class="panel__title">${c.id.toUpperCase()} — ${c.title}</span></div>`;
+    html += `<p class="case-brief">${c.brief}</p>`;
+    html += `<button class="btn btn--primary" id="case-run-btn">▶ RUN &amp; LISTEN</button>`;
+    html += `<div class="mechanism-chain" style="margin-top:20px;"><span>RELATIVE MOTION</span><span class="arrow">→</span><span>WAVEFRONT SPACING</span><span class="arrow">→</span><span>ARRIVAL RATE</span><span class="arrow">→</span><span>OBSERVED FREQUENCY</span></div>`;
+    html += `<div class="panel__head" style="margin-top:20px;"><span class="panel__title">SONIC AUTOPSY</span></div>`;
+    html += `<div class="autopsy-timeline">`;
+    autopsy.forEach(e => html += `<div class="autopsy-row"><span class="autopsy-row__t">${e.t.toFixed(1)}s</span><span class="autopsy-row__label">${e.label}</span></div>`);
+    html += `</div>`;
+    html += `<div class="panel__head"><span class="panel__title">PHYSICS LEDGER</span></div>`;
+    html += renderLedger(ledger, c.id);
+    html += `<div class="case-question">${c.question}</div>`;
+    html += `<textarea class="explain-input" id="case-explain" placeholder="Your reconstruction of what happened..."></textarea>`;
+    html += `<div class="stage-actions"><button class="btn btn--primary" id="case-submit">SUBMIT INVESTIGATION</button></div>`;
+    html += `<div id="case-feedback"></div>`;
+    detail.innerHTML = html;
+
+    $("#case-run-btn").addEventListener("click", async () => {
+      await ensureAudioRunning();
+      switchView("lab");
+      $("#lab-mode").value = "preset";
+      $("#preset-controls").classList.remove("hidden");
+      $("#scenario-controls").classList.add("hidden");
+      $("#trajectory-select").value = c.preset;
+      $("#param-source-freq").value = c.sourceFrequency;
+      $("#val-source-freq").textContent = c.sourceFrequency;
+      if (c.params.speedKmh) { $("#param-speed").value = Math.round(c.params.speedKmh); $("#val-speed").textContent = Math.round(c.params.speedKmh); }
+      if (c.params.passDistance) { $("#param-offset").value = c.params.passDistance; $("#val-offset").textContent = c.params.passDistance; }
+      reconfigureAndRestart();
+      if (!audio.running) { audio.start($("#param-waveform").value, engine.sourceFrequency); runner.play(); $("#btn-play").textContent = "⏸"; }
+    });
+
+    $("#case-submit").addEventListener("click", () => {
+      const text = $("#case-explain").value;
+      const result = LearningEngine.evaluateExplanation(text);
+      const fb = $("#case-feedback");
+      const pass = result.score >= 0.5;
+      fb.className = `stage-feedback ${pass ? "is-correct" : "is-incorrect"}`;
+      fb.textContent = `Concept coverage: ${result.hits}/${result.total}. ` + (pass ? "Investigation accepted." : "Reconsider the mechanism — see the chain above.");
+      if (pass) {
+        Storage.completeCase(c.id);
+        Storage.bumpConcept(c.teaches, 20);
+        wireCasesRefresh();
+        renderProgress();
+      }
+    });
+  }
+
+  function wireCasesRefresh() {
+    $$(".case-item").forEach(el => {
+      const done = Storage.get().progress.casesCompleted.includes(el.dataset.id);
+      const idSpan = el.querySelector(".case-item__id");
+      idSpan.innerHTML = `${el.dataset.id.toUpperCase()} ${done ? '<span class="case-item__check">✓</span>' : ""}`;
+    });
+  }
+
+  function renderLedger(entry, caseId) {
+    return `<div class="ledger">DOPPLER LAB
+CASE ${caseId.replace("case", "")}
+
+MODEL              ${entry.model}
+
+SOURCE
+  f₀ = ${entry.sourceFrequency.toFixed(1)} Hz
+  vₛ = ${entry.sourceVelocity.toFixed(1)} m/s
+
+LISTENER
+  vₗ = ${entry.listenerVelocity.toFixed(1)} m/s
+
+MEDIUM
+  c = ${entry.speedOfSound.toFixed(1)} m/s
+
+RADIAL VELOCITY     ${entry.radialVelocity.toFixed(1)} m/s
+OBSERVED            ${entry.observedFrequency.toFixed(1)} Hz
+
+MODEL STATUS        <span class="ledger-status-${entry.modelState.toLowerCase()}">${entry.modelState}</span></div>`;
+  }
+
+  // ==========================================================================
+  // REVERSE
+  // ==========================================================================
+  function wireReverse() { renderReverse(); }
+
+  function renderReverse() {
+    const kinds = [
+      { key: "sourceVelocity", label: "SOURCE VELOCITY", unit: "m/s" },
+      { key: "sourceFrequency", label: "SOURCE FREQUENCY", unit: "Hz" },
+      { key: "listenerVelocity", label: "LISTENER VELOCITY", unit: "m/s" },
+    ];
+    const chosen = kinds[Math.floor(Math.random() * kinds.length)];
+    const c = 343;
+    let config;
+    if (chosen.key === "sourceVelocity") {
+      const sourceFrequency = Math.round(500 + Math.random() * 500);
+      const vs = 15 + Math.random() * 45;
+      const observedFrequency = sourceFrequency * c / (c - vs);
+      config = { sourceFrequency, observedFrequency, speedOfSound: c, answer: vs };
+    } else if (chosen.key === "sourceFrequency") {
+      const vs = 15 + Math.random() * 45;
+      const sourceFrequency = Math.round(400 + Math.random() * 500);
+      const observedFrequency = sourceFrequency * c / (c - vs);
+      config = { sourceVelocity: vs, observedFrequency, speedOfSound: c, answer: sourceFrequency };
+    } else {
+      const sourceFrequency = Math.round(500 + Math.random() * 500);
+      const vl = 5 + Math.random() * 25;
+      const observedFrequency = sourceFrequency * (c + vl) / c;
+      config = { sourceFrequency, observedFrequency, speedOfSound: c, answer: vl };
+    }
+
+    const el = $("#reverse-content");
+    let html = `<div class="reverse-config">`;
+    for (const [k, v] of Object.entries(config)) {
+      if (k === "answer") continue;
+      const label = k.replace(/([A-Z])/g, " $1").toUpperCase();
+      html += `<div class="readout"><span class="readout__label">${label}</span><span class="readout__value">${typeof v === "number" ? v.toFixed(1) : v}</span></div>`;
+    }
+    html += `<div class="readout reverse-unknown"><span class="readout__label">${chosen.label}</span><span class="readout__value">UNKNOWN</span></div>`;
+    html += `</div>`;
+    html += `<p class="stage-question">Solve for the ${chosen.label.toLowerCase()}.</p>`;
+    html += `<div class="stage-numeric-input"><input type="number" id="reverse-input" placeholder="${chosen.unit}" /><button class="btn btn--primary" id="reverse-submit">SOLVE</button></div>`;
+    html += `<div id="reverse-feedback"></div>`;
+    html += `<div class="stage-actions"><button class="btn" id="reverse-next">NEW CASE</button></div>`;
+    el.innerHTML = html;
+
+    $("#reverse-submit").addEventListener("click", () => {
+      const val = Number($("#reverse-input").value);
+      const errPct = Math.abs(val - config.answer) / Math.abs(config.answer) * 100;
+      const ok = errPct <= 4;
+      const fb = $("#reverse-feedback");
+      fb.className = `stage-feedback ${ok ? "is-correct" : "is-incorrect"}`;
+      fb.textContent = ok
+        ? `Correct — engine value is ${config.answer.toFixed(2)} ${chosen.unit}.`
+        : `Engine value is ${config.answer.toFixed(2)} ${chosen.unit} (your answer was off by ${errPct.toFixed(1)}%).`;
+      Storage.bumpConcept("reverseSolving", ok ? 20 : 5);
+      renderProgress();
+    });
+    $("#reverse-next").addEventListener("click", renderReverse);
+  }
+
+  // ==========================================================================
+  // CHALLENGE
+  // ==========================================================================
+  function wireChallenge() { renderChallenge(); }
+
+  function renderChallenge() {
+    const challenge = ChallengeEngine.generateChallenge("standard");
+    const el = $("#challenge-content");
+    let html = `<div class="challenge-meta"><span>DIFFICULTY: ${challenge.difficulty.toUpperCase()}</span><span>TOLERANCE: ±${challenge.tolerance}%</span></div>`;
+    html += `<p class="stage-prompt">A source at <strong>${challenge.sourceFrequency} Hz</strong> moves at <strong>${challenge.speedKmh} km/h</strong>, ${challenge.approaching ? "approaching" : "receding from"} a stationary listener at <strong>${challenge.passDistance} m</strong> offset.</p>`;
+    html += `<p class="stage-question">Predict the observed frequency at closest approach, then explain the mechanism.</p>`;
+    html += `<div class="stage-numeric-input"><input type="number" id="ch-predict" placeholder="Hz" /></div>`;
+    html += `<textarea class="explain-input" id="ch-explain" placeholder="Explain why..."></textarea>`;
+    html += `<div class="stage-actions"><button class="btn btn--primary" id="ch-submit">SUBMIT CHALLENGE</button></div>`;
+    html += `<div id="ch-result"></div>`;
+    el.innerHTML = html;
+
+    $("#ch-submit").addEventListener("click", () => {
+      const predictedHz = Number($("#ch-predict").value);
+      const explanationText = $("#ch-explain").value;
+      const result = ChallengeEngine.score({ challenge, predictedHz, explanationText });
+      Storage.recordChallenge({ challenge, predictedHz, passed: result.passed });
+      Storage.bumpConcept("experimentDesign", result.passed ? 20 : 4);
+      const box = $("#ch-result");
+      box.className = `challenge-result ${result.passed ? "is-pass" : "is-fail"}`;
+      box.innerHTML = `<span class="challenge-result__title">${result.passed ? "PASSED" : "NOT YET"}</span>
+        <p>Engine: ${result.predictionResult.actual.toFixed(1)} Hz — your prediction error: ${result.predictionResult.errorPercent.toFixed(2)}%.</p>
+        <p>${result.predictionResult.diagnostic || ""}</p>
+        <p>Explanation concept coverage: ${result.explanationResult.hits}/${result.explanationResult.total}.</p>
+        <p>${result.summary}</p>`;
+      renderProgress();
+    });
+  }
+
+  // ==========================================================================
+  // PROGRESS
+  // ==========================================================================
+  const conceptLabels = {
+    observation: "Observation", wavefronts: "Wavefronts", approach: "Approach",
+    recession: "Recession", calculation: "Calculation", relativeMotion: "Relative Motion",
+    reverseSolving: "Reverse Solving", experimentDesign: "Experiment Design", modelLimits: "Model Limits",
+  };
+
+  function renderProgress() {
+    const concepts = Storage.get().progress.concepts;
+    const list = $("#progress-list");
+    list.innerHTML = "";
+    let weakest = null;
+    for (const [key, label] of Object.entries(conceptLabels)) {
+      const val = concepts[key];
+      if (weakest === null || val < concepts[weakest]) weakest = key;
+      const row = document.createElement("div");
+      row.className = "progress-row";
+      row.innerHTML = `<span class="progress-row__label">${label}</span>
+        <span class="progress-row__bar"><span class="progress-row__fill" style="width:${val}%"></span></span>
+        <span class="progress-row__pct" data-done="${val >= 100}">${val >= 100 ? "✓" : val + "%"}</span>`;
+      list.appendChild(row);
+    }
+    const target = $("#progress-target");
+    const suggestion = suggestCase(weakest);
+    target.innerHTML = `<div class="progress-target__name">${conceptLabels[weakest].toUpperCase()}</div>
+      <div class="progress-target__hint">Recommended: ${suggestion ? `${suggestion.id.toUpperCase()} — ${suggestion.title}` : "Continue the LEARN path."}</div>`;
+  }
+
+  function suggestCase(concept) {
+    return ForensicEngine.cases.find(c => c.teaches === concept && !Storage.get().progress.casesCompleted.includes(c.id));
+  }
+
+  // ==========================================================================
+  // MODEL INSPECTOR
+  // ==========================================================================
+  function wireModel() { renderModelInspector(); }
+
+  function renderModelInspector() {
+    const s = engine.getSnapshot();
+    if (!s) return;
+    const grid = $("#inspector-grid");
+    const rows = [
+      ["SOURCE X", s.source.x.toFixed(2), "m"], ["SOURCE Y", s.source.y.toFixed(2), "m"],
+      ["LISTENER X", s.listener.x.toFixed(2), "m"], ["LISTENER Y", s.listener.y.toFixed(2), "m"],
+      ["SOURCE VX", s.source.vx.toFixed(2), "m/s"], ["SOURCE VY", s.source.vy.toFixed(2), "m/s"],
+      ["LISTENER VX", s.listener.vx.toFixed(2), "m/s"], ["LISTENER VY", s.listener.vy.toFixed(2), "m/s"],
+      ["RADIAL VELOCITY", s.radialVelocity.toFixed(2), "m/s"], ["DISTANCE", s.distance.toFixed(2), "m"],
+      ["SOUND SPEED", s.speedOfSound.toFixed(1), "m/s"], ["SOURCE FREQUENCY", s.sourceFrequency.toFixed(1), "Hz"],
+      ["OBSERVED FREQUENCY", s.observedFrequency.toFixed(1), "Hz"], ["MACH (SOURCE)", s.machSource.toFixed(3), ""],
+    ];
+    grid.innerHTML = rows.map(([label, val, unit]) =>
+      `<div class="readout"><span class="readout__label">${label}</span><span class="readout__value">${val}</span><span class="readout__unit">${unit}</span></div>`
+    ).join("");
+
+    const warnBlock = $("#model-warning-block");
+    if (s.modelState !== "VALID") {
+      warnBlock.classList.remove("hidden");
+      $("#model-warning-text").textContent = s.modelState === "INVALID"
+        ? "Source velocity has reached or exceeded the propagation speed of the medium along the line of sight. The classical single-frequency Doppler model breaks down here (shock formation) — displayed values are clamped, not physically meaningful."
+        : "Source velocity is approaching the modeled propagation speed. The simplified classical model is becoming less reliable as this fraction grows.";
+    } else {
+      warnBlock.classList.add("hidden");
+    }
+    requestAnimationFrame(() => currentView === "model" && setTimeout(renderModelInspector, 200));
+  }
+
+  return { init };
+})();
+</script>
+<script>/**
+ * APP
+ * ---------------------------------------------------------------------------
+ * Bootstraps DOPPLER LAB: landing screen, app init, PWA service worker.
+ */
+
+(function () {
+  function enterLab() {
+    document.getElementById("landing").classList.add("hidden");
+    document.getElementById("app").classList.remove("hidden");
+    UI.init();
+  }
+
+  document.getElementById("enter-lab").addEventListener("click", enterLab);
+
+  // Web Audio availability check (section 42: failure handling)
+  if (!(window.AudioContext || window.webkitAudioContext)) {
+    const warn = document.createElement("div");
+    warn.className = "audio-prompt";
+    warn.textContent = "Web Audio API is not available in this browser. DOPPLER LAB requires it to generate sound — the visual and numerical instruments will still work.";
+    document.body.appendChild(warn);
+  }
+
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("service-worker.js").catch(() => {
+        // offline installability is a progressive enhancement — fail silently
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>

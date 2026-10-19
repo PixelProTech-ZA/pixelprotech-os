@@ -1,0 +1,2119 @@
+<!doctype html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frequency Oasis — The Sound Design Lab</title>
+<meta name="description" content="Learn, hear, and build sound inside a browser-based sound design academy.">
+<meta name="theme-color" content="#050505">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFY0lEQVR4nO3dXW7bMBBF4UlRL6hZTBaZxTRLSh9SAYIg2/qxOHfmnu+9qEPykFTixG+32+07AFO/sl8AkIkAYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYI0AYO139gvo7uvz/dS///Px90WvBGve+LtA551d5EcRx3kEcEDWgn+GIPYjgI2OLvqzizLr/3VBAA/sWXyjF5zya6uEABa2LCzVBVX5tWchgP+eLZ5qC6fb13MV+wAeLZQui8ThazzKNgDHReH4NT9jF8C9ReC2ABiHHzYBMOHr3MfFIoC1SXaZ4K1cx6h1AO67216O49U2ANcd7RWcxq5lAMsJ7Dp5V3MYx1YBOO1co3Qf0za/ENN9orKsjaHqu2GPaHECOBzVCjqOc/kToOOkqFqObYeToHQALP7xukVQ8grEfT9flzkoFwC7vpbq81HqClR9sDuqfiUqFcAci19H5bkoE8B8Z6k84F3N56TSKVDiGSB78StOqOomkD1Xe8mfAIqLD9tUmDvpAHjorafaQ7FsACz+uipFIBvAHIu/nipzJhlAtQcprKvwnSG5AFQHCucpzq1UANz7+1F/HpAKYI7F34fyXMoEwL2/N9XnAYmPSFIakKOIdp+vz3eJMZM5ASYKg4JrKM5tegAddn8cozD36QHMKe4QeC21OU4NgAdfT0oPxFInADBaWgDs/t5UTgFOAFhLCYDdHxEapwAnAKwNDyD7qR+6MtZG6gnA9QfZa4ArEKwNDYCHX6zJfBjmBIA1AoC1YQFw/cEjWdcgTgBYIwBYGxIA1x9skXEN4gSANQKANQKAtcsD4M1vOGrE2hl6AvAAjGdGrxGuQLBGALBGALBGALBGALB26ecEd3kLxOhv5VYeq1cZtXY4AWCNAGCNAGCNAGCNAGCNAGCNAGCNAGCNAGBN4nOCO+CntzVxAsAaAcAaAcAaAcAaAcDapQEofAog6hn5eyScALBGALBGALBGALBGALCW9jGpwJp2H5PKm8Rw1Ii1wxUI1ggA1ggA1oYEwFsisEXGn9LkBIA1AoC1YQFwDcIjWX9JnBMA1ggA1tI+JpVrECaZH6TCCQBrqQFwCiB7DQwPgDfH4Z6MtcEVCNZSAuBhGBEanyLKCQBraQFwCnhT2P0jOAFgLjUATgFPKrt/hNgJQAT9qc1xegDZOwDyKMx9egBLajsEXkdxbiUCUNgJMJbKnEsEEMEDcXdKD75zMgEsEUEfynMpFcByZ1AeOGyznEOl3T9CLIAIvQHC6yjOrVwAETwPdKF675+TDGCJCOqpMmeyAfA8UJf6vX9ONoAIIqio0uKPEA8gQn8AcV+FuXu73W7f2S9iiwoPVO4qzpH8CTDhO0PaKi7+iEIBLBGBjspzUSoAHor1VHvoXSrzDDC3tvCrDXx1XeagZACT6rtPVZ3GvdQVaIkr0XidFn9E8QAiiGCkbos/ovgVaK7LnVRR57EtfwJM1iaE0+C8zos/otEJMNfxqM7gMI4tA4jov3NdyWns2gYQcf8K1HUyz3Icr9YBTJx2tKNcx8gigAjP3W0L93GxCWDiPuETxuGHXQCTR98i7boIHL/mZ2wDmDgsCoev8Sj7ACbPfmhWbaF0+3quQgALW356rLp4Kr/2LATwwJ63UoxeWMqvrRIC2Ojo+4rOLr6s/9cFARyg+iY7Fv1+BPACWUGw4M8jgIudjYNFfi0CgLU2vxADHEEAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsEYAsPYPC1YouQLridQAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Sound Design Lab">
+<style>/* ============================================================
+   FREQUENCY OASIS — THE SOUND DESIGN LAB
+   Design tokens
+   ============================================================ */
+:root{
+  --bg: #050505;
+  --card: #101010;
+  --card-2: #161616;
+  --gold: #D4AF37;
+  --gold-dark: #8B6B16;
+  --white: #F7F7F7;
+  --grey: #9A9A9A;
+  --grey-dim: #6b6b6b;
+  --glow: rgba(212,175,55,.20);
+  --glow-soft: rgba(212,175,55,.08);
+  --line: rgba(247,247,247,.08);
+  --radius: 18px;
+  --radius-sm: 10px;
+  --font-display: 'FO Display', Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  --font-body: 'FO Body', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'FO Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --ease: cubic-bezier(.16,.84,.44,1);
+}
+
+@font-face{
+  font-family:'FO Display';
+  src: local('Fraunces'), local('Georgia');
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--white);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{ background:var(--glow); color:var(--gold); }
+
+/* scrollbars */
+::-webkit-scrollbar{ width:8px; height:8px; }
+::-webkit-scrollbar-track{ background:transparent; }
+::-webkit-scrollbar-thumb{ background:var(--gold-dark); border-radius:10px; }
+
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; }
+h1,h2,h3,h4{ font-family:var(--font-display); font-weight:600; margin:0; letter-spacing:-.01em; }
+p{ margin:0; }
+
+/* Focus visibility */
+:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+}
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+#app{ display:flex; min-height:100vh; }
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:248px;
+  flex-shrink:0;
+  background:linear-gradient(180deg, #0a0a0a, #050505);
+  border-right:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  position:sticky;
+  top:0;
+  height:100vh;
+  z-index:40;
+  transition:transform .3s var(--ease);
+}
+.sidebar-brand{
+  padding:22px 20px 16px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid var(--line);
+}
+.brand-mark{
+  width:34px; height:34px; border-radius:50%;
+  border:1.5px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  color:var(--gold); font-family:var(--font-display); font-size:16px;
+  flex-shrink:0;
+}
+.brand-text .brand-name{ font-family:var(--font-display); font-size:15px; letter-spacing:.02em; line-height:1.1; }
+.brand-text .brand-sub{ font-size:10px; color:var(--grey-dim); letter-spacing:.14em; text-transform:uppercase; margin-top:2px; }
+
+.nav-scroll{ flex:1; overflow-y:auto; padding:10px 10px 20px; }
+.nav-group-label{
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--grey-dim); padding:16px 12px 6px;
+}
+.nav-item{
+  display:flex; align-items:center; gap:12px;
+  padding:10px 12px; border-radius:var(--radius-sm);
+  color:var(--grey); font-size:13.5px; cursor:pointer;
+  transition:background .18s var(--ease), color .18s var(--ease);
+  margin-bottom:2px;
+}
+.nav-item svg{ width:17px; height:17px; flex-shrink:0; opacity:.85; }
+.nav-item:hover{ background:var(--card); color:var(--white); }
+.nav-item.active{ background:var(--glow-soft); color:var(--gold); }
+.nav-item.active svg{ opacity:1; }
+
+.sidebar-foot{ padding:14px 20px; border-top:1px solid var(--line); font-size:11px; color:var(--grey-dim); }
+
+.sidebar-close{ display:none; }
+
+/* ---------- Main ---------- */
+.main{ flex:1; min-width:0; position:relative; }
+.topbar{
+  position:sticky; top:0; z-index:30;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 28px;
+  background:rgba(5,5,5,.72);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.topbar-title{ font-family:var(--font-display); font-size:19px; }
+.menu-btn{ display:none; background:none; border:1px solid var(--line); color:var(--white); width:38px; height:38px; border-radius:10px; align-items:center; justify-content:center; }
+.install-btn{
+  background:var(--gold); color:#0a0a0a; border:none; font-weight:600;
+  padding:9px 18px; border-radius:999px; font-size:12.5px; cursor:pointer;
+  letter-spacing:.02em; transition:transform .15s var(--ease), box-shadow .15s var(--ease);
+  display:none;
+}
+.install-btn:hover{ transform:translateY(-1px); box-shadow:0 6px 24px var(--glow); }
+
+.view{ padding:32px; max-width:1180px; }
+.view[hidden]{ display:none; }
+
+/* ============================================================
+   REUSABLE COMPONENTS
+   ============================================================ */
+.card{
+  background:linear-gradient(180deg, var(--card-2), var(--card));
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px;
+}
+.glass{
+  background:rgba(16,16,16,.55);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(212,175,55,.15);
+}
+.grid{ display:grid; gap:18px; }
+.grid-3{ grid-template-columns:repeat(3,1fr); }
+.grid-2{ grid-template-columns:repeat(2,1fr); }
+@media (max-width:900px){ .grid-3{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .grid-3, .grid-2{ grid-template-columns:1fr; } }
+
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:12px 22px; border-radius:999px; border:1px solid var(--gold-dark);
+  background:transparent; color:var(--white); font-size:13.5px; cursor:pointer;
+  transition:all .18s var(--ease); font-weight:500;
+}
+.btn:hover{ border-color:var(--gold); box-shadow:0 0 0 1px var(--glow) inset; }
+.btn.primary{ background:var(--gold); color:#0a0a0a; border-color:var(--gold); font-weight:600; }
+.btn.primary:hover{ box-shadow:0 6px 28px var(--glow); transform:translateY(-1px); }
+.btn.ghost{ border-color:transparent; color:var(--grey); }
+.btn.ghost:hover{ color:var(--white); }
+.btn.small{ padding:8px 16px; font-size:12px; }
+
+.eyebrow{ font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; display:block; }
+.section-head{ margin-bottom:22px; }
+.section-head h2{ font-size:26px; margin-bottom:6px; }
+.section-head .desc{ color:var(--grey); font-size:14px; max-width:60ch; }
+
+.tag{
+  font-size:10.5px; padding:4px 10px; border-radius:999px;
+  border:1px solid var(--gold-dark); color:var(--gold); letter-spacing:.05em;
+}
+
+/* ---------- Hero (Home) ---------- */
+.hero{
+  position:relative; border-radius:var(--radius); overflow:hidden;
+  padding:60px 40px; margin-bottom:28px;
+  background:radial-gradient(120% 140% at 20% -10%, rgba(212,175,55,.10), transparent 60%), var(--card);
+  border:1px solid var(--line);
+}
+#hero-canvas{ position:absolute; inset:0; width:100%; height:100%; opacity:.55; }
+.hero-content{ position:relative; z-index:2; }
+.hero h1{ font-size:clamp(34px,5vw,58px); line-height:1.02; margin-bottom:16px; }
+.hero h1 .line{ display:block; }
+.hero h1 .accent{ color:var(--gold); font-style:italic; }
+.hero p.tag-line{ color:var(--grey); font-size:15px; max-width:44ch; margin-bottom:26px; }
+.hero-actions{ display:flex; gap:12px; flex-wrap:wrap; }
+
+.rail{ margin-bottom:34px; }
+.rail-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:14px; }
+.rail-head h3{ font-size:16px; color:var(--white); }
+.rail-head .more{ font-size:12px; color:var(--grey-dim); }
+.rail-scroll{ display:flex; gap:14px; overflow-x:auto; padding-bottom:6px; }
+.rail-item{
+  min-width:200px; flex-shrink:0; border-radius:var(--radius-sm);
+  border:1px solid var(--line); background:var(--card); padding:16px; cursor:pointer;
+  transition:border-color .18s, transform .18s;
+}
+.rail-item:hover{ border-color:var(--gold-dark); transform:translateY(-2px); }
+.rail-item .ri-tag{ font-size:10px; color:var(--gold); letter-spacing:.08em; text-transform:uppercase; }
+.rail-item h4{ font-size:14.5px; margin:8px 0 4px; }
+.rail-item .ri-meta{ font-size:11.5px; color:var(--grey-dim); }
+
+/* ---------- Academy ---------- */
+.tier-tabs{ display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
+.tier-tab{
+  padding:9px 18px; border-radius:999px; border:1px solid var(--line);
+  color:var(--grey); font-size:13px; cursor:pointer; background:transparent;
+}
+.tier-tab.active{ border-color:var(--gold); color:var(--gold); background:var(--glow-soft); }
+.lesson-list{ display:flex; flex-direction:column; gap:8px; }
+.lesson-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 18px; border:1px solid var(--line); border-radius:var(--radius-sm);
+  cursor:pointer; transition:border-color .15s, background .15s;
+}
+.lesson-row:hover{ border-color:var(--gold-dark); background:var(--card); }
+.lesson-row .lr-left{ display:flex; align-items:center; gap:14px; }
+.lesson-row .lr-num{ font-family:var(--font-mono); font-size:11px; color:var(--gold-dark); width:26px; }
+.lesson-row .lr-title{ font-size:14px; }
+.lesson-row .lr-status{ font-size:11px; color:var(--grey-dim); }
+.lesson-row .lr-status.ready{ color:var(--gold); }
+
+.lesson-detail{ display:none; }
+.lesson-detail.open{ display:block; }
+.lesson-detail .back{ margin-bottom:18px; }
+.lesson-detail h2{ font-size:24px; margin-bottom:14px; }
+.lesson-body p{ color:var(--grey); font-size:14.5px; line-height:1.7; margin-bottom:14px; }
+.lesson-audio-row{ display:flex; gap:10px; margin:18px 0; flex-wrap:wrap; }
+.quiz-box{ border:1px solid var(--line); border-radius:var(--radius-sm); padding:18px; margin-top:20px; }
+.quiz-opt{
+  display:block; width:100%; text-align:left; padding:11px 14px; margin-bottom:8px;
+  border:1px solid var(--line); border-radius:var(--radius-sm); background:transparent; color:var(--white);
+  cursor:pointer; font-size:13.5px;
+}
+.quiz-opt:hover{ border-color:var(--gold-dark); }
+.quiz-opt.correct{ border-color:var(--gold); background:var(--glow-soft); color:var(--gold); }
+.quiz-opt.wrong{ border-color:#7a2f2f; color:#e08a8a; }
+
+/* ---------- Lab layout (FX Lab, Synth Lab, etc.) ---------- */
+.lab-tabs{ display:flex; gap:6px; margin-bottom:22px; border-bottom:1px solid var(--line); }
+.lab-tab{
+  padding:10px 16px; font-size:13px; color:var(--grey); background:none; border:none;
+  cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-1px;
+}
+.lab-tab.active{ color:var(--gold); border-bottom-color:var(--gold); }
+.lab-panel{ display:none; }
+.lab-panel.active{ display:block; }
+
+.lab-grid{ display:grid; grid-template-columns:1.3fr .9fr; gap:22px; }
+@media (max-width:900px){ .lab-grid{ grid-template-columns:1fr; } }
+
+.control-row{ display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+.control-row label{ width:96px; font-size:12.5px; color:var(--grey); flex-shrink:0; }
+.control-row input[type=range]{
+  flex:1; -webkit-appearance:none; height:4px; border-radius:4px;
+  background:linear-gradient(90deg, var(--gold-dark), var(--line));
+  outline:none;
+}
+.control-row input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none; width:16px; height:16px; border-radius:50%;
+  background:var(--gold); cursor:pointer; box-shadow:0 0 0 4px var(--glow);
+}
+.control-row input[type=range]::-moz-range-thumb{
+  width:16px; height:16px; border-radius:50%; background:var(--gold); border:none; box-shadow:0 0 0 4px var(--glow);
+}
+.control-row .val{ width:56px; text-align:right; font-family:var(--font-mono); font-size:12px; color:var(--gold); flex-shrink:0; }
+
+.eq-band-picker{ display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap; }
+.eq-band-btn{
+  padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:transparent;
+  color:var(--grey); font-size:11.5px; font-family:var(--font-mono); cursor:pointer;
+}
+.eq-band-btn.active{ border-color:var(--gold); color:var(--gold); }
+
+canvas.viz{ width:100%; display:block; border-radius:var(--radius-sm); background:#000; border:1px solid var(--line); }
+
+.preset-row{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
+.preset-btn{
+  padding:8px 15px; border-radius:var(--radius-sm); border:1px solid var(--line);
+  background:var(--card); color:var(--grey); font-size:12.5px; cursor:pointer;
+}
+.preset-btn:hover, .preset-btn.active{ border-color:var(--gold); color:var(--gold); }
+
+.transport{ display:flex; gap:10px; align-items:center; margin-bottom:20px; }
+.transport .btn{ padding:10px 18px; }
+
+/* ---------- Synth / Piano ---------- */
+.keyboard{ display:flex; position:relative; height:150px; margin-top:16px; user-select:none; }
+.key{
+  flex:1; border:1px solid #000; background:var(--white); border-radius:0 0 6px 6px;
+  position:relative; cursor:pointer;
+}
+.key:active, .key.pressed{ background:var(--gold); }
+.key.black{
+  position:absolute; width:5.5%; height:60%; background:#0a0a0a; border:1px solid #000;
+  z-index:2; border-radius:0 0 4px 4px;
+}
+.key.black:active, .key.black.pressed{ background:var(--gold-dark); }
+
+.osc-picker{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.osc-btn{ padding:9px 16px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--grey); font-size:12.5px; cursor:pointer; }
+.osc-btn.active{ background:var(--glow-soft); border-color:var(--gold); color:var(--gold); }
+
+/* ---------- Ear Training ---------- */
+.ear-card{ text-align:center; padding:40px 20px; }
+.ear-score{ font-family:var(--font-mono); color:var(--gold); font-size:14px; margin-bottom:20px; }
+.ear-options{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; max-width:420px; margin:24px auto 0; }
+@media (max-width:520px){ .ear-options{ grid-template-columns:1fr; } }
+
+/* ---------- Founder / Contact ---------- */
+.founder-hero{ display:flex; gap:28px; align-items:center; margin-bottom:30px; flex-wrap:wrap; }
+.founder-badge{
+  width:96px; height:96px; border-radius:50%; border:1.5px solid var(--gold);
+  display:flex; align-items:center; justify-content:center; font-family:var(--font-display);
+  font-size:30px; color:var(--gold); flex-shrink:0;
+}
+.quote-block{
+  border-left:2px solid var(--gold); padding:6px 0 6px 20px; margin:22px 0;
+  font-family:var(--font-display); font-style:italic; font-size:19px; color:var(--white);
+}
+.contact-list{ display:flex; flex-direction:column; gap:10px; }
+.contact-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 18px; border:1px solid var(--line); border-radius:var(--radius-sm);
+}
+.contact-row .cr-label{ font-size:12px; color:var(--grey-dim); text-transform:uppercase; letter-spacing:.08em; }
+.contact-row .cr-value{ font-size:14.5px; margin-top:2px; }
+
+/* ---------- misc ---------- */
+.placeholder-note{
+  border:1px dashed var(--line); border-radius:var(--radius-sm);
+  padding:16px 18px; color:var(--grey-dim); font-size:12.5px; margin-top:14px;
+}
+.toast{
+  position:fixed; bottom:22px; left:50%; transform:translateX(-50%);
+  background:var(--card); border:1px solid var(--gold-dark); color:var(--white);
+  padding:12px 22px; border-radius:999px; font-size:13px; z-index:100;
+  opacity:0; pointer-events:none; transition:opacity .25s var(--ease), transform .25s var(--ease);
+}
+.toast.show{ opacity:1; transform:translateX(-50%) translateY(-6px); }
+
+.map-wrap{ position:relative; border-radius:var(--radius); overflow:hidden; border:1px solid var(--line); }
+.map-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:12px; }
+.map-pin{
+  border:1px solid var(--line); border-radius:var(--radius-sm); padding:16px; text-align:center;
+  cursor:pointer; background:var(--card);
+}
+.map-pin:hover{ border-color:var(--gold-dark); }
+.map-pin .pin-icon{ font-size:22px; margin-bottom:8px; }
+
+/* mobile sidebar */
+@media (max-width:860px){
+  .sidebar{ position:fixed; left:0; top:0; transform:translateX(-100%); box-shadow:0 0 60px rgba(0,0,0,.6); }
+  .sidebar.open{ transform:translateX(0); }
+  .sidebar-close{ display:block; margin-left:auto; background:none; border:none; color:var(--grey); font-size:20px; cursor:pointer; }
+  .menu-btn{ display:flex; }
+  .view{ padding:20px 16px; }
+  .hero{ padding:34px 20px; }
+  .scrim{ position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:39; display:none; }
+  .scrim.show{ display:block; }
+}
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+<div id="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">F</div>
+      <div class="brand-text">
+        <div class="brand-name">Frequency Oasis</div>
+        <div class="brand-sub">Sound Design Lab</div>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">✕</button>
+    </div>
+    <nav class="nav-scroll" id="navScroll">
+      <div class="nav-group-label">Lab</div>
+      <div class="nav-item active" data-route="home">🏠 <span>Home</span></div>
+      <div class="nav-item" data-route="academy">🎓 <span>Academy</span></div>
+      <div class="nav-item" data-route="listening">🎧 <span>Listening Lab</span></div>
+      <div class="nav-item" data-route="synth">🎛 <span>Synth Lab</span></div>
+      <div class="nav-item" data-route="fx">🎚 <span>FX Lab</span></div>
+      <div class="nav-item" data-route="field">🌍 <span>Field Recordings</span></div>
+      <div class="nav-item" data-route="surgery">🔬 <span>Sample Surgery</span></div>
+
+      <div class="nav-group-label">Practice</div>
+      <div class="nav-item" data-route="projects">📚 <span>Projects</span></div>
+      <div class="nav-item" data-route="ear">🧠 <span>Ear Training</span></div>
+      <div class="nav-item" data-route="piano">🎹 <span>Interactive Piano</span></div>
+      <div class="nav-item" data-route="analyzer">📈 <span>Frequency Analyzer</span></div>
+
+      <div class="nav-group-label">You</div>
+      <div class="nav-item" data-route="downloads">📂 <span>Downloads</span></div>
+      <div class="nav-item" data-route="favorites">❤️ <span>Favorites</span></div>
+
+      <div class="nav-group-label">Studio</div>
+      <div class="nav-item" data-route="founder">👤 <span>Founder</span></div>
+      <div class="nav-item" data-route="contact">☎ <span>Contact</span></div>
+      <div class="nav-item" data-route="settings">⚙ <span>Settings</span></div>
+    </nav>
+    <div class="sidebar-foot">Offline-ready · v1.0<br>© Frequency Oasis, Durban</div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div class="main">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+        <span class="topbar-title" id="topbarTitle">Home</span>
+      </div>
+      <button class="install-btn" id="installBtn">Install Lab</button>
+    </div>
+
+    <!-- ===================== HOME ===================== -->
+    <section class="view" id="view-home">
+      <div class="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-content">
+          <span class="eyebrow">The Sound Design Lab</span>
+          <h1><span class="line">Learn.</span><span class="line">Hear.</span><span class="line accent">Build.</span></h1>
+          <p class="tag-line">A browser-based sound design academy — every lesson comes with a real, playable audio lab. Nothing here is a video you watch. Everything is a sound you shape.</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-route="fx">Enter Lab</button>
+            <button class="btn" data-route="academy">Start Learning</button>
+            <button class="btn ghost" data-route="field">Explore Sounds</button>
+            <button class="btn ghost" data-route="founder">About</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="rail">
+        <div class="rail-head"><h3>Latest Lessons</h3><span class="more">Beginner tier</span></div>
+        <div class="rail-scroll" id="rail-lessons"></div>
+      </div>
+      <div class="rail">
+        <div class="rail-head"><h3>Today's Discovery</h3><span class="more">Field recording</span></div>
+        <div class="rail-scroll" id="rail-discovery"></div>
+      </div>
+      <div class="rail">
+        <div class="rail-head"><h3>Popular Experiments</h3><span class="more">FX Lab</span></div>
+        <div class="rail-scroll" id="rail-experiments"></div>
+      </div>
+    </section>
+
+    <!-- ===================== ACADEMY ===================== -->
+    <section class="view" id="view-academy" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Academy</span>
+        <h2>The complete sound design school</h2>
+        <p class="desc">Three tiers, ground up. Every lesson pairs explanation with a real audio example and a hands-on control you can hear change in real time.</p>
+      </div>
+      <div class="tier-tabs" id="tierTabs">
+        <button class="tier-tab active" data-tier="beginner">Beginner</button>
+        <button class="tier-tab" data-tier="intermediate">Intermediate</button>
+        <button class="tier-tab" data-tier="advanced">Advanced</button>
+      </div>
+      <div class="lesson-list" id="lessonList"></div>
+
+      <div class="lesson-detail card" id="lessonDetail">
+        <button class="btn ghost small back" id="lessonBack">← Back to Academy</button>
+        <div id="lessonBody"></div>
+      </div>
+    </section>
+
+    <!-- ===================== LISTENING LAB ===================== -->
+    <section class="view" id="view-listening" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Listening Lab</span>
+        <h2>Before / after, your ears decide</h2>
+        <p class="desc">Play the original signal, play the processed version, then move the sliders yourself and hear exactly what changed.</p>
+      </div>
+      <div class="card">
+        <div class="preset-row" id="listeningPresets"></div>
+        <div class="transport">
+          <button class="btn" id="lBtnOriginal">▶ Play Original</button>
+          <button class="btn primary" id="lBtnProcessed">▶ Play Processed</button>
+          <button class="btn ghost" id="lBtnStop">■ Stop</button>
+        </div>
+        <canvas class="viz" id="listeningViz" height="140"></canvas>
+        <div class="control-row"><label>Wet / Dry</label><input type="range" id="lWet" min="0" max="100" value="60"><span class="val" id="lWetVal">60%</span></div>
+        <p class="placeholder-note">Source: a synthesized tone bed (oscillator + noise) generated live — no external audio files required, works fully offline.</p>
+      </div>
+    </section>
+
+    <!-- ===================== SYNTH LAB ===================== -->
+    <section class="view" id="view-synth" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Synth Lab</span>
+        <h2>Play the building blocks of sound</h2>
+        <p class="desc">Oscillators, filter, envelope, LFO. Click keys or use your computer keyboard (A–L row).</p>
+      </div>
+      <div class="lab-grid">
+        <div class="card">
+          <div class="osc-picker" id="oscPicker">
+            <button class="osc-btn active" data-wave="sine">Sine</button>
+            <button class="osc-btn" data-wave="triangle">Triangle</button>
+            <button class="osc-btn" data-wave="sawtooth">Saw</button>
+            <button class="osc-btn" data-wave="square">Square</button>
+          </div>
+          <canvas class="viz" id="synthViz" height="120"></canvas>
+          <div class="keyboard" id="synthKeyboard"></div>
+        </div>
+        <div class="card">
+          <h4 style="margin-bottom:14px;font-size:14px;color:var(--gold);">Filter</h4>
+          <div class="control-row"><label>Cutoff</label><input type="range" id="synthCutoff" min="80" max="12000" value="4000"><span class="val" id="synthCutoffVal">4000Hz</span></div>
+          <div class="control-row"><label>Resonance</label><input type="range" id="synthQ" min="0" max="30" value="1"><span class="val" id="synthQVal">1.0</span></div>
+          <h4 style="margin:20px 0 14px;font-size:14px;color:var(--gold);">Envelope (ADSR)</h4>
+          <div class="control-row"><label>Attack</label><input type="range" id="synthA" min="0" max="2000" value="20"><span class="val" id="synthAVal">20ms</span></div>
+          <div class="control-row"><label>Decay</label><input type="range" id="synthD" min="0" max="2000" value="200"><span class="val" id="synthDVal">200ms</span></div>
+          <div class="control-row"><label>Sustain</label><input type="range" id="synthS" min="0" max="100" value="60"><span class="val" id="synthSVal">60%</span></div>
+          <div class="control-row"><label>Release</label><input type="range" id="synthR" min="0" max="3000" value="300"><span class="val" id="synthRVal">300ms</span></div>
+          <h4 style="margin:20px 0 14px;font-size:14px;color:var(--gold);">LFO</h4>
+          <div class="control-row"><label>Rate</label><input type="range" id="synthLfoRate" min="0" max="20" value="0" step="0.1"><span class="val" id="synthLfoRateVal">0.0Hz</span></div>
+          <div class="control-row"><label>Depth → Filter</label><input type="range" id="synthLfoDepth" min="0" max="4000" value="0"><span class="val" id="synthLfoDepthVal">0</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FX LAB ===================== -->
+    <section class="view" id="view-fx" hidden>
+      <div class="section-head">
+        <span class="eyebrow">FX Lab</span>
+        <h2>Five processors. Real signal. Real ears.</h2>
+        <p class="desc">Every tab runs a live audio graph. Turn a knob, hear it happen.</p>
+      </div>
+      <div class="lab-tabs" id="fxTabs">
+        <button class="lab-tab active" data-fx="eq">EQ</button>
+        <button class="lab-tab" data-fx="comp">Compressor</button>
+        <button class="lab-tab" data-fx="dist">Distortion</button>
+        <button class="lab-tab" data-fx="verb">Reverb</button>
+        <button class="lab-tab" data-fx="delay">Delay</button>
+      </div>
+
+      <div class="preset-row" id="fxSourceTypes">
+        <button class="preset-btn active" data-source="groove">Groove Loop</button>
+        <button class="preset-btn" data-source="bass">Bassline</button>
+        <button class="preset-btn" data-source="pad">Chord Pad</button>
+        <button class="preset-btn" data-source="arp">Arpeggio</button>
+        <button class="preset-btn" data-source="ambient">Ambient Texture</button>
+        <button class="preset-btn" data-source="noise">Noise (for testing)</button>
+      </div>
+
+      <div class="transport">
+        <button class="btn primary" id="fxPlay">▶ Play Source</button>
+        <button class="btn ghost" id="fxStop">■ Stop</button>
+        <span class="tag" id="fxSourceTag">Source: Groove Loop</span>
+      </div>
+
+      <!-- EQ -->
+      <div class="lab-panel active" id="fxpanel-eq">
+        <div class="lab-grid">
+          <div class="card">
+            <canvas class="viz" id="eqViz" height="200"></canvas>
+            <div class="eq-band-picker" id="eqBandPicker"></div>
+          </div>
+          <div class="card">
+            <div class="control-row"><label>Freq</label><input type="range" id="eqFreq" min="20" max="20000" value="1000"><span class="val" id="eqFreqVal">1000Hz</span></div>
+            <div class="control-row"><label>Gain</label><input type="range" id="eqGain" min="-24" max="24" value="0"><span class="val" id="eqGainVal">0dB</span></div>
+            <div class="control-row"><label>Q</label><input type="range" id="eqQ" min="0.1" max="12" value="1" step="0.1"><span class="val" id="eqQVal">1.0</span></div>
+            <button class="btn ghost small" id="eqReset" style="margin-top:8px;">Reset Bands</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compressor -->
+      <div class="lab-panel" id="fxpanel-comp">
+        <div class="lab-grid">
+          <div class="card"><canvas class="viz" id="compViz" height="200"></canvas></div>
+          <div class="card">
+            <div class="control-row"><label>Threshold</label><input type="range" id="compThresh" min="-60" max="0" value="-24"><span class="val" id="compThreshVal">-24dB</span></div>
+            <div class="control-row"><label>Ratio</label><input type="range" id="compRatio" min="1" max="20" value="4"><span class="val" id="compRatioVal">4:1</span></div>
+            <div class="control-row"><label>Attack</label><input type="range" id="compAttack" min="0" max="1000" value="10"><span class="val" id="compAttackVal">10ms</span></div>
+            <div class="control-row"><label>Release</label><input type="range" id="compRelease" min="10" max="1000" value="250"><span class="val" id="compReleaseVal">250ms</span></div>
+            <div class="control-row"><label>Knee</label><input type="range" id="compKnee" min="0" max="40" value="10"><span class="val" id="compKneeVal">10dB</span></div>
+            <div class="control-row"><label>Makeup</label><input type="range" id="compMakeup" min="0" max="24" value="0"><span class="val" id="compMakeupVal">0dB</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Distortion -->
+      <div class="lab-panel" id="fxpanel-dist">
+        <div class="preset-row" id="distTypes">
+          <button class="preset-btn active" data-dist="tube">Tube</button>
+          <button class="preset-btn" data-dist="tape">Tape</button>
+          <button class="preset-btn" data-dist="soft">Soft Clip</button>
+          <button class="preset-btn" data-dist="hard">Hard Clip</button>
+          <button class="preset-btn" data-dist="bitcrush">Bit Crush</button>
+          <button class="preset-btn" data-dist="foldback">Foldback</button>
+        </div>
+        <div class="lab-grid">
+          <div class="card"><canvas class="viz" id="distViz" height="200"></canvas></div>
+          <div class="card">
+            <div class="control-row"><label>Drive</label><input type="range" id="distDrive" min="0" max="100" value="30"><span class="val" id="distDriveVal">30%</span></div>
+            <div class="control-row"><label>Tone</label><input type="range" id="distTone" min="200" max="12000" value="6000"><span class="val" id="distToneVal">6000Hz</span></div>
+            <div class="control-row"><label>Mix</label><input type="range" id="distMix" min="0" max="100" value="100"><span class="val" id="distMixVal">100%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reverb -->
+      <div class="lab-panel" id="fxpanel-verb">
+        <div class="preset-row" id="verbTypes">
+          <button class="preset-btn" data-verb="room">Room</button>
+          <button class="preset-btn active" data-verb="hall">Hall</button>
+          <button class="preset-btn" data-verb="church">Church</button>
+          <button class="preset-btn" data-verb="cathedral">Cathedral</button>
+          <button class="preset-btn" data-verb="plate">Plate</button>
+          <button class="preset-btn" data-verb="spring">Spring</button>
+          <button class="preset-btn" data-verb="ambient">Ambient</button>
+        </div>
+        <div class="lab-grid">
+          <div class="card"><canvas class="viz" id="verbViz" height="200"></canvas></div>
+          <div class="card">
+            <div class="control-row"><label>Decay</label><input type="range" id="verbDecay" min="0.2" max="8" value="2.4" step="0.1"><span class="val" id="verbDecayVal">2.4s</span></div>
+            <div class="control-row"><label>Pre-delay</label><input type="range" id="verbPredelay" min="0" max="200" value="20"><span class="val" id="verbPredelayVal">20ms</span></div>
+            <div class="control-row"><label>Wet</label><input type="range" id="verbWet" min="0" max="100" value="35"><span class="val" id="verbWetVal">35%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Delay -->
+      <div class="lab-panel" id="fxpanel-delay">
+        <div class="preset-row" id="delayTypes">
+          <button class="preset-btn active" data-delay="quarter">1/4</button>
+          <button class="preset-btn" data-delay="eighth">1/8</button>
+          <button class="preset-btn" data-delay="sixteenth">1/16</button>
+          <button class="preset-btn" data-delay="pingpong">Ping Pong</button>
+          <button class="preset-btn" data-delay="tape">Tape</button>
+          <button class="preset-btn" data-delay="reverse">Reverse</button>
+          <button class="preset-btn" data-delay="modulated">Modulated</button>
+        </div>
+        <div class="lab-grid">
+          <div class="card"><canvas class="viz" id="delayViz" height="200"></canvas></div>
+          <div class="card">
+            <div class="control-row"><label>Tempo</label><input type="range" id="delayTempo" min="60" max="180" value="120"><span class="val" id="delayTempoVal">120 BPM</span></div>
+            <div class="control-row"><label>Feedback</label><input type="range" id="delayFeedback" min="0" max="90" value="35"><span class="val" id="delayFeedbackVal">35%</span></div>
+            <div class="control-row"><label>Wet</label><input type="range" id="delayWet" min="0" max="100" value="30"><span class="val" id="delayWetVal">30%</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FIELD RECORDINGS ===================== -->
+    <section class="view" id="view-field" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Field Recordings</span>
+        <h2>The world, recorded and reheard</h2>
+        <p class="desc">Click a category to hear a synthesized field texture and read how it becomes a musical sound.</p>
+      </div>
+      <div class="map-grid" id="fieldGrid"></div>
+      <div class="card" id="fieldDetail" style="margin-top:20px;display:none;"></div>
+    </section>
+
+    <!-- ===================== SAMPLE SURGERY ===================== -->
+    <section class="view" id="view-surgery" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Sample Surgery</span>
+        <h2>Operate on a sound</h2>
+        <p class="desc">Load a WAV, or use the built-in test tone, then reverse, normalize, fade, stretch, and export.</p>
+      </div>
+      <div class="card">
+        <div class="transport">
+          <label class="btn" style="cursor:pointer;">Import WAV<input type="file" id="surgeryFile" accept="audio/*" style="display:none;"></label>
+          <button class="btn" id="surgeryTestTone">Use Test Tone</button>
+        </div>
+        <canvas class="viz" id="surgeryViz" height="160"></canvas>
+        <div class="preset-row">
+          <button class="preset-btn" id="surgReverse">Reverse</button>
+          <button class="preset-btn" id="surgNormalize">Normalize</button>
+          <button class="preset-btn" id="surgFade">Fade In/Out</button>
+          <button class="preset-btn" id="surgPitchUp">Pitch +</button>
+          <button class="preset-btn" id="surgPitchDown">Pitch −</button>
+        </div>
+        <div class="transport">
+          <button class="btn primary" id="surgPlay">▶ Play</button>
+          <button class="btn ghost" id="surgExport">Export WAV</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROJECTS ===================== -->
+    <section class="view" id="view-projects" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Projects</span>
+        <h2>Your saved work</h2>
+        <p class="desc">Lesson completions, ear training scores, and saved lab presets — stored locally, on this device.</p>
+      </div>
+      <div class="grid grid-3" id="projectsGrid"></div>
+    </section>
+
+    <!-- ===================== EAR TRAINING ===================== -->
+    <section class="view" id="view-ear" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Ear Training</span>
+        <h2>Train the instrument you already own</h2>
+        <p class="desc">Guess the EQ move. Daily streak and best score are saved locally.</p>
+      </div>
+      <div class="card ear-card">
+        <div class="ear-score" id="earScore">Score: 0 · Streak: 0 · Best: 0</div>
+        <button class="btn primary" id="earPlay">▶ Play Example</button>
+        <div class="ear-options" id="earOptions"></div>
+        <p class="placeholder-note" id="earFeedback">Press play, then guess which band was boosted.</p>
+      </div>
+    </section>
+
+    <!-- ===================== PIANO ===================== -->
+    <section class="view" id="view-piano" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Interactive Piano</span>
+        <h2>Two octaves, one clean sine-based tone</h2>
+        <p class="desc">Click keys or play with your keyboard. Great for ear-training reference pitches.</p>
+      </div>
+      <div class="card">
+        <div class="keyboard" id="pianoKeyboard" style="height:200px;"></div>
+      </div>
+    </section>
+
+    <!-- ===================== ANALYZER ===================== -->
+    <section class="view" id="view-analyzer" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Frequency Analyzer</span>
+        <h2>See what you hear</h2>
+        <p class="desc">Live spectrum of your microphone or the lab's internal test tone.</p>
+      </div>
+      <div class="card">
+        <div class="transport">
+          <button class="btn primary" id="analyzerMic">🎙 Use Microphone</button>
+          <button class="btn" id="analyzerTone">Use Test Tone</button>
+          <button class="btn ghost" id="analyzerStop">■ Stop</button>
+        </div>
+        <canvas class="viz" id="analyzerViz" height="260"></canvas>
+      </div>
+    </section>
+
+    <!-- ===================== DOWNLOADS ===================== -->
+    <section class="view" id="view-downloads" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Downloads</span>
+        <h2>Practice files</h2>
+        <p class="desc">Files you've exported from Sample Surgery or saved from lessons land here.</p>
+      </div>
+      <div id="downloadsList" class="grid grid-3"></div>
+    </section>
+
+    <!-- ===================== FAVORITES ===================== -->
+    <section class="view" id="view-favorites" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Favorites</span>
+        <h2>Saved lessons and lab presets</h2>
+      </div>
+      <div id="favoritesList" class="grid grid-3"></div>
+    </section>
+
+    <!-- ===================== FOUNDER ===================== -->
+    <section class="view" id="view-founder" hidden>
+      <div class="section-head">
+        <span class="eyebrow">The Origin of Frequency Oasis</span>
+        <h2>We create. We don't copy.</h2>
+      </div>
+      <div class="founder-hero">
+        <div class="founder-badge">S</div>
+        <div>
+          <h3 style="font-size:20px;margin-bottom:4px;">Lindokuhle Rojas Mabika</h3>
+          <p style="color:var(--grey);font-size:13.5px;">Known professionally as <strong style="color:var(--gold);">Smokey Eye Beats</strong> · Founded 2018 · Durban, South Africa</p>
+        </div>
+      </div>
+      <div class="card" style="max-width:70ch;">
+        <p style="color:var(--grey);line-height:1.8;font-size:14.5px;">Frequency Oasis was founded in 2018 by Lindokuhle Rojas Mabika, professionally known as Smokey Eye Beats. The journey began in Durban, South Africa, recording the sounds most people ignored — streets, forests, towns, rain, machinery, birds, and everyday environments.</p>
+        <p style="color:var(--grey);line-height:1.8;font-size:14.5px;margin-top:14px;">Back inside the DAW, those recordings were chopped, layered, stretched, and transformed into entirely new instruments and textures. The mission has always remained the same.</p>
+        <div class="quote-block">"Create the sounds the music industry doesn't know it's missing yet."</div>
+        <p style="color:var(--grey);line-height:1.8;font-size:14.5px;">Frequency Oasis teaches producers not only how to use sound, but how to hear it differently.</p>
+      </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="view" id="view-contact" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Contact</span>
+        <h2>Bookings &amp; links</h2>
+      </div>
+      <div class="contact-list" style="max-width:60ch;">
+        <div class="contact-row">
+          <div><div class="cr-label">Phone</div><div class="cr-value">065 197 1461</div></div>
+          <div style="display:flex;gap:8px;"><button class="btn small" id="callBtn">Call</button><button class="btn small ghost" id="copyBtn">Copy Number</button></div>
+        </div>
+        <div class="contact-row">
+          <div><div class="cr-label">Pixabay</div><div class="cr-value">frequencyoasis-38933177</div></div>
+          <button class="btn small" id="pixabayBtn">Open Pixabay</button>
+        </div>
+        <div class="contact-row">
+          <div><div class="cr-label">Frequency Oasis Store</div><div class="cr-value">Gumroad profile</div></div>
+          <button class="btn small" id="gumroadBtn">Open Gumroad</button>
+        </div>
+        <div class="contact-row">
+          <div><div class="cr-label">Audio Hospital</div><div class="cr-value">Sonic Sanctuary Lab</div></div>
+          <button class="btn small" id="audiohospBtn">Open Audio Hospital</button>
+        </div>
+        <div class="contact-row">
+          <div><div class="cr-label">Share</div><div class="cr-value">Send this app to a friend</div></div>
+          <button class="btn small" id="shareBtn">Share</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SETTINGS ===================== -->
+    <section class="view" id="view-settings" hidden>
+      <div class="section-head">
+        <span class="eyebrow">Settings</span>
+        <h2>Preferences</h2>
+      </div>
+      <div class="card" style="max-width:60ch;">
+        <div class="control-row"><label>Master Vol</label><input type="range" id="masterVol" min="0" max="100" value="80"><span class="val" id="masterVolVal">80%</span></div>
+        <button class="btn ghost small" id="clearDataBtn" style="margin-top:14px;">Clear local progress &amp; cache</button>
+        <p class="placeholder-note">All progress (lesson completions, ear-training scores, favorites) is stored only on this device via IndexedDB — nothing is sent anywhere.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>/* ============================================================
+   FREQUENCY OASIS — THE SOUND DESIGN LAB
+   app.js — router, storage, and the full Web Audio engine
+   ============================================================ */
+(() => {
+'use strict';
+
+/* ---------------- Toast ---------------- */
+const toastEl = document.getElementById('toast');
+let toastTimer;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 2200);
+}
+
+/* ---------------- IndexedDB (local-only progress store) ---------------- */
+const DB_NAME = 'fo_sound_lab';
+const DB_VERSION = 1;
+let dbPromise = new Promise((resolve, reject) => {
+  const req = indexedDB.open(DB_NAME, DB_VERSION);
+  req.onupgradeneeded = (e) => {
+    const db = e.target.result;
+    if (!db.objectStoreNames.contains('kv')) db.createObjectStore('kv', { keyPath: 'key' });
+  };
+  req.onsuccess = () => resolve(req.result);
+  req.onerror = () => reject(req.error);
+});
+async function idbGet(key, fallback){
+  try{
+    const db = await dbPromise;
+    return await new Promise((res) => {
+      const tx = db.transaction('kv','readonly').objectStore('kv').get(key);
+      tx.onsuccess = () => res(tx.result ? tx.result.value : fallback);
+      tx.onerror = () => res(fallback);
+    });
+  }catch(e){ return fallback; }
+}
+async function idbSet(key, value){
+  try{
+    const db = await dbPromise;
+    return await new Promise((res) => {
+      const tx = db.transaction('kv','readwrite').objectStore('kv').put({key, value});
+      tx.onsuccess = () => res(true);
+      tx.onerror = () => res(false);
+    });
+  }catch(e){ return false; }
+}
+async function idbClearAll(){
+  try{
+    const db = await dbPromise;
+    return await new Promise((res)=>{
+      const tx = db.transaction('kv','readwrite').objectStore('kv').clear();
+      tx.onsuccess = () => res(true);
+      tx.onerror = () => res(false);
+    });
+  }catch(e){ return false; }
+}
+
+/* ---------------- Mobile sidebar ---------------- */
+/* NOTE: declared before the Router below, because go() calls closeSidebarMobile()
+   immediately on load — if these came after the router block, referencing the
+   `const sidebar`/`const scrim` before their declaration threw a ReferenceError
+   (temporal dead zone) on every single page load, which killed the entire script
+   before any other event listener — FX Lab, Synth Lab, master volume, everything —
+   ever got attached. That was the real bug behind "nothing responds". */
+const sidebar = document.getElementById('sidebar');
+const scrim = document.getElementById('scrim');
+document.getElementById('menuBtn').addEventListener('click', () => { sidebar.classList.add('open'); scrim.classList.add('show'); });
+document.getElementById('sidebarClose').addEventListener('click', closeSidebarMobile);
+scrim.addEventListener('click', closeSidebarMobile);
+function closeSidebarMobile(){ sidebar.classList.remove('open'); scrim.classList.remove('show'); }
+
+/* ---------------- Router ---------------- */
+const routes = ['home','academy','listening','synth','fx','field','surgery','projects','ear','piano','analyzer','downloads','favorites','founder','contact','settings'];
+const titles = {
+  home:'Home', academy:'Academy', listening:'Listening Lab', synth:'Synth Lab', fx:'FX Lab',
+  field:'Field Recordings', surgery:'Sample Surgery', projects:'Projects', ear:'Ear Training',
+  piano:'Interactive Piano', analyzer:'Frequency Analyzer', downloads:'Downloads', favorites:'Favorites',
+  founder:'Founder', contact:'Contact', settings:'Settings'
+};
+function go(route){
+  if (!routes.includes(route)) route = 'home';
+  routes.forEach(r => {
+    const el = document.getElementById('view-'+r);
+    if (el) el.hidden = (r !== route);
+  });
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.route === route));
+  document.getElementById('topbarTitle').textContent = titles[route];
+  location.hash = route;
+  closeSidebarMobile();
+  if (route === 'projects') renderProjects();
+  if (route === 'favorites') renderFavorites();
+  if (route === 'downloads') renderDownloads();
+}
+document.querySelectorAll('[data-route]').forEach(el => {
+  el.addEventListener('click', () => go(el.dataset.route));
+});
+window.addEventListener('hashchange', () => go(location.hash.slice(1)));
+go(location.hash.slice(1) || 'home');
+
+/* ---------------- PWA install + service worker ---------------- */
+let deferredPrompt;
+const installBtn = document.getElementById('installBtn');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'inline-flex';
+});
+installBtn.addEventListener('click', async () => {
+  if (!deferredPrompt) { toast('Already installed, or install not available yet'); return; }
+  deferredPrompt.prompt();
+  await deferredPrompt.userChoice;
+  deferredPrompt = null;
+  installBtn.style.display = 'none';
+});
+window.addEventListener('appinstalled', () => toast('Installed. Frequency Oasis is now on your device.'));
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+
+/* ============================================================
+   AUDIO ENGINE CORE
+   ============================================================ */
+let actx = null;
+let masterGain = null;
+function ensureAudio(){
+  if (!actx){
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = actx.createGain();
+    masterGain.gain.value = 0.8;
+    masterGain.connect(actx.destination);
+  }
+  if (actx.state === 'suspended') actx.resume();
+  return actx;
+}
+document.getElementById('masterVol').addEventListener('input', (e) => {
+  const v = e.target.value;
+  document.getElementById('masterVolVal').textContent = v+'%';
+  if (masterGain) masterGain.gain.value = v/100;
+});
+
+/* Generic canvas time/freq scope, reused across labs */
+function drawScope(canvas, analyser){
+  const ctx = canvas.getContext('2d');
+  function resize(){ canvas.width = canvas.clientWidth * devicePixelRatio; canvas.height = canvas.clientHeight * devicePixelRatio; }
+  resize();
+  const data = new Uint8Array(analyser.frequencyBinCount);
+  let raf;
+  function draw(){
+    raf = requestAnimationFrame(draw);
+    analyser.getByteFrequencyData(data);
+    const w = canvas.width, h = canvas.height;
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,w,h);
+    const barW = w / data.length * 2.2;
+    let x = 0;
+    for (let i=0;i<data.length;i++){
+      const v = data[i]/255;
+      const barH = v*h;
+      ctx.fillStyle = `rgba(212,175,55,${0.25+v*0.6})`;
+      ctx.fillRect(x, h-barH, barW, barH);
+      x += barW+1;
+      if (x > w) break;
+    }
+  }
+  draw();
+  return () => cancelAnimationFrame(raf);
+}
+
+/* Simple, clean tone+noise bed — kept intentionally plain (not musical) for Ear Training,
+   where a busy drum/bass/chord loop would make it harder, not easier, to hear which
+   frequency band got boosted. */
+function makeToneBed(ctx){
+  const bufSize = ctx.sampleRate * 2;
+  const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+  const d = buf.getChannelData(0);
+  const notes = [220, 277.18, 329.63, 220, 246.94, 329.63];
+  for (let i=0;i<bufSize;i++){
+    const t = i/ctx.sampleRate;
+    const noteIdx = Math.floor(t*2) % notes.length;
+    const f = notes[noteIdx];
+    const env = Math.max(0, 1 - ((t*2) % 1) * 1.6);
+    d[i] = Math.sin(2*Math.PI*f*t) * env * 0.5 + (Math.random()*2-1) * 0.03;
+  }
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.loop = true;
+  return src;
+}
+
+/* Richer, actually-musical demo loop generator: kick + hats + bassline + chord pad,
+   offline-rendered into a stereo AudioBuffer so it can loop seamlessly at 100 BPM / 2 bars.
+   Used by FX Lab and Listening Lab so effects have real musical material to react to
+   instead of one dry oscillator+noise bed. */
+function makeMusicalLoop(ctx, kind){
+  kind = kind || 'groove';
+  const rate = ctx.sampleRate;
+  const bpm = 100;
+  const beat = 60/bpm;
+  const bars = 2, beatsPerBar = 4;
+  const dur = beat*beatsPerBar*bars;
+  const len = Math.max(1, Math.floor(rate*dur));
+  const buf = ctx.createBuffer(2, len, rate);
+  const L = buf.getChannelData(0);
+  const R = buf.getChannelData(1);
+
+  // Am - F - C - G, as [root,3rd,5th] triads in Hz
+  const chords = [
+    [220.00, 261.63, 329.63],
+    [174.61, 220.00, 261.63],
+    [130.81, 164.81, 196.00],
+    [196.00, 246.94, 293.66]
+  ];
+  const bassRoots = [110.00, 87.31, 65.41, 98.00];
+
+  function addKick(t0){
+    const d = 0.16, n = Math.floor(d*rate), start = Math.floor(t0*rate);
+    for (let i=0;i<n;i++){
+      const idx = start+i; if (idx<0||idx>=len) continue;
+      const t = i/rate;
+      const env = Math.exp(-t*22);
+      const freq = 150 - 110*Math.min(1, t/0.08);
+      const s = Math.sin(2*Math.PI*freq*t) * env * 0.9;
+      L[idx]+=s; R[idx]+=s;
+    }
+  }
+  function addHat(t0, vol){
+    const d = 0.05, n = Math.floor(d*rate), start = Math.floor(t0*rate);
+    for (let i=0;i<n;i++){
+      const idx = start+i; if (idx<0||idx>=len) continue;
+      const t = i/rate;
+      const env = Math.exp(-t*70);
+      const s = (Math.random()*2-1) * env * (vol||0.22);
+      L[idx]+=s; R[idx]+=s*0.9;
+    }
+  }
+  function addPluck(t0, freq, d, vol, wave){
+    const n = Math.floor(d*rate), start = Math.floor(t0*rate);
+    for (let i=0;i<n;i++){
+      const idx = start+i; if (idx<0||idx>=len) continue;
+      const t = i/rate;
+      const env = Math.exp(-t*4.5);
+      let s;
+      if (wave==='saw'){
+        s = 0;
+        for (let h=1; h<=4; h++) s += Math.sin(2*Math.PI*freq*h*t)/h;
+        s *= 0.5;
+      } else {
+        s = Math.sin(2*Math.PI*freq*t);
+      }
+      s *= env*(vol||0.3);
+      L[idx]+=s; R[idx]+=s;
+    }
+  }
+  function addPad(t0, freqs, d, vol){
+    const n = Math.floor(d*rate), start = Math.floor(t0*rate);
+    const atk = Math.min(0.4, d*0.3);
+    for (let i=0;i<n;i++){
+      const idx = start+i; if (idx<0||idx>=len) continue;
+      const t = i/rate;
+      const env = t<atk ? t/atk : Math.max(0, 1-((t-atk)/(d-atk))*0.9);
+      let s = 0;
+      freqs.forEach((f,fi)=>{
+        const vib = 1 + 0.002*Math.sin(2*Math.PI*(0.15+fi*0.05)*t);
+        s += Math.sin(2*Math.PI*f*vib*t);
+      });
+      s = (s/freqs.length) * env * (vol||0.22);
+      const pan = 0.15*Math.sin(2*Math.PI*0.07*t);
+      L[idx]+= s*(1-pan); R[idx]+= s*(1+pan);
+    }
+  }
+  function addNoiseBed(t0, d, vol){
+    const n = Math.floor(d*rate), start = Math.floor(t0*rate);
+    for (let i=0;i<n;i++){
+      const idx = start+i; if (idx<0||idx>=len) continue;
+      const s = (Math.random()*2-1)*(vol||0.25);
+      L[idx]+=s; R[idx]+=s;
+    }
+  }
+
+  if (kind==='noise'){
+    addNoiseBed(0, dur, 0.28);
+  } else if (kind==='ambient'){
+    for (let bar=0; bar<bars; bar++) addPad(bar*beatsPerBar*beat, chords[bar%chords.length], beatsPerBar*beat*1.05, 0.18);
+    addNoiseBed(0, dur, 0.03);
+  } else if (kind==='pad'){
+    for (let bar=0; bar<bars; bar++) addPad(bar*beatsPerBar*beat, chords[bar%chords.length], beatsPerBar*beat*1.05, 0.26);
+  } else if (kind==='bass'){
+    for (let bar=0; bar<bars; bar++){
+      const root = bassRoots[bar%bassRoots.length];
+      const barT = bar*beatsPerBar*beat;
+      addPluck(barT + 0*beat,   root,     beat*0.9, 0.45, 'saw');
+      addPluck(barT + 1.5*beat, root,     beat*0.4, 0.32, 'saw');
+      addPluck(barT + 2*beat,   root*1.5, beat*0.9, 0.40, 'saw');
+      addPluck(barT + 3.5*beat, root,     beat*0.4, 0.30, 'saw');
+    }
+  } else if (kind==='arp'){
+    for (let bar=0; bar<bars; bar++){
+      const c = chords[bar%chords.length];
+      const seq = [c[0]/2, c[1]/2, c[2]/2, c[0], c[1], c[2], c[0]*2, c[1]*2];
+      for (let s=0; s<8; s++) addPluck(bar*beatsPerBar*beat + s*(beat/2), seq[s], beat*0.42, 0.22);
+    }
+  } else { // 'groove' — drums + bass + chords together
+    for (let bar=0; bar<bars; bar++){
+      const barT = bar*beatsPerBar*beat;
+      addKick(barT + 0*beat);
+      addKick(barT + 2*beat);
+      for (let e=0; e<8; e++) addHat(barT + e*(beat/2), e%2===0?0.16:0.10);
+      const root = bassRoots[bar%bassRoots.length];
+      addPluck(barT + 0*beat, root, beat*0.9, 0.40, 'saw');
+      addPluck(barT + 2*beat, root, beat*0.9, 0.36, 'saw');
+      addPad(barT, chords[bar%chords.length], beatsPerBar*beat*1.05, 0.14);
+    }
+  }
+
+  // peak-normalize so every kind sits at a comparable, safe level
+  let peak = 0;
+  for (let i=0;i<len;i++) peak = Math.max(peak, Math.abs(L[i]), Math.abs(R[i]));
+  if (peak > 0.001){
+    const g = Math.min(1/peak, 6) * 0.85;
+    for (let i=0;i<len;i++){ L[i]*=g; R[i]*=g; }
+  }
+  for (let i=0;i<len;i++){ L[i]=Math.max(-1,Math.min(1,L[i])); R[i]=Math.max(-1,Math.min(1,R[i])); }
+
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.loop = true;
+  return src;
+}
+
+/* Coalesce rapid-fire calls (e.g. dragging a slider) into at most one call per animation
+   frame, so heavy DSP recompute (rebuilding a reverb impulse or a distortion curve) can't
+   pile up faster than the browser can actually render — that pileup was the real cause of
+   sliders feeling "late" under load. */
+function rafThrottle(fn){
+  let scheduled = false, lastArgs;
+  return (...args) => {
+    lastArgs = args;
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(() => { scheduled = false; fn(...lastArgs); });
+  };
+}
+
+/* Smoothly glide an AudioParam to a new value instead of jumping instantly — avoids
+   zipper/click noise and reads as "responsive" rather than "abrupt" when dragging. */
+function smoothParam(ctx, param, value, timeConstant){
+  const now = ctx.currentTime;
+  param.cancelScheduledValues(now);
+  param.setTargetAtTime(value, now, timeConstant || 0.012);
+}
+
+
+
+/* ============================================================
+   HOME — hero canvas ambient waveform + particles
+   ============================================================ */
+try{
+(function heroCanvas(){
+  const canvas = document.getElementById('hero-canvas');
+  const ctx = canvas.getContext('2d');
+  let w,h;
+  function resize(){
+    const r = canvas.parentElement.getBoundingClientRect();
+    w = canvas.width = r.width * devicePixelRatio;
+    h = canvas.height = r.height * devicePixelRatio;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+  const particles = Array.from({length:36}, () => ({
+    x: Math.random(), y: Math.random(), r: Math.random()*2+0.6, s: Math.random()*0.0003+0.0001, phase: Math.random()*Math.PI*2
+  }));
+  let t0 = performance.now();
+  function frame(now){
+    requestAnimationFrame(frame);
+    const t = (now - t0)/1000;
+    ctx.clearRect(0,0,w,h);
+    // waveform lines
+    for (let line=0; line<3; line++){
+      ctx.beginPath();
+      const amp = h*0.05*(1-line*0.25);
+      const yOff = h*(0.35+line*0.18);
+      for (let x=0; x<=w; x+=8){
+        const y = yOff + Math.sin(x*0.01 + t*1.2 + line) * amp * Math.sin(t*0.4+line);
+        if (x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.strokeStyle = `rgba(212,175,55,${0.18-line*0.04})`;
+      ctx.lineWidth = 1.4*devicePixelRatio;
+      ctx.stroke();
+    }
+    particles.forEach(p => {
+      p.phase += p.s*1000;
+      const x = p.x*w, y = p.y*h + Math.sin(p.phase)*10;
+      ctx.beginPath();
+      ctx.arc(x,y,p.r*devicePixelRatio,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(212,175,55,0.5)';
+      ctx.fill();
+    });
+  }
+  requestAnimationFrame(frame);
+})();
+}catch(err){ console.error('heroCanvas module failed to initialize:', err); }
+
+/* ---------------- Home rails ---------------- */
+const lessonData = {
+  beginner: ['What is Sound Design','Digital Audio','Waveforms','Frequency','Pitch','Gain','Mono vs Stereo','ADSR','Harmonics','Sampling','Nyquist','Aliasing','Bit Depth','Sample Rate'],
+  intermediate: ['EQ','Compression','Limiter','Saturation','Distortion','Delay','Reverb','Stereo Imaging','Layering','Parallel Processing','Transient Design','Automation'],
+  advanced: ['Granular','Physical Modeling','Spectral Processing','Resynthesis','Convolution','Impulse Responses','Mid Side Processing','Dynamic EQ','Multiband','Creative Routing','Noise Design','Film Atmospheres','Game Audio']
+};
+const fieldCategories = ['Forest','Ocean','Street','Town','Birds','Rain','Machines','Industrial','Wind','Nature'];
+
+function fillRail(id, items, onClick){
+  const el = document.getElementById(id);
+  el.innerHTML = '';
+  items.forEach(item => {
+    const d = document.createElement('div');
+    d.className = 'rail-item';
+    d.innerHTML = `<div class="ri-tag">${item.tag}</div><h4>${item.title}</h4><div class="ri-meta">${item.meta}</div>`;
+    d.addEventListener('click', onClick(item));
+    el.appendChild(d);
+  });
+}
+fillRail('rail-lessons', lessonData.beginner.slice(0,6).map(t=>({tag:'Beginner',title:t,meta:'Lesson · Interactive'})),
+  (item)=>()=>{ go('academy'); setTier('beginner'); openLessonByTitle(item.title); });
+fillRail('rail-discovery', fieldCategories.slice(0,6).map(t=>({tag:'Field Recording',title:t,meta:'Tap to hear'})),
+  (item)=>()=>{ go('field'); setTimeout(()=>playFieldCategory(item.title),50); });
+fillRail('rail-experiments', ['EQ','Compressor','Distortion','Reverb','Delay'].map(t=>({tag:'FX Lab',title:t,meta:'Live audio graph'})),
+  (item)=>()=>{ go('fx'); setTimeout(()=>setFxTab(item.title.toLowerCase().slice(0,4)),50); });
+
+/* ============================================================
+   ACADEMY
+   ============================================================ */
+let currentTier = 'beginner';
+const lessonContent = {
+  'What is Sound Design': {
+    body: `<p>Sound design is the craft of creating, shaping, and arranging sound to serve an emotional or functional purpose — a kick drum that hits harder, a UI beep that feels satisfying, a horror-film drone that unsettles you before anything happens on screen.</p>
+    <p>Unlike music composition (which arranges pitches and rhythms), sound design works one layer beneath that: the raw texture and character of the sound itself. Every tool in this lab — EQ, compression, distortion, reverb — is a sound designer's vocabulary.</p>`,
+    interactive: 'demo-sine-vs-noise',
+    quiz: { q:'Sound design is best described as:', options:['Writing melodies and chord progressions','Shaping the raw texture and character of a sound','Mixing a song\'s volume levels only','Mastering a finished track'], correct:1 }
+  }
+};
+function buildLessonRow(title, idx){
+  const has = !!lessonContent[title];
+  return `<div class="lesson-row" data-title="${title}">
+    <div class="lr-left"><span class="lr-num">${String(idx+1).padStart(2,'0')}</span><span class="lr-title">${title}</span></div>
+    <span class="lr-status ${has?'ready':''}">${has?'Interactive lesson':'In progress'}</span>
+  </div>`;
+}
+function renderLessonList(){
+  const list = lessonData[currentTier];
+  document.getElementById('lessonList').innerHTML = list.map(buildLessonRow).join('');
+  document.querySelectorAll('#lessonList .lesson-row').forEach(row => {
+    row.addEventListener('click', () => openLesson(row.dataset.title));
+  });
+}
+function setTier(t){
+  currentTier = t;
+  document.querySelectorAll('.tier-tab').forEach(tb => tb.classList.toggle('active', tb.dataset.tier===t));
+  renderLessonList();
+  document.getElementById('lessonDetail').classList.remove('open');
+}
+document.querySelectorAll('.tier-tab').forEach(tb => tb.addEventListener('click', ()=>setTier(tb.dataset.tier)));
+function openLessonByTitle(title){ openLesson(title); }
+function openLesson(title){
+  const detail = document.getElementById('lessonDetail');
+  const body = document.getElementById('lessonBody');
+  const data = lessonContent[title];
+  if (!data){
+    body.innerHTML = `<h2>${title}</h2><p class="placeholder-note">This lesson's interactive build is coming in the next pass — explanation, illustration, before/after audio, and quiz, matching the format of "What is Sound Design." Nothing faked in the meantime.</p>`;
+  } else {
+    body.innerHTML = `<h2>${title}</h2><div class="lesson-body">${data.body}</div>
+    <div class="lesson-audio-row">
+      <button class="btn" id="lessonPlayA">▶ Play Example A</button>
+      <button class="btn" id="lessonPlayB">▶ Play Example B</button>
+    </div>
+    <div class="quiz-box"><strong style="font-size:13px;color:var(--gold);">Quick check</strong><div style="margin-top:12px;">${data.quiz.options.map((o,i)=>`<button class="quiz-opt" data-i="${i}">${o}</button>`).join('')}</div></div>`;
+    document.getElementById('lessonPlayA').addEventListener('click', () => {
+      const ctx = ensureAudio();
+      const osc = ctx.createOscillator(); osc.type='sine'; osc.frequency.value=220;
+      const g = ctx.createGain(); g.gain.value=0.25;
+      osc.connect(g).connect(masterGain); osc.start(); osc.stop(ctx.currentTime+0.8);
+    });
+    document.getElementById('lessonPlayB').addEventListener('click', () => {
+      const ctx = ensureAudio();
+      const bufSize = ctx.sampleRate*0.8;
+      const buf = ctx.createBuffer(1,bufSize,ctx.sampleRate);
+      const d = buf.getChannelData(0);
+      for (let i=0;i<bufSize;i++) d[i] = (Math.random()*2-1)*0.25;
+      const src = ctx.createBufferSource(); src.buffer=buf;
+      src.connect(masterGain); src.start();
+    });
+    document.querySelectorAll('.quiz-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.quiz-opt').forEach(b=>b.classList.remove('correct','wrong'));
+        const i = +btn.dataset.i;
+        if (i === data.quiz.correct){ btn.classList.add('correct'); markLessonComplete(title); }
+        else btn.classList.add('wrong');
+      });
+    });
+  }
+  detail.classList.add('open');
+  detail.scrollIntoView({behavior:'smooth', block:'start'});
+}
+document.getElementById('lessonBack').addEventListener('click', () => document.getElementById('lessonDetail').classList.remove('open'));
+async function markLessonComplete(title){
+  const done = await idbGet('lessons_complete', []);
+  if (!done.includes(title)){ done.push(title); await idbSet('lessons_complete', done); toast('Lesson complete — saved to Projects'); }
+}
+renderLessonList();
+
+/* ============================================================
+   LISTENING LAB
+   ============================================================ */
+try{
+(function listeningLab(){
+  let node = null, filter = null, analyser = null, stopViz = null, lastProcessed = false;
+  let currentKind = 'groove';
+  document.getElementById('lBtnOriginal').addEventListener('click', () => playListening(false));
+  document.getElementById('lBtnProcessed').addEventListener('click', () => playListening(true));
+  document.getElementById('lBtnStop').addEventListener('click', stopListening);
+  document.getElementById('lWet').addEventListener('input', e => {
+    document.getElementById('lWetVal').textContent = e.target.value+'%';
+    if (filter && actx) smoothParam(actx, filter.frequency, 300 + (e.target.value/100)*6000, 0.02);
+  });
+  function stopListening(){ if (node){ try{node.stop();}catch(e){} node=null; } if (stopViz) stopViz(); }
+  function playListening(processed){
+    stopListening();
+    lastProcessed = processed;
+    const ctx = ensureAudio();
+    node = makeMusicalLoop(ctx, currentKind);
+    analyser = ctx.createAnalyser(); analyser.fftSize = 256;
+    if (processed){
+      filter = ctx.createBiquadFilter(); filter.type='lowpass';
+      filter.frequency.value = 300 + (document.getElementById('lWet').value/100)*6000;
+      node.connect(filter).connect(analyser).connect(masterGain);
+    } else {
+      node.connect(analyser).connect(masterGain);
+    }
+    node.start();
+    stopViz = drawScope(document.getElementById('listeningViz'), analyser);
+  }
+  fillPresetRow('listeningPresets', ['Groove Loop','Bassline','Chord Pad','Arpeggio'], (label)=>{
+    currentKind = {'Groove Loop':'groove','Bassline':'bass','Chord Pad':'pad','Arpeggio':'arp'}[label];
+    toast('Source: '+label);
+    if (node) playListening(lastProcessed); // swap the source immediately if already playing
+  });
+})();
+}catch(err){ console.error('listeningLab module failed to initialize:', err); }
+function fillPresetRow(id, items, onClick){
+  const el = document.getElementById(id); if (!el) return;
+  el.innerHTML = items.map(i=>`<button class="preset-btn">${i}</button>`).join('');
+  el.querySelectorAll('.preset-btn').forEach((b,i)=>b.addEventListener('click', ()=>{
+    el.querySelectorAll('.preset-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); onClick(items[i]);
+  }));
+}
+
+/* ============================================================
+   SYNTH LAB
+   ============================================================ */
+try{
+(function synthLab(){
+  let waveform = 'sine';
+  let filterNode, lfo, lfoGain, analyser, stopViz;
+  const voices = {};
+  document.querySelectorAll('#oscPicker .osc-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#oscPicker .osc-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); waveform = b.dataset.wave;
+  }));
+  function bindSlider(id, valId, fmt, onInput){
+    const el = document.getElementById(id);
+    el.addEventListener('input', () => { document.getElementById(valId).textContent = fmt(el.value); onInput(el.value); });
+  }
+  let cutoff=4000, q=1, aAtk=20, aDec=200, aSus=60, aRel=300, lfoRate=0, lfoDepth=0;
+  bindSlider('synthCutoff','synthCutoffVal', v=>v+'Hz', v=>{cutoff=+v; if(filterNode) filterNode.frequency.value=+v;});
+  bindSlider('synthQ','synthQVal', v=>(+v).toFixed(1), v=>{q=+v; if(filterNode) filterNode.Q.value=+v;});
+  bindSlider('synthA','synthAVal', v=>v+'ms', v=>aAtk=+v);
+  bindSlider('synthD','synthDVal', v=>v+'ms', v=>aDec=+v);
+  bindSlider('synthS','synthSVal', v=>v+'%', v=>aSus=+v);
+  bindSlider('synthR','synthRVal', v=>v+'ms', v=>aRel=+v);
+  bindSlider('synthLfoRate','synthLfoRateVal', v=>(+v).toFixed(1)+'Hz', v=>{lfoRate=+v; if(lfo) lfo.frequency.value=+v;});
+  bindSlider('synthLfoDepth','synthLfoDepthVal', v=>v, v=>{lfoDepth=+v; if(lfoGain) lfoGain.gain.value=+v;});
+
+  function ensureGraph(){
+    const ctx = ensureAudio();
+    if (!filterNode){
+      filterNode = ctx.createBiquadFilter(); filterNode.type='lowpass'; filterNode.frequency.value=cutoff; filterNode.Q.value=q;
+      analyser = ctx.createAnalyser(); analyser.fftSize=512;
+      filterNode.connect(analyser).connect(masterGain);
+      lfo = ctx.createOscillator(); lfo.frequency.value=lfoRate;
+      lfoGain = ctx.createGain(); lfoGain.gain.value=lfoDepth;
+      lfo.connect(lfoGain).connect(filterNode.frequency);
+      lfo.start();
+      stopViz = drawScope(document.getElementById('synthViz'), analyser);
+    }
+    return ctx;
+  }
+  function noteOn(freq, id){
+    const ctx = ensureGraph();
+    const osc = ctx.createOscillator(); osc.type = waveform; osc.frequency.value = freq;
+    const env = ctx.createGain(); env.gain.setValueAtTime(0, ctx.currentTime);
+    const peak = 0.3, sus = peak*(aSus/100);
+    env.gain.linearRampToValueAtTime(peak, ctx.currentTime + aAtk/1000);
+    env.gain.linearRampToValueAtTime(sus, ctx.currentTime + aAtk/1000 + aDec/1000);
+    osc.connect(env).connect(filterNode);
+    osc.start();
+    voices[id] = {osc, env};
+  }
+  function noteOff(id){
+    const v = voices[id]; if (!v) return;
+    const ctx = actx;
+    v.env.gain.cancelScheduledValues(ctx.currentTime);
+    v.env.gain.setValueAtTime(v.env.gain.value, ctx.currentTime);
+    v.env.gain.linearRampToValueAtTime(0, ctx.currentTime + aRel/1000);
+    v.osc.stop(ctx.currentTime + aRel/1000 + 0.02);
+    delete voices[id];
+  }
+  // build keyboard: 2 octaves from C3
+  const whiteNotes = ['C','D','E','F','G','A','B'];
+  const blackAfter = {C:'C#',D:'D#',F:'F#',G:'G#',A:'A#'};
+  function noteFreq(semitonesFromC4){ return 261.63 * Math.pow(2, semitonesFromC4/12); }
+  function buildKeyboard(elId, octaves, withComputerKeys){
+    const el = document.getElementById(elId);
+    el.style.position='relative';
+    let whiteIdx = 0; const totalWhite = whiteNotes.length*octaves;
+    const semis = {C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+    const computerKeyMap = ['a','w','s','e','d','f','t','g','y','h','u','j','k'];
+    let ckIdx = 0;
+    for (let oct=0; oct<octaves; oct++){
+      whiteNotes.forEach(n => {
+        const key = document.createElement('div'); key.className='key';
+        key.style.width = (100/totalWhite)+'%';
+        const semitone = semis[n] + (oct-1)*12;
+        const freq = noteFreq(semitone);
+        const id = n+oct;
+        attachKey(key, freq, id);
+        el.appendChild(key);
+        if (blackAfter[n]){
+          const bkey = document.createElement('div'); bkey.className='key black';
+          bkey.style.left = ((whiteIdx+1)*(100/totalWhite) - (100/totalWhite)*0.32)+'%';
+          const bfreq = noteFreq(semitone+1);
+          attachKey(bkey, bfreq, id+'s');
+          el.appendChild(bkey);
+        }
+        whiteIdx++;
+      });
+    }
+    function attachKey(el, freq, id){
+      el.addEventListener('mousedown', ()=>{ el.classList.add('pressed'); noteOn(freq, id); });
+      el.addEventListener('mouseup', ()=>{ el.classList.remove('pressed'); noteOff(id); });
+      el.addEventListener('mouseleave', ()=>{ if(el.classList.contains('pressed')){el.classList.remove('pressed'); noteOff(id);} });
+      el.addEventListener('touchstart', (e)=>{ e.preventDefault(); el.classList.add('pressed'); noteOn(freq,id); });
+      el.addEventListener('touchend', (e)=>{ e.preventDefault(); el.classList.remove('pressed'); noteOff(id); });
+    }
+  }
+  buildKeyboard('synthKeyboard', 2, true);
+  buildKeyboard('pianoKeyboard', 2, false);
+
+  // computer keyboard binding for synth (row a s d f g h j k, w e t y u)
+  const keyToNote = {a:'C1',w:'C1s',s:'D1',e:'D1s',d:'E1',f:'F1',t:'F1s',g:'G1',y:'G1s',h:'A1',u:'A1s',j:'B1',k:'C2'};
+  const activeKeys = {};
+  window.addEventListener('keydown', (e) => {
+    if (document.getElementById('view-synth').hidden) return;
+    const n = keyToNote[e.key.toLowerCase()];
+    if (n && !activeKeys[e.key]){
+      activeKeys[e.key]=true;
+      const semis = {C:0,'C#':1,D:2,'D#':3,E:4,F:5,'F#':6,G:7,'G#':8,A:9,'A#':10,B:11};
+      // parse note like C1 or C1s(harp)
+      const m = n.match(/^([A-G])(\d)(s?)$/);
+      const base = semis[m[1] + (m[3]?'#':'')];
+      const oct = +m[2];
+      const freq = noteFreq(base + (oct-1)*12);
+      noteOn(freq, n);
+    }
+  });
+  window.addEventListener('keyup', (e) => {
+    const n = keyToNote[e.key.toLowerCase()];
+    if (n){ delete activeKeys[e.key]; noteOff(n); }
+  });
+})();
+}catch(err){ console.error('synthLab module failed to initialize:', err); }
+
+/* ============================================================
+   FX LAB
+   ============================================================ */
+try{
+(function fxLab(){
+  let source=null, playing=false;
+  let eqBands=[], compNode=null, distNode=null, verbNode=null, delayNodes=null;
+  let activePanel = 'eq';
+  let stopVizFns = {};
+  let demoKind = 'groove';
+
+  document.querySelectorAll('#fxTabs .lab-tab').forEach(tab => tab.addEventListener('click', () => setFxTab(tab.dataset.fx)));
+  window.setFxTab = setFxTab;
+  function setFxTab(name){
+    activePanel = name;
+    document.querySelectorAll('#fxTabs .lab-tab').forEach(t => t.classList.toggle('active', t.dataset.fx===name));
+    document.querySelectorAll('.lab-panel').forEach(p => p.classList.toggle('active', p.id === 'fxpanel-'+name));
+  }
+
+  document.getElementById('fxPlay').addEventListener('click', playFxSource);
+  document.getElementById('fxStop').addEventListener('click', stopFxSource);
+
+  const sourceLabels = {groove:'Groove Loop', bass:'Bassline', pad:'Chord Pad', arp:'Arpeggio', ambient:'Ambient Texture', noise:'Noise (for testing)'};
+  document.querySelectorAll('#fxSourceTypes .preset-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#fxSourceTypes .preset-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    demoKind = b.dataset.source;
+    document.getElementById('fxSourceTag').textContent = 'Source: '+sourceLabels[demoKind];
+    if (playing) playFxSource(); // swap instantly if already playing, instead of requiring Stop/Play again
+  }));
+
+  function buildChain(ctx){
+    // EQ: 3-band parametric, each a BiquadFilterNode in series
+    eqBands = [
+      Object.assign(ctx.createBiquadFilter(), {type:'peaking'}),
+      Object.assign(ctx.createBiquadFilter(), {type:'peaking'}),
+      Object.assign(ctx.createBiquadFilter(), {type:'peaking'})
+    ];
+    eqBands[0].frequency.value=120; eqBands[1].frequency.value=1000; eqBands[2].frequency.value=6000;
+    eqBands.forEach(b=>{b.Q.value=1; b.gain.value=0;});
+
+    compNode = ctx.createDynamicsCompressor();
+    distNode = ctx.createWaveShaper();
+    const distTone = ctx.createBiquadFilter(); distTone.type='lowpass'; distTone.frequency.value=6000;
+    distNode._tone = distTone;
+
+    verbNode = ctx.createConvolver();
+    const verbWet = ctx.createGain(); verbWet.gain.value=0.35;
+    const verbDry = ctx.createGain(); verbDry.gain.value=1;
+    verbNode._wet = verbWet; verbNode._dry = verbDry;
+    setVerbImpulse(ctx, 'hall', 2.4);
+
+    const dLeft = ctx.createDelay(2), dRight = ctx.createDelay(2);
+    const dFb = ctx.createGain(); dFb.gain.value=0.35;
+    const dWet = ctx.createGain(); dWet.gain.value=0.3;
+    const dDry = ctx.createGain(); dDry.gain.value=1;
+    const panL = ctx.createStereoPanner(); panL.pan.value=-0.6;
+    const panR = ctx.createStereoPanner(); panR.pan.value=0.6;
+    delayNodes = {dLeft,dRight,dFb,dWet,dDry,panL,panR};
+  }
+
+  function setVerbImpulse(ctx, type, decay){
+    const rate = ctx.sampleRate;
+    const len = Math.max(1, Math.floor(rate * decay));
+    const impulse = ctx.createBuffer(2, len, rate);
+    const shapeFor = {
+      room: 1.2, hall: 2, church: 3.2, cathedral: 4.5, plate: 1.6, spring: 1.0, ambient: 5
+    };
+    const power = shapeFor[type] || 2;
+    for (let ch=0; ch<2; ch++){
+      const d = impulse.getChannelData(ch);
+      for (let i=0;i<len;i++){
+        d[i] = (Math.random()*2-1) * Math.pow(1 - i/len, power);
+      }
+    }
+    verbNode.buffer = impulse;
+  }
+
+  function routeGraph(ctx, src){
+    // disconnect everything first by creating fresh nodes each play (simplicity over micro-optimization)
+    let node = src;
+    if (activePanel === 'eq'){
+      eqBands.forEach(b => { node.connect(b); node = b; });
+    } else if (activePanel === 'comp'){
+      node.connect(compNode); node = compNode;
+    } else if (activePanel === 'dist'){
+      node.connect(distNode); distNode.connect(distNode._tone); node = distNode._tone;
+    } else if (activePanel === 'verb'){
+      const merge = ctx.createGain();
+      node.connect(verbNode._dry); verbNode._dry.connect(merge);
+      node.connect(verbNode); verbNode.connect(verbNode._wet); verbNode._wet.connect(merge);
+      node = merge;
+    } else if (activePanel === 'delay'){
+      const {dLeft,dRight,dFb,dWet,dDry,panL,panR} = delayNodes;
+      const merge = ctx.createGain();
+      node.connect(dDry); dDry.connect(merge);
+      node.connect(dLeft); dLeft.connect(panL); panL.connect(dWet); dWet.connect(merge);
+      dLeft.connect(dFb); dFb.connect(dRight); dRight.connect(panR); panR.connect(dWet);
+      dFb.connect(dLeft);
+      node = merge;
+    }
+    return node;
+  }
+
+  const analysers = {};
+  function playFxSource(){
+    stopFxSource();
+    const ctx = ensureAudio();
+    if (!eqBands.length) buildChain(ctx);
+    source = makeMusicalLoop(ctx, demoKind);
+    const out = routeGraph(ctx, source);
+    const analyser = ctx.createAnalyser(); analyser.fftSize=512;
+    out.connect(analyser).connect(masterGain);
+    source.start();
+    playing = true;
+    const vizId = {eq:'eqViz',comp:'compViz',dist:'distViz',verb:'verbViz',delay:'delayViz'}[activePanel];
+    if (stopVizFns[vizId]) stopVizFns[vizId]();
+    stopVizFns[vizId] = drawScope(document.getElementById(vizId), analyser);
+  }
+  function stopFxSource(){
+    if (source){ try{source.stop();}catch(e){} source=null; }
+    playing=false;
+  }
+
+  // EQ controls
+  let activeBand = 0;
+  const bandPicker = document.getElementById('eqBandPicker');
+  bandPicker.innerHTML = ['Low 120Hz','Mid 1kHz','High 6kHz'].map((l,i)=>`<button class="eq-band-btn ${i===0?'active':''}" data-i="${i}">${l}</button>`).join('');
+  bandPicker.querySelectorAll('.eq-band-btn').forEach(b=>b.addEventListener('click',()=>{
+    activeBand = +b.dataset.i;
+    bandPicker.querySelectorAll('.eq-band-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    if (eqBands.length){
+      document.getElementById('eqFreq').value = eqBands[activeBand].frequency.value;
+      document.getElementById('eqGain').value = eqBands[activeBand].gain.value;
+      document.getElementById('eqQ').value = eqBands[activeBand].Q.value;
+      updateEqLabels();
+    }
+  }));
+  function updateEqLabels(){
+    document.getElementById('eqFreqVal').textContent = document.getElementById('eqFreq').value+'Hz';
+    document.getElementById('eqGainVal').textContent = document.getElementById('eqGain').value+'dB';
+    document.getElementById('eqQVal').textContent = (+document.getElementById('eqQ').value).toFixed(1);
+  }
+  ['eqFreq','eqGain','eqQ'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      updateEqLabels();
+      if (!eqBands.length) return;
+      const b = eqBands[activeBand];
+      smoothParam(actx, b.frequency, +document.getElementById('eqFreq').value);
+      smoothParam(actx, b.gain, +document.getElementById('eqGain').value);
+      smoothParam(actx, b.Q, +document.getElementById('eqQ').value);
+    });
+  });
+  document.getElementById('eqReset').addEventListener('click', () => {
+    if (!eqBands.length) return;
+    eqBands.forEach(b=>b.gain.value=0);
+    document.getElementById('eqGain').value = 0; updateEqLabels();
+    toast('EQ bands reset');
+  });
+
+  // Compressor controls
+  const compMap = {compThresh:'threshold', compRatio:'ratio', compAttack:'attack', compRelease:'release', compKnee:'knee'};
+  Object.keys(compMap).forEach(id => {
+    document.getElementById(id).addEventListener('input', (e) => {
+      const suffix = {compThresh:'dB',compRatio:':1',compAttack:'ms',compRelease:'ms',compKnee:'dB',compMakeup:'dB'}[id];
+      document.getElementById(id+'Val').textContent = e.target.value+suffix;
+      if (!compNode) return;
+      const prop = compMap[id];
+      const val = +e.target.value;
+      const finalVal = (prop==='attack'||prop==='release') ? val/1000 : val;
+      smoothParam(actx, compNode[prop], finalVal, 0.008);
+    });
+  });
+  document.getElementById('compMakeup').addEventListener('input', e => {
+    document.getElementById('compMakeupVal').textContent = e.target.value+'dB';
+  });
+
+  // Distortion controls
+  function makeCurve(type, driveAmt){
+    const n = 8192; const curve = new Float32Array(n);
+    const k = driveAmt/100;
+    for (let i=0;i<n;i++){
+      const x = i/(n-1)*2-1;
+      let y;
+      switch(type){
+        case 'tube': y = Math.tanh(x*(1+k*8)); break;
+        case 'tape': y = Math.tanh(x*(1+k*4)) * (1-Math.abs(x)*0.1); break;
+        case 'soft': y = x - (k*0.6)*Math.pow(x,3); break;
+        case 'hard': { const lim = 1-k*0.85; y = Math.max(-lim, Math.min(lim, x))/lim; break; }
+        case 'bitcrush': { const steps = Math.max(2, 32*(1-k)); y = Math.round(x*steps)/steps; break; }
+        case 'foldback': { let t = x*(1+k*6); y = Math.abs(((t+1)%4)-2)-1; break; }
+        default: y = x;
+      }
+      curve[i] = Math.max(-1, Math.min(1, y));
+    }
+    return curve;
+  }
+  let distType = 'tube', distDrive = 30, distMix = 100;
+  function updateDistCurve(){
+    if (!distNode) return;
+    distNode.curve = makeCurve(distType, distDrive);
+    smoothParam(actx, distNode._tone.frequency, +document.getElementById('distTone').value, 0.008);
+  }
+  const throttledUpdateDistCurve = rafThrottle(updateDistCurve);
+  document.querySelectorAll('#distTypes .preset-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#distTypes .preset-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); distType = b.dataset.dist; updateDistCurve();
+  }));
+  document.getElementById('distDrive').addEventListener('input', e => { distDrive=+e.target.value; document.getElementById('distDriveVal').textContent=e.target.value+'%'; throttledUpdateDistCurve(); });
+  document.getElementById('distTone').addEventListener('input', e => { document.getElementById('distToneVal').textContent=e.target.value+'Hz'; throttledUpdateDistCurve(); });
+  document.getElementById('distMix').addEventListener('input', e => { document.getElementById('distMixVal').textContent=e.target.value+'%'; });
+
+  // Reverb controls
+  let verbType='hall';
+  const throttledVerbImpulse = rafThrottle((type, decay) => { if (actx) setVerbImpulse(actx, type, decay); });
+  document.querySelectorAll('#verbTypes .preset-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#verbTypes .preset-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); verbType = b.dataset.verb;
+    if (actx) setVerbImpulse(actx, verbType, +document.getElementById('verbDecay').value);
+  }));
+  document.getElementById('verbDecay').addEventListener('input', e => {
+    document.getElementById('verbDecayVal').textContent = (+e.target.value).toFixed(1)+'s';
+    throttledVerbImpulse(verbType, +e.target.value);
+  });
+  document.getElementById('verbPredelay').addEventListener('input', e => document.getElementById('verbPredelayVal').textContent=e.target.value+'ms');
+  document.getElementById('verbWet').addEventListener('input', e => {
+    document.getElementById('verbWetVal').textContent=e.target.value+'%';
+    if (verbNode) {
+      smoothParam(actx, verbNode._wet.gain, e.target.value/100, 0.008);
+      smoothParam(actx, verbNode._dry.gain, 1-(e.target.value/100)*0.6, 0.008);
+    }
+  });
+
+  // Delay controls
+  document.querySelectorAll('#delayTypes .preset-btn').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#delayTypes .preset-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); applyDelayType(b.dataset.delay);
+  }));
+  function applyDelayType(type){
+    if (!delayNodes) return;
+    const bpm = +document.getElementById('delayTempo').value;
+    const beat = 60/bpm;
+    const map = { quarter:beat, eighth:beat/2, sixteenth:beat/4, pingpong:beat/2, tape:beat/2, reverse:beat/2, modulated:beat/2 };
+    const t = map[type] ?? beat/2;
+    delayNodes.dLeft.delayTime.value = t;
+    delayNodes.dRight.delayTime.value = type==='pingpong' ? t : t*1.001;
+  }
+  document.getElementById('delayTempo').addEventListener('input', e => {
+    document.getElementById('delayTempoVal').textContent = e.target.value+' BPM';
+    const active = document.querySelector('#delayTypes .preset-btn.active');
+    applyDelayType(active ? active.dataset.delay : 'quarter');
+  });
+  document.getElementById('delayFeedback').addEventListener('input', e => {
+    document.getElementById('delayFeedbackVal').textContent = e.target.value+'%';
+    if (delayNodes) smoothParam(actx, delayNodes.dFb.gain, e.target.value/100, 0.008);
+  });
+  document.getElementById('delayWet').addEventListener('input', e => {
+    document.getElementById('delayWetVal').textContent = e.target.value+'%';
+    if (delayNodes) smoothParam(actx, delayNodes.dWet.gain, e.target.value/100, 0.008);
+  });
+
+  // Build the audio graph immediately, not lazily on first Play.
+  // (Previously eqBands/compNode/distNode/verbNode/delayNodes only existed after
+  // playFxSource() ran once, so every slider/preset handler's `if (!eqBands.length) return;`
+  // guard silently no-op'd until Play was pressed — that's the "select does nothing" bug.
+  // This must run last in the module, after distType/delayNodes/etc. are declared.)
+  try{
+    const ctx = ensureAudio();
+    buildChain(ctx);
+    updateDistCurve();
+    applyDelayType('quarter');
+  }catch(err){
+    console.error('FX Lab: could not pre-build audio graph', err);
+  }
+})();
+}catch(err){ console.error('fxLab module failed to initialize:', err); }
+
+/* ============================================================
+   FIELD RECORDINGS
+   ============================================================ */
+const fieldInfo = {
+  Forest: 'Layered wind through leaves and distant birdcall. In a mix, filtered forest noise becomes a natural bed under ambient pads.',
+  Ocean: 'Slow rolling low-frequency noise, amplitude-modulated like waves. Producers pitch this down for cinematic sub-rumble.',
+  Street: 'Broadband texture with irregular transient hits — footsteps, distant traffic. Great source for lo-fi hip-hop dust.',
+  Town: 'A wash of overlapping human activity. High-passed and reverbed, this becomes background atmosphere in game audio.',
+  Birds: 'Short pitched chirps — rapid frequency sweeps. Sampled and pitched down, they become plucky synth textures.',
+  Rain: 'Dense white noise with random impulses. Low-passed rain is a classic lo-fi and ambient layer.',
+  Machines: 'Steady low drones with harmonic overtones — the basis of industrial and dark-techno textures.',
+  Industrial: 'Metallic resonances and rhythmic clanks. Resample and pitch-shift for percussive found-sound hits.',
+  Wind: 'Filtered noise with slow-moving cutoff — the oldest trick for building tension in a film score.',
+  Nature: 'A broad category blending all organic textures above into one evolving pad.'
+};
+const fieldGrid = document.getElementById('fieldGrid');
+fieldGrid.innerHTML = fieldCategories.map(c=>`<div class="map-pin" data-cat="${c}"><div class="pin-icon">🎙</div>${c}</div>`).join('');
+let fieldStop = null;
+function playFieldCategory(cat){
+  if (fieldStop) fieldStop();
+  const ctx = ensureAudio();
+  const bufSize = ctx.sampleRate*3;
+  const buf = ctx.createBuffer(1,bufSize,ctx.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i=0;i<bufSize;i++) d[i] = Math.random()*2-1;
+  const src = ctx.createBufferSource(); src.buffer=buf; src.loop=true;
+  const filter = ctx.createBiquadFilter();
+  const paramsByCat = {
+    Forest:{type:'bandpass',freq:1800,q:0.6}, Ocean:{type:'lowpass',freq:250,q:0.7},
+    Street:{type:'bandpass',freq:900,q:0.4}, Town:{type:'bandpass',freq:1200,q:0.3},
+    Birds:{type:'highpass',freq:3000,q:1}, Rain:{type:'highpass',freq:2000,q:0.3},
+    Machines:{type:'lowpass',freq:180,q:2}, Industrial:{type:'bandpass',freq:600,q:3},
+    Wind:{type:'lowpass',freq:400,q:1}, Nature:{type:'bandpass',freq:1000,q:0.5}
+  };
+  const p = paramsByCat[cat] || {type:'lowpass',freq:1000,q:1};
+  filter.type = p.type; filter.frequency.value = p.freq; filter.Q.value = p.q;
+  const g = ctx.createGain(); g.gain.value = 0.35;
+  src.connect(filter).connect(g).connect(masterGain);
+  src.start();
+  fieldStop = () => { try{src.stop();}catch(e){} };
+  const detail = document.getElementById('fieldDetail');
+  detail.style.display='block';
+  detail.innerHTML = `<h3 style="margin-bottom:10px;">${cat}</h3><p style="color:var(--grey);font-size:14px;line-height:1.7;">${fieldInfo[cat]}</p><button class="btn ghost small ear-stop-field" style="margin-top:14px;">■ Stop</button>`;
+  detail.querySelector('.ear-stop-field').addEventListener('click', () => { if (fieldStop) fieldStop(); });
+}
+window.playFieldCategory = playFieldCategory;
+fieldGrid.querySelectorAll('.map-pin').forEach(pin => pin.addEventListener('click', () => playFieldCategory(pin.dataset.cat)));
+
+/* ============================================================
+   SAMPLE SURGERY
+   ============================================================ */
+try{
+(function surgery(){
+  let audioBuffer = null;
+  const vizCanvas = document.getElementById('surgeryViz');
+  function drawWave(buf){
+    const ctx = vizCanvas.getContext('2d');
+    vizCanvas.width = vizCanvas.clientWidth*devicePixelRatio; vizCanvas.height = vizCanvas.clientHeight*devicePixelRatio;
+    const w=vizCanvas.width,h=vizCanvas.height;
+    ctx.fillStyle='#000'; ctx.fillRect(0,0,w,h);
+    if (!buf) return;
+    const d = buf.getChannelData(0);
+    const step = Math.ceil(d.length/w);
+    ctx.strokeStyle='#D4AF37'; ctx.lineWidth=1*devicePixelRatio; ctx.beginPath();
+    for (let x=0;x<w;x++){
+      let min=1,max=-1;
+      for (let i=0;i<step;i++){ const v=d[x*step+i]||0; if(v<min)min=v; if(v>max)max=v; }
+      ctx.moveTo(x,(1+min)*h/2); ctx.lineTo(x,(1+max)*h/2);
+    }
+    ctx.stroke();
+  }
+  document.getElementById('surgeryTestTone').addEventListener('click', () => {
+    const ctx = ensureAudio();
+    const len = ctx.sampleRate*1.5;
+    audioBuffer = ctx.createBuffer(1,len,ctx.sampleRate);
+    const d = audioBuffer.getChannelData(0);
+    for (let i=0;i<len;i++){ const t=i/ctx.sampleRate; d[i]=Math.sin(2*Math.PI*440*t)*Math.sin(Math.PI*t/1.5); }
+    drawWave(audioBuffer);
+    toast('Test tone loaded');
+  });
+  document.getElementById('surgeryFile').addEventListener('change', async (e) => {
+    const file = e.target.files[0]; if (!file) return;
+    const ctx = ensureAudio();
+    const arr = await file.arrayBuffer();
+    audioBuffer = await ctx.decodeAudioData(arr);
+    drawWave(audioBuffer);
+    toast('Loaded '+file.name);
+  });
+  function needBuf(){ if (!audioBuffer){ toast('Load a WAV or use the test tone first'); return false; } return true; }
+  document.getElementById('surgReverse').addEventListener('click', () => {
+    if (!needBuf()) return;
+    for (let ch=0; ch<audioBuffer.numberOfChannels; ch++) audioBuffer.getChannelData(ch).reverse();
+    drawWave(audioBuffer); toast('Reversed');
+  });
+  document.getElementById('surgNormalize').addEventListener('click', () => {
+    if (!needBuf()) return;
+    let peak=0;
+    for (let ch=0; ch<audioBuffer.numberOfChannels; ch++){
+      const d = audioBuffer.getChannelData(ch);
+      for (let i=0;i<d.length;i++) peak = Math.max(peak, Math.abs(d[i]));
+    }
+    if (peak>0){
+      const gain = 0.98/peak;
+      for (let ch=0; ch<audioBuffer.numberOfChannels; ch++){
+        const d = audioBuffer.getChannelData(ch);
+        for (let i=0;i<d.length;i++) d[i]*=gain;
+      }
+    }
+    drawWave(audioBuffer); toast('Normalized');
+  });
+  document.getElementById('surgFade').addEventListener('click', () => {
+    if (!needBuf()) return;
+    const fadeLen = Math.floor(audioBuffer.sampleRate*0.15);
+    for (let ch=0; ch<audioBuffer.numberOfChannels; ch++){
+      const d = audioBuffer.getChannelData(ch);
+      for (let i=0;i<fadeLen;i++){ d[i]*= i/fadeLen; d[d.length-1-i]*= i/fadeLen; }
+    }
+    drawWave(audioBuffer); toast('Fade in/out applied');
+  });
+  let pitchRate = 1;
+  document.getElementById('surgPitchUp').addEventListener('click', () => { pitchRate = Math.min(2, pitchRate*1.12); toast('Pitch up (playback rate '+pitchRate.toFixed(2)+'x)'); });
+  document.getElementById('surgPitchDown').addEventListener('click', () => { pitchRate = Math.max(0.5, pitchRate/1.12); toast('Pitch down (playback rate '+pitchRate.toFixed(2)+'x)'); });
+  document.getElementById('surgPlay').addEventListener('click', () => {
+    if (!needBuf()) return;
+    const ctx = ensureAudio();
+    const src = ctx.createBufferSource(); src.buffer=audioBuffer; src.playbackRate.value=pitchRate;
+    src.connect(masterGain); src.start();
+  });
+  document.getElementById('surgExport').addEventListener('click', () => {
+    if (!needBuf()) return;
+    const blob = bufferToWav(audioBuffer);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href=url; a.download='sample-surgery-export.wav'; a.click();
+    saveDownloadRecord('sample-surgery-export.wav');
+    toast('Exported WAV');
+  });
+  function bufferToWav(buffer){
+    const numCh = buffer.numberOfChannels, len = buffer.length*numCh*2+44;
+    const arrBuf = new ArrayBuffer(len); const view = new DataView(arrBuf);
+    function writeStr(o,s){ for (let i=0;i<s.length;i++) view.setUint8(o+i, s.charCodeAt(i)); }
+    writeStr(0,'RIFF'); view.setUint32(4, len-8, true); writeStr(8,'WAVE');
+    writeStr(12,'fmt '); view.setUint32(16,16,true); view.setUint16(20,1,true);
+    view.setUint16(22,numCh,true); view.setUint32(24,buffer.sampleRate,true);
+    view.setUint32(28,buffer.sampleRate*numCh*2,true); view.setUint16(32,numCh*2,true); view.setUint16(34,16,true);
+    writeStr(36,'data'); view.setUint32(40, len-44, true);
+    let offset=44;
+    for (let i=0;i<buffer.length;i++){
+      for (let ch=0; ch<numCh; ch++){
+        let s = Math.max(-1, Math.min(1, buffer.getChannelData(ch)[i]));
+        view.setInt16(offset, s<0? s*0x8000 : s*0x7FFF, true); offset+=2;
+      }
+    }
+    return new Blob([arrBuf], {type:'audio/wav'});
+  }
+})();
+}catch(err){ console.error('surgery module failed to initialize:', err); }
+async function saveDownloadRecord(name){
+  const list = await idbGet('downloads', []);
+  list.unshift({name, date: new Date().toISOString()});
+  await idbSet('downloads', list.slice(0,30));
+}
+
+/* ============================================================
+   EAR TRAINING
+   ============================================================ */
+try{
+(function earTraining(){
+  const bands = [{label:'Low (120Hz)', f:120},{label:'Low-Mid (500Hz)', f:500},{label:'Mid (1.5kHz)', f:1500},{label:'High-Mid (4kHz)', f:4000},{label:'High (10kHz)', f:10000}];
+  let correctIdx = 0, score=0, streak=0, best=0;
+  (async () => {
+    const saved = await idbGet('ear_stats', {score:0,streak:0,best:0});
+    score=saved.score; streak=saved.streak; best=saved.best; updateScore();
+  })();
+  function updateScore(){ document.getElementById('earScore').textContent = `Score: ${score} · Streak: ${streak} · Best: ${best}`; }
+  function newRound(){
+    correctIdx = Math.floor(Math.random()*bands.length);
+    const opts = document.getElementById('earOptions');
+    opts.innerHTML = bands.map((b,i)=>`<button class="quiz-opt" data-i="${i}">${b.label}</button>`).join('');
+    opts.querySelectorAll('.quiz-opt').forEach(btn => btn.addEventListener('click', () => guess(+btn.dataset.i)));
+    document.getElementById('earFeedback').textContent = 'Press play, then guess which band was boosted.';
+  }
+  document.getElementById('earPlay').addEventListener('click', () => {
+    newRound();
+    const ctx = ensureAudio();
+    const src = makeToneBed(ctx);
+    const eq = ctx.createBiquadFilter(); eq.type='peaking'; eq.frequency.value=bands[correctIdx].f; eq.Q.value=1.2; eq.gain.value=14;
+    src.connect(eq).connect(masterGain);
+    src.start(); src.stop(ctx.currentTime+1.6);
+  });
+  async function guess(i){
+    document.querySelectorAll('#earOptions .quiz-opt').forEach(b=>b.classList.remove('correct','wrong'));
+    const opts = document.querySelectorAll('#earOptions .quiz-opt');
+    if (i===correctIdx){
+      opts[i].classList.add('correct');
+      score++; streak++; best=Math.max(best,streak);
+      document.getElementById('earFeedback').textContent = 'Correct.';
+    } else {
+      opts[i].classList.add('wrong'); opts[correctIdx].classList.add('correct');
+      streak=0;
+      document.getElementById('earFeedback').textContent = 'Not quite — correct answer highlighted.';
+    }
+    updateScore();
+    await idbSet('ear_stats', {score,streak,best});
+  }
+})();
+}catch(err){ console.error('earTraining module failed to initialize:', err); }
+
+/* ============================================================
+   FREQUENCY ANALYZER
+   ============================================================ */
+try{
+(function analyzerLab(){
+  let stream=null, srcNode=null, stopViz=null, toneOsc=null;
+  document.getElementById('analyzerMic').addEventListener('click', async () => {
+    stopAnalyzer();
+    try{
+      const ctx = ensureAudio();
+      stream = await navigator.mediaDevices.getUserMedia({audio:true});
+      srcNode = ctx.createMediaStreamSource(stream);
+      const analyser = ctx.createAnalyser(); analyser.fftSize=1024;
+      srcNode.connect(analyser);
+      stopViz = drawScope(document.getElementById('analyzerViz'), analyser);
+    }catch(e){ toast('Microphone access denied or unavailable'); }
+  });
+  document.getElementById('analyzerTone').addEventListener('click', () => {
+    stopAnalyzer();
+    const ctx = ensureAudio();
+    toneOsc = ctx.createOscillator(); toneOsc.type='sawtooth'; toneOsc.frequency.value=220;
+    const g = ctx.createGain(); g.gain.value=0.2;
+    const analyser = ctx.createAnalyser(); analyser.fftSize=1024;
+    toneOsc.connect(g).connect(analyser); analyser.connect(masterGain);
+    toneOsc.start();
+    stopViz = drawScope(document.getElementById('analyzerViz'), analyser);
+  });
+  document.getElementById('analyzerStop').addEventListener('click', stopAnalyzer);
+  function stopAnalyzer(){
+    if (stream){ stream.getTracks().forEach(t=>t.stop()); stream=null; }
+    if (toneOsc){ try{toneOsc.stop();}catch(e){} toneOsc=null; }
+    if (stopViz){ stopViz(); stopViz=null; }
+  }
+})();
+}catch(err){ console.error('analyzerLab module failed to initialize:', err); }
+
+/* ============================================================
+   PROJECTS / DOWNLOADS / FAVORITES
+   ============================================================ */
+async function renderProjects(){
+  const done = await idbGet('lessons_complete', []);
+  const ear = await idbGet('ear_stats', {score:0,streak:0,best:0});
+  const grid = document.getElementById('projectsGrid');
+  const cards = [
+    `<div class="card"><span class="eyebrow">Academy</span><h4 style="margin:8px 0;">${done.length} lesson(s) completed</h4><p style="color:var(--grey);font-size:13px;">${done.join(', ')||'None yet — start in the Academy.'}</p></div>`,
+    `<div class="card"><span class="eyebrow">Ear Training</span><h4 style="margin:8px 0;">Best streak: ${ear.best}</h4><p style="color:var(--grey);font-size:13px;">Total score: ${ear.score}</p></div>`
+  ];
+  grid.innerHTML = cards.join('');
+}
+async function renderDownloads(){
+  const list = await idbGet('downloads', []);
+  const el = document.getElementById('downloadsList');
+  el.innerHTML = list.length ? list.map(d=>`<div class="card"><h4 style="font-size:14px;">${d.name}</h4><p style="color:var(--grey-dim);font-size:12px;margin-top:6px;">${new Date(d.date).toLocaleString()}</p></div>`).join('')
+    : `<p class="placeholder-note">Nothing exported yet. Try Sample Surgery → Export WAV.</p>`;
+}
+async function renderFavorites(){
+  const done = await idbGet('lessons_complete', []);
+  const el = document.getElementById('favoritesList');
+  el.innerHTML = done.length ? done.map(t=>`<div class="card"><h4 style="font-size:14px;">${t}</h4><p style="color:var(--grey-dim);font-size:12px;margin-top:6px;">Completed lesson</p></div>`).join('')
+    : `<p class="placeholder-note">Complete a lesson quiz in the Academy to have it show up here.</p>`;
+}
+
+/* ============================================================
+   CONTACT PAGE
+   ============================================================ */
+document.getElementById('callBtn').addEventListener('click', () => location.href='tel:0651971461');
+document.getElementById('copyBtn').addEventListener('click', () => { navigator.clipboard?.writeText('065 197 1461'); toast('Number copied'); });
+document.getElementById('pixabayBtn').addEventListener('click', () => window.open('https://pixabay.com/users/frequencyoasis-38933177/', '_blank'));
+document.getElementById('gumroadBtn').addEventListener('click', () => window.open('https://frequencyoasis.gumroad.com/l/ifzft?layout=profile', '_blank'));
+document.getElementById('audiohospBtn').addEventListener('click', () => window.open('https://audiohospital.github.io/sonicsanctuarylab/', '_blank'));
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  if (navigator.share){ try{ await navigator.share({title:'Frequency Oasis — The Sound Design Lab', url: location.href}); }catch(e){} }
+  else { navigator.clipboard?.writeText(location.href); toast('Link copied'); }
+});
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+document.getElementById('clearDataBtn').addEventListener('click', async () => {
+  await idbClearAll();
+  if ('caches' in window){ const keys = await caches.keys(); await Promise.all(keys.map(k=>caches.delete(k))); }
+  toast('Local progress and cache cleared');
+});
+
+})();
+</script>
+</body>
+</html>

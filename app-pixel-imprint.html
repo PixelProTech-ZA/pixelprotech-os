@@ -1,0 +1,1980 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>PIXEL IMPRINT</title>
+<meta name="description" content="Local-first personal text memory system. Capture it. Leave the imprint. Recall it." />
+<meta name="theme-color" content="#0F0D0A" />
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjA5NjBhOGNmLTdlNDctNDJlYS05ZmYwLTY0OTk1YzNiZTk4OQAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNoXlvoUgOoJZtU7yxR0cRZnAAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6ZmM0Y2FjNmItNDM3Ny00NDQyLWJiZWEtMzI1YjNhYmNkNGJhbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaLdNUPXEV5lM7UBpuA0tg4QAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIIWRurXrFb6EL3awQpGCIHrt3mwqMBy82dNdHxcZFimApGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2ggL3+kJdoMfVqu1OgRt+lNAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFgguJa4eTyDSNiOW62ZmLxepFYHP/vPBauH3UMu6UDlgAtkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTowOTYwYThjZi03ZTQ3LTQyZWEtOWZmMC02NDk5NWMzYmU5ODkvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDpjNjg0MTE4Ni1iZjEwLTRkZGUtODhkYS00OTYyY2I5M2IyOTVyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgghZG6tesVvoQvdrBCkYIgeu3ebCowHLzZ010fFxkWKYCiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYINC/GnIYozLfbcXiobOGxbDM1g/6s1yxPtfq8MC0UQpLomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYIEKoVcr6mveSZc9sRIj2+2Pd36/8wTZgSfZFAxCooNezdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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">
+
+<style>/* ============================================================
+   PIXEL IMPRINT — design tokens
+   Visual language: a pressed seal / letterpress impression.
+   Nothing borrowed from notes-app or SaaS-dashboard conventions.
+   ============================================================ */
+
+:root {
+  --void:        #0F0D0A;
+  --surface:     #17140F;
+  --surface-2:   #1E1A14;
+  --surface-3:   #262019;
+  --line:        #2A251D;
+  --line-soft:   #221E17;
+
+  --brass:       #B8863B;
+  --brass-dim:   #7A5A28;
+  --brass-glow:  rgba(184, 134, 59, 0.16);
+
+  --ink:         #EDE6D6;
+  --ink-muted:   #9A9184;
+  --ink-faint:   #6B6558;
+
+  --moss:        #7A9576;
+  --clay:        #B0644E;
+
+  --radius-s: 3px;
+  --radius-m: 6px;
+
+  --font-display: Georgia, "Iowan Old Style", "Palatino Linotype", "Times New Roman", serif;
+  --font-body: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+
+  --press-in: inset 0 1px 0 rgba(0,0,0,0.5), inset 0 0 0 1px rgba(0,0,0,0.3);
+  --lift: 0 1px 0 rgba(237,230,214,0.03);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+a { color: inherit; }
+button { font-family: inherit; font-size: inherit; }
+
+:focus-visible {
+  outline: 1.5px solid var(--brass);
+  outline-offset: 2px;
+}
+
+::selection { background: var(--brass-glow); color: var(--ink); }
+
+/* scrollbars: quiet */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--surface-3); border-radius: 8px; border: 2px solid var(--void); }
+
+/* ============================================================
+   App shell — three zones on desktop
+   ============================================================ */
+#app {
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+  grid-template-rows: 48px 1fr;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.mark {
+  width: 22px; height: 22px;
+  flex: none;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.wordmark b { color: var(--brass); font-weight: 600; }
+
+.topbar-search {
+  flex: 1;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--void);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: 6px 10px;
+  color: var(--ink-muted);
+}
+.topbar-search input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ink);
+  font-size: 13px;
+  width: 100%;
+}
+.topbar-search svg { flex: none; opacity: 0.7; }
+.kbd-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1px 5px;
+  white-space: nowrap;
+}
+
+.topbar-status {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+.status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--moss);
+  box-shadow: 0 0 0 3px rgba(122,149,118,0.12);
+}
+
+/* left rail */
+.rail {
+  border-right: 1px solid var(--line);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 8px;
+  overflow-y: auto;
+}
+.rail-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: var(--radius-s);
+  color: var(--ink-muted);
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+.rail-btn svg { flex: none; opacity: 0.8; }
+.ico { display: inline-flex; flex: none; }
+.mobile-nav .ico { margin-bottom: 1px; }
+.rail-btn:hover { background: var(--surface-2); color: var(--ink); }
+.rail-btn.active {
+  background: var(--surface-2);
+  color: var(--ink);
+  box-shadow: inset 2px 0 0 var(--brass);
+}
+.rail-section-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-faint);
+  padding: 14px 10px 6px;
+}
+.rail-divider { height: 1px; background: var(--line); margin: 8px 4px; }
+.rail-stat {
+  padding: 8px 10px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+}
+.rail-stat b { color: var(--ink-muted); font-weight: 500; }
+
+/* center column */
+.center {
+  overflow-y: auto;
+  padding: 24px 28px 60px;
+}
+.center-inner { max-width: 760px; margin: 0 auto; }
+
+/* right rail */
+.aside {
+  border-left: 1px solid var(--line);
+  background: var(--surface);
+  overflow-y: auto;
+  padding: 18px 16px 40px;
+}
+.aside h3 {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+  margin: 18px 0 8px;
+  font-weight: 500;
+}
+.aside h3:first-child { margin-top: 0; }
+.aside-empty {
+  color: var(--ink-faint);
+  font-size: 12px;
+  padding: 6px 0 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   Capture surface
+   ============================================================ */
+.capture-shell {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
+  box-shadow: var(--press-in);
+}
+.capture-shell textarea {
+  width: 100%;
+  min-height: 46vh;
+  resize: vertical;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  padding: 20px 22px;
+}
+.capture-shell textarea::placeholder { color: var(--ink-faint); }
+.capture-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding: 9px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+.capture-state {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.capture-state.saved { color: var(--moss); }
+
+.section-heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--ink);
+  margin: 0 0 4px;
+}
+.section-sub {
+  color: var(--ink-muted);
+  font-size: 13px;
+  margin: 0 0 18px;
+}
+
+/* ============================================================
+   Imprint list / cards — no drop shadows, hairline separated
+   ============================================================ */
+.imprint-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 4px;
+  border-bottom: 1px solid var(--line-soft);
+  background: transparent;
+  border-left: none; border-right: none; border-top: none;
+  cursor: pointer;
+  color: inherit;
+}
+.imprint-row:hover .imprint-title { color: var(--brass); }
+.imprint-row-top {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.imprint-title {
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  color: var(--ink);
+}
+.imprint-meta {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  margin-left: auto;
+  white-space: nowrap;
+}
+.imprint-snippet {
+  color: var(--ink-muted);
+  font-size: 13px;
+  line-height: 1.55;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+mark {
+  background: var(--brass-glow);
+  color: var(--brass);
+  border-radius: 2px;
+  padding: 0 1px;
+}
+.tag-chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-muted);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin: 6px 6px 0 0;
+}
+.type-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: var(--brass);
+  border: 1px solid var(--brass-dim);
+  border-radius: 3px;
+  padding: 1px 5px;
+}
+
+.empty-state {
+  padding: 60px 10px;
+  text-align: center;
+  color: var(--ink-faint);
+}
+.empty-state svg { opacity: 0.5; margin-bottom: 14px; }
+.empty-state p { font-family: var(--font-display); font-size: 16px; color: var(--ink-muted); margin: 0 0 4px; }
+.empty-state span { font-size: 12.5px; }
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: 7px 12px;
+  border-radius: var(--radius-s);
+  cursor: pointer;
+  font-size: 12.5px;
+}
+.btn:hover { border-color: var(--brass-dim); color: var(--brass); }
+.btn:active { box-shadow: var(--press-in); }
+.btn.primary { background: var(--brass); border-color: var(--brass); color: #14110C; font-weight: 600; }
+.btn.primary:hover { color: #14110C; opacity: 0.92; }
+.btn.danger:hover { border-color: var(--clay); color: var(--clay); }
+.btn.ghost { background: transparent; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.btn svg { flex: none; }
+
+input[type=text], select, textarea.field {
+  background: var(--void);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  border-radius: var(--radius-s);
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+/* Detail view */
+.detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.detail-id { font-family: var(--font-mono); font-size: 11px; color: var(--brass); margin-bottom: 6px; }
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px 16px;
+  margin: 16px 0 20px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+}
+.detail-meta-grid div { font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; }
+.detail-meta-grid div b { display: block; font-family: var(--font-body); font-size: 13px; text-transform: none; color: var(--ink); font-weight: 500; margin-top: 2px; letter-spacing: 0; }
+
+.original-content {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  padding: 20px 22px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 14.5px;
+  line-height: 1.75;
+  color: var(--ink);
+  box-shadow: var(--press-in);
+}
+
+.divider-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 26px 0 12px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+}
+.divider-label::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+.callout {
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--brass);
+  border-radius: var(--radius-s);
+  padding: 12px 14px;
+  background: var(--surface);
+  margin-bottom: 10px;
+}
+.callout.conflict { border-left-color: var(--clay); }
+.callout .cal-label { font-family: var(--font-mono); font-size: 10px; color: var(--ink-faint); margin-bottom: 4px; }
+.callout p { margin: 0; font-size: 13.5px; color: var(--ink); }
+.callout .cal-date { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-faint); margin-top: 6px; }
+
+/* recall */
+.recall-box { display: flex; gap: 8px; }
+.recall-box input { flex: 1; }
+.recall-result-head { font-family: var(--font-display); font-size: 18px; margin: 22px 0 4px; color: var(--brass); }
+.confidence-line { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); margin-bottom: 16px; }
+
+/* timeline */
+.tl-day-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--brass);
+  margin: 22px 0 4px;
+}
+.tl-item { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+.tl-time { font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint); width: 44px; flex: none; padding-top: 2px; }
+
+/* modal / overlay */
+.overlay {
+  position: fixed; inset: 0;
+  background: rgba(6,5,4,0.72);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 6vh 20px;
+  z-index: 50;
+  overflow-y: auto;
+}
+.overlay.hidden { display: none; }
+.modal {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  max-width: 640px;
+  width: 100%;
+  padding: 22px 24px;
+}
+.modal h2 { font-family: var(--font-display); font-size: 17px; margin: 0 0 12px; }
+.field-label { font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-faint); display: block; margin: 14px 0 6px; letter-spacing: 0.04em; }
+.field-label:first-of-type { margin-top: 0; }
+.modal input, .modal select, .modal textarea { width: 100%; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+
+/* toast */
+#toast-stack { position: fixed; bottom: 18px; right: 18px; display: flex; flex-direction: column; gap: 8px; z-index: 80; }
+.toast {
+  background: var(--surface-3);
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--brass);
+  color: var(--ink);
+  padding: 10px 14px;
+  border-radius: var(--radius-s);
+  font-size: 12.5px;
+  max-width: 320px;
+}
+.toast.error { border-left-color: var(--clay); }
+
+/* settings */
+.settings-group { border: 1px solid var(--line); border-radius: var(--radius-m); padding: 4px 16px; margin-bottom: 18px; background: var(--surface); }
+.settings-row { display: flex; align-items: center; justify-content: space-between; padding: 13px 0; border-bottom: 1px solid var(--line-soft); gap: 16px; }
+.settings-row:last-child { border-bottom: none; }
+.settings-row-text b { display: block; font-size: 13.5px; font-weight: 500; }
+.settings-row-text span { font-size: 12px; color: var(--ink-faint); }
+
+/* mobile */
+.mobile-nav { display: none; }
+@media (max-width: 860px) {
+  #app { grid-template-columns: 1fr; grid-template-rows: 48px 1fr 56px; }
+  .rail, .aside { display: none; }
+  .center { padding: 16px 14px 30px; }
+  .mobile-nav {
+    display: flex;
+    grid-column: 1;
+    border-top: 1px solid var(--line);
+    background: var(--surface);
+    justify-content: space-around;
+    align-items: center;
+  }
+  .mobile-nav button { background: none; border: none; color: var(--ink-faint); display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 9.5px; font-family: var(--font-mono); padding: 6px; }
+  .mobile-nav button.active { color: var(--brass); }
+  .topbar .kbd-hint { display: none; }
+  .topbar-search { max-width: none; }
+  .detail-meta-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topbar">
+    <svg class="mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 12 L12 5 L19 12 L12 19 Z" stroke="#B8863B" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+      <path d="M9 15.5 L14.5 10" stroke="#EDE6D6" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="wordmark">PIXEL <b>IMPRINT</b></span>
+    <div class="topbar-search">
+      <svg viewBox="0 0 24 24" width="15" height="15"><circle cx="10.5" cy="10.5" r="5.6" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M18.4 18.4 L14.7 14.7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+      <input type="text" id="topbar-search-input" placeholder="Search the archive…" />
+      <span class="kbd-hint">⌘K</span>
+    </div>
+    <div class="topbar-status">
+      <button class="btn ghost hidden" id="install-btn" style="padding:4px 9px;">Install app</button>
+      <span class="status-dot"></span>
+      <span>Local archive</span>
+    </div>
+  </div>
+
+  <div class="rail">
+    <button class="rail-btn" data-view="capture"><span class="ico" data-icon="capture"></span>Capture</button>
+    <button class="rail-btn" data-view="recall"><span class="ico" data-icon="recall"></span>Recall</button>
+    <button class="rail-btn" data-view="imprints"><span class="ico" data-icon="imprints"></span>Imprints</button>
+    <button class="rail-btn" data-view="threads"><span class="ico" data-icon="thread"></span>Threads</button>
+    <button class="rail-btn" data-view="timeline"><span class="ico" data-icon="timeline"></span>Timeline</button>
+    <button class="rail-btn" data-view="archive"><span class="ico" data-icon="archive"></span>Archive</button>
+
+    <div class="rail-divider"></div>
+    <div class="rail-section-label">THIS ARCHIVE</div>
+    <div class="rail-stat"><span>Imprints</span><b id="stat-total">0</b></div>
+    <div class="rail-stat"><span>Today</span><b id="stat-today">0</b></div>
+    <div class="rail-stat"><span>Threads</span><b id="stat-threads">0</b></div>
+    <div class="rail-stat"><span>Decisions</span><b id="stat-decisions">0</b></div>
+
+    <div style="margin-top:auto;">
+      <div class="rail-divider"></div>
+      <button class="rail-btn" data-view="settings"><span class="ico" data-icon="settings"></span>Settings</button>
+    </div>
+  </div>
+
+  <div class="center" id="center"></div>
+
+  <div class="aside" id="aside"></div>
+
+  <div class="mobile-nav">
+    <button data-view="capture"><span class="ico" data-icon="capture"></span>Capture</button>
+    <button data-view="recall"><span class="ico" data-icon="recall"></span>Recall</button>
+    <button data-view="imprints"><span class="ico" data-icon="imprints"></span>Imprints</button>
+    <button data-view="threads"><span class="ico" data-icon="thread"></span>Threads</button>
+    <button data-view="timeline"><span class="ico" data-icon="timeline"></span>Timeline</button>
+    <button data-view="settings"><span class="ico" data-icon="settings"></span>Settings</button>
+  </div>
+</div>
+
+<div class="overlay hidden" id="overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<div id="toast-stack"></div>
+
+<script>/* PIXEL IMPRINT — custom icon language.
+   24x24 grid, 1.6 stroke, rounded joins. No emoji, no icon-font imports.
+   Two icons (IMPRINT, CAPTURE) carry the brand's clipped-corner tell;
+   the rest are plain and distinct so the set stays legible, not repetitive. */
+(function (global) {
+  const S = 'stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"';
+  const svg = (inner, vb = '0 0 24 24') =>
+    `<svg viewBox="${vb}" width="18" height="18" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+
+  const ICONS = {
+    imprint: svg(`<path d="M5 12 L12 5 L19 12 L12 19 Z M9 15.5 L14.5 10" ${S}/>`),
+    capture: svg(`<path d="M12 4 v11 M7 11 l5 5 5-5 M5 19 h14" ${S}/>`),
+    recall: svg(`<circle cx="12" cy="12" r="2.4" ${S}/><path d="M12 6.2 a5.8 5.8 0 0 1 0 11.6 M12 2.6 a9.4 9.4 0 0 1 0 18.8" ${S} stroke-dasharray="1 3.4"/>`),
+    imprints: svg(`<rect x="4.5" y="4.5" width="15" height="15" rx="1" ${S}/><path d="M4.5 9.5 h15 M9 9.5 v10" ${S}/>`),
+    thread: svg(`<circle cx="6.5" cy="6.5" r="2" ${S}/><circle cx="17.5" cy="12" r="2" ${S}/><circle cx="7" cy="18" r="2" ${S}/><path d="M8.3 7.6 L15.7 11 M8.3 17.2 L15.9 13" ${S}/>`),
+    timeline: svg(`<path d="M4 6 h16 M4 12 h16 M4 18 h10" ${S}/><circle cx="4" cy="6" r="1.2" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.2" fill="currentColor" stroke="none"/><circle cx="4" cy="18" r="1.2" fill="currentColor" stroke="none"/>`),
+    archive: svg(`<rect x="4" y="5" width="16" height="5" rx="1" ${S}/><rect x="4" y="12" width="16" height="7" rx="1" ${S}/><path d="M9.5 15.4 h5" ${S}/>`),
+    search: svg(`<circle cx="10.5" cy="10.5" r="5.6" ${S}/><path d="M18.4 18.4 L14.7 14.7" ${S}/>`),
+    settings: svg(`<circle cx="12" cy="12" r="2.6" ${S}/><path d="M12 4.6 v2.3 M12 17.1 v2.3 M4.6 12 h2.3 M17.1 12 h2.3 M6.8 6.8 l1.6 1.6 M15.6 15.6 l1.6 1.6 M17.2 6.8 l-1.6 1.6 M8.4 15.6 l-1.6 1.6" ${S}/>`),
+    decision: svg(`<path d="M12 4 L20 12 L12 20 L4 12 Z M9 12.3 l2.1 2.1 4-4.3" ${S}/>`),
+    conflict: svg(`<path d="M5 12 L12 5 M12 19 L19 12 M12 5 L19 12 M5 12 L12 19" ${S} stroke-dasharray="0" /><path d="M9.5 9.5 L14.5 14.5 M14.5 9.5 L9.5 14.5" ${S}/>`),
+    trace: svg(`<path d="M4 17 L9 9 L13 13 L20 6" ${S} stroke-dasharray="1 3.2"/><circle cx="20" cy="6" r="1.3" fill="currentColor" stroke="none"/>`),
+    export: svg(`<path d="M12 15 V4 M8 8 l4-4 4 4 M5 19 h14" ${S}/>`),
+    import: svg(`<path d="M12 4 v11 M8 11 l4 4 4-4 M5 19 h14" ${S}/>`),
+    copy: svg(`<rect x="8.5" y="8.5" width="11" height="11" rx="1.2" ${S}/><path d="M15.5 8.5 V6 a1.2 1.2 0 0 0-1.2-1.2 H6 A1.2 1.2 0 0 0 4.8 6 v8.3 a1.2 1.2 0 0 0 1.2 1.2 h2.5" ${S}/>`),
+    edit: svg(`<path d="M15.5 5.5 L18.5 8.5 L8 19 H5 V16 Z" ${S}/>`),
+    link: svg(`<path d="M9.5 14.5 L14.5 9.5 M8 16 l-1.6 1.6 a3 3 0 0 1-4.2-4.2 L4 11.6 M16 8 l1.6-1.6 a3 3 0 0 1 4.2 4.2 L20 12.2" ${S}/>`),
+    tag: svg(`<path d="M11 4 H6 A2 2 0 0 0 4 6 v5 l9.5 9.5 a2 2 0 0 0 2.8 0 l4.2-4.2 a2 2 0 0 0 0-2.8 Z" ${S}/><circle cx="8.3" cy="8.3" r="1.1" fill="currentColor" stroke="none"/>`),
+    delete: svg(`<path d="M5 7 h14 M9.5 7 V5.3 a1 1 0 0 1 1-1 h3 a1 1 0 0 1 1 1 V7 M7 7 l1 12.2 a1 1 0 0 0 1 0.8 h6 a1 1 0 0 0 1-0.8 L17 7" ${S}/>`),
+    close: svg(`<path d="M6 6 L18 18 M18 6 L6 18" ${S}/>`),
+    chevron: svg(`<path d="M9 6 L15 12 L9 18" ${S}/>`),
+    plus: svg(`<path d="M12 5 v14 M5 12 h14" ${S}/>`),
+    check: svg(`<path d="M4.5 12.5 L9.5 17.5 L19.5 6.5" ${S}/>`),
+    warn: svg(`<path d="M12 4.5 L21 19.5 H3 Z M12 10 v4.2 M12 16.8 v0.3" ${S}/>`),
+    empty: svg(`<path d="M5 12 L12 5 L19 12 L12 19 Z" ${S} opacity="0.5"/><path d="M12 10 v4 M12 15.5 v0.2" ${S} opacity="0.5"/>`),
+  };
+
+  global.PIicon = function (name) {
+    return ICONS[name] || '';
+  };
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — storage layer.
+   This module knows WHAT EXISTS. It never classifies, never searches,
+   never decides anything about meaning. Original text is never mutated
+   here except through an explicit, user-triggered edit (which appends
+   to revision history rather than discarding the prior version). */
+(function (global) {
+  const DB_NAME = 'pixel-imprint-db';
+  const DB_VERSION = 1;
+  let dbPromise = null;
+
+  function open() {
+    if (dbPromise) return dbPromise;
+    dbPromise = new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, DB_VERSION);
+      req.onupgradeneeded = (e) => {
+        const db = e.target.result;
+        if (!db.objectStoreNames.contains('imprints')) {
+          const s = db.createObjectStore('imprints', { keyPath: 'id' });
+          s.createIndex('createdAt', 'createdAt');
+          s.createIndex('updatedAt', 'updatedAt');
+          s.createIndex('type', 'type');
+          s.createIndex('project', 'project');
+          s.createIndex('status', 'status');
+        }
+        if (!db.objectStoreNames.contains('decisions')) {
+          const s = db.createObjectStore('decisions', { keyPath: 'id' });
+          s.createIndex('imprintId', 'imprintId');
+          s.createIndex('project', 'project');
+          s.createIndex('createdAt', 'createdAt');
+        }
+        if (!db.objectStoreNames.contains('relationships')) {
+          const s = db.createObjectStore('relationships', { keyPath: 'id' });
+          s.createIndex('fromId', 'fromId');
+          s.createIndex('toId', 'toId');
+        }
+        if (!db.objectStoreNames.contains('meta')) {
+          db.createObjectStore('meta', { keyPath: 'key' });
+        }
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+    return dbPromise;
+  }
+
+  function tx(storeNames, mode) {
+    return open().then((db) => db.transaction(storeNames, mode));
+  }
+
+  function reqToPromise(req) {
+    return new Promise((resolve, reject) => {
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  function genId(prefix) {
+    const n = Math.floor(Math.random() * 1e9).toString(36);
+    return `${prefix}_${Date.now().toString(36)}_${n}`;
+  }
+
+  const Store = {
+    async put(storeName, obj) {
+      const t = await tx([storeName], 'readwrite');
+      const r = t.objectStore(storeName).put(obj);
+      await reqToPromise(r);
+      return obj;
+    },
+    async get(storeName, id) {
+      const t = await tx([storeName], 'readonly');
+      return reqToPromise(t.objectStore(storeName).get(id));
+    },
+    async delete(storeName, id) {
+      const t = await tx([storeName], 'readwrite');
+      await reqToPromise(t.objectStore(storeName).delete(id));
+    },
+    async all(storeName) {
+      const t = await tx([storeName], 'readonly');
+      return reqToPromise(t.objectStore(storeName).getAll());
+    },
+    async byIndex(storeName, indexName, value) {
+      const t = await tx([storeName], 'readonly');
+      return reqToPromise(t.objectStore(storeName).index(indexName).getAll(value));
+    },
+    async clear(storeName) {
+      const t = await tx([storeName], 'readwrite');
+      await reqToPromise(t.objectStore(storeName).clear());
+    },
+  };
+
+  const DB = {
+    genId,
+
+    async createImprint({ text, source = 'CAPTURE', title = null }) {
+      const now = Date.now();
+      const id = genId('imp');
+      const imprint = {
+        id,
+        originalText: text,
+        title: title || DB._autoTitle(text),
+        createdAt: now,
+        updatedAt: now,
+        source,
+        type: 'OTHER',
+        tags: [],
+        project: null,
+        status: 'ACTIVE',
+        importance: 'NORMAL',
+        metadata: DB._computeMetadata(text),
+        revisions: [],
+      };
+      await Store.put('imprints', imprint);
+      return imprint;
+    },
+
+    _autoTitle(text) {
+      const firstLine = (text || '').split('\n').find((l) => l.trim().length > 0) || 'Untitled imprint';
+      return firstLine.trim().slice(0, 90);
+    },
+
+    _computeMetadata(text) {
+      const t = text || '';
+      const words = t.trim().length ? t.trim().split(/\s+/).length : 0;
+      const lines = t.length ? t.split('\n').length : 0;
+      return { charCount: t.length, wordCount: words, lineCount: lines };
+    },
+
+    async updateImprintText(id, newText) {
+      const imprint = await Store.get('imprints', id);
+      if (!imprint) throw new Error('Imprint not found');
+      imprint.revisions = imprint.revisions || [];
+      imprint.revisions.push({ text: imprint.originalText, updatedAt: imprint.updatedAt });
+      imprint.originalText = newText;
+      imprint.updatedAt = Date.now();
+      imprint.metadata = DB._computeMetadata(newText);
+      await Store.put('imprints', imprint);
+      return imprint;
+    },
+
+    async updateImprintFields(id, fields) {
+      const imprint = await Store.get('imprints', id);
+      if (!imprint) throw new Error('Imprint not found');
+      Object.assign(imprint, fields, { updatedAt: Date.now() });
+      await Store.put('imprints', imprint);
+      return imprint;
+    },
+
+    async touchAutosave(id, newText) {
+      // Debounced autosave path: updates text WITHOUT pushing a new revision
+      // entry for every keystroke. A revision is only recorded on explicit edit-save.
+      const imprint = await Store.get('imprints', id);
+      if (!imprint) return null;
+      imprint.originalText = newText;
+      imprint.updatedAt = Date.now();
+      imprint.metadata = DB._computeMetadata(newText);
+      await Store.put('imprints', imprint);
+      return imprint;
+    },
+
+    getImprint: (id) => Store.get('imprints', id),
+    allImprints: () => Store.all('imprints'),
+    deleteImprint: (id) => Store.delete('imprints', id),
+
+    async archiveImprint(id) {
+      return DB.updateImprintFields(id, { status: 'ARCHIVED' });
+    },
+
+    // decisions
+    async addDecision(decision) {
+      const d = { id: genId('dec'), createdAt: Date.now(), ...decision };
+      await Store.put('decisions', d);
+      return d;
+    },
+    allDecisions: () => Store.all('decisions'),
+    decisionsByProject: (project) => Store.byIndex('decisions', 'project', project),
+    deleteDecisionsForImprint: async (imprintId) => {
+      const all = await Store.byIndex('decisions', 'imprintId', imprintId);
+      for (const d of all) await Store.delete('decisions', d.id);
+    },
+
+    // relationships (manual + evidence-based, both stored the same way)
+    async addRelationship(fromId, toId, kind = 'shared-project') {
+      const existing = (await Store.byIndex('relationships', 'fromId', fromId)) || [];
+      if (existing.some((r) => r.toId === toId)) return null;
+      const r = { id: genId('rel'), fromId, toId, kind, createdAt: Date.now() };
+      await Store.put('relationships', r);
+      return r;
+    },
+    async removeRelationship(id) {
+      await Store.delete('relationships', id);
+    },
+    async relationshipsFor(imprintId) {
+      const [a, b] = await Promise.all([
+        Store.byIndex('relationships', 'fromId', imprintId),
+        Store.byIndex('relationships', 'toId', imprintId),
+      ]);
+      const map = new Map();
+      a.forEach((r) => map.set(r.id, r));
+      b.forEach((r) => map.set(r.id, r));
+      return [...map.values()];
+    },
+    allRelationships: () => Store.all('relationships'),
+
+    // meta / settings
+    async getSetting(key, fallback) {
+      const row = await Store.get('meta', key);
+      return row ? row.value : fallback;
+    },
+    async setSetting(key, value) {
+      await Store.put('meta', { key, value });
+    },
+
+    // raw restore paths used by backup import — trusts the backup's own ids
+    __rawPutImprint: (imp) => Store.put('imprints', imp),
+    __rawPutDecision: (d) => Store.put('decisions', d),
+    __rawPutRelationship: (r) => Store.put('relationships', r),
+
+    async clearAll() {
+      await Store.clear('imprints');
+      await Store.clear('decisions');
+      await Store.clear('relationships');
+    },
+
+    async estimateStorage() {
+      if (navigator.storage && navigator.storage.estimate) {
+        try {
+          const est = await navigator.storage.estimate();
+          return { available: true, usage: est.usage || 0, quota: est.quota || 0 };
+        } catch (e) {
+          return { available: false };
+        }
+      }
+      return { available: false };
+    },
+  };
+
+  global.PIdb = DB;
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — intelligence layer, part 1: classification.
+   This module knows WHAT A TEXT APPEARS TO BE. Every label comes from
+   an explicit, inspectable pattern match against the actual text.
+   When no pattern clears the bar, the type is OTHER — never a guess
+   dressed up as certainty. */
+(function (global) {
+  const CODE_MARKERS = /```|function\s*\(|=>|const\s+\w+\s*=|class\s+\w+|def\s+\w+\(|import\s+[\w{]|#include|<\/?[a-z]+>|SELECT\s+.+FROM/i;
+  const TERMINAL_MARKERS = /^\s*[$#>]\s|Traceback \(most recent|npm ERR|command not found|No such file or directory|^\s*\[.*\]\s*(INFO|WARN|ERROR)/im;
+  const CONVO_MARKERS = /^(user|assistant|you|me|claude|q|a)\s*:/im;
+  const QUESTION_DENSITY = (t) => {
+    const sentences = t.split(/[.!?\n]+/).filter((s) => s.trim());
+    if (!sentences.length) return 0;
+    const qs = sentences.filter((s) => s.trim().endsWith('?')).length;
+    return qs / sentences.length;
+  };
+  const DECISION_WORDS = /\b(decided|selected|rejected|approved|changed to|replaced|final(?:ly|ized)?|going with|use this|don'?t use this|next step|we'?ll use)\b/i;
+  const REFERENCE_MARKERS = /\bhttps?:\/\/|\bsee (section|page|appendix)|\baccording to\b/i;
+  const DRAFT_MARKERS = /\bdraft\b|\bTODO\b|\bTBD\b|\[placeholder\]/i;
+
+  function classify(text) {
+    const t = (text || '').trim();
+    if (!t) return 'OTHER';
+
+    const scores = { CODE: 0, TERMINAL: 0, CONVERSATION: 0, DECISION: 0, QUESTION: 0, DRAFT: 0, REFERENCE: 0, RESEARCH: 0, IDEA: 0 };
+
+    if (CODE_MARKERS.test(t)) scores.CODE += 3;
+    if (TERMINAL_MARKERS.test(t)) scores.TERMINAL += 3;
+    if (CONVO_MARKERS.test(t)) scores.CONVERSATION += 2;
+    if (DECISION_WORDS.test(t)) scores.DECISION += 2;
+    if (QUESTION_DENSITY(t) > 0.4) scores.QUESTION += 2;
+    if (DRAFT_MARKERS.test(t)) scores.DRAFT += 2;
+    if (REFERENCE_MARKERS.test(t)) scores.REFERENCE += 1;
+    if (/\b(hypothesis|study|findings|data shows|research)\b/i.test(t)) scores.RESEARCH += 2;
+    if (/\bwhat if|idea:|concept:|brainstorm/i.test(t)) scores.IDEA += 2;
+
+    let best = 'OTHER';
+    let bestScore = 1; // threshold: must clear 1 to avoid false certainty
+    for (const [k, v] of Object.entries(scores)) {
+      if (v > bestScore) { best = k; bestScore = v; }
+    }
+    // CONVERSATION and CODE/TERMINAL are the most textually unambiguous —
+    // let them win narrow ties over softer signals like QUESTION.
+    if (scores.CODE >= 3) return 'CODE';
+    if (scores.TERMINAL >= 3) return 'TERMINAL';
+    if (scores.CONVERSATION >= 2 && best !== 'CODE' && best !== 'TERMINAL') return 'CONVERSATION';
+    return best;
+  }
+
+  // --- decision detection -------------------------------------------------
+  function detectDecisions(text) {
+    const sentences = (text || '').split(/(?<=[.!?\n])\s+/).map((s) => s.trim()).filter(Boolean);
+    const found = [];
+    for (const s of sentences) {
+      const m = s.match(DECISION_WORDS);
+      if (m) {
+        found.push({
+          text: s,
+          keyword: m[0].toLowerCase(),
+          negation: /\b(don'?t|not|never|reject|avoid)\b/i.test(s),
+        });
+      }
+    }
+    return found;
+  }
+
+  // --- conflict detection ---------------------------------------------------
+  // Evidence-based only: compares decisions that share a project AND a
+  // meaningful keyword/subject overlap, where negation differs. Never
+  // invents a subject to compare on.
+  function subjectTokens(s) {
+    return new Set(
+      s.toLowerCase()
+        .replace(DECISION_WORDS, ' ')
+        .split(/[^a-z0-9]+/)
+        .filter((w) => w.length > 3)
+    );
+  }
+
+  function overlapScore(a, b) {
+    const A = subjectTokens(a), B = subjectTokens(b);
+    let hits = 0;
+    A.forEach((w) => { if (B.has(w)) hits++; });
+    return hits;
+  }
+
+  function findConflicts(decisions) {
+    const conflicts = [];
+    const byProject = {};
+    decisions.forEach((d) => {
+      const key = d.project || '(unassigned)';
+      (byProject[key] = byProject[key] || []).push(d);
+    });
+    for (const group of Object.values(byProject)) {
+      const sorted = [...group].sort((a, b) => a.createdAt - b.createdAt);
+      for (let i = 0; i < sorted.length; i++) {
+        for (let j = i + 1; j < sorted.length; j++) {
+          const a = sorted[i], b = sorted[j];
+          if (a.negation !== b.negation && overlapScore(a.text, b.text) >= 1) {
+            conflicts.push({ earlier: a, later: b });
+          }
+        }
+      }
+    }
+    return conflicts;
+  }
+
+  global.PIclassify = { classify, detectDecisions, findConflicts, subjectTokens };
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — intelligence layer, part 2: search.
+   This module knows WHERE SOMETHING EXISTS. It never returns a result
+   the underlying text doesn't actually contain. */
+(function (global) {
+  function tokenize(q) {
+    return (q || '')
+      .toLowerCase()
+      .split(/[^a-z0-9]+/)
+      .filter((w) => w.length > 0);
+  }
+
+  function haystack(imprint) {
+    return [
+      imprint.title || '',
+      imprint.originalText || '',
+      (imprint.tags || []).join(' '),
+      imprint.project || '',
+      imprint.type || '',
+    ].join('\n').toLowerCase();
+  }
+
+  // returns matches with a context snippet around the first hit
+  function search(imprints, query, opts = {}) {
+    const terms = tokenize(query);
+    if (!terms.length) return [];
+    const dateFrom = opts.dateFrom || null;
+    const dateTo = opts.dateTo || null;
+
+    const results = [];
+    for (const imp of imprints) {
+      if (dateFrom && imp.createdAt < dateFrom) continue;
+      if (dateTo && imp.createdAt > dateTo) continue;
+      const hay = haystack(imp);
+      let matchCount = 0;
+      let firstIndex = -1;
+      for (const term of terms) {
+        let idx = 0;
+        let c = 0;
+        while (true) {
+          const found = hay.indexOf(term, idx);
+          if (found === -1) break;
+          c++;
+          if (firstIndex === -1) firstIndex = found;
+          idx = found + term.length;
+        }
+        matchCount += c;
+      }
+      // require ALL terms present (AND search) unless opts.any
+      const allPresent = terms.every((t) => hay.includes(t));
+      if (!opts.any && !allPresent) continue;
+      if (opts.any && matchCount === 0) continue;
+
+      results.push({
+        imprint: imp,
+        matchCount,
+        snippet: buildSnippet(imp.originalText || '', terms, firstIndex),
+      });
+    }
+    results.sort((a, b) => b.matchCount - a.matchCount || b.imprint.updatedAt - a.imprint.updatedAt);
+    return results;
+  }
+
+  function buildSnippet(text, terms, hintIndex) {
+    const lower = text.toLowerCase();
+    let idx = -1;
+    for (const t of terms) {
+      const f = lower.indexOf(t);
+      if (f !== -1 && (idx === -1 || f < idx)) idx = f;
+    }
+    if (idx === -1) idx = 0;
+    const start = Math.max(0, idx - 80);
+    const end = Math.min(text.length, idx + 160);
+    let snip = text.slice(start, end).replace(/\s+/g, ' ').trim();
+    if (start > 0) snip = '… ' + snip;
+    if (end < text.length) snip = snip + ' …';
+    return snip;
+  }
+
+  function highlight(snippet, terms) {
+    let out = escapeHtml(snippet);
+    const uniq = [...new Set(terms)].sort((a, b) => b.length - a.length);
+    for (const t of uniq) {
+      if (!t) continue;
+      const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig');
+      out = out.replace(re, '<mark>$1</mark>');
+    }
+    return out;
+  }
+
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  global.PIsearch = { tokenize, search, highlight, escapeHtml };
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — intelligence layer, part 4: relationships.
+   This module knows WHAT MAY BE CONNECTED. Every automatic connection
+   is backed by a shared project tag or a shared user tag — never a
+   random pairing to make the interface look richer than it is. */
+(function (global) {
+  async function relatedTo(imprint, allImprints) {
+    const evidence = [];
+    for (const other of allImprints) {
+      if (other.id === imprint.id) continue;
+      let reasons = [];
+      if (imprint.project && other.project && imprint.project === other.project) {
+        reasons.push('shared project: ' + imprint.project);
+      }
+      const sharedTags = (imprint.tags || []).filter((t) => (other.tags || []).includes(t));
+      if (sharedTags.length) reasons.push('shared tag: ' + sharedTags.join(', '));
+      if (reasons.length) evidence.push({ imprint: other, reasons });
+    }
+    const manual = await PIdb.relationshipsFor(imprint.id);
+    for (const r of manual) {
+      const otherId = r.fromId === imprint.id ? r.toId : r.fromId;
+      if (evidence.some((e) => e.imprint.id === otherId)) continue;
+      const other = allImprints.find((i) => i.id === otherId);
+      if (other) evidence.push({ imprint: other, reasons: ['manually linked'], relId: r.id });
+    }
+    evidence.sort((a, b) => b.imprint.updatedAt - a.imprint.updatedAt);
+    return evidence;
+  }
+
+  function buildThreads(allImprints) {
+    const byProject = new Map();
+    for (const imp of allImprints) {
+      if (!imp.project) continue;
+      if (!byProject.has(imp.project)) byProject.set(imp.project, []);
+      byProject.get(imp.project).push(imp);
+    }
+    const threads = [...byProject.entries()].map(([name, imps]) => ({
+      name,
+      imprints: imps.sort((a, b) => b.updatedAt - a.updatedAt),
+      count: imps.length,
+      lastActivity: Math.max(...imps.map((i) => i.updatedAt)),
+    }));
+    threads.sort((a, b) => b.lastActivity - a.lastActivity);
+    return threads;
+  }
+
+  global.PIrelationships = { relatedTo, buildThreads };
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — intelligence layer, part 3: recall.
+   This module knows WHAT EVIDENCE SUPPORTS THE USER'S QUERY. It is
+   forbidden from producing a conclusion that doesn't trace back to at
+   least one stored imprint. If evidence is thin, it says so. */
+(function (global) {
+  async function recall(query) {
+    const [imprints, decisions] = await Promise.all([PIdb.allImprints(), PIdb.allDecisions()]);
+    const terms = PIsearch.tokenize(query);
+    if (!terms.length) return { query, matches: [], decisions: [], confidence: 0 };
+
+    const matches = PIsearch.search(imprints, query, { any: true });
+    const matchedIds = new Set(matches.map((m) => m.imprint.id));
+
+    // decisions whose own text overlaps the query terms, OR whose source imprint matched
+    const relevantDecisions = decisions.filter((d) => {
+      const hay = d.text.toLowerCase();
+      const termHit = terms.some((t) => hay.includes(t));
+      return termHit || matchedIds.has(d.imprintId);
+    }).sort((a, b) => b.createdAt - a.createdAt);
+
+    return {
+      query,
+      matches,
+      decisions: relevantDecisions,
+      confidence: matches.length + relevantDecisions.length,
+    };
+  }
+
+  global.PIrecall = { recall };
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — export / import. No vendor lock-in: the user always
+   owns a complete, restorable copy of everything stored. */
+(function (global) {
+  function download(filename, content, mime = 'text/plain') {
+    const blob = new Blob([content], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
+
+  function exportImprintTxt(imprint) {
+    download(`${sanitizeName(imprint.title)}.txt`, imprint.originalText, 'text/plain');
+  }
+
+  function exportImprintMd(imprint) {
+    const meta = `# ${imprint.title}\n\n` +
+      `- Imprint: ${imprint.id}\n` +
+      `- Date: ${new Date(imprint.createdAt).toLocaleString()}\n` +
+      `- Type: ${imprint.type}\n` +
+      `- Project: ${imprint.project || '—'}\n` +
+      `- Tags: ${(imprint.tags || []).join(', ') || '—'}\n\n---\n\n`;
+    download(`${sanitizeName(imprint.title)}.md`, meta + imprint.originalText, 'text/markdown');
+  }
+
+  async function exportFullBackup() {
+    const [imprints, decisions, relationships] = await Promise.all([
+      PIdb.allImprints(), PIdb.allDecisions(), PIdb.allRelationships(),
+    ]);
+    const payload = {
+      app: 'PIXEL IMPRINT',
+      exportedAt: Date.now(),
+      version: 1,
+      imprints, decisions, relationships,
+    };
+    download(`pixel-imprint-backup-${dateStamp()}.json`, JSON.stringify(payload, null, 2), 'application/json');
+    return payload;
+  }
+
+  async function importBackupFile(file) {
+    const text = await file.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch (e) {
+      throw new Error('File is not valid JSON.');
+    }
+    if (!data || !Array.isArray(data.imprints)) {
+      throw new Error('This does not look like a PIXEL IMPRINT backup (no imprints array found).');
+    }
+    const existing = await PIdb.allImprints();
+    const existingIds = new Set(existing.map((i) => i.id));
+    let added = 0, skipped = 0;
+    for (const imp of data.imprints) {
+      if (existingIds.has(imp.id)) { skipped++; continue; }
+      await PIdb.__rawPutImprint(imp);
+      added++;
+    }
+    if (Array.isArray(data.decisions)) {
+      for (const d of data.decisions) {
+        await PIdb.__rawPutDecision(d);
+      }
+    }
+    if (Array.isArray(data.relationships)) {
+      for (const r of data.relationships) {
+        await PIdb.__rawPutRelationship(r);
+      }
+    }
+    return { added, skipped };
+  }
+
+  async function importTextFile(file) {
+    const name = file.name.toLowerCase();
+    const text = await file.text();
+    if (name.endsWith('.json')) {
+      // if it's a backup, route there; otherwise store as a plain imprint of the raw JSON
+      try {
+        const parsed = JSON.parse(text);
+        if (parsed && Array.isArray(parsed.imprints)) {
+          return { type: 'backup', result: await importBackupFile(file) };
+        }
+      } catch (e) { /* fall through — store as plain text */ }
+    }
+    const imprint = await PIdb.createImprint({ text, source: 'IMPORT', title: file.name });
+    return { type: 'imprint', result: imprint };
+  }
+
+  function sanitizeName(s) {
+    return (s || 'imprint').replace(/[^a-z0-9\-_ ]/gi, '').trim().slice(0, 60) || 'imprint';
+  }
+  function dateStamp() {
+    const d = new Date();
+    return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}-${String(d.getHours()).padStart(2, '0')}${String(d.getMinutes()).padStart(2, '0')}`;
+  }
+
+  global.PIexport = { exportImprintTxt, exportImprintMd, exportFullBackup, importBackupFile, importTextFile };
+})(window);
+</script>
+<script>/* PIXEL IMPRINT — application shell.
+   Wires storage, classification, search, recall and relationships to
+   a small hash router and a set of view renderers. No framework. */
+(function () {
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const center = () => $('#center');
+  const aside = () => $('#aside');
+
+  const state = {
+    view: 'capture',
+    params: {},
+    query: {},
+    allImprintsCache: null,
+    autosaveTimer: null,
+    currentDraftId: null,
+    deferredInstallPrompt: null,
+  };
+
+  // ---------------------------------------------------------------- utils
+  function fmtDate(ts) {
+    return new Date(ts).toLocaleDateString(undefined, { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+  function fmtTime(ts) {
+    return new Date(ts).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
+  }
+  function fmtDateTime(ts) { return `${fmtDate(ts)} · ${fmtTime(ts)}`; }
+  function relDay(ts) {
+    const d = new Date(ts), now = new Date();
+    const startOf = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+    const diff = Math.round((startOf(now) - startOf(d)) / 86400000);
+    if (diff === 0) return 'TODAY';
+    if (diff === 1) return 'YESTERDAY';
+    return fmtDate(ts).toUpperCase();
+  }
+  function icon(name) { return PIicon(name); }
+  function esc(s) { return PIsearch.escapeHtml(String(s == null ? '' : s)); }
+
+  function toast(msg, isError = false) {
+    const stack = $('#toast-stack');
+    const el = document.createElement('div');
+    el.className = 'toast' + (isError ? ' error' : '');
+    el.textContent = msg;
+    stack.appendChild(el);
+    setTimeout(() => el.remove(), 3600);
+  }
+
+  async function refreshImprintsCache() {
+    state.allImprintsCache = await PIdb.allImprints();
+    return state.allImprintsCache;
+  }
+
+  async function refreshRailStats() {
+    const imprints = state.allImprintsCache || (await refreshImprintsCache());
+    const decisions = await PIdb.allDecisions();
+    const active = imprints.filter((i) => i.status !== 'ARCHIVED');
+    const today = imprints.filter((i) => relDay(i.createdAt) === 'TODAY').length;
+    const threads = PIrelationships.buildThreads(active);
+    $('#stat-total').textContent = active.length;
+    $('#stat-today').textContent = today;
+    $('#stat-threads').textContent = threads.length;
+    $('#stat-decisions').textContent = decisions.length;
+  }
+
+  // ------------------------------------------------------------- routing
+  function navigate(hash) { window.location.hash = hash; }
+
+  function parseHash() {
+    const raw = window.location.hash.replace(/^#\/?/, '');
+    const [path, qs] = raw.split('?');
+    const parts = path.split('/').filter(Boolean);
+    const query = {};
+    if (qs) new URLSearchParams(qs).forEach((v, k) => (query[k] = v));
+    return { parts, query };
+  }
+
+  async function router() {
+    const { parts, query } = parseHash();
+    const view = parts[0] || 'capture';
+    const id = parts[1] || null;
+    state.view = view;
+    state.params = { id };
+    state.query = query;
+    setActiveNav(view);
+    await refreshImprintsCache();
+    refreshRailStats();
+    try {
+      switch (view) {
+        case 'capture': return renderCapture();
+        case 'recall': return renderRecall();
+        case 'imprints': return renderImprintsList();
+        case 'imprint': return renderImprintDetail(id);
+        case 'threads': return renderThreads();
+        case 'timeline': return renderTimeline();
+        case 'archive': return renderArchive();
+        case 'settings': return renderSettings();
+        default: return renderCapture();
+      }
+    } catch (e) {
+      console.error(e);
+      center().innerHTML = `<div class="empty-state">${icon('warn')}<p>Something went wrong rendering this view.</p><span>${esc(e.message)}</span></div>`;
+    }
+  }
+
+  function setActiveNav(view) {
+    $$('.rail-btn').forEach((b) => b.classList.toggle('active', b.dataset.view === view));
+    $$('.mobile-nav button').forEach((b) => b.classList.toggle('active', b.dataset.view === view));
+  }
+
+  // ------------------------------------------------------------- capture
+  function renderCapture() {
+    center().innerHTML = `
+      <div class="center-inner">
+        <h1 class="section-heading">Capture</h1>
+        <p class="section-sub">Paste or write. It is saved the moment it exists — there is nothing else to do.</p>
+        <div class="capture-shell">
+          <textarea id="capture-area" placeholder="Paste a conversation, a decision, code, research, a half-formed idea — anything worth keeping."></textarea>
+          <div class="capture-foot">
+            <span id="capture-counts">0 words · 0 characters</span>
+            <span id="capture-state" class="capture-state"><span>Not yet captured</span></span>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn primary" id="btn-force-capture">${icon('capture')} Capture now</button>
+          <button class="btn ghost" id="btn-import-file">${icon('import')} Import file</button>
+          <input type="file" id="file-input" class="hidden" accept=".txt,.md,.json" />
+        </div>
+      </div>`;
+
+    const ta = $('#capture-area');
+    ta.focus();
+    state.currentDraftId = null;
+
+    const counts = $('#capture-counts');
+    const stateEl = $('#capture-state');
+
+    function updateCounts(text) {
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      counts.textContent = `${words} words · ${text.length} characters`;
+    }
+
+    async function ensureDraftSaved(text) {
+      if (!text.trim()) return;
+      if (!state.currentDraftId) {
+        const imprint = await PIdb.createImprint({ text, source: 'CAPTURE' });
+        state.currentDraftId = imprint.id;
+        await finalizeIntelligence(imprint.id);
+      } else {
+        await PIdb.touchAutosave(state.currentDraftId, text);
+        await finalizeIntelligence(state.currentDraftId, { silent: true });
+      }
+      const n = (state.allImprintsCache || []).length + (state.currentDraftId ? 1 : 0);
+      stateEl.classList.add('saved');
+      stateEl.innerHTML = `${icon('check')} <span>Saved locally · ${fmtTime(Date.now())}</span>`;
+      refreshImprintsCache().then(refreshRailStats);
+    }
+
+    ta.addEventListener('input', () => {
+      updateCounts(ta.value);
+      stateEl.classList.remove('saved');
+      stateEl.innerHTML = `<span>Capturing…</span>`;
+      clearTimeout(state.autosaveTimer);
+      state.autosaveTimer = setTimeout(() => ensureDraftSaved(ta.value), 900);
+    });
+
+    $('#btn-force-capture').addEventListener('click', async () => {
+      clearTimeout(state.autosaveTimer);
+      await ensureDraftSaved(ta.value);
+      if (state.currentDraftId) {
+        toast('Imprint captured.');
+        navigate(`#/imprint/${state.currentDraftId}`);
+      } else {
+        toast('Nothing to capture yet.', true);
+      }
+    });
+
+    $('#btn-import-file').addEventListener('click', () => $('#file-input').click());
+    $('#file-input').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const res = await PIexport.importTextFile(file);
+        if (res.type === 'backup') {
+          toast(`Backup imported — ${res.result.added} added, ${res.result.skipped} already present.`);
+          navigate('#/imprints');
+        } else {
+          toast('File imported as a new imprint.');
+          navigate(`#/imprint/${res.result.id}`);
+        }
+      } catch (err) {
+        toast('Import failed: ' + err.message, true);
+      }
+    });
+
+    renderAsideRecent();
+  }
+
+  async function finalizeIntelligence(imprintId, opts = {}) {
+    const imprint = await PIdb.getImprint(imprintId);
+    if (!imprint) return;
+    const type = PIclassify.classify(imprint.originalText);
+    if (imprint.type !== type) await PIdb.updateImprintFields(imprintId, { type });
+    const foundDecisions = PIclassify.detectDecisions(imprint.originalText);
+    await PIdb.deleteDecisionsForImprint(imprintId);
+    for (const fd of foundDecisions) {
+      await PIdb.addDecision({
+        imprintId,
+        project: imprint.project || null,
+        text: fd.text,
+        keyword: fd.keyword,
+        negation: fd.negation,
+      });
+    }
+  }
+
+  async function renderAsideRecent() {
+    const imprints = (state.allImprintsCache || []).filter((i) => i.status !== 'ARCHIVED')
+      .sort((a, b) => b.updatedAt - a.updatedAt).slice(0, 8);
+    aside().innerHTML = `
+      <h3>Recently captured</h3>
+      ${imprints.length ? imprints.map(rowMini).join('') : `<div class="aside-empty">Nothing captured yet. What you paste here stays here — nowhere else.</div>`}
+      <h3>What recall can do</h3>
+      <div class="aside-empty">Ask a plain question in Recall — it only answers from imprints you've actually stored, and says so when it can't.</div>
+    `;
+    bindMiniRows();
+  }
+
+  function rowMini(imp) {
+    return `<a href="#/imprint/${imp.id}" class="imprint-row" style="padding:9px 4px;">
+      <div class="imprint-row-top">
+        <span class="type-badge">${imp.type}</span>
+        <span class="imprint-meta">${fmtTime(imp.updatedAt)}</span>
+      </div>
+      <div class="imprint-title" style="font-size:13.5px;">${esc(imp.title)}</div>
+    </a>`;
+  }
+  function bindMiniRows() { /* anchors navigate natively via hash */ }
+
+  // ------------------------------------------------------------- imprints list
+  function renderImprintsList() {
+    const q = state.query.q || '';
+    const all = (state.allImprintsCache || []).filter((i) => i.status !== 'ARCHIVED');
+    let rows;
+    let resultInfo = '';
+    if (q) {
+      const results = PIsearch.search(all, q);
+      rows = results.map((r) => ({ imp: r.imprint, snippet: r.snippet, terms: PIsearch.tokenize(q) }));
+      resultInfo = `<p class="section-sub">${results.length} match${results.length === 1 ? '' : 'es'} for "${esc(q)}"</p>`;
+    } else {
+      rows = all.sort((a, b) => b.updatedAt - a.updatedAt).map((imp) => ({ imp, snippet: (imp.originalText || '').slice(0, 160), terms: [] }));
+    }
+
+    center().innerHTML = `
+      <div class="center-inner">
+        <h1 class="section-heading">Imprints</h1>
+        ${resultInfo || `<p class="section-sub">${all.length} stored, most recent first.</p>`}
+        <div class="btn-row" style="margin-top:0;margin-bottom:16px;">
+          <input type="text" id="filter-search" placeholder="Search title, text, tag, project…" value="${esc(q)}" style="flex:1;min-width:200px;" />
+        </div>
+        <div id="imprint-rows">
+          ${rows.length ? rows.map((r) => imprintRowHtml(r.imp, r.snippet, r.terms)).join('') :
+            `<div class="empty-state">${icon('empty')}<p>${q ? 'NO STORED MEMORY FOUND.' : 'YOUR MEMORY IS EMPTY.'}</p><span>${q ? 'Nothing in the archive matches that search.' : 'Paste or write something to create your first imprint.'}</span></div>`}
+        </div>
+      </div>`;
+
+    $('#filter-search').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') navigate(`#/imprints?q=${encodeURIComponent(e.target.value)}`);
+    });
+  }
+
+  function imprintRowHtml(imp, snippet, terms) {
+    const snippetHtml = terms.length ? PIsearch.highlight(snippet, terms) : esc(snippet);
+    return `<a href="#/imprint/${imp.id}" class="imprint-row">
+      <div class="imprint-row-top">
+        <span class="type-badge">${imp.type}</span>
+        <span class="imprint-meta">#${imp.id.split('_')[1]} · ${fmtDateTime(imp.updatedAt)}</span>
+      </div>
+      <div class="imprint-title">${esc(imp.title)}</div>
+      <div class="imprint-snippet">${snippetHtml}</div>
+      <div>${(imp.tags || []).map((t) => `<span class="tag-chip">${esc(t)}</span>`).join('')}${imp.project ? `<span class="tag-chip">${icon('thread')} ${esc(imp.project)}</span>` : ''}</div>
+    </a>`;
+  }
+
+  // ------------------------------------------------------------- imprint detail
+  async function renderImprintDetail(id) {
+    const imprint = await PIdb.getImprint(id);
+    if (!imprint) {
+      center().innerHTML = `<div class="empty-state">${icon('warn')}<p>Imprint not found.</p><span>It may have been deleted.</span></div>`;
+      return;
+    }
+    const decisions = (await PIdb.allDecisions()).filter((d) => d.imprintId === id);
+    const related = await PIrelationships.relatedTo(imprint, state.allImprintsCache || []);
+    const allDecisions = await PIdb.allDecisions();
+    const conflicts = PIclassify.findConflicts(allDecisions).filter((c) => c.earlier.imprintId === id || c.later.imprintId === id);
+
+    center().innerHTML = `
+      <div class="center-inner">
+        <div class="detail-head">
+          <div>
+            <div class="detail-id">IMPRINT #${imprint.id.split('_')[1]} · ${imprint.source}</div>
+            <h1 class="section-heading" id="detail-title" contenteditable="true" spellcheck="false">${esc(imprint.title)}</h1>
+          </div>
+          <span class="type-badge">${imprint.type}</span>
+        </div>
+
+        <div class="detail-meta-grid">
+          <div>DATE<b>${fmtDate(imprint.createdAt)}</b></div>
+          <div>TIME<b>${fmtTime(imprint.createdAt)}</b></div>
+          <div>UPDATED<b>${fmtDateTime(imprint.updatedAt)}</b></div>
+          <div>WORDS<b>${imprint.metadata.wordCount}</b></div>
+          <div>CHARACTERS<b>${imprint.metadata.charCount}</b></div>
+          <div>LINES<b>${imprint.metadata.lineCount}</b></div>
+        </div>
+
+        <div class="btn-row" style="margin-top:0;">
+          <button class="btn" id="btn-copy">${icon('copy')} Copy</button>
+          <button class="btn" id="btn-edit">${icon('edit')} Edit</button>
+          <button class="btn" id="btn-tag">${icon('tag')} Tag &amp; project</button>
+          <button class="btn" id="btn-export-txt">${icon('export')} Export .txt</button>
+          <button class="btn" id="btn-export-md">${icon('export')} Export .md</button>
+          <button class="btn" id="btn-archive">${icon('archive')} Archive</button>
+          <button class="btn danger" id="btn-delete">${icon('delete')} Delete</button>
+        </div>
+
+        <div class="divider-label">ORIGINAL CONTENT</div>
+        <div class="original-content" id="original-content">${esc(imprint.originalText)}</div>
+        <div id="edit-area-wrap"></div>
+
+        ${imprint.revisions && imprint.revisions.length ? `
+        <div class="divider-label">REVISION HISTORY (${imprint.revisions.length})</div>
+        ${imprint.revisions.slice().reverse().map((r) => `<div class="callout"><div class="cal-label">PRIOR VERSION · ${fmtDateTime(r.updatedAt)}</div><p style="white-space:pre-wrap;">${esc(r.text.slice(0, 400))}${r.text.length > 400 ? '…' : ''}</p></div>`).join('')}
+        ` : ''}
+
+        ${decisions.length ? `
+        <div class="divider-label">DECISIONS DETECTED</div>
+        ${decisions.map((d) => `<div class="callout"><div class="cal-label">${d.negation ? 'AGAINST' : 'DECISION'} · KEYWORD "${esc(d.keyword)}"</div><p>${esc(d.text)}</p></div>`).join('')}
+        ` : ''}
+
+        ${conflicts.length ? `
+        <div class="divider-label">POSSIBLE CONFLICT</div>
+        ${conflicts.map((c) => `<div class="callout conflict">
+            <div class="cal-label">EARLIER</div><p>${esc(c.earlier.text)}</p><div class="cal-date">${fmtDateTime(c.earlier.createdAt)}</div>
+            <div class="cal-label" style="margin-top:10px;">LATER</div><p>${esc(c.later.text)}</p><div class="cal-date">${fmtDateTime(c.later.createdAt)}</div>
+          </div>`).join('')}
+        ` : ''}
+      </div>`;
+
+    aside().innerHTML = `
+      <h3>Tags &amp; project</h3>
+      <div>${(imprint.tags || []).map((t) => `<span class="tag-chip">${esc(t)}</span>`).join('') || '<span class="aside-empty" style="padding:0;">No tags yet.</span>'}</div>
+      ${imprint.project ? `<div style="margin-top:8px;"><span class="tag-chip">${icon('thread')} ${esc(imprint.project)}</span></div>` : ''}
+
+      <h3>Related imprints</h3>
+      ${related.length ? related.map((r) => `<a href="#/imprint/${r.imprint.id}" class="imprint-row" style="padding:8px 4px;">
+          <div class="imprint-title" style="font-size:13px;">${esc(r.imprint.title)}</div>
+          <div class="imprint-meta" style="margin-left:0;">${esc(r.reasons.join(', '))}</div>
+        </a>`).join('') : `<div class="aside-empty">No connections found — set a project or tag to link this to related work.</div>`}
+
+      <h3>Status</h3>
+      <div class="aside-empty" style="padding:0 0 6px;">${imprint.status}${imprint.status === 'ARCHIVED' ? '' : ' · active'}</div>
+    `;
+
+    $('#btn-copy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(imprint.originalText); toast('Copied to clipboard.'); }
+      catch (e) { toast('Clipboard unavailable in this browser.', true); }
+    });
+    $('#btn-export-txt').addEventListener('click', () => PIexport.exportImprintTxt(imprint));
+    $('#btn-export-md').addEventListener('click', () => PIexport.exportImprintMd(imprint));
+    $('#btn-archive').addEventListener('click', async () => {
+      await PIdb.archiveImprint(imprint.id);
+      toast('Imprint archived.');
+      navigate('#/imprints');
+    });
+    $('#btn-delete').addEventListener('click', () => confirmModal(
+      'Delete this imprint?',
+      'This removes the original text and its detected decisions permanently. This cannot be undone.',
+      async () => {
+        await PIdb.deleteImprint(imprint.id);
+        await PIdb.deleteDecisionsForImprint(imprint.id);
+        toast('Imprint deleted.');
+        navigate('#/imprints');
+      }
+    ));
+    $('#btn-tag').addEventListener('click', () => openTagModal(imprint));
+    $('#btn-edit').addEventListener('click', () => openEditArea(imprint));
+
+    $('#detail-title').addEventListener('blur', async () => {
+      const newTitle = $('#detail-title').textContent.trim() || imprint.title;
+      if (newTitle !== imprint.title) {
+        await PIdb.updateImprintFields(imprint.id, { title: newTitle });
+        toast('Title updated.');
+      }
+    });
+  }
+
+  function openEditArea(imprint) {
+    const wrap = $('#edit-area-wrap');
+    $('#original-content').classList.add('hidden');
+    wrap.innerHTML = `
+      <textarea class="field" id="edit-textarea" style="width:100%;min-height:40vh;">${esc(imprint.originalText)}</textarea>
+      <div class="btn-row">
+        <button class="btn primary" id="save-edit">${icon('check')} Save (keeps prior version)</button>
+        <button class="btn ghost" id="cancel-edit">Cancel</button>
+      </div>`;
+    $('#save-edit').addEventListener('click', async () => {
+      const newText = $('#edit-textarea').value;
+      await PIdb.updateImprintText(imprint.id, newText);
+      await finalizeIntelligence(imprint.id);
+      toast('Saved. Prior version kept in revision history.');
+      navigate(`#/imprint/${imprint.id}`);
+      setTimeout(() => router(), 0);
+    });
+    $('#cancel-edit').addEventListener('click', () => { wrap.innerHTML = ''; $('#original-content').classList.remove('hidden'); });
+  }
+
+  function openTagModal(imprint) {
+    showModal(`
+      <h2>Tags &amp; project</h2>
+      <label class="field-label">Project (creates or joins a thread)</label>
+      <input type="text" id="m-project" value="${esc(imprint.project || '')}" placeholder="e.g. Pixel Office" />
+      <label class="field-label">Tags (comma-separated)</label>
+      <input type="text" id="m-tags" value="${esc((imprint.tags || []).join(', '))}" placeholder="e.g. architecture, decision" />
+      <label class="field-label">Importance</label>
+      <select id="m-importance">
+        ${['LOW', 'NORMAL', 'HIGH'].map((v) => `<option ${imprint.importance === v ? 'selected' : ''}>${v}</option>`).join('')}
+      </select>
+      <div class="modal-actions">
+        <button class="btn ghost" id="m-cancel">Cancel</button>
+        <button class="btn primary" id="m-save">${icon('check')} Save</button>
+      </div>
+    `);
+    $('#m-cancel').addEventListener('click', closeModal);
+    $('#m-save').addEventListener('click', async () => {
+      const project = $('#m-project').value.trim() || null;
+      const tags = $('#m-tags').value.split(',').map((t) => t.trim()).filter(Boolean);
+      const importance = $('#m-importance').value;
+      await PIdb.updateImprintFields(imprint.id, { project, tags, importance });
+      if (project) {
+        // link to other imprints in the same project as evidence-based relationships
+        const others = (state.allImprintsCache || []).filter((i) => i.project === project && i.id !== imprint.id);
+        for (const o of others) await PIdb.addRelationship(imprint.id, o.id, 'shared-project');
+      }
+      closeModal();
+      toast('Tags updated.');
+      router();
+    });
+  }
+
+  // ------------------------------------------------------------- recall
+  function renderRecall() {
+    center().innerHTML = `
+      <div class="center-inner">
+        <h1 class="section-heading">Recall</h1>
+        <p class="section-sub">Ask about a project or decision. Every answer traces back to something you actually stored.</p>
+        <div class="recall-box">
+          <input type="text" id="recall-input" placeholder='e.g. "What did I decide about Pixel Office?"' />
+          <button class="btn primary" id="recall-go">${icon('recall')} Recall</button>
+        </div>
+        <div id="recall-output"></div>
+      </div>`;
+    $('#recall-input').focus();
+    const run = async () => {
+      const q = $('#recall-input').value.trim();
+      if (!q) return;
+      const res = await PIrecall.recall(q);
+      renderRecallOutput(res);
+    };
+    $('#recall-go').addEventListener('click', run);
+    $('#recall-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') run(); });
+  }
+
+  function renderRecallOutput(res) {
+    const out = $('#recall-output');
+    if (!res.decisions.length && !res.matches.length) {
+      out.innerHTML = `<div class="empty-state">${icon('empty')}<p>NO CONFIRMED MEMORY FOUND.</p><span>Nothing stored matches "${esc(res.query)}" yet.</span></div>`;
+      return;
+    }
+    const latestDecision = res.decisions[0];
+    const earlier = res.decisions.slice(1, 6);
+    out.innerHTML = `
+      ${latestDecision ? `
+      <div class="recall-result-head">Latest decision</div>
+      <div class="callout"><p>${esc(latestDecision.text)}</p><div class="cal-date">${fmtDateTime(latestDecision.createdAt)} · IMPRINT #${latestDecision.imprintId.split('_')[1]}</div></div>
+      ` : ''}
+      ${earlier.length ? `
+      <div class="divider-label">EARLIER REFERENCES</div>
+      ${earlier.map((d) => `<div class="callout"><p>${esc(d.text)}</p><div class="cal-date">${fmtDateTime(d.createdAt)} · <a href="#/imprint/${d.imprintId}">open imprint</a></div></div>`).join('')}
+      ` : ''}
+      ${res.matches.length ? `
+      <div class="divider-label">MATCHING IMPRINTS (${res.matches.length})</div>
+      ${res.matches.slice(0, 8).map((m) => imprintRowHtml(m.imprint, m.snippet, PIsearch.tokenize(res.query))).join('')}
+      ` : ''}
+      <div class="confidence-line">Confidence: evidence found in ${new Set([...res.matches.map((m) => m.imprint.id), ...res.decisions.map((d) => d.imprintId)]).size} stored imprint(s).</div>
+    `;
+  }
+
+  // ------------------------------------------------------------- threads
+  function renderThreads() {
+    const active = (state.allImprintsCache || []).filter((i) => i.status !== 'ARCHIVED');
+    const threads = PIrelationships.buildThreads(active);
+    center().innerHTML = `
+      <div class="center-inner">
+        <h1 class="section-heading">Threads</h1>
+        <p class="section-sub">A thread is a project tag shared across imprints. Assign a project from any imprint's tag panel to grow one.</p>
+        ${threads.length ? threads.map((t) => `
+          <div class="callout" style="border-left-color:var(--brass);">
+            <div class="cal-label">${esc(t.name).toUpperCase()} · ${t.count} IMPRINT${t.count === 1 ? '' : 'S'}</div>
+            ${t.imprints.slice(0, 4).map((i) => `<a href="#/imprint/${i.id}" style="display:block;padding:4px 0;color:var(--ink);text-decoration:none;">→ ${esc(i.title)}</a>`).join('')}
+            ${t.count > 4 ? `<a href="#/imprints?q=${encodeURIComponent(t.name)}" style="font-size:12px;color:var(--ink-faint);">+ ${t.count - 4} more</a>` : ''}
+          </div>
+        `).join('') : `<div class="empty-state">${icon('thread')}<p>No threads yet.</p><span>Tag an imprint with a project name to start one.</span></div>`}
+      </div>`;
+  }
+
+  // ------------------------------------------------------------- timeline
+  function renderTimeline() {
+    const active = (state.allImprintsCache || []).filter((i) => i.status !== 'ARCHIVED')
+      .sort((a, b) => b.createdAt - a.createdAt);
+    let html = `<div class="center-inner"><h1 class="section-heading">Timeline</h1><p class="section-sub">Every imprint, in the order it actually happened.</p>`;
+    if (!active.length) {
+      html += `<div class="empty-state">${icon('timeline')}<p>NO STORED MEMORY FOUND.</p><span>The timeline fills in as you capture.</span></div>`;
+    } else {
+      let lastDay = null;
+      for (const imp of active) {
+        const day = relDay(imp.createdAt);
+        if (day !== lastDay) { html += `<div class="tl-day-label">${day}</div>`; lastDay = day; }
+        html += `<a href="#/imprint/${imp.id}" style="text-decoration:none;color:inherit;">
+          <div class="tl-item">
+            <div class="tl-time">${fmtTime(imp.createdAt)}</div>
+            <div>
+              <span class="type-badge">${imp.type}</span>
+              <div class="imprint-title" style="font-size:14px;margin-top:4px;">${esc(imp.title)}</div>
+            </div>
+          </div></a>`;
+      }
+    }
+    html += `</div>`;
+    center().innerHTML = html;
+  }
+
+  // ------------------------------------------------------------- archive
+  async function renderArchive() {
+    const archived = (state.allImprintsCache || []).filter((i) => i.status === 'ARCHIVED')
+      .sort((a, b) => b.updatedAt - a.updatedAt);
+    const est = await PIdb.estimateStorage();
+    const total = (state.allImprintsCache || []).length;
+    center().innerHTML = `
+      <div class="center-inner">
+        <h1 class="section-heading">Archive</h1>
+        <div class="detail-meta-grid" style="grid-template-columns:repeat(3,1fr);">
+          <div>IMPRINTS<b>${total}</b></div>
+          <div>ARCHIVED<b>${archived.length}</b></div>
+          <div>STORAGE<b>${est.available ? formatBytes(est.usage) + ' / ' + formatBytes(est.quota) : 'BROWSER-REPORTED (unavailable)'}</b></div>
+        </div>
+        <div class="btn-row" style="margin-top:0;">
+          <button class="btn" id="btn-export-all">${icon('export')} Export full archive (.json)</button>
+          <button class="btn" id="btn-import-all">${icon('import')} Import backup</button>
+          <input type="file" id="archive-file-input" class="hidden" accept=".json" />
+          <button class="btn danger" id="btn-clear-all">${icon('delete')} Clear archive</button>
+        </div>
+        <div class="divider-label">ARCHIVED IMPRINTS</div>
+        ${archived.length ? archived.map((imp) => `<a href="#/imprint/${imp.id}" class="imprint-row">
+            <div class="imprint-row-top"><span class="type-badge">${imp.type}</span><span class="imprint-meta">${fmtDate(imp.updatedAt)}</span></div>
+            <div class="imprint-title">${esc(imp.title)}</div>
+          </a>`).join('') : `<div class="aside-empty" style="padding:14px 0;">Nothing archived. Archiving keeps an imprint out of your active list without deleting it.</div>`}
+      </div>`;
+
+    $('#btn-export-all').addEventListener('click', async () => { await PIexport.exportFullBackup(); toast('Backup downloaded.'); });
+    $('#btn-import-all').addEventListener('click', () => $('#archive-file-input').click());
+    $('#archive-file-input').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      try {
+        const res = await PIexport.importBackupFile(file);
+        toast(`Restored — ${res.added} added, ${res.skipped} already present.`);
+        router();
+      } catch (err) { toast('Import failed: ' + err.message, true); }
+    });
+    $('#btn-clear-all').addEventListener('click', () => confirmModal(
+      'Clear the entire archive?',
+      'This permanently deletes every imprint, decision and relationship stored in this browser. Export a backup first if you want to keep a copy.',
+      async () => { await PIdb.clearAll(); toast('Archive cleared.'); navigate('#/capture'); }
+    ));
+  }
+
+  function formatBytes(n) {
+    if (!n) return '0 MB';
+    const mb = n / (1024 * 1024);
+    return mb > 1024 ? (mb / 1024).toFixed(2) + ' GB' : mb.toFixed(1) + ' MB';
+  }
+
+  // ------------------------------------------------------------- settings
+  async function renderSettings() {
+    const theme = await PIdb.getSetting('theme', 'dark');
+    center().innerHTML = `
+      <div class="center-inner">
+        <h1 class="section-heading">Settings</h1>
+        <div class="settings-group">
+          <div class="settings-row">
+            <div class="settings-row-text"><b>Keyboard shortcuts</b><span>Ctrl/Cmd+K search · Ctrl/Cmd+Shift+N new imprint · Esc close overlay</span></div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-text"><b>Privacy</b><span>Local-first. Nothing you capture leaves this browser unless you export it. No analytics, no tracking, no account.</span></div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-text"><b>Encryption</b><span>Not implemented. Content is stored as plain data in this browser's local database.</span></div>
+          </div>
+        </div>
+        <div class="settings-group">
+          <div class="settings-row">
+            <div class="settings-row-text"><b>Export archive</b><span>Full JSON backup of everything stored.</span></div>
+            <button class="btn" id="s-export">${icon('export')} Export</button>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-text"><b>Reset application</b><span>Deletes all imprints, decisions and relationships. Cannot be undone.</span></div>
+            <button class="btn danger" id="s-reset">${icon('delete')} Reset</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <div class="settings-row">
+            <div class="settings-row-text"><b>About</b><span>PIXEL IMPRINT — local-first personal text memory system, by PixelProTech Solutions.</span></div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-text"><b>Capture it. Leave the imprint. Recall it.</b><span>No cloud, no fake AI, no vendor lock-in.</span></div>
+          </div>
+        </div>
+      </div>`;
+    $('#s-export').addEventListener('click', async () => { await PIexport.exportFullBackup(); toast('Backup downloaded.'); });
+    $('#s-reset').addEventListener('click', () => confirmModal(
+      'Reset PIXEL IMPRINT?',
+      'Every imprint, decision and relationship in this browser will be permanently deleted.',
+      async () => { await PIdb.clearAll(); toast('Application reset.'); navigate('#/capture'); }
+    ));
+  }
+
+  // ------------------------------------------------------------- modal / confirm
+  function showModal(innerHtml) {
+    const overlay = $('#overlay');
+    $('#modal').innerHTML = innerHtml;
+    overlay.classList.remove('hidden');
+  }
+  function closeModal() { $('#overlay').classList.add('hidden'); }
+  function confirmModal(title, body, onConfirm) {
+    showModal(`
+      <h2>${esc(title)}</h2>
+      <p style="color:var(--ink-muted);font-size:13.5px;">${esc(body)}</p>
+      <div class="modal-actions">
+        <button class="btn ghost" id="cf-cancel">Cancel</button>
+        <button class="btn danger" id="cf-ok">${icon('check')} Confirm</button>
+      </div>`);
+    $('#cf-cancel').addEventListener('click', closeModal);
+    $('#cf-ok').addEventListener('click', async () => { closeModal(); await onConfirm(); });
+  }
+
+  // ------------------------------------------------------------- global chrome
+  function bindChrome() {
+    $$('.rail-btn, .mobile-nav button').forEach((b) => {
+      b.addEventListener('click', () => navigate('#/' + b.dataset.view));
+    });
+    $('#overlay').addEventListener('click', (e) => { if (e.target.id === 'overlay') closeModal(); });
+    document.addEventListener('keydown', (e) => {
+      const mod = e.ctrlKey || e.metaKey;
+      if (mod && e.key.toLowerCase() === 'k') { e.preventDefault(); $('#topbar-search-input').focus(); }
+      if (mod && e.shiftKey && e.key.toLowerCase() === 'n') { e.preventDefault(); navigate('#/capture'); }
+      if (e.key === 'Escape') closeModal();
+    });
+    $('#topbar-search-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') navigate(`#/imprints?q=${encodeURIComponent(e.target.value)}`);
+    });
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      state.deferredInstallPrompt = e;
+      $('#install-btn').classList.remove('hidden');
+    });
+    $('#install-btn').addEventListener('click', async () => {
+      if (!state.deferredInstallPrompt) return;
+      state.deferredInstallPrompt.prompt();
+      await state.deferredInstallPrompt.userChoice;
+      state.deferredInstallPrompt = null;
+      $('#install-btn').classList.add('hidden');
+    });
+  }
+
+  window.addEventListener('hashchange', router);
+  window.addEventListener('DOMContentLoaded', async () => {
+    bindChrome();
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    }
+    if (!window.location.hash) window.location.hash = '#/capture';
+    router();
+  });
+})();
+</script>
+<script>
+  document.querySelectorAll('.ico').forEach((el) => { el.innerHTML = PIicon(el.dataset.icon); });
+</script>
+</body>
+</html>

@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soul Generator — Frequency Oasis</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<meta name="theme-color" content="#050505">
+
+<link rel="icon" href="data:image/png;base64,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">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Soul Generator">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;1,300&family=Rajdhani:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-bright: #F0D080;
+    --gold-deep: #8B6914;
+    --gold-glow: rgba(201,168,76,0.35);
+    --amber: #E8872A;
+    --amber-glow: rgba(232,135,42,0.25);
+    --bg: #050505;
+    --bg-panel: #0C0C0C;
+    --bg-steel: #111111;
+    --bg-card: #0E0E0E;
+    --smoke: rgba(201,168,76,0.04);
+    --text-dim: #5A5040;
+    --text-mid: #9A8060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: #E8D9B8;
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* CUSTOM CURSOR */
+  .cursor-dot {
+    width: 6px; height: 6px;
+    background: var(--gold-bright);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease;
+    box-shadow: 0 0 12px var(--gold), 0 0 24px var(--gold-glow);
+  }
+  .cursor-ring {
+    width: 32px; height: 32px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+    opacity: 0.5;
+  }
+  .cursor-ring.hover {
+    width: 52px; height: 52px;
+    opacity: 1;
+    border-color: var(--gold-bright);
+  }
+
+  /* CANVAS */
+  #bgCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  /* VINYL TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* SMOKE OVERLAY */
+  .smoke-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 70%),
+                radial-gradient(ellipse 60% 80% at 80% 20%, rgba(232,135,42,0.03) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* LAYOUT */
+  .app-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    padding: 2rem 2.5rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0.4;
+  }
+
+  .logo-mark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+  .logo-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+    margin-top: 2px;
+  }
+  .header-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+  }
+  .status-dot {
+    width: 5px; height: 5px;
+    background: #4ADE80;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #4ADE80;
+    animation: pulse-green 2s infinite;
+  }
+  @keyframes pulse-green { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 5rem 2rem 3rem;
+    position: relative;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards ease;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 10vw, 8rem);
+    font-weight: 300;
+    line-height: 0.9;
+    color: transparent;
+    background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 40%, var(--gold-bright) 60%, var(--gold) 80%, var(--gold-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards ease;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    font-style: italic;
+    color: var(--text-mid);
+    margin-top: 1rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards ease;
+  }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(24px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+
+  /* WAVEFORM */
+  #waveformCanvas {
+    width: 100%;
+    height: 80px;
+    display: block;
+    opacity: 0.5;
+    margin: 2rem 0;
+  }
+
+  /* GENERATE BUTTON */
+  .generate-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 0 4rem;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.9s forwards ease;
+  }
+
+  .generate-btn {
+    position: relative;
+    padding: 1.4rem 4rem;
+    background: transparent;
+    border: none;
+    cursor: none;
+    outline: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.25em;
+    color: var(--bg);
+    z-index: 1;
+    transition: transform 0.3s ease;
+  }
+  .generate-btn:hover { transform: scale(1.04); }
+  .generate-btn:active { transform: scale(0.97); }
+
+  .btn-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold) 45%, var(--gold-bright) 55%, var(--gold) 80%, var(--gold-deep) 100%);
+    border-radius: 4px;
+    z-index: -1;
+    box-shadow:
+      0 0 30px var(--gold-glow),
+      0 0 60px rgba(201,168,76,0.2),
+      inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .btn-glow {
+    position: absolute;
+    inset: -2px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold-bright), var(--gold-deep));
+    z-index: -2;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.3s;
+  }
+  .generate-btn:hover .btn-glow { opacity: 0.6; }
+  .generate-btn::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, var(--gold), transparent, var(--gold));
+    z-index: -1;
+    opacity: 0.5;
+  }
+
+  /* PULSE RING */
+  .pulse-ring {
+    position: absolute;
+    inset: -8px;
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    opacity: 0;
+    animation: pulseRing 2.5s infinite;
+  }
+  .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
+  .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
+  @keyframes pulseRing {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.3); opacity: 0; }
+  }
+
+  /* OUTPUT SECTION */
+  .output-section {
+    padding: 0 1.5rem 6rem;
+    max-width: 900px;
+    margin: 0 auto;
+    display: none;
+  }
+  .output-section.visible { display: block; }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 2rem;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  }
+  .divider-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  /* CARDS */
+  .soul-card {
+    background: linear-gradient(135deg, rgba(14,12,8,0.95) 0%, rgba(12,10,6,0.98) 100%);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.6), inset 0 1px 0 rgba(201,168,76,0.05);
+  }
+  .soul-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .soul-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.7), 0 0 20px rgba(201,168,76,0.08);
+  }
+
+  /* Tube glow accent top */
+  .soul-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%; right: 20%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    opacity: 0.4;
+  }
+
+  /* Corner decorations */
+  .soul-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px; height: 40px;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-left: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px 0 0 0;
+  }
+
+  .card-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .card-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.1);
+  }
+
+  /* CHORD CARD */
+  .chord-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 300;
+    color: var(--gold-bright);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    text-shadow: 0 0 40px rgba(240,208,128,0.3);
+  }
+  .chord-sep {
+    color: var(--gold-deep);
+    margin: 0 0.3em;
+    font-weight: 300;
+  }
+
+  /* MOOD CARD */
+  .mood-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: #D4B896;
+    line-height: 1.5;
+  }
+  .mood-display::before { content: '\201C'; color: var(--gold); }
+  .mood-display::after { content: '\201D'; color: var(--gold); }
+
+  /* BPM CARD */
+  .bpm-display {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+  .bpm-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    color: var(--gold);
+    line-height: 1;
+    text-shadow: 0 0 30px var(--gold-glow);
+  }
+  .bpm-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 1rem;
+    color: var(--text-dim);
+    letter-spacing: 0.2em;
+  }
+  .bpm-bar {
+    margin-top: 1rem;
+    height: 3px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bpm-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--gold-bright));
+    border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 0 10px var(--gold-glow);
+  }
+
+  /* PLUGIN CHAIN */
+  .plugin-chain {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .plugin-node {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .plugin-node:hover {
+    background: rgba(201,168,76,0.12);
+    border-color: rgba(201,168,76,0.4);
+    box-shadow: 0 0 12px rgba(201,168,76,0.15);
+  }
+  .plugin-arrow {
+    color: var(--gold-deep);
+    font-size: 0.9rem;
+    opacity: 0.7;
+  }
+
+  /* TEXTURE CARD */
+  .texture-display {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #B09878;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+  }
+  .texture-orbs {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .texture-orb {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    opacity: 0.4;
+    animation: orb-pulse 1.8s infinite;
+  }
+  .texture-orb:nth-child(2) { animation-delay:0.3s; background:var(--amber); }
+  .texture-orb:nth-child(3) { animation-delay:0.6s; }
+  .texture-orb:nth-child(4) { animation-delay:0.9s; background:var(--amber); }
+  .texture-orb:nth-child(5) { animation-delay:1.2s; }
+  @keyframes orb-pulse {
+    0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:0.8;transform:scale(1.3)}
+  }
+
+  /* ACTION BUTTONS */
+  .action-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 0 0.5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .action-row.visible { opacity: 1; }
+
+  .action-btn {
+    padding: 0.75rem 1.75rem;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: none;
+    transition: all 0.25s ease;
+    border: none;
+    outline: none;
+  }
+
+  .btn-secondary {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold);
+  }
+  .btn-secondary:hover {
+    background: rgba(201,168,76,0.12);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 0 20px rgba(201,168,76,0.15);
+    transform: translateY(-1px);
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+    color: var(--bg);
+    font-weight: 600;
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+    box-shadow: 0 0 25px var(--gold-glow);
+    transform: translateY(-1px);
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: rgba(14,12,8,0.95);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 6px;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    z-index: 999;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 20px rgba(201,168,76,0.1);
+    pointer-events: none;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.08);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    margin-top: 4rem;
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    top: -1px; left: 30%; right: 30%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.4em;
+    color: var(--gold-deep);
+  }
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+    letter-spacing: 0.1em;
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    color: rgba(90,80,64,0.5);
+    letter-spacing: 0.2em;
+    margin-top: 1.5rem;
+  }
+
+  /* LOADING STATE */
+  .generating-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(5,5,5,0.85);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(4px);
+  }
+  .generating-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .gen-spinner {
+    width: 60px; height: 60px;
+    border: 1px solid rgba(201,168,76,0.1);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 0 0 20px var(--gold-glow);
+    margin-bottom: 1.5rem;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .gen-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    animation: flicker 1.5s infinite;
+  }
+  @keyframes flicker { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+  /* TYPING ANIMATION */
+  .typing-cursor::after {
+    content: '|';
+    color: var(--gold);
+    animation: blink 0.7s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero { padding: 3rem 1.5rem 2rem; }
+    .generate-btn { padding: 1.2rem 2.5rem; font-size: 1.3rem; }
+    .chord-display { font-size: 1.8rem; }
+    .plugin-chain { gap: 0.4rem; }
+    .plugin-node { font-size: 0.65rem; padding: 0.4rem 0.75rem; }
+    .action-row { flex-direction: column; align-items: center; }
+    .action-btn { width: 100%; max-width: 300px; text-align: center; }
+  }
+
+  /* VST CHAIN DISPLAY */
+  .chain-focus {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .chain-focus-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .chain-focus-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .vst-chain-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .vst-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    background: rgba(201,168,76,0.05);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 6px;
+    padding: 0.65rem 1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    min-width: 120px;
+    position: relative;
+    overflow: hidden;
+  }
+  .vst-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .vst-card:hover {
+    background: rgba(201,168,76,0.11);
+    border-color: rgba(201,168,76,0.45);
+    box-shadow: 0 0 18px rgba(201,168,76,0.15), 0 4px 20px rgba(0,0,0,0.5);
+    transform: translateY(-2px);
+  }
+  .vst-card:hover::before { opacity: 1; }
+
+  .vst-role {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.25em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+  .vst-name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+  }
+  .vst-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--text-mid);
+    margin-top: 0.1rem;
+  }
+  .vst-price.free {
+    color: #4ADE80;
+    text-shadow: 0 0 8px rgba(74,222,128,0.4);
+  }
+
+  .chain-cta {
+    margin-top: 1.1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgba(201,168,76,0.07);
+  }
+  .chain-shop-link {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-deep);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .chain-shop-link:hover {
+    color: var(--gold);
+    text-shadow: 0 0 12px var(--gold-glow);
+  }
+
+  /* PLAY CHORD BUTTON */
+  .play-chord-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+    padding: 0.55rem 1.4rem;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    cursor: none;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+  }
+  .play-chord-btn:hover {
+    background: rgba(201,168,76,0.14);
+    border-color: rgba(201,168,76,0.5);
+    box-shadow: 0 0 16px rgba(201,168,76,0.15);
+    transform: translateY(-1px);
+  }
+  .play-chord-btn:active { transform: scale(0.97); }
+  .play-chord-btn.playing {
+    border-color: var(--gold);
+    color: var(--gold-bright);
+    box-shadow: 0 0 20px rgba(201,168,76,0.25);
+    animation: btn-breathe 1.2s infinite;
+  }
+  @keyframes btn-breathe {
+    0%,100%{ box-shadow: 0 0 16px rgba(201,168,76,0.2); }
+    50%{ box-shadow: 0 0 30px rgba(201,168,76,0.4); }
+  }
+  .play-icon { font-size: 0.8rem; }
+
+  /* CHORD PLAYING GLOW */
+  #chordCard.playing-glow {
+    border-color: rgba(201,168,76,0.45);
+    box-shadow: 0 0 40px rgba(201,168,76,0.12), inset 0 0 60px rgba(201,168,76,0.03);
+  }
+
+  /* TUBE GLOW VFX on cards */
+  .card-tube-glow {
+    position: absolute;
+    right: 1.5rem; top: 50%;
+    transform: translateY(-50%);
+    width: 3px; height: 60%;
+    border-radius: 2px;
+    background: linear-gradient(to bottom, transparent, var(--amber), transparent);
+    opacity: 0.25;
+    filter: blur(2px);
+  }
+</style>
+<style>*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.visible{visibility:visible}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.transform{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.resize{resize:both}.flex-wrap{flex-wrap:wrap}.border{border-width:1px}.uppercase{text-transform:uppercase}.italic{font-style:italic}.outline{outline-style:solid}.ring{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.blur{--tw-blur:blur(8px)}.blur,.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}</style></head>
+<body>
+
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Background Canvas -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- Smoke overlay -->
+<div class="smoke-overlay"></div>
+
+<!-- Generating overlay -->
+<div class="generating-overlay" id="generatingOverlay">
+  <div class="gen-spinner"></div>
+  <div class="gen-text">Channeling soul frequencies...</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<div class="app-wrapper">
+  <!-- Header -->
+  <header class="header">
+    <div>
+      <div class="logo-mark">Frequency Oasis</div>
+      <div class="logo-sub">Soul Technology Labs · Est. MMXXV</div>
+    </div>
+    <div class="header-status">
+      <div class="status-dot"></div>
+      ENGINE ONLINE
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Late-Night Producer Sanctuary</div>
+    <h1 class="hero-title"><em>Soul</em><br>Generator</h1>
+    <p class="hero-subtitle">Timeless R&B &amp; Trapsoul, summoned from the frequency beyond.</p>
+    <canvas id="waveformCanvas"></canvas>
+  </section>
+
+  <!-- Generate Button -->
+  <div class="generate-btn-wrapper">
+    <button class="generate-btn" id="generateBtn" aria-label="Generate Soul">
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="pulse-ring"></div>
+      <div class="btn-bg"></div>
+      <div class="btn-glow"></div>
+      GENERATE SOUL
+    </button>
+  </div>
+
+  <!-- Output Section -->
+  <div class="output-section" id="outputSection">
+
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-label">Session Output</div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- Chord Progression -->
+    <div class="soul-card" id="chordCard">
+      <div class="card-tube-glow"></div>
+      <div class="card-label">◈ Chord Progression</div>
+      <div class="chord-display" id="chordDisplay"></div>
+      <button class="play-chord-btn" id="playChordBtn" style="display:none;" aria-label="Play chord">
+        <span class="play-icon" id="playIcon">▶</span>
+        <span id="playBtnLabel">PLAY CHORD</span>
+      </button>
+    </div>
+
+    <!-- Mood -->
+    <div class="soul-card" id="moodCard">
+      <div class="card-tube-glow"></div>
+      <div class="card-label">◈ Mood Essence</div>
+      <div class="mood-display" id="moodDisplay"></div>
+    </div>
+
+    <!-- BPM -->
+    <div class="soul-card" id="bpmCard">
+      <div class="card-tube-glow"></div>
+      <div class="card-label">◈ Tempo</div>
+      <div class="bpm-display">
+        <div class="bpm-number" id="bpmDisplay">—</div>
+        <div class="bpm-label">BPM</div>
+      </div>
+      <div class="bpm-bar">
+        <div class="bpm-bar-fill" id="bpmBar" style="width:0%"></div>
+      </div>
+    </div>
+
+    <!-- Plugin Chain -->
+    <div class="soul-card" id="pluginCard">
+      <div class="card-tube-glow"></div>
+      <div class="card-label">◈ Frequency Oasis Signal Chain</div>
+      <div id="pluginDisplay"></div>
+    </div>
+
+    <!-- Texture -->
+    <div class="soul-card" id="textureCard">
+      <div class="card-tube-glow"></div>
+      <div class="card-label">◈ Texture Chamber</div>
+      <div class="texture-display" id="textureDisplay"></div>
+      <div class="texture-orbs">
+        <div class="texture-orb"></div>
+        <div class="texture-orb"></div>
+        <div class="texture-orb"></div>
+        <div class="texture-orb"></div>
+        <div class="texture-orb"></div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-row" id="actionRow">
+      <button class="action-btn btn-secondary" id="copyBtn">Copy Session</button>
+      <button class="action-btn btn-secondary" id="saveBtn">Save Session</button>
+      <button class="action-btn btn-primary" id="againBtn">Generate Again</button>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-brand">Frequency Oasis</div>
+    <div class="footer-tagline">Where sound becomes feeling, and feeling becomes music.</div>
+    <div class="footer-copy">© 2025 Frequency Oasis · Soul Generator v2.0 · All frequencies reserved</div>
+  </footer>
+</div>
+
+<script>
+// ─── DATA ARRAYS ───────────────────────────────────────────────
+const CHORDS = [
+  ["Fm9","Dbmaj7","Abmaj9","Eb13"],
+  ["Bbm9","Gbmaj7","Dbmaj9","Ab13"],
+  ["Cm9","Abmaj7","Ebmaj9","Bb13"],
+  ["Dm9","Bbmaj7","Fmaj9","C13"],
+  ["Gm9","Ebmaj7","Bbmaj9","F13"],
+  ["Am9","Fmaj7","Cmaj9","G13"],
+  ["Ebm9","Cbmaj7","Gbmaj9","Db13"],
+  ["F#m9","Dmaj7","Amaj9","E13"],
+  ["Bm9","Gmaj7","Dmaj9","A13"],
+  ["Em9","Cmaj7","Gmaj9","D13"],
+  ["Fm11","Db9","Abmaj7#11","Eb7sus4"],
+  ["Bbm11","Gb9","Dbmaj7#11","Ab7sus4"],
+  ["Cm11","Ab9","Ebmaj7#11","Bb7sus4"],
+  ["Dm11","Bb9","Fmaj7#11","C7sus4"],
+  ["Gm11","Eb9","Bbmaj7#11","F7sus4"],
+  ["Fmaj9","Em11b5","Am9","Dm9","G13"],
+  ["Dbmaj9","Cm11b5","Fm9","Bbm9","Eb13"],
+  ["Abmaj9","Gm11b5","Cm9","Fm9","Bb13"],
+  ["Fmaj9","Am9","Gm9","C13sus4"],
+  ["Bbmaj9","Dm9","Cm9","F13sus4"],
+  ["Ebmaj9","Gm9","Fm9","Bb13sus4"],
+];
+
+const MOODS = [
+  "Rainy midnight drive through neon streets after heartbreak.",
+  "Silk sheets and whispered confessions at 3am in a penthouse.",
+  "Watching city lights blur through a rain-streaked window, remembering everything.",
+  "The moment right before you say the thing you can never take back.",
+  "Gold hour in an empty cathedral, alone with your thoughts.",
+  "Slow-dancing in the kitchen with someone you're losing.",
+  "A lover's voicemail you've played seventeen times but still can't delete.",
+  "Smoke curling through lamp light in a room full of memories.",
+  "That feeling when the beat drops and the whole world disappears.",
+  "Vintage photographs of people who loved fiercely and forgot nothing.",
+  "Neon reflections in rain puddles outside a jazz bar closing time.",
+  "The quiet grief of outgrowing someone you still love.",
+  "Velvet darkness just before dawn, when secrets feel safe.",
+  "Heartbreak so beautiful it sounds like a saxophone solo.",
+  "Falling in slow motion through a night that never ends.",
+  "The warmth of something ending and beginning at the same time.",
+  "Longing pressed into every note, spilling over every bar.",
+  "Empty rooftops, city haze, someone's name on your lips like a prayer.",
+  "The exact weight of missing someone who's still in the room.",
+  "Stars through a cracked sunroof, driving nowhere because anywhere is fine.",
+  "Champagne and old wounds — glamorous, bittersweet, irreversible.",
+  "Your softest memory playing behind your eyes like a late-night film.",
+];
+
+const BPMS = [
+  72, 75, 78, 80, 84, 86, 88, 90, 92, 95,
+  96, 98, 100, 102, 104, 108, 110, 112, 116, 120,
+  124, 126, 128, 130, 132, 134, 136, 138, 140, 142
+];
+
+// ─── FREQUENCY OASIS VST CATALOGUE ────────────────────────────
+// Each VST: name, role in chain, tagline, Gumroad URL, price
+const FO_VSTS = {
+  drumBusDoctor: {
+    name: "Drum Bus Doctor",
+    role: "Drum Bus",
+    tag: "Dirty Folk's Intelligent Drum Master",
+    url: "https://frequencyoasis.gumroad.com/l/tnmgd",
+    price: "$31"
+  },
+  vocalsDoctor: {
+    name: "Vocals Doctor",
+    role: "Vocal Chain",
+    tag: "Fix & Enhance Psycho Doctor",
+    url: "https://frequencyoasis.gumroad.com/l/tppow",
+    price: "$31"
+  },
+  pianoDoctor: {
+    name: "Piano Doctor",
+    role: "Keys EQ",
+    tag: "Award-Winning Horror EQ for Pianos",
+    url: "https://frequencyoasis.gumroad.com/l/qycjmw",
+    price: "$31"
+  },
+  cryogenicBleed: {
+    name: "Cryogenic Bleed",
+    role: "Reverb Send",
+    tag: "Surgical Aux Reverb Send",
+    url: "https://frequencyoasis.gumroad.com/l/xclsp",
+    price: "$19"
+  },
+  gorecoil: {
+    name: "GORECOIL",
+    role: "Master Bus",
+    tag: "No Mastering. No Mercy.",
+    url: "https://frequencyoasis.gumroad.com/l/oiwxm",
+    price: "$31"
+  },
+  muffleTouch: {
+    name: "Muffle Touch – Guitar",
+    role: "Guitar Tone",
+    tag: "Dark Horse + Black Genius Vibe",
+    url: "https://frequencyoasis.gumroad.com/l/pndhb",
+    price: "$31"
+  },
+  scienceOfKeys: {
+    name: "Science of Keys",
+    role: "Keys Processing",
+    tag: "The Legacy of Smokey Eye Beats",
+    url: "https://frequencyoasis.gumroad.com/l/rhwsv",
+    price: "$31"
+  },
+  voidmaul: {
+    name: "VOIDMAUL TACTICS",
+    role: "Brain Rattlers",
+    tag: "Free Edition — Zero Mercy",
+    url: "https://frequencyoasis.gumroad.com/l/rnwoq",
+    price: "FREE"
+  },
+  hordx: {
+    name: "HORDX Drum Pack",
+    role: "Drum Samples",
+    tag: "Raw Sonic Weapon",
+    url: "https://frequencyoasis.gumroad.com/l/jiqbl",
+    price: "$31"
+  },
+};
+
+// Signal chains — curated combos that make sense musically
+// Each chain = array of VST keys from FO_VSTS
+const PLUGIN_CHAINS = [
+  // R&B / Trapsoul keys-forward chain
+  { focus: "Keys-Forward Trapsoul", chain: ["pianoDoctor","scienceOfKeys","cryogenicBleed","gorecoil"] },
+  // Vocal-driven R&B
+  { focus: "Vocal-Led Soul", chain: ["vocalsDoctor","cryogenicBleed","gorecoil"] },
+  // Drum-heavy trap
+  { focus: "Drum-Heavy Trap", chain: ["drumBusDoctor","gorecoil","voidmaul"] },
+  // Full production chain
+  { focus: "Full Production Stack", chain: ["pianoDoctor","vocalsDoctor","drumBusDoctor","cryogenicBleed","gorecoil"] },
+  // Dark atmospheric
+  { focus: "Dark Atmospheric", chain: ["scienceOfKeys","cryogenicBleed","gorecoil"] },
+  // Guitar-textured soul
+  { focus: "Guitar-Textured Soul", chain: ["muffleTouch","cryogenicBleed","gorecoil"] },
+  // Drums + keys combo
+  { focus: "Drums & Keys Fusion", chain: ["pianoDoctor","drumBusDoctor","scienceOfKeys","cryogenicBleed","gorecoil"] },
+  // Stripped minimal
+  { focus: "Minimal Late-Night", chain: ["scienceOfKeys","cryogenicBleed","voidmaul"] },
+  // Drums + vocals powerhouse
+  { focus: "Drums & Vocals Powerhouse", chain: ["vocalsDoctor","drumBusDoctor","gorecoil","hordx"] },
+  // Free/budget stack
+  { focus: "Free Starter Weapons", chain: ["voidmaul","cryogenicBleed"] },
+];
+
+const TEXTURES = [
+  "Dusty cassette hiss with soft vinyl crackle beneath the low end.",
+  "Warm tape flutter layered over subtle room ambience and midnight breath.",
+  "Gentle static wash, like a 1970s soul record played through warm tube speakers.",
+  "Vinyl surface noise with distant rain and the hum of an old amplifier.",
+  "Lo-fi grain over lush depth — like memory itself is the reverb.",
+  "Soft bitcrushed edges bleeding into silky analog warmth.",
+  "Tape hiss rising and falling like breath, wrapped in tube glow and vintage dust.",
+  "Gentle crackle and pop over a bed of slow chorus sweep and air.",
+  "Whispering static with the warmth of analog tape at 24 inches per second.",
+  "Subtle noise floor alive with texture — where the silence has a sound.",
+  "Room tone, sitar buzz, and that warm saturation when the needle first drops.",
+  "Late-night cassette artifacts kissed by soft plate reverb and golden distortion.",
+  "Micro-distortion edges soft as velvet, resonating with tube harmonic richness.",
+  "Reel-to-reel flutter, gentle chorus movement, and the warmth of copper wire.",
+  "Digital warmth pushed through analog tape — a ghost signal of pure nostalgia.",
+];
+
+// ─── STATE ────────────────────────────────────────────────────
+let currentSession = {};
+let savedSessions = JSON.parse(localStorage.getItem('fo_sessions') || '[]');
+
+// ─── UTILS ───────────────────────────────────────────────────
+const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+// ─── CURSOR ───────────────────────────────────────────────────
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+});
+function animateCursor() {
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) *.12;
+  ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('button, a').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+  el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+// ─── BACKGROUND CANVAS ───────────────────────────────────────
+const bgCanvas = document.getElementById('bgCanvas');
+const bgCtx = bgCanvas.getContext('2d');
+let W, H;
+const particles = [];
+const PARTICLE_COUNT = 80;
+
+function resizeBg() {
+  W = bgCanvas.width = window.innerWidth;
+  H = bgCanvas.height = window.innerHeight;
+}
+resizeBg();
+window.addEventListener('resize', resizeBg);
+
+// Init particles
+for (let i = 0; i < PARTICLE_COUNT; i++) {
+  particles.push({
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    r: Math.random() * 1.5 + 0.3,
+    vx: (Math.random() - 0.5) * 0.2,
+    vy: (Math.random() - 0.5) * 0.15 - 0.05,
+    a: Math.random() * 0.6 + 0.1,
+    pulse: Math.random() * Math.PI * 2,
+    pSpeed: 0.01 + Math.random() * 0.02
+  });
+}
+
+let t = 0;
+function drawBg() {
+  bgCtx.clearRect(0, 0, W, H);
+
+  // Ambient glow blobs
+  const g1 = bgCtx.createRadialGradient(W*0.2, H*0.8, 0, W*0.2, H*0.8, W*0.4);
+  g1.addColorStop(0, 'rgba(201,168,76,0.06)');
+  g1.addColorStop(1, 'transparent');
+  bgCtx.fillStyle = g1;
+  bgCtx.fillRect(0,0,W,H);
+
+  const g2 = bgCtx.createRadialGradient(W*0.8, H*0.2, 0, W*0.8, H*0.2, W*0.35);
+  g2.addColorStop(0, 'rgba(232,135,42,0.04)');
+  g2.addColorStop(1, 'transparent');
+  bgCtx.fillStyle = g2;
+  bgCtx.fillRect(0,0,W,H);
+
+  // Particles
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.pulse += p.pSpeed;
+    if (p.x < -10) p.x = W + 10;
+    if (p.x > W + 10) p.x = -10;
+    if (p.y < -10) p.y = H + 10;
+    if (p.y > H + 10) p.y = H;
+    const alpha = p.a * (0.5 + 0.5 * Math.sin(p.pulse));
+    bgCtx.beginPath();
+    bgCtx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    bgCtx.fillStyle = `rgba(201,168,76,${alpha})`;
+    bgCtx.fill();
+  });
+
+  t += 0.02;
+  requestAnimationFrame(drawBg);
+}
+drawBg();
+
+// ─── WAVEFORM ─────────────────────────────────────────────────
+const wCanvas = document.getElementById('waveformCanvas');
+const wCtx = wCanvas.getContext('2d');
+let wt = 0;
+
+function resizeWave() {
+  wCanvas.width = wCanvas.offsetWidth * window.devicePixelRatio;
+  wCanvas.height = wCanvas.offsetHeight * window.devicePixelRatio;
+  wCtx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+resizeWave();
+window.addEventListener('resize', resizeWave);
+
+function drawWave() {
+  const W = wCanvas.offsetWidth;
+  const H = wCanvas.offsetHeight;
+  wCtx.clearRect(0,0,W,H);
+
+  const waves = [
+    {freq: 0.018, amp: 14, speed: 0.8, alpha: 0.7, color: '#C9A84C'},
+    {freq: 0.025, amp: 9, speed: 1.2, alpha: 0.4, color: '#E8872A'},
+    {freq: 0.012, amp: 18, speed: 0.5, alpha: 0.25, color: '#F0D080'},
+  ];
+
+  waves.forEach(wave => {
+    wCtx.beginPath();
+    wCtx.strokeStyle = wave.color;
+    wCtx.lineWidth = 1;
+    wCtx.globalAlpha = wave.alpha;
+    for (let x = 0; x <= W; x++) {
+      const y = H/2 + Math.sin(x * wave.freq + wt * wave.speed) * wave.amp
+               + Math.sin(x * wave.freq * 2.3 + wt * wave.speed * 0.7) * (wave.amp * 0.3);
+      if (x === 0) wCtx.moveTo(x, y);
+      else wCtx.lineTo(x, y);
+    }
+    wCtx.stroke();
+    wCtx.globalAlpha = 1;
+  });
+
+  wt += 0.04;
+  requestAnimationFrame(drawWave);
+}
+drawWave();
+
+// ─── TOAST ────────────────────────────────────────────────────
+function showToast(msg, duration = 2500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), duration);
+}
+
+// ─── TYPING ANIMATION ─────────────────────────────────────────
+async function typeText(el, text, speed = 22) {
+  el.textContent = '';
+  el.classList.add('typing-cursor');
+  for (let i = 0; i < text.length; i++) {
+    el.textContent += text[i];
+    await sleep(speed + Math.random() * 15);
+  }
+  el.classList.remove('typing-cursor');
+}
+
+// ─── CHORD DISPLAY ────────────────────────────────────────────
+function renderChords(el, chords) {
+  el.innerHTML = chords.map((c, i) =>
+    `<span>${c}</span>${i < chords.length - 1 ? '<span class="chord-sep">–</span>' : ''}`
+  ).join('');
+}
+
+// ─── PLUGIN DISPLAY ───────────────────────────────────────────
+function renderPlugins(el, chainObj) {
+  const { focus, chain } = chainObj;
+  const vstNodes = chain.map((key, i) => {
+    const vst = FO_VSTS[key];
+    const arrow = i < chain.length - 1 ? `<span class="plugin-arrow">→</span>` : '';
+    const isFree = vst.price === 'FREE';
+    return `
+      <a class="vst-card" href="${vst.url}" target="_blank" rel="noopener" title="${vst.tag}">
+        <span class="vst-role">${vst.role}</span>
+        <span class="vst-name">${vst.name}</span>
+        <span class="vst-price ${isFree ? 'free' : ''}">${vst.price}</span>
+      </a>${arrow}`;
+  }).join('');
+  el.innerHTML = `
+    <div class="chain-focus">
+      <span class="chain-focus-label">◈ CHAIN FOCUS</span>
+      <span class="chain-focus-name">${focus}</span>
+    </div>
+    <div class="vst-chain-row">${vstNodes}</div>
+    <div class="chain-cta">
+      <a href="https://frequencyoasis.gumroad.com/" target="_blank" rel="noopener" class="chain-shop-link">
+        Browse all Frequency Oasis VSTs →
+      </a>
+    </div>`;
+}
+
+// ─── REVEAL CARD ─────────────────────────────────────────────
+async function revealCard(el, delay) {
+  await sleep(delay);
+  el.classList.add('revealed');
+}
+
+// ─── GENERATE ─────────────────────────────────────────────────
+async function generate() {
+  const overlay = document.getElementById('generatingOverlay');
+  overlay.classList.add('active');
+
+  await sleep(1400);
+
+  const chords  = rand(CHORDS);
+  const mood    = rand(MOODS);
+  const bpm     = rand(BPMS);
+  const chainObj= rand(PLUGIN_CHAINS);
+  const texture = rand(TEXTURES);
+
+  currentSession = { chords, mood, bpm, chainObj, texture, timestamp: new Date().toISOString() };
+
+  overlay.classList.remove('active');
+
+  const section = document.getElementById('outputSection');
+  section.classList.add('visible');
+
+  // Reset cards
+  document.querySelectorAll('.soul-card').forEach(c => c.classList.remove('revealed'));
+  document.getElementById('actionRow').classList.remove('visible');
+  document.getElementById('playChordBtn').style.display = 'none';
+  stopAllNodes();
+  resetPlayBtn();
+
+  // Reveal cards with stagger
+  const chordCard = document.getElementById('chordCard');
+  const moodCard  = document.getElementById('moodCard');
+  const bpmCard   = document.getElementById('bpmCard');
+  const pluginCard= document.getElementById('pluginCard');
+  const textureCard = document.getElementById('textureCard');
+
+  renderChords(document.getElementById('chordDisplay'), chords);
+  document.getElementById('bpmDisplay').textContent = bpm;
+  renderPlugins(document.getElementById('pluginDisplay'), chainObj);
+
+  revealCard(chordCard, 0);
+  revealCard(moodCard, 200);
+  revealCard(bpmCard, 400);
+  revealCard(pluginCard, 600);
+  revealCard(textureCard, 800);
+
+  // Show play button after chord card appears
+  await sleep(300);
+  document.getElementById('playChordBtn').style.display = 'inline-flex';
+
+  // Mood typing
+  await sleep(280);
+  typeText(document.getElementById('moodDisplay'), mood, 18);
+
+  // Texture typing
+  await sleep(900);
+  typeText(document.getElementById('textureDisplay'), texture, 22);
+
+  // BPM bar
+  await sleep(500);
+  const pct = ((bpm - 65) / (145 - 65)) * 100;
+  document.getElementById('bpmBar').style.width = pct + '%';
+
+  // Show actions
+  await sleep(1000);
+  document.getElementById('actionRow').classList.add('visible');
+
+  section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ─── SAVE ─────────────────────────────────────────────────────
+function saveSession() {
+  if (!currentSession.chords) return showToast('Generate a session first.');
+  savedSessions.push(currentSession);
+  localStorage.setItem('fo_sessions', JSON.stringify(savedSessions));
+  showToast(`Session saved. ${savedSessions.length} total saved.`);
+}
+
+// ─── COPY ─────────────────────────────────────────────────────
+function copySession() {
+  if (!currentSession.chords) return showToast('Generate a session first.');
+  const s = currentSession;
+  const text = [
+    '=== FREQUENCY OASIS — SOUL SESSION ===',
+    '',
+    `CHORD PROGRESSION: ${s.chords.join(' – ')}`,
+    `MOOD: "${s.mood}"`,
+    `BPM: ${s.bpm}`,
+    `CHAIN FOCUS: ${s.chainObj.focus}`,
+    `PLUGIN CHAIN: ${s.chainObj.chain.map(k => FO_VSTS[k].name).join(' → ')}`,
+    `GET THESE VSTS: https://frequencyoasis.gumroad.com/`,
+    `TEXTURE: ${s.texture}`,
+    '',
+    `Generated: ${new Date(s.timestamp).toLocaleString()}`,
+    'frequencyoasis.com',
+  ].join('\n');
+  navigator.clipboard.writeText(text).then(() => showToast('Session copied to clipboard.'));
+}
+
+// ─── RHODES FM ENGINE ─────────────────────────────────────────
+// Authentic electric piano synthesis using FM (like Fender Rhodes / DX7)
+// Carrier + Modulator architecture with bark envelope, tine character,
+// natural exponential decay, tremolo LFO, spring reverb, and warm EQ.
+
+let audioCtx = null;
+let isPlayingChord = false;
+let activeNodes = [];
+
+const NOTE_FREQ = {
+  'C':261.63,'C#':277.18,'Db':277.18,
+  'D':293.66,'D#':311.13,'Eb':311.13,
+  'E':329.63,
+  'F':349.23,'F#':369.99,'Gb':369.99,
+  'G':392.00,'G#':415.30,'Ab':415.30,
+  'A':440.00,'A#':466.16,'Bb':466.16,
+  'B':493.88,
+};
+
+const CHORD_INTERVALS = {
+  'maj':[0,4,7],'maj7':[0,4,7,11],'maj9':[0,4,7,11,14],
+  'maj7#11':[0,4,7,11,14,18],
+  'min':[0,3,7],'min7':[0,3,7,10],'m7':[0,3,7,10],
+  'm9':[0,3,7,10,14],'m11':[0,3,7,10,14,17],'m11b5':[0,3,6,10,14,17],
+  '7':[0,4,7,10],'9':[0,4,7,10,14],'11':[0,4,7,10,14,17],
+  '13':[0,4,7,10,14,17,21],'7sus4':[0,5,7,10],'13sus4':[0,5,7,10,14,17,21],
+  'sus2':[0,2,7],'sus4':[0,5,7],'add9':[0,4,7,14],
+};
+
+function parseChordName(name) {
+  const m = name.match(/^([A-G][b#]?)/);
+  if (!m) return null;
+  const root = m[1];
+  return { root, quality: name.slice(root.length) || 'maj' };
+}
+
+function chordToFrequencies(chordName) {
+  const p = parseChordName(chordName);
+  if (!p) return [261.63];
+  const base = NOTE_FREQ[p.root] || 261.63;
+  const ivs = CHORD_INTERVALS[p.quality] || CHORD_INTERVALS['maj7'];
+  // Voice chords across 1.5 octaves — bass below, melody extensions up
+  return ivs.map((s, i) => {
+    let f = base * Math.pow(2, s / 12);
+    if (i === 0) f *= 0.5;          // bass root down an octave
+    else if (i > 3) f *= 2;         // extensions up an octave
+    return f;
+  });
+}
+
+function initAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+// Spring reverb — long pre-delay, dense early reflections, warm tail
+function createSpringReverb(ctx) {
+  const conv = ctx.createConvolver();
+  const sr = ctx.sampleRate;
+  const len = sr * 3.8;
+  const buf = ctx.createBuffer(2, len, sr);
+  for (let c = 0; c < 2; c++) {
+    const d = buf.getChannelData(c);
+    // Pre-delay gap (15ms), then dense reflections
+    const preDelay = Math.floor(sr * 0.015);
+    for (let i = preDelay; i < len; i++) {
+      // Multiple reflection densities layered
+      const env = Math.pow(1 - (i - preDelay) / (len - preDelay), 1.8);
+      d[i] = (Math.random() * 2 - 1) * env * 0.9
+            + (Math.random() * 2 - 1) * env * 0.4 * (i % 3 === 0 ? 1 : 0);
+    }
+  }
+  conv.buffer = buf;
+  return conv;
+}
+
+// Tremolo LFO (classic Rhodes effect ~5Hz)
+function createTremolo(ctx, rate, depth) {
+  const lfo = ctx.createOscillator();
+  const lfoGain = ctx.createGain();
+  lfo.type = 'sine';
+  lfo.frequency.value = rate;
+  lfoGain.gain.value = depth;
+  lfo.connect(lfoGain);
+  lfo.start();
+  activeNodes.push(lfo);
+  return lfoGain;
+}
+
+// Single Rhodes FM note
+// Algorithm: Modulator (sine) → frequency-modulates Carrier (sine)
+// Bark envelope on modulator = the "clunk" attack character
+function playRhodesNote(ctx, freq, startTime, duration, velocity, masterIn) {
+  const now = startTime;
+  const vel = Math.min(1, Math.max(0.2, velocity));
+
+  // ── MODULATOR (creates the timbre via FM) ──
+  const modulator = ctx.createOscillator();
+  modulator.type = 'sine';
+  // Rhodes: modulator ratio ≈ 1:1, slightly detuned for warmth
+  modulator.frequency.value = freq * 1.0;
+  modulator.detune.value = 4; // slight detune for chorus character
+
+  // Modulator gain = FM index — high at attack (bark), falls fast (tine sustain)
+  const modGain = ctx.createGain();
+  const barkIntensity = vel * freq * 3.2;   // velocity-sensitive bark
+  modGain.gain.setValueAtTime(0, now);
+  modGain.gain.linearRampToValueAtTime(barkIntensity, now + 0.005); // instant snap
+  modGain.gain.setTargetAtTime(freq * 0.18, now + 0.005, 0.04);    // bark decays fast
+  modGain.gain.setTargetAtTime(freq * 0.06, now + 0.12, 0.3);      // settles to tine hum
+
+  // ── CARRIER (the audible sine we hear) ──
+  const carrier = ctx.createOscillator();
+  carrier.type = 'sine';
+  carrier.frequency.value = freq;
+
+  // Carrier amplitude — fast attack, long natural decay (Rhodes feel)
+  const carrierGain = ctx.createGain();
+  const amp = vel * 0.22;
+  carrierGain.gain.setValueAtTime(0, now);
+  carrierGain.gain.linearRampToValueAtTime(amp, now + 0.008);         // punchy attack
+  carrierGain.gain.setTargetAtTime(amp * 0.85, now + 0.008, 0.05);   // initial settle
+  carrierGain.gain.setTargetAtTime(amp * 0.5, now + 0.1, 0.6);       // slow sustain decay
+  carrierGain.gain.setTargetAtTime(0, now + duration * 0.7, 0.4);    // natural release
+
+  // ── TINE OVERTONE — adds the metallic shimmer ──
+  const tine = ctx.createOscillator();
+  tine.type = 'sine';
+  tine.frequency.value = freq * 7.13; // inharmonic partial (tine resonance)
+  const tineGain = ctx.createGain();
+  tineGain.gain.setValueAtTime(vel * 0.012, now);
+  tineGain.gain.setTargetAtTime(0, now + 0.015, 0.06); // very brief metallic click
+
+  // Wire up FM: modulator → modGain → carrier frequency
+  modulator.connect(modGain);
+  modGain.connect(carrier.frequency);
+
+  carrier.connect(carrierGain);
+  tine.connect(tineGain);
+  carrierGain.connect(masterIn);
+  tineGain.connect(masterIn);
+
+  const endTime = now + duration + 0.8;
+  modulator.start(now); modulator.stop(endTime);
+  carrier.start(now);   carrier.stop(endTime);
+  tine.start(now);      tine.stop(now + 0.12);
+
+  activeNodes.push(modulator, modGain, carrier, carrierGain, tine, tineGain);
+}
+
+function stopAllNodes() {
+  activeNodes.forEach(n => {
+    try { n.stop && n.stop(); } catch(e) {}
+    try { n.disconnect(); } catch(e) {}
+  });
+  activeNodes = [];
+}
+
+async function playChordProgression(chordNames) {
+  initAudio();
+  stopAllNodes();
+  isPlayingChord = true;
+
+  const btn  = document.getElementById('playChordBtn');
+  const lbl  = document.getElementById('playBtnLabel');
+  const icon = document.getElementById('playIcon');
+  const card = document.getElementById('chordCard');
+
+  btn.classList.add('playing');
+  card.classList.add('playing-glow');
+  icon.textContent = '■';
+  lbl.textContent  = 'PLAYING...';
+
+  const ctx = audioCtx;
+  const now = ctx.currentTime;
+
+  // ── MASTER SIGNAL CHAIN ──
+  // Tremolo → Tone shaping → Spring Reverb → Output
+  const masterGain = ctx.createGain();
+  masterGain.gain.value = 0.82;
+
+  // Tremolo (amplitude modulation ~5Hz, depth ~18%)
+  const tremoloGain = ctx.createGain();
+  tremoloGain.gain.value = 1;
+  const tremLFO = createTremolo(ctx, 5.1, 0.18);
+  tremLFO.connect(tremoloGain.gain);
+
+  // Tone: slight mid-cut (scooped), warmth boost, presence air
+  const midCut = ctx.createBiquadFilter();
+  midCut.type = 'peaking';
+  midCut.frequency.value = 900;
+  midCut.gain.value = -2.5;
+  midCut.Q.value = 0.8;
+
+  const warmBoost = ctx.createBiquadFilter();
+  warmBoost.type = 'peaking';
+  warmBoost.frequency.value = 280;
+  warmBoost.gain.value = 3.5;
+  warmBoost.Q.value = 1.2;
+
+  const airBoost = ctx.createBiquadFilter();
+  airBoost.type = 'peaking';
+  airBoost.frequency.value = 5200;
+  airBoost.gain.value = 2;
+  airBoost.Q.value = 1.5;
+
+  const lpf = ctx.createBiquadFilter();
+  lpf.type = 'lowpass';
+  lpf.frequency.value = 7500; // smooth out harshness above 7.5k
+
+  // Spring reverb
+  const spring = createSpringReverb(ctx);
+  const springGain = ctx.createGain();
+  springGain.gain.value = 0.38;
+
+  const dryGain = ctx.createGain();
+  dryGain.gain.value = 0.72;
+
+  // Chain: master → tremolo → warmBoost → midCut → airBoost → lpf → dry+reverb → out
+  masterGain.connect(tremoloGain);
+  tremoloGain.connect(warmBoost);
+  warmBoost.connect(midCut);
+  midCut.connect(airBoost);
+  airBoost.connect(lpf);
+  lpf.connect(dryGain);
+  lpf.connect(spring);
+  spring.connect(springGain);
+  dryGain.connect(ctx.destination);
+  springGain.connect(ctx.destination);
+
+  // ── SCHEDULE CHORD PROGRESSION ──
+  const chordDur  = 2.2;   // seconds each chord rings
+  const overlap   = 0.3;   // overlap between chords for legato feel
+  const totalDur  = chordNames.length * (chordDur - overlap) + overlap + 1.2;
+
+  chordNames.forEach((chordName, ci) => {
+    const chordStart = now + ci * (chordDur - overlap);
+    const freqs = chordToFrequencies(chordName);
+
+    freqs.forEach((freq, ni) => {
+      // Gentle strum: each note slightly delayed
+      const strumDelay = ni * 0.028;
+      // Velocity variation — slightly softer on extensions for natural voicing
+      const vel = ni === 0 ? 0.75 : (ni <= 2 ? 0.88 : 0.65);
+      playRhodesNote(ctx, freq, chordStart + strumDelay, chordDur, vel, masterGain);
+    });
+  });
+
+  // Fade out master at end
+  masterGain.gain.setValueAtTime(0.82, now + totalDur - 1.0);
+  masterGain.gain.linearRampToValueAtTime(0, now + totalDur);
+
+  setTimeout(() => { if (isPlayingChord) resetPlayBtn(); }, totalDur * 1000);
+}
+
+function resetPlayBtn() {
+  isPlayingChord = false;
+  const btn = document.getElementById('playChordBtn');
+  const lbl = document.getElementById('playBtnLabel');
+  const icon = document.getElementById('playIcon');
+  const card = document.getElementById('chordCard');
+  if (!btn) return;
+  btn.classList.remove('playing');
+  card.classList.remove('playing-glow');
+  icon.textContent = '▶';
+  lbl.textContent = 'PLAY CHORD';
+}
+
+function toggleChordPlay() {
+  if (isPlayingChord) {
+    stopAllNodes();
+    resetPlayBtn();
+  } else {
+    if (!currentSession.chords) return;
+    playChordProgression(currentSession.chords);
+  }
+}
+
+// ─── EVENTS ───────────────────────────────────────────────────
+document.getElementById('generateBtn').addEventListener('click', generate);
+document.getElementById('againBtn').addEventListener('click', generate);
+document.getElementById('saveBtn').addEventListener('click', saveSession);
+document.getElementById('copyBtn').addEventListener('click', copySession);
+document.getElementById('playChordBtn').addEventListener('click', toggleChordPlay);
+
+// Hover cursor on new buttons added dynamically
+document.addEventListener('mouseover', e => {
+  if (e.target.closest('button') || e.target.closest('a')) {
+    ring.classList.add('hover');
+  }
+});
+document.addEventListener('mouseout', e => {
+  if (e.target.closest('button') || e.target.closest('a')) {
+    ring.classList.remove('hover');
+  }
+});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .catch((err) => console.warn('Service worker registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>

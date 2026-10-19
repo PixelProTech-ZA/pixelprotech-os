@@ -1,0 +1,3022 @@
+<!doctype html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Audio Hospital — Organic Sound Treatment Facility</title>
+<meta name="description" content="A real audio engineering workspace — EQ, dynamics, space and harmonic treatment — set inside a forgotten hospital reclaimed by forest.">
+<meta name="theme-color" content="#182920">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Audio Hospital">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAFcUlEQVR4nJ1WW2xc1RVde59z587DJh7Hz9jkHUwJSpvSlEqGSo5QvxIkHl9AS5RAP9qqAgT97V+l/gQkRD8KAglVisRXqyJQaFSpQggFRBoeASXBCbYT4diOHzNj35m59+zNx70zc22Pkyj745yre/ZZaz/O3ufQ4MhWEBEAIiKAiEAgIJkQD80JAKDxoAA0HhSaDND4C6oKgHFLQjdX2WATJx+0duH2kGnNDDCIbgepzZ61CJQQbKjUZoNhGN7IFl21s6FkNwZMhI0RUYZGgnIgUOR9sgzR9vprxN5UY2Vpwc8Xqmo7szR2dwcIp8dXlgLJWVrNQWknmn9uTKAA3ffwExc/O90XzR5/csuuPgvg0kz40jszE7Oh75FqWrmNpHKgq5TYmGq5tP/QE795+ZX9jxw99gvvnuHsUqBLgY4MZn53sBjJTQ+GIhUibSVBlZjDatC9defoU3+Yvxbu+fH+3dpVCSLLALBc0zu7bUeWIqdtOdKmclJw2lpUICZ44NfPdQ32RXXpHt7V2TsoURifaSY0I0PxXk1Br6bg1O+EitlUK6XtPx098OjjV776avzj//g9xahrB1wtXTSiiTUC5bir6Oo0aOJBY0UBIhCpCrEdO/aSyXn/e+v4uVP/pAyud4ywSnLENVJiIgYxEZioUpNqqEwERSPUCZlNYq8KZnURWW9l4fqBx57eNjqK82f+fPeZoHffNyUtFffKlEcQkC5z51B+5u2n8pHxhSwBU/Ph307NX7pWy3rknDAbSRqiWkBViaBhrZotdIiLisM7fnnkuTAI75t4/c4t2cCbm1j+vtQ5UvM356vTX+z+4+Whw30L/x9a+nRw6fNcbVYU927jnQOFZ9+4UgmczaC2vMzWi+vCQkFM9WDl0J/+uvehw9VyKZMrUM/A0MS7/YuflbxiJpgvVs5PDowFfi9ULw8/EnFuqn9sfMtYrhbmqtdAJKKZffTsgy6ouVxn4dx/3/v3X170snmoWEVy1IjZWM94vmFsXvh6z+U3I/YBJXVdS+fGh8cqueH5O/aWcx33jp/YOv3+ld6DM8WfBX4fQYXhiNgaI5GxGWZu3BlK/buHQYCqRFG28w4R5HPmjSM9Pxqw5dAQkRdVZrp/fuonrwxNf7iSGywXhg9+crRYvmCsdTYXmbyq5jN8cbr229enyoEzjGq5RNaL7bbQOM1kvEx9ZZmY5pb1hX+Ev/9Vz7bNVkAsqJcu+rvnZjffHxp/6/TJTZVLi9Q9u1AnjSCLRJi6Hr72wdy1uVrWo0iUPR8q8dGx8SmNE0JsQMj5dHmm/vzbVztyhgAFWZ185p5vu+464OrVbVf/Za2ZvV47+vdJ5+IOp5VADCOftSJKBhBpVgUjvj/jOlNVUSeStSj47JxETkMhrQebSheCrO1ZPNuzeDayBVJxTp2TyImLpOBT1kKcqGoKXQFNCq1RxRrzOVWRuGaUIMq2f/ajYum7PZMnmv2zUVQKgoiKaKtkm52iESIQxZ2CQCBVgBK/CFAXcbZ76csDHx+LwjAy+Yw6IogkVjWmNuhxL9JEpelK4/UBhSqYUAncxLwUfKqpjZzkM2ZyLqwEzlCs3nI9QdcWhU16Ruy5xg+k2HpKPgSW8drJmT0DmV39PoAL09VXT84abtjRsr6B3mpGSr3bB1OdF60bO9XpmSmoS1fBjo4UCPjofGWh4nIZToV9VVhS7zJQz/YBNLowVuGmmBTMiByWawIg77Nn4KSp2UJdg44kRMnJIErpgRrJUgLgBMzYlGcAonDp+34NdBokuTLTaWh6k77NCXEonK5ZWkexbsmu01Jdn4UNnkDrTV8v7Z4tq2ITC63XuDH3DQnabL61V1w7+QFc3/9wLEMGYwAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMzIgMzIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cGF0aCBkPSJNMTEgNHYxMWE1IDUgMCAwIDAgMTAgMFY0IiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDxwYXRoIGQ9Ik0xNiAxNXYxMyIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8cGF0aCBkPSJNMyAyNGg1bDItNSAzIDkgMi02IDEuNSAzSDI3IiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIxLjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC43NSIvPgogIDwvc3ZnPgo=">
+
+<style>/* ==========================================================================
+   AUDIO HOSPITAL — organic sound treatment facility
+   Design tokens: deep forest steel chassis, brass/gold instrumentation,
+   rust-orange decay, blood-red alert lamps, electric-blue signal traces.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Barlow+Condensed:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root{
+  /* --- palette --- */
+  --forest-0:   #0f1712;
+  --forest-1:   #182920;
+  --forest-2:   #1f342a;
+  --steel-0:    #1b1e1f;
+  --steel-1:    #24282a;
+  --steel-2:    #31363a;
+  --rust:       #b5502d;
+  --rust-dim:   #7c3b23;
+  --blood:      #c22a2a;
+  --blood-glow: #ff5b4a;
+  --amber:      #d9a441;
+  --amber-dim:  #9a7530;
+  --gold:       #a4822f;
+  --audioblue:  #3aa7c7;
+  --audioblue-glow: #7fd8f2;
+  --paper:      #e7e0c9;
+  --paper-dim:  #9c9784;
+  --moss:       #4c6b4f;
+
+  /* --- type --- */
+  --font-chart: 'Special Elite', 'Courier New', monospace;
+  --font-ui:    'Barlow Condensed', system-ui, sans-serif;
+  --font-data:  'JetBrains Mono', 'SF Mono', monospace;
+
+  /* --- structure --- */
+  --radius-s: 3px;
+  --radius-m: 6px;
+  --panel-border: 1px solid rgba(164,130,47,0.25);
+  --hairline: 1px solid rgba(231,224,201,0.09);
+
+  --nav-h: 64px;
+  --top-h: 56px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(76,107,79,0.18), transparent 55%),
+    radial-gradient(ellipse at 90% 0%, rgba(58,167,199,0.06), transparent 45%),
+    var(--forest-0);
+  color:var(--paper);
+  font-family:var(--font-ui);
+  -webkit-font-smoothing:antialiased;
+  overflow:hidden;
+}
+::selection{ background:var(--rust); color:var(--forest-0); }
+
+button{ font-family:inherit; }
+input[type="range"]{ -webkit-appearance:none; appearance:none; background:transparent; }
+
+a, button{ cursor:pointer; }
+
+.hidden{ display:none !important; }
+
+/* ==========================================================================
+   APP SHELL
+   ========================================================================== */
+#app{
+  height:100%;
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  grid-template-rows: var(--top-h) 1fr;
+  grid-template-areas:
+    "brand top"
+    "side  main";
+}
+
+/* --- brand / vitals strip (signature element) --- */
+.brand-strip{
+  grid-area:brand;
+  background:linear-gradient(180deg,var(--steel-1),var(--steel-0));
+  border-bottom:var(--panel-border);
+  border-right:var(--panel-border);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:0 14px;
+}
+.brand-strip .rx{
+  width:26px;height:26px;
+  color:var(--amber);
+}
+.brand-strip .brand-text{
+  font-family:var(--font-chart);
+  font-size:15px;
+  letter-spacing:0.5px;
+  color:var(--paper);
+  line-height:1.1;
+}
+.brand-strip .brand-text small{
+  display:block;
+  font-family:var(--font-ui);
+  font-size:9.5px;
+  letter-spacing:1.6px;
+  color:var(--paper-dim);
+  text-transform:uppercase;
+}
+
+.top-bar{
+  grid-area:top;
+  background:linear-gradient(180deg,var(--steel-1),var(--steel-0));
+  border-bottom:var(--panel-border);
+  display:flex;
+  align-items:center;
+  padding:0 16px;
+  gap:16px;
+}
+
+/* live vitals oscilloscope trace — the signature motif, reused in top bar */
+.vitals-scope{
+  flex:1;
+  height:34px;
+  border-radius:var(--radius-s);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.15)),
+    var(--forest-1);
+  border:1px solid rgba(58,167,199,0.25);
+  position:relative;
+  overflow:hidden;
+}
+.vitals-scope canvas{ width:100%; height:100%; display:block; }
+.vitals-scope::after{
+  content:"";
+  position:absolute; inset:0;
+  background:repeating-linear-gradient(180deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 4px);
+  pointer-events:none;
+}
+
+.top-status{
+  font-family:var(--font-data);
+  font-size:11px;
+  color:var(--audioblue-glow);
+  white-space:nowrap;
+  letter-spacing:0.5px;
+}
+.top-status .lamp{
+  display:inline-block; width:7px; height:7px; border-radius:50%;
+  background:var(--moss); margin-right:6px; box-shadow:0 0 6px var(--moss);
+}
+.top-status.playing .lamp{ background:var(--blood-glow); box-shadow:0 0 8px var(--blood-glow); }
+
+/* --- side nav (desktop) --- */
+.side-nav{
+  grid-area:side;
+  background:linear-gradient(180deg,var(--steel-1),var(--steel-0));
+  border-right:var(--panel-border);
+  display:flex;
+  flex-direction:column;
+  padding:10px 8px;
+  gap:2px;
+  overflow-y:auto;
+}
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 10px;
+  border-radius:var(--radius-s);
+  border:1px solid transparent;
+  background:transparent;
+  color:var(--paper-dim);
+  font-family:var(--font-ui);
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:0.4px;
+  text-align:left;
+  transition:background .15s, color .15s, border-color .15s;
+}
+.nav-item svg{ width:19px; height:19px; flex:none; }
+.nav-item:hover{ background:rgba(164,130,47,0.08); color:var(--paper); }
+.nav-item.active{
+  background:rgba(213,90,43,0.12);
+  border-color:rgba(181,80,45,0.4);
+  color:var(--amber);
+}
+.nav-divider{ height:1px; background:rgba(231,224,201,0.08); margin:8px 6px; }
+.nav-label{
+  font-family:var(--font-data);
+  font-size:9px;
+  letter-spacing:2px;
+  color:var(--paper-dim);
+  opacity:0.6;
+  padding:10px 10px 2px;
+  text-transform:uppercase;
+}
+
+/* --- main --- */
+main{
+  grid-area:main;
+  overflow-y:auto;
+  padding:18px 22px 90px;
+  position:relative;
+}
+.screen{ display:none; max-width:1180px; margin:0 auto; }
+.screen.active{ display:block; animation:fade-in .25s ease; }
+@keyframes fade-in{ from{opacity:0; transform:translateY(4px);} to{opacity:1; transform:none;} }
+
+.screen-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  margin-bottom:16px;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.screen-head h1{
+  font-family:var(--font-chart);
+  font-size:22px;
+  font-weight:400;
+  color:var(--paper);
+  margin:0;
+  letter-spacing:0.4px;
+}
+.screen-head .sub{
+  font-family:var(--font-data);
+  font-size:11px;
+  color:var(--paper-dim);
+  letter-spacing:0.5px;
+}
+
+/* ==========================================================================
+   PANELS / CHART CARDS
+   ========================================================================== */
+.panel{
+  background:linear-gradient(180deg, var(--steel-1), var(--steel-0));
+  border:var(--panel-border);
+  border-radius:var(--radius-m);
+  padding:14px 16px;
+  margin-bottom:16px;
+  position:relative;
+}
+.panel::before{ /* rivet corners for equipment feel */
+  content:"";
+  position:absolute; top:6px; left:6px; width:4px; height:4px;
+  border-radius:50%; background:rgba(164,130,47,0.35);
+  box-shadow:
+    calc(100% - 4px) 0 0 rgba(164,130,47,0.35);
+}
+.panel-title{
+  font-family:var(--font-data);
+  font-size:10.5px;
+  letter-spacing:1.6px;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin:0 0 10px;
+  display:flex; align-items:center; gap:8px;
+}
+.panel-title svg{ width:15px; height:15px; color:var(--amber); }
+
+.grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+@media (max-width:900px){ .grid-2,.grid-3{ grid-template-columns:1fr; } }
+
+/* ==========================================================================
+   HOME / INTAKE
+   ========================================================================== */
+.intake-drop{
+  border:1.5px dashed rgba(164,130,47,0.4);
+  border-radius:var(--radius-m);
+  padding:34px 16px;
+  text-align:center;
+  background:radial-gradient(ellipse at 50% 0%, rgba(76,107,79,0.14), transparent 70%);
+  transition:border-color .15s, background .15s;
+}
+.intake-drop.drag-over{ border-color:var(--audioblue); background:rgba(58,167,199,0.08); }
+.intake-drop svg{ width:44px; height:44px; color:var(--amber-dim); margin-bottom:10px; }
+.intake-drop h2{
+  font-family:var(--font-chart); font-weight:400; font-size:17px;
+  margin:0 0 6px; color:var(--paper);
+}
+.intake-drop p{ margin:0 0 14px; color:var(--paper-dim); font-size:13px; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px;
+  background:linear-gradient(180deg, var(--rust), var(--rust-dim));
+  color:var(--paper);
+  border:1px solid rgba(0,0,0,0.25);
+  border-radius:var(--radius-s);
+  padding:9px 18px;
+  font-family:var(--font-ui);
+  font-size:14.5px; font-weight:600; letter-spacing:0.3px;
+  box-shadow:0 2px 0 rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.btn:hover{ filter:brightness(1.08); }
+.btn:active{ transform:translateY(1px); box-shadow:0 1px 0 rgba(0,0,0,0.3); }
+.btn.ghost{
+  background:transparent; border:1px solid rgba(164,130,47,0.4); color:var(--gold);
+  box-shadow:none;
+}
+.btn.blue{ background:linear-gradient(180deg, #3897b3, #256f85); }
+.btn.small{ padding:6px 12px; font-size:12.5px; }
+.btn svg{ width:16px; height:16px; }
+.btn:disabled{ opacity:0.4; filter:grayscale(0.4); pointer-events:none; }
+
+.recent-list{ display:flex; flex-direction:column; gap:6px; }
+.recent-item{
+  display:flex; align-items:center; gap:10px;
+  padding:8px 10px; border-radius:var(--radius-s);
+  border:var(--hairline); background:rgba(0,0,0,0.15);
+  font-size:13.5px;
+}
+.recent-item svg{ width:16px; height:16px; color:var(--amber-dim); flex:none; }
+.recent-item .name{ flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.recent-item .meta{ font-family:var(--font-data); font-size:10.5px; color:var(--paper-dim); }
+
+/* ==========================================================================
+   PATIENTS (file library)
+   ========================================================================== */
+.patient-card{
+  display:flex; align-items:center; gap:12px;
+  padding:12px; border-radius:var(--radius-m);
+  border:var(--panel-border); background:rgba(0,0,0,0.14);
+  margin-bottom:10px;
+}
+.patient-card .thumb{
+  width:40px; height:40px; border-radius:var(--radius-s);
+  background:var(--forest-1); display:flex; align-items:center; justify-content:center;
+  color:var(--audioblue); flex:none;
+}
+.patient-card .thumb svg{ width:22px; height:22px; }
+.patient-card .info{ flex:1; min-width:0; }
+.patient-card .info .name{ font-size:14.5px; color:var(--paper); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.patient-card .info .meta{ font-family:var(--font-data); font-size:10.5px; color:var(--paper-dim); }
+.patient-card .actions{ display:flex; gap:6px; }
+.empty-state{
+  text-align:center; padding:40px 16px; color:var(--paper-dim);
+}
+.empty-state svg{ width:40px; height:40px; color:var(--gold); opacity:0.5; margin-bottom:10px; }
+
+/* ==========================================================================
+   TRANSPORT / PLAYER STRIP
+   ========================================================================== */
+.transport{
+  position:fixed; left:220px; right:0; bottom:0;
+  background:linear-gradient(0deg,var(--steel-0),var(--steel-1));
+  border-top:var(--panel-border);
+  display:flex; align-items:center; gap:14px;
+  padding:8px 18px; z-index:30;
+}
+.transport .tname{
+  font-family:var(--font-data); font-size:11.5px; color:var(--paper-dim);
+  width:170px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:none;
+}
+.transport-btn{
+  width:34px; height:34px; border-radius:50%;
+  background:var(--steel-2); border:1px solid rgba(164,130,47,0.3);
+  color:var(--paper); display:flex; align-items:center; justify-content:center; flex:none;
+}
+.transport-btn svg{ width:16px; height:16px; }
+.transport-btn.play{ background:var(--rust); border-color:var(--rust-dim); }
+.transport-scrub{ flex:1; display:flex; align-items:center; gap:8px; }
+.transport-time{ font-family:var(--font-data); font-size:11px; color:var(--paper-dim); flex:none; }
+input[type="range"].seek{
+  flex:1; height:4px; border-radius:2px; background:var(--steel-2);
+  position:relative;
+}
+input[type="range"].seek::-webkit-slider-thumb{
+  -webkit-appearance:none; width:12px; height:12px; border-radius:50%;
+  background:var(--audioblue); box-shadow:0 0 6px var(--audioblue-glow); margin-top:0;
+}
+.vol-wrap{ display:flex; align-items:center; gap:6px; width:120px; flex:none; }
+.vol-wrap svg{ width:15px; height:15px; color:var(--paper-dim); }
+
+/* ==========================================================================
+   GAUGES (EQ knobs) — the maximalist signature element
+   ========================================================================== */
+.gauge-row{ display:flex; gap:18px; flex-wrap:wrap; justify-content:space-between; }
+.gauge{
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  width:96px;
+}
+.gauge-dial{
+  width:74px; height:74px; border-radius:50%;
+  background:
+    radial-gradient(circle at 35% 30%, #3a4046, #17191b 70%);
+  border:3px solid var(--steel-2);
+  box-shadow:
+    inset 0 0 0 1px rgba(164,130,47,0.4),
+    inset 0 3px 6px rgba(0,0,0,0.6),
+    0 2px 3px rgba(0,0,0,0.5);
+  position:relative;
+  touch-action:none;
+}
+.gauge-dial .ticks{ position:absolute; inset:0; }
+.gauge-dial .needle{
+  position:absolute; left:50%; top:50%; width:2px; height:28px;
+  background:linear-gradient(180deg, var(--blood-glow), var(--rust));
+  transform-origin:50% 100%;
+  transform:translate(-50%,-100%) rotate(0deg);
+  border-radius:2px;
+  box-shadow:0 0 4px var(--blood-glow);
+}
+.gauge-dial .hub{
+  position:absolute; left:50%; top:50%; width:9px; height:9px;
+  background:var(--gold); border-radius:50%; transform:translate(-50%,-50%);
+  box-shadow:0 1px 2px rgba(0,0,0,0.6);
+}
+.gauge-label{ font-family:var(--font-data); font-size:10.5px; color:var(--paper); letter-spacing:0.3px; }
+.gauge-value{ font-family:var(--font-data); font-size:10px; color:var(--audioblue-glow); }
+
+/* ==========================================================================
+   SLIDERS (generic module controls)
+   ========================================================================== */
+.ctrl-row{ margin-bottom:14px; }
+.ctrl-row .ctrl-head{
+  display:flex; justify-content:space-between; align-items:baseline;
+  margin-bottom:6px;
+}
+.ctrl-row label{ font-size:12.5px; color:var(--paper-dim); letter-spacing:0.3px; }
+.ctrl-row .val{ font-family:var(--font-data); font-size:11px; color:var(--audioblue-glow); }
+input[type="range"].slider{
+  width:100%; height:5px; border-radius:3px;
+  background:linear-gradient(90deg, var(--rust) var(--fill,50%), var(--steel-2) var(--fill,50%));
+}
+input[type="range"].slider::-webkit-slider-thumb{
+  -webkit-appearance:none; width:14px; height:14px; border-radius:50%;
+  background:var(--paper); border:2px solid var(--rust-dim);
+  box-shadow:0 1px 2px rgba(0,0,0,0.5); margin-top:-4.5px;
+}
+input[type="range"].slider::-moz-range-thumb{
+  width:14px; height:14px; border-radius:50%;
+  background:var(--paper); border:2px solid var(--rust-dim);
+}
+
+.toggle{
+  display:inline-flex; align-items:center; gap:8px; font-size:12.5px; color:var(--paper-dim);
+}
+.toggle input{ display:none; }
+.toggle .switch{
+  width:34px; height:18px; border-radius:10px; background:var(--steel-2);
+  border:1px solid rgba(164,130,47,0.3); position:relative; transition:background .15s;
+}
+.toggle .switch::after{
+  content:""; position:absolute; top:2px; left:2px; width:12px; height:12px;
+  border-radius:50%; background:var(--paper-dim); transition:transform .15s, background .15s;
+}
+.toggle input:checked + .switch{ background:rgba(181,80,45,0.5); }
+.toggle input:checked + .switch::after{ transform:translateX(16px); background:var(--amber); }
+
+/* ==========================================================================
+   SURGERY (module tabs)
+   ========================================================================== */
+.module-tabs{ display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+.module-tab{
+  padding:8px 14px; border-radius:var(--radius-s);
+  border:1px solid rgba(164,130,47,0.25); background:rgba(0,0,0,0.14);
+  color:var(--paper-dim); font-size:13.5px; display:flex; align-items:center; gap:7px;
+}
+.module-tab svg{ width:15px; height:15px; }
+.module-tab.active{ background:rgba(58,167,199,0.14); border-color:var(--audioblue); color:var(--audioblue-glow); }
+.module-body{ display:none; }
+.module-body.active{ display:block; animation:fade-in .2s ease; }
+
+/* spectrum / waveform canvas */
+.scope-panel{ position:relative; }
+.scope-panel canvas{ width:100%; height:220px; display:block; border-radius:var(--radius-s); background:radial-gradient(ellipse at 50% 100%, rgba(76,107,79,0.15), transparent 70%), #0c1310; }
+.scope-tabs{ position:absolute; top:10px; right:14px; display:flex; gap:6px; z-index:2; }
+.scope-tabs button{
+  font-family:var(--font-data); font-size:10px; padding:4px 8px; border-radius:3px;
+  background:rgba(0,0,0,0.5); border:1px solid rgba(164,130,47,0.3); color:var(--paper-dim);
+}
+.scope-tabs button.active{ color:var(--audioblue-glow); border-color:var(--audioblue); }
+
+/* ==========================================================================
+   DIAGNOSIS CHART
+   ========================================================================== */
+.diagnosis-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:10px 0; border-bottom:1px dashed rgba(231,224,201,0.1);
+}
+.diagnosis-row:last-child{ border-bottom:none; }
+.diagnosis-row .band{ font-family:var(--font-chart); font-size:13px; color:var(--paper); }
+.diagnosis-row .band small{ display:block; font-family:var(--font-data); font-size:9.5px; color:var(--paper-dim); }
+.status-pill{
+  font-family:var(--font-data); font-size:10.5px; padding:3px 10px; border-radius:10px;
+  letter-spacing:0.5px; text-transform:uppercase;
+}
+.status-pill.healthy{ background:rgba(76,107,79,0.25); color:#8fd39a; border:1px solid rgba(143,211,154,0.35); }
+.status-pill.stable{ background:rgba(58,167,199,0.18); color:var(--audioblue-glow); border:1px solid rgba(58,167,199,0.35); }
+.status-pill.needs{ background:rgba(194,42,42,0.18); color:var(--blood-glow); border:1px solid rgba(194,42,42,0.4); }
+.status-pill.unknown{ background:rgba(164,130,47,0.15); color:var(--gold); border:1px solid rgba(164,130,47,0.3); }
+
+.patient-band{
+  font-family:var(--font-chart); font-size:12px; color:var(--paper-dim);
+  border:1px dashed rgba(164,130,47,0.3); border-radius:3px;
+  padding:4px 8px; display:inline-block; margin-bottom:10px;
+}
+
+/* ==========================================================================
+   PATIENT RECORDS — preset browser: department chips + hospital folder cards
+   ========================================================================== */
+.dept-tabs{
+  display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px;
+  padding-bottom:12px; border-bottom:1px dashed rgba(164,130,47,0.25);
+}
+.dept-tab{
+  display:flex; align-items:center; gap:6px;
+  padding:6px 12px; border-radius:14px;
+  background:rgba(0,0,0,0.2); border:1px solid rgba(164,130,47,0.25);
+  color:var(--paper-dim); font-size:12px; font-family:var(--font-ui); white-space:nowrap;
+}
+.dept-tab svg{ width:14px; height:14px; }
+.dept-tab.active{ background:rgba(181,80,45,0.18); border-color:var(--rust); color:var(--amber); }
+
+.record-grid{
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+  gap:14px;
+}
+.record-card{
+  background:
+    linear-gradient(180deg, rgba(231,224,201,0.05), rgba(231,224,201,0.02)),
+    var(--forest-1);
+  border:1px solid rgba(164,130,47,0.3);
+  border-radius:var(--radius-m);
+  padding:14px;
+  position:relative;
+  display:flex; flex-direction:column; gap:8px;
+}
+.record-card::before{ /* punch-hole / metal tag rivet feel */
+  content:"";
+  position:absolute; top:10px; right:10px; width:5px; height:5px;
+  border-radius:50%; background:rgba(0,0,0,0.4); box-shadow:inset 0 1px 1px rgba(0,0,0,0.6);
+}
+.record-head{ display:flex; align-items:center; justify-content:space-between; }
+.record-tag{
+  font-family:var(--font-data); font-size:10px; letter-spacing:1px;
+  color:var(--forest-0); background:var(--gold);
+  padding:2px 7px; border-radius:2px; font-weight:700;
+}
+.record-name{
+  font-family:var(--font-chart); font-weight:400; font-size:15.5px;
+  color:var(--paper); margin:0; line-height:1.3;
+}
+.record-dept{
+  display:flex; align-items:center; gap:6px;
+  font-family:var(--font-data); font-size:10px; letter-spacing:0.5px;
+  color:var(--audioblue-glow); text-transform:uppercase;
+}
+.record-dept svg{ width:13px; height:13px; }
+.record-section .record-label{
+  display:block; font-family:var(--font-data); font-size:9px; letter-spacing:1.4px;
+  text-transform:uppercase; color:var(--paper-dim); opacity:0.7; margin-bottom:3px;
+}
+.record-section ul{ margin:0; padding-left:15px; }
+.record-section li{ font-size:11.5px; color:var(--paper); line-height:1.6; }
+.record-actions{ margin-top:auto; padding-top:6px; display:flex; gap:6px; align-items:center; }
+.record-actions .btn{ flex:1; justify-content:center; }
+
+/* ==========================================================================
+   SETTINGS
+   ========================================================================== */
+.setting-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 0; border-bottom:var(--hairline);
+}
+.setting-row:last-child{ border-bottom:none; }
+.setting-row .label{ font-size:13.5px; color:var(--paper); }
+.setting-row .desc{ font-size:11.5px; color:var(--paper-dim); margin-top:2px; }
+
+/* ==========================================================================
+   AMBIENT BACKGROUND FX (canvas particles + css foliage) — subtle, gpu-light
+   ========================================================================== */
+#ambient-canvas{
+  position:fixed; inset:0; z-index:0; pointer-events:none; opacity:0.55;
+}
+.vine{
+  position:fixed; pointer-events:none; z-index:0; opacity:0.12;
+  color:var(--moss);
+}
+
+/* ==========================================================================
+   MOBILE
+   ========================================================================== */
+.bottom-nav{ display:none; }
+
+@media (max-width:880px){
+  #app{
+    grid-template-columns:1fr;
+    grid-template-rows:var(--top-h) 1fr var(--nav-h);
+    grid-template-areas:
+      "top"
+      "main"
+      "bottom";
+  }
+  .brand-strip{ display:none; }
+  .side-nav{ display:none; }
+  main{ padding:14px 12px 96px; }
+  .transport{ left:0; }
+  .bottom-nav{
+    grid-area:bottom;
+    display:flex; align-items:stretch;
+    background:linear-gradient(180deg,var(--steel-1),var(--steel-0));
+    border-top:var(--panel-border);
+    z-index:40;
+  }
+  .bottom-nav .nav-item{
+    flex:1; flex-direction:column; gap:3px; justify-content:center;
+    font-size:10px; padding:6px 2px; border-radius:0; text-align:center;
+  }
+  .bottom-nav .nav-item svg{ width:20px; height:20px; }
+  .gauge{ width:80px; }
+  .gauge-dial{ width:62px; height:62px; }
+  .transport .tname{ width:90px; }
+  .vol-wrap{ display:none; }
+  .grid-3{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width:420px){
+  .grid-3{ grid-template-columns:1fr; }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:0.001ms !important; transition-duration:0.001ms !important; }
+}
+
+/* ==========================================================================
+   AUDIO REACTION — driven by --react-low/mid/high custom props, updated
+   every frame in visualizer.js only while a patient is actually playing.
+   Bass = mechanical movement, mid = equipment activity, high = sparkle.
+   ========================================================================== */
+:root{ --react-low:0; --react-mid:0; --react-high:0; }
+
+.brand-strip .rx{
+  transform:scale(calc(1 + var(--react-low)*0.18));
+  transition:transform 60ms linear;
+}
+.vitals-scope{
+  box-shadow:0 0 calc(3px + var(--react-mid)*16px) rgba(58,167,199, calc(0.25 + var(--react-mid)*0.4));
+  transition:box-shadow 80ms linear;
+}
+.top-status .lamp{
+  transform:scale(calc(1 + var(--react-mid)*0.6));
+  transition:transform 60ms linear;
+}
+.gauge-dial{
+  transform:translateY(calc(var(--react-low)*1.6px));
+  transition:transform 50ms linear;
+}
+.panel-title svg{
+  filter:drop-shadow(0 0 calc(var(--react-high)*4px) var(--audioblue-glow));
+}
+.nav-item.active svg{
+  transform:scale(calc(1 + var(--react-low)*0.12));
+}
+.scope-panel canvas{
+  filter:brightness(calc(1 + var(--react-high)*0.18));
+}
+body.static-mode *{ transition:none !important; }
+body.static-mode #ambient-canvas{ opacity:0.15; }
+
+/* focus visibility */
+button:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+  outline:2px solid var(--audioblue); outline-offset:2px;
+}
+
+/* scrollbars */
+::-webkit-scrollbar{ width:9px; height:9px; }
+::-webkit-scrollbar-track{ background:transparent; }
+::-webkit-scrollbar-thumb{ background:var(--steel-2); border-radius:5px; }
+</style>
+</head>
+<body>
+
+<canvas id="ambient-canvas"></canvas>
+
+<div id="app">
+
+  <!-- BRAND / SIGNATURE VITALS STRIP -->
+  <div class="brand-strip">
+    <span class="rx" id="brand-rx"></span>
+    <div class="brand-text">Audio Hospital<small>Organic Sound Treatment Facility</small></div>
+  </div>
+
+  <!-- TOP BAR: live vitals scope + transport status -->
+  <div class="top-bar">
+    <div class="vitals-scope"><canvas id="vitals-canvas"></canvas></div>
+    <div class="top-status" id="top-status"><span class="lamp"></span><span id="top-status-text">NO PATIENT ADMITTED</span></div>
+  </div>
+
+  <!-- SIDE NAV (desktop) -->
+  <nav class="side-nav" id="side-nav">
+    <div class="nav-label">Facility</div>
+    <button class="nav-item active" data-screen="home"></button>
+    <button class="nav-item" data-screen="patients"></button>
+    <button class="nav-item" data-screen="surgery"></button>
+    <button class="nav-item" data-screen="tools"></button>
+    <div class="nav-divider"></div>
+    <button class="nav-item" data-screen="settings"></button>
+  </nav>
+
+  <!-- MAIN -->
+  <main id="main">
+
+    <!-- HOME -->
+    <section class="screen active" id="screen-home">
+      <div class="screen-head">
+        <h1>Intake Desk</h1>
+        <span class="sub">ADMIT A PATIENT TO BEGIN TREATMENT</span>
+      </div>
+
+      <div class="panel">
+        <div class="intake-drop" id="intake-drop">
+          <div id="intake-icon"></div>
+          <h2>Admit an audio patient</h2>
+          <p>Drop a WAV, MP3, OGG or AIFF file here, or select one from storage.</p>
+          <button class="btn" id="intake-browse-btn"></button>
+          <input type="file" id="file-input" accept=".wav,.mp3,.ogg,.aiff,.aif,audio/*" hidden>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3 class="panel-title" id="recent-title"></h3>
+          <div class="recent-list" id="recent-list"></div>
+        </div>
+        <div class="panel">
+          <h3 class="panel-title" id="ward-title"></h3>
+          <div id="ward-summary" style="font-family:var(--font-data); font-size:12px; color:var(--paper-dim); line-height:1.9;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PATIENTS -->
+    <section class="screen" id="screen-patients">
+      <div class="screen-head">
+        <h1>Patient Records</h1>
+        <span class="sub" id="patients-count"></span>
+      </div>
+      <div id="patients-list"></div>
+    </section>
+
+    <!-- SURGERY -->
+    <section class="screen" id="screen-surgery">
+      <div class="screen-head">
+        <h1>Surgery Theatre</h1>
+        <span class="sub" id="surgery-patient-name">NO PATIENT ON TABLE</span>
+      </div>
+
+      <div class="panel scope-panel">
+        <canvas id="scope-canvas"></canvas>
+        <div class="scope-tabs">
+          <button data-scope="waveform" class="active">WAVE</button>
+          <button data-scope="spectrum">SPECTRUM</button>
+        </div>
+      </div>
+
+      <div class="module-tabs" id="module-tabs"></div>
+
+      <div id="module-bodies"></div>
+
+      <div class="panel">
+        <h3 class="panel-title" id="diagnosis-title"></h3>
+        <div class="patient-band" id="diagnosis-patient">NO PATIENT SELECTED</div>
+        <div id="diagnosis-rows"></div>
+      </div>
+    </section>
+
+    <!-- TOOLS -->
+    <section class="screen" id="screen-tools">
+      <div class="screen-head">
+        <h1>Patient Records</h1>
+        <span class="sub">50 TREATMENT PROTOCOLS · 9 HOSPITAL DEPARTMENTS</span>
+      </div>
+
+      <div class="panel">
+        <h3 class="panel-title" id="presets-title"></h3>
+        <div class="dept-tabs" id="preset-dept-tabs"></div>
+        <div id="preset-list"></div>
+        <div style="margin-top:14px; display:flex; gap:8px;">
+          <input type="text" id="preset-name-input" placeholder="Name this treatment to save your current chain…" style="flex:1; background:rgba(0,0,0,0.25); border:1px solid rgba(164,130,47,0.3); border-radius:4px; color:var(--paper); padding:8px 10px; font-family:var(--font-ui); font-size:13px;">
+          <button class="btn small" id="save-preset-btn"></button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="panel">
+          <h3 class="panel-title" id="export-title"></h3>
+          <p style="font-size:12.5px;color:var(--paper-dim);margin:0 0 12px;">Render the current patient through the active treatment chain and download the result as a WAV file.</p>
+          <button class="btn blue" id="export-btn"></button>
+          <div id="export-status" style="margin-top:10px;font-family:var(--font-data);font-size:11px;color:var(--paper-dim);"></div>
+        </div>
+
+        <div class="panel">
+          <h3 class="panel-title" id="reset-title"></h3>
+          <p style="font-size:12.5px;color:var(--paper-dim);margin:0 0 12px;">Return every module to bypass — the patient plays back untouched.</p>
+          <button class="btn ghost" id="reset-chain-btn">Flatline / bypass all treatment</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="screen" id="screen-settings">
+      <div class="screen-head"><h1>Facility Settings</h1></div>
+
+      <div class="panel">
+        <div class="setting-row">
+          <div>
+            <div class="label">Ambience volume</div>
+            <div class="desc">Forest, old machinery and hospital room-tone. Off by default — you control it.</div>
+          </div>
+          <div style="width:140px;"><input type="range" class="slider" id="ambience-slider" min="0" max="100" value="0"></div>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="label">Master output</div>
+            <div class="desc">Overall level after every treatment module.</div>
+          </div>
+          <div style="width:140px;"><input type="range" class="slider" id="master-slider" min="0" max="100" value="90"></div>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="label">Reduce motion</div>
+            <div class="desc">Disables ambient particle drift and gauge easing for lower-powered devices.</div>
+          </div>
+          <label class="toggle"><input type="checkbox" id="reduce-motion-toggle"><span class="switch"></span></label>
+        </div>
+        <div class="setting-row">
+          <div>
+            <div class="label">Clear stored data</div>
+            <div class="desc">Removes saved presets, recent patients and preferences from this browser.</div>
+          </div>
+          <button class="btn ghost small" id="clear-data-btn">Clear</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3 class="panel-title">About</h3>
+        <p style="font-size:12.5px;color:var(--paper-dim);line-height:1.7;">
+          Audio Hospital is a self-contained progressive web app. Nothing you load is uploaded anywhere —
+          decoding, analysis and treatment all happen locally in this browser via the Web Audio API.
+          Installable for offline use from your browser's menu.
+        </p>
+        <p style="font-size:12.5px;color:var(--paper-dim);line-height:1.7;margin-top:10px;">
+          Companion rare-sound packs by <a href="https://frequencyoasis.gumroad.com/l/ifzft?layout=profile" target="_blank" rel="noopener" style="color:var(--amber);">Frequency Oasis</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- TRANSPORT -->
+  <div class="transport" id="transport">
+    <div class="tname" id="transport-name">No patient loaded</div>
+    <button class="transport-btn" id="btn-stop"></button>
+    <button class="transport-btn play" id="btn-play"></button>
+    <div class="transport-scrub">
+      <span class="transport-time" id="time-current">0:00</span>
+      <input type="range" class="seek" id="seek-slider" min="0" max="100" value="0" step="0.1">
+      <span class="transport-time" id="time-total">0:00</span>
+    </div>
+    <div class="vol-wrap">
+      <span id="vol-icon"></span>
+      <input type="range" class="slider" id="volume-slider" min="0" max="100" value="90">
+    </div>
+  </div>
+
+  <!-- BOTTOM NAV (mobile) -->
+  <nav class="bottom-nav" id="bottom-nav">
+    <button class="nav-item active" data-screen="home"></button>
+    <button class="nav-item" data-screen="patients"></button>
+    <button class="nav-item" data-screen="surgery"></button>
+    <button class="nav-item" data-screen="tools"></button>
+    <button class="nav-item" data-screen="settings"></button>
+  </nav>
+
+</div>
+
+<script>/* ==========================================================================
+   ICONS — hand-drawn SVG, vintage-medical × audio-engineering hybrids.
+   Exposed as raw markup strings so any module can inline them without
+   an extra network round trip. Mirrored as static files in assets/icons/
+   for anyone who wants to reuse them outside the app shell.
+   ========================================================================== */
+const ICONS = {
+
+  // brand mark: mortar-and-pestle silhouette recast as a tuning fork over
+  // a heartbeat line — "sound treatment", not medicine
+  rx: `<svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11 4v11a5 5 0 0 0 10 0V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M16 15v13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    <path d="M3 24h5l2-5 3 9 2-6 1.5 3H27" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+  </svg>`,
+
+  // HOME — a scope bell (stethoscope head) resting, cable coiling to a house-ward wave
+  home: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 10.5 12 4l8 6.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M6 9.5V18a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M9.5 14.5h1.5l1-2 1.5 3 1-1.5h1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  // PATIENTS — record folder with a pulse tab, like a chart at the foot of a bed
+  patients: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l1.6 2H19.5A1.5 1.5 0 0 1 21 8.5v10A1.5 1.5 0 0 1 19.5 20h-15A1.5 1.5 0 0 1 3 18.5v-12Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M6 13h2.4l1.2-2.6 1.6 4.6 1.2-2h4.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  // SURGERY / EQ — frequency scalpel: a blade whose edge is an eq curve
+  surgery: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 17 15.5 5.5a1.4 1.4 0 0 1 2 2L6 19l-3 1 1-3Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M12 15c1-2 1-4-.5-5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+    <circle cx="18" cy="5.5" r="0.9" fill="currentColor"/>
+  </svg>`,
+
+  // TOOLS — a wrench crossed with a tone/sine wave, general utility
+  tools: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M14.7 6.3a3.5 3.5 0 0 0-4.6 4.2L4 16.6V20h3.4l6.1-6.1a3.5 3.5 0 0 0 4.2-4.6l-2.6 2.6-2-2 2.6-2.6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>`,
+
+  // SETTINGS — brass valve / pressure dial with radial ticks
+  settings: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="6.2" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M12 5.8v1.3M12 16.9v1.3M18.2 12h-1.3M7.1 12H5.8M16.4 7.6l-.9.9M8.5 15.5l-.9.9M16.4 16.4l-.9-.9M8.5 8.5l-.9-.9" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    <circle cx="12" cy="12" r="1.6" fill="currentColor"/>
+  </svg>`,
+
+  // WAVEFORM — heartbeat monitor trace
+  waveform: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 12h4l1.6-4.5L11 18l2.2-9L14.6 12H22" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  // REVERB — concentric echo rings inside a room corner
+  reverb: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 20V6a2 2 0 0 1 2-2h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <circle cx="9.5" cy="14.5" r="1.3" fill="currentColor"/>
+    <path d="M11.8 12.2a4.5 4.5 0 0 1 0 6.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M14.3 9.7a8 8 0 0 1 0 11.4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+  </svg>`,
+
+  // COMPRESSOR — pressure chamber: cylinder with converging plates
+  compressor: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="5" width="16" height="14" rx="1.5" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M8 5v14M16 5v14" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
+    <path d="M2.5 8.5 4 10M2.5 15.5 4 14M21.5 8.5 20 10M21.5 15.5 20 14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+  </svg>`,
+
+  // HARMONIC / SATURATION — filament glow, valve-amp warmth
+  harmonic: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 3v2.2M12 18.8V21M4.5 12H3M21 12h-1.5M6.5 6.5 5.4 5.4M18.6 18.6l-1.1-1.1M6.5 17.5 5.4 18.6M18.6 5.4l-1.1 1.1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.55"/>
+    <circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M10 12c0-1.3 1-2.2 2-1.4s2.1 0 2 1.4-1 2.2-2 1.4-2 0-2-1.4Z" fill="currentColor" opacity="0.8"/>
+  </svg>`,
+
+  // FILE — patient record folder (used for library thumbnails)
+  file: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 6.5A1.5 1.5 0 0 1 5.5 5H10l1.6 2H18.5A1.5 1.5 0 0 1 20 8.5v9A1.5 1.5 0 0 1 18.5 19h-13A1.5 1.5 0 0 1 4 17.5v-11Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>`,
+
+  upload: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 16V5M8 9l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 16.5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>`,
+
+  play: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 5.5v13l11-6.5-11-6.5Z" fill="currentColor"/></svg>`,
+  pause: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6.5" y="5.5" width="4" height="13" rx="1" fill="currentColor"/><rect x="13.5" y="5.5" width="4" height="13" rx="1" fill="currentColor"/></svg>`,
+  stop: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="6" width="12" height="12" rx="1.5" fill="currentColor"/></svg>`,
+
+  volume: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 9.5v5h3.2L12 18V6l-4.8 3.5H4Z" fill="currentColor"/>
+    <path d="M15.5 9a3.6 3.6 0 0 1 0 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>`,
+
+  trash: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 7h14M9.5 7V5.2A1.2 1.2 0 0 1 10.7 4h2.6a1.2 1.2 0 0 1 1.2 1.2V7M7 7l.8 12a1.5 1.5 0 0 0 1.5 1.4h5.4a1.5 1.5 0 0 0 1.5-1.4L17 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  download: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 5v11M8 12l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4 16.5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  </svg>`,
+
+  save: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 4.5h11L19 8v11.5A1.5 1.5 0 0 1 17.5 21h-11A1.5 1.5 0 0 1 5 19.5v-15Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M8 4.5V9h7V4.5M8 21v-6h8v6" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+  </svg>`,
+
+  space: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3.5" y="3.5" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+    <rect x="13.5" y="13.5" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M10.5 10.5 13.5 13.5" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.5 2" stroke-linecap="round"/>
+  </svg>`,
+
+  filter: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 5h16M4 5l6 7.5V18l4 2v-7.5L20 5" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+  </svg>`,
+
+  limiter: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 18h4l2-9 2 13 2-9 2 5h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3 6h18" stroke="currentColor" stroke-width="1.4" stroke-dasharray="1.5 2.2" opacity="0.6"/>
+  </svg>`,
+
+  admit: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="4" y="3.5" width="16" height="17" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M8 8.5h8M8 12h5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/>
+    <circle cx="16.5" cy="16" r="3.5" fill="var(--forest-1,#182920)" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M15 16l1.1 1.1L18.2 15" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`,
+
+  // DEPARTMENT ICONS — each a vintage-medical instrument shaped like its audio subject
+
+  vocal: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M9 4.5a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0v-6Z" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M6 11a6 6 0 0 0 12 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M12 17v3.5M9.5 20.5h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>`,
+
+  kick: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.3" opacity="0.7"/>
+    <path d="M2.5 12h2.3M19.2 12h2.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>`,
+
+  snare: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="12" cy="9" rx="8" ry="3.2" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M4 9v6a8 3.2 0 0 0 16 0V9" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M6.5 8 8 6M17.5 8 16 6M9.5 7.2l.7-2.2M14.5 7.2l-.7-2.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.7"/>
+  </svg>`,
+
+  hihat: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="12" cy="7.5" rx="8" ry="2.3" stroke="currentColor" stroke-width="1.6"/>
+    <ellipse cx="12" cy="13" rx="8" ry="2.3" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M12 9.8v3.2" stroke="currentColor" stroke-width="1.4"/>
+    <path d="M12 15.3V20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+  </svg>`,
+
+  percussion: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M5 4c-1.4 3-1.4 13 0 16M19 4c1.4 3 1.4 13 0 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M8.5 9c1.6 1.4 5.4 1.4 7 0M8.5 15c1.6-1.4 5.4-1.4 7 0" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.7"/>
+  </svg>`,
+
+  bass: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M4 13a8 5 0 0 0 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    <path d="M4 13a8 5 0 0 1 16 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.4"/>
+    <circle cx="12" cy="13" r="1.6" fill="currentColor"/>
+    <path d="M12 4.5v3M9 5.5l1.3 2.3M15 5.5l-1.3 2.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+  </svg>`,
+
+  mixbus: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3.5" y="10" width="17" height="7" rx="1" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M7 10V7a1.5 1.5 0 0 1 1.5-1.5h7A1.5 1.5 0 0 1 17 7v3" stroke="currentColor" stroke-width="1.5"/>
+    <path d="M9.5 13.5h5M12 13.5v-1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.75"/>
+  </svg>`,
+
+  creative: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 3.5h4v5l3.5 6.5A2 2 0 0 1 15.7 18H8.3a2 2 0 0 1-1.8-2.9L10 8.5v-5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M8.5 13.5h7" stroke="currentColor" stroke-width="1.3" opacity="0.6"/>
+    <circle cx="10.5" cy="16" r="0.8" fill="currentColor"/>
+    <circle cx="13.2" cy="15.2" r="0.6" fill="currentColor"/>
+  </svg>`,
+
+  master: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M3.8 12h16.4M12 3.8v16.4" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+    <path d="M6 8c2 1.6 10 1.6 12 0M6 16c2-1.6 10-1.6 12 0" stroke="currentColor" stroke-width="1.2" opacity="0.55"/>
+  </svg>`,
+};
+
+// mirror onto window for non-module scripts
+window.ICONS = ICONS;
+
+function icon(name, extraClass){
+  const svg = ICONS[name] || '';
+  if(!extraClass) return svg;
+  return svg.replace('<svg ', `<svg class="${extraClass}" `);
+}
+window.icon = icon;
+</script>
+<script>/* ==========================================================================
+   AUDIO ENGINE
+   Real Web Audio graph. Nothing here is decorative — every node is part
+   of the actual signal path used for playback and analysis.
+
+   Chain:
+   source ─▶ HP/LP filter ─▶ 4-band EQ ─▶ shaper(sat) ─▶ compressor ─▶ dryGain ┐
+                                                               delaySend ┼─▶ pan ─▶ M/S width ─▶ limiter ─▶ masterGain ─▶ analyser ─▶ destination
+                                                               reverbSend┘
+   ========================================================================== */
+
+class AudioEngine{
+  constructor(){
+    this.ctx = null;
+    this.buffer = null;          // decoded AudioBuffer of current patient
+    this.source = null;          // current AudioBufferSourceNode (recreated per play)
+    this.isPlaying = false;
+    this.startedAt = 0;          // ctx.currentTime when playback started
+    this.offset = 0;             // seconds into buffer where playback started
+    this.duration = 0;
+    this.onEnded = null;
+
+    this.settings = AudioEngine.defaultSettings();
+  }
+
+  static defaultSettings(){
+    return {
+      filter: { highpass: 20, lowpass: 20000 },
+      eq: { low: 0, lowMid: 0, highMid: 0, high: 0 },
+      comp: { threshold: -24, ratio: 3, attack: 0.01, release: 0.25, makeup: 0 },
+      sat: { drive: 0, mix: 0 },
+      delay: { time: 0.32, feedback: 0.28, mix: 0 },
+      reverb: { size: 2.2, decay: 2.5, mix: 0 },
+      space: { pan: 0, width: 1 },
+      limiter: { ceiling: 0, release: 0.25 },
+      master: { gain: 0.9 },
+      ambience: { volume: 0 }
+    };
+  }
+
+  ensureContext(){
+    if(this.ctx) return;
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    this.ctx = new Ctx();
+    this._buildGraph();
+  }
+
+  _buildGraph(){
+    const ctx = this.ctx;
+
+    // --- utility filter: rumble cut / air roll-off, first in the chain ---
+    this.filterHP = new BiquadFilterNode(ctx, { type:'highpass', frequency:20, Q:0.7 });
+    this.filterLP = new BiquadFilterNode(ctx, { type:'lowpass',  frequency:20000, Q:0.7 });
+
+    // --- surgical EQ: 4-band ---
+    this.eqLow    = new BiquadFilterNode(ctx, { type:'lowshelf',  frequency:120,  gain:0 });
+    this.eqLowMid = new BiquadFilterNode(ctx, { type:'peaking',   frequency:700,  Q:0.9, gain:0 });
+    this.eqHighMid= new BiquadFilterNode(ctx, { type:'peaking',   frequency:3200, Q:0.9, gain:0 });
+    this.eqHigh   = new BiquadFilterNode(ctx, { type:'highshelf', frequency:8500, gain:0 });
+
+    // --- harmonic treatment: waveshaper saturation, dry/wet blended internally ---
+    this.satShaper = ctx.createWaveShaper();
+    this.satShaper.oversample = '2x';
+    this.satDry = new GainNode(ctx, { gain:1 });
+    this.satWet = new GainNode(ctx, { gain:0 });
+    this.satOut = new GainNode(ctx);
+
+    // --- dynamic treatment ---
+    this.compressor = new DynamicsCompressorNode(ctx, {
+      threshold:-24, ratio:3, attack:0.01, release:0.25, knee:6
+    });
+    this.makeupGain = new GainNode(ctx, { gain:1 });
+
+    // --- space treatment: delay + convolution reverb as parallel sends ---
+    this.dryGain = new GainNode(ctx, { gain:1 });
+
+    this.delayNode = new DelayNode(ctx, { delayTime:0.32, maxDelayTime:2 });
+    this.delayFeedback = new GainNode(ctx, { gain:0.28 });
+    this.delaySend = new GainNode(ctx, { gain:0 });
+    this.delayReturn = new GainNode(ctx, { gain:1 });
+
+    this.convolver = ctx.createConvolver();
+    this.convolver.buffer = this._makeImpulse(2.2, 2.5);
+    this.reverbSend = new GainNode(ctx, { gain:0 });
+    this.reverbReturn = new GainNode(ctx, { gain:1 });
+
+    this.panner = new StereoPannerNode(ctx, { pan:0 });
+
+    // --- stereo width: mid/side widener sitting after pan, before the limiter ---
+    this.widenSplitter = ctx.createChannelSplitter(2);
+    this.widenL = new GainNode(ctx, { gain:1 });
+    this.widenR = new GainNode(ctx, { gain:1 });
+    this.widenRInv = new GainNode(ctx, { gain:-1 });
+    this.widenMid = new GainNode(ctx, { gain:0.5 });
+    this.widenSide = new GainNode(ctx, { gain:0.5 });
+    this.widenSideL = new GainNode(ctx, { gain:1 });   // set to +width
+    this.widenSideR = new GainNode(ctx, { gain:-1 });  // set to -width
+    this.widenMerger = ctx.createChannelMerger(2);
+
+    // --- limiter: final brick-wall stage before master gain ---
+    this.limiter = new DynamicsCompressorNode(ctx, { threshold:0, ratio:20, attack:0.001, release:0.25, knee:0 });
+
+    this.masterGain = new GainNode(ctx, { gain:0.9 });
+    this.analyser = new AnalyserNode(ctx, { fftSize:2048, smoothingTimeConstant:0.75 });
+
+    // ambience bed (separate mini-chain, independent of patient audio)
+    this.ambienceGain = new GainNode(ctx, { gain:0 });
+    this.ambienceGain.connect(ctx.destination);
+
+    // --- wire the fixed part of the graph (source connects in play()) ---
+    this.filterHP.connect(this.filterLP);
+    this.filterLP.connect(this.eqLow);
+    this.eqLow.connect(this.eqLowMid);
+    this.eqLowMid.connect(this.eqHighMid);
+    this.eqHighMid.connect(this.eqHigh);
+
+    // saturation dry/wet
+    this.eqHigh.connect(this.satDry);
+    this.eqHigh.connect(this.satShaper);
+    this.satShaper.connect(this.satWet);
+    this.satDry.connect(this.satOut);
+    this.satWet.connect(this.satOut);
+
+    this.satOut.connect(this.compressor);
+    this.compressor.connect(this.makeupGain);
+
+    // dry path
+    this.makeupGain.connect(this.dryGain);
+    this.dryGain.connect(this.panner);
+
+    // delay send/return
+    this.makeupGain.connect(this.delaySend);
+    this.delaySend.connect(this.delayNode);
+    this.delayNode.connect(this.delayFeedback);
+    this.delayFeedback.connect(this.delayNode);
+    this.delayNode.connect(this.delayReturn);
+    this.delayReturn.connect(this.panner);
+
+    // reverb send/return
+    this.makeupGain.connect(this.reverbSend);
+    this.reverbSend.connect(this.convolver);
+    this.convolver.connect(this.reverbReturn);
+    this.reverbReturn.connect(this.panner);
+
+    // stereo widener: split -> mid/side -> recombine
+    this.panner.connect(this.widenSplitter);
+    this.widenSplitter.connect(this.widenL, 0);
+    this.widenSplitter.connect(this.widenR, 1);
+    this.widenR.connect(this.widenRInv);
+    this.widenL.connect(this.widenMid);
+    this.widenR.connect(this.widenMid);
+    this.widenL.connect(this.widenSide);
+    this.widenRInv.connect(this.widenSide);
+    this.widenSide.connect(this.widenSideL);
+    this.widenSide.connect(this.widenSideR);
+    this.widenMid.connect(this.widenMerger, 0, 0);
+    this.widenMid.connect(this.widenMerger, 0, 1);
+    this.widenSideL.connect(this.widenMerger, 0, 0);
+    this.widenSideR.connect(this.widenMerger, 0, 1);
+
+    this.widenMerger.connect(this.limiter);
+    this.limiter.connect(this.masterGain);
+    this.masterGain.connect(this.analyser);
+    this.analyser.connect(ctx.destination);
+
+    // dedicated analysers for the diagnosis chart (post-EQ, pre-fx, tapped from makeupGain)
+    this.bandAnalysers = {
+      low:  this._makeBandAnalyser(60, 250),
+      mid:  this._makeBandAnalyser(250, 4000),
+      high: this._makeBandAnalyser(4000, 16000)
+    };
+  }
+
+  _makeBandAnalyser(freqLo, freqHi){
+    const ctx = this.ctx;
+    const bp = new BiquadFilterNode(ctx, { type:'bandpass', frequency:Math.sqrt(freqLo*freqHi), Q: Math.sqrt(freqLo*freqHi)/(freqHi-freqLo) });
+    const an = new AnalyserNode(ctx, { fftSize:1024, smoothingTimeConstant:0.6 });
+    this.makeupGain.connect(bp);
+    bp.connect(an);
+    return { filter:bp, analyser:an, data:new Uint8Array(an.frequencyBinCount) };
+  }
+
+  // generate an algorithmic impulse response — no external IR file needed
+  _makeImpulse(size, decay){
+    const ctx = this.ctx;
+    const rate = ctx.sampleRate;
+    const len = Math.max(1, Math.floor(rate * size));
+    const impulse = ctx.createBuffer(2, len, rate);
+    for(let ch=0; ch<2; ch++){
+      const data = impulse.getChannelData(ch);
+      for(let i=0;i<len;i++){
+        data[i] = (Math.random()*2-1) * Math.pow(1 - i/len, decay);
+      }
+    }
+    return impulse;
+  }
+
+  _makeSaturationCurve(amount){
+    const n = 1024;
+    const curve = new Float32Array(n);
+    const k = amount * 60 + 0.001; // drive amount
+    for(let i=0;i<n;i++){
+      const x = (i / (n-1)) * 2 - 1;
+      curve[i] = Math.tanh(k*x) / Math.tanh(k);
+    }
+    return curve;
+  }
+
+  async loadFile(file){
+    this.ensureContext();
+    const arr = await file.arrayBuffer();
+    const buf = await this.ctx.decodeAudioData(arr.slice(0));
+    this.buffer = buf;
+    this.duration = buf.duration;
+    this.offset = 0;
+    return buf;
+  }
+
+  applySettings(s){
+    this.settings = s;
+    const ctx = this.ctx;
+    if(!ctx) return;
+    const t = ctx.currentTime;
+    this.filterHP.frequency.setTargetAtTime(s.filter.highpass, t, 0.02);
+    this.filterLP.frequency.setTargetAtTime(s.filter.lowpass, t, 0.02);
+
+    this.eqLow.gain.setTargetAtTime(s.eq.low, t, 0.02);
+    this.eqLowMid.gain.setTargetAtTime(s.eq.lowMid, t, 0.02);
+    this.eqHighMid.gain.setTargetAtTime(s.eq.highMid, t, 0.02);
+    this.eqHigh.gain.setTargetAtTime(s.eq.high, t, 0.02);
+
+    this.compressor.threshold.setTargetAtTime(s.comp.threshold, t, 0.02);
+    this.compressor.ratio.setTargetAtTime(s.comp.ratio, t, 0.02);
+    this.compressor.attack.setTargetAtTime(s.comp.attack, t, 0.02);
+    this.compressor.release.setTargetAtTime(s.comp.release, t, 0.02);
+    this.makeupGain.gain.setTargetAtTime(Math.pow(10, s.comp.makeup/20), t, 0.02);
+
+    this.satShaper.curve = this._makeSaturationCurve(s.sat.drive/100);
+    const satMix = s.sat.mix/100;
+    this.satDry.gain.setTargetAtTime(1-satMix, t, 0.02);
+    this.satWet.gain.setTargetAtTime(satMix, t, 0.02);
+
+    this.delayNode.delayTime.setTargetAtTime(s.delay.time, t, 0.02);
+    this.delayFeedback.gain.setTargetAtTime(Math.min(s.delay.feedback, 0.92), t, 0.02);
+    this.delaySend.gain.setTargetAtTime(s.delay.mix/100, t, 0.02);
+
+    if(this._lastReverbKey !== `${s.reverb.size}-${s.reverb.decay}`){
+      this.convolver.buffer = this._makeImpulse(s.reverb.size, s.reverb.decay);
+      this._lastReverbKey = `${s.reverb.size}-${s.reverb.decay}`;
+    }
+    this.reverbSend.gain.setTargetAtTime(s.reverb.mix/100, t, 0.02);
+
+    this.panner.pan.setTargetAtTime(s.space.pan, t, 0.02);
+    this.widenSideL.gain.setTargetAtTime(s.space.width, t, 0.02);
+    this.widenSideR.gain.setTargetAtTime(-s.space.width, t, 0.02);
+
+    this.limiter.threshold.setTargetAtTime(s.limiter.ceiling, t, 0.02);
+    this.limiter.release.setTargetAtTime(s.limiter.release, t, 0.02);
+
+    this.masterGain.gain.setTargetAtTime(s.master.gain, t, 0.02);
+    this.ambienceGain.gain.setTargetAtTime(s.ambience.volume/100 * 0.35, t, 0.05);
+  }
+
+  play(fromOffset){
+    if(!this.buffer) return;
+    this.ensureContext();
+    if(this.ctx.state === 'suspended') this.ctx.resume();
+    this.stopInternal();
+
+    const src = this.ctx.createBufferSource();
+    src.buffer = this.buffer;
+    src.connect(this.filterHP);
+    const off = fromOffset != null ? fromOffset : this.offset;
+    src.start(0, off);
+    src.onended = () => {
+      if(this.isPlaying && this.source === src){
+        this.isPlaying = false;
+        this.offset = 0;
+        if(this.onEnded) this.onEnded();
+      }
+    };
+    this.source = src;
+    this.startedAt = this.ctx.currentTime;
+    this.offset = off;
+    this.isPlaying = true;
+  }
+
+  stopInternal(){
+    if(this.source){
+      try{ this.source.onended = null; this.source.stop(); }catch(e){}
+      this.source.disconnect();
+      this.source = null;
+    }
+  }
+
+  pause(){
+    if(!this.isPlaying) return;
+    this.offset = this.getCurrentTime();
+    this.stopInternal();
+    this.isPlaying = false;
+  }
+
+  stop(){
+    this.stopInternal();
+    this.isPlaying = false;
+    this.offset = 0;
+  }
+
+  seek(seconds){
+    const clamped = Math.max(0, Math.min(seconds, this.duration||0));
+    if(this.isPlaying){ this.play(clamped); }
+    else { this.offset = clamped; }
+  }
+
+  getCurrentTime(){
+    if(!this.ctx) return this.offset;
+    if(!this.isPlaying) return this.offset;
+    const t = this.offset + (this.ctx.currentTime - this.startedAt);
+    return Math.min(t, this.duration);
+  }
+
+  setAmbience(playing){
+    // ambience is a generated pad, not a licensed sample — synthesized so
+    // the repo ships with zero binary audio assets
+    this.ensureContext();
+    if(playing && !this._ambienceNodes){
+      this._ambienceNodes = this._startAmbience();
+    } else if(!playing && this._ambienceNodes){
+      this._ambienceNodes.forEach(n => { try{ n.stop(); }catch(e){} });
+      this._ambienceNodes = null;
+    }
+  }
+
+  _startAmbience(){
+    const ctx = this.ctx;
+    const nodes = [];
+    // low forest drone
+    [55, 82.4, 110].forEach((freq,i) => {
+      const osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.value = freq + (Math.random()-0.5)*0.6;
+      const g = new GainNode(ctx, { gain: 0.06/(i+1) });
+      osc.connect(g); g.connect(this.ambienceGain);
+      osc.start();
+      nodes.push(osc);
+    });
+    // filtered noise for "old machinery" hiss
+    const bufSize = 2*ctx.sampleRate;
+    const noiseBuf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+    const d = noiseBuf.getChannelData(0);
+    for(let i=0;i<bufSize;i++) d[i] = (Math.random()*2-1)*0.3;
+    const noise = ctx.createBufferSource();
+    noise.buffer = noiseBuf; noise.loop = true;
+    const nf = new BiquadFilterNode(ctx, { type:'bandpass', frequency:400, Q:0.6 });
+    const ng = new GainNode(ctx, { gain:0.04 });
+    noise.connect(nf); nf.connect(ng); ng.connect(this.ambienceGain);
+    noise.start();
+    nodes.push(noise);
+    return nodes;
+  }
+
+  // --- analysis helpers used by visualizer + diagnosis ---
+  getWaveform(arr){ this.analyser && this.analyser.getByteTimeDomainData(arr); }
+  getSpectrum(arr){ this.analyser && this.analyser.getByteFrequencyData(arr); }
+
+  // downsampled min/max envelope of the whole file — lets the scope panel
+  // show the patient's waveform immediately on admit, before playback starts
+  computeWaveformPeaks(buffer, buckets){
+    buckets = buckets || 600;
+    const data = buffer.getChannelData(0);
+    const n = data.length;
+    const bucketSize = Math.max(1, Math.floor(n / buckets));
+    const peaks = new Float32Array(buckets * 2); // [min0,max0, min1,max1, ...]
+    for(let i=0;i<buckets;i++){
+      const start = i * bucketSize;
+      const end = Math.min(n, start + bucketSize);
+      let min = 0, max = 0;
+      for(let j=start;j<end;j++){
+        const v = data[j];
+        if(v < min) min = v;
+        if(v > max) max = v;
+      }
+      peaks[i*2] = min;
+      peaks[i*2+1] = max;
+    }
+    return peaks;
+  }
+
+  getBandLevels(){
+    const out = {};
+    for(const key in this.bandAnalysers){
+      const b = this.bandAnalysers[key];
+      b.analyser.getByteFrequencyData(b.data);
+      let sum=0; for(let i=0;i<b.data.length;i++) sum += b.data[i];
+      out[key] = sum / b.data.length / 255; // normalized 0..1
+    }
+    return out;
+  }
+
+  computePeakRMS(buffer){
+    // static analysis over the whole decoded buffer (used for the intake read-out)
+    let peak=0, sumSq=0, n=0;
+    for(let ch=0; ch<buffer.numberOfChannels; ch++){
+      const data = buffer.getChannelData(ch);
+      for(let i=0;i<data.length;i+=4){ // stride for speed on long files
+        const v = Math.abs(data[i]);
+        if(v>peak) peak=v;
+        sumSq += v*v; n++;
+      }
+    }
+    const rms = Math.sqrt(sumSq/Math.max(n,1));
+    return {
+      peakDb: 20*Math.log10(Math.max(peak,1e-6)),
+      rmsDb: 20*Math.log10(Math.max(rms,1e-6))
+    };
+  }
+
+  // rough spectral-balance diagnosis from a static buffer scan (no playback needed)
+  diagnoseBuffer(buffer){
+    const data = buffer.getChannelData(0);
+    const n = data.length;
+    const sampleRate = buffer.sampleRate;
+    const chunk = 2048;
+    const bands = { low:0, mid:0, high:0 };
+    let frames = 0;
+    for(let start=0; start+chunk<n; start += chunk*8){
+      const mags = this._quickFFTMag(data, start, chunk);
+      const binHz = sampleRate/chunk;
+      let lowSum=0, lowN=0, midSum=0, midN=0, highSum=0, highN=0;
+      for(let i=1;i<mags.length;i++){
+        const f = i*binHz;
+        if(f<250){ lowSum+=mags[i]; lowN++; }
+        else if(f<4000){ midSum+=mags[i]; midN++; }
+        else if(f<16000){ highSum+=mags[i]; highN++; }
+      }
+      bands.low += lowSum/Math.max(lowN,1);
+      bands.mid += midSum/Math.max(midN,1);
+      bands.high += highSum/Math.max(highN,1);
+      frames++;
+      if(frames>60) break;
+    }
+    if(frames===0) return { low:'unknown', mid:'unknown', high:'unknown' };
+    bands.low/=frames; bands.mid/=frames; bands.high/=frames;
+    const total = bands.low+bands.mid+bands.high || 1;
+    const ratio = { low:bands.low/total, mid:bands.mid/total, high:bands.high/total };
+
+    const classify = (val, lo, hi) => val<lo ? 'needs' : val>hi ? 'stable' : 'healthy';
+    return {
+      low:  classify(ratio.low,  0.18, 0.55),
+      mid:  classify(ratio.mid,  0.25, 0.60),
+      high: classify(ratio.high, 0.05, 0.35),
+      ratio
+    };
+  }
+
+  // minimal radix-2 magnitude spectrum, good enough for a coarse balance read
+  _quickFFTMag(data, start, size){
+    const re = new Float32Array(size), im = new Float32Array(size);
+    for(let i=0;i<size;i++){
+      const w = 0.5 - 0.5*Math.cos(2*Math.PI*i/(size-1)); // hann window
+      re[i] = (data[start+i]||0) * w;
+    }
+    // iterative in-place FFT
+    let n = size, levels = Math.log2(n);
+    for(let i=0;i<n;i++){
+      let j=0;
+      for(let b=0;b<levels;b++) j = (j<<1) | ((i>>b)&1);
+      if(j>i){ const tr=re[i]; re[i]=re[j]; re[j]=tr; const ti=im[i]; im[i]=im[j]; im[j]=ti; }
+    }
+    for(let size2=2; size2<=n; size2<<=1){
+      const half = size2>>1;
+      const theta = -2*Math.PI/size2;
+      for(let i=0;i<n;i+=size2){
+        for(let k=0;k<half;k++){
+          const angle = theta*k;
+          const cos=Math.cos(angle), sin=Math.sin(angle);
+          const tre = re[i+k+half]*cos - im[i+k+half]*sin;
+          const tim = re[i+k+half]*sin + im[i+k+half]*cos;
+          re[i+k+half] = re[i+k]-tre; im[i+k+half] = im[i+k]-tim;
+          re[i+k] += tre; im[i+k] += tim;
+        }
+      }
+    }
+    const mag = new Float32Array(size/2);
+    for(let i=0;i<size/2;i++) mag[i] = Math.sqrt(re[i]*re[i]+im[i]*im[i]);
+    return mag;
+  }
+}
+
+window.AudioEngine = AudioEngine;
+</script>
+<script>/* ==========================================================================
+   PRESET LIBRARY — "Patient Records"
+   50 treatment protocols across 9 hospital departments. Every entry maps
+   to real AudioEngine parameters (EQ, filter, compressor, saturation,
+   delay, reverb, stereo width, limiter) — nothing here is a fake button.
+   ========================================================================== */
+
+(function(){
+
+  function T(partial){
+    const base = AudioEngine.defaultSettings();
+    return deepMerge(base, partial || {});
+  }
+  function deepMerge(base, partial){
+    const out = {};
+    for(const k in base){
+      const bv = base[k], pv = partial ? partial[k] : undefined;
+      if(bv && typeof bv === 'object' && !Array.isArray(bv)){
+        out[k] = deepMerge(bv, pv || {});
+      } else {
+        out[k] = (pv !== undefined) ? pv : bv;
+      }
+    }
+    return out;
+  }
+
+  const DEPARTMENTS = [
+    { id:'vocal',      name:'Vocal Ward',                 icon:'vocal' },
+    { id:'kick',       name:'Kick Laboratory',             icon:'kick' },
+    { id:'snare',      name:'Snare Surgery',                icon:'snare' },
+    { id:'hihat',      name:'Hi-Hat Precision Lab',          icon:'hihat' },
+    { id:'percussion', name:'Percussion Ward',                icon:'percussion' },
+    { id:'bass',       name:'Bass Recovery Unit',               icon:'bass' },
+    { id:'mixbus',     name:'Mix Bus Operating Room',             icon:'mixbus' },
+    { id:'creative',   name:'Creative Mutation Chamber',            icon:'creative' },
+    { id:'master',     name:'Master Treatment Facility',              icon:'master' },
+  ];
+
+  const PRESETS = [
+
+    // ------------------------------------------------------------- VOCAL WARD
+    { id:'AH-001', name:'Golden Throat Recovery', dept:'vocal',
+      condition:['Muddy low-mid','Harsh sibilance','Lacks warmth'], procedure:['EQ correction','De-mud','Gentle compression','Warmth saturation'],
+      settings:T({ filter:{highpass:90,lowpass:20000}, eq:{low:-1.5,lowMid:-2,highMid:1.5,high:2}, comp:{threshold:-22,ratio:2.5,attack:0.02,release:0.3,makeup:1.5}, sat:{drive:10,mix:15}, reverb:{size:1.4,decay:1.4,mix:6}, space:{pan:0,width:1.1}, limiter:{ceiling:-1,release:0.2} }) },
+    { id:'AH-002', name:'Midnight Vocal Surgery', dept:'vocal',
+      condition:['Too bright for the room','Needs cinematic depth'], procedure:['Low warmth boost','Brightness control','Deep space treatment'],
+      settings:T({ filter:{highpass:80,lowpass:13000}, eq:{low:2,lowMid:0,highMid:-1.5,high:-3}, comp:{threshold:-20,ratio:3,attack:0.015,release:0.35,makeup:1}, sat:{drive:15,mix:12}, delay:{time:0.35,feedback:0.25,mix:10}, reverb:{size:3.2,decay:3.5,mix:22}, space:{pan:0,width:1.2}, limiter:{ceiling:-1,release:0.25} }) },
+    { id:'AH-003', name:'Crystal Voice Operation', dept:'vocal',
+      condition:['Dull top end','Buried in the mix'], procedure:['Clarity lift','Air band boost','Presence correction'],
+      settings:T({ filter:{highpass:100,lowpass:19000}, eq:{low:-2,lowMid:-1,highMid:2.5,high:4}, comp:{threshold:-24,ratio:2.2,attack:0.01,release:0.25,makeup:1}, sat:{drive:5,mix:5}, delay:{time:0.22,feedback:0.15,mix:4}, reverb:{size:1.6,decay:1.6,mix:10}, space:{pan:0,width:1.15} }) },
+    { id:'AH-004', name:'Broken Tape Revival', dept:'vocal',
+      condition:['Boxy resonance','Damaged vintage source'], procedure:['Boxiness removal','Bandwidth narrowing','Tape saturation'],
+      settings:T({ filter:{highpass:150,lowpass:9000}, eq:{low:1,lowMid:-3,highMid:1,high:-4}, comp:{threshold:-18,ratio:4,attack:0.02,release:0.3,makeup:2}, sat:{drive:35,mix:40}, reverb:{size:1.2,decay:1,mix:8}, space:{pan:0,width:0.8} }) },
+    { id:'AH-005', name:'Soul Patient Recovery', dept:'vocal',
+      condition:['Thin analogue character','Needs vintage soul warmth'], procedure:['Warmth EQ','Analogue saturation','Short space treatment'],
+      settings:T({ filter:{highpass:90,lowpass:16000}, eq:{low:1.5,lowMid:0.5,highMid:-1,high:-1}, comp:{threshold:-22,ratio:3,attack:0.015,release:0.3,makeup:1.5}, sat:{drive:22,mix:28}, delay:{time:0.3,feedback:0.2,mix:8}, reverb:{size:1.8,decay:1.8,mix:12}, space:{pan:0,width:1.05} }) },
+    { id:'AH-006', name:'Radio Room Discharge', dept:'vocal',
+      condition:['Not translation-ready','Uneven playback level'], procedure:['Broadcast EQ','Fast compression','Discharge limiting'],
+      settings:T({ filter:{highpass:120,lowpass:15000}, eq:{low:-1,lowMid:0,highMid:1,high:1.5}, comp:{threshold:-16,ratio:4,attack:0.01,release:0.2,makeup:2}, sat:{drive:8,mix:8}, reverb:{size:1,decay:1,mix:4}, space:{pan:0,width:1}, limiter:{ceiling:-0.5,release:0.15} }) },
+    { id:'AH-007', name:'Whisper Therapy', dept:'vocal',
+      condition:['Needs intimacy','Too much low-end weight'], procedure:['Low-end thinning','Breath-air lift','Gentle limiting'],
+      settings:T({ filter:{highpass:140,lowpass:19000}, eq:{low:-3,lowMid:1,highMid:2,high:3}, comp:{threshold:-30,ratio:2,attack:0.03,release:0.4,makeup:3}, sat:{drive:4,mix:5}, reverb:{size:1,decay:0.9,mix:5}, space:{pan:0,width:0.9} }) },
+    { id:'AH-008', name:'Lead Vocal Emergency', dept:'vocal',
+      condition:['Undiagnosed general imbalance','Needs fast triage'], procedure:['Rapid EQ triage','Firm compression','Safety limiting'],
+      settings:T({ filter:{highpass:100,lowpass:18000}, eq:{low:-1,lowMid:-2,highMid:1.5,high:1.5}, comp:{threshold:-20,ratio:5,attack:0.008,release:0.2,makeup:3}, sat:{drive:12,mix:10}, reverb:{size:1.3,decay:1.2,mix:6}, space:{pan:0,width:1}, limiter:{ceiling:-1,release:0.15} }) },
+
+    // ---------------------------------------------------------- KICK LABORATORY
+    { id:'AH-009', name:'Heartbeat Injector', dept:'kick',
+      condition:['Weak low pulse','Undefined attack'], procedure:['Sub-band injection','Attack compression','Mono-narrow width'],
+      settings:T({ filter:{highpass:25,lowpass:9000}, eq:{low:4,lowMid:-2,highMid:0,high:-1}, comp:{threshold:-18,ratio:4,attack:0.005,release:0.15,makeup:2}, sat:{drive:10,mix:8}, space:{pan:0,width:0.6}, limiter:{ceiling:-1,release:0.1} }) },
+    { id:'AH-010', name:'Concrete Kick Surgery', dept:'kick',
+      condition:['Lacks physical impact','Soft transient'], procedure:['Impact EQ','Heavy compression','Click restoration'],
+      settings:T({ filter:{highpass:30,lowpass:8000}, eq:{low:5,lowMid:-1,highMid:2,high:0}, comp:{threshold:-14,ratio:6,attack:0.003,release:0.12,makeup:3}, sat:{drive:25,mix:20}, space:{pan:0,width:0.5} }) },
+    { id:'AH-011', name:'Sub Organ Replacement', dept:'kick',
+      condition:['Missing sub weight','No low-end organ'], procedure:['Sub replacement EQ','Low-mid cleanup','Narrow field'],
+      settings:T({ filter:{highpass:20,lowpass:6000}, eq:{low:6,lowMid:-3,highMid:-1,high:-2}, comp:{threshold:-20,ratio:3,attack:0.01,release:0.2,makeup:2}, sat:{drive:5,mix:5}, space:{pan:0,width:0.4} }) },
+    { id:'AH-012', name:'Drum Room Trauma Fix', dept:'kick',
+      condition:['Weak room recording','Dull capture'], procedure:['Brightening EQ','Recovery compression','Short room glue'],
+      settings:T({ filter:{highpass:35,lowpass:10000}, eq:{low:3,lowMid:1,highMid:2,high:1}, comp:{threshold:-16,ratio:5,attack:0.006,release:0.18,makeup:3}, sat:{drive:18,mix:15}, reverb:{size:1,decay:1,mix:6}, space:{pan:0,width:0.7} }) },
+    { id:'AH-013', name:'Black Steel Kick', dept:'kick',
+      condition:['Needs dark aggression','Flat click'], procedure:['Dark EQ shaping','Aggressive compression','Click boost saturation'],
+      settings:T({ filter:{highpass:28,lowpass:9000}, eq:{low:3.5,lowMid:-2,highMid:3,high:-1}, comp:{threshold:-12,ratio:7,attack:0.003,release:0.1,makeup:4}, sat:{drive:32,mix:28}, space:{pan:0,width:0.55}, limiter:{ceiling:-0.8,release:0.1} }) },
+    { id:'AH-014', name:'Vintage Drum Machine Recovery', dept:'kick',
+      condition:['Missing machine character','Too clean/digital'], procedure:['Vintage EQ curve','Tape saturation','Bandwidth narrowing'],
+      settings:T({ filter:{highpass:30,lowpass:7000}, eq:{low:3,lowMid:0,highMid:-1,high:-3}, comp:{threshold:-20,ratio:3,attack:0.01,release:0.2,makeup:2}, sat:{drive:28,mix:35}, space:{pan:0,width:0.6} }) },
+
+    // -------------------------------------------------------------- SNARE SURGERY
+    { id:'AH-015', name:'Snare Crack Operation', dept:'snare',
+      condition:['Lost crack','Weak attack'], procedure:['Crack-band EQ','Fast transient compression','Presence lift'],
+      settings:T({ filter:{highpass:90,lowpass:16000}, eq:{low:-1,lowMid:-1,highMid:4,high:2}, comp:{threshold:-16,ratio:5,attack:0.003,release:0.12,makeup:3}, sat:{drive:10,mix:8}, space:{pan:0,width:0.9} }) },
+    { id:'AH-016', name:'Rusted Metal Snap', dept:'snare',
+      condition:['Too polite','Needs dirt'], procedure:['Aggressive saturation','Metallic EQ boost','Grit compression'],
+      settings:T({ filter:{highpass:100,lowpass:15000}, eq:{low:0,lowMid:-2,highMid:3,high:3}, comp:{threshold:-14,ratio:6,attack:0.004,release:0.1,makeup:3}, sat:{drive:38,mix:35}, space:{pan:0,width:0.85} }) },
+    { id:'AH-017', name:'Surgical Pop Repair', dept:'snare',
+      condition:['Cluttered low-mid','Inconsistent pop'], procedure:['Clean EQ correction','Modern compression','Safety limiting'],
+      settings:T({ filter:{highpass:110,lowpass:17000}, eq:{low:-0.5,lowMid:-1.5,highMid:2.5,high:2}, comp:{threshold:-18,ratio:4,attack:0.005,release:0.15,makeup:2}, sat:{drive:8,mix:6}, space:{pan:0,width:0.9}, limiter:{ceiling:-1,release:0.12} }) },
+    { id:'AH-018', name:'Ghost Room Treatment', dept:'snare',
+      condition:['Too dry','Needs atmosphere'], procedure:['Gentle EQ','Delay send','Large room reverb'],
+      settings:T({ filter:{highpass:90,lowpass:16000}, eq:{low:-1,lowMid:0,highMid:1,high:1.5}, comp:{threshold:-22,ratio:3,attack:0.01,release:0.25,makeup:1}, sat:{drive:6,mix:6}, delay:{time:0.28,feedback:0.2,mix:10}, reverb:{size:3,decay:3.2,mix:28}, space:{pan:0,width:1.3} }) },
+    { id:'AH-019', name:'Analog Blood Pressure', dept:'snare',
+      condition:['Digital and thin','Missing analogue glue'], procedure:['Analogue-style compression','Warmth saturation','Body EQ'],
+      settings:T({ filter:{highpass:95,lowpass:14000}, eq:{low:1,lowMid:0,highMid:1,high:0}, comp:{threshold:-24,ratio:4,attack:0.015,release:0.3,makeup:2}, sat:{drive:20,mix:22}, space:{pan:0,width:0.9} }) },
+
+    // --------------------------------------------------------- HI-HAT PRECISION LAB
+    { id:'AH-020', name:'High Frequency Detox', dept:'hihat',
+      condition:['Painful upper harmonics','Fatiguing to listen to'], procedure:['High-shelf reduction','Gentle compression','Detox filtering'],
+      settings:T({ filter:{highpass:250,lowpass:9000}, eq:{low:0,lowMid:0,highMid:-2,high:-5}, comp:{threshold:-26,ratio:2,attack:0.01,release:0.2,makeup:1}, space:{pan:0,width:0.9} }) },
+    { id:'AH-021', name:'Silver Blade Precision', dept:'hihat',
+      condition:['Dull, lacks edge','Buried in the mix'], procedure:['Precision high-pass','Sharpness EQ','Light compression'],
+      settings:T({ filter:{highpass:350,lowpass:18000}, eq:{low:-2,lowMid:-3,highMid:1,high:3}, comp:{threshold:-24,ratio:2.5,attack:0.008,release:0.18,makeup:1}, space:{pan:0,width:1} }) },
+    { id:'AH-022', name:'Dusty Vinyl Hat Recovery', dept:'hihat',
+      condition:['Too digital/modern','Needs vintage texture'], procedure:['Bandwidth narrowing','Vinyl-style saturation'],
+      settings:T({ filter:{highpass:300,lowpass:10000}, eq:{low:-1,lowMid:-1,highMid:0,high:-3}, sat:{drive:20,mix:25}, space:{pan:0,width:0.85} }) },
+    { id:'AH-023', name:'Airflow Treatment', dept:'hihat',
+      condition:['Closed-in, needs air','Muffled sizzle'], procedure:['Air-band boost','Open filtering','Gentle compression'],
+      settings:T({ filter:{highpass:280,lowpass:19500}, eq:{low:-2,lowMid:-2,highMid:1,high:4}, comp:{threshold:-28,ratio:2,attack:0.012,release:0.22,makeup:1}, space:{pan:0,width:1.1} }) },
+    { id:'AH-024', name:'Cymbal Damage Control', dept:'hihat',
+      condition:['Harsh, splashy cymbals','Uncontrolled resonance'], procedure:['Harshness reduction','Damage-control compression'],
+      settings:T({ filter:{highpass:250,lowpass:12000}, eq:{low:-1,lowMid:-1,highMid:-1.5,high:-3}, comp:{threshold:-24,ratio:3,attack:0.01,release:0.2,makeup:1}, space:{pan:0,width:0.95} }) },
+
+    // ------------------------------------------------------------ PERCUSSION WARD
+    { id:'AH-025', name:'Tribal Pulse Therapy', dept:'percussion',
+      condition:['Flat, non-organic feel','Needs pulse'], procedure:['Organic EQ warmth','Pulse compression','Room reverb'],
+      settings:T({ filter:{highpass:50,lowpass:16000}, eq:{low:2,lowMid:0,highMid:1,high:1}, comp:{threshold:-20,ratio:3,attack:0.01,release:0.2,makeup:2}, sat:{drive:12,mix:12}, reverb:{size:2,decay:2,mix:14}, space:{pan:0,width:1.2} }) },
+    { id:'AH-026', name:'Street Metal Recovery', dept:'percussion',
+      condition:['Needs raw street character','Flat rhythm'], procedure:['Metallic EQ','Grit saturation','Rhythmic delay'],
+      settings:T({ filter:{highpass:60,lowpass:17000}, eq:{low:1,lowMid:-1,highMid:2,high:2}, comp:{threshold:-18,ratio:4,attack:0.008,release:0.18,makeup:2}, sat:{drive:18,mix:18}, delay:{time:0.24,feedback:0.22,mix:10}, space:{pan:0,width:1.15} }) },
+    { id:'AH-027', name:'Percussion Skeleton Repair', dept:'percussion',
+      condition:['Weak movement','Low impact','Lost character'], procedure:['EQ correction','Transient recovery','Harmonic restoration','Space treatment'],
+      settings:T({ filter:{highpass:55,lowpass:17500}, eq:{low:2,lowMid:-2,highMid:3,high:2.5}, comp:{threshold:-16,ratio:5,attack:0.006,release:0.15,makeup:3}, sat:{drive:15,mix:15}, space:{pan:0,width:1.1}, limiter:{ceiling:-1,release:0.15} }) },
+    { id:'AH-028', name:'Jungle Machine Room', dept:'percussion',
+      condition:['Too clean/sterile','Needs mechanical texture'], procedure:['Organic-mechanical EQ','Delay repeats','Large reverb space'],
+      settings:T({ filter:{highpass:50,lowpass:15000}, eq:{low:1.5,lowMid:0,highMid:1,high:0.5}, comp:{threshold:-20,ratio:3,attack:0.01,release:0.2,makeup:2}, sat:{drive:10,mix:10}, delay:{time:0.4,feedback:0.3,mix:16}, reverb:{size:2.6,decay:2.8,mix:18}, space:{pan:0,width:1.3} }) },
+    { id:'AH-029', name:'Rhythm Organ Transplant', dept:'percussion',
+      condition:['Doesn\u2019t sit in the mix','Fighting other elements'], procedure:['Mix-fit EQ','Gentle glue compression'],
+      settings:T({ filter:{highpass:60,lowpass:16000}, eq:{low:0,lowMid:-1.5,highMid:1,high:0.5}, comp:{threshold:-22,ratio:3,attack:0.01,release:0.22,makeup:1.5}, space:{pan:0,width:1} }) },
+
+    // ----------------------------------------------------------- BASS RECOVERY UNIT
+    { id:'AH-030', name:'Bass Heart Surgery', dept:'bass',
+      condition:['Uneven low-end balance','Muddy fundamentals'], procedure:['Fundamental EQ balance','Low-mid cleanup','Narrow field'],
+      settings:T({ filter:{highpass:25,lowpass:8000}, eq:{low:3,lowMid:-2,highMid:0,high:-2}, comp:{threshold:-20,ratio:3,attack:0.015,release:0.25,makeup:2}, space:{pan:0,width:0.5} }) },
+    { id:'AH-031', name:'Submarine Pressure Chamber', dept:'bass',
+      condition:['Missing sub weight','Needs deep pressure'], procedure:['Deep sub EQ','Pressure compression','Mono-narrow field'],
+      settings:T({ filter:{highpass:20,lowpass:5000}, eq:{low:6,lowMid:-3,highMid:-2,high:-4}, comp:{threshold:-18,ratio:4,attack:0.02,release:0.3,makeup:3}, space:{pan:0,width:0.3} }) },
+    { id:'AH-032', name:'808 Organ Replacement', dept:'bass',
+      condition:['Weak 808 fundamental','Lacks harmonic content'], procedure:['808-band EQ','Harmonic saturation','Impact compression'],
+      settings:T({ filter:{highpass:22,lowpass:9000}, eq:{low:5,lowMid:-2,highMid:1,high:-1}, comp:{threshold:-16,ratio:4,attack:0.01,release:0.2,makeup:3}, sat:{drive:15,mix:14}, space:{pan:0,width:0.4}, limiter:{ceiling:-1,release:0.1} }) },
+    { id:'AH-033', name:'Bass Frequency Injection', dept:'bass',
+      condition:['Flat, lifeless tone','Missing harmonic energy'], procedure:['Harmonic injection','Presence EQ','Glue compression'],
+      settings:T({ filter:{highpass:28,lowpass:10000}, eq:{low:2,lowMid:0,highMid:2,high:1}, sat:{drive:30,mix:30}, comp:{threshold:-20,ratio:3,attack:0.015,release:0.25,makeup:2}, space:{pan:0,width:0.55} }) },
+    { id:'AH-034', name:'Underground Pressure Test', dept:'bass',
+      condition:['Needs maximum low-end weight','Too polite'], procedure:['Heavy EQ boost','Hard compression','Ceiling limiting'],
+      settings:T({ filter:{highpass:24,lowpass:7000}, eq:{low:5,lowMid:-1,highMid:0,high:-2}, comp:{threshold:-14,ratio:6,attack:0.008,release:0.18,makeup:4}, sat:{drive:20,mix:18}, space:{pan:0,width:0.4}, limiter:{ceiling:-1.2,release:0.1} }) },
+
+    // ---------------------------------------------------------- MIX BUS OPERATING ROOM
+    { id:'AH-035', name:'Full Body Recovery', dept:'mixbus',
+      condition:['Lacks overall cohesion','Uneven full-mix balance'], procedure:['Full-spectrum EQ','Glue compression','Gentle saturation','Ceiling limiting'],
+      settings:T({ filter:{highpass:30,lowpass:19000}, eq:{low:1,lowMid:-0.5,highMid:1,high:1.5}, comp:{threshold:-18,ratio:2.5,attack:0.02,release:0.3,makeup:1.5}, sat:{drive:8,mix:8}, space:{pan:0,width:1.15}, limiter:{ceiling:-0.8,release:0.15} }) },
+    { id:'AH-036', name:'Platinum Discharge', dept:'mixbus',
+      condition:['Mix complete, needs final polish'], procedure:['Polish EQ','Light bus compression','Discharge limiting'],
+      settings:T({ filter:{highpass:25,lowpass:19500}, eq:{low:0.5,lowMid:0,highMid:1,high:1.5}, comp:{threshold:-14,ratio:2,attack:0.02,release:0.25,makeup:1}, sat:{drive:5,mix:5}, space:{pan:0,width:1.05}, limiter:{ceiling:-0.3,release:0.12} }) },
+    { id:'AH-037', name:'Hospital Night Shift', dept:'mixbus',
+      condition:['Too bright for late-night mood','Needs cinematic dark'], procedure:['Dark EQ curve','Saturation warmth','Ambient reverb'],
+      settings:T({ filter:{highpass:25,lowpass:15000}, eq:{low:2,lowMid:0,highMid:-1,high:-2}, comp:{threshold:-20,ratio:2.5,attack:0.02,release:0.3,makeup:1}, sat:{drive:15,mix:14}, reverb:{size:3,decay:3.2,mix:14}, space:{pan:0,width:1.2} }) },
+    { id:'AH-038', name:'Vintage Console Revival', dept:'mixbus',
+      condition:['Sterile digital sound','Missing console character'], procedure:['Console-style EQ','Analogue saturation','Bus compression'],
+      settings:T({ filter:{highpass:28,lowpass:17000}, eq:{low:1.5,lowMid:0.5,highMid:-0.5,high:-1.5}, sat:{drive:24,mix:26}, comp:{threshold:-18,ratio:3,attack:0.02,release:0.28,makeup:2}, space:{pan:0,width:1} }) },
+    { id:'AH-039', name:'Blood Orange Tape Process', dept:'mixbus',
+      condition:['Thin, lacks tape warmth'], procedure:['Warm EQ shaping','Heavy tape saturation','Bus compression'],
+      settings:T({ filter:{highpass:26,lowpass:16000}, eq:{low:2,lowMid:0.5,highMid:-1,high:-1.5}, sat:{drive:34,mix:38}, comp:{threshold:-20,ratio:2.5,attack:0.02,release:0.3,makeup:2}, space:{pan:0,width:1} }) },
+    { id:'AH-040', name:'Emergency Loudness Protocol', dept:'mixbus',
+      condition:['Not competitive in level','Needs controlled loudness'], procedure:['Fast bus compression','High-ratio limiting'],
+      settings:T({ filter:{highpass:25,lowpass:19500}, eq:{low:0.5,lowMid:0,highMid:0.5,high:1}, comp:{threshold:-12,ratio:4,attack:0.01,release:0.15,makeup:4}, space:{pan:0,width:1}, limiter:{ceiling:-0.2,release:0.08} }) },
+
+    // ------------------------------------------------------- CREATIVE MUTATION CHAMBER
+    { id:'AH-041', name:'Mutation Chamber', dept:'creative',
+      condition:['Too ordinary','Ready for transformation'], procedure:['Extreme EQ mutation','Heavy saturation','Feedback delay','Massive reverb'],
+      settings:T({ filter:{highpass:60,lowpass:15000}, eq:{low:3,lowMid:-4,highMid:4,high:3}, sat:{drive:50,mix:50}, delay:{time:0.5,feedback:0.4,mix:25}, reverb:{size:4,decay:4.5,mix:30}, space:{pan:0,width:1.6} }) },
+    { id:'AH-042', name:'Cryogenic Frequency Freeze', dept:'creative',
+      condition:['Too organic/warm','Needs cold digital character'], procedure:['Cold EQ shaping','Fast compression','Tight delay','Icy reverb'],
+      settings:T({ filter:{highpass:150,lowpass:19500}, eq:{low:-3,lowMid:-2,highMid:2,high:5}, comp:{threshold:-24,ratio:3,attack:0.005,release:0.15,makeup:1}, delay:{time:0.18,feedback:0.35,mix:18}, reverb:{size:2,decay:1.5,mix:14}, space:{pan:0,width:1.4} }) },
+    { id:'AH-043', name:'Organic Machine Infection', dept:'creative',
+      condition:['Purely synthetic or purely organic — needs both'], procedure:['Hybrid EQ','Saturation infection','Delay + reverb blend'],
+      settings:T({ filter:{highpass:50,lowpass:17000}, eq:{low:2,lowMid:-1,highMid:2,high:2}, sat:{drive:28,mix:25}, delay:{time:0.33,feedback:0.3,mix:20}, reverb:{size:2.8,decay:3,mix:22}, space:{pan:0,width:1.3} }) },
+    { id:'AH-044', name:'Abandoned Factory Signal', dept:'creative',
+      condition:['Lacks industrial atmosphere'], procedure:['Industrial EQ','Grit saturation','Long delay','Cavernous reverb'],
+      settings:T({ filter:{highpass:40,lowpass:12000}, eq:{low:1,lowMid:1,highMid:-1,high:-2}, sat:{drive:30,mix:28}, delay:{time:0.45,feedback:0.35,mix:22}, reverb:{size:4.5,decay:5,mix:32}, space:{pan:0,width:1.4} }) },
+    { id:'AH-045', name:'Forest Signal Recovery', dept:'creative',
+      condition:['Disconnected from natural space'], procedure:['Organic EQ recovery','Gentle saturation','Ambient delay + reverb'],
+      settings:T({ filter:{highpass:45,lowpass:18000}, eq:{low:1.5,lowMid:-1,highMid:1,high:1.5}, sat:{drive:10,mix:12}, delay:{time:0.3,feedback:0.22,mix:12}, reverb:{size:3.5,decay:3.8,mix:26}, space:{pan:0,width:1.25} }) },
+
+    // ------------------------------------------------------ MASTER TREATMENT FACILITY
+    { id:'AH-046', name:'Final Patient Clearance', dept:'master',
+      condition:['Pre-master, needs final clearance'], procedure:['Master-bus EQ','Gentle compression','Clearance limiting'],
+      settings:T({ filter:{highpass:22,lowpass:19800}, eq:{low:0.5,lowMid:0,highMid:0.5,high:1}, comp:{threshold:-14,ratio:2,attack:0.02,release:0.25,makeup:1}, space:{pan:0,width:1.05}, limiter:{ceiling:-0.3,release:0.1} }) },
+    { id:'AH-047', name:'Worldwide Playback Test', dept:'master',
+      condition:['Untested across playback systems'], procedure:['Translation EQ','Consistent compression','Safety limiting'],
+      settings:T({ filter:{highpass:25,lowpass:19500}, eq:{low:0,lowMid:-0.5,highMid:0.5,high:0.5}, comp:{threshold:-16,ratio:2.2,attack:0.02,release:0.25,makeup:1}, space:{pan:0,width:1}, limiter:{ceiling:-0.5,release:0.12} }) },
+    { id:'AH-048', name:'Underground Release Protocol', dept:'master',
+      condition:['Too polished for underground release'], procedure:['Dark master EQ','Saturation character','Release limiting'],
+      settings:T({ filter:{highpass:22,lowpass:17000}, eq:{low:1.5,lowMid:0,highMid:-1,high:-1.5}, comp:{threshold:-16,ratio:2.5,attack:0.02,release:0.28,makeup:1.5}, sat:{drive:10,mix:10}, space:{pan:0,width:1.1}, limiter:{ceiling:-0.6,release:0.14} }) },
+    { id:'AH-049', name:'Rare Sound Preservation', dept:'master',
+      condition:['Unique recording, handle with care'], procedure:['Minimal EQ touch','Light-touch compression','Preservation limiting'],
+      settings:T({ filter:{highpass:20,lowpass:20000}, eq:{low:0,lowMid:0,highMid:0,high:0.5}, comp:{threshold:-20,ratio:1.6,attack:0.03,release:0.35,makeup:0.5}, space:{pan:0,width:1}, limiter:{ceiling:-1,release:0.2} }) },
+    { id:'AH-050', name:'Audio Hospital Resurrection', dept:'master',
+      condition:['Full-chain showcase treatment'], procedure:['Complete EQ correction','Dynamic treatment','Space treatment','Harmonic restoration','Final limiting'],
+      settings:T({ filter:{highpass:30,lowpass:18500}, eq:{low:2,lowMid:-1.5,highMid:1.5,high:2}, comp:{threshold:-18,ratio:3.5,attack:0.012,release:0.22,makeup:2.5}, sat:{drive:20,mix:18}, delay:{time:0.3,feedback:0.25,mix:10}, reverb:{size:2.5,decay:2.6,mix:16}, space:{pan:0,width:1.2}, limiter:{ceiling:-0.5,release:0.12} }) },
+  ];
+
+  window.PRESET_LIBRARY = { departments: DEPARTMENTS, presets: PRESETS };
+})();
+</script>
+<script>/* ==========================================================================
+   STORAGE
+   Thin wrapper around localStorage. Audio files themselves are never
+   persisted (too large / not reliably possible) — we store metadata,
+   treatment settings (presets) and app preferences only.
+   ========================================================================== */
+
+const Storage = (() => {
+  const KEYS = {
+    recents: 'ah.recents',
+    presets: 'ah.presets',
+    settings: 'ah.settings',
+    ambience: 'ah.ambienceVolume'
+  };
+
+  function safeGet(key, fallback){
+    try{
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : fallback;
+    }catch(e){ return fallback; }
+  }
+  function safeSet(key, value){
+    try{ localStorage.setItem(key, JSON.stringify(value)); return true; }
+    catch(e){ console.warn('Audio Hospital: storage write failed', e); return false; }
+  }
+
+  return {
+    getRecents(){ return safeGet(KEYS.recents, []); },
+    addRecent(entry){
+      const list = safeGet(KEYS.recents, []);
+      const filtered = list.filter(r => r.name !== entry.name || r.size !== entry.size);
+      filtered.unshift(entry);
+      safeSet(KEYS.recents, filtered.slice(0, 12));
+    },
+    clearRecents(){ safeSet(KEYS.recents, []); },
+
+    // built-in department library (js/presets.js) — read-only, never written to localStorage
+    getDepartments(){ return (window.PRESET_LIBRARY && window.PRESET_LIBRARY.departments) || []; },
+    getLibraryPresets(){
+      const lib = (window.PRESET_LIBRARY && window.PRESET_LIBRARY.presets) || [];
+      return lib.map(p => ({
+        name: p.name, settings: p.settings, custom:false,
+        meta: { id:p.id, dept:p.dept, condition:p.condition, procedure:p.procedure, status:'READY FOR SURGERY' }
+      }));
+    },
+
+    // user-saved presets — persisted to localStorage, layered on top of the library
+    getCustomPresets(){ return safeGet(KEYS.presets, []); },
+    savePreset(name, settings){
+      const custom = safeGet(KEYS.presets, []);
+      const idx = custom.findIndex(p => p.name === name);
+      const entry = { name, settings, custom:true, savedAt: Date.now(),
+        meta:{ id:'AH-CUSTOM', dept:'custom', condition:['Engineer-defined treatment'], procedure:['Custom chain'], status:'READY FOR SURGERY' } };
+      if(idx>-1) custom[idx] = entry; else custom.push(entry);
+      safeSet(KEYS.presets, custom);
+      return custom;
+    },
+    deletePreset(name){
+      const custom = safeGet(KEYS.presets, []).filter(p => p.name !== name);
+      safeSet(KEYS.presets, custom);
+      return custom;
+    },
+
+    // combined view: library first, custom appended — what the UI renders
+    getPresets(){ return [...this.getLibraryPresets(), ...this.getCustomPresets()]; },
+
+    getSettings(){ return safeGet(KEYS.settings, {}); },
+    saveSettings(settings){ safeSet(KEYS.settings, settings); },
+
+    getAmbienceVolume(){ return safeGet(KEYS.ambience, 0); },
+    setAmbienceVolume(v){ safeSet(KEYS.ambience, v); }
+  };
+})();
+
+window.Storage = Storage;
+</script>
+<script>/* ==========================================================================
+   VISUALIZER
+   One requestAnimationFrame loop drives every canvas + reactive DOM element
+   so we never stack multiple rAF loops fighting for frame budget.
+   All draws are cheap: no per-frame allocation in the hot path.
+   ========================================================================== */
+
+class Visualizer{
+  constructor(engine){
+    this.engine = engine;
+    this.running = false;
+    this.canvases = {};      // name -> {canvas, ctx, kind}
+    this.gauges = [];        // {el, needle, getValue, min, max}
+    this.particles = [];
+    this._waveArr = new Uint8Array(2048);
+    this._specArr = new Uint8Array(1024);
+    this._lastResize = 0;
+
+    this._initParticles();
+    this.staticWaveform = null;   // Float32Array of [min,max] pairs for the admitted (not-yet-playing) patient
+    this._loop = this._loop.bind(this);
+  }
+
+  setStaticWaveform(peaks){ this.staticWaveform = peaks; }
+
+  registerCanvas(name, canvas, kind){
+    const ctx = canvas.getContext('2d', { alpha:true });
+    this._fitCanvas(canvas);
+    this.canvases[name] = { canvas, ctx, kind };
+  }
+
+  unregisterCanvas(name){ delete this.canvases[name]; }
+
+  _fitCanvas(canvas){
+    const dpr = Math.min(window.devicePixelRatio||1, 2);
+    const rect = canvas.getBoundingClientRect();
+    const w = Math.max(1, Math.round(rect.width * dpr));
+    const h = Math.max(1, Math.round(rect.height * dpr));
+    if(canvas.width!==w || canvas.height!==h){
+      canvas.width = w; canvas.height = h;
+    }
+  }
+
+  registerGauge(el, needleEl, getValue, min, max){
+    this.gauges.push({ el, needle:needleEl, getValue, min, max });
+  }
+  clearGauges(){ this.gauges = []; }
+
+  start(){ if(this.running) return; this.running = true; requestAnimationFrame(this._loop); }
+  stop(){ this.running = false; }
+
+  _initParticles(){
+    const N = 26; // lightweight — never enough to cost a frame
+    for(let i=0;i<N;i++){
+      this.particles.push({
+        x:Math.random(), y:Math.random(),
+        r:1+Math.random()*2,
+        speed:0.02+Math.random()*0.05,
+        band: i%3===0?'low':(i%3===1?'mid':'high'),
+        phase: Math.random()*Math.PI*2
+      });
+    }
+  }
+
+  _loop(){
+    if(!this.running) return;
+    const engine = this.engine;
+    let bands = { low:0, mid:0, high:0 };
+    if(engine.ctx && engine.isPlaying){
+      bands = engine.getBandLevels();
+      engine.getWaveform(this._waveArr);
+      engine.getSpectrum(this._specArr);
+    }
+
+    for(const name in this.canvases){
+      const c = this.canvases[name];
+      if(performance.now() - this._lastResize > 500){ this._fitCanvas(c.canvas); }
+      if(c.kind==='vitals') this._drawVitals(c, bands);
+      else if(c.kind==='waveform') this._drawWaveform(c);
+      else if(c.kind==='spectrum') this._drawSpectrum(c);
+      else if(c.kind==='ambient') this._drawAmbient(c, bands);
+    }
+    this._lastResize = performance.now() > 500 ? performance.now() : this._lastResize;
+
+    // gauges (EQ dials etc.)
+    for(const g of this.gauges){
+      const v = g.getValue();
+      const t = (v - g.min) / (g.max - g.min); // 0..1
+      const deg = -120 + t*240;
+      g.needle.style.transform = `translate(-50%,-100%) rotate(${deg}deg)`;
+    }
+
+    this._updateHospitalReaction(bands, engine.isPlaying);
+
+    requestAnimationFrame(this._loop);
+  }
+
+  _drawVitals(c, bands){
+    const { ctx, canvas } = c;
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle = 'rgba(58,167,199,0.9)';
+    ctx.lineWidth = Math.max(1, w/500);
+    ctx.beginPath();
+    const engine = this.engine;
+    if(engine.ctx && engine.isPlaying){
+      const arr = this._waveArr;
+      const step = w / arr.length;
+      for(let i=0;i<arr.length;i++){
+        const v = (arr[i]-128)/128;
+        const x = i*step;
+        const y = h/2 + v*h*0.42;
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+    } else {
+      // flatline with a slow idle breathing wave
+      const t = performance.now()/1000;
+      for(let x=0;x<w;x+=2){
+        const y = h/2 + Math.sin(x*0.02 + t)*1.2;
+        if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+    }
+    ctx.stroke();
+    ctx.shadowColor = 'rgba(58,167,199,0.6)';
+    ctx.shadowBlur = 4;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+  }
+
+  _drawWaveform(c){
+    const { ctx, canvas } = c;
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+    // center line
+    ctx.strokeStyle = 'rgba(231,224,201,0.08)';
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(0,h/2); ctx.lineTo(w,h/2); ctx.stroke();
+
+    const engine = this.engine;
+    if(engine.ctx && engine.isPlaying){
+      ctx.strokeStyle = '#7fd8f2';
+      ctx.lineWidth = Math.max(1.5, w/600);
+      ctx.beginPath();
+      const arr = this._waveArr;
+      const step = w/arr.length;
+      for(let i=0;i<arr.length;i++){
+        const v = (arr[i]-128)/128;
+        const x = i*step, y = h/2 + v*h*0.45;
+        if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+    } else if(this.staticWaveform){
+      // patient admitted but not playing yet — render the file's own envelope
+      // so the engineer sees the waveform immediately, not a blank scope
+      const peaks = this.staticWaveform;
+      const buckets = peaks.length/2;
+      const bw = w/buckets;
+      ctx.fillStyle = 'rgba(127,216,242,0.55)';
+      for(let i=0;i<buckets;i++){
+        const min = peaks[i*2], max = peaks[i*2+1];
+        const y1 = h/2 - max*h*0.45;
+        const y2 = h/2 - min*h*0.45;
+        ctx.fillRect(i*bw, y1, Math.max(1,bw*0.9), Math.max(1, y2-y1));
+      }
+    } else {
+      // nothing admitted yet
+      ctx.fillStyle = 'rgba(231,224,201,0.3)';
+      ctx.font = `${Math.max(11, w/45)}px "Barlow Condensed", sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.fillText('NO PATIENT ADMITTED — INTAKE A FILE TO SEE ITS WAVEFORM', w/2, h/2);
+    }
+  }
+
+  _drawSpectrum(c){
+    const { ctx, canvas } = c;
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+    const arr = this._specArr;
+    const bars = Math.min(96, arr.length);
+    const bw = w/bars;
+    for(let i=0;i<bars;i++){
+      // log-ish sampling so low end isn't squashed into first 3 bars
+      const idx = Math.floor(Math.pow(i/bars, 1.6) * arr.length);
+      const v = arr[idx]/255;
+      const bh = v*h;
+      const hue = 150 - v*110; // green -> amber -> red as it gets hot
+      ctx.fillStyle = `hsl(${hue}, 65%, ${45+v*15}%)`;
+      ctx.fillRect(i*bw, h-bh, bw*0.82, bh);
+    }
+  }
+
+  _drawAmbient(c, bands){
+    const { ctx, canvas } = c;
+    const w = canvas.width, h = canvas.height;
+    ctx.clearRect(0,0,w,h);
+    const t = performance.now()/1000;
+
+    for(const p of this.particles){
+      const level = bands[p.band]||0;
+      p.phase += p.speed * (0.4 + level*2);
+      const wobble = Math.sin(p.phase)*0.015;
+      const px = (p.x + wobble) * w;
+      const py = ((p.y + t*p.speed*0.01) % 1) * h;
+      const size = p.r * (1 + level*3);
+      const alpha = 0.15 + level*0.55;
+      let color;
+      if(p.band==='low') color = `rgba(181,80,45,${alpha})`;      // rust
+      else if(p.band==='mid') color = `rgba(76,107,79,${alpha})`; // moss
+      else color = `rgba(127,216,242,${alpha})`;                  // audio blue sparkle
+
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      ctx.arc(px, py, size, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  // pulses CSS variables consumed by the theme (lights, machine vibration)
+  _updateHospitalReaction(bands, playing){
+    const root = document.documentElement.style;
+    if(playing){
+      root.setProperty('--react-low', bands.low.toFixed(3));
+      root.setProperty('--react-mid', bands.mid.toFixed(3));
+      root.setProperty('--react-high', bands.high.toFixed(3));
+    } else {
+      root.setProperty('--react-low', 0);
+      root.setProperty('--react-mid', 0);
+      root.setProperty('--react-high', 0);
+    }
+  }
+}
+
+window.Visualizer = Visualizer;
+</script>
+<script>/* ==========================================================================
+   MODULES
+   Builds the Surgery Theatre tab content (EQ / Dynamics / Space / Harmonic),
+   the diagnosis chart, patient-record cards, and preset list rendering.
+   Pure DOM construction + event wiring — no audio math lives here.
+   ========================================================================== */
+
+const Modules = (() => {
+
+  const MODULE_DEFS = [
+    {
+      id:'eq', label:'Surgical EQ', icon:'surgery',
+      render(container, app){
+        container.innerHTML = `
+          <div class="panel">
+            <h3 class="panel-title">${icon('surgery')} Frequency Correction — 4 Band</h3>
+            <div class="gauge-row" id="eq-gauges"></div>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title">${icon('filter')} Utility Filter</h3>
+            <div id="filter-controls"></div>
+          </div>`;
+        const bands = [
+          { key:'low', label:'LOW\n120Hz', min:-15, max:15 },
+          { key:'lowMid', label:'LOW-MID\n700Hz', min:-15, max:15 },
+          { key:'highMid', label:'HI-MID\n3.2kHz', min:-15, max:15 },
+          { key:'high', label:'HIGH\n8.5kHz', min:-15, max:15 },
+        ];
+        const row = container.querySelector('#eq-gauges');
+        bands.forEach(b => {
+          row.appendChild(buildGauge(b.key, b.label, b.min, b.max, app.settings.eq[b.key]||0,
+            (v) => { app.settings.eq[b.key] = v; app.commitSettings(); }
+          ));
+        });
+        app.registerGaugesFrom(row, () => app.settings.eq);
+
+        const f = container.querySelector('#filter-controls');
+        buildSlider(f, 'High-Pass (rumble cut)', 20, 500, app.settings.filter.highpass, 'Hz', 1, v => { app.settings.filter.highpass=v; app.commitSettings(); });
+        buildSlider(f, 'Low-Pass (air roll-off)', 2000, 20000, app.settings.filter.lowpass, 'Hz', 50, v => { app.settings.filter.lowpass=v; app.commitSettings(); });
+      }
+    },
+    {
+      id:'dynamics', label:'Dynamic Treatment', icon:'compressor',
+      render(container, app){
+        container.innerHTML = `
+          <div class="panel">
+            <h3 class="panel-title">${icon('compressor')} Compressor</h3>
+            <div id="dyn-controls"></div>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title">${icon('limiter')} Brick-Wall Limiter</h3>
+            <div id="limiter-controls"></div>
+          </div>`;
+        const c = container.querySelector('#dyn-controls');
+        buildSlider(c, 'Threshold', -60, 0, app.settings.comp.threshold, 'dB', 1, v => { app.settings.comp.threshold=v; app.commitSettings(); });
+        buildSlider(c, 'Ratio', 1, 20, app.settings.comp.ratio, ':1', 0.1, v => { app.settings.comp.ratio=v; app.commitSettings(); });
+        buildSlider(c, 'Attack', 0.001, 0.3, app.settings.comp.attack, 's', 0.001, v => { app.settings.comp.attack=v; app.commitSettings(); });
+        buildSlider(c, 'Release', 0.02, 1, app.settings.comp.release, 's', 0.01, v => { app.settings.comp.release=v; app.commitSettings(); });
+        buildSlider(c, 'Makeup Gain', 0, 12, app.settings.comp.makeup, 'dB', 0.5, v => { app.settings.comp.makeup=v; app.commitSettings(); });
+
+        const l = container.querySelector('#limiter-controls');
+        buildSlider(l, 'Ceiling', -6, 0, app.settings.limiter.ceiling, 'dB', 0.1, v => { app.settings.limiter.ceiling=v; app.commitSettings(); });
+        buildSlider(l, 'Release', 0.02, 0.5, app.settings.limiter.release, 's', 0.01, v => { app.settings.limiter.release=v; app.commitSettings(); });
+      }
+    },
+    {
+      id:'space', label:'Space Treatment', icon:'reverb',
+      render(container, app){
+        container.innerHTML = `
+          <div class="grid-2">
+            <div class="panel">
+              <h3 class="panel-title">${icon('space')} Delay</h3>
+              <div id="delay-controls"></div>
+            </div>
+            <div class="panel">
+              <h3 class="panel-title">${icon('reverb')} Reverb</h3>
+              <div id="reverb-controls"></div>
+            </div>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title">${icon('space')} Stereo</h3>
+            <div id="stereo-controls"></div>
+          </div>`;
+        const d = container.querySelector('#delay-controls');
+        buildSlider(d, 'Time', 0.02, 1.2, app.settings.delay.time, 's', 0.01, v => { app.settings.delay.time=v; app.commitSettings(); });
+        buildSlider(d, 'Feedback', 0, 0.9, app.settings.delay.feedback, '', 0.01, v => { app.settings.delay.feedback=v; app.commitSettings(); });
+        buildSlider(d, 'Mix', 0, 100, app.settings.delay.mix, '%', 1, v => { app.settings.delay.mix=v; app.commitSettings(); });
+
+        const r = container.querySelector('#reverb-controls');
+        buildSlider(r, 'Room Size', 0.3, 6, app.settings.reverb.size, 's', 0.1, v => { app.settings.reverb.size=v; app.commitSettings(); });
+        buildSlider(r, 'Decay', 0.3, 6, app.settings.reverb.decay, '', 0.1, v => { app.settings.reverb.decay=v; app.commitSettings(); });
+        buildSlider(r, 'Mix', 0, 100, app.settings.reverb.mix, '%', 1, v => { app.settings.reverb.mix=v; app.commitSettings(); });
+
+        const s = container.querySelector('#stereo-controls');
+        buildSlider(s, 'Pan', -1, 1, app.settings.space.pan, '', 0.01, v => { app.settings.space.pan=v; app.commitSettings(); });
+        buildSlider(s, 'Width', 0, 2, app.settings.space.width, '', 0.01, v => { app.settings.space.width=v; app.commitSettings(); });
+      }
+    },
+    {
+      id:'harmonic', label:'Harmonic Treatment', icon:'harmonic',
+      render(container, app){
+        container.innerHTML = `
+          <div class="panel">
+            <h3 class="panel-title">${icon('harmonic')} Saturation / Warmth</h3>
+            <div id="sat-controls"></div>
+          </div>`;
+        const c = container.querySelector('#sat-controls');
+        buildSlider(c, 'Drive', 0, 100, app.settings.sat.drive, '%', 1, v => { app.settings.sat.drive=v; app.commitSettings(); });
+        buildSlider(c, 'Mix', 0, 100, app.settings.sat.mix, '%', 1, v => { app.settings.sat.mix=v; app.commitSettings(); });
+      }
+    }
+  ];
+
+  function buildSlider(parent, label, min, max, value, unit, step, onInput){
+    const row = document.createElement('div');
+    row.className = 'ctrl-row';
+    const pct = ((value-min)/(max-min))*100;
+    row.innerHTML = `
+      <div class="ctrl-head"><label>${label}</label><span class="val">${formatVal(value, unit)}</span></div>
+      <input type="range" class="slider" min="${min}" max="${max}" step="${step}" value="${value}" style="--fill:${pct}%">
+    `;
+    const input = row.querySelector('input');
+    const valEl = row.querySelector('.val');
+    input.addEventListener('input', () => {
+      const v = parseFloat(input.value);
+      const p = ((v-min)/(max-min))*100;
+      input.style.setProperty('--fill', p+'%');
+      valEl.textContent = formatVal(v, unit);
+      onInput(v);
+    });
+    parent.appendChild(row);
+    return input;
+  }
+
+  function formatVal(v, unit){
+    if(unit==='s') return v.toFixed(3)+'s';
+    if(unit==='dB') return (v>0?'+':'')+v.toFixed(1)+' dB';
+    if(unit==='%') return Math.round(v)+'%';
+    if(unit===':1') return v.toFixed(1)+':1';
+    if(unit==='Hz') return v>=1000 ? (v/1000).toFixed(1)+'kHz' : Math.round(v)+'Hz';
+    return v.toFixed(2);
+  }
+
+  function buildGauge(key, label, min, max, value, onChange){
+    const wrap = document.createElement('div');
+    wrap.className = 'gauge';
+    const lines = label.split('\n');
+    wrap.innerHTML = `
+      <div class="gauge-dial" data-key="${key}" tabindex="0" role="slider" aria-label="${lines[0]}"
+           aria-valuemin="${min}" aria-valuemax="${max}" aria-valuenow="${value}">
+        <div class="needle"></div>
+        <div class="hub"></div>
+      </div>
+      <div class="gauge-label">${lines[0]}${lines[1] ? '<br><span style=\'opacity:.55\'>'+lines[1]+'</span>' : ''}</div>
+      <div class="gauge-value">${value.toFixed(1)} dB</div>
+    `;
+    const dial = wrap.querySelector('.gauge-dial');
+    const valueEl = wrap.querySelector('.gauge-value');
+    let current = value;
+
+    function setFromDelta(deltaY){
+      const range = max-min;
+      current = Math.max(min, Math.min(max, current - deltaY*(range/140)));
+      valueEl.textContent = current.toFixed(1)+' dB';
+      dial.setAttribute('aria-valuenow', current.toFixed(1));
+      onChange(current);
+    }
+
+    let dragging=false, lastY=0;
+    dial.addEventListener('pointerdown', e => { dragging=true; lastY=e.clientY; dial.setPointerCapture(e.pointerId); });
+    dial.addEventListener('pointermove', e => {
+      if(!dragging) return;
+      const dy = e.clientY-lastY; lastY=e.clientY;
+      setFromDelta(dy);
+    });
+    dial.addEventListener('pointerup', e => { dragging=false; });
+    dial.addEventListener('pointercancel', () => dragging=false);
+    dial.addEventListener('wheel', e => { e.preventDefault(); setFromDelta(e.deltaY>0?-3:3); }, { passive:false });
+    dial.addEventListener('dblclick', () => { current=0; valueEl.textContent='0.0 dB'; onChange(0); });
+    dial.addEventListener('keydown', e => {
+      if(e.key==='ArrowUp'){ setFromDelta(-6); e.preventDefault(); }
+      if(e.key==='ArrowDown'){ setFromDelta(6); e.preventDefault(); }
+    });
+
+    wrap._dial = dial;
+    wrap._getValue = () => current;
+    wrap._setValue = (v) => { current=v; valueEl.textContent=v.toFixed(1)+' dB'; };
+    return wrap;
+  }
+
+  function renderModuleTabs(tabsEl, bodiesEl, app){
+    tabsEl.innerHTML = '';
+    bodiesEl.innerHTML = '';
+    MODULE_DEFS.forEach((def, i) => {
+      const tab = document.createElement('button');
+      tab.className = 'module-tab' + (i===0 ? ' active' : '');
+      tab.innerHTML = `${icon(def.icon)}<span>${def.label}</span>`;
+      tab.addEventListener('click', () => {
+        tabsEl.querySelectorAll('.module-tab').forEach(t=>t.classList.remove('active'));
+        bodiesEl.querySelectorAll('.module-body').forEach(b=>b.classList.remove('active'));
+        tab.classList.add('active');
+        body.classList.add('active');
+      });
+      tabsEl.appendChild(tab);
+
+      const body = document.createElement('div');
+      body.className = 'module-body' + (i===0 ? ' active' : '');
+      bodiesEl.appendChild(body);
+      def.render(body, app);
+    });
+  }
+
+  function renderDiagnosis(rowsEl, patientNameEl, diagnosis, patientName){
+    patientNameEl.textContent = patientName || 'NO PATIENT SELECTED';
+    if(!diagnosis){
+      rowsEl.innerHTML = `<div class="diagnosis-row"><span class="band">Admit a patient to run diagnostics</span></div>`;
+      return;
+    }
+    const rows = [
+      { key:'low', name:'Low End', sub:'20 – 250 Hz' },
+      { key:'mid', name:'Mid Range', sub:'250 Hz – 4 kHz' },
+      { key:'high', name:'High Range', sub:'4 kHz – 16 kHz' },
+    ];
+    const statusText = { healthy:'Healthy', stable:'Stable', needs:'Needs Cleaning', unknown:'Unknown' };
+    rowsEl.innerHTML = rows.map(r => `
+      <div class="diagnosis-row">
+        <div class="band">${r.name}<small>${r.sub}</small></div>
+        <span class="status-pill ${diagnosis[r.key]}">${statusText[diagnosis[r.key]]}</span>
+      </div>
+    `).join('');
+  }
+
+  function renderPatientCards(container, patients, app){
+    if(!patients.length){
+      container.innerHTML = `<div class="empty-state">${icon('patients')}<div>No patient records yet. Admit an audio file from the intake desk.</div></div>`;
+      return;
+    }
+    container.innerHTML = patients.map((p,i) => `
+      <div class="patient-card" data-idx="${i}">
+        <div class="thumb">${icon('file')}</div>
+        <div class="info">
+          <div class="name">${escapeHtml(p.meta.name)}</div>
+          <div class="meta">${p.meta.durationStr} · ${p.meta.sizeStr} · peak ${p.meta.peakDb} dB</div>
+        </div>
+        <div class="actions">
+          <button class="btn ghost small" data-action="treat" data-idx="${i}">Treat</button>
+        </div>
+      </div>
+    `).join('');
+    container.querySelectorAll('[data-action="treat"]').forEach(btn => {
+      btn.addEventListener('click', () => app.selectPatient(parseInt(btn.dataset.idx,10)));
+    });
+  }
+
+  // department filter chips + patient-record card grid, combined
+  function renderPresetBrowser(tabsEl, gridEl, app){
+    const departments = Storage.getDepartments();
+    const custom = Storage.getCustomPresets();
+    const dept = app.presetDept || 'all';
+
+    const chips = [{ id:'all', name:'All Records', icon:'file' }, ...departments];
+    if(custom.length) chips.push({ id:'custom', name:'Saved by You', icon:'save' });
+
+    tabsEl.innerHTML = chips.map(d => `
+      <button class="dept-tab ${dept===d.id?'active':''}" data-dept="${d.id}">${icon(d.icon)}<span>${escapeHtml(d.name)}</span></button>
+    `).join('');
+    tabsEl.querySelectorAll('.dept-tab').forEach(btn => {
+      btn.addEventListener('click', () => { app.presetDept = btn.dataset.dept; app._renderPresets(); });
+    });
+
+    let list;
+    if(dept === 'all') list = [...Storage.getLibraryPresets(), ...custom];
+    else if(dept === 'custom') list = custom;
+    else list = Storage.getLibraryPresets().filter(p => p.meta.dept === dept);
+
+    if(!list.length){
+      gridEl.innerHTML = `<div class="empty-state">${icon('patients')}<div>No records in this department yet.</div></div>`;
+      return;
+    }
+
+    gridEl.innerHTML = `<div class="record-grid">${list.map(p => renderRecordCard(p)).join('')}</div>`;
+    gridEl.querySelectorAll('[data-admit]').forEach(btn => {
+      btn.addEventListener('click', () => app.applyPreset(btn.dataset.admit));
+    });
+    gridEl.querySelectorAll('[data-del]').forEach(btn => {
+      btn.addEventListener('click', (e) => { e.stopPropagation(); app.deletePreset(btn.dataset.del); });
+    });
+  }
+
+  function renderRecordCard(p){
+    const m = p.meta || {};
+    const dept = (Storage.getDepartments().find(d => d.id === m.dept)) || { name: m.dept==='custom' ? 'Custom Treatment' : 'General', icon:'file' };
+    return `
+      <div class="record-card">
+        <div class="record-head">
+          <span class="record-tag">${escapeHtml(m.id||'AH-000')}</span>
+          <span class="status-pill healthy">${escapeHtml(m.status||'READY')}</span>
+        </div>
+        <h4 class="record-name">${escapeHtml(p.name)}</h4>
+        <div class="record-dept">${icon(dept.icon)}<span>${escapeHtml(dept.name)}</span></div>
+        <div class="record-section">
+          <span class="record-label">Condition</span>
+          <ul>${(m.condition||[]).map(c=>`<li>${escapeHtml(c)}</li>`).join('')}</ul>
+        </div>
+        <div class="record-section">
+          <span class="record-label">Procedure</span>
+          <ul>${(m.procedure||[]).map(c=>`<li>${escapeHtml(c)}</li>`).join('')}</ul>
+        </div>
+        <div class="record-actions">
+          <button class="btn small" data-admit="${escapeHtml(p.name)}">${icon('admit')} Admit Patient</button>
+          ${p.custom ? `<button class="btn ghost small" data-del="${escapeHtml(p.name)}" title="Delete">${icon('trash')}</button>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  return { MODULE_DEFS, renderModuleTabs, renderDiagnosis, renderPatientCards, renderPresetBrowser, buildGauge, buildSlider, escapeHtml };
+})();
+
+window.Modules = Modules;
+</script>
+<script>/* ==========================================================================
+   APP
+   Wires DOM <-> AudioEngine <-> Visualizer <-> Storage together.
+   Single source of truth for UI state lives in the App instance.
+   ========================================================================== */
+
+class App{
+  constructor(){
+    this.engine = new AudioEngine();
+    this.visualizer = new Visualizer(this.engine);
+    this.settings = AudioEngine.defaultSettings();
+    this.patients = [];        // { file, buffer, meta, diagnosis }
+    this.activeIndex = -1;
+    this.presetDept = 'all';   // current department filter in the Patient Records browser
+    this.reduceMotion = false;
+    this.seekDragging = false;
+
+    this._cacheDom();
+    this._paintIcons();
+    this._wireNav();
+    this._wireIntake();
+    this._wireTransport();
+    this._wireSettings();
+    this._wireTools();
+    this._initVisualizerCanvases();
+    this._loadRecents();
+    this._renderPresets();
+    this._renderSurgery();
+    this._renderDiagnosis();
+    this._startClock();
+    this._registerServiceWorker();
+
+    this.engine.onEnded = () => this._onPlaybackEnded();
+    this.visualizer.start();
+  }
+
+  /* ---------------------------------------------------------- dom cache */
+  _cacheDom(){
+    this.dom = {
+      screens: document.querySelectorAll('.screen'),
+      navItems: document.querySelectorAll('.nav-item'),
+      main: document.getElementById('main'),
+      intakeDrop: document.getElementById('intake-drop'),
+      fileInput: document.getElementById('file-input'),
+      recentList: document.getElementById('recent-list'),
+      wardSummary: document.getElementById('ward-summary'),
+      patientsList: document.getElementById('patients-list'),
+      patientsCount: document.getElementById('patients-count'),
+      surgeryPatientName: document.getElementById('surgery-patient-name'),
+      moduleTabs: document.getElementById('module-tabs'),
+      moduleBodies: document.getElementById('module-bodies'),
+      diagnosisRows: document.getElementById('diagnosis-rows'),
+      diagnosisPatient: document.getElementById('diagnosis-patient'),
+      scopeCanvas: document.getElementById('scope-canvas'),
+      scopeTabs: document.querySelectorAll('[data-scope]'),
+      transportName: document.getElementById('transport-name'),
+      btnPlay: document.getElementById('btn-play'),
+      btnStop: document.getElementById('btn-stop'),
+      seek: document.getElementById('seek-slider'),
+      timeCurrent: document.getElementById('time-current'),
+      timeTotal: document.getElementById('time-total'),
+      volume: document.getElementById('volume-slider'),
+      topStatus: document.getElementById('top-status'),
+      topStatusText: document.getElementById('top-status-text'),
+      ambienceSlider: document.getElementById('ambience-slider'),
+      masterSlider: document.getElementById('master-slider'),
+      reduceMotionToggle: document.getElementById('reduce-motion-toggle'),
+      clearDataBtn: document.getElementById('clear-data-btn'),
+      presetTabs: document.getElementById('preset-dept-tabs'),
+      presetList: document.getElementById('preset-list'),
+      presetNameInput: document.getElementById('preset-name-input'),
+      savePresetBtn: document.getElementById('save-preset-btn'),
+      exportBtn: document.getElementById('export-btn'),
+      exportStatus: document.getElementById('export-status'),
+      resetChainBtn: document.getElementById('reset-chain-btn'),
+      ambientCanvas: document.getElementById('ambient-canvas'),
+    };
+  }
+
+  _paintIcons(){
+    const map = {
+      'brand-rx':'rx', 'intake-icon':'upload', 'recent-title':null, 'ward-title':null,
+      'diagnosis-title':null, 'presets-title':null, 'export-title':null, 'reset-title':null,
+      'vol-icon':'volume'
+    };
+    document.getElementById('brand-rx').innerHTML = icon('rx');
+    document.getElementById('intake-icon').innerHTML = icon('upload','');
+    document.getElementById('intake-browse-btn').innerHTML = `${icon('upload')} <span>Choose file</span>`;
+    document.getElementById('recent-title').innerHTML = `${icon('file')} Recent Admissions`;
+    document.getElementById('ward-title').innerHTML = `${icon('waveform')} Ward Status`;
+    document.getElementById('diagnosis-title').innerHTML = `${icon('waveform')} Diagnosis Chart`;
+    document.getElementById('presets-title').innerHTML = `${icon('patients')} Patient Records — Treatment Library`;
+    document.getElementById('export-title').innerHTML = `${icon('download')} Discharge (Export)`;
+    document.getElementById('reset-title').innerHTML = `${icon('tools')} Reset`;
+    document.getElementById('vol-icon').innerHTML = icon('volume');
+    document.getElementById('btn-play').innerHTML = icon('play');
+    document.getElementById('btn-stop').innerHTML = icon('stop');
+    document.getElementById('save-preset-btn').innerHTML = `${icon('save')} Save`;
+    document.getElementById('export-btn').innerHTML = `${icon('download')} Render &amp; Download WAV`;
+
+    const navIcons = { home:'home', patients:'patients', surgery:'surgery', tools:'tools', settings:'settings' };
+    const navLabels = { home:'Home', patients:'Patients', surgery:'Surgery', tools:'Tools', settings:'Settings' };
+    document.querySelectorAll('.nav-item').forEach(btn => {
+      const s = btn.dataset.screen;
+      btn.innerHTML = `${icon(navIcons[s])}<span>${navLabels[s]}</span>`;
+    });
+  }
+
+  /* ---------------------------------------------------------- navigation */
+  _wireNav(){
+    document.querySelectorAll('.nav-item').forEach(btn => {
+      btn.addEventListener('click', () => this.goTo(btn.dataset.screen));
+    });
+  }
+  goTo(screenId){
+    this.dom.screens.forEach(s => s.classList.toggle('active', s.id === `screen-${screenId}`));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.toggle('active', b.dataset.screen === screenId));
+    this.dom.main.scrollTop = 0;
+  }
+
+  /* ---------------------------------------------------------- intake */
+  _wireIntake(){
+    const { intakeDrop, fileInput } = this.dom;
+    document.getElementById('intake-browse-btn').addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', () => {
+      if(fileInput.files[0]) this.admitFile(fileInput.files[0]);
+    });
+    ['dragenter','dragover'].forEach(ev => intakeDrop.addEventListener(ev, e => {
+      e.preventDefault(); intakeDrop.classList.add('drag-over');
+    }));
+    ['dragleave','drop'].forEach(ev => intakeDrop.addEventListener(ev, e => {
+      e.preventDefault(); intakeDrop.classList.remove('drag-over');
+    }));
+    intakeDrop.addEventListener('drop', e => {
+      const f = e.dataTransfer.files[0];
+      if(f) this.admitFile(f);
+    });
+  }
+
+  async admitFile(file){
+    this._setStatus('ADMITTING PATIENT…', false);
+    try{
+      const buffer = await this.engine.loadFile(file);
+      const { peakDb, rmsDb } = this.engine.computePeakRMS(buffer);
+      const diagnosis = this.engine.diagnoseBuffer(buffer);
+      const meta = {
+        name:file.name,
+        size:file.size,
+        sizeStr: formatBytes(file.size),
+        durationStr: formatTime(buffer.duration),
+        peakDb: peakDb.toFixed(1),
+        rmsDb: rmsDb.toFixed(1),
+        admittedAt: Date.now()
+      };
+      const patient = { file, buffer, meta, diagnosis };
+      this.patients.unshift(patient);
+      this.activeIndex = 0;
+
+      Storage.addRecent({ name:meta.name, size:meta.size, durationStr:meta.durationStr, sizeStr:meta.sizeStr, at:meta.admittedAt });
+      this._loadRecents();
+      this._renderPatients();
+      this._applyActivePatientToEngine();
+      this._renderDiagnosis();
+      this._setStatus('PATIENT ADMITTED — READY', false);
+      this.goTo('surgery');
+    }catch(err){
+      console.error(err);
+      this._setStatus('ADMISSION FAILED — UNSUPPORTED FILE', false);
+    }
+  }
+
+  selectPatient(idx){
+    if(idx<0 || idx>=this.patients.length) return;
+    this.activeIndex = idx;
+    this._applyActivePatientToEngine();
+    this._renderDiagnosis();
+    this.goTo('surgery');
+  }
+
+  _applyActivePatientToEngine(){
+    const p = this.patients[this.activeIndex];
+    if(!p) return;
+    this.engine.stop();
+    this.engine.buffer = p.buffer;
+    this.engine.duration = p.buffer.duration;
+    this.engine.offset = 0;
+    this.dom.transportName.textContent = p.meta.name;
+    this.dom.surgeryPatientName.textContent = p.meta.name.toUpperCase();
+    this.dom.seek.max = p.buffer.duration;
+    this.dom.seek.value = 0;
+    this.dom.timeTotal.textContent = formatTime(p.buffer.duration);
+    this.dom.timeCurrent.textContent = '0:00';
+    this._setPlayIcon(false);
+
+    // static waveform envelope so the scope shows the patient immediately,
+    // before playback starts — computed once per patient, then cached
+    if(!p.waveformPeaks){ p.waveformPeaks = this.engine.computeWaveformPeaks(p.buffer); }
+    this.visualizer.setStaticWaveform(p.waveformPeaks);
+  }
+
+  /* ---------------------------------------------------------- lists */
+  _loadRecents(){
+    const recents = Storage.getRecents();
+    if(!recents.length){
+      this.dom.recentList.innerHTML = `<div class="empty-state" style="padding:20px 8px;">${icon('patients')}<div>No admissions yet this session.</div></div>`;
+    } else {
+      this.dom.recentList.innerHTML = recents.map(r => `
+        <div class="recent-item">${icon('file')}<span class="name">${Modules.escapeHtml(r.name)}</span><span class="meta">${r.durationStr} · ${r.sizeStr}</span></div>
+      `).join('');
+    }
+    this.dom.wardSummary.innerHTML = `
+      PATIENTS ADMITTED THIS SESSION: ${this.patients.length}<br>
+      PRESETS ON FILE: ${Storage.getPresets().length}<br>
+      ENGINE STATE: ${this.engine.ctx ? this.engine.ctx.state.toUpperCase() : 'STANDBY'}
+    `;
+  }
+
+  _renderPatients(){
+    this.dom.patientsCount.textContent = `${this.patients.length} RECORD${this.patients.length===1?'':'S'} THIS SESSION`;
+    Modules.renderPatientCards(this.dom.patientsList, this.patients, this);
+    this._loadRecents();
+  }
+
+  /* ---------------------------------------------------------- surgery / modules */
+  _renderSurgery(){
+    Modules.renderModuleTabs(this.dom.moduleTabs, this.dom.moduleBodies, this);
+    this._registerGauges();
+  }
+
+  commitSettings(){
+    this.engine.applySettings(this.settings);
+  }
+
+  registerGaugesFrom(){ /* handled centrally in _registerGauges, kept for module.js call compatibility */ }
+
+  _registerGauges(){
+    this.visualizer.clearGauges();
+    this.dom.moduleBodies.querySelectorAll('.gauge-dial').forEach(dial => {
+      const key = dial.dataset.key;
+      const needle = dial.querySelector('.needle');
+      this.visualizer.registerGauge(dial, needle, () => this.settings.eq[key] ?? 0, -15, 15);
+    });
+  }
+
+  _renderDiagnosis(){
+    const p = this.patients[this.activeIndex];
+    Modules.renderDiagnosis(this.dom.diagnosisRows, this.dom.diagnosisPatient, p ? p.diagnosis : null, p ? p.meta.name.toUpperCase() : null);
+  }
+
+  /* ---------------------------------------------------------- scope canvas (waveform/spectrum toggle) */
+  _initVisualizerCanvases(){
+    this.visualizer.registerCanvas('vitals', document.getElementById('vitals-canvas'), 'vitals');
+    this.visualizer.registerCanvas('scope', this.dom.scopeCanvas, 'waveform');
+    this.visualizer.registerCanvas('ambient', this.dom.ambientCanvas, 'ambient');
+
+    this.dom.scopeTabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.dom.scopeTabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        this.visualizer.canvases.scope.kind = btn.dataset.scope;
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      Object.values(this.visualizer.canvases).forEach(c => this.visualizer._fitCanvas(c.canvas));
+    });
+  }
+
+  /* ---------------------------------------------------------- transport */
+  _wireTransport(){
+    this.dom.btnPlay.addEventListener('click', () => this.togglePlay());
+    this.dom.btnStop.addEventListener('click', () => this.stopPlayback());
+    this.dom.seek.addEventListener('input', () => {
+      this.seekDragging = true;
+      this.dom.timeCurrent.textContent = formatTime(parseFloat(this.dom.seek.value));
+    });
+    this.dom.seek.addEventListener('change', () => {
+      this.engine.seek(parseFloat(this.dom.seek.value));
+      this.seekDragging = false;
+    });
+    this.dom.volume.addEventListener('input', () => {
+      this.settings.master.gain = this.dom.volume.value/100;
+      this.commitSettings();
+    });
+  }
+
+  togglePlay(){
+    if(!this.engine.buffer){ this._setStatus('NO PATIENT ON TABLE', false); return; }
+    if(this.engine.isPlaying){ this.engine.pause(); this._setPlayIcon(false); this._setStatus('PAUSED', false); }
+    else { this.engine.play(); this._setPlayIcon(true); this._setStatus('IN TREATMENT', true); }
+  }
+  stopPlayback(){
+    this.engine.stop();
+    this._setPlayIcon(false);
+    this.dom.seek.value = 0;
+    this.dom.timeCurrent.textContent = '0:00';
+    this._setStatus('STOPPED', false);
+  }
+  _onPlaybackEnded(){
+    this._setPlayIcon(false);
+    this.dom.seek.value = 0;
+    this.dom.timeCurrent.textContent = '0:00';
+    this._setStatus('COMPLETE', false);
+  }
+  _setPlayIcon(playing){
+    this.dom.btnPlay.innerHTML = icon(playing ? 'pause' : 'play');
+  }
+  _setStatus(text, playing){
+    this.dom.topStatusText.textContent = text;
+    this.dom.topStatus.classList.toggle('playing', !!playing);
+  }
+
+  _startClock(){
+    setInterval(() => {
+      if(!this.engine.buffer) return;
+      const t = this.engine.getCurrentTime();
+      if(!this.seekDragging){
+        this.dom.seek.value = t;
+        this.dom.timeCurrent.textContent = formatTime(t);
+      }
+    }, 200);
+  }
+
+  /* ---------------------------------------------------------- settings */
+  _wireSettings(){
+    const savedAmbience = Storage.getAmbienceVolume();
+    this.dom.ambienceSlider.value = savedAmbience;
+    this.settings.ambience.volume = savedAmbience;
+
+    this.dom.ambienceSlider.addEventListener('input', () => {
+      const v = parseInt(this.dom.ambienceSlider.value,10);
+      this.settings.ambience.volume = v;
+      this.engine.ensureContext();
+      this.engine.setAmbience(v>0);
+      this.commitSettings();
+      Storage.setAmbienceVolume(v);
+    });
+    this.dom.masterSlider.addEventListener('input', () => {
+      this.settings.master.gain = this.dom.masterSlider.value/100;
+      this.dom.volume.value = this.dom.masterSlider.value;
+      this.commitSettings();
+    });
+    this.dom.reduceMotionToggle.addEventListener('change', () => {
+      this.reduceMotion = this.dom.reduceMotionToggle.checked;
+      if(this.reduceMotion){ this.visualizer.stop(); document.body.classList.add('static-mode'); }
+      else { this.visualizer.start(); document.body.classList.remove('static-mode'); }
+    });
+    this.dom.clearDataBtn.addEventListener('click', () => {
+      if(confirm('Clear all saved presets, recent admissions and preferences from this browser?')){
+        localStorage.clear();
+        this._loadRecents();
+        this._renderPresets();
+        this._setStatus('STORAGE CLEARED', false);
+      }
+    });
+  }
+
+  /* ---------------------------------------------------------- presets */
+  _renderPresets(){
+    Modules.renderPresetBrowser(this.dom.presetTabs, this.dom.presetList, this);
+  }
+  applyPreset(name){
+    const preset = Storage.getPresets().find(p => p.name === name);
+    if(!preset) return;
+    this.settings = JSON.parse(JSON.stringify(preset.settings || AudioEngine.defaultSettings()));
+    this.settings.filter = this.settings.filter || { highpass:20, lowpass:20000 };
+    this.settings.limiter = this.settings.limiter || { ceiling:0, release:0.25 };
+    this.settings.ambience = this.settings.ambience || { volume:0 };
+    this.commitSettings();
+    this._renderSurgery();
+    this.dom.volume.value = Math.round((this.settings.master.gain||0.9)*100);
+    const tag = preset.meta ? preset.meta.id : '';
+    this._setStatus(`PATIENT ADMITTED: ${tag} ${name.toUpperCase()}`, false);
+    this.goTo('surgery');
+  }
+  deletePreset(name){
+    Storage.deletePreset(name);
+    this._renderPresets();
+  }
+
+  _wireTools(){
+    this.dom.savePresetBtn.addEventListener('click', () => {
+      const name = this.dom.presetNameInput.value.trim();
+      if(!name) return;
+      Storage.savePreset(name, JSON.parse(JSON.stringify(this.settings)));
+      this.dom.presetNameInput.value = '';
+      this._renderPresets();
+      this._setStatus('PRESET SAVED', false);
+    });
+    this.dom.resetChainBtn.addEventListener('click', () => {
+      this.settings = AudioEngine.defaultSettings();
+      this.settings.master.gain = (this.dom.masterSlider.value||90)/100;
+      this.commitSettings();
+      this._renderSurgery();
+      this._setStatus('CHAIN BYPASSED', false);
+    });
+    this.dom.exportBtn.addEventListener('click', () => this.exportWav());
+  }
+
+  /* ---------------------------------------------------------- export (offline render) */
+  async exportWav(){
+    const p = this.patients[this.activeIndex];
+    if(!p){ this.dom.exportStatus.textContent = 'No patient on the table.'; return; }
+    this.dom.exportStatus.textContent = 'Rendering treatment chain…';
+    this.dom.exportBtn.disabled = true;
+    try{
+      const rendered = await renderOffline(p.buffer, this.settings);
+      const wavBlob = encodeWav(rendered);
+      const url = URL.createObjectURL(wavBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = p.meta.name.replace(/\.[^.]+$/, '') + ' - treated.wav';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 4000);
+      this.dom.exportStatus.textContent = 'Download started.';
+    }catch(err){
+      console.error(err);
+      this.dom.exportStatus.textContent = 'Render failed — see console.';
+    }finally{
+      this.dom.exportBtn.disabled = false;
+    }
+  }
+
+  /* ---------------------------------------------------------- service worker */
+  _registerServiceWorker(){
+    if('serviceWorker' in navigator){
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(err => console.warn('SW registration failed', err));
+      });
+    }
+  }
+}
+
+/* ============================================================== helpers */
+function formatTime(sec){
+  if(!isFinite(sec)) return '0:00';
+  const m = Math.floor(sec/60);
+  const s = Math.floor(sec%60);
+  return `${m}:${s.toString().padStart(2,'0')}`;
+}
+function formatBytes(bytes){
+  if(bytes < 1024) return bytes+' B';
+  if(bytes < 1024*1024) return (bytes/1024).toFixed(1)+' KB';
+  return (bytes/(1024*1024)).toFixed(1)+' MB';
+}
+
+/* offline render replicating the live engine's signal chain */
+async function renderOffline(buffer, settings){
+  const OfflineCtx = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+  const ctx = new OfflineCtx(buffer.numberOfChannels, buffer.length, buffer.sampleRate);
+
+  const src = ctx.createBufferSource();
+  src.buffer = buffer;
+
+  const filterHP = new BiquadFilterNode(ctx, { type:'highpass', frequency:settings.filter.highpass, Q:0.7 });
+  const filterLP = new BiquadFilterNode(ctx, { type:'lowpass', frequency:settings.filter.lowpass, Q:0.7 });
+
+  const eqLow = new BiquadFilterNode(ctx, { type:'lowshelf', frequency:120, gain:settings.eq.low });
+  const eqLowMid = new BiquadFilterNode(ctx, { type:'peaking', frequency:700, Q:0.9, gain:settings.eq.lowMid });
+  const eqHighMid = new BiquadFilterNode(ctx, { type:'peaking', frequency:3200, Q:0.9, gain:settings.eq.highMid });
+  const eqHigh = new BiquadFilterNode(ctx, { type:'highshelf', frequency:8500, gain:settings.eq.high });
+
+  const satShaper = ctx.createWaveShaper();
+  satShaper.oversample = '2x';
+  const n = 1024; const curve = new Float32Array(n);
+  const k = (settings.sat.drive/100) * 60 + 0.001;
+  for(let i=0;i<n;i++){ const x=(i/(n-1))*2-1; curve[i] = Math.tanh(k*x)/Math.tanh(k); }
+  satShaper.curve = curve;
+  const satDry = new GainNode(ctx, { gain:1-settings.sat.mix/100 });
+  const satWet = new GainNode(ctx, { gain:settings.sat.mix/100 });
+  const satOut = new GainNode(ctx);
+
+  const compressor = new DynamicsCompressorNode(ctx, {
+    threshold:settings.comp.threshold, ratio:settings.comp.ratio,
+    attack:settings.comp.attack, release:settings.comp.release, knee:6
+  });
+  const makeupGain = new GainNode(ctx, { gain: Math.pow(10, settings.comp.makeup/20) });
+
+  const dryGain = new GainNode(ctx, { gain:1 });
+  const delayNode = new DelayNode(ctx, { delayTime:settings.delay.time, maxDelayTime:2 });
+  const delayFeedback = new GainNode(ctx, { gain:Math.min(settings.delay.feedback,0.92) });
+  const delaySend = new GainNode(ctx, { gain:settings.delay.mix/100 });
+  const delayReturn = new GainNode(ctx, { gain:1 });
+
+  const convolver = ctx.createConvolver();
+  convolver.buffer = makeImpulseOffline(ctx, settings.reverb.size, settings.reverb.decay);
+  const reverbSend = new GainNode(ctx, { gain:settings.reverb.mix/100 });
+  const reverbReturn = new GainNode(ctx, { gain:1 });
+
+  const panner = new StereoPannerNode(ctx, { pan:settings.space.pan });
+
+  // stereo width: mid/side widener, mirrors the live engine graph exactly
+  const widenSplitter = ctx.createChannelSplitter(2);
+  const widenL = new GainNode(ctx, { gain:1 });
+  const widenR = new GainNode(ctx, { gain:1 });
+  const widenRInv = new GainNode(ctx, { gain:-1 });
+  const widenMid = new GainNode(ctx, { gain:0.5 });
+  const widenSide = new GainNode(ctx, { gain:0.5 });
+  const widenSideL = new GainNode(ctx, { gain:settings.space.width });
+  const widenSideR = new GainNode(ctx, { gain:-settings.space.width });
+  const widenMerger = ctx.createChannelMerger(2);
+
+  const limiter = new DynamicsCompressorNode(ctx, {
+    threshold:settings.limiter.ceiling, ratio:20, attack:0.001, release:settings.limiter.release, knee:0
+  });
+  const masterGain = new GainNode(ctx, { gain:settings.master.gain });
+
+  src.connect(filterHP); filterHP.connect(filterLP); filterLP.connect(eqLow);
+  eqLow.connect(eqLowMid); eqLowMid.connect(eqHighMid); eqHighMid.connect(eqHigh);
+  eqHigh.connect(satDry); eqHigh.connect(satShaper); satShaper.connect(satWet);
+  satDry.connect(satOut); satWet.connect(satOut);
+  satOut.connect(compressor); compressor.connect(makeupGain);
+
+  makeupGain.connect(dryGain); dryGain.connect(panner);
+  makeupGain.connect(delaySend); delaySend.connect(delayNode);
+  delayNode.connect(delayFeedback); delayFeedback.connect(delayNode);
+  delayNode.connect(delayReturn); delayReturn.connect(panner);
+  makeupGain.connect(reverbSend); reverbSend.connect(convolver); convolver.connect(reverbReturn); reverbReturn.connect(panner);
+
+  panner.connect(widenSplitter);
+  widenSplitter.connect(widenL, 0); widenSplitter.connect(widenR, 1);
+  widenR.connect(widenRInv);
+  widenL.connect(widenMid); widenR.connect(widenMid);
+  widenL.connect(widenSide); widenRInv.connect(widenSide);
+  widenSide.connect(widenSideL); widenSide.connect(widenSideR);
+  widenMid.connect(widenMerger, 0, 0); widenMid.connect(widenMerger, 0, 1);
+  widenSideL.connect(widenMerger, 0, 0); widenSideR.connect(widenMerger, 0, 1);
+
+  widenMerger.connect(limiter); limiter.connect(masterGain); masterGain.connect(ctx.destination);
+
+  src.start(0);
+  return ctx.startRendering();
+}
+function makeImpulseOffline(ctx, size, decay){
+  const rate = ctx.sampleRate;
+  const len = Math.max(1, Math.floor(rate*size));
+  const impulse = ctx.createBuffer(2, len, rate);
+  for(let ch=0; ch<2; ch++){
+    const data = impulse.getChannelData(ch);
+    for(let i=0;i<len;i++) data[i] = (Math.random()*2-1) * Math.pow(1-i/len, decay);
+  }
+  return impulse;
+}
+
+/* minimal 16-bit PCM WAV encoder */
+function encodeWav(audioBuffer){
+  const numCh = audioBuffer.numberOfChannels;
+  const len = audioBuffer.length;
+  const sampleRate = audioBuffer.sampleRate;
+  const bytesPerSample = 2;
+  const blockAlign = numCh*bytesPerSample;
+  const dataSize = len*blockAlign;
+  const buffer = new ArrayBuffer(44+dataSize);
+  const view = new DataView(buffer);
+
+  writeStr(view,0,'RIFF'); view.setUint32(4,36+dataSize,true); writeStr(view,8,'WAVE');
+  writeStr(view,12,'fmt '); view.setUint32(16,16,true); view.setUint16(20,1,true);
+  view.setUint16(22,numCh,true); view.setUint32(24,sampleRate,true);
+  view.setUint32(28,sampleRate*blockAlign,true); view.setUint16(32,blockAlign,true); view.setUint16(34,16,true);
+  writeStr(view,36,'data'); view.setUint32(40,dataSize,true);
+
+  const channels = [];
+  for(let c=0;c<numCh;c++) channels.push(audioBuffer.getChannelData(c));
+  let offset=44;
+  for(let i=0;i<len;i++){
+    for(let c=0;c<numCh;c++){
+      const s = Math.max(-1, Math.min(1, channels[c][i]));
+      view.setInt16(offset, s<0 ? s*0x8000 : s*0x7FFF, true);
+      offset+=2;
+    }
+  }
+  return new Blob([view], { type:'audio/wav' });
+}
+function writeStr(view, offset, str){ for(let i=0;i<str.length;i++) view.setUint8(offset+i, str.charCodeAt(i)); }
+
+window.addEventListener('DOMContentLoaded', () => { window.app = new App(); });
+</script>
+</body>
+</html>

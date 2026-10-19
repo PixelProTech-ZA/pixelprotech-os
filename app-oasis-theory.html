@@ -1,0 +1,1333 @@
+<!doctype html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OASIS THEORY — Idea → Sound</title>
+<meta name="description" content="A real playable instrument and music-theory laboratory. Frequency Oasis.">
+<meta name="theme-color" content="#050505">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOmMyZmQxNWU5LWRjOGItNGFlMi1hODZjLThjZmZjYjFkNTYzNAAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNowlAf8yv7ps0aXE0S2gea+AAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6NjJiZTYyODQtYjEzOC00NjQ4LWFlY2YtNTRlMzlhZjg5OGI0bHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaKZJ9byOh8FBMcl1rSTvZCwAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIPU2Uaws379LrEKmxjdlyCfUHIu+BPoD1KGPPJC2gHqypGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2hi/jqguQqQJqCBdHLPpXDEAAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFggfYYodm5Ryi2ZaolRu/H/wk5djdw6Rx4qDSOYXU5RyjFkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTpjMmZkMTVlOS1kYzhiLTRhZTItYTg2Yy04Y2ZmY2IxZDU2MzQvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDphMzI5MmE2Ny0wMjIzLTQwOTYtODBiZi1iMzdlODIwMTNhMWJyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg9TZRrCzfv0usQqbGN2XIJ9Qci74E+gPUoY88kLaAerKiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYICYGGmcFnr0aEXt2AE2HYVYg7s2ANEXEa59nIewdbsjdomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYIJZw4ZukVFmb3Fk3RDx7iR+ZmaAVz5Z6zl7tUspeFiDSdGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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">
+
+<style>:root {
+  --void: #050505;
+  --surface: #0d0d0f;
+  --surface-2: #131316;
+  --line: #2b2620;
+  --line-bright: #4a3f2c;
+  --gold: #c9a24b;
+  --gold-bright: #f0c868;
+  --gold-dim: #6e5a30;
+  --text: #e8e4da;
+  --text-dim: #8f897a;
+  --danger: #8b3a3a;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Avenir Next', 'Century Gothic', var(--font-ui);
+  --font-data: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  background: var(--void); color: var(--text);
+  font-family: var(--font-ui);
+  overflow: hidden;
+}
+button, select, input { font-family: inherit; }
+.hidden { display: none !important; }
+.mono { font-family: var(--font-data); letter-spacing: 0.02em; }
+
+/* ---------------- Start gate ---------------- */
+.startgate {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at 50% 35%, #0d0d0f 0%, #050505 70%);
+}
+.startgate-inner { text-align: center; max-width: 420px; padding: 24px; }
+.oasis-mark { width: 96px; height: 96px; margin-bottom: 8px; }
+.startgate h1 {
+  font-family: var(--font-display);
+  font-size: 2rem; letter-spacing: 0.14em; margin: 8px 0 0;
+  font-weight: 600;
+}
+.tagline { color: var(--text-dim); letter-spacing: 0.08em; margin: 4px 0 28px; }
+.btn-enter {
+  background: transparent; border: 1px solid var(--gold);
+  color: var(--gold-bright); padding: 12px 40px; font-size: 0.95rem;
+  letter-spacing: 0.18em; cursor: pointer; transition: background 0.2s, color 0.2s;
+}
+.btn-enter:hover { background: var(--gold); color: #17130a; }
+.startgate-note { color: var(--text-dim); font-size: 0.78rem; margin-top: 16px; }
+
+/* ---------------- App shell ---------------- */
+.app-root { height: 100%; display: flex; flex-direction: column; }
+
+.topbar {
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px 20px; border-bottom: 1px solid var(--line);
+  background: var(--surface);
+  flex: 0 0 auto;
+}
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand-mark { width: 30px; height: 30px; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-name { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.1em; font-size: 0.85rem; }
+.brand-sub { font-size: 0.6rem; letter-spacing: 0.18em; color: var(--text-dim); }
+
+.room-nav { display: flex; gap: 2px; margin-left: 12px; }
+.room-tab {
+  background: transparent; border: none; border-bottom: 2px solid transparent;
+  color: var(--text-dim); padding: 8px 14px; font-size: 0.72rem;
+  letter-spacing: 0.14em; cursor: pointer;
+}
+.room-tab.active { color: var(--gold-bright); border-bottom-color: var(--gold); }
+.room-tab:hover { color: var(--text); }
+
+.signal-status { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.signal-label { font-size: 0.7rem; color: var(--text-dim); }
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.dot-off { background: var(--text-dim); }
+.dot-on { background: var(--gold-bright); box-shadow: 0 0 6px var(--gold-bright); }
+
+/* ---------------- Stage layout ---------------- */
+.stage {
+  flex: 1 1 auto; display: grid;
+  grid-template-columns: 280px 1fr 280px;
+  min-height: 0;
+}
+.rail {
+  padding: 18px 18px 8px; overflow-y: auto;
+  border-right: 1px solid var(--line);
+}
+.rail-right { border-right: none; border-left: 1px solid var(--line); }
+.rail h2 {
+  font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.16em;
+  color: var(--text-dim); margin: 0 0 14px; font-weight: 600;
+}
+.hint { font-size: 0.78rem; color: var(--text-dim); line-height: 1.5; }
+
+.room-panel { display: none; }
+.room-panel.active { display: block; }
+
+.readout { border-top: 1px solid var(--line); margin-top: 14px; }
+.readout-row {
+  display: flex; justify-content: space-between; gap: 10px;
+  padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.readout-label { font-size: 0.65rem; letter-spacing: 0.12em; color: var(--text-dim); align-self: flex-start; padding-top: 2px; }
+.readout-value { text-align: right; font-size: 0.85rem; color: var(--gold-bright); }
+
+.key-hint { margin-top: 18px; font-size: 0.7rem; color: var(--text-dim); line-height: 1.6; }
+
+.field {
+  display: flex; flex-direction: column; gap: 4px; font-size: 0.65rem;
+  letter-spacing: 0.1em; color: var(--text-dim); margin-bottom: 12px;
+}
+.field select, .field input[type=checkbox] { align-self: flex-start; }
+select {
+  background: var(--surface-2); color: var(--text); border: 1px solid var(--line);
+  padding: 6px 8px; font-size: 0.82rem; min-width: 140px;
+}
+.btn-primary, .btn-secondary {
+  background: transparent; border: 1px solid var(--gold-dim); color: var(--gold-bright);
+  padding: 8px 14px; font-size: 0.72rem; letter-spacing: 0.12em; cursor: pointer;
+  margin-top: 4px;
+}
+.btn-primary { border-color: var(--gold); }
+.btn-primary:hover, .btn-secondary:hover { background: var(--gold); color: #17130a; }
+.btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+.lab-readout { margin-top: 16px; border-top: 1px solid var(--line); }
+
+/* ---------------- Keyboard zone ---------------- */
+.keyboard-zone {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: flex-end; padding: 12px 20px 20px; min-height: 0;
+}
+.octave-controls { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.btn-oct {
+  background: var(--surface-2); border: 1px solid var(--line); color: var(--text-dim);
+  padding: 6px 12px; font-size: 0.65rem; letter-spacing: 0.1em; cursor: pointer;
+}
+.btn-oct:hover { color: var(--gold-bright); border-color: var(--gold-dim); }
+.btn-oct.active { color: #17130a; background: var(--gold); border-color: var(--gold); }
+.oct-label { font-family: var(--font-data); color: var(--gold-bright); min-width: 34px; text-align: center; }
+
+.keyboard {
+  position: relative; width: 100%; max-width: 980px; height: 190px;
+  background: var(--surface-2); border: 1px solid var(--line);
+}
+.key-layer { position: absolute; inset: 0; }
+.key {
+  position: absolute; top: 0; height: 100%; cursor: pointer;
+  transition: background 0.05s;
+}
+.white-key {
+  background: #ece7da; border-right: 1px solid #17130a; border-radius: 0 0 3px 3px;
+}
+.white-key .c-label {
+  position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+  font-family: var(--font-data); font-size: 0.6rem; color: #7a7466;
+}
+.white-key.active { background: var(--gold-bright); }
+.white-key.hl-scale { background: #d8cfb0; }
+.white-key.hl-chord { background: #e8d59a; }
+.white-key.hl-root { background: var(--gold); }
+
+.black-key {
+  top: 0; height: 60%; background: #0c0a08; z-index: 2; border-radius: 0 0 2px 2px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.6);
+}
+.black-key.active { background: var(--gold); }
+.black-key.hl-scale { background: #4a4028; }
+.black-key.hl-chord { background: #7a5f26; }
+.black-key.hl-root { background: var(--gold-bright); }
+
+/* ---------------- Synth panel ---------------- */
+.synth-panel { display: flex; flex-direction: column; gap: 16px; }
+.ctrl-group { border-top: 1px solid var(--line); padding-top: 10px; }
+.ctrl-title { font-size: 0.62rem; letter-spacing: 0.14em; color: var(--text-dim); display: block; margin-bottom: 8px; }
+.slider-row {
+  display: grid; grid-template-columns: 24px 1fr 52px; align-items: center;
+  gap: 8px; font-size: 0.62rem; color: var(--text-dim); margin-bottom: 8px;
+  letter-spacing: 0.08em;
+}
+.slider-row input[type=range] {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 2px;
+  background: var(--line-bright); outline: none;
+}
+.slider-row input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--gold-bright); cursor: pointer;
+}
+.slider-row input[type=range]::-moz-range-thumb {
+  width: 11px; height: 11px; border-radius: 50%; background: var(--gold-bright);
+  border: none; cursor: pointer;
+}
+.slider-row .v { font-family: var(--font-data); text-align: right; color: var(--gold-bright); }
+#midiSelect { width: 100%; }
+
+/* ---------------- Footer ---------------- */
+.footbar {
+  flex: 0 0 auto; display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 20px; border-top: 1px solid var(--line); font-size: 0.65rem;
+  color: var(--text-dim); background: var(--surface);
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 980px) {
+  .stage { grid-template-columns: 1fr; grid-template-rows: auto auto 1fr; overflow-y: auto; }
+  .rail { border: none; border-bottom: 1px solid var(--line); max-height: 34vh; }
+  .rail-right { order: 3; }
+  .keyboard-zone { order: 2; }
+  html, body { overflow: auto; }
+  .keyboard { height: 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<div id="startgate" class="startgate">
+  <div class="startgate-inner">
+    <svg class="oasis-mark" viewBox="0 0 100 100" aria-hidden="true">
+      <path d="M12 66 A38 38 0 0 1 88 66" fill="none" stroke="var(--gold)" stroke-width="2.4"/>
+      <line x1="8" y1="66" x2="92" y2="66" stroke="var(--gold)" stroke-width="2.4"/>
+      <circle cx="50" cy="66" r="3.4" fill="var(--gold-bright)"/>
+    </svg>
+    <h1>OASIS THEORY</h1>
+    <p class="tagline">Idea → Sound</p>
+    <button id="enterBtn" class="btn-enter">ENTER</button>
+    <p class="startgate-note">Turns on the instrument's audio engine.</p>
+  </div>
+</div>
+
+<div id="appRoot" class="app-root hidden">
+
+  <header class="topbar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <path d="M12 66 A38 38 0 0 1 88 66" fill="none" stroke="var(--gold)" stroke-width="3"/>
+        <line x1="8" y1="66" x2="92" y2="66" stroke="var(--gold)" stroke-width="3"/>
+        <circle cx="50" cy="66" r="3.6" fill="var(--gold-bright)"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">OASIS THEORY</span>
+        <span class="brand-sub">FREQUENCY OASIS</span>
+      </div>
+    </div>
+
+    <nav class="room-nav" role="tablist" aria-label="Rooms">
+      <button class="room-tab active" data-room="play" role="tab" aria-selected="true">PLAY</button>
+      <button class="room-tab" data-room="chord" role="tab" aria-selected="false">CHORD LAB</button>
+      <button class="room-tab" data-room="scale" role="tab" aria-selected="false">SCALE LAB</button>
+    </nav>
+
+    <div class="signal-status">
+      <span id="midiDot" class="dot dot-off" title="MIDI"></span>
+      <span id="midiLabel" class="signal-label">MIDI: —</span>
+    </div>
+  </header>
+
+  <main class="stage">
+
+    <section class="rail rail-left">
+      <div id="panel-play" class="room-panel active">
+        <h2>THE READOUT</h2>
+        <p class="hint">Play the keyboard, your computer keys, or a connected MIDI device. What you play is identified here in real time.</p>
+        <div class="readout">
+          <div class="readout-row">
+            <span class="readout-label">NOTES HELD</span>
+            <span id="notesHeld" class="readout-value mono">—</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">IDENTIFIED</span>
+            <span id="chordId" class="readout-value">—</span>
+          </div>
+          <div class="readout-row">
+            <span class="readout-label">TONES</span>
+            <span id="chordTones" class="readout-value mono">—</span>
+          </div>
+        </div>
+        <div class="key-hint">
+          <p><strong>Computer keys</strong> — A W S E D F T G Y H U J play one octave, K O L P ; ' continue into the next. Z / X shift octave. Space = sustain.</p>
+        </div>
+      </div>
+
+      <div id="panel-chord" class="room-panel">
+        <h2>CHORD LAB</h2>
+        <label class="field">ROOT
+          <select id="chordRoot"></select>
+        </label>
+        <label class="field">QUALITY
+          <select id="chordQuality"></select>
+        </label>
+        <label class="field">INVERSION
+          <select id="chordInversion">
+            <option value="0">Root position</option>
+            <option value="1">1st inversion</option>
+            <option value="2">2nd inversion</option>
+            <option value="3">3rd inversion</option>
+          </select>
+        </label>
+        <label class="field">
+          <input type="checkbox" id="bassEnable"> SLASH BASS
+        </label>
+        <label class="field">
+          <select id="bassNote" disabled></select>
+        </label>
+        <button id="playChordBtn" class="btn-primary">PLAY CHORD</button>
+        <div class="lab-readout">
+          <div class="readout-row"><span class="readout-label">SPELLING</span><span id="chordSpelling" class="readout-value mono">—</span></div>
+          <div class="readout-row"><span class="readout-label">FUNCTION</span><span id="chordFunction" class="readout-value mono">—</span></div>
+        </div>
+      </div>
+
+      <div id="panel-scale" class="room-panel">
+        <h2>SCALE LAB</h2>
+        <label class="field">ROOT
+          <select id="scaleRoot"></select>
+        </label>
+        <label class="field">SCALE
+          <select id="scaleType"></select>
+        </label>
+        <div class="btn-row">
+          <button id="playAscBtn" class="btn-secondary">ASCEND</button>
+          <button id="playDescBtn" class="btn-secondary">DESCEND</button>
+          <button id="playRandomBtn" class="btn-secondary">RANDOM NOTE</button>
+        </div>
+        <div class="lab-readout">
+          <div class="readout-row"><span class="readout-label">NOTES</span><span id="scaleNotesOut" class="readout-value mono">—</span></div>
+          <div class="readout-row"><span class="readout-label">DEGREES</span><span id="scaleDegreesOut" class="readout-value mono">—</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="keyboard-zone">
+      <div class="octave-controls">
+        <button id="octDown" class="btn-oct" title="Shift down an octave (Z)">−OCT</button>
+        <span id="octLabel" class="oct-label">C4</span>
+        <button id="octUp" class="btn-oct" title="Shift up an octave (X)">+OCT</button>
+        <button id="sustainToggle" class="btn-oct" title="Hold sustain">SUSTAIN</button>
+      </div>
+      <div id="keyboard" class="keyboard"></div>
+    </section>
+
+    <section class="rail rail-right">
+      <h2>THE INSTRUMENT</h2>
+      <div class="synth-panel">
+        <div class="ctrl-group">
+          <span class="ctrl-title">ENVELOPE</span>
+          <label class="slider-row">A <input type="range" id="ctrlAttack" min="0" max="1" step="0.001" value="0.005"><span class="v" id="vAttack"></span></label>
+          <label class="slider-row">D <input type="range" id="ctrlDecay" min="0" max="2" step="0.001" value="0.18"><span class="v" id="vDecay"></span></label>
+          <label class="slider-row">S <input type="range" id="ctrlSustain" min="0" max="1" step="0.001" value="0.65"><span class="v" id="vSustain"></span></label>
+          <label class="slider-row">R <input type="range" id="ctrlRelease" min="0" max="3" step="0.001" value="0.22"><span class="v" id="vRelease"></span></label>
+        </div>
+        <div class="ctrl-group">
+          <span class="ctrl-title">FILTER</span>
+          <label class="slider-row">CUTOFF <input type="range" id="ctrlCutoff" min="200" max="9000" step="1" value="4200"><span class="v" id="vCutoff"></span></label>
+          <label class="slider-row">RESO <input type="range" id="ctrlResonance" min="0.1" max="18" step="0.1" value="2.5"><span class="v" id="vResonance"></span></label>
+        </div>
+        <div class="ctrl-group">
+          <span class="ctrl-title">OSCILLATORS</span>
+          <label class="slider-row">MIX <input type="range" id="ctrlOscBalance" min="0" max="1" step="0.01" value="0.35"><span class="v" id="vOscBalance"></span></label>
+          <label class="slider-row">DETUNE <input type="range" id="ctrlDetune" min="-50" max="50" step="1" value="7"><span class="v" id="vDetune"></span></label>
+        </div>
+        <div class="ctrl-group">
+          <span class="ctrl-title">OUTPUT</span>
+          <label class="slider-row">DRIVE <input type="range" id="ctrlDrive" min="0" max="1" step="0.01" value="0.12"><span class="v" id="vDrive"></span></label>
+          <label class="slider-row">VOLUME <input type="range" id="ctrlVolume" min="0" max="1" step="0.01" value="0.8"><span class="v" id="vVolume"></span></label>
+        </div>
+        <div class="ctrl-group">
+          <span class="ctrl-title">MIDI INPUT</span>
+          <select id="midiSelect"><option value="">No devices found</option></select>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footbar">
+    <span>PixelProTech Solutions · Frequency Oasis</span>
+    <span id="pwaInstallWrap"><button id="installBtn" class="btn-secondary hidden">INSTALL</button></span>
+  </footer>
+</div>
+
+<script>/* OASIS THEORY — theory engine
+   Real music-theory calculations. No lookup tables of "song examples" —
+   everything here is derived math: pitch classes, intervals, scales, chords. */
+
+(function (global) {
+  const SHARP_NAMES = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  const FLAT_NAMES  = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+
+  // Keys that conventionally read better in flats.
+  const FLAT_KEYS = new Set(['F','Bb','Eb','Ab','Db','Gb','Cb','Dm','Gm','Cm','Fm','Bbm','Ebm','Abm']);
+
+  function midiToName(midi, preferFlats) {
+    const pc = ((midi % 12) + 12) % 12;
+    const octave = Math.floor(midi / 12) - 1;
+    const table = preferFlats ? FLAT_NAMES : SHARP_NAMES;
+    return `${table[pc]}${octave}`;
+  }
+
+  function midiToPitchClass(midi) {
+    return ((midi % 12) + 12) % 12;
+  }
+
+  function midiToFreq(midi) {
+    return 440 * Math.pow(2, (midi - 69) / 12);
+  }
+
+  function pitchClassName(pc, preferFlats) {
+    const table = preferFlats ? FLAT_NAMES : SHARP_NAMES;
+    return table[((pc % 12) + 12) % 12];
+  }
+
+  function nameToPitchClass(name) {
+    const idx = SHARP_NAMES.indexOf(name);
+    if (idx !== -1) return idx;
+    const idxF = FLAT_NAMES.indexOf(name);
+    if (idxF !== -1) return idxF;
+    return null;
+  }
+
+  // ---- Scales -----------------------------------------------------------
+  const SCALES = {
+    'major':            { label: 'Major (Ionian)',      steps: [0,2,4,5,7,9,11] },
+    'natural_minor':     { label: 'Natural Minor',       steps: [0,2,3,5,7,8,10] },
+    'harmonic_minor':    { label: 'Harmonic Minor',      steps: [0,2,3,5,7,8,11] },
+    'melodic_minor':     { label: 'Melodic Minor (asc)', steps: [0,2,3,5,7,9,11] },
+    'dorian':            { label: 'Dorian',              steps: [0,2,3,5,7,9,10] },
+    'phrygian':          { label: 'Phrygian',            steps: [0,1,3,5,7,8,10] },
+    'lydian':            { label: 'Lydian',              steps: [0,2,4,6,7,9,11] },
+    'mixolydian':        { label: 'Mixolydian',          steps: [0,2,4,5,7,9,10] },
+    'locrian':           { label: 'Locrian',             steps: [0,1,3,5,6,8,10] },
+    'major_pentatonic':  { label: 'Major Pentatonic',    steps: [0,2,4,7,9] },
+    'minor_pentatonic':  { label: 'Minor Pentatonic',    steps: [0,3,5,7,10] },
+    'blues':             { label: 'Blues',               steps: [0,3,5,6,7,10] },
+  };
+
+  function scaleNotes(rootPc, scaleKey) {
+    const def = SCALES[scaleKey];
+    if (!def) return [];
+    return def.steps.map(s => (rootPc + s) % 12);
+  }
+
+  // ---- Chords -------------------------------------------------------------
+  // Base quality intervals (semitones from root).
+  const CHORD_QUALITIES = {
+    'maj':      { label: 'Major',              steps: [0,4,7] },
+    'min':      { label: 'Minor',              steps: [0,3,7] },
+    'dim':      { label: 'Diminished',         steps: [0,3,6] },
+    'aug':      { label: 'Augmented',          steps: [0,4,8] },
+    'sus2':     { label: 'Sus2',               steps: [0,2,7] },
+    'sus4':     { label: 'Sus4',               steps: [0,5,7] },
+    '6':        { label: '6',                  steps: [0,4,7,9] },
+    'min6':     { label: 'Minor 6',            steps: [0,3,7,9] },
+    'maj7':     { label: 'Major 7',            steps: [0,4,7,11] },
+    'dom7':     { label: 'Dominant 7',         steps: [0,4,7,10] },
+    'min7':     { label: 'Minor 7',            steps: [0,3,7,10] },
+    'min7b5':   { label: 'Half-Diminished 7',  steps: [0,3,6,10] },
+    'dim7':     { label: 'Diminished 7',       steps: [0,3,6,9] },
+    'minMaj7':  { label: 'Minor-Major 7',      steps: [0,3,7,11] },
+    'maj9':     { label: 'Major 9',            steps: [0,4,7,11,14] },
+    'dom9':     { label: 'Dominant 9',         steps: [0,4,7,10,14] },
+    'min9':     { label: 'Minor 9',            steps: [0,3,7,10,14] },
+    'add9':     { label: 'Add9',               steps: [0,4,7,14] },
+    'dom11':    { label: 'Dominant 11',        steps: [0,4,7,10,14,17] },
+    'min11':    { label: 'Minor 11',           steps: [0,3,7,10,14,17] },
+    'dom13':    { label: 'Dominant 13',        steps: [0,4,7,10,14,17,21] },
+    'maj13':    { label: 'Major 13',           steps: [0,4,7,11,14,17,21] },
+  };
+
+  const DEGREE_LABELS = {
+    0: 'R', 1: '♭9', 2: '9', 3: '♭3/♯9', 4: '3', 5: '11',
+    6: '♯11/♭5', 7: '5', 8: '♯5/♭13', 9: '13/6', 10: '♭7', 11: '7'
+  };
+
+  function degreeLabel(semitoneFromRoot) {
+    return DEGREE_LABELS[((semitoneFromRoot % 12) + 12) % 12];
+  }
+
+  // Build absolute MIDI notes for a chord: root position first, then apply
+  // inversion (which chord tone becomes the lowest), then optional bass
+  // note override (slash chord) placed below everything.
+  function buildChord({ rootMidi, quality, inversion = 0, bassSemitoneFromRoot = null }) {
+    const def = CHORD_QUALITIES[quality];
+    if (!def) return { notes: [], steps: [] };
+    let steps = def.steps.slice();
+    let notes = steps.map(s => rootMidi + s);
+
+    const invCount = ((inversion % steps.length) + steps.length) % steps.length;
+    for (let i = 0; i < invCount; i++) {
+      const lowest = notes.shift();
+      notes.push(lowest + 12);
+    }
+    notes.sort((a,b)=>a-b);
+
+    if (bassSemitoneFromRoot !== null) {
+      let bassMidi = rootMidi + bassSemitoneFromRoot;
+      while (bassMidi >= notes[0]) bassMidi -= 12;
+      notes = [bassMidi, ...notes];
+    }
+    return { notes, steps };
+  }
+
+  // ---- Recognition --------------------------------------------------------
+  // Given a set of MIDI notes currently sounding, identify the best-matching
+  // root + quality by testing every note as a candidate root and comparing
+  // the resulting interval set (reduced to pitch classes) against every
+  // known chord template.
+  function identifyChord(midiNotes) {
+    const uniquePcs = [...new Set(midiNotes.map(midiToPitchClass))];
+    if (uniquePcs.length < 2) return null;
+
+    let best = null; // {root, quality, score, matchedSteps, extraPcs}
+
+    for (const rootPc of uniquePcs) {
+      const rel = uniquePcs
+        .map(pc => ((pc - rootPc) + 12) % 12)
+        .sort((a,b)=>a-b);
+      const relSet = new Set(rel);
+
+      for (const [qualityKey, def] of Object.entries(CHORD_QUALITIES)) {
+        const templateReduced = [...new Set(def.steps.map(s => s % 12))];
+        const templateSet = new Set(templateReduced);
+
+        const matched = templateReduced.filter(s => relSet.has(s));
+        const missing = templateReduced.filter(s => !relSet.has(s));
+        const extra = rel.filter(s => !templateSet.has(s));
+
+        // Exact match is best; otherwise score by overlap minus penalties.
+        const exact = missing.length === 0 && extra.length === 0;
+        const score = matched.length * 10 - missing.length * 6 - extra.length * 3
+          + (exact ? 100 : 0);
+
+        if (!best || score > best.score) {
+          best = {
+            rootPc, quality: qualityKey, qualityLabel: def.label,
+            score, exact, extra, missing,
+            steps: def.steps
+          };
+        }
+      }
+    }
+    return best;
+  }
+
+  // ---- Intervals ------------------------------------------------------
+  const INTERVAL_NAMES = [
+    'Unison','Minor 2nd','Major 2nd','Minor 3rd','Major 3rd','Perfect 4th',
+    'Tritone','Perfect 5th','Minor 6th','Major 6th','Minor 7th','Major 7th'
+  ];
+
+  function intervalName(semitones) {
+    return INTERVAL_NAMES[((semitones % 12) + 12) % 12];
+  }
+
+  global.OasisTheory = {
+    SHARP_NAMES, FLAT_NAMES, SCALES, CHORD_QUALITIES,
+    midiToName, midiToPitchClass, midiToFreq, pitchClassName, nameToPitchClass,
+    scaleNotes, buildChord, identifyChord, degreeLabel, intervalName,
+  };
+})(window);
+</script>
+<script>/* OASIS THEORY — synth engine
+   Real signal chain, no placeholder oscillators:
+   OSC1 + OSC2 (detuned) -> per-voice gain (ADSR) -> lowpass filter
+   -> waveshaper (drive) -> master gain -> compressor (limiter) -> destination
+   Every parameter below is wired to an actual AudioParam. */
+
+(function (global) {
+
+  function makeDriveCurve(amount) {
+    // amount 0..1 -> soft-clip curve. 0 = transparent, 1 = strongly saturated.
+    const k = amount * 18 + 0.0001;
+    const n = 1024;
+    const curve = new Float32Array(n);
+    for (let i = 0; i < n; i++) {
+      const x = (i / (n - 1)) * 2 - 1;
+      curve[i] = Math.tanh(k * x) / Math.tanh(k);
+    }
+    return curve;
+  }
+
+  class OasisSynth {
+    constructor() {
+      this.ctx = null;
+      this.voices = new Map(); // noteId -> voice
+      this.sustainHeld = false;
+      this.sustainedReleases = new Set(); // notes waiting to release once sustain lifts
+
+      this.params = {
+        attack: 0.005,
+        decay: 0.18,
+        sustain: 0.65,
+        release: 0.22,
+        cutoff: 4200,
+        resonance: 2.5,
+        oscBalance: 0.35,  // 0 = osc1 only, 1 = osc2 only
+        detune: 7,          // cents, osc2 vs osc1
+        drive: 0.12,
+        volume: 0.8,
+        osc1Type: 'sawtooth',
+        osc2Type: 'square',
+      };
+
+      this._onVoiceChange = null; // callback(activeMidiNotes: number[])
+    }
+
+    ensureContext() {
+      if (!this.ctx) {
+        this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        this.master = this.ctx.createGain();
+        this.master.gain.value = this.params.volume;
+
+        this.shaper = this.ctx.createWaveShaper();
+        this.shaper.curve = makeDriveCurve(this.params.drive);
+        this.shaper.oversample = '2x';
+
+        this.compressor = this.ctx.createDynamicsCompressor();
+        this.compressor.threshold.value = -8;
+        this.compressor.knee.value = 18;
+        this.compressor.ratio.value = 4;
+        this.compressor.attack.value = 0.003;
+        this.compressor.release.value = 0.15;
+
+        this.master.connect(this.shaper);
+        this.shaper.connect(this.compressor);
+        this.compressor.connect(this.ctx.destination);
+      }
+      if (this.ctx.state === 'suspended') this.ctx.resume();
+      return this.ctx;
+    }
+
+    setParam(name, value) {
+      this.params[name] = value;
+      if (name === 'volume' && this.master) {
+        this.master.gain.setTargetAtTime(value, this.ctx.currentTime, 0.01);
+      }
+      if (name === 'drive' && this.shaper) {
+        this.shaper.curve = makeDriveCurve(value);
+      }
+      if (name === 'cutoff' || name === 'resonance') {
+        for (const v of this.voices.values()) {
+          if (name === 'cutoff') v.filter.frequency.setTargetAtTime(value, this.ctx.currentTime, 0.01);
+          if (name === 'resonance') v.filter.Q.setTargetAtTime(value, this.ctx.currentTime, 0.01);
+        }
+      }
+    }
+
+    onVoiceChange(cb) { this._onVoiceChange = cb; }
+
+    _reportVoices() {
+      if (this._onVoiceChange) {
+        this._onVoiceChange([...this.voices.keys()].map(Number));
+      }
+    }
+
+    noteOn(midi, velocity = 0.85) {
+      const ctx = this.ensureContext();
+      if (this.voices.has(midi)) this._stopVoiceImmediate(midi);
+      this.sustainedReleases.delete(midi);
+
+      const freq = 440 * Math.pow(2, (midi - 69) / 12);
+      const t0 = ctx.currentTime;
+
+      const osc1 = ctx.createOscillator();
+      osc1.type = this.params.osc1Type;
+      osc1.frequency.value = freq;
+
+      const osc2 = ctx.createOscillator();
+      osc2.type = this.params.osc2Type;
+      osc2.frequency.value = freq;
+      osc2.detune.value = this.params.detune;
+
+      const gain1 = ctx.createGain();
+      gain1.gain.value = 1 - this.params.oscBalance;
+      const gain2 = ctx.createGain();
+      gain2.gain.value = this.params.oscBalance;
+
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = this.params.cutoff;
+      filter.Q.value = this.params.resonance;
+
+      const envGain = ctx.createGain();
+      envGain.gain.setValueAtTime(0, t0);
+
+      osc1.connect(gain1).connect(filter);
+      osc2.connect(gain2).connect(filter);
+      filter.connect(envGain).connect(this.master);
+
+      const peak = Math.max(0.0001, Math.min(1, velocity)) * 0.9;
+      const { attack, decay, sustain } = this.params;
+      envGain.gain.linearRampToValueAtTime(peak, t0 + Math.max(0.002, attack));
+      envGain.gain.linearRampToValueAtTime(peak * sustain, t0 + attack + Math.max(0.001, decay));
+
+      osc1.start(t0);
+      osc2.start(t0);
+
+      this.voices.set(midi, { osc1, osc2, gain1, gain2, filter, envGain, startedAt: t0, velocity });
+      this._reportVoices();
+    }
+
+    noteOff(midi) {
+      if (this.sustainHeld) {
+        this.sustainedReleases.add(midi);
+        return;
+      }
+      this._release(midi);
+    }
+
+    _release(midi) {
+      const v = this.voices.get(midi);
+      if (!v || !this.ctx) return;
+      const ctx = this.ctx;
+      const t0 = ctx.currentTime;
+      const { release } = this.params;
+      v.envGain.gain.cancelScheduledValues(t0);
+      v.envGain.gain.setValueAtTime(v.envGain.gain.value, t0);
+      v.envGain.gain.linearRampToValueAtTime(0.0001, t0 + Math.max(0.02, release));
+      v.osc1.stop(t0 + Math.max(0.02, release) + 0.05);
+      v.osc2.stop(t0 + Math.max(0.02, release) + 0.05);
+      this.voices.delete(midi);
+      this._reportVoices();
+    }
+
+    _stopVoiceImmediate(midi) {
+      const v = this.voices.get(midi);
+      if (!v) return;
+      try { v.osc1.stop(); v.osc2.stop(); } catch (e) {}
+      this.voices.delete(midi);
+    }
+
+    setSustainPedal(held) {
+      this.sustainHeld = held;
+      if (!held) {
+        for (const midi of this.sustainedReleases) this._release(midi);
+        this.sustainedReleases.clear();
+      }
+    }
+
+    allNotesOff() {
+      for (const midi of [...this.voices.keys()]) this._release(midi);
+    }
+
+    activeMidiNotes() {
+      return [...this.voices.keys()].map(Number);
+    }
+  }
+
+  global.OasisSynth = OasisSynth;
+})(window);
+</script>
+<script>/* OASIS THEORY — keyboard
+   Renders a real playable keyboard. Mouse/touch velocity is derived from
+   vertical press position on the key (press low = harder), not faked.
+   Computer-keyboard and Web MIDI both feed the same noteOn/noteOff path. */
+
+(function (global) {
+
+  // Classic single-row computer-keyboard-to-semitone map, relative to a
+  // movable base note. This is a real, functional mapping (not decorative).
+  const COMPUTER_KEY_MAP = {
+    'a': 0, 'w': 1, 's': 2, 'e': 3, 'd': 4, 'f': 5, 't': 6, 'g': 7,
+    'y': 8, 'h': 9, 'u': 10, 'j': 11, 'k': 12, 'o': 13, 'l': 14,
+    'p': 15, ';': 16, "'": 17,
+  };
+
+  const BLACK_PC = new Set([1,3,6,8,10]);
+
+  class OasisKeyboard {
+    constructor({ container, synth, startMidi = 48, octaves = 3, onNoteOn, onNoteOff }) {
+      this.container = container;
+      this.synth = synth;
+      this.startMidi = startMidi;
+      this.octaves = octaves;
+      this.onNoteOn = onNoteOn || (() => {});
+      this.onNoteOff = onNoteOff || (() => {});
+      this.keyboardBaseMidi = 60; // C4, movable with octave shift
+      this.activeNotes = new Map(); // midi -> {source: 'mouse'|'kbd'|'midi', el}
+      this.midiAccess = null;
+      this.midiInput = null;
+      this.sustainPedalDown = false;
+
+      this._els = new Map(); // midi -> element
+      this._render();
+      this._bindPointer();
+      this._bindComputerKeyboard();
+    }
+
+    // ---- Rendering --------------------------------------------------------
+    _render() {
+      this.container.innerHTML = '';
+      this.container.classList.add('oasis-keys');
+      const endMidi = this.startMidi + this.octaves * 12;
+
+      const whiteMidis = [];
+      for (let m = this.startMidi; m <= endMidi; m++) {
+        if (!BLACK_PC.has(m % 12)) whiteMidis.push(m);
+      }
+      const whiteWidth = 100 / whiteMidis.length;
+
+      const whiteLayer = document.createElement('div');
+      whiteLayer.className = 'key-layer white-layer';
+      const blackLayer = document.createElement('div');
+      blackLayer.className = 'key-layer black-layer';
+
+      whiteMidis.forEach((m, i) => {
+        const key = document.createElement('div');
+        key.className = 'key white-key';
+        key.style.left = `${i * whiteWidth}%`;
+        key.style.width = `${whiteWidth}%`;
+        key.dataset.midi = m;
+        if (m % 12 === 0) {
+          const label = document.createElement('span');
+          label.className = 'c-label';
+          label.textContent = `C${Math.floor(m / 12) - 1}`;
+          key.appendChild(label);
+        }
+        whiteLayer.appendChild(key);
+        this._els.set(m, key);
+      });
+
+      let whiteIndex = -1;
+      for (let m = this.startMidi; m <= endMidi; m++) {
+        if (!BLACK_PC.has(m % 12)) { whiteIndex++; continue; }
+        const key = document.createElement('div');
+        key.className = 'key black-key';
+        const center = (whiteIndex + 1) * whiteWidth;
+        key.style.left = `calc(${center}% - ${whiteWidth * 0.32}%)`;
+        key.style.width = `${whiteWidth * 0.64}%`;
+        key.dataset.midi = m;
+        blackLayer.appendChild(key);
+        this._els.set(m, key);
+      }
+
+      this.container.appendChild(whiteLayer);
+      this.container.appendChild(blackLayer);
+    }
+
+    // ---- Pointer interaction (velocity from press position) ---------------
+    _bindPointer() {
+      const press = (el, e) => {
+        const midi = Number(el.dataset.midi);
+        const rect = el.getBoundingClientRect();
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        const rel = Math.min(1, Math.max(0, (clientY - rect.top) / rect.height));
+        // pressing lower on the key = harder strike
+        const velocity = 0.45 + rel * 0.55;
+        this.noteOn(midi, velocity, 'mouse');
+      };
+      const release = (el) => {
+        const midi = Number(el.dataset.midi);
+        this.noteOff(midi, 'mouse');
+      };
+
+      this.container.addEventListener('pointerdown', (e) => {
+        const el = e.target.closest('.key');
+        if (!el) return;
+        el.setPointerCapture(e.pointerId);
+        press(el, e);
+      });
+      this.container.addEventListener('pointerup', (e) => {
+        const el = e.target.closest('.key');
+        if (el) release(el);
+      });
+      this.container.addEventListener('pointerleave', (e) => {
+        const el = e.target.closest('.key');
+        if (el && e.buttons === 0) release(el);
+      });
+      this.container.addEventListener('pointercancel', (e) => {
+        const el = e.target.closest('.key');
+        if (el) release(el);
+      });
+      // dragging across keys while held (glissando) still respects real presses
+      this.container.addEventListener('pointerover', (e) => {
+        if (e.buttons !== 1) return;
+        const el = e.target.closest('.key');
+        if (el) press(el, e);
+      });
+    }
+
+    // ---- Computer keyboard -------------------------------------------------
+    _bindComputerKeyboard() {
+      const held = new Set();
+      window.addEventListener('keydown', (e) => {
+        if (e.repeat) return;
+        const tag = document.activeElement.tagName;
+        if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
+        const key = e.key.toLowerCase();
+        if (key === 'z') { this.shiftOctave(-1); return; }
+        if (key === 'x') { this.shiftOctave(1); return; }
+        if (key === ' ') { e.preventDefault(); this.setSustainPedal(true); return; }
+        if (key in COMPUTER_KEY_MAP) {
+          const midi = this.keyboardBaseMidi + COMPUTER_KEY_MAP[key];
+          if (!held.has(key)) {
+            held.add(key);
+            this.noteOn(midi, 0.85, 'kbd');
+          }
+        }
+      });
+      window.addEventListener('keyup', (e) => {
+        const key = e.key.toLowerCase();
+        if (key === ' ') { this.setSustainPedal(false); return; }
+        if (key in COMPUTER_KEY_MAP) {
+          held.delete(key);
+          const midi = this.keyboardBaseMidi + COMPUTER_KEY_MAP[key];
+          this.noteOff(midi, 'kbd');
+        }
+      });
+    }
+
+    shiftOctave(dir) {
+      this.keyboardBaseMidi = Math.min(96, Math.max(24, this.keyboardBaseMidi + dir * 12));
+      if (this._onOctaveShift) this._onOctaveShift(this.keyboardBaseMidi);
+    }
+    onOctaveShift(cb) { this._onOctaveShift = cb; }
+
+    setSustainPedal(held) {
+      this.sustainPedalDown = held;
+      this.synth.setSustainPedal(held);
+    }
+
+    // ---- Web MIDI -----------------------------------------------------------
+    async connectMIDI(onDevicesChanged) {
+      if (!navigator.requestMIDIAccess) {
+        return { supported: false };
+      }
+      try {
+        this.midiAccess = await navigator.requestMIDIAccess();
+        const refresh = () => {
+          const inputs = [...this.midiAccess.inputs.values()];
+          onDevicesChanged && onDevicesChanged(inputs);
+        };
+        this.midiAccess.onstatechange = refresh;
+        refresh();
+        return { supported: true };
+      } catch (err) {
+        return { supported: false, error: err };
+      }
+    }
+
+    selectMIDIInput(inputId) {
+      if (this.midiInput) this.midiInput.onmidimessage = null;
+      if (!this.midiAccess) return;
+      const input = [...this.midiAccess.inputs.values()].find(i => i.id === inputId);
+      if (!input) { this.midiInput = null; return; }
+      this.midiInput = input;
+      input.onmidimessage = (msg) => {
+        const [status, data1, data2] = msg.data;
+        const command = status & 0xf0;
+        if (command === 0x90 && data2 > 0) {
+          this.noteOn(data1, data2 / 127, 'midi');
+        } else if (command === 0x80 || (command === 0x90 && data2 === 0)) {
+          this.noteOff(data1, 'midi');
+        } else if (command === 0xB0 && data1 === 64) { // sustain pedal CC64
+          this.setSustainPedal(data2 >= 64);
+        }
+      };
+    }
+
+    // ---- Core note handling -------------------------------------------------
+    noteOn(midi, velocity, source) {
+      if (this.activeNotes.has(midi)) return;
+      this.synth.noteOn(midi, velocity);
+      const el = this._els.get(midi);
+      if (el) el.classList.add('active');
+      this.activeNotes.set(midi, { source });
+      this.onNoteOn(midi, velocity, source);
+    }
+
+    noteOff(midi, source) {
+      if (!this.activeNotes.has(midi)) return;
+      this.synth.noteOff(midi);
+      const el = this._els.get(midi);
+      if (el) el.classList.remove('active');
+      this.activeNotes.delete(midi);
+      this.onNoteOff(midi, source);
+    }
+
+    // ---- Highlighting (scale/chord lab) --------------------------------------
+    clearHighlights() {
+      for (const el of this._els.values()) {
+        el.classList.remove('hl-scale', 'hl-chord', 'hl-root');
+      }
+    }
+
+    highlightPitchClasses(pcs, className, rootPc = null) {
+      const set = new Set(pcs);
+      for (const [midi, el] of this._els.entries()) {
+        const pc = ((midi % 12) + 12) % 12;
+        if (set.has(pc)) {
+          el.classList.add(className);
+          if (rootPc !== null && pc === rootPc) el.classList.add('hl-root');
+        }
+      }
+    }
+
+    highlightExactMidiNotes(midiNotes, className) {
+      const set = new Set(midiNotes);
+      for (const [midi, el] of this._els.entries()) {
+        if (set.has(midi)) el.classList.add(className);
+      }
+    }
+  }
+
+  global.OasisKeyboard = OasisKeyboard;
+})(window);
+</script>
+<script>(function () {
+  const T = window.OasisTheory;
+  const synth = new window.OasisSynth();
+
+  // ---- Start gate (audio requires a user gesture to unlock) ----------------
+  const startgate = document.getElementById('startgate');
+  const appRoot = document.getElementById('appRoot');
+  document.getElementById('enterBtn').addEventListener('click', () => {
+    synth.ensureContext();
+    startgate.classList.add('hidden');
+    appRoot.classList.remove('hidden');
+    initKeyboardIfNeeded();
+  });
+
+  // ---- Keyboard --------------------------------------------------------
+  let keyboard;
+  function initKeyboardIfNeeded() {
+    if (keyboard) return;
+    keyboard = new window.OasisKeyboard({
+      container: document.getElementById('keyboard'),
+      synth,
+      startMidi: 48,
+      octaves: 3,
+      onNoteOn: refreshReadout,
+      onNoteOff: refreshReadout,
+    });
+    keyboard.onOctaveShift((base) => {
+      document.getElementById('octLabel').textContent = T.midiToName(base);
+    });
+    document.getElementById('octLabel').textContent = T.midiToName(keyboard.keyboardBaseMidi);
+
+    document.getElementById('octDown').addEventListener('click', () => keyboard.shiftOctave(-1));
+    document.getElementById('octUp').addEventListener('click', () => keyboard.shiftOctave(1));
+
+    const sustainBtn = document.getElementById('sustainToggle');
+    let sustainOn = false;
+    sustainBtn.addEventListener('click', () => {
+      sustainOn = !sustainOn;
+      sustainBtn.classList.toggle('active', sustainOn);
+      keyboard.setSustainPedal(sustainOn);
+    });
+
+    setupMIDI();
+  }
+
+  // ---- Live readout: identifies whatever is currently sounding --------------
+  function refreshReadout() {
+    const notes = synth.activeMidiNotes().sort((a,b)=>a-b);
+    const notesHeldEl = document.getElementById('notesHeld');
+    const chordIdEl = document.getElementById('chordId');
+    const chordTonesEl = document.getElementById('chordTones');
+
+    if (notes.length === 0) {
+      notesHeldEl.textContent = '—';
+      chordIdEl.textContent = '—';
+      chordTonesEl.textContent = '—';
+      return;
+    }
+    notesHeldEl.textContent = notes.map(m => T.midiToName(m)).join('  ');
+
+    if (notes.length === 1) {
+      chordIdEl.textContent = 'Single note';
+      chordTonesEl.textContent = T.midiToName(notes[0]);
+      return;
+    }
+
+    const result = T.identifyChord(notes);
+    if (!result) {
+      chordIdEl.textContent = '—';
+      chordTonesEl.textContent = '—';
+      return;
+    }
+    const rootName = T.pitchClassName(result.rootPc);
+    chordIdEl.textContent = `${rootName} ${result.qualityLabel}` + (result.exact ? '' : ' (closest match)');
+    chordTonesEl.textContent = result.steps.map(s => T.degreeLabel(s)).join('  ');
+  }
+
+  // ---- Synth control panel --------------------------------------------------
+  function bindSlider(id, valueId, param, formatter) {
+    const el = document.getElementById(id);
+    const out = document.getElementById(valueId);
+    const update = () => {
+      const v = Number(el.value);
+      synth.setParam(param, v);
+      out.textContent = formatter ? formatter(v) : v;
+    };
+    el.addEventListener('input', update);
+    update();
+  }
+  bindSlider('ctrlAttack', 'vAttack', 'attack', v => v.toFixed(3) + 's');
+  bindSlider('ctrlDecay', 'vDecay', 'decay', v => v.toFixed(3) + 's');
+  bindSlider('ctrlSustain', 'vSustain', 'sustain', v => Math.round(v*100) + '%');
+  bindSlider('ctrlRelease', 'vRelease', 'release', v => v.toFixed(3) + 's');
+  bindSlider('ctrlCutoff', 'vCutoff', 'cutoff', v => Math.round(v) + 'Hz');
+  bindSlider('ctrlResonance', 'vResonance', 'resonance', v => v.toFixed(1));
+  bindSlider('ctrlOscBalance', 'vOscBalance', 'oscBalance', v => Math.round(v*100)+'%');
+  bindSlider('ctrlDetune', 'vDetune', 'detune', v => v + 'c');
+  bindSlider('ctrlDrive', 'vDrive', 'drive', v => Math.round(v*100)+'%');
+  bindSlider('ctrlVolume', 'vVolume', 'volume', v => Math.round(v*100)+'%');
+
+  // ---- MIDI ------------------------------------------------------------
+  async function setupMIDI() {
+    const dot = document.getElementById('midiDot');
+    const label = document.getElementById('midiLabel');
+    const select = document.getElementById('midiSelect');
+
+    const res = await keyboard.connectMIDI((inputs) => {
+      select.innerHTML = '';
+      if (inputs.length === 0) {
+        select.innerHTML = '<option value="">No devices found</option>';
+        dot.className = 'dot dot-off';
+        label.textContent = 'MIDI: none connected';
+        return;
+      }
+      inputs.forEach((inp, i) => {
+        const opt = document.createElement('option');
+        opt.value = inp.id;
+        opt.textContent = inp.name;
+        select.appendChild(opt);
+      });
+      keyboard.selectMIDIInput(inputs[0].id);
+      dot.className = 'dot dot-on';
+      label.textContent = `MIDI: ${inputs[0].name}`;
+    });
+
+    if (!res.supported) {
+      dot.className = 'dot dot-off';
+      label.textContent = 'MIDI: not supported in this browser';
+      select.innerHTML = '<option value="">Unavailable</option>';
+      select.disabled = true;
+    }
+
+    select.addEventListener('change', () => {
+      keyboard.selectMIDIInput(select.value);
+      const opt = select.options[select.selectedIndex];
+      label.textContent = opt ? `MIDI: ${opt.textContent}` : 'MIDI: —';
+      dot.className = select.value ? 'dot dot-on' : 'dot dot-off';
+    });
+  }
+
+  // ---- Room navigation ---------------------------------------------------
+  const tabs = document.querySelectorAll('.room-tab');
+  const panels = {
+    play: document.getElementById('panel-play'),
+    chord: document.getElementById('panel-chord'),
+    scale: document.getElementById('panel-scale'),
+  };
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active'); tab.setAttribute('aria-selected','true');
+      Object.values(panels).forEach(p => p.classList.remove('active'));
+      panels[tab.dataset.room].classList.add('active');
+      if (keyboard) keyboard.clearHighlights();
+    });
+  });
+
+  // ---- Populate note-name selects ---------------------------------------
+  function populateNoteSelect(select) {
+    T.SHARP_NAMES.forEach((name, pc) => {
+      const opt = document.createElement('option');
+      opt.value = pc;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+  }
+  ['chordRoot', 'scaleRoot', 'bassNote'].forEach(id => populateNoteSelect(document.getElementById(id)));
+
+  // ---- Chord Lab ---------------------------------------------------------
+  const chordQualitySelect = document.getElementById('chordQuality');
+  Object.entries(T.CHORD_QUALITIES).forEach(([key, def]) => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = def.label;
+    chordQualitySelect.appendChild(opt);
+  });
+
+  const bassEnable = document.getElementById('bassEnable');
+  const bassNoteSelect = document.getElementById('bassNote');
+  bassEnable.addEventListener('change', () => {
+    bassNoteSelect.disabled = !bassEnable.checked;
+    renderChordLab();
+  });
+
+  let chordSoundingNotes = [];
+  function renderChordLab() {
+    if (!keyboard) return;
+    const rootPc = Number(document.getElementById('chordRoot').value);
+    const quality = chordQualitySelect.value;
+    const inversion = Number(document.getElementById('chordInversion').value);
+    const bassSemitone = bassEnable.checked ? Number(bassNoteSelect.value) : null;
+    const rootMidi = 60 + rootPc; // build around C4 octave
+
+    const { notes, steps } = T.buildChord({
+      rootMidi, quality, inversion,
+      bassSemitoneFromRoot: bassSemitone !== null ? (bassSemitone - rootPc) : null,
+    });
+
+    keyboard.clearHighlights();
+    keyboard.highlightExactMidiNotes(notes, 'hl-chord');
+
+    document.getElementById('chordSpelling').textContent = notes.map(m => T.midiToName(m)).join('  ');
+    document.getElementById('chordFunction').textContent = steps.map(s => T.degreeLabel(s)).join('  ');
+
+    chordSoundingNotes = notes;
+  }
+  ['chordRoot','chordQuality','chordInversion','bassNote'].forEach(id => {
+    document.getElementById(id).addEventListener('change', renderChordLab);
+  });
+  document.getElementById('playChordBtn').addEventListener('click', () => {
+    renderChordLab();
+    chordSoundingNotes.forEach(m => synth.noteOn(m, 0.8));
+    setTimeout(() => chordSoundingNotes.forEach(m => synth.noteOff(m)), 900);
+  });
+
+  // ---- Scale Lab ----------------------------------------------------------
+  const scaleTypeSelect = document.getElementById('scaleType');
+  Object.entries(T.SCALES).forEach(([key, def]) => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = def.label;
+    scaleTypeSelect.appendChild(opt);
+  });
+
+  function currentScaleNotes() {
+    const rootPc = Number(document.getElementById('scaleRoot').value);
+    const scaleKey = scaleTypeSelect.value;
+    const pcs = T.scaleNotes(rootPc, scaleKey);
+    const rootMidi = 60 + rootPc;
+    const ascending = T.SCALES[scaleKey].steps.map(s => rootMidi + s);
+    return { rootPc, scaleKey, pcs, ascending };
+  }
+
+  function renderScaleLab() {
+    if (!keyboard) return;
+    const { rootPc, pcs, ascending } = currentScaleNotes();
+    keyboard.clearHighlights();
+    keyboard.highlightPitchClasses(pcs, 'hl-scale', rootPc);
+    document.getElementById('scaleNotesOut').textContent = ascending.map(m => T.midiToName(m)).join('  ');
+    document.getElementById('scaleDegreesOut').textContent = ascending.map(m => T.intervalName(m - ascending[0])).join('  ');
+  }
+  ['scaleRoot','scaleType'].forEach(id => document.getElementById(id).addEventListener('change', renderScaleLab));
+
+  function playSequence(midis, gap = 260) {
+    midis.forEach((m, i) => {
+      setTimeout(() => {
+        synth.noteOn(m, 0.8);
+        setTimeout(() => synth.noteOff(m), gap * 0.85);
+      }, i * gap);
+    });
+  }
+  document.getElementById('playAscBtn').addEventListener('click', () => {
+    const { ascending } = currentScaleNotes();
+    playSequence(ascending);
+  });
+  document.getElementById('playDescBtn').addEventListener('click', () => {
+    const { ascending } = currentScaleNotes();
+    playSequence([...ascending].reverse());
+  });
+  document.getElementById('playRandomBtn').addEventListener('click', () => {
+    const { ascending } = currentScaleNotes();
+    const note = ascending[Math.floor(Math.random() * ascending.length)];
+    synth.noteOn(note, 0.85);
+    setTimeout(() => synth.noteOff(note), 500);
+  });
+
+  // Initial renders once the keyboard exists
+  const origInit = initKeyboardIfNeeded;
+  initKeyboardIfNeeded = function () {
+    origInit();
+    renderChordLab();
+    renderScaleLab();
+  };
+
+  // ---- PWA install prompt --------------------------------------------------
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    document.getElementById('installBtn').classList.remove('hidden');
+  });
+  document.getElementById('installBtn').addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    document.getElementById('installBtn').classList.add('hidden');
+  });
+
+  // ---- Service worker -------------------------------------------------------
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('sw.js').catch(() => {});
+    });
+  }
+})();
+</script>
+</body>
+</html>

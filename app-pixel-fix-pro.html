@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-site-verification" content="_QPgFU8Vg9y-4ZAhoCD7ZFY0DN1yyWxorY1IGg3oNzE" />
+<meta name="description" content="PixelProTech Solutions (Pty) Ltd — registered field IT engineering company serving Johannesburg, Pretoria and Gauteng. Structured diagnostics, on-site computer repair, networking and business technology support.">
+<meta name="keywords" content="field IT engineering Gauteng, computer repair Johannesburg, IT support Pretoria, laptop repair Centurion, network engineering Gauteng, business IT support Sandton, school IT support Pretoria, on-site diagnostics, registered IT company South Africa, PixelProTech Solutions">
+<meta name="author" content="PixelProTech Solutions (Pty) Ltd">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="PixelProTech Solutions (Pty) Ltd — Field IT Engineering, Gauteng">
+<meta property="og:description" content="Engineering reliable technology support across Gauteng. Registered private company. Structured diagnostics. Documented repairs.">
+<meta property="og:url" content="https://pixelprotech-za.github.io/pixel-fix-proZA/">
+<meta property="og:type" content="website">
+<title>PixelProTech Solutions (Pty) Ltd | Field IT Engineering — Gauteng</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<meta name="theme-color" content="#050507">
+
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFpElEQVR4nO3dPW7bWBSG4SsjgtO50ibcZTGpgmwjTWo32YaRyotxl02ocmdDhVMkNGiZkkjev3PO9z7NzGBgSSDPy0tKlL1Jxmy316+9XwPqOhxeNr1fw6DrC2HYMegVRfMnZehxScsYmj0Rg4+lWoRQ/QkYfOSqGUK1B2bwUVqNEIo/IIOP2kqGcFXqgVJi+NFGyTkrUhKDj15yV4PsFYDhR0+585cVAMMPC3LmcHUADD8sWTuPqwJg+GHRmrlcHADDD8uWzueiABh+eLBkTmcHwPDDk7nzOisAhh8ezZnbiwEw/PDs0vwWvRUC8OZsABz9EcG5OT4ZAMOPSE7NM6dAkDYZAEd/RDQ116wAkPYhAI7+iOx4vlkBIO1dABz9oWA856wAkPYWAEd/KBnmnRUA0ggA0jYpcfoDXawAkEYAkEYAkEYAkHbFBTCUsQJkODzep8PjfZefz31u/EMAkEYAkEYAkEYAkEYAkEYAkEYAkEYAkEYAkPap9wto6cftc9HHu0sPWY+b8/O5z33Orz+fiz+mVZvo9wLVGBAl0WMIHQDDX07UEEIGcGrwo+7E0s4dOKJtw3ABTO28aDutpejbM1QAxzsr0o7qLeq2DfM2aNQdZMXx9oxyfRUmgDGGv46I2zVEAOOjUcSdZMl4+0ZYBdwHEGEneOZ9+7sPYIyjfxuRtnOoAIClXAfAuX8/Ua4FXAcA5CIASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASCMASDP59wHm/gX0u/SQfn77WvnVzLffP6Xd7qb3y8ACJgPwaL9/evunUgR3vx/+/9vlg9b2y/e6L2YFkwHM3VBWfhvBMPzj/1aKwDOTAXiz293IRjCcgnr9tTRcBBcyNezHUcAeAijoVASEYBcBFLbb3bAaOEIAlRCBDwRQERHYRwCVEYFtBNAAEdhFAI0QgU0E0BAR2EMAjfFZgS0E0AGfFdhBAB0RQX8mb4bz+n2ANZRvpLPAZADqPA0/3weowNv3AdbidKc/kwEoODf8nk6B+D4AFrt05Pcy/BEQQGMMvy2cAjV0bvgZ/D4IoAGO+nZxClQZw28bAVTE8NtHAJUw/D5wDVABF7t+EEBBHPX94RSoEIbfJ1aAAnKHf+7dr1Ms3mDmickAvN0OPXVL8/j/wS6TAUSgMvjcDl2Bx9uhx6uAyvBHYDIAz9SG3/vt0ARQ0Nrht3hqoIK3QSGNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACCNACDNdQDj76Fa+oK8gvH29vp94JScBwDkIgBIcx8Ap0HtRTn9SSlAAGgr2kEmRACsAn14P/qnFCSAY0RQR6RTn0GYAI53CBGU8+P2Oez23Gy316+9X0RJUzsqytGqh+jbM1wAKZ0++kfacTUpbb+QAQyiLts9RBz+lIIHkFL9CIY/ELH2L9Xk/Hzuc88RdfAH4X89Om+RLhd96MfCrwC1DX/PbO3v+M/5+dznRqC3QYE1CADSCADSCADSCADSCADSCADSCADS+CAM0lgBIO3qcHjZ9H4RQC+sAJBGAJBGAJBGAJB2lVJKXAhD0eHwsmEFgDQCgLS3ADgNgpJh3lkBIO1dAKwCUDCec1YASPsQAKsAIjueb1YASJsMgFUAEU3NNSsApJ0MgFUAkZya57MrABEggnNzzCkQpF0MgFUAnl2a31krABHAozlzO/sUiAjgydx5XXQNQATwYMmcLr4IJgJYtnQ+V70LRASwaM1crn4blAhgydp5zPocgAhgQc4cZn8QRgToKXf+ig4vv2karZQ68Ba9FYLVAC2UnLNqA8tqgNJqHGCrH7EJAblqnlk0O2UhBCzV4pS6+Tk7IeCSlteSXS9aiQGDXm+g/AUnlgDrtihFYAAAAABJRU5ErkJggg==">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="PixelProTech">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--black:#050507;
+--dark:#0a0a0f;
+--card:#0f0f17;
+--card2:#12121c;
+--border:#1a1a2e;
+--border-lit:#2a2a44;
+--purple:#7b2fff;
+--purple-dim:#5a1fd4;
+--purple-glow:rgba(123,47,255,.5);
+--teal:#00d4aa;
+--teal-dim:#00a88a;
+--teal-glow:rgba(0,212,170,.5);
+--white:#f0f0f8;
+--muted:#8888aa;
+--dimmer:#4a4a66;
+--mono:'Space Mono',monospace;
+--sans:'Syne',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--sans);line-height:1.6;overflow-x:hidden;position:relative}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+/* NETWORK BACKGROUND CANVAS — signature element */
+#network-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.55}
+.bg-veil{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(5,5,7,0) 0%,var(--black) 78%)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,5,7,0.82);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1240px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:32px;height:32px;border:1.5px solid var(--purple);border-radius:6px;display:grid;place-items:center;box-shadow:0 0 12px rgba(123,47,255,.25) inset}
+.logo-icon svg{width:18px;height:18px}
+.logo-text{font-family:var(--sans);font-weight:800;font-size:15px;letter-spacing:2px;color:var(--white);text-transform:uppercase}
+.logo-sub{font-family:var(--mono);font-size:9px;color:var(--purple);letter-spacing:3px;text-transform:uppercase;margin-left:4px;opacity:.8}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;letter-spacing:1px;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--purple);color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:1px;padding:10px 20px;border-radius:4px;text-decoration:none;transition:background .2s,box-shadow .2s}
+.nav-cta:hover{background:var(--purple-dim);box-shadow:0 0 20px rgba(123,47,255,.35)}
+
+/* HUD LABEL */
+.hud-tag{font-family:var(--mono);font-size:11px;color:var(--teal);letter-spacing:3px;text-transform:uppercase;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hud-tag::before{content:'';width:16px;height:1px;background:var(--teal);box-shadow:0 0 6px var(--teal-glow)}
+
+/* GLASS PANEL */
+.glass{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0)),var(--card);border:1px solid var(--border);border-radius:10px;backdrop-filter:blur(6px);position:relative}
+.glass::after{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg,rgba(123,47,255,.18),transparent 40%,rgba(0,212,170,.1));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:130px 5% 80px;position:relative;overflow:hidden;z-index:1}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 30%,rgba(123,47,255,.14) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 15% 85%,rgba(0,212,170,.08) 0%,transparent 60%);z-index:0}
+.scanline{position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,212,170,.6),transparent);z-index:1;animation:scan 6s linear infinite}
+@keyframes scan{0%{top:0%;opacity:0}5%{opacity:1}95%{opacity:1}100%{top:100%;opacity:0}}
+.hero-content{position:relative;z-index:2;max-width:1240px;margin:0 auto;width:100%}
+.status-bar{display:inline-flex;align-items:center;gap:8px;background:rgba(0,212,170,.08);border:1px solid rgba(0,212,170,.25);border-radius:2px;padding:6px 14px;margin-bottom:36px;font-family:var(--mono);font-size:11px;color:var(--teal);letter-spacing:1.5px;box-shadow:0 0 20px rgba(0,212,170,.08)}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;box-shadow:0 0 8px var(--teal-glow)}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.hero h1{font-size:clamp(38px,6vw,78px);font-weight:800;line-height:1.05;margin-bottom:22px;letter-spacing:-1.5px}
+.hero-desc{font-family:var(--mono);font-size:14px;color:var(--muted);max-width:560px;line-height:1.9;margin-bottom:20px}
+.hero-lines{font-family:var(--mono);font-size:12px;color:var(--dimmer);line-height:2;margin-bottom:40px}
+.hero-lines span{color:var(--muted)}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:56px}
+.btn-primary{background:var(--purple);color:#fff;font-family:var(--mono);font-size:13px;letter-spacing:1px;padding:14px 28px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--purple-dim);transform:translateY(-1px);box-shadow:0 0 24px rgba(123,47,255,.3)}
+.btn-secondary{background:transparent;color:var(--white);font-family:var(--mono);font-size:13px;letter-spacing:1px;padding:14px 28px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);transition:all .2s;cursor:pointer}
+.btn-secondary:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-1px)}
+
+/* CREDENTIALS STRIP */
+.creds-strip{display:flex;flex-wrap:wrap;gap:12px}
+.cred-chip{display:flex;flex-direction:column;gap:3px;padding:12px 18px;border-radius:6px}
+.cred-chip .cred-label{font-family:var(--mono);font-size:9px;color:var(--dimmer);letter-spacing:1.5px;text-transform:uppercase}
+.cred-chip .cred-val{font-family:var(--mono);font-size:13px;color:var(--teal)}
+
+/* SECTION COMMONS */
+section{padding:100px 5%;position:relative;z-index:1}
+.section-inner{max-width:1240px;margin:0 auto}
+.section-title{font-size:clamp(30px,3.6vw,48px);font-weight:800;line-height:1.15;letter-spacing:-1px;margin-bottom:16px}
+.section-sub{font-family:var(--mono);font-size:14px;color:var(--muted);line-height:1.8;max-width:600px}
+
+/* CREDENTIALS SECTION */
+.credentials{background:var(--dark);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cred-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:44px}
+@media(max-width:1100px){.cred-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.cred-grid{grid-template-columns:1fr 1fr}}
+.cred-card{padding:28px 24px}
+.cred-card .cc-label{font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+.cred-card .cc-val{font-size:18px;font-weight:700;color:var(--white)}
+.cred-card .cc-sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px}
+
+/* OPERATIONS / PIPELINE MODULE */
+.how{background:var(--dark)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-top:56px}
+.step{background:var(--dark);padding:36px 30px;position:relative}
+.step-num{font-family:var(--mono);font-size:58px;font-weight:700;color:rgba(123,47,255,.12);line-height:1;margin-bottom:16px;display:block}
+.step-icon{width:38px;height:38px;border:1px solid var(--border);border-radius:6px;display:grid;place-items:center;margin-bottom:14px}
+.step-icon svg{width:19px;height:19px;stroke:var(--teal);fill:none;stroke-width:1.5}
+.step h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
+.step p{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.8}
+
+.pipeline-strip{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:10px;letter-spacing:1px}
+.pipeline-node{padding:8px 12px;border:1px solid var(--border);border-radius:3px;color:var(--dimmer);background:rgba(255,255,255,.015)}
+.pipeline-node.lit{color:var(--teal);border-color:rgba(0,212,170,.3)}
+.pipeline-arrow{align-self:center;color:var(--dimmer)}
+
+.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:32px}
+.who-card{padding:24px 20px}
+.who-tag{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:2px;margin-bottom:12px;display:block}
+.who-card h4{font-size:15px;font-weight:700;margin-bottom:8px}
+.who-card p{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7}
+
+/* SERVICES */
+.services{background:var(--black)}
+.location-banner{padding:16px 24px;display:flex;align-items:center;justify-content:space-between;margin-bottom:56px;flex-wrap:wrap;gap:16px}
+.location-left{display:flex;align-items:center;gap:12px}
+.location-left svg{width:18px;height:18px;stroke:var(--purple);fill:none;stroke-width:1.5;flex-shrink:0}
+.location-left p{font-family:var(--mono);font-size:13px}
+.location-left p strong{color:var(--white)}
+.location-left p span{color:var(--muted);font-size:11px;display:block;margin-top:2px}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc-card{overflow:hidden;transition:transform .25s,box-shadow .25s;cursor:default}
+.svc-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.35)}
+.svc-img{height:130px;background:var(--dark);position:relative;overflow:hidden;display:grid;place-items:center;border-bottom:1px solid var(--border)}
+.svc-img svg{width:54px;height:54px;opacity:.35}
+.svc-body{padding:22px 24px}
+.svc-icon{width:32px;height:32px;border:1px solid var(--border);border-radius:6px;display:grid;place-items:center;margin-bottom:12px}
+.svc-icon svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:1.5}
+.svc-body h3{font-size:16px;font-weight:700;margin-bottom:8px}
+.svc-body p{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.svc-reveal{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.svc-card:hover .svc-reveal{max-height:80px}
+.svc-reveal-inner{font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:.5px;padding-top:10px;border-top:1px solid var(--border);line-height:1.7}
+
+/* PRICING */
+.pricing{background:var(--dark)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.price-card{padding:32px 28px;position:relative;transition:transform .2s}
+.price-card:hover{transform:translateY(-3px)}
+.price-card.featured{border-color:var(--purple)!important;background:rgba(123,47,255,.06)}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--purple);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:1.5px;padding:4px 14px;border-radius:2px;text-transform:uppercase;white-space:nowrap}
+.price-name{font-size:18px;font-weight:800;margin-bottom:6px;letter-spacing:-.3px}
+.price-desc{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:24px;line-height:1.6}
+.price-amount{display:flex;align-items:baseline;gap:4px;margin-bottom:26px}
+.price-currency{font-family:var(--mono);font-size:16px;color:var(--muted)}
+.price-num{font-size:42px;font-weight:800;line-height:1;letter-spacing:-2px}
+.price-num.featured-num{color:var(--purple)}
+.price-unit{font-family:var(--mono);font-size:11px;color:var(--dimmer)}
+.price-num.custom{font-size:34px}
+.price-features{list-style:none;margin-bottom:26px;display:flex;flex-direction:column;gap:10px}
+.price-features li{display:flex;align-items:flex-start;gap:10px;font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.5}
+.price-features li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px;box-shadow:0 0 6px var(--teal-glow)}
+.price-btn{width:100%;padding:13px;border-radius:4px;font-family:var(--mono);font-size:12px;letter-spacing:1px;cursor:pointer;transition:all .2s;text-align:center;display:block;text-decoration:none}
+.price-btn.default{background:transparent;border:1px solid var(--border);color:var(--white)}
+.price-btn.default:hover{border-color:var(--dimmer)}
+.price-btn.featured-btn{background:var(--purple);border:none;color:#fff}
+.price-btn.featured-btn:hover{background:var(--purple-dim);box-shadow:0 0 20px rgba(123,47,255,.3)}
+.pricing-note{font-family:var(--mono);font-size:11px;color:var(--dimmer);margin-top:24px}
+
+/* ENGINE / WHY */
+.why{background:var(--black)}
+.why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+.why-card{padding:30px 26px;display:flex;gap:20px}
+.why-icon-wrap{width:44px;height:44px;border:1px solid var(--border);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+.why-icon-wrap svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.5}
+.why-text h3{font-size:17px;font-weight:700;margin-bottom:8px;letter-spacing:-.2px}
+.why-text p{font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7}
+.engine-block{margin-top:20px;padding:22px 24px}
+.engine-block .eb-label{font-family:var(--mono);font-size:10px;color:var(--purple);letter-spacing:2px;margin-bottom:10px}
+.engine-block p{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.9}
+.marquee-wrap{overflow:hidden;margin-top:56px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0}
+.marquee-inner{display:flex;gap:80px;animation:marquee 26s linear infinite;white-space:nowrap}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-text{font-family:var(--mono);font-size:13px;color:var(--dimmer);letter-spacing:3px;text-transform:uppercase}
+.marquee-text span{color:var(--purple);margin:0 20px}
+
+/* RECENT PROJECTS */
+.projects{background:var(--dark)}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:56px}
+.proj-card{padding:24px 26px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.proj-card h4{font-size:15px;font-weight:700;margin-bottom:6px}
+.proj-card p{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.proj-loc{font-family:var(--mono);font-size:10px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;padding-top:2px}
+.projects-note{font-family:var(--mono);font-size:11px;color:var(--dimmer);margin-top:24px;line-height:1.8}
+
+/* COVERAGE */
+.coverage{background:var(--black)}
+.coverage-inner{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:56px}
+.map-visual{padding:40px;position:relative;overflow:hidden}
+.map-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,212,170,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,170,.05) 1px,transparent 1px);background-size:30px 30px}
+.map-hex{position:relative;z-index:1}
+.map-hex svg{width:100%;max-width:280px}
+.coverage-list{display:flex;flex-direction:column;gap:24px}
+.cov-item{padding:24px}
+.cov-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.cov-header svg{width:16px;height:16px;stroke:var(--purple);fill:none;stroke-width:1.5}
+.cov-header h3{font-size:16px;font-weight:700}
+.cov-badge{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;padding:3px 8px;border-radius:2px;margin-left:auto}
+.badge-primary{background:rgba(123,47,255,.15);color:var(--purple);border:1px solid rgba(123,47,255,.3)}
+.badge-secondary{background:rgba(0,212,170,.1);color:var(--teal);border:1px solid rgba(0,212,170,.2)}
+.tag-row{display:flex;gap:8px;flex-wrap:wrap}
+.tag{background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:3px;padding:4px 10px;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.5px}
+.coverage-note{font-family:var(--mono);font-size:11px;color:var(--dimmer);display:flex;align-items:center;gap:8px;margin-top:16px}
+.coverage-note::before{content:'';width:20px;height:1px;background:var(--dimmer)}
+
+/* CONTACT / DIAGNOSIS PORTAL — Support Console */
+.contact{background:var(--dark)}
+.portal-tabs{display:flex;gap:8px;margin-bottom:32px}
+.portal-tab{padding:10px 22px;border-radius:4px;border:1px solid var(--border);background:var(--card);color:var(--muted);font-family:var(--mono);font-size:12px;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.portal-tab.active{border-color:var(--purple);color:var(--purple);background:rgba(123,47,255,.1)}
+.portal-section{display:none}
+.portal-section.active{display:block}
+.progress-bar{height:3px;background:var(--border);border-radius:2px;margin-bottom:28px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--teal));border-radius:2px;transition:width .4s;box-shadow:0 0 10px var(--teal-glow)}
+.diag-step{display:none}
+.diag-step.active{display:block}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+.diag-opt{border:1px solid var(--border);border-radius:6px;padding:14px 16px;cursor:pointer;transition:all .2s;background:rgba(255,255,255,.02)}
+.diag-opt:hover{border-color:var(--purple);background:rgba(123,47,255,.08)}
+.diag-opt.selected{border-color:var(--purple);background:rgba(123,47,255,.14);box-shadow:0 0 16px rgba(123,47,255,.12) inset}
+.diag-opt-label{font-size:13px;font-weight:700;display:block;margin-bottom:3px}
+.diag-opt-sub{font-family:var(--mono);font-size:10px;color:var(--muted)}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.form-group label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px}
+.form-group input,.form-group select,.form-group textarea{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px 14px;font-family:var(--mono);font-size:12px;color:var(--white);outline:none;transition:border-color .2s;width:100%}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--purple)}
+.form-group select option{background:var(--dark)}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit-btn{width:100%;background:var(--purple);color:#fff;font-family:var(--mono);font-size:13px;letter-spacing:1px;padding:15px;border:none;border-radius:4px;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{background:var(--purple-dim);box-shadow:0 0 20px rgba(123,47,255,.28)}
+.quote-result{border:1px solid var(--teal);border-radius:8px;padding:28px;background:rgba(0,212,170,.04);text-align:center;display:none;margin-bottom:20px}
+.quote-amount{font-size:40px;font-weight:800;color:var(--teal);font-family:var(--sans);line-height:1;text-shadow:0 0 24px rgba(0,212,170,.25)}
+.quote-sub{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:6px}
+.quote-tid{font-family:var(--mono);font-size:20px;color:var(--purple);font-weight:700;margin:16px 0 4px}
+.quote-tid-label{font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:2px}
+.quote-note{font-family:var(--mono);font-size:11px;color:var(--dimmer);line-height:1.7;margin-top:12px;border-top:1px solid rgba(0,212,170,.15);padding-top:12px}
+.wa-confirm{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px;border-radius:4px;border:1px solid #25d366;background:rgba(37,211,102,.08);color:#25d366;font-family:var(--mono);font-size:13px;letter-spacing:1px;cursor:pointer;transition:all .2s;text-decoration:none}
+.wa-confirm:hover{background:rgba(37,211,102,.15)}
+.btn-outline-teal{width:100%;background:transparent;color:var(--teal);border:1px solid var(--teal);font-family:var(--mono);font-size:12px;letter-spacing:1px;padding:12px;border-radius:4px;cursor:pointer;margin-top:10px;transition:all .2s}
+.btn-outline-teal:hover{background:rgba(0,212,170,.08)}
+.ticket-preview{padding:24px;margin-bottom:20px}
+.ticket-header-row{font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.ticket-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.03);font-family:var(--mono);font-size:12px}
+.ticket-label{color:var(--dimmer)}
+.ticket-val{color:var(--muted)}
+.ticket-val.active{color:var(--teal)}
+.ticket-id-val{color:var(--purple)}
+.tracker-search{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:12px 14px;font-family:var(--mono);font-size:12px;color:var(--white);outline:none;transition:border-color .2s;width:100%;margin-bottom:20px}
+.tracker-search:focus{border-color:var(--teal)}
+.repair-card{padding:20px 24px;margin-bottom:12px}
+.repair-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.repair-device{font-size:15px;font-weight:700}
+.repair-issue{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:3px}
+.repair-tid{font-family:var(--mono);font-size:10px;color:var(--dimmer);margin-bottom:12px}
+.repair-tid span{color:var(--purple)}
+.status-badge{padding:4px 10px;border-radius:2px;font-family:var(--mono);font-size:10px;letter-spacing:1px}
+.s-received{background:rgba(123,47,255,.15);color:var(--purple);border:1px solid rgba(123,47,255,.3)}
+.s-diagnosing{background:rgba(0,212,170,.1);color:var(--teal);border:1px solid rgba(0,212,170,.25)}
+.s-repairing{background:rgba(239,170,50,.1);color:#efaa32;border:1px solid rgba(239,170,50,.3)}
+.s-ready{background:rgba(80,220,100,.1);color:#50dc64;border:1px solid rgba(80,220,100,.3)}
+.repair-timeline{border-top:1px solid var(--border);padding-top:12px;display:flex;flex-direction:column;gap:8px}
+.tl-row{display:flex;align-items:flex-start;gap:10px}
+.tl-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.tl-dot-done{background:var(--teal)}
+.tl-dot-active{background:var(--purple)}
+.tl-dot-pending{background:var(--border)}
+.tl-text{font-family:var(--mono);font-size:11px;color:var(--dimmer)}
+.tl-text-done{color:var(--muted)}
+.tl-text-active{color:var(--purple)}
+.tracker-empty{font-family:var(--mono);font-size:12px;color:var(--dimmer);text-align:center;padding:32px;border:1px solid var(--border);border-radius:8px}
+.port-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:48px 5%;position:relative;z-index:1}
+.footer-inner{max-width:1240px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.footer-brand p{font-family:var(--mono);font-size:11px;color:var(--dimmer);line-height:1.8;margin-top:16px;max-width:260px}
+.footer-col h4{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col ul li a{font-family:var(--mono);font-size:11px;color:var(--dimmer);text-decoration:none;transition:color .2s}
+.footer-col ul li a:hover{color:var(--white)}
+.footer-col ul li{font-family:var(--mono);font-size:11px;color:var(--dimmer);display:flex;align-items:center;gap:8px}
+.footer-col ul li svg{width:12px;height:12px;stroke:var(--teal);fill:none;stroke-width:1.5;flex-shrink:0}
+.footer-legal{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:20px 0;margin-bottom:20px;display:flex;flex-wrap:wrap;gap:24px;font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:1px}
+.footer-legal strong{color:var(--muted)}
+.footer-bottom{padding-top:4px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-sig{font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:.5px}
+.sig-block{font-family:var(--mono);font-size:9px;color:rgba(123,47,255,.35);letter-spacing:1.5px;text-align:right;line-height:1.6}
+.sig-block .sig-line{display:block}
+
+/* CHAT BUBBLE */
+.chat-bubble{position:fixed;bottom:24px;right:24px;width:48px;height:48px;background:var(--teal);border-radius:50%;display:grid;place-items:center;cursor:pointer;z-index:200;box-shadow:0 4px 24px rgba(0,212,170,.35)}
+.chat-bubble svg{width:22px;height:22px;stroke:#000;fill:none;stroke-width:2}
+
+[class*="watermark"],[class*="poweredby"],[class*="branding"],[id*="watermark"]{display:none!important}
+
+@media(max-width:900px){
+.steps{grid-template-columns:1fr}
+.services-grid{grid-template-columns:1fr}
+.pricing-grid{grid-template-columns:1fr}
+.why-grid{grid-template-columns:1fr}
+.projects-grid{grid-template-columns:1fr}
+.coverage-inner{grid-template-columns:1fr}
+.cred-grid{grid-template-columns:1fr 1fr}
+.footer-top{grid-template-columns:1fr 1fr}
+.who-grid{grid-template-columns:1fr 1fr}
+.port-grid{grid-template-columns:1fr;gap:32px}
+.form-row{grid-template-columns:1fr;gap:0}
+.cred-grid{grid-template-columns:1fr 1fr}
+.nav-links{display:none}
+#network-canvas{opacity:.35}
+}
+</style>
+</head>
+<body>
+
+<canvas id="network-canvas"></canvas>
+<div class="bg-veil"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 18 18" fill="none" stroke="#7b2fff" stroke-width="1.5">
+          <rect x="2" y="2" width="6" height="6" rx="1"/>
+          <rect x="10" y="2" width="6" height="6" rx="1"/>
+          <rect x="2" y="10" width="6" height="6" rx="1"/>
+          <rect x="10" y="10" width="6" height="6" rx="1"/>
+        </svg>
+      </div>
+      <span class="logo-text">PixelProTech <span class="logo-sub">Field Engineering</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#coverage">Coverage</a></li>
+      <li><a href="#contact">Support</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Request Support</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="scanline"></div>
+  <div class="hero-content">
+    <div class="status-bar">
+      <span class="status-dot"></span>
+      SYSTEM STATUS: ONLINE &nbsp;·&nbsp; REG 2026/622131/07 &nbsp;·&nbsp; GAUTENG
+    </div>
+    <h1>Engineering Reliable<br><span style="color:var(--purple)">Technology Support</span><br><span style="color:var(--teal)">Across Gauteng.</span></h1>
+    <p class="hero-desc">Professional on-site IT support, computer repair, network engineering and technical diagnostics for homes, schools and businesses.</p>
+    <div class="hero-lines">
+      <div><span>Every service</span> begins with structured diagnostics.</div>
+      <div><span>Every repair</span> is documented.</div>
+      <div><span>Every recommendation</span> is explained.</div>
+      <div><span>Every solution</span> is verified before handover.</div>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        Book On-Site Visit
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 7h10M8 3l4 4-4 4"/></svg>
+      </a>
+      <a href="https://wa.me/27651971461" class="btn-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        Request Remote Support
+      </a>
+    </div>
+    <div class="creds-strip">
+      <div class="cred-chip glass"><span class="cred-label">Status</span><span class="cred-val">Registered (Pty) Ltd</span></div>
+      <div class="cred-chip glass"><span class="cred-label">B-BBEE</span><span class="cred-val">Level 1 — 135% Procurement Recognition</span></div>
+      <div class="cred-chip glass"><span class="cred-label">Tax</span><span class="cred-val">SARS Registered</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section class="credentials" id="credentials">
+  <div class="section-inner">
+    <span class="hud-tag">// Company credentials</span>
+    <h2 class="section-title">Verified. Registered. Accountable.</h2>
+    <p class="section-sub">PixelProTech Solutions is a legally incorporated South African private company — not a freelance operation.</p>
+    <div class="cred-grid">
+      <div class="cred-card glass"><div class="cc-label">Company</div><div class="cc-val">PixelProTech Solutions (Pty) Ltd</div><div class="cc-sub">Private Company, South Africa</div></div>
+      <div class="cred-card glass"><div class="cc-label">Registration No.</div><div class="cc-val">2026/622131/07</div><div class="cc-sub">Registered 04 August 2026 · In Business</div></div>
+      <div class="cred-card glass"><div class="cc-label">B-BBEE Status</div><div class="cc-val">Level 1 Contributor</div><div class="cc-sub">135% procurement recognition</div></div>
+      <div class="cred-card glass"><div class="cc-label">Tax Status</div><div class="cc-val">SARS Registered</div><div class="cc-sub">Verified with SARS</div></div>
+      <div class="cred-card glass"><div class="cc-label">Registered Office</div><div class="cc-val">Centurion, Gauteng</div><div class="cc-sub">South Africa</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATIONS MODULE -->
+<section class="how" id="how">
+  <div class="section-inner">
+    <span class="hud-tag">// Operations module</span>
+    <h2 class="section-title">You call.<br><span style="color:var(--purple)">We engineer the fix.</span></h2>
+    <p class="section-sub">Mobile field engineering — no fixed workshop. Technicians travel directly to your home, school or business anywhere in Gauteng, following a structured diagnostic workflow before any repair begins.</p>
+
+    <div class="steps">
+      <div class="step glass">
+        <span class="step-num">01</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.9v2.02z"/></svg>
+        </div>
+        <h3>Request Support</h3>
+        <p>Describe the device and symptom. A remote assessment begins immediately.</p>
+      </div>
+      <div class="step glass">
+        <span class="step-num">02</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>On-Site Diagnostics</h3>
+        <p>A technician arrives at your location and isolates the fault before any repair or cost is agreed.</p>
+      </div>
+      <div class="step glass">
+        <span class="step-num">03</span>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3>Repair, Test, Handover</h3>
+        <p>Approved repairs are completed on-site, tested, documented, and handed over with follow-up support.</p>
+      </div>
+    </div>
+
+    <div class="pipeline-strip">
+      <span class="pipeline-node lit">REQUEST</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node lit">REMOTE ASSESSMENT</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node lit">ON-SITE DIAGNOSTICS</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">FAULT IDENTIFICATION</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">CLIENT APPROVAL</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">REPAIR</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">QUALITY TESTING</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">DOCUMENTATION</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">CLIENT HANDOVER</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-node">POST-REPAIR SUPPORT</span>
+    </div>
+
+    <div class="who-grid" style="margin-top:40px">
+      <div class="who-card glass">
+        <span class="who-tag">HOME</span>
+        <h4>Home Users</h4>
+        <p>Slow PCs, virus removal, WiFi issues — resolved on-site.</p>
+      </div>
+      <div class="who-card glass">
+        <span class="who-tag">EDUCATION</span>
+        <h4>Schools</h4>
+        <p>Computer laboratories, admin systems, projectors and education technology.</p>
+      </div>
+      <div class="who-card glass">
+        <span class="who-tag">BUSINESS</span>
+        <h4>Offices &amp; SMEs</h4>
+        <p>Workstations, servers, and networking kept operational.</p>
+      </div>
+      <div class="who-card glass">
+        <span class="who-tag">RETAIL</span>
+        <h4>Shops &amp; Retail</h4>
+        <p>POS terminals, receipt printers, barcode scanners, routers.</p>
+      </div>
+      <div class="who-card glass">
+        <span class="who-tag">PROFESSIONAL</span>
+        <h4>Medical, Legal &amp; Accounting</h4>
+        <p>Client-data workstations, secure networks, uninterrupted uptime.</p>
+      </div>
+      <div class="who-card glass">
+        <span class="who-tag">PROPERTY</span>
+        <h4>Property Management</h4>
+        <p>Office systems, access control, shared network infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE MATRIX -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <span class="hud-tag">// Service matrix</span>
+    <h2 class="section-title">Field IT engineering,<br>structured end to end.</h2>
+
+    <div class="location-banner glass">
+      <div class="location-left">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <p>
+          <strong>Anywhere in Gauteng — We Come To You</strong>
+          <span>Johannesburg · Pretoria · Midrand · Centurion · Sandton · and beyond</span>
+        </p>
+      </div>
+      <button onclick="quoteFor('')" class="btn-primary" style="padding:10px 20px;font-size:12px">Book On-Site Visit →</button>
+    </div>
+
+    <div class="services-grid">
+      <div class="svc-card glass">
+        <div class="svc-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="#7b2fff" stroke-width="1"><rect x="5" y="10" width="50" height="35" rx="3"/><path d="M20 45h20M30 45v5"/></svg>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+          <h3>Business IT Support</h3>
+          <p>Workstation, server and infrastructure support for offices and SMEs.</p>
+          <div class="svc-reveal"><div class="svc-reveal-inner">// Includes: setup, troubleshooting, maintenance plans</div></div>
+        </div>
+      </div>
+      <div class="svc-card glass">
+        <div class="svc-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="#00d4aa" stroke-width="1"><path d="M10 50L50 10M20 15l-10 35M40 45l10-35"/></svg>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3>Computer &amp; Laptop Repair</h3>
+          <p>Hardware diagnostics and repair for laptops, desktops and workstations.</p>
+          <div class="svc-reveal"><div class="svc-reveal-inner">// Includes: SSD/RAM upgrades, screen and battery replacement</div></div>
+        </div>
+      </div>
+      <div class="svc-card glass">
+        <div class="svc-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="#7b2fff" stroke-width="1"><path d="M5 30c5-15 45-15 50 0c-5 15-45 15-50 0z"/><circle cx="30" cy="30" r="8"/></svg>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M1.5 8.5s4-5.5 10.5-5.5S22.5 8.5 22.5 8.5M1.5 15.5s4 5.5 10.5 5.5 10.5-5.5 10.5-5.5"/><path d="M12 3v18M3 12h18" opacity=".4"/></svg></div>
+          <h3>Networking &amp; Wi-Fi</h3>
+          <p>Network setup, troubleshooting and Wi-Fi optimisation for reliable connectivity.</p>
+          <div class="svc-reveal"><div class="svc-reveal-inner">// Includes: router config, coverage optimisation, VLANs</div></div>
+        </div>
+      </div>
+      <div class="svc-card glass">
+        <div class="svc-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="#00d4aa" stroke-width="1"><ellipse cx="30" cy="30" rx="20" ry="12"/><ellipse cx="30" cy="22" rx="20" ry="12"/></svg>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9" ry="5"/><path d="M3 12v5c0 2.76 4.03 5 9 5s9-2.24 9-5v-5"/><path d="M3 7v5"/><path d="M21 7v5"/></svg></div>
+          <h3>Data Backup &amp; Recovery</h3>
+          <p>Recovery from damaged or corrupted storage, plus ongoing backup setup.</p>
+          <div class="svc-reveal"><div class="svc-reveal-inner">// Includes: drive diagnostics, cloud backup configuration</div></div>
+        </div>
+      </div>
+      <div class="svc-card glass">
+        <div class="svc-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="#7b2fff" stroke-width="1"><path d="M30 10 L50 20 L50 35 Q50 50 30 55 Q10 50 10 35 L10 20 Z"/></svg>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Software &amp; Security</h3>
+          <p>Virus and malware removal, OS recovery, and software troubleshooting.</p>
+          <div class="svc-reveal"><div class="svc-reveal-inner">// Includes: OS reinstall, security hardening, updates</div></div>
+        </div>
+      </div>
+      <div class="svc-card glass">
+        <div class="svc-img">
+          <svg viewBox="0 0 60 60" fill="none" stroke="#00d4aa" stroke-width="1"><circle cx="30" cy="30" r="18"/><path d="M24 24h12v12H24z"/><path d="M30 12v6M30 42v6M12 30h6M42 30h6"/></svg>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg></div>
+          <h3>Printer &amp; Peripheral Support</h3>
+          <p>Printers, scanners, POS peripherals and office equipment.</p>
+          <div class="svc-reveal"><div class="svc-reveal-inner">// Includes: driver setup, network printer deployment</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <span class="hud-tag">// Pricing protocol</span>
+    <h2 class="section-title">Transparent pricing.<br>No hidden fees.</h2>
+    <p class="section-sub">Diagnosis first. Approval before parts. Replacement parts are quoted separately before installation.</p>
+
+    <div class="pricing-grid">
+      <div class="price-card glass">
+        <p class="price-name">On-Site Diagnostic</p>
+        <p class="price-desc">Ideal for home users and single-device issues.</p>
+        <div class="price-amount">
+          <span class="price-currency">R</span>
+          <span class="price-num">350</span>
+          <span class="price-unit">per visit</span>
+        </div>
+        <ul class="price-features">
+          <li>On-site diagnosis</li>
+          <li>Virus &amp; malware removal</li>
+          <li>Software troubleshooting</li>
+          <li>WiFi setup &amp; fixes</li>
+          <li>30-day follow-up support</li>
+        </ul>
+        <button onclick="quoteFor('On-Site Diagnostic — Home User')" class="price-btn default">Get a Quote</button>
+      </div>
+      <div class="price-card glass featured">
+        <span class="price-badge">Most Requested</span>
+        <p class="price-name">Business Call-Out</p>
+        <p class="price-desc">For offices, shops, and small businesses.</p>
+        <div class="price-amount">
+          <span class="price-currency" style="color:var(--purple)">R</span>
+          <span class="price-num featured-num">650</span>
+          <span class="price-unit">per visit</span>
+        </div>
+        <ul class="price-features">
+          <li>Everything in On-Site Diagnostic</li>
+          <li>Network &amp; router config</li>
+          <li>Printer &amp; peripheral setup</li>
+          <li>Data backup assistance</li>
+          <li>60-day follow-up support</li>
+          <li>Priority response time</li>
+        </ul>
+        <button onclick="quoteFor('Business Call-Out — Office/Shop')" class="price-btn featured-btn">Get a Quote</button>
+      </div>
+      <div class="price-card glass">
+        <p class="price-name">School Support</p>
+        <p class="price-desc">Computer labs, admin offices, full campus.</p>
+        <div class="price-amount">
+          <span class="price-num custom">Custom</span>
+          <span class="price-unit">quote</span>
+        </div>
+        <ul class="price-features">
+          <li>Full lab assessment</li>
+          <li>Bulk PC setup &amp; repair</li>
+          <li>Network infrastructure</li>
+          <li>Projector &amp; AV support</li>
+          <li>Ongoing maintenance plan</li>
+          <li>Dedicated support line</li>
+        </ul>
+        <button onclick="quoteFor('School Support — Custom Quote')" class="price-btn default">Get a Quote</button>
+      </div>
+    </div>
+    <p class="pricing-note">Replacement parts are quoted separately. No work proceeds without client approval.<br>Managed support and emergency call-outs are available on request — ask when you book.</p>
+  </div>
+</section>
+
+<!-- WHY / ENGINE -->
+<section class="why" id="why">
+  <div class="section-inner">
+    <span class="hud-tag">// Trust protocol</span>
+    <h2 class="section-title">Why Gauteng works with us</h2>
+
+    <div class="why-grid">
+      <div class="why-card glass">
+        <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <div class="why-text">
+          <h3>Structured Diagnostics</h3>
+          <p>Every repair begins with technical fault isolation — not guesswork.</p>
+        </div>
+      </div>
+      <div class="why-card glass">
+        <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="why-text">
+          <h3>Registered Company</h3>
+          <p>Legally incorporated South African private company, accountable by design.</p>
+        </div>
+      </div>
+      <div class="why-card glass">
+        <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+        <div class="why-text">
+          <h3>Mobile Engineering</h3>
+          <p>No fixed workshop — we come directly to your location, anywhere in Gauteng.</p>
+        </div>
+      </div>
+      <div class="why-card glass">
+        <div class="why-icon-wrap"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg></div>
+        <div class="why-text">
+          <h3>Documented Repairs</h3>
+          <p>Every repair is recorded, with post-service support that continues after the visit.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="engine-block glass">
+      <div class="eb-label">// PIXEL DIAGNOSTIC ENGINE™</div>
+      <p>Every support request follows a structured technical assessment process before repairs begin. The workflow documents symptoms, isolates probable causes, prioritises testing, records findings, and recommends the most appropriate corrective action before work starts. This is a documented engineering workflow — not a marketing slogan.</p>
+    </div>
+
+    <div class="marquee-wrap">
+      <div class="marquee-inner">
+        <span class="marquee-text">REGISTERED COMPANY<span>·</span></span>
+        <span class="marquee-text">LEVEL 1 B-BBEE<span>·</span></span>
+        <span class="marquee-text">STRUCTURED DIAGNOSTICS<span>·</span></span>
+        <span class="marquee-text">WE COME TO YOU<span>·</span></span>
+        <span class="marquee-text">DOCUMENTED REPAIRS<span>·</span></span>
+        <span class="marquee-text">REGISTERED COMPANY<span>·</span></span>
+        <span class="marquee-text">LEVEL 1 B-BBEE<span>·</span></span>
+        <span class="marquee-text">STRUCTURED DIAGNOSTICS<span>·</span></span>
+        <span class="marquee-text">WE COME TO YOU<span>·</span></span>
+        <span class="marquee-text">DOCUMENTED REPAIRS<span>·</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT PROJECTS -->
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <span class="hud-tag">// Recent projects</span>
+    <h2 class="section-title">Recently completed</h2>
+    <p class="section-sub">Real work, replacing placeholders as jobs are completed and client-approved.</p>
+    <div class="projects-grid">
+      <div class="proj-card glass"><div><h4>Laptop SSD Replacement</h4><p>Hardware upgrade and data migration.</p></div><span class="proj-loc">Centurion</span></div>
+      <div class="proj-card glass"><div><h4>Business Wi-Fi Optimisation</h4><p>Coverage and throughput improvement.</p></div><span class="proj-loc">Johannesburg</span></div>
+      <div class="proj-card glass"><div><h4>Computer Laboratory Maintenance</h4><p>Full lab assessment and servicing.</p></div><span class="proj-loc">Pretoria</span></div>
+      <div class="proj-card glass"><div><h4>Office Printer Deployment</h4><p>Network printer setup and configuration.</p></div><span class="proj-loc">Midrand</span></div>
+    </div>
+    <div class="projects-note">// As genuine work is completed, these are replaced with client-approved case studies.</div>
+  </div>
+</section>
+
+<!-- COVERAGE MATRIX -->
+<section class="coverage" id="coverage">
+  <div class="section-inner">
+    <span class="hud-tag">// Coverage matrix</span>
+    <h2 class="section-title">Serving Gauteng</h2>
+
+    <div class="coverage-inner">
+      <div class="map-visual glass">
+        <div class="map-grid"></div>
+        <div class="map-hex">
+          <svg viewBox="0 0 280 260" fill="none">
+            <polygon points="140,20 240,75 240,185 140,240 40,185 40,75" stroke="#00d4aa" stroke-width="1" fill="rgba(0,212,170,0.04)"/>
+            <polygon points="140,55 210,95 210,175 140,215 70,175 70,95" stroke="rgba(0,212,170,0.3)" stroke-width=".5" stroke-dasharray="4,4" fill="none"/>
+            <circle cx="100" cy="165" r="8" fill="#7b2fff"/>
+            <circle cx="100" cy="165" r="14" stroke="#7b2fff" stroke-width=".5" fill="none" opacity=".4"/>
+            <text x="115" y="162" fill="#f0f0f8" font-family="Space Mono,monospace" font-size="10" font-weight="700">Johannesburg</text>
+            <text x="115" y="174" fill="#7b2fff" font-family="Space Mono,monospace" font-size="8" letter-spacing="1">PRIMARY REGION</text>
+            <circle cx="155" cy="110" r="6" fill="#00d4aa"/>
+            <circle cx="155" cy="110" r="11" stroke="#00d4aa" stroke-width=".5" fill="none" opacity=".4"/>
+            <text x="168" y="107" fill="#f0f0f8" font-family="Space Mono,monospace" font-size="10" font-weight="700">Pretoria</text>
+            <text x="168" y="119" fill="#00d4aa" font-family="Space Mono,monospace" font-size="8" letter-spacing="1">SECONDARY REGION</text>
+            <line x1="100" y1="157" x2="155" y2="118" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="coverage-list">
+        <div class="cov-item glass">
+          <div class="cov-header">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <h3>Johannesburg</h3>
+            <span class="cov-badge badge-primary">PRIMARY</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Sandton</span><span class="tag">Randburg</span><span class="tag">Roodepoort</span><span class="tag">Midrand</span><span class="tag">Fourways</span><span class="tag">CBD</span>
+          </div>
+        </div>
+        <div class="cov-item glass">
+          <div class="cov-header">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <h3>Pretoria</h3>
+            <span class="cov-badge badge-secondary">SECONDARY</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag">Centurion</span><span class="tag">Hatfield</span><span class="tag">Menlyn</span><span class="tag">Brooklyn</span><span class="tag">Montana</span><span class="tag">CBD</span>
+          </div>
+        </div>
+        <p class="coverage-note">On-site and remote support available depending on service requirements</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT CONSOLE -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <span class="hud-tag">// Support console</span>
+    <h2 class="section-title">Start your diagnosis</h2>
+    <p class="section-sub">Get an instant estimate or track your existing repair. We come to you — anywhere in Gauteng.</p>
+
+    <div class="portal-tabs" style="margin-top:40px">
+      <button class="portal-tab active" onclick="switchPortal('diagnose')">DIAGNOSE + QUOTE</button>
+      <button class="portal-tab" onclick="switchPortal('track')">TRACK MY REPAIR</button>
+    </div>
+
+    <!-- DIAGNOSE TAB -->
+    <div id="portal-diagnose" class="portal-section active">
+      <div class="port-grid">
+        <div>
+          <div class="ticket-preview glass">
+            <div class="ticket-header-row">Live Ticket Preview</div>
+            <div class="ticket-row"><span class="ticket-label">Ticket ID</span><span class="ticket-val ticket-id-val" id="tid">PPT-XXXXXX</span></div>
+            <div class="ticket-row"><span class="ticket-label">Device</span><span class="ticket-val" id="t-device">—</span></div>
+            <div class="ticket-row"><span class="ticket-label">Symptom</span><span class="ticket-val" id="t-symptom">—</span></div>
+            <div class="ticket-row"><span class="ticket-label">Client</span><span class="ticket-val" id="t-client">—</span></div>
+            <div class="ticket-row"><span class="ticket-label">Status</span><span class="ticket-val active">Pending Submission</span></div>
+          </div>
+          <div class="glass" style="padding:20px;font-family:var(--mono);font-size:11px;color:var(--dimmer);line-height:1.8">
+            <div style="color:var(--teal);margin-bottom:8px;letter-spacing:1px">// HOW IT WORKS</div>
+            <div>01 → Select your device type</div>
+            <div>02 → Choose your symptom</div>
+            <div>03 → Enter your details</div>
+            <div>04 → Get instant estimate</div>
+            <div>05 → Confirm on WhatsApp</div>
+          </div>
+        </div>
+
+        <div>
+          <div class="progress-bar"><div class="progress-fill" id="prog" style="width:20%"></div></div>
+
+          <div class="diag-step active" id="ds1">
+            <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:16px">STEP 01 — SELECT DEVICE</div>
+            <div class="diag-grid">
+              <div class="diag-opt glass" onclick="pickOpt(this,'device','Laptop')" data-g="device">
+                <span class="diag-opt-label">Laptop</span>
+                <span class="diag-opt-sub">Any brand or model</span>
+              </div>
+              <div class="diag-opt glass" onclick="pickOpt(this,'device','Cellphone')" data-g="device">
+                <span class="diag-opt-label">Cellphone</span>
+                <span class="diag-opt-sub">Android &amp; iOS</span>
+              </div>
+              <div class="diag-opt glass" onclick="pickOpt(this,'device','Desktop Tower')" data-g="device">
+                <span class="diag-opt-label">Desktop Tower</span>
+                <span class="diag-opt-sub">PC &amp; custom builds</span>
+              </div>
+              <div class="diag-opt glass" onclick="pickOpt(this,'device','Smart TV')" data-g="device">
+                <span class="diag-opt-label">Smart TV</span>
+                <span class="diag-opt-sub">All brands</span>
+              </div>
+            </div>
+            <button class="submit-btn" onclick="goDS(2)">NEXT →</button>
+          </div>
+
+          <div class="diag-step" id="ds2">
+            <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:16px">STEP 02 — SELECT SYMPTOM</div>
+            <div class="diag-grid" id="symptom-grid"></div>
+            <button class="submit-btn" onclick="goDS(3)">NEXT →</button>
+          </div>
+
+          <div class="diag-step" id="ds3">
+            <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:16px">STEP 03 — YOUR DETAILS</div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="d-name" placeholder="Your name" oninput="document.getElementById('t-client').textContent=this.value||'—'">
+              </div>
+              <div class="form-group">
+                <label>WhatsApp Number *</label>
+                <input type="tel" id="d-phone" placeholder="065 197 1461">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Describe the problem (optional)</label>
+              <textarea id="d-desc" placeholder="Any extra detail helps us quote accurately..."></textarea>
+            </div>
+            <button class="submit-btn" onclick="generateQuote()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              GET INSTANT ESTIMATE
+            </button>
+          </div>
+
+          <div class="diag-step" id="ds4">
+            <div class="quote-result glass" id="qresult">
+              <div style="font-family:var(--mono);font-size:10px;color:var(--dimmer);letter-spacing:2px;margin-bottom:12px">ESTIMATED REPAIR COST</div>
+              <div class="quote-amount" id="q-amount"></div>
+              <div class="quote-sub">On-site diagnosis · Gauteng-wide coverage</div>
+              <div style="margin-top:16px">
+                <div class="quote-tid-label">YOUR TICKET ID</div>
+                <div class="quote-tid" id="q-tid"></div>
+              </div>
+              <div class="quote-note">Estimate based on symptom. Final price confirmed after on-site diagnosis.<br>Parts (if required) quoted separately — no hidden fees.</div>
+            </div>
+            <a class="wa-confirm" id="wa-link" href="#" onclick="openWA(event)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+              CONFIRM BOOKING ON WHATSAPP
+            </a>
+            <button class="btn-outline-teal" onclick="resetDiag()">START NEW DIAGNOSIS</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRACK TAB -->
+    <div id="portal-track" class="portal-section">
+      <div class="port-grid">
+        <div>
+          <div class="glass" style="padding:24px;font-family:var(--mono);font-size:11px;color:var(--dimmer);line-height:2">
+            <div style="color:var(--purple);margin-bottom:10px;letter-spacing:1px">// REPAIR STAGES</div>
+            <div>● RECEIVED — We have your device</div>
+            <div>● DIAGNOSING — Fault identification</div>
+            <div>● IN REPAIR — Active repair underway</div>
+            <div style="color:var(--teal)">● READY — Collection / delivery ready</div>
+            <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:16px;color:var(--dimmer)">Your ticket ID was sent via WhatsApp when you booked. Need help? Call 065 197 1461</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-bottom:12px">ENTER TICKET ID OR YOUR NAME</div>
+          <input class="tracker-search" type="text" id="track-input" placeholder="e.g. PPT-4821 or Thabo...">
+          <button class="submit-btn" style="margin-top:14px" onclick="requestStatusOnWA()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            CHECK STATUS ON WHATSAPP
+          </button>
+          <div id="track-results"><div class="tracker-empty">We'll reply on WhatsApp with your live status — usually within a few hours.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo" style="text-decoration:none">
+          <div class="logo-icon"><svg viewBox="0 0 18 18" fill="none" stroke="#7b2fff" stroke-width="1.5"><rect x="2" y="2" width="6" height="6" rx="1"/><rect x="10" y="2" width="6" height="6" rx="1"/><rect x="2" y="10" width="6" height="6" rx="1"/><rect x="10" y="10" width="6" height="6" rx="1"/></svg></div>
+          <span class="logo-text">PixelProTech <span class="logo-sub">Solutions</span></span>
+        </a>
+        <p>Professional field IT support, computer repair, network engineering and business technology support. Serving Johannesburg, Pretoria and Gauteng.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#credentials">Credentials</a></li>
+          <li><a href="#coverage">Coverage</a></li>
+          <li><a href="#contact">Support</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-8.08-8.08 19.79 19.79 0 01-3.07-8.63A2 2 0 012.01 2H5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            065 197 1461
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:pixelprotechsolutions@proton.me" style="color:inherit;text-decoration:none">pixelprotechsolutions@proton.me</a>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Johannesburg &amp; Pretoria, Gauteng
+          </li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Business IT Support</a></li>
+          <li><a href="#services">Computer &amp; Laptop Repair</a></li>
+          <li><a href="#services">Networking &amp; Wi-Fi</a></li>
+          <li><a href="#services">Data Backup &amp; Recovery</a></li>
+          <li><a href="#services">Software &amp; Security</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span><strong>PIXELPROTECH SOLUTIONS (PTY) LTD</strong></span>
+      <span>Reg. 2026/622131/07</span>
+      <span>Level 1 B-BBEE Contributor (135% Procurement Recognition)</span>
+      <span>SARS Registered Entity</span>
+      <span>Centurion, Gauteng</span>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-sig">© 2026 PixelProTech Solutions (Pty) Ltd. All rights reserved.</span>
+      <div class="sig-block">
+        <span class="sig-line">[ SYS ] PIXEL DIAGNOSTIC ENGINE™</span>
+        <span class="sig-line">[ NET ] JHB · PTA · GAUTENG</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CHAT BUBBLE -->
+<a href="https://wa.me/27651971461" class="chat-bubble" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+</a>
+
+<script>
+/* ===== NETWORK BACKGROUND — computational signature element ===== */
+(function(){
+  const canvas=document.getElementById('network-canvas');
+  const ctx=canvas.getContext('2d');
+  let w,h,nodes=[],mouse={x:-9999,y:-9999};
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    w=canvas.width=window.innerWidth;
+    h=canvas.height=Math.max(window.innerHeight,document.body.scrollHeight);
+    const count=Math.min(70,Math.floor((w*h)/28000));
+    nodes=[];
+    for(let i=0;i<count;i++){
+      nodes.push({
+        x:Math.random()*w,y:Math.random()*h,
+        vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,
+        r:Math.random()*1.6+.6
+      });
+    }
+  }
+  window.addEventListener('resize',resize);
+  window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY+window.scrollY;});
+  window.addEventListener('mouseleave',()=>{mouse.x=-9999;mouse.y=-9999;});
+  resize();
+
+  const pulses=[];
+  function spawnPulse(){
+    if(nodes.length<2)return;
+    const a=nodes[Math.floor(Math.random()*nodes.length)];
+    let b=nodes[Math.floor(Math.random()*nodes.length)];
+    let tries=0;
+    while(b===a&&tries<5){b=nodes[Math.floor(Math.random()*nodes.length)];tries++;}
+    const dx=b.x-a.x,dy=b.y-a.y;
+    if(Math.sqrt(dx*dx+dy*dy)<220){
+      pulses.push({a,b,t:0,color:Math.random()>.5?'123,47,255':'0,212,170'});
+    }
+  }
+  if(!reduced) setInterval(spawnPulse,700);
+
+  function step(){
+    ctx.clearRect(0,0,w,h);
+    for(const n of nodes){
+      if(!reduced){
+        n.x+=n.vx;n.y+=n.vy;
+        const dx=mouse.x-n.x,dy=mouse.y-n.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          n.x-=dx/dist*0.4;
+          n.y-=dy/dist*0.4;
+        }
+        if(n.x<0||n.x>w)n.vx*=-1;
+        if(n.y<0||n.y>h)n.vy*=-1;
+      }
+    }
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i],b=nodes[j];
+        const dx=a.x-b.x,dy=a.y-b.y;
+        const d=Math.sqrt(dx*dx+dy*dy);
+        if(d<140){
+          ctx.strokeStyle='rgba(123,90,255,'+((1-d/140)*.14)+')';
+          ctx.lineWidth=1;
+          ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      ctx.beginPath();
+      ctx.fillStyle='rgba(0,212,170,.5)';
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    for(let i=pulses.length-1;i>=0;i--){
+      const p=pulses[i];
+      p.t+=0.02;
+      if(p.t>=1){pulses.splice(i,1);continue;}
+      const x=p.a.x+(p.b.x-p.a.x)*p.t;
+      const y=p.a.y+(p.b.y-p.a.y)*p.t;
+      ctx.beginPath();
+      ctx.fillStyle='rgba('+p.color+',.9)';
+      ctx.arc(x,y,2.2,0,Math.PI*2);
+      ctx.fill();
+    }
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+
+/* ===== EXISTING BUSINESS LOGIC — diagnostics, quoting, tracking ===== */
+const SYMPTOMS={
+  'Laptop':['Won\'t power on','Screen cracked / broken','Overheating / loud fan','Slow / freezing','Keyboard not working','Battery not charging','Water damage','WiFi not connecting'],
+  'Cellphone':['Screen cracked','Won\'t charge','Water damage','Touchscreen unresponsive','Camera not working','Won\'t turn on','Software issue','Speaker / mic broken'],
+  'Desktop Tower':['Won\'t boot','Blue screen / crashes','Slow performance','No display output','Overheating','Strange noises','Virus / malware','Upgrade needed'],
+  'Smart TV':['No picture','No sound','Won\'t connect to WiFi','Screen damaged','Remote not working','HDMI port fault','Software issue','Won\'t turn on']
+};
+const PRICING={
+  'Won\'t power on':[350,600],'Screen cracked / broken':[650,1200],'Screen cracked':[600,1500],
+  'Overheating / loud fan':[350,550],'Slow / freezing':[350,500],'Keyboard not working':[450,750],
+  'Battery not charging':[350,650],'Water damage':[500,1200],'WiFi not connecting':[350,500],
+  'Won\'t charge':[350,600],'Touchscreen unresponsive':[400,700],'Camera not working':[400,800],
+  'Speaker / mic broken':[350,650],'Won\'t turn on':[350,700],'Software issue':[350,500],
+  'Won\'t boot':[350,600],'Blue screen / crashes':[400,700],'Slow performance':[350,500],
+  'No display output':[400,750],'Overheating':[350,550],'Strange noises':[450,800],
+  'Virus / malware':[350,500],'Upgrade needed':[500,2000],'No picture':[450,900],
+  'No sound':[350,650],'Won\'t connect to WiFi':[350,500],'Screen damaged':[600,1400],
+  'Remote not working':[250,400],'HDMI port fault':[400,700]
+};
+const STAGE_LABELS={received:'RECEIVED',diagnosing:'DIAGNOSING',repairing:'IN REPAIR',ready:'READY ✓'};
+const STAGE_CLASS={received:'s-received',diagnosing:'s-diagnosing',repairing:'s-repairing',ready:'s-ready'};
+const STAGES=['Received','Diagnosed','In Repair','Ready for Collection'];
+const STAGE_DONE={received:1,diagnosing:2,repairing:3,ready:4};
+
+let sel={device:'',symptom:''};
+let waData={};
+
+function genId(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let r='PPT-';for(let i=0;i<4;i++)r+=c[Math.floor(Math.random()*c.length)];return r;}
+document.getElementById('tid').textContent=genId();
+
+function switchPortal(tab){
+  document.querySelectorAll('.portal-tab').forEach((t,i)=>t.classList.toggle('active',['diagnose','track'][i]===tab));
+  document.querySelectorAll('.portal-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('portal-'+tab).classList.add('active');
+}
+
+function pickOpt(el,group,val){
+  document.querySelectorAll('[data-g="'+group+'"]').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');sel[group]=val;
+  if(group==='device') document.getElementById('t-device').textContent=val;
+  if(group==='symptom') document.getElementById('t-symptom').textContent=val;
+}
+
+function goDS(n){
+  if(n===2&&!sel.device){alert('Please select a device type.');return;}
+  if(n===3&&!sel.symptom){alert('Please select a symptom.');return;}
+  document.querySelectorAll('.diag-step').forEach(s=>s.classList.remove('active'));
+  if(n===2){
+    const g=document.getElementById('symptom-grid');g.innerHTML='';
+    SYMPTOMS[sel.device].forEach(s=>{
+      g.innerHTML+=`<div class="diag-opt glass" onclick="pickOpt(this,'symptom','${s.replace(/'/g,"\\'")}')\" data-g="symptom"><span class="diag-opt-label">${s}</span></div>`;
+    });
+  }
+  document.getElementById('ds'+n).classList.add('active');
+  document.getElementById('prog').style.width=(n*20)+'%';
+}
+
+function generateQuote(){
+  const name=document.getElementById('d-name').value.trim();
+  const phone=document.getElementById('d-phone').value.trim();
+  if(!name){document.getElementById('d-name').focus();alert('Please enter your name.');return;}
+  if(!phone){document.getElementById('d-phone').focus();alert('Please enter your WhatsApp number.');return;}
+  if(!sel.symptom){alert('Please go back and select a symptom.');return;}
+  const range=PRICING[sel.symptom]||[350,700];
+  const tid=genId();
+  document.getElementById('q-amount').textContent='R'+range[0]+' – R'+range[1];
+  document.getElementById('q-tid').textContent=tid;
+  document.getElementById('qresult').style.display='block';
+  document.getElementById('prog').style.width='100%';
+  document.querySelectorAll('.diag-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('ds4').classList.add('active');
+  waData={name,phone,device:sel.device,issue:sel.symptom,tid,range,desc:document.getElementById('d-desc').value.trim()};
+}
+
+function openWA(e){
+  e.preventDefault();
+  const d=waData;
+  let msg='Hi PixelProTech! 👋\n\n';
+  msg+='Ticket: '+d.tid+'\n';
+  msg+='Name: '+d.name+'\n';
+  msg+='Phone: '+d.phone+'\n';
+  msg+='Device: '+d.device+'\n';
+  msg+='Issue: '+d.issue+'\n';
+  msg+='Estimate: R'+d.range[0]+'–R'+d.range[1]+'\n';
+  if(d.desc) msg+='Details: '+d.desc+'\n';
+  msg+='\nPlease confirm my booking. Thanks!';
+  window.open('https://wa.me/27651971461?text='+encodeURIComponent(msg),'_blank');
+}
+
+function resetDiag(){
+  sel={device:'',symptom:''};
+  document.querySelectorAll('.diag-opt').forEach(o=>o.classList.remove('selected'));
+  document.getElementById('d-name').value='';
+  document.getElementById('d-phone').value='';
+  document.getElementById('d-desc').value='';
+  document.getElementById('t-device').textContent='—';
+  document.getElementById('t-symptom').textContent='—';
+  document.getElementById('t-client').textContent='—';
+  document.getElementById('tid').textContent=genId();
+  document.getElementById('qresult').style.display='none';
+  document.querySelectorAll('.diag-step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('ds1').classList.add('active');
+  document.getElementById('prog').style.width='20%';
+}
+
+function requestStatusOnWA(){
+  const q=(document.getElementById('track-input').value||'').trim();
+  const res=document.getElementById('track-results');
+  if(!q){res.innerHTML='<div class="tracker-empty">Enter your ticket ID or name above first.</div>';document.getElementById('track-input').focus();return;}
+  const msg='Hi PixelProTech! Please can you send me a status update?\n\nTicket ID / Name: '+q;
+  window.open('https://wa.me/27651971461?text='+encodeURIComponent(msg),'_blank');
+  res.innerHTML='<div class="tracker-empty">Opening WhatsApp — send the message and we\'ll reply with your status.</div>';
+}
+
+function quoteFor(label){
+  switchPortal('diagnose');
+  document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+}
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .catch((err) => console.warn('Service worker registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>

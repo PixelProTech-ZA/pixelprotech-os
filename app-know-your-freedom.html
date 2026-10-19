@@ -1,0 +1,114 @@
+<!doctype html><html lang="en"><head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Know Your Freedom — South Africa</title>
+<meta name="description" content="Source-verified South African law in plain language. Independent. Not government. Not legal advice.">
+<meta name="theme-color" content="#07070A"><link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIyIiBmaWxsPSIjMDcwNzBBIi8+PGcgZmlsbD0iIzAwRDRBQSI+PHJlY3QgeD0iMjgiIHk9IjIyIiB3aWR0aD0iMTIuOCIgaGVpZ2h0PSI1MiIvPjxwb2x5Z29uIHBvaW50cz0iNDAuOCw0OSA1Mi41LDQwIDc0LDIyIDYxLDIyIi8+PHBvbHlnb24gcG9pbnRzPSI0Miw0NyA1Myw1NiA3NCw3NCA2Miw3NCIvPjwvZz48cmVjdCB4PSIyOCIgeT0iODQiIHdpZHRoPSI0NiIgaGVpZ2h0PSIzLjYiIGZpbGw9IiM3QjJGRkYiLz48L3N2Zz4K"><link rel="icon" href="data:image/x-icon;base64,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">
+<style>:root{--bg:#07070A;--card:#1A1A21;--card2:#1C1C26;--teal:#00D4AA;--vio:#7B2FFF;--gold:#D8B869;--t1:#F1EEFA;--t2:#C7C1DA;--t3:#9A90B8;--m:ui-monospace,"Liberation Mono",Menlo,monospace}
+@media(prefers-color-scheme:light){:root[data-lite]{--bg:#fff}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--t2);font:17px/1.6 system-ui,"Liberation Sans",Arial,sans-serif;
+padding:env(safe-area-inset-top) 0 calc(96px + env(safe-area-inset-bottom));
+background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);background-size:32px 32px}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(60% 40% at 80% 0,#7b2fff33,transparent),radial-gradient(50% 40% at 0 30%,#00d4aa22,transparent);pointer-events:none;z-index:-1}
+a{color:var(--teal)}:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:var(--gold);color:#000;padding:8px;z-index:9}
+#net{background:var(--gold);color:#1a1200;padding:10px 16px;font-weight:600}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;max-width:1100px;margin:auto}
+.brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--t1)}.brand span{color:var(--t3);font-family:var(--m);font-size:13px}
+button{font:inherit;cursor:pointer}#install,form button{background:var(--teal);color:#021;border:0;border-radius:6px;padding:10px 18px;font-weight:700}
+main{max-width:1100px;margin:auto;padding:0 20px}section{padding:28px 0}
+h1{font-size:clamp(2.6rem,9vw,5.6rem);line-height:.98;letter-spacing:-.04em;color:var(--t1);margin:.4em 0 .3em;font-weight:800}
+.lede{font-size:1.2rem;max-width:56ch;color:var(--t2)}
+.xray{position:relative;display:grid;gap:0;margin:32px 0;border:1px solid #ffffff22;border-radius:14px;overflow:hidden;background:var(--card)}
+@media(min-width:760px){.xray{grid-template-columns:repeat(3,1fr)}.layer+.layer{border-left:1px solid #ffffff22}}
+.layer{padding:22px;opacity:.28;animation:reveal 1s ease-out forwards}
+.layer h2{margin:0 0 6px;font-size:1.15rem;color:var(--t1)}.layer p{margin:0;font-size:.95rem}
+.l1{animation-delay:.5s}.l2{animation-delay:1.1s}.l3{animation-delay:1.7s}.l1 h2{color:var(--teal)}.l2 h2{color:#b894ff}.l3 h2{color:var(--gold)}
+@keyframes reveal{to{opacity:1}}
+.beam{position:absolute;top:0;bottom:0;left:0;width:3px;background:var(--teal);box-shadow:0 0 28px 10px #00d4aa77;animation:scan 2.4s cubic-bezier(.6,0,.3,1) .3s both}
+@media(max-width:759px){.beam{left:0;right:0;width:auto;height:3px;bottom:auto;animation-name:scanY}}
+@keyframes scan{from{left:0;opacity:1}85%{opacity:1}to{left:100%;opacity:0}}@keyframes scanY{from{top:0;opacity:1}85%{opacity:1}to{top:100%;opacity:0}}
+form label{display:block;font-weight:700;color:var(--t1);margin-bottom:6px}.row{display:flex;gap:8px}
+input{flex:1;min-width:0;background:#0d0d12;border:2px solid #ffffff33;color:var(--t1);border-radius:8px;padding:14px;font:inherit}
+input:focus{border-color:var(--teal);box-shadow:0 0 0 4px #00d4aa33;outline:0}
+.card{background:var(--card2);border:1px solid #ffffff1c;border-radius:12px;padding:18px;margin:12px 0}
+.card h3{margin:0 0 4px;color:var(--t1)}.card .m{font-family:var(--m);font-size:.85rem;color:var(--t3)}
+.chip{display:inline-block;font:600 .8rem var(--m);padding:2px 9px;border-radius:99px;margin-right:6px;border:1px solid}
+.u{color:var(--gold);border-color:var(--gold)}.s{color:#b894ff;border-color:#b894ff}.v{color:var(--teal);border-color:var(--teal)}
+.sec{font-size:1.6rem;color:var(--t1);margin:0 0 14px;letter-spacing:-.02em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px}
+.grid button{text-align:left;background:var(--card);color:var(--t1);border:1px solid #ffffff22;border-radius:12px;padding:18px;min-height:96px;font-weight:700;position:relative;overflow:hidden;transition:.2s}
+.grid button:nth-child(3n+1){border-left:4px solid var(--teal)}.grid button:nth-child(3n+2){border-left:4px solid var(--vio)}.grid button:nth-child(3n){border-left:4px solid var(--gold)}
+.grid button:hover{transform:translateY(-3px);box-shadow:0 8px 30px #7b2fff44}.grid small{display:block;color:var(--t3);font-weight:400;margin-top:4px}
+.note{color:var(--t3);font-size:.9rem}.meter{height:10px;background:var(--card);border-radius:9px;overflow:hidden;margin-bottom:12px}.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--vio))}
+.sos{position:fixed;left:0;right:0;bottom:0;background:#240a12;border-top:2px solid #ff4d6d;display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:5}
+.sos b{color:#fff}.sos a{background:#ff4d6d;color:#1a0008;font-weight:800;text-decoration:none;padding:9px 14px;border-radius:7px}.sos small{color:#ffb3c1;flex-basis:100%}
+@media(min-width:760px){.sos small{flex-basis:auto}}
+form{margin:22px 0 8px}#res{margin-bottom:8px}
+.sos a{flex:0 0 auto}
+@media(max-width:759px){body{font-size:16px;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+.lede{font-size:1.05rem}.layer{padding:14px 16px}.layer p{font-size:.9rem}.xray{margin:20px 0}
+.sos{gap:8px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));flex-wrap:nowrap;overflow:hidden}
+.sos b{font-size:.8rem;line-height:1.1;max-width:4.5em}.sos a{flex:1;text-align:center;padding:10px 6px;font-size:.95rem}
+.sos small{display:none}.row button{padding:10px 14px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.layer{opacity:1}.beam{display:none}}
+</style></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<div id="net" role="status" hidden>You are offline. Showing the copy saved on this device — current legal status cannot be checked.</div>
+<header class="top"><a class="brand" href="#"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgcng9IjIyIiBmaWxsPSIjMDcwNzBBIi8+PGcgZmlsbD0iIzAwRDRBQSI+PHJlY3QgeD0iMjgiIHk9IjIyIiB3aWR0aD0iMTIuOCIgaGVpZ2h0PSI1MiIvPjxwb2x5Z29uIHBvaW50cz0iNDAuOCw0OSA1Mi41LDQwIDc0LDIyIDYxLDIyIi8+PHBvbHlnb24gcG9pbnRzPSI0Miw0NyA1Myw1NiA3NCw3NCA2Miw3NCIvPjwvZz48cmVjdCB4PSIyOCIgeT0iODQiIHdpZHRoPSI0NiIgaGVpZ2h0PSIzLjYiIGZpbGw9IiM3QjJGRkYiLz48L3N2Zz4K" alt="" width="32" height="32"><b>Know Your Freedom</b><span>South Africa</span></a>
+<button id="install" hidden>Install app</button></header>
+<main id="main">
+<section class="hero"><h1>Read the law.<br>See the doubt.<br>Find the door.</h1>
+<p class="lede">Every statute broken into three layers: what it says, what it means, and what nobody has confirmed yet.</p>
+<form id="sf" role="search"><label for="q">Search legislation</label>
+<div class="row"><input id="q" type="search" placeholder="Title, number or year" autocomplete="off"><button>Search</button></div></form>
+<div id="res" aria-live="polite"></div>
+<div class="xray" aria-label="Example of the three layers">
+<div class="layer l1"><h2>What it says</h2><p>The exact wording, kept apart from every explanation, with a link to the official source.</p></div>
+<div class="layer l2"><h2>What it means</h2><p>Plain language, who it covers, and the exceptions. Never a promise of outcome.</p></div>
+<div class="layer l3"><h2>What is uncertain</h2><p>Unverified status, missing commencement notices and disputed readings are shown, not hidden.</p></div>
+<i class="beam" aria-hidden="true"></i></div>
+</section>
+<section><h2 class="sec">Start from your situation</h2><div id="topics" class="grid"></div>
+<p class="note">Topic pages are planned. Each will link to verified provisions, exceptions, procedures and institutions.</p></section>
+<section class="cov"><h2 class="sec">Coverage in progress</h2>
+<div class="meter" role="img" aria-label="0 records verified"><i style="width:2%"></i></div>
+<p>0 records verified. The four entries above are demonstration records, marked <span class="chip u">unverified</span>. Nothing here has been checked against the Government Gazette yet.</p>
+<p class="note">Independent project. Not government-operated, not endorsed, not a substitute for a lawyer. Last cache build: <span id="built"></span>.</p></section>
+</main>
+<aside class="sos" aria-label="Emergency"><b>In danger now?</b>
+<a href="tel:10111">Police 10111</a><a href="tel:112">Cellphone 112</a><small>Unverified here. Confirm at saps.gov.za</small></aside>
+<script>const BUILT="2026-10-17";
+const DATA=[
+{t:"Constitution of the Republic of South Africa",n:"108 of 1996",y:1996,k:"Constitution",q:"Bill of Rights"},
+{t:"Protection of Personal Information Act",n:"4 of 2013",y:2013,k:"Act",q:"privacy POPIA data"},
+{t:"Labour Relations Act",n:"66 of 1995",y:1995,k:"Act",q:"employment dismissal work"},
+{t:"Consumer Protection Act",n:"68 of 2008",y:2008,k:"Act",q:"consumer business refund"}];
+const TOPICS=[["Arrest and police","Searches, detention, your questions"],["Work and wages","Dismissal, disputes, pay"],["Home and eviction","Leases, rent, removal"],["Violence and abuse","Protection orders, reporting"],["Consumer problems","Refunds, unfair practices"],["Privacy online","Data, fraud, cybercrime"],["Children","Protection and neglect"],["Courts and legal aid","Where to start, deadlines"],["Complaints about officials","Corruption, abuse of power"]];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+$("#built").textContent=BUILT;
+$("#topics").innerHTML=TOPICS.map(([a,b])=>`<button type="button">${esc(a)}<small>${esc(b)}</small></button>`).join("");
+function show(list,q){$("#res").innerHTML=list.length?list.map(d=>`<article class="card"><h3>${esc(d.t)}</h3>
+<div class="m">${esc(d.k)} · ${esc(d.n)}</div><p><span class="chip u">unverified</span><span class="chip s">demo record</span></p>
+<p class="note">Legal status not checked. Last verified: never. Read the original at <a href="https://www.saflii.org" rel="noopener">SAFLII</a> or <a href="https://www.gov.za/documents/acts" rel="noopener">gov.za</a>.</p></article>`).join("")
+:`<p class="card">No match for “${esc(q)}”. Try a title, number or year. Absence here does not mean no such law exists: coverage is in progress.</p>`}
+$("#sf").addEventListener("submit",e=>{e.preventDefault();const q=$("#q").value.trim().toLowerCase();
+show(q?DATA.filter(d=>(d.t+d.n+d.y+d.q).toLowerCase().includes(q)):DATA,q)});
+const net=()=>$("#net").hidden=navigator.onLine;addEventListener("online",net);addEventListener("offline",net);net();
+let dp;addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;$("#install").hidden=false});
+$("#install").onclick=async()=>{dp.prompt();await dp.userChoice;$("#install").hidden=true};
+if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js"));
+</script></body></html>

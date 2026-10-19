@@ -1,0 +1,3937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AUX SURGERY LAB — Audio Hospital × Frequency Oasis</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<meta name="theme-color" content="#000000">
+
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAHUUlEQVR4nO3dyXEjRxCF4YRijJAROjJinNBZIR9kj3xQ6CwnJoJHGSEvRgeyOMVGL9W15vJ/B21DkUDjvcpqoAE+RJ/vq28AhnusvgHJ6htC2JEsyeKKH0rocWVaLmcWgODjruH5nFEAgo9Ww3I6sgAEH711z+uIAhB8jNYttz/1+kbvCD9m6JazXk0i+FilKcM9JgDhx0pN+WstAOGHBtU5bCkA4YcmVXmsLQDhh0a3c1lTAMIPzW7l824BCD8sKM7pnQIQflhSlNfSAhB+WHSZ25ICEH5Ydprf3pdCAKZcFYDVHx4c5visAIQfnuzmmS0QQjsqAKs/PHrKNRMAoe0VgNUfnn3KNxMAoW3fTcPqP9nrxZ+/TLkVIT1ERL6svhU4lxeEMvSXb4FY/RHJdxEmwHJXq/rVFglt8nMAJgCieaQCEP5MWnXZc/tHATJ72w1K4BvnAMI+O7LQBTgKPqt+HCELQPCRfBH2/wRf4r7gFvpaoBeJ9WAf2U7ESOdED2EC4F3EZ8FCTwB8thd279OACYBd2+B7nQQUAIcibInYAuGQt7DvYQKgyKv4LAQFmODbX79W/X9ff/+n8y3BFgXorDbspShFXxSgUUnga0M78nvjDQWocBbM0YFc+bM9ogA37IVvdeg03iZLKEABCyGzcBs1ogAntqGyEiirt3sFCrDDS4C83I+RTBRg5pvU89B4CYzH+9SLqQKIjCuB99XS+/2rpb4As8PvPRiR7msJ1RfDzbgWPVog8vs4+lVrC9ROgNHXo0cL/h6OgfIJkBD+MZgGSgswct9P+D+LXgJ1BRi57yf8+yKXQF0Bcj1Xf8J/LmoJVJ0Ej9r6aAr/f9/+uPyan7/+OeGW7Bt5rDR+6raqAoxgLfyJtxJo/eQ51VugniyFv+brexpxrPLQa/qsIdcFSCvZ6vBblI6Z9/MBtwUg/O16l0DjFHBZAO+r1gpej6nLAiSs/u16H0NtU8BdAdj69Of5fMBVATw+QNr0OMaapoCrAiSs/v15PaZuCsDWZ7wRW6HVL4qF/CV5WG918BMXE4DVfx5vJ8QuCgDUMl8AVv/5PE0B8wUAWpgugIcVyDrrj4HpAiRsf+bzcsxdFACoZbYAnPyu5+Fk2GwBgB4oAEKjAAjNZAHY/+th/Txg6sVwWj8aA3GZnABALxQAoU0rANsfaGRuAnACrI/lE+HQ7whb+fGDJWbevpWfRbqSuQnQi/bwzxb1eIQsQNQH+0rE4xKyAEBCARAaBUBo054F4rl/XFnxWhETAKFRAIRGARAaBUBoIQsQ9WX/KxGPS8gCiMR8sM9EPR4mf1G2xStCay4zsBLKXo8HT4MirFXvF6EACI0CILTQb4iBHqsulTE5ASy/Bc8bi09I5EwWAOiFAiA0CoDQzBaA84D1rO//RQwXAOjBRQGYAvN5OeamC2B59Hph/TEwXQCglfkCcDI8n4eT38R8AYAWLgrAFJjH0+ovsvhiOH5nAFZzMQFEmAIzeFv9RRwVIEcJ+vN6TJcWIN/2vB5+VTlPK5NW3o6xuwnAVqg/j1ufZHkBek+BHCVo5/0YLi/ACB5XqtW8HlMVBRgxBdgKtfO89UlUFGAUSlAvQvhFFBVg5LmACCW4I9KxUlOA5EX6viqcr2ArH9i7H3O46mMR82PUc/V/lTELWytVBRh1OYS1EngMv1YmPxy31qgH2IPDY/Pv389f/Mtvxd93G35t13ypmgCjaZkE2twK/9l/v6At/CLBCiBCCbZuh7/0z8XG1b7hCiBCCZLq8Bd8neZ9fy7UOcCeiOcFp/e5ZnuzOSfQvu/PhZwAuWjTYHbhNYdfhAnwYRt+b9Og+P41TgAL+/4cBdjwuCW6dZ86boEogFFepkHV/ehQAEsowAmrRWi+3XdKYDj8IhSgyN7JsbYydL+NJSUwHn4RCnCLxiIMvU1nJXAQfhEKUOXs6dLRhZj+sxuvBdKOAjQqee2gNpgjvzfeUIDORr+YRuD7ogAT1JaCsI/nsgCvYuNFGKznrgCWLsTCeu4vhrNyWS7WcDcBEiYBSrgtgMj+6k8RkHO9BdoLO1si5FwXQGT/c4YowWeRj4f7AiRsfZ7lH1YVtQRLf0fYbJTgTdSw73m8/93tiTB+OAp+5IUh1ASI6Gy1jxz8hAIERPB/oACBEPxnnAMgtEf2z5SgE2ufjRPYgy3QYFdPOVKQtcK8EDYLz7Hb8tj8O9ugzpgAaj0+/pKhAIjiIfK8BdoWAvDoI+ecAyC0vQIwBeDZp3wzARDaUQGYAvDoKddMAIR2VgCmADzZzfPVBKAE8OAwx2yBEFpJAZgCsOw0v6UTgBLAosvc3tkCUQJYUpTXu+cAlAAWFOe05iSYEkCzW/msfRaIEkCj27lseRqUEkCTqjy2vg5ACaBBdQ57vBBGCbBSU/56h5e3VGKWLtntfSkE0wAzdMvZyMAyDdBb97zOWLEpAloNy+nMLQtFwF3D87liz04RcGVaLleftFIGJEuy+D/Tq0MHY3Ud3gAAAABJRU5ErkJggg==">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AUX Surgery">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+  --black: #000000;
+  --steel: #0a0a0a;
+  --steel2: #111111;
+  --steel3: #1a1a1a;
+  --gold: #c9a84c;
+  --gold2: #e8c96b;
+  --gold-dim: #5a4a1a;
+  --blood: #8b0000;
+  --blood2: #cc0000;
+  --red-glow: #ff0000;
+  --teal: #00d4aa;
+  --white: #e8e8e8;
+  --grey: #888;
+  --mono: 'Share Tech Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+  --serif: 'Cormorant Garamond', serif;
+  --tech: 'Orbitron', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--mono);
+  overflow-x: hidden;
+  cursor: crosshair;
+}
+
+/* ===================== SCROLLBAR ===================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ===================== PARTICLES ===================== */
+#particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: float-particle linear infinite;
+  opacity: 0;
+}
+
+@keyframes float-particle {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.4; }
+  100% { transform: translateY(-10vh) translateX(40px); opacity: 0; }
+}
+
+/* ===================== HERO SECTION ===================== */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.xray-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(200,168,76,0.015) 2px, rgba(200,168,76,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 80px, rgba(139,0,0,0.03) 80px, rgba(139,0,0,0.03) 81px);
+  pointer-events: none;
+}
+
+.scanner-pulse {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--blood2), transparent);
+  animation: scan-down 4s ease-in-out infinite;
+  box-shadow: 0 0 20px var(--blood), 0 0 40px var(--blood);
+  z-index: 2;
+}
+
+@keyframes scan-down {
+  0% { top: 0; opacity: 0.8; }
+  50% { top: 100%; opacity: 1; }
+  100% { top: 0; opacity: 0.8; }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 2rem;
+  max-width: 900px;
+}
+
+.hero-tagline {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--blood2);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.5; }
+  97% { opacity: 1; }
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(4rem, 12vw, 10rem);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 0.85;
+  text-shadow: 0 0 60px rgba(201,168,76,0.4), 0 0 120px rgba(201,168,76,0.15);
+  margin-bottom: 0.5rem;
+}
+
+.hero-title span {
+  color: var(--white);
+  opacity: 0.9;
+}
+
+.hero-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(0.85rem, 2vw, 1.1rem);
+  color: var(--grey);
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.hero-quote {
+  font-family: var(--mono);
+  font-size: clamp(0.75rem, 1.8vw, 1rem);
+  color: var(--white);
+  opacity: 0.7;
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 auto 2.5rem;
+  border-left: 2px solid var(--blood2);
+  padding-left: 1rem;
+  text-align: left;
+}
+
+/* WAVEFORM */
+.waveform-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+#hero-wave {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+/* LED STRIP */
+.led-strip {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.led {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  animation: led-blink 1s infinite;
+}
+
+.led.red { background: var(--blood2); box-shadow: 0 0 8px var(--blood2); animation-delay: 0s; }
+.led.gold { background: var(--gold); box-shadow: 0 0 8px var(--gold); animation-delay: 0.3s; }
+.led.teal { background: var(--teal); box-shadow: 0 0 8px var(--teal); animation-delay: 0.6s; }
+.led.red2 { background: var(--blood2); box-shadow: 0 0 8px var(--blood2); animation-delay: 0.15s; }
+.led.gold2 { background: var(--gold); box-shadow: 0 0 8px var(--gold); animation-delay: 0.45s; }
+
+@keyframes led-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.enter-btn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--tech);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.enter-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+  z-index: -1;
+}
+
+.enter-btn:hover {
+  color: var(--black);
+  text-shadow: none;
+  box-shadow: 0 0 30px rgba(201,168,76,0.5);
+}
+
+.enter-btn:hover::before { transform: scaleX(1); }
+
+/* WARNING BADGES */
+.warning-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: var(--blood);
+  color: var(--white);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0.25rem;
+  animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* CORNER BRACKETS */
+.corner-bracket {
+  position: absolute;
+  width: 30px; height: 30px;
+  opacity: 0.4;
+}
+.corner-bracket.tl { top: 20px; left: 20px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.corner-bracket.tr { top: 20px; right: 20px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.corner-bracket.bl { bottom: 80px; left: 20px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.corner-bracket.br { bottom: 80px; right: 20px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+
+/* ===================== NAV ===================== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+  background: rgba(0,0,0,0.9);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo {
+  font-family: var(--tech);
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--grey);
+  text-decoration: none;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--teal);
+}
+
+.nav-status-dot {
+  width: 6px; height: 6px;
+  background: var(--teal);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--teal);
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ===================== SECTION WRAPPER ===================== */
+.lab-section {
+  position: relative;
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-number {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--blood2);
+  letter-spacing: 0.4em;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  line-height: 0.85;
+  text-shadow: 0 0 40px rgba(201,168,76,0.3);
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blood), transparent);
+  margin: 3rem 0;
+}
+
+/* ===================== SECTION 1: REVERB ===================== */
+#section-reverb {
+  background: linear-gradient(180deg, var(--black) 0%, #050505 50%, var(--black) 100%);
+  border-top: 1px solid rgba(139,0,0,0.2);
+}
+
+.instrument-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.instrument-btn {
+  padding: 1.2rem 1rem;
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--grey);
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.instrument-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0%; height: 2px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.instrument-btn:hover, .instrument-btn.active {
+  background: rgba(201,168,76,0.08);
+  color: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(201,168,76,0.15);
+}
+
+.instrument-btn:hover::after, .instrument-btn.active::after { width: 100%; }
+
+.instrument-icon {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* REVERB READOUT */
+.reverb-readout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s;
+  min-height: 300px;
+}
+
+.reverb-readout.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.readout-panel {
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.readout-panel::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -0.6rem; left: 1rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--blood2);
+  letter-spacing: 0.3em;
+  background: var(--steel2);
+  padding: 0 0.4rem;
+}
+
+.readout-title {
+  font-family: var(--tech);
+  font-size: 0.65rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+}
+
+.readout-value {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--white);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.readout-detail {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+/* DEPTH METER */
+.depth-meter {
+  margin-top: 1rem;
+}
+
+.meter-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--grey);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.4rem;
+}
+
+.meter-bar {
+  height: 6px;
+  background: var(--steel3);
+  border: 1px solid rgba(201,168,76,0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--blood), var(--gold));
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 10px rgba(201,168,76,0.4);
+}
+
+/* DIAGNOSTIC MESSAGES */
+.diagnostic-feed {
+  grid-column: 1 / -1;
+  background: var(--black);
+  border: 1px solid rgba(139,0,0,0.3);
+  padding: 1rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  min-height: 60px;
+}
+
+.diag-line {
+  padding: 0.2rem 0;
+  opacity: 0;
+  animation: diag-appear 0.5s forwards;
+}
+
+.diag-line.warn { color: var(--blood2); }
+.diag-line.ok { color: var(--teal); }
+.diag-line.info { color: var(--gold); }
+
+@keyframes diag-appear {
+  to { opacity: 1; }
+}
+
+/* PLUGIN CARDS */
+.plugin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.plugin-card {
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.plugin-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blood), var(--gold));
+}
+
+.plugin-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 0 40px rgba(201,168,76,0.1), inset 0 0 40px rgba(201,168,76,0.02);
+}
+
+.plugin-card-glow {
+  position: absolute;
+  top: 0; right: 0;
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.plugin-name {
+  font-family: var(--tech);
+  font-size: 0.8rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.25rem;
+}
+
+.plugin-type {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--blood2);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.plugin-desc {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--grey);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.plugin-btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.plugin-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+  box-shadow: 0 0 20px rgba(201,168,76,0.4);
+}
+
+/* ===================== SECTION 2: DELAY ===================== */
+#section-delay {
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.emotion-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.emotion-btn {
+  padding: 0.8rem 1.5rem;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--grey);
+  font-family: var(--tech);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.emotion-btn:hover, .emotion-btn.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.06);
+  box-shadow: 0 0 20px rgba(201,168,76,0.15);
+}
+
+/* ECHO VISUALIZER */
+.echo-container {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.1);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+#echo-canvas { width: 100%; height: 100%; }
+
+/* DELAY READOUT */
+.delay-readout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.delay-readout.visible { opacity: 1; }
+
+.delay-stat {
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 1.2rem;
+}
+
+.delay-stat-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--blood2);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.delay-stat-value {
+  font-family: var(--tech);
+  font-size: 1rem;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.delay-stat-desc {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--grey);
+  line-height: 1.5;
+}
+
+/* ===================== SECTION 5: DIAGNOSTIC CHAMBER ===================== */
+#section-diagnostic {
+  border-top: 1px solid rgba(204,0,0,0.3);
+  background: linear-gradient(180deg, #050000, var(--black), #050005);
+}
+
+.diag-chamber {
+  background: var(--steel2);
+  border: 1px solid rgba(204,0,0,0.25);
+  padding: 2rem;
+  position: relative;
+}
+
+.diag-chamber::before {
+  content: 'DIAGNOSTIC CHAMBER — v1.0 // WEB AUDIO ENGINE ACTIVE';
+  position: absolute;
+  top: -0.6rem; left: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--blood2);
+  letter-spacing: 0.3em;
+  background: var(--steel2);
+  padding: 0 0.5rem;
+}
+
+/* MODE SELECTOR */
+.mode-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.mode-btn {
+  padding: 1rem;
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--grey);
+  font-family: var(--tech);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+.mode-btn:hover, .mode-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201,168,76,0.05);
+}
+
+/* INSTRUMENT / EMOTION ROW */
+.dc-selector-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.dc-sel-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.15);
+  color: var(--grey);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dc-sel-btn:hover, .dc-sel-btn.active {
+  border-color: var(--blood2);
+  color: var(--blood2);
+  background: rgba(139,0,0,0.08);
+}
+
+/* KNOB PANEL */
+.knob-panel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.knob-unit {
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.12);
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.knob-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--blood2);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.knob-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 0.75rem;
+}
+
+.knob-svg { width: 64px; height: 64px; cursor: ns-resize; }
+
+.knob-value {
+  font-family: var(--tech);
+  font-size: 0.75rem;
+  color: var(--gold);
+  margin-bottom: 0.25rem;
+}
+
+.knob-range {
+  font-family: var(--mono);
+  font-size: 0.45rem;
+  color: var(--grey);
+}
+
+/* SIGNAL DISPLAY */
+.signal-display {
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.signal-display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.signal-display-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--grey);
+  letter-spacing: 0.2em;
+}
+
+.signal-status {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--teal);
+  letter-spacing: 0.15em;
+}
+
+#dc-waveform { width: 100%; height: 80px; display: block; }
+
+/* SIGNAL SOURCE SELECTOR */
+.source-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.source-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.2);
+  color: var(--grey);
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.source-btn:hover, .source-btn.active {
+  border-color: var(--teal);
+  color: var(--teal);
+  background: rgba(0,212,170,0.05);
+}
+
+/* ACTION BUTTONS */
+.dc-action-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.dc-play-btn {
+  padding: 0.85rem 2rem;
+  background: rgba(0,212,170,0.1);
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  font-family: var(--tech);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dc-play-btn:hover {
+  background: var(--teal);
+  color: var(--black);
+  box-shadow: 0 0 20px rgba(0,212,170,0.4);
+}
+
+.dc-diagnose-btn {
+  padding: 0.85rem 2rem;
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--tech);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dc-diagnose-btn:hover {
+  background: var(--gold);
+  color: var(--black);
+  box-shadow: 0 0 20px rgba(201,168,76,0.4);
+}
+
+.dc-stop-btn {
+  padding: 0.85rem 1.5rem;
+  background: rgba(139,0,0,0.15);
+  border: 1px solid var(--blood);
+  color: var(--blood2);
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dc-stop-btn:hover { background: var(--blood); color: var(--white); }
+
+/* GRADE PANEL */
+.grade-panel {
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 1.5rem;
+  min-height: 200px;
+  background: var(--black);
+  transition: all 0.4s;
+}
+
+.grade-panel.grading {
+  border-color: var(--gold);
+  box-shadow: 0 0 30px rgba(201,168,76,0.1);
+}
+
+.grade-panel.grade-fail {
+  border-color: var(--blood2);
+  background: rgba(139,0,0,0.08);
+  animation: danger-flash 0.4s;
+}
+
+.grade-panel.grade-pass {
+  border-color: var(--teal);
+  background: rgba(0,212,170,0.04);
+}
+
+.grade-panel.grade-warn {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+
+.grade-header {
+  font-family: var(--tech);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+}
+
+.grade-header.fail { color: var(--blood2); text-shadow: 0 0 20px rgba(204,0,0,0.5); }
+.grade-header.pass { color: var(--teal); text-shadow: 0 0 20px rgba(0,212,170,0.5); }
+.grade-header.warn { color: var(--gold); text-shadow: 0 0 20px rgba(201,168,76,0.5); }
+
+.grade-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.grade-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  line-height: 1.5;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.05);
+}
+
+.grade-icon { font-size: 0.8rem; flex-shrink: 0; margin-top: 0.05rem; }
+.grade-param { color: var(--grey); min-width: 120px; flex-shrink: 0; }
+.grade-verdict { }
+.grade-verdict.ok { color: var(--teal); }
+.grade-verdict.warn { color: var(--gold); }
+.grade-verdict.fail { color: var(--blood2); }
+
+.grade-score {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  font-family: var(--tech);
+  font-size: 0.65rem;
+  color: var(--grey);
+  letter-spacing: 0.2em;
+}
+
+.grade-score span {
+  font-size: 1.5rem;
+  display: block;
+  margin-top: 0.25rem;
+}
+
+/* IDLE MESSAGE */
+.dc-idle {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--grey);
+  text-align: center;
+  padding: 3rem 1rem;
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+
+@media (max-width: 768px) {
+  .mode-selector { grid-template-columns: 1fr; }
+  .knob-panel { grid-template-columns: repeat(2, 1fr); }
+  .dc-action-row { flex-direction: column; }
+}
+
+
+#section-routing {
+  border-top: 1px solid rgba(139,0,0,0.2);
+  background: linear-gradient(180deg, var(--black), #060406, var(--black));
+}
+
+/* ===================== SECTION 6: LIVE PROCESSOR ===================== */
+#section-live {
+  border-top: 1px solid rgba(0,212,170,0.25);
+  background: linear-gradient(180deg, #000505, var(--black), #000505);
+}
+.live-chamber {
+  background: var(--steel2);
+  border: 1px solid rgba(0,212,170,0.2);
+  padding: 2rem;
+  position: relative;
+}
+.live-chamber::before {
+  content: 'LIVE PROCESSOR — UPLOAD · APPLY · HEAR';
+  position: absolute;
+  top: -0.6rem; left: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--teal);
+  letter-spacing: 0.3em;
+  background: var(--steel2);
+  padding: 0 0.5rem;
+}
+.drop-zone {
+  border: 2px dashed rgba(0,212,170,0.3);
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-bottom: 2rem;
+  background: var(--black);
+}
+.drop-zone.dragover, .drop-zone:hover { border-color: var(--teal); background: rgba(0,212,170,0.03); box-shadow: inset 0 0 30px rgba(0,212,170,0.05); }
+.drop-zone.loaded { border-color: var(--gold); border-style: solid; }
+.drop-icon { font-size: 2.5rem; display: block; margin-bottom: 1rem; opacity: 0.5; }
+.drop-label { font-family: var(--tech); font-size: 0.7rem; color: var(--teal); letter-spacing: 0.25em; margin-bottom: 0.5rem; }
+.drop-sub { font-family: var(--mono); font-size: 0.55rem; color: var(--grey); letter-spacing: 0.1em; }
+.drop-file-name { font-family: var(--mono); font-size: 0.65rem; color: var(--gold); margin-top: 0.75rem; letter-spacing: 0.1em; }
+#live-file-input { display: none; }
+.live-controls { display: none; }
+.live-controls.visible { display: block; }
+.live-knobs { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+.live-knob-unit { background: var(--black); border: 1px solid rgba(201,168,76,0.15); padding: 2rem 1.5rem; text-align: center; position: relative; overflow: hidden; }
+.live-knob-unit::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; }
+.live-knob-unit.verb-unit::before { background: linear-gradient(90deg, var(--blood), transparent); }
+.live-knob-unit.delay-unit::before { background: linear-gradient(90deg, var(--teal), transparent); }
+.live-knob-title { font-family: var(--tech); font-size: 0.75rem; letter-spacing: 0.2em; margin-bottom: 0.25rem; }
+.verb-unit .live-knob-title { color: var(--gold); }
+.delay-unit .live-knob-title { color: var(--teal); }
+.live-knob-subtitle { font-family: var(--mono); font-size: 0.5rem; color: var(--grey); letter-spacing: 0.15em; margin-bottom: 1.5rem; }
+.live-knob-wrap { width: 90px; height: 90px; margin: 0 auto 1rem; }
+.live-knob-canvas { width: 90px; height: 90px; cursor: ns-resize; display: block; }
+.live-knob-value { font-family: var(--tech); font-size: 1.4rem; margin-bottom: 0.5rem; }
+.verb-unit .live-knob-value { color: var(--gold); }
+.delay-unit .live-knob-value { color: var(--teal); }
+.live-comment { padding: 1rem 1.2rem; background: var(--black); border-left: 2px solid; font-family: var(--mono); font-size: 0.6rem; line-height: 1.7; min-height: 54px; transition: border-color 0.3s; letter-spacing: 0.05em; margin-top: 1rem; }
+.verb-unit .live-comment { border-color: var(--blood2); color: var(--white); opacity: 0.85; }
+.delay-unit .live-comment { border-color: var(--teal); color: var(--white); opacity: 0.85; }
+.live-waveform-wrap { background: var(--black); border: 1px solid rgba(201,168,76,0.1); padding: 1rem; margin-bottom: 1.5rem; }
+.live-waveform-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.live-waveform-label { font-family: var(--mono); font-size: 0.5rem; color: var(--grey); letter-spacing: 0.2em; }
+.live-wf-status { font-family: var(--mono); font-size: 0.5rem; letter-spacing: 0.15em; color: var(--grey); }
+#live-waveform { width: 100%; height: 70px; display: block; }
+.live-progress-bar { height: 2px; background: var(--steel3); margin-top: 0.5rem; }
+.live-progress-fill { height: 100%; background: linear-gradient(90deg, var(--teal), var(--gold)); width: 0%; transition: width 0.1s linear; }
+.live-playback-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center; }
+.live-play-btn { padding: 0.85rem 2rem; background: rgba(0,212,170,0.1); border: 1px solid var(--teal); color: var(--teal); font-family: var(--tech); font-size: 0.6rem; letter-spacing: 0.2em; cursor: pointer; transition: all 0.3s; }
+.live-play-btn:hover,.live-play-btn.active { background: var(--teal); color: var(--black); box-shadow: 0 0 20px rgba(0,212,170,0.4); }
+.live-dry-btn { padding: 0.85rem 1.5rem; background: transparent; border: 1px solid rgba(201,168,76,0.3); color: var(--grey); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; cursor: pointer; transition: all 0.3s; }
+.live-dry-btn:hover,.live-dry-btn.active { border-color: var(--gold); color: var(--gold); }
+.live-stop-btn { padding: 0.85rem 1.2rem; background: rgba(139,0,0,0.15); border: 1px solid var(--blood); color: var(--blood2); font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em; cursor: pointer; transition: all 0.3s; }
+.live-stop-btn:hover { background: var(--blood); color: var(--white); }
+.live-ab-label { font-family: var(--mono); font-size: 0.55rem; color: var(--grey); letter-spacing: 0.1em; }
+@media (max-width: 600px) { .live-knobs { grid-template-columns: 1fr; } .live-playback-row { flex-direction: column; align-items: stretch; } }
+
+/* ===================== SECTION 3: AUX ROUTING ===================== */
+.mixer-interface {
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2rem;
+  position: relative;
+}
+
+.mixer-interface::before {
+  content: 'AUX ROUTING SIMULATOR v2.1';
+  position: absolute;
+  top: -0.6rem; left: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  background: var(--steel2);
+  padding: 0 0.5rem;
+}
+
+.channel-strips {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+}
+
+.channel-strip {
+  min-width: 80px;
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 1rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.strip-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--grey);
+  letter-spacing: 0.1em;
+  text-align: center;
+  writing-mode: horizontal-tb;
+}
+
+.strip-fader-track {
+  width: 4px;
+  height: 80px;
+  background: var(--steel3);
+  border: 1px solid rgba(201,168,76,0.1);
+  position: relative;
+  cursor: ns-resize;
+}
+
+.strip-fader-handle {
+  position: absolute;
+  left: -8px;
+  width: 20px;
+  height: 8px;
+  background: var(--gold);
+  top: 30%;
+  cursor: ns-resize;
+  transition: top 0.3s;
+}
+
+.strip-meter {
+  width: 16px;
+  height: 60px;
+  background: var(--steel3);
+  position: relative;
+  overflow: hidden;
+}
+
+.strip-meter-fill {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, var(--teal), var(--gold), var(--blood2));
+  animation: meter-dance 0.1s steps(1) infinite;
+}
+
+@keyframes meter-dance {
+  0% { height: 40%; }
+  25% { height: 65%; }
+  50% { height: 35%; }
+  75% { height: 75%; }
+  100% { height: 45%; }
+}
+
+.strip-send {
+  font-family: var(--mono);
+  font-size: 0.45rem;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* BUS SECTION */
+.bus-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.bus-panel {
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.bus-name {
+  font-family: var(--tech);
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.5rem;
+}
+
+.bus-led-row {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 0.75rem;
+}
+
+.bus-led {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--steel3);
+  transition: all 0.3s;
+}
+
+.bus-led.active {
+  background: var(--teal);
+  box-shadow: 0 0 8px var(--teal);
+}
+
+/* ROUTING BUTTONS */
+.routing-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.route-btn {
+  padding: 1rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+}
+
+.route-btn.insert {
+  background: rgba(139,0,0,0.3);
+  border: 1px solid var(--blood);
+  color: var(--white);
+}
+
+.route-btn.insert:hover {
+  background: var(--blood2);
+  box-shadow: 0 0 20px rgba(204,0,0,0.4);
+}
+
+.route-btn.aux {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+}
+
+.route-btn.aux:hover {
+  background: var(--gold);
+  color: var(--black);
+  box-shadow: 0 0 20px rgba(201,168,76,0.4);
+}
+
+/* ROUTING RESULT */
+.routing-result {
+  padding: 1.5rem;
+  border: 1px solid;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  transition: all 0.5s;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.routing-result.danger {
+  border-color: var(--blood2);
+  background: rgba(139,0,0,0.15);
+  color: var(--blood2);
+  animation: danger-flash 0.5s;
+}
+
+.routing-result.success {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  color: var(--gold);
+  animation: success-glow 0.5s;
+}
+
+@keyframes danger-flash {
+  0%, 100% { background: rgba(139,0,0,0.15); }
+  50% { background: rgba(139,0,0,0.4); }
+}
+
+@keyframes success-glow {
+  0%, 100% { box-shadow: none; }
+  50% { box-shadow: 0 0 40px rgba(201,168,76,0.3); }
+}
+
+/* SIGNAL FLOW DIAGRAM */
+.signal-flow {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+.flow-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--grey);
+}
+
+.flow-node {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.flow-node.source { border-color: var(--teal); color: var(--teal); }
+.flow-node.fx { border-color: var(--gold); color: var(--gold); }
+.flow-node.bus { border-color: var(--blood2); color: var(--blood2); }
+.flow-node.out { border-color: var(--white); color: var(--white); opacity: 0.6; }
+
+.flow-arrow {
+  color: var(--grey);
+  opacity: 0.4;
+}
+
+.flow-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dim), transparent);
+  animation: flow-anim 2s linear infinite;
+  background-size: 20px 1px;
+}
+
+@keyframes flow-anim {
+  from { background-position: 0 0; }
+  to { background-position: 20px 0; }
+}
+
+/* ===================== SECTION 4: SPACE PSYCHOLOGY ===================== */
+#section-psychology {
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.psych-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.psych-card {
+  padding: 2rem;
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.12);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+
+.psych-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-4px);
+}
+
+.psych-particle-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.psych-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.psych-concept {
+  font-family: var(--tech);
+  font-size: 0.7rem;
+  color: var(--blood2);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.psych-title {
+  font-family: var(--display);
+  font-size: 1.8rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.psych-desc {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--white);
+  opacity: 0.8;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.psych-detail {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--grey);
+  line-height: 1.7;
+}
+
+/* ROOM SIMULATION BAR */
+.room-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--steel3);
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.room-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold), var(--blood));
+  transition: width 1s;
+}
+
+/* ===================== FINAL SECTION ===================== */
+#section-final {
+  position: relative;
+  padding: 8rem 2rem;
+  text-align: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(201,168,76,0.2);
+}
+
+.warning-tape {
+  width: 100%;
+  padding: 0.75rem 0;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--gold),
+    var(--gold) 20px,
+    var(--black) 20px,
+    var(--black) 40px
+  );
+  margin-bottom: 4rem;
+  opacity: 0.7;
+}
+
+.warning-tape-text {
+  font-family: var(--tech);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--black);
+  text-align: center;
+}
+
+.final-quote {
+  font-family: var(--display);
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  color: var(--white);
+  line-height: 1;
+  max-width: 800px;
+  margin: 0 auto 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.final-quote em {
+  color: var(--gold);
+  font-style: italic;
+  font-family: var(--serif);
+}
+
+.final-sub {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--grey);
+  letter-spacing: 0.3em;
+  margin-bottom: 4rem;
+}
+
+/* BRAND BLOCKS */
+.brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+}
+
+.brand-block {
+  padding: 2rem;
+  border: 1px solid rgba(201,168,76,0.2);
+  position: relative;
+  text-align: left;
+}
+
+.brand-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+}
+
+.brand-block.audio-hospital::before { background: linear-gradient(90deg, var(--blood), transparent); }
+.brand-block.freq-oasis::before { background: linear-gradient(90deg, var(--gold), transparent); }
+
+.brand-name {
+  font-family: var(--tech);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 0.25rem;
+}
+
+.brand-tagline {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--blood2);
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+.brand-desc {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--grey);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* PLUGIN VAULT */
+.plugin-vault {
+  max-width: 1000px;
+  margin: 0 auto 4rem;
+  padding: 2rem;
+  background: var(--steel2);
+  border: 1px solid rgba(201,168,76,0.2);
+  position: relative;
+}
+
+.plugin-vault::before {
+  content: 'PLUGIN VAULT — AUDIO HOSPITAL';
+  position: absolute;
+  top: -0.6rem; left: 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--blood2);
+  letter-spacing: 0.3em;
+  background: var(--steel2);
+  padding: 0 0.5rem;
+}
+
+.vault-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.vault-item {
+  padding: 1rem;
+  background: var(--black);
+  border: 1px solid rgba(201,168,76,0.1);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.vault-item:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.04);
+}
+
+.vault-name {
+  font-family: var(--tech);
+  font-size: 0.6rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+
+.vault-price {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  color: var(--grey);
+  margin-bottom: 0.75rem;
+}
+
+.vault-btn {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  border: 1px solid var(--blood);
+  color: var(--blood2);
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.vault-btn:hover {
+  background: var(--blood);
+  color: var(--white);
+}
+
+/* FOOTER */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: gap;
+  gap: 1rem;
+}
+
+.footer-left {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--grey);
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+}
+
+.footer-right {
+  font-family: var(--tech);
+  font-size: 0.5rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.2em;
+  text-align: right;
+}
+
+/* ===================== UTILITY ===================== */
+.gold { color: var(--gold); }
+.blood { color: var(--blood2); }
+.teal { color: var(--teal); }
+
+.glow-text {
+  text-shadow: 0 0 20px currentColor;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background: rgba(201,168,76,0.08);
+  margin: 2rem 0;
+}
+
+/* SCROLL REVEAL */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s, transform 0.7s;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  nav { padding: 0.75rem 1rem; }
+  .nav-links { display: none; }
+  .lab-section { padding: 4rem 1rem; }
+  .reverb-readout { grid-template-columns: 1fr; }
+  .bus-section { grid-template-columns: 1fr; }
+  .routing-buttons { flex-direction: column; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-right { text-align: center; }
+  .brand-grid { grid-template-columns: 1fr; }
+  .channel-strips { gap: 0.5rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AUX SURGERY LAB</div>
+  <ul class="nav-links">
+    <li><a href="#section-reverb">Reverb</a></li>
+    <li><a href="#section-delay">Delay</a></li>
+    <li><a href="#section-routing">Routing</a></li>
+    <li><a href="#section-psychology">Psychology</a></li>
+    <li><a href="#section-diagnostic" style="color:var(--blood2)">Diagnostic</a></li>
+    <li><a href="#section-live" style="color:var(--teal)">Live FX</a></li>
+  </ul>
+  <div class="nav-status">
+    <div class="nav-status-dot"></div>
+    LAB OPERATIONAL
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section id="hero">
+  <div class="xray-overlay"></div>
+  <div class="scanner-pulse"></div>
+  <div class="corner-bracket tl"></div>
+  <div class="corner-bracket tr"></div>
+  <div class="corner-bracket bl"></div>
+  <div class="corner-bracket br"></div>
+
+  <div class="hero-content">
+    <div style="margin-bottom:1rem;">
+      <span class="warning-badge">⚠ RESTRICTED ACCESS</span>
+      <span class="warning-badge">AUDIO HOSPITAL × FREQUENCY OASIS</span>
+    </div>
+
+    <div class="hero-tagline">SONIC ENGINEERING PROTOCOL — V3.0</div>
+
+    <h1 class="hero-title">AUX<br><span>SURGERY</span><br>LAB</h1>
+
+    <p class="hero-subtitle">"Learn reverb & delay like a real engineer — not a preset addict."</p>
+
+    <div class="led-strip">
+      <div class="led red"></div>
+      <div class="led gold"></div>
+      <div class="led teal"></div>
+      <div class="led red2"></div>
+      <div class="led gold2"></div>
+      <div class="led red"></div>
+      <div class="led teal"></div>
+    </div>
+
+    <div class="waveform-container">
+      <canvas id="hero-wave" width="600" height="60"></canvas>
+    </div>
+
+    <blockquote class="hero-quote">
+      "Most mixes drown because engineers don't understand space.<br>
+      Space is not an effect. Space is a decision."
+    </blockquote>
+
+    <a href="#section-reverb" class="enter-btn">◈ ENTER LAB</a>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: REVERB TRAUMA -->
+<!-- ============================================================ -->
+<section id="section-reverb">
+  <div class="lab-section">
+    <div class="section-header reveal">
+      <div class="section-number">// SECTION 01 — REVERB TRAUMA</div>
+      <h2 class="section-title">REVERB<br>TRAUMA</h2>
+      <p style="font-family:var(--serif);font-style:italic;color:var(--grey);font-size:1rem;margin-top:1rem;">
+        Select an instrument. Receive the diagnosis.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="instrument-grid reveal">
+      <button class="instrument-btn" data-instrument="vocals" onclick="selectInstrument('vocals', this)">
+        <span class="instrument-icon">🎤</span>VOCALS
+      </button>
+      <button class="instrument-btn" data-instrument="piano" onclick="selectInstrument('piano', this)">
+        <span class="instrument-icon">🎹</span>PIANO
+      </button>
+      <button class="instrument-btn" data-instrument="guitar" onclick="selectInstrument('guitar', this)">
+        <span class="instrument-icon">🎸</span>GUITAR
+      </button>
+      <button class="instrument-btn" data-instrument="pads" onclick="selectInstrument('pads', this)">
+        <span class="instrument-icon">🌊</span>PADS
+      </button>
+      <button class="instrument-btn" data-instrument="drums" onclick="selectInstrument('drums', this)">
+        <span class="instrument-icon">🥁</span>DRUMS
+      </button>
+      <button class="instrument-btn" data-instrument="synths" onclick="selectInstrument('synths', this)">
+        <span class="instrument-icon">⚡</span>SYNTHS
+      </button>
+      <button class="instrument-btn" data-instrument="fx" onclick="selectInstrument('fx', this)">
+        <span class="instrument-icon">🔮</span>FX
+      </button>
+    </div>
+
+    <div class="reverb-readout" id="reverb-readout">
+      <div class="readout-panel" data-label="REVERB TYPE">
+        <div class="readout-title">OPTIMAL REVERB UNIT</div>
+        <div class="readout-value" id="rv-type">—</div>
+        <div class="readout-detail" id="rv-desc">—</div>
+      </div>
+
+      <div class="readout-panel" data-label="DECAY PROTOCOL">
+        <div class="readout-title">DECAY LENGTH</div>
+        <div class="readout-value" id="rv-decay">—</div>
+        <div class="readout-detail" id="rv-decay-desc">—</div>
+        <div class="depth-meter">
+          <div class="meter-label">DEPTH INDEX</div>
+          <div class="meter-bar">
+            <div class="meter-fill" id="rv-meter" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="readout-panel" data-label="PRE-DELAY">
+        <div class="readout-title">PRE-DELAY GUIDANCE</div>
+        <div class="readout-value" id="rv-predelay">—</div>
+        <div class="readout-detail" id="rv-predelay-desc">—</div>
+      </div>
+
+      <div class="readout-panel" data-label="BRIGHTNESS PROTOCOL">
+        <div class="readout-title">DARK vs BRIGHT</div>
+        <div class="readout-value" id="rv-bright">—</div>
+        <div class="readout-detail" id="rv-bright-desc">—</div>
+      </div>
+
+      <div class="diagnostic-feed" id="reverb-diag">
+        <div class="diag-line info">[ AWAITING INSTRUMENT SELECTION... ]</div>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <!-- PLUGIN CARDS -->
+    <div class="section-number reveal">// RECOMMENDED SURGICAL UNITS</div>
+    <div class="plugin-grid reveal">
+      <div class="plugin-card">
+        <div class="plugin-card-glow"></div>
+        <div class="plugin-name">CRYOGENIC BLEED</div>
+        <div class="plugin-type">◈ REVERB / FREEZE PROCESSOR</div>
+        <div class="plugin-desc">
+          Surgical reverb tool engineered for freezing and smearing ambience without muddying transients. 
+          Built for producers who want reverb as texture, not decoration. 
+          Cold. Precise. Clinical.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ ENTER UNIT</a>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-card-glow"></div>
+        <div class="plugin-name">ATV — TRAUMAVERB</div>
+        <div class="plugin-type">◈ ALGORITHMIC REVERB ENGINE</div>
+        <div class="plugin-desc">
+          Trauma-grade room simulation. Designed to place sounds in impossible acoustic environments 
+          — between intimacy and distance, between reality and dream. 
+          No presets. Full control.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ ENTER UNIT</a>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-card-glow"></div>
+        <div class="plugin-name">SYNOVIAL</div>
+        <div class="plugin-type">◈ CONVOLUTION REVERB / IR LOADER</div>
+        <div class="plugin-desc">
+          Load actual acoustic spaces into your mix. From surgical theatre silence 
+          to abandoned cathedral reverb tails. Synovial is space on demand. 
+          Organic. Uncanny. Real.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ ENTER UNIT</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: DELAY CHEMISTRY -->
+<!-- ============================================================ -->
+<section id="section-delay">
+  <div class="lab-section">
+    <div class="section-header reveal">
+      <div class="section-number">// SECTION 02 — DELAY CHEMISTRY</div>
+      <h2 class="section-title">DELAY<br>CHEMISTRY</h2>
+      <p style="font-family:var(--serif);font-style:italic;color:var(--grey);font-size:1rem;margin-top:1rem;">
+        Select an emotional state. Receive the chemical formula.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="emotion-grid reveal">
+      <button class="emotion-btn" onclick="selectEmotion('lonely', this)">LONELY</button>
+      <button class="emotion-btn" onclick="selectEmotion('dreamy', this)">DREAMY</button>
+      <button class="emotion-btn" onclick="selectEmotion('aggressive', this)">AGGRESSIVE</button>
+      <button class="emotion-btn" onclick="selectEmotion('floating', this)">FLOATING</button>
+      <button class="emotion-btn" onclick="selectEmotion('dark', this)">DARK</button>
+      <button class="emotion-btn" onclick="selectEmotion('wide', this)">WIDE</button>
+    </div>
+
+    <div class="echo-container reveal">
+      <canvas id="echo-canvas"></canvas>
+    </div>
+
+    <div class="delay-readout" id="delay-readout">
+      <div class="delay-stat">
+        <div class="delay-stat-label">DELAY TYPE</div>
+        <div class="delay-stat-value" id="dl-type">—</div>
+        <div class="delay-stat-desc" id="dl-type-desc">—</div>
+      </div>
+      <div class="delay-stat">
+        <div class="delay-stat-label">FEEDBACK CONTROL</div>
+        <div class="delay-stat-value" id="dl-feedback">—</div>
+        <div class="delay-stat-desc" id="dl-feedback-desc">—</div>
+      </div>
+      <div class="delay-stat">
+        <div class="delay-stat-label">WET/DRY RATIO</div>
+        <div class="delay-stat-value" id="dl-wet">—</div>
+        <div class="delay-stat-desc" id="dl-wet-desc">—</div>
+      </div>
+      <div class="delay-stat">
+        <div class="delay-stat-label">TEMPO SYNC</div>
+        <div class="delay-stat-value" id="dl-tempo">—</div>
+        <div class="delay-stat-desc" id="dl-tempo-desc">—</div>
+      </div>
+
+      <div class="diagnostic-feed" id="delay-diag" style="grid-column:1/-1">
+        <div class="diag-line info">[ AWAITING EMOTION SELECTION... ]</div>
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="section-number reveal">// RECOMMENDED CHEMICAL AGENTS</div>
+    <div class="plugin-grid reveal">
+      <div class="plugin-card">
+        <div class="plugin-card-glow"></div>
+        <div class="plugin-name">PSYCHEMIA</div>
+        <div class="plugin-type">◈ HD MULTI-MODAL DELAY</div>
+        <div class="plugin-desc">
+          High-density delay processor with parallel emotional routing. 
+          Each mode targets a specific psychological response in the listener. 
+          Chemical-grade precision. Unstable by design.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ ENTER UNIT</a>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-card-glow"></div>
+        <div class="plugin-name">HD DELAY</div>
+        <div class="plugin-type">◈ STEREO / PING-PONG ENGINE</div>
+        <div class="plugin-desc">
+          Stereo and ping-pong delay with surgical feedback control. 
+          Zero-mudding algorithm preserves transients while extending decay. 
+          The delay that disappears into the mix.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ ENTER UNIT</a>
+      </div>
+
+      <div class="plugin-card">
+        <div class="plugin-card-glow"></div>
+        <div class="plugin-name">KYNTRA VST 2</div>
+        <div class="plugin-type">◈ MODULATED TAPE DELAY</div>
+        <div class="plugin-desc">
+          Tape-saturated delay with organic modulation. 
+          Warm, unstable, living. Every repeat breathes slightly differently. 
+          Built for neo-soul, jazz, and anything that needs weight.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ ENTER UNIT</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: AUX ROUTING SIMULATOR -->
+<!-- ============================================================ -->
+<section id="section-routing">
+  <div class="lab-section">
+    <div class="section-header reveal">
+      <div class="section-number">// SECTION 03 — AUX ROUTING SIMULATOR</div>
+      <h2 class="section-title">AUX<br>ROUTING</h2>
+      <p style="font-family:var(--serif);font-style:italic;color:var(--grey);font-size:1rem;margin-top:1rem;">
+        The difference between a muddy mix and a surgical one lives here.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="mixer-interface reveal">
+      <!-- CHANNEL STRIPS -->
+      <div class="channel-strips">
+        <div class="channel-strip">
+          <div class="strip-label">LEAD VOX</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:70%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle"></div></div>
+          <div class="strip-send">AUX 1<br>↕ −12dB</div>
+        </div>
+        <div class="channel-strip">
+          <div class="strip-label">PIANO</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:45%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle" style="top:40%"></div></div>
+          <div class="strip-send">AUX 1<br>↕ −18dB</div>
+        </div>
+        <div class="channel-strip">
+          <div class="strip-label">GUITAR</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:55%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle" style="top:35%"></div></div>
+          <div class="strip-send">AUX 2<br>↕ −15dB</div>
+        </div>
+        <div class="channel-strip">
+          <div class="strip-label">DRUM BUS</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:80%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle" style="top:20%"></div></div>
+          <div class="strip-send">DRY<br>↕ 0dB</div>
+        </div>
+        <div class="channel-strip">
+          <div class="strip-label">SYNTH</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:50%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle" style="top:45%"></div></div>
+          <div class="strip-send">AUX 1<br>↕ −20dB</div>
+        </div>
+        <div class="channel-strip" style="border-color:rgba(201,168,76,0.4);">
+          <div class="strip-label" style="color:var(--gold)">VERB BUS</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:30%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle" style="top:55%"></div></div>
+          <div class="strip-send" style="color:var(--gold)">MASTER<br>↕ −6dB</div>
+        </div>
+        <div class="channel-strip" style="border-color:rgba(0,212,170,0.4);">
+          <div class="strip-label" style="color:var(--teal)">DLY BUS</div>
+          <div class="strip-meter"><div class="strip-meter-fill" style="height:25%"></div></div>
+          <div class="strip-fader-track"><div class="strip-fader-handle" style="top:60%"></div></div>
+          <div class="strip-send" style="color:var(--teal)">MASTER<br>↕ −9dB</div>
+        </div>
+      </div>
+
+      <!-- BUS SECTION -->
+      <div class="bus-section">
+        <div class="bus-panel">
+          <div class="bus-name">AUX 1 — REVERB BUS</div>
+          <div class="bus-led-row" id="verb-leds">
+            <div class="bus-led"></div><div class="bus-led"></div><div class="bus-led"></div>
+            <div class="bus-led"></div><div class="bus-led"></div><div class="bus-led"></div>
+          </div>
+          <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey)">
+            SENDS: Vox, Piano, Guitar, Synth<br>
+            RETURN: −6dB to Master
+          </div>
+        </div>
+        <div class="bus-panel">
+          <div class="bus-name">AUX 2 — DELAY BUS</div>
+          <div class="bus-led-row" id="delay-leds">
+            <div class="bus-led"></div><div class="bus-led"></div><div class="bus-led"></div>
+            <div class="bus-led"></div><div class="bus-led"></div><div class="bus-led"></div>
+          </div>
+          <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey)">
+            SENDS: Guitar<br>
+            RETURN: −9dB to Master
+          </div>
+        </div>
+      </div>
+
+      <!-- ROUTING BUTTONS -->
+      <div style="font-family:var(--mono);font-size:0.6rem;color:var(--grey);margin-bottom:1rem;letter-spacing:0.1em;">
+        SELECT ROUTING METHOD:
+      </div>
+      <div class="routing-buttons">
+        <button class="route-btn insert" onclick="routeInsert()">
+          ⚠ INSERT REVERB DIRECTLY ON CHANNEL
+        </button>
+        <button class="route-btn aux" onclick="routeAux()">
+          ◈ USE AUX SEND → REVERB BUS
+        </button>
+      </div>
+
+      <!-- RESULT PANEL -->
+      <div class="routing-result" id="routing-result" style="border-color:rgba(201,168,76,0.2);color:var(--grey);">
+        <span>[ SELECT A ROUTING METHOD TO RECEIVE DIAGNOSIS ]</span>
+      </div>
+
+      <!-- SIGNAL FLOW -->
+      <div class="signal-flow" id="signal-flow">
+        <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey);letter-spacing:0.2em;margin-bottom:1rem;">
+          SIGNAL FLOW DIAGRAM
+        </div>
+        <div class="flow-row" id="flow-correct" style="display:none">
+          <div class="flow-node source">VOCALS</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node out">DRY TO MASTER</div>
+          <div class="flow-arrow">+</div>
+          <div class="flow-node fx">AUX SEND</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node bus">REVERB BUS</div>
+          <div class="flow-line"></div>
+          <div class="flow-node out">MASTER</div>
+        </div>
+        <div class="flow-row" id="flow-wrong" style="display:none">
+          <div class="flow-node source">VOCALS</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node bus">INSERT (DIRECT)</div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node bus">WET SIGNAL ONLY</div>
+          <div class="flow-line"></div>
+          <div class="flow-node out">MUD</div>
+        </div>
+        <div id="flow-explanation" style="font-family:var(--mono);font-size:0.58rem;color:var(--grey);margin-top:1rem;line-height:1.7;display:none">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: SPACE PSYCHOLOGY -->
+<!-- ============================================================ -->
+<section id="section-psychology">
+  <div class="lab-section">
+    <div class="section-header reveal">
+      <div class="section-number">// SECTION 04 — SPACE PSYCHOLOGY</div>
+      <h2 class="section-title">SPACE<br>PSYCHOLOGY</h2>
+      <p style="font-family:var(--serif);font-style:italic;color:var(--grey);font-size:1rem;margin-top:1rem;">
+        What the listener feels is determined by where you place them.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="psych-grid">
+      <div class="psych-card reveal">
+        <span class="psych-icon">🔬</span>
+        <div class="psych-concept">SHORT REVERB · PLATE / ROOM</div>
+        <div class="psych-title">INTIMACY</div>
+        <div class="psych-desc">"You're close to the source. The room is small. You feel the breath."</div>
+        <div class="room-bar"><div class="room-fill" style="width:20%"></div></div>
+        <div class="psych-detail">
+          Use: 0.3s–0.8s decay · Small room or plate reverb · Pre-delay 10–20ms<br><br>
+          Effect: The listener perceives proximity. Great for lead vocals, spoken word, intimate piano, and close-mic'd acoustics. This is the sound of someone in the same room as you.
+        </div>
+      </div>
+
+      <div class="psych-card reveal" style="--delay:0.1s">
+        <span class="psych-icon">🏔</span>
+        <div class="psych-concept">LONG REVERB · HALL / CHAMBER</div>
+        <div class="psych-title">DISTANCE</div>
+        <div class="psych-desc">"The source is far away. The room swallows the sound."</div>
+        <div class="room-bar"><div class="room-fill" style="width:85%"></div></div>
+        <div class="psych-detail">
+          Use: 2s–5s decay · Hall or cathedral · Pre-delay 30–60ms<br><br>
+          Effect: Creates epic scale and emotional vastness. Use on pads, orchestral elements, snare room mics, and background vocals. The sound arrives, then echoes into silence. Distance = grandeur.
+        </div>
+      </div>
+
+      <div class="psych-card reveal">
+        <span class="psych-icon">🎙</span>
+        <div class="psych-concept">NO REVERB · DRY VOCAL</div>
+        <div class="psych-title">UPFRONT EMOTION</div>
+        <div class="psych-desc">"Every word lands with full weight. Nothing softens the truth."</div>
+        <div class="room-bar"><div class="room-fill" style="width:5%"></div></div>
+        <div class="psych-detail">
+          Use: 0% reverb · Surgical EQ to clean transients · Intimate mic placement<br><br>
+          Effect: Dry vocals hit harder. The listener has nowhere to hide from the emotion. Use sparingly for raw moments, spoken lyrics, or confrontational passages. Kendrick. D'Angelo. Facts without filter.
+        </div>
+      </div>
+
+      <div class="psych-card reveal">
+        <span class="psych-icon">🌫</span>
+        <div class="psych-concept">WET VOCAL · SHIMMER REVERB</div>
+        <div class="psych-title">DREAMSTATE</div>
+        <div class="psych-desc">"The voice becomes the atmosphere itself."</div>
+        <div class="room-bar"><div class="room-fill" style="width:75%"></div></div>
+        <div class="psych-detail">
+          Use: 30–50% wet · Shimmer / reverse reverb · No pre-delay · High-pass reverb tail<br><br>
+          Effect: The vocal becomes diffuse, half-present, like a memory. Used in neo-soul, dream-pop, ambient trap, lo-fi. The voice is felt, not heard. Use only when the lyric is secondary to the vibe.
+        </div>
+      </div>
+
+      <div class="psych-card reveal">
+        <span class="psych-icon">⏱</span>
+        <div class="psych-concept">TEMPO-SYNCED DELAY</div>
+        <div class="psych-title">MOVEMENT</div>
+        <div class="psych-desc">"The sound walks through time. One becomes many."</div>
+        <div class="room-bar"><div class="room-fill" style="width:55%"></div></div>
+        <div class="psych-detail">
+          Use: 1/8 or 1/4 note · 20–35% feedback · Ping-pong for width<br><br>
+          Effect: Delay creates rhythmic energy. The original signal repeats in time with the groove, filling space without adding new instruments. The mix breathes and moves. Use it as composition, not correction.
+        </div>
+      </div>
+
+      <div class="psych-card reveal">
+        <span class="psych-icon">🌐</span>
+        <div class="psych-concept">STEREO REVERB + DELAY</div>
+        <div class="psych-title">ENVIRONMENT</div>
+        <div class="psych-desc">"The mix becomes a place. The listener is inside it."</div>
+        <div class="room-bar"><div class="room-fill" style="width:90%"></div></div>
+        <div class="psych-detail">
+          Use: Wide stereo reverb · Separate delay bus · High-pass reverb tail above 200Hz<br><br>
+          Effect: When reverb and delay work together through separate buses, they build a three-dimensional acoustic environment. The listener stops listening to a mix. They're in a room. That room is yours to design.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: DIAGNOSTIC CHAMBER -->
+<!-- ============================================================ -->
+<section id="section-diagnostic">
+  <div class="lab-section">
+    <div class="section-header reveal">
+      <div class="section-number">// SECTION 05 — DIAGNOSTIC CHAMBER</div>
+      <h2 class="section-title">DIAGNOSTIC<br>CHAMBER</h2>
+      <p style="font-family:var(--serif);font-style:italic;color:var(--grey);font-size:1rem;margin-top:1rem;">
+        Set your reverb or delay. Press play. The Lab will tell you if you got it right.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="diag-chamber reveal">
+
+      <!-- MODE -->
+      <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey);letter-spacing:0.25em;margin-bottom:0.75rem;">SELECT EFFECT MODE:</div>
+      <div class="mode-selector">
+        <button class="mode-btn active" id="mode-reverb-btn" onclick="setDCMode('reverb')">◈ REVERB MODE</button>
+        <button class="mode-btn" id="mode-delay-btn" onclick="setDCMode('delay')">◈ DELAY MODE</button>
+      </div>
+
+      <!-- INSTRUMENT / EMOTION SELECTOR -->
+      <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey);letter-spacing:0.25em;margin-bottom:0.75rem;" id="dc-sel-label">SELECT INSTRUMENT TO TEST AGAINST:</div>
+      <div class="dc-selector-row" id="dc-selector-row">
+        <button class="dc-sel-btn active" onclick="setDCTarget('vocals',this)">VOCALS</button>
+        <button class="dc-sel-btn" onclick="setDCTarget('piano',this)">PIANO</button>
+        <button class="dc-sel-btn" onclick="setDCTarget('guitar',this)">GUITAR</button>
+        <button class="dc-sel-btn" onclick="setDCTarget('pads',this)">PADS</button>
+        <button class="dc-sel-btn" onclick="setDCTarget('drums',this)">DRUMS</button>
+        <button class="dc-sel-btn" onclick="setDCTarget('synths',this)">SYNTHS</button>
+        <button class="dc-sel-btn" onclick="setDCTarget('fx',this)">FX</button>
+      </div>
+
+      <!-- SIGNAL SOURCE -->
+      <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey);letter-spacing:0.25em;margin-bottom:0.75rem;">SELECT TEST SIGNAL:</div>
+      <div class="source-row">
+        <button class="source-btn active" onclick="setSource('tone',this)">◈ SINE TONE</button>
+        <button class="source-btn" onclick="setSource('noise',this)">◈ NOISE BURST</button>
+        <button class="source-btn" onclick="setSource('click',this)">◈ TRANSIENT CLICK</button>
+        <button class="source-btn" onclick="setSource('pulse',this)">◈ PULSE WAVE</button>
+      </div>
+
+      <!-- KNOBS -->
+      <div style="font-family:var(--mono);font-size:0.55rem;color:var(--grey);letter-spacing:0.25em;margin-bottom:0.75rem;" id="knob-panel-label">REVERB PARAMETERS — DRAG KNOBS VERTICALLY:</div>
+      <div class="knob-panel" id="reverb-knobs">
+        <div class="knob-unit">
+          <div class="knob-label">DECAY (s)</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-decay" data-min="0.1" data-max="6" data-val="1.2" data-param="decay"></canvas>
+          </div>
+          <div class="knob-value" id="knob-decay-val">1.2s</div>
+          <div class="knob-range">0.1s — 6.0s</div>
+        </div>
+        <div class="knob-unit">
+          <div class="knob-label">PRE-DELAY (ms)</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-predelay" data-min="0" data-max="80" data-val="20" data-param="predelay"></canvas>
+          </div>
+          <div class="knob-value" id="knob-predelay-val">20ms</div>
+          <div class="knob-range">0ms — 80ms</div>
+        </div>
+        <div class="knob-unit">
+          <div class="knob-label">WET MIX (%)</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-wet" data-min="0" data-max="100" data-val="25" data-param="wet"></canvas>
+          </div>
+          <div class="knob-value" id="knob-wet-val">25%</div>
+          <div class="knob-range">0% — 100%</div>
+        </div>
+        <div class="knob-unit">
+          <div class="knob-label">BRIGHTNESS</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-bright" data-min="0" data-max="100" data-val="40" data-param="bright"></canvas>
+          </div>
+          <div class="knob-value" id="knob-bright-val">40%</div>
+          <div class="knob-range">DARK — BRIGHT</div>
+        </div>
+      </div>
+
+      <div class="knob-panel" id="delay-knobs" style="display:none">
+        <div class="knob-unit">
+          <div class="knob-label">DELAY TIME (ms)</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-dtime" data-min="10" data-max="800" data-val="200" data-param="dtime"></canvas>
+          </div>
+          <div class="knob-value" id="knob-dtime-val">200ms</div>
+          <div class="knob-range">10ms — 800ms</div>
+        </div>
+        <div class="knob-unit">
+          <div class="knob-label">FEEDBACK (%)</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-feedback" data-min="0" data-max="90" data-val="30" data-param="feedback"></canvas>
+          </div>
+          <div class="knob-value" id="knob-feedback-val">30%</div>
+          <div class="knob-range">0% — 90%</div>
+        </div>
+        <div class="knob-unit">
+          <div class="knob-label">WET MIX (%)</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-dwet" data-min="0" data-max="100" data-val="25" data-param="dwet"></canvas>
+          </div>
+          <div class="knob-value" id="knob-dwet-val">25%</div>
+          <div class="knob-range">0% — 100%</div>
+        </div>
+        <div class="knob-unit">
+          <div class="knob-label">STEREO WIDTH</div>
+          <div class="knob-wrap">
+            <canvas class="knob-svg" id="knob-width" data-min="0" data-max="100" data-val="50" data-param="width"></canvas>
+          </div>
+          <div class="knob-value" id="knob-width-val">50%</div>
+          <div class="knob-range">MONO — WIDE</div>
+        </div>
+      </div>
+
+      <!-- WAVEFORM DISPLAY -->
+      <div class="signal-display">
+        <div class="signal-display-header">
+          <div class="signal-display-label">SIGNAL MONITOR — DRY vs PROCESSED</div>
+          <div class="signal-status" id="dc-status">● IDLE</div>
+        </div>
+        <canvas id="dc-waveform"></canvas>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="dc-action-row">
+        <button class="dc-play-btn" onclick="dcPlay()">▶ PLAY TEST SIGNAL</button>
+        <button class="dc-diagnose-btn" onclick="dcDiagnose()">◈ RUN DIAGNOSIS</button>
+        <button class="dc-stop-btn" onclick="dcStop()">■ STOP</button>
+      </div>
+
+      <!-- GRADE PANEL -->
+      <div class="grade-panel" id="grade-panel">
+        <div class="dc-idle">
+          [ CONFIGURE YOUR SETTINGS ABOVE ]<br>
+          PRESS "PLAY TEST SIGNAL" TO HEAR YOUR SETTINGS<br>
+          PRESS "RUN DIAGNOSIS" TO RECEIVE YOUR GRADE
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: LIVE PROCESSOR -->
+<!-- ============================================================ -->
+<section id="section-live">
+  <div class="lab-section">
+    <div class="section-header reveal">
+      <div class="section-number">// SECTION 06 — LIVE PROCESSOR</div>
+      <h2 class="section-title">LIVE<br>PROCESSOR</h2>
+      <p style="font-family:var(--serif);font-style:italic;color:var(--grey);font-size:1rem;margin-top:1rem;">
+        Upload your instrument. One reverb knob. One delay knob. Hear what they actually do.
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <div class="live-chamber reveal">
+
+      <!-- DROP ZONE -->
+      <div class="drop-zone" id="live-drop-zone" onclick="document.getElementById('live-file-input').click()"
+        ondragover="event.preventDefault();this.classList.add('dragover')"
+        ondragleave="this.classList.remove('dragover')"
+        ondrop="handleLiveDrop(event)">
+        <span class="drop-icon" id="drop-icon">⬆</span>
+        <div class="drop-label" id="drop-label">DROP YOUR WAV OR MP3 HERE</div>
+        <div class="drop-sub" id="drop-sub">or click to browse · WAV / MP3 / OGG accepted</div>
+        <div class="drop-file-name" id="drop-file-name"></div>
+      </div>
+      <input type="file" id="live-file-input" accept="audio/*" onchange="handleLiveFile(this.files[0])">
+
+      <!-- LIVE CONTROLS (hidden until file loaded) -->
+      <div class="live-controls" id="live-controls">
+
+        <!-- WAVEFORM -->
+        <div class="live-waveform-wrap">
+          <div class="live-waveform-header">
+            <div class="live-waveform-label">SIGNAL MONITOR</div>
+            <div class="live-wf-status" id="live-wf-status">● IDLE</div>
+          </div>
+          <canvas id="live-waveform"></canvas>
+          <div class="live-progress-bar"><div class="live-progress-fill" id="live-progress-fill"></div></div>
+        </div>
+
+        <!-- PLAYBACK BUTTONS -->
+        <div class="live-playback-row">
+          <button class="live-play-btn" id="live-fx-btn" onclick="livePlayFX()">▶ PLAY WITH FX</button>
+          <button class="live-dry-btn" id="live-dry-btn" onclick="livePlayDry()">▶ PLAY DRY</button>
+          <button class="live-stop-btn" onclick="liveStop()">■ STOP</button>
+          <div class="live-ab-label">A/B COMPARE: DRY vs PROCESSED</div>
+        </div>
+
+        <!-- TWO KNOBS -->
+        <div class="live-knobs">
+
+          <!-- REVERB KNOB -->
+          <div class="live-knob-unit verb-unit">
+            <div class="live-knob-title">REVERB</div>
+            <div class="live-knob-subtitle">DECAY AMOUNT</div>
+            <div class="live-knob-wrap">
+              <canvas class="live-knob-canvas" id="lk-reverb" data-min="0" data-max="100" data-val="0"></canvas>
+            </div>
+            <div class="live-knob-value" id="lk-reverb-val">0%</div>
+            <div style="font-family:var(--mono);font-size:0.5rem;color:var(--grey);letter-spacing:0.15em;">DRAG UP TO ADD · DOWN TO DRY</div>
+            <div class="live-comment" id="verb-comment">[ TURN THE KNOB — THE LAB WILL RESPOND ]</div>
+          </div>
+
+          <!-- DELAY KNOB -->
+          <div class="live-knob-unit delay-unit">
+            <div class="live-knob-title">DELAY</div>
+            <div class="live-knob-subtitle">FEEDBACK AMOUNT</div>
+            <div class="live-knob-wrap">
+              <canvas class="live-knob-canvas" id="lk-delay" data-min="0" data-max="100" data-val="0"></canvas>
+            </div>
+            <div class="live-knob-value" id="lk-delay-val">0%</div>
+            <div style="font-family:var(--mono);font-size:0.5rem;color:var(--grey);letter-spacing:0.15em;">DRAG UP TO ADD · DOWN TO DRY</div>
+            <div class="live-comment" id="delay-comment">[ TURN THE KNOB — THE LAB WILL RESPOND ]</div>
+          </div>
+
+        </div>
+      </div><!-- end live-controls -->
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FINAL SECTION -->
+<!-- ============================================================ -->
+<section id="section-final">
+  <div class="warning-tape">
+    <div class="warning-tape-text">⚠ AUDIO HOSPITAL × FREQUENCY OASIS ⚠ SONIC ENGINEERING PROTOCOL ⚠ RESTRICTED KNOWLEDGE ⚠ AUDIO HOSPITAL × FREQUENCY OASIS ⚠</div>
+  </div>
+
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="section-number" style="text-align:center;margin-bottom:2rem;">// FINAL TRANSMISSION</div>
+
+    <h2 class="final-quote">
+      Space is not<br>an effect.<br>
+      Space is <em>psychology.</em>
+    </h2>
+
+    <p class="final-sub">— AUX SURGERY LAB / AUDIO HOSPITAL × FREQUENCY OASIS</p>
+
+    <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:5rem;">
+      <a href="https://frequencyoasis.gumroad.com" target="_blank" class="enter-btn" style="border-color:var(--blood);color:var(--blood2);">
+        ◈ ACCESS PLUGIN VAULT
+      </a>
+      <a href="https://frequencyoasis.gumroad.com" target="_blank" class="enter-btn">
+        ◈ FREQUENCY OASIS STORE
+      </a>
+    </div>
+
+    <!-- BRAND BLOCKS -->
+    <div class="brand-grid">
+      <div class="brand-block audio-hospital">
+        <div class="brand-name">AUDIO HOSPITAL</div>
+        <div class="brand-tagline">◈ SONIC WEAPONS · TRAUMA TOOLS · SONIC ENGINEERING</div>
+        <div class="brand-desc">
+          Developer of no-code VSTs, plugins, and audio software for producers who build from scratch. 
+          Every tool is engineered to give surgical control over sound design. 
+          No presets. No hand-holding. Just precision instruments.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ VISIT AUDIO HOSPITAL</a>
+      </div>
+
+      <div class="brand-block freq-oasis">
+        <div class="brand-name">FREQUENCY OASIS</div>
+        <div class="brand-tagline">◈ RECORDING · MIXING · MASTERING · SOUND DESIGN · TUITION</div>
+        <div class="brand-desc">
+          Home of the AUX Surgery Lab. Recording studio, mixing and mastering service, 
+          and Gumroad marketplace with 57+ professional audio products. 
+          504k+ Pixabay views since 2023. Real work. Real engineers.
+        </div>
+        <a href="https://frequencyoasis.gumroad.com" target="_blank" class="plugin-btn">◈ VISIT FREQUENCY OASIS</a>
+      </div>
+    </div>
+
+    <!-- PLUGIN VAULT -->
+    <div class="plugin-vault">
+      <div class="vault-grid">
+        <div class="vault-item">
+          <div class="vault-name">GORECOIL</div>
+          <div class="vault-price">Distortion / Saturation</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">CRYOGENIC BLEED</div>
+          <div class="vault-price">Reverb / Freeze</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">TRAUMA RESONATOR</div>
+          <div class="vault-price">Resonant FX</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">808 TONE INJECTOR</div>
+          <div class="vault-price">Bass / 808 Tool</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">HORIZON FRACTURE</div>
+          <div class="vault-price">Stereo / Space</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">PULSE SCALPEL</div>
+          <div class="vault-price">Transient Designer</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">GRAVE FILTER EQ</div>
+          <div class="vault-price">Surgical EQ</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn">ACQUIRE</a>
+        </div>
+        <div class="vault-item">
+          <div class="vault-name">OBLITHRAX C-14</div>
+          <div class="vault-price">Free / PWYW</div>
+          <a href="https://frequencyoasis.gumroad.com" target="_blank" class="vault-btn" style="border-color:var(--teal);color:var(--teal)">FREE</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div style="text-align:center;padding:2rem 0;border:1px solid rgba(201,168,76,0.1);margin-bottom:2rem;">
+      <div style="font-family:var(--tech);font-size:0.6rem;color:var(--gold);letter-spacing:0.3em;margin-bottom:1rem;">
+        CONTACT THE LAB
+      </div>
+      <div style="font-family:var(--mono);font-size:0.6rem;color:var(--grey);line-height:2;letter-spacing:0.1em;">
+        AUDIO HOSPITAL: audiohospital@tutamail.com · 065 197 1461<br>
+        FREQUENCY OASIS: partymustache78@gmail.com<br>
+        GUMROAD: frequencyoasis.gumroad.com
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-tape" style="margin-bottom:0;">
+    <div class="warning-tape-text">⚠ END TRANSMISSION ⚠ AUX SURGERY LAB v3.0 ⚠ AUDIO HOSPITAL × FREQUENCY OASIS ⚠ SONIC ENGINEERING PROTOCOL ⚠</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    AUX SURGERY LAB — AUDIO HOSPITAL × FREQUENCY OASIS<br>
+    Developed for engineers who build from scratch.<br>
+    <span style="color:var(--gold-dim)">frequencyoasis.gumroad.com</span>
+  </div>
+  <div class="footer-right">
+    SMOKEY EYE BEATS<br>
+    GAUTENG · SOUTH AFRICA<br>
+    <span style="color:var(--blood)">ALL RIGHTS RESERVED</span>
+  </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+// ---- PARTICLES ----
+(function(){
+  const container = document.getElementById('particles');
+  for(let i = 0; i < 40; i++){
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.left = Math.random()*100 + '%';
+    p.style.animationDuration = (8 + Math.random()*12) + 's';
+    p.style.animationDelay = (-Math.random()*20) + 's';
+    p.style.opacity = Math.random()*0.5;
+    if(Math.random() > 0.7) { p.style.background = '#8b0000'; p.style.boxShadow = '0 0 4px #8b0000'; }
+    container.appendChild(p);
+  }
+})();
+
+// ---- HERO WAVEFORM ----
+(function(){
+  const canvas = document.getElementById('hero-wave');
+  const ctx = canvas.getContext('2d');
+  let t = 0;
+  
+  function drawWave(){
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0,0,W,H);
+    
+    // Gold wave
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(201,168,76,0.8)';
+    ctx.lineWidth = 1.5;
+    for(let x=0;x<W;x++){
+      const y = H/2 + Math.sin((x/W)*Math.PI*6 + t)*14 + Math.sin((x/W)*Math.PI*12 + t*1.5)*6;
+      x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+
+    // Red overlay
+    ctx.beginPath();
+    ctx.strokeStyle = 'rgba(139,0,0,0.5)';
+    ctx.lineWidth = 1;
+    for(let x=0;x<W;x++){
+      const y = H/2 + Math.sin((x/W)*Math.PI*8 + t*0.7)*8 + Math.cos((x/W)*Math.PI*4 + t)*4;
+      x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+    }
+    ctx.stroke();
+    
+    t += 0.04;
+    requestAnimationFrame(drawWave);
+  }
+  drawWave();
+})();
+
+// ---- REVERB DATA ----
+const reverbData = {
+  vocals: {
+    type: 'Plate / Small Room',
+    desc: 'Plate reverb gives vocals a smooth, uncoloured tail that sits behind the source. Room reverb adds human-scale ambience.',
+    decay: '0.6s – 1.2s',
+    decayDesc: 'Keep decay short enough that lyric intelligibility stays intact. Longer tails blur words into mud.',
+    predelay: '15–25ms',
+    predelayDesc: 'Pre-delay separates the vocal from its own reverb, preserving definition. Without pre-delay, reverb smears into the attack of the vocal and causes bleed.',
+    bright: 'Medium-Warm',
+    brightDesc: 'Roll off the reverb above 8kHz. Bright reverb competes with the vocal presence. Warm reverb sits underneath and supports it.',
+    meter: 35,
+    diags: [
+      {t:'warn', m:'VOCAL DEPTH STABLE — PRE-DELAY ACTIVE'},
+      {t:'ok', m:'REVERB BLEED CONTROLLED — SURGICAL SPACE RESTORED'},
+      {t:'info', m:'RECOMMEND: CRYOGENIC BLEED / TRAUMAVERB — PLATE MODE'},
+    ]
+  },
+  piano: {
+    type: 'Hall / Chamber',
+    desc: 'Piano benefits from room ambience that mimics real acoustic environments. Hall reverb places it in a believable physical space.',
+    decay: '1.2s – 2.5s',
+    decayDesc: 'Piano sustains naturally. The reverb should extend the sustain without creating wash. Use the reverb to fill silence between notes, not mask them.',
+    predelay: '20–40ms',
+    predelayDesc: 'Longer pre-delay on piano keeps the attack defined. The initial transient lands clean, the reverb follows after.',
+    bright: 'Slightly Bright',
+    brightDesc: 'Piano reverb can afford a touch more brightness than vocals. The upper harmonics of the piano benefit from airy shimmer — but never past 10kHz or it becomes harsh.',
+    meter: 55,
+    diags: [
+      {t:'info', m:'ACOUSTIC SIMULATION: HALL MODE INITIATED'},
+      {t:'ok', m:'PIANO TRANSIENTS PRESERVED — CLARITY CONFIRMED'},
+      {t:'warn', m:'MONITOR FOR LOW-END FOG — HIGH-PASS REVERB TAIL'},
+    ]
+  },
+  guitar: {
+    type: 'Room / Ambience',
+    desc: 'Electric and acoustic guitar both benefit from subtle room ambience. Keeps them sounding like they were recorded in a real space.',
+    decay: '0.4s – 1.0s',
+    decayDesc: 'Short decay ensures the guitar stays rhythmically tight. Longer reverbs on strummed guitar quickly produce washy, unfocused mixes.',
+    predelay: '10–20ms',
+    predelayDesc: 'Minimal pre-delay on guitar. The pick attack needs to hit first. Pre-delay of even 10ms makes a significant difference to perceived clarity.',
+    bright: 'Dark',
+    brightDesc: 'Guitar reverb should be darker than the source. Cut everything above 6kHz in the reverb return. This keeps the reverb felt rather than heard.',
+    meter: 30,
+    diags: [
+      {t:'ok', m:'PICK ATTACK INTACT — ROOM AMBIENT STABLE'},
+      {t:'warn', m:'EXCESS BRIGHTNESS DETECTED — APPLY HIGH-PASS TO REVERB'},
+      {t:'info', m:'SURGICAL SPACE RESTORED'},
+    ]
+  },
+  pads: {
+    type: 'Shimmer / Convolution / Hall',
+    desc: 'Pads live in the reverb. They are atmospheric elements by nature and benefit from dense, long tails.',
+    decay: '2.5s – 6.0s',
+    decayDesc: 'Long decay on pads fills the frequency and temporal space of the mix. Pads are not sources — they are environments. Let them breathe.',
+    predelay: '0–10ms',
+    predelayDesc: 'Minimal or zero pre-delay. Pads should blend seamlessly into their own reverb. The transition between source and tail should be invisible.',
+    bright: 'Variable — Shimmer for Air',
+    brightDesc: 'Shimmer reverb (pitch-shifted octave tails) adds ethereal quality to pads. Standard hall for warmth. Match brightness to the emotional weight of the track.',
+    meter: 80,
+    diags: [
+      {t:'info', m:'ENVIRONMENTAL MODE — PAD DENSITY OPTIMAL'},
+      {t:'ok', m:'SHIMMER LAYER ACTIVE — SPATIAL DEPTH CONFIRMED'},
+      {t:'warn', m:'LOW-END FOG WARNING — HIGH-PASS AT 200Hz'},
+    ]
+  },
+  drums: {
+    type: 'Room / Plate / Gated',
+    desc: 'Drums require three separate reverb treatments: snare, room ambience, and sometimes gated reverb for retro energy.',
+    decay: '0.2s – 0.8s (Snare), 1.0s–2.0s (Room)',
+    decayDesc: 'Kick drum: no reverb or extremely short. Snare: short plate or gated. Room bus: longer ambience to place the full kit in a believable space.',
+    predelay: '0–8ms',
+    predelayDesc: 'Very short pre-delay on drums. The transient must hit before the tail. Any longer and the snare loses snap. Timing is everything on drums.',
+    bright: 'Filtered — Dark Below 6kHz',
+    brightDesc: 'Drum reverb must be heavily filtered. High-pass above 200Hz removes rumble. Low-pass below 8kHz removes clatter. The tail should feel, not sound.',
+    meter: 25,
+    diags: [
+      {t:'warn', m:'LOW-END FOG WARNING — KICK REVERB DETECTED'},
+      {t:'ok', m:'SNARE PLATE STABLE — TAIL SURGICAL'},
+      {t:'info', m:'ROOM BUS ACTIVE — DRUM ENVIRONMENT RENDERED'},
+    ]
+  },
+  synths: {
+    type: 'Algorithmic / Modulated',
+    desc: 'Synths can handle more experimental reverb treatment. Modulated reverb, reverse reverb, and shimmer all work depending on the role of the synth.',
+    decay: '0.8s – 3.0s (lead), 2.0s+ (atmosphere)',
+    decayDesc: 'Lead synths: shorter decay to maintain presence. Atmospheric and textural synths: longer, denser tails. Let the reverb become part of the sound design.',
+    predelay: '0–30ms',
+    predelayDesc: 'Variable based on role. Lead synth needs definition — use pre-delay. Background synth texture can have zero pre-delay, blending fully into the reverb space.',
+    bright: 'Match Synth Character',
+    brightDesc: 'Bright synths get slightly darker reverb to balance. Warm synths can have brighter reverb for added air. Always offset, never match — contrast creates depth.',
+    meter: 60,
+    diags: [
+      {t:'info', m:'MODULATION ACTIVE — REVERB TAIL BREATHING'},
+      {t:'ok', m:'LEAD SYNTH DEFINITION PRESERVED'},
+      {t:'warn', m:'REVERB BLEED DETECTED — REDUCE WET SIGNAL'},
+    ]
+  },
+  fx: {
+    type: 'Reverse / Convolution / Custom IR',
+    desc: 'FX elements — risers, impacts, atmospheres, sweeps — benefit from the most experimental reverb treatments in the session.',
+    decay: '0.5s – 8.0s+ (unconstrained)',
+    decayDesc: 'FX are not bound by conventional decay rules. A 10-second reverb tail on a riser creates anticipation. A 0.1s room mic on an impact creates weight. Serve the emotion, not the rule.',
+    predelay: 'No Constraints',
+    predelayDesc: 'Use pre-delay as creative tool on FX. Reverse pre-delay creates the sensation of sound appearing before it begins. Use reverb as composition.',
+    bright: 'Anything — Serve the Moment',
+    brightDesc: 'FX reverb is pure sound design. High-frequency shimmer, sub-bass rumble in the tail, metallic resonances — all valid. The effect should feel inevitable, not accidental.',
+    meter: 90,
+    diags: [
+      {t:'warn', m:'UNCONSTRAINED REVERB MODE — MANUAL OVERRIDE'},
+      {t:'info', m:'CREATIVE PROTOCOL ACTIVE — RULES SUSPENDED'},
+      {t:'ok', m:'SONIC SPACE ENGINEERED — EFFECT RENDERED'},
+    ]
+  }
+};
+
+function selectInstrument(key, btn){
+  document.querySelectorAll('.instrument-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const d = reverbData[key];
+  const readout = document.getElementById('reverb-readout');
+  readout.classList.add('visible');
+  
+  document.getElementById('rv-type').textContent = d.type;
+  document.getElementById('rv-desc').textContent = d.desc;
+  document.getElementById('rv-decay').textContent = d.decay;
+  document.getElementById('rv-decay-desc').textContent = d.decayDesc;
+  document.getElementById('rv-predelay').textContent = d.predelay;
+  document.getElementById('rv-predelay-desc').textContent = d.predelayDesc;
+  document.getElementById('rv-bright').textContent = d.bright;
+  document.getElementById('rv-bright-desc').textContent = d.brightDesc;
+  document.getElementById('rv-meter').style.width = d.meter + '%';
+  
+  const diagFeed = document.getElementById('reverb-diag');
+  diagFeed.innerHTML = '';
+  d.diags.forEach((msg, i) => {
+    setTimeout(()=>{
+      const el = document.createElement('div');
+      el.className = 'diag-line ' + msg.t;
+      el.textContent = '> ' + msg.m;
+      el.style.animationDelay = '0s';
+      diagFeed.appendChild(el);
+    }, i * 400);
+  });
+}
+
+// ---- DELAY DATA ----
+const delayData = {
+  lonely: {
+    type: 'Slap Delay', typedesc: 'Single echo, short delay time (60–120ms). The sound repeats once, then silence. The space after the repeat feels isolating.',
+    feedback: '10–20%', feedbackdesc: 'Almost no feedback. One clear echo then decay. Too much feedback on a lonely arrangement creates density when you need emptiness.',
+    wet: '15–25%', wetdesc: 'Subtle. The repeat should haunt, not dominate. The original signal carries the loneliness; the delay extends it.',
+    tempo: '1/8 dotted or free', tempodesc: 'Free time or slightly off-tempo delay creates unease and disconnection. Tempo-sync feels too controlled for isolation.',
+    diags: [
+      {t:'warn', m:'ISOLATION SIGNATURE DETECTED'},
+      {t:'info', m:'SLAP DELAY UNIT — SINGLE ECHO MODE'},
+      {t:'ok', m:'EMOTIONAL SPACE CALIBRATED'},
+    ],
+    echoColor: '#8b0000',
+    echoCount: 1,
+    echoDecay: 0.3
+  },
+  dreamy: {
+    type: 'Ping Pong + Modulated', typedesc: 'Repeats bounce left to right with subtle pitch modulation. The echo drifts and floats. Never quite settling.',
+    feedback: '40–60%', feedbackdesc: 'High enough feedback to create trails without total wash. The echoes should feel like fading memories, not digital smear.',
+    wet: '30–45%', wetdesc: 'More presence than loneliness. The dream-state requires submersion. Let the wet signal compete with the dry for presence.',
+    tempo: '1/4 or 1/8 synced', tempodesc: 'Tempo-synced to the groove keeps the dream rhythmically anchored. Prevents the delay from floating into noise.',
+    diags: [
+      {t:'info', m:'DREAM STATE INITIALISED'},
+      {t:'ok', m:'STEREO WIDTH STABILISED — PING-PONG ACTIVE'},
+      {t:'warn', m:'MODULATION UNSTABLE — INTENTIONAL'},
+    ],
+    echoColor: '#c9a84c',
+    echoCount: 5,
+    echoDecay: 0.6
+  },
+  aggressive: {
+    type: 'Tight Slap / Distorted', typedesc: 'Very short delay (20–50ms) with saturation on the feedback. Creates rhythmic density and controlled aggression.',
+    feedback: '5–15%', feedbackdesc: 'Minimal feedback. Aggression needs impact, not wash. The delay should punch, not trail. Use it as a rhythmic doubling effect.',
+    wet: '10–20%', wetdesc: 'Low wet ratio. Aggression lives in the dry signal. The delay reinforces the attack without softening it.',
+    tempo: '1/16 synced', tempodesc: 'Tight sixteenth-note sync creates mechanical, aggressive rhythm. Pairs perfectly with hard-hitting hip-hop and industrial production.',
+    diags: [
+      {t:'warn', m:'FEEDBACK LEVEL CRITICAL — CONTROLLED'},
+      {t:'warn', m:'AGGRESSIVE SIGNATURE CONFIRMED'},
+      {t:'ok', m:'TRANSIENT IMPACT PRESERVED'},
+    ],
+    echoColor: '#cc0000',
+    echoCount: 2,
+    echoDecay: 0.15
+  },
+  floating: {
+    type: 'Long Stereo + Shimmer', typedesc: 'Extended stereo delay with shimmer and reverse layers. Echoes drift upward harmonically, creating weightlessness.',
+    feedback: '55–75%', feedbackdesc: 'High feedback creates cascading echoes. The sound stays suspended. Control with the wet/dry — not by killing feedback.',
+    wet: '40–60%', wetdesc: 'High wet presence. Floating is a total submersion experience. The source and its echoes should feel equal in weight.',
+    tempo: 'Free / Unsynced', tempodesc: 'Floating is disrupted by tempo-sync. Free-running delay times create drift and suspension. The mix loses its rhythmic gravity.',
+    diags: [
+      {t:'info', m:'GRAVITY PROTOCOL: SUSPENDED'},
+      {t:'ok', m:'STEREO SHIMMER LAYER ACTIVE'},
+      {t:'warn', m:'CHEMICAL ECHO ACTIVE — STABILITY UNCERTAIN'},
+    ],
+    echoColor: '#00d4aa',
+    echoCount: 7,
+    echoDecay: 0.75
+  },
+  dark: {
+    type: 'Tape / Lo-Fi Delay', typedesc: 'Warm, saturated delay with rolled-off high frequencies. The repeats degrade organically, losing clarity with each echo.',
+    feedback: '30–50%', feedbackdesc: 'Moderate feedback with saturation and filtering on each repeat cycle. Each echo should be slightly darker and warmer than the last.',
+    wet: '20–35%', wetdesc: 'Present but not overwhelming. Dark energy is felt beneath the mix, not on top of it. The delay lives in the shadows.',
+    tempo: '1/4 or dotted 1/8', tempodesc: 'Slower delay times for dark production. Faster echoes create urgency; dark emotions need space between repeats.',
+    diags: [
+      {t:'warn', m:'DARK SIGNATURE DETECTED'},
+      {t:'info', m:'TAPE SATURATION MODE — DEGRADATION ACTIVE'},
+      {t:'ok', m:'SHADOW LAYER STABLE'},
+    ],
+    echoColor: '#5a3a1a',
+    echoCount: 3,
+    echoDecay: 0.45
+  },
+  wide: {
+    type: 'Ping Pong / Haas Effect', typedesc: 'Hard left/right alternating repeats create maximum stereo width. Use Haas effect (10–30ms offset) for invisible but massive width.',
+    feedback: '25–45%', feedbackdesc: 'Enough feedback to fill the stereo field. Monitor in mono regularly — excessive ping-pong can cause phase issues and cancel out.',
+    wet: '25–40%', wetdesc: 'Wide enough to extend the mix to the edges of the stereo field. In mono, width collapses — design for both listening environments.',
+    tempo: '1/8 ping-pong synced', tempodesc: 'Stereo ping-pong needs tempo sync to feel intentional and controlled. Unsynced wide delay creates chaos instead of width.',
+    diags: [
+      {t:'ok', m:'STEREO WIDTH STABILISED — LEFT/RIGHT FIELD ACTIVE'},
+      {t:'warn', m:'MONO COMPATIBILITY: CHECK PHASE'},
+      {t:'info', m:'HAAS EFFECT PROTOCOL INITIATED'},
+    ],
+    echoColor: '#c9a84c',
+    echoCount: 6,
+    echoDecay: 0.5
+  }
+};
+
+let echoAnim = null;
+function selectEmotion(key, btn){
+  document.querySelectorAll('.emotion-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const d = delayData[key];
+  const readout = document.getElementById('delay-readout');
+  readout.classList.add('visible');
+  
+  document.getElementById('dl-type').textContent = d.type;
+  document.getElementById('dl-type-desc').textContent = d.typedesc;
+  document.getElementById('dl-feedback').textContent = d.feedback;
+  document.getElementById('dl-feedback-desc').textContent = d.feedbackdesc;
+  document.getElementById('dl-wet').textContent = d.wet;
+  document.getElementById('dl-wet-desc').textContent = d.wetdesc;
+  document.getElementById('dl-tempo').textContent = d.tempo;
+  document.getElementById('dl-tempo-desc').textContent = d.tempodesc;
+  
+  const diagFeed = document.getElementById('delay-diag');
+  diagFeed.innerHTML = '';
+  d.diags.forEach((msg, i) => {
+    setTimeout(()=>{
+      const el = document.createElement('div');
+      el.className = 'diag-line ' + msg.t;
+      el.textContent = '> ' + msg.m;
+      diagFeed.appendChild(el);
+    }, i * 350);
+  });
+
+  // Echo animation
+  if(echoAnim) cancelAnimationFrame(echoAnim);
+  drawEchoes(d);
+}
+
+function drawEchoes(d){
+  const canvas = document.getElementById('echo-canvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+  let t = 0;
+  
+  function frame(){
+    const W = canvas.width, H = canvas.height;
+    ctx.fillStyle = 'rgba(0,0,0,0.15)';
+    ctx.fillRect(0,0,W,H);
+    
+    // Draw echo pulses
+    for(let i=0; i<d.echoCount; i++){
+      const delay = (i / d.echoCount) * W * 0.8;
+      const x = (t * 80 - delay + W*2) % (W*1.2);
+      const amp = H/3 * Math.pow(d.echoDecay, i);
+      const alpha = Math.pow(d.echoDecay, i) * 0.9;
+      
+      if(x > 0 && x < W + 10){
+        ctx.beginPath();
+        ctx.strokeStyle = d.echoColor + Math.floor(alpha*255).toString(16).padStart(2,'0');
+        ctx.lineWidth = 1.5 - i*0.15;
+        for(let px=0; px<60; px++){
+          const relX = x - 30 + px;
+          const wave = Math.sin((px/60)*Math.PI) * amp;
+          relX === x-30 ? ctx.moveTo(relX, H/2 + wave) : ctx.lineTo(relX, H/2 + wave);
+        }
+        ctx.stroke();
+      }
+    }
+    
+    t += 0.5;
+    echoAnim = requestAnimationFrame(frame);
+  }
+  frame();
+}
+
+// ---- ROUTING SIMULATOR ----
+function routeInsert(){
+  const result = document.getElementById('routing-result');
+  const flowCorrect = document.getElementById('flow-correct');
+  const flowWrong = document.getElementById('flow-wrong');
+  const flowExpl = document.getElementById('flow-explanation');
+
+  result.className = 'routing-result danger';
+  result.innerHTML = '<span style="font-size:1.2rem">⚠</span><span>MIX MUD DETECTED — INSERT ROUTING CONDEMNED</span>';
+  
+  flowCorrect.style.display = 'none';
+  flowWrong.style.display = 'flex';
+  flowExpl.style.display = 'block';
+  flowExpl.innerHTML = `<span style="color:var(--blood2)">// DIAGNOSIS:</span><br>
+Inserting reverb directly on a channel means the entire channel signal runs through reverb — wet and dry together, no control. You lose the ability to EQ the reverb tail independently. You cannot automate the send level. You cannot route multiple channels to a shared, cohesive reverb space. Every channel has its own reverb world and none of them agree. Result: a mix that sounds like a bathroom at a party. Each element existing separately, competing in its own acoustic space. This is how amateur mixes are identified.`;
+  
+  animateLEDs('verb-leds', false);
+  animateLEDs('delay-leds', false);
+}
+
+function routeAux(){
+  const result = document.getElementById('routing-result');
+  const flowCorrect = document.getElementById('flow-correct');
+  const flowWrong = document.getElementById('flow-wrong');
+  const flowExpl = document.getElementById('flow-explanation');
+
+  result.className = 'routing-result success';
+  result.innerHTML = '<span style="font-size:1.2rem">◈</span><span>SURGICAL CLARITY RESTORED — AUX ROUTING CONFIRMED</span>';
+  
+  flowCorrect.style.display = 'flex';
+  flowWrong.style.display = 'none';
+  flowExpl.style.display = 'block';
+  flowExpl.innerHTML = `<span style="color:var(--gold)">// CONFIRMATION:</span><br>
+AUX send routing means the dry signal reaches the master clean and unaffected. A controlled send — at a level you choose — goes to the reverb bus. The reverb bus returns separately to the master at a controlled level. You can EQ the reverb independently. You can compress the reverb tail. Multiple channels share the same reverb space, creating mix cohesion. The room sounds like one room. This is how mix engineers build space — as a system, not a collection of accidents.`;
+  
+  animateLEDs('verb-leds', true);
+  animateLEDs('delay-leds', true);
+}
+
+function animateLEDs(id, state){
+  const leds = document.querySelectorAll('#' + id + ' .bus-led');
+  leds.forEach((led, i) => {
+    setTimeout(()=>{
+      if(state) led.classList.add('active');
+      else led.classList.remove('active');
+    }, i * 100);
+  });
+}
+
+// ---- SCROLL REVEAL ----
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('revealed');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ---- ECHO CANVAS RESIZE ----
+window.addEventListener('resize', ()=>{
+  const canvas = document.getElementById('echo-canvas');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+});
+
+// ============================================================
+// DIAGNOSTIC CHAMBER ENGINE
+// ============================================================
+
+let dcMode = 'reverb';
+let dcTarget = 'vocals';
+let dcSource = 'tone';
+let audioCtx = null;
+let dcNodes = {};
+let dcPlaying = false;
+let dcWaveAnim = null;
+let dcParams = {
+  decay: 1.2, predelay: 20, wet: 25, bright: 40,
+  dtime: 200, feedback: 30, dwet: 25, width: 50
+};
+
+// CORRECT RANGES per instrument (reverb)
+const reverbRanges = {
+  vocals:  { decay:[0.4,1.4], predelay:[10,30], wet:[10,30], bright:[20,55] },
+  piano:   { decay:[0.8,2.8], predelay:[15,45], wet:[15,35], bright:[30,65] },
+  guitar:  { decay:[0.3,1.2], predelay:[5,25],  wet:[8,25],  bright:[10,45] },
+  pads:    { decay:[2.0,8.0], predelay:[0,15],  wet:[25,60], bright:[20,70] },
+  drums:   { decay:[0.1,1.0], predelay:[0,10],  wet:[5,20],  bright:[10,40] },
+  synths:  { decay:[0.6,3.5], predelay:[0,35],  wet:[12,40], bright:[15,70] },
+  fx:      { decay:[0.3,9.0], predelay:[0,80],  wet:[10,80], bright:[0,100] }
+};
+
+// CORRECT RANGES per emotion (delay)
+const delayRanges = {
+  lonely:     { dtime:[50,150],  feedback:[5,25],  dwet:[10,28], width:[10,50] },
+  dreamy:     { dtime:[120,400], feedback:[35,65],  dwet:[25,50], width:[40,90] },
+  aggressive: { dtime:[15,60],   feedback:[3,18],   dwet:[8,22],  width:[0,40] },
+  floating:   { dtime:[200,600], feedback:[50,80],  dwet:[35,65], width:[60,100] },
+  dark:       { dtime:[100,350], feedback:[25,55],  dwet:[15,40], width:[20,65] },
+  wide:       { dtime:[60,250],  feedback:[20,50],  dwet:[20,45], width:[70,100] }
+};
+
+const paramLabels = {
+  reverb: { decay:'DECAY', predelay:'PRE-DELAY', wet:'WET MIX', bright:'BRIGHTNESS' },
+  delay:  { dtime:'DELAY TIME', feedback:'FEEDBACK', dwet:'WET MIX', width:'STEREO WIDTH' }
+};
+
+const unitSuffixes = {
+  decay:'s', predelay:'ms', wet:'%', bright:'%',
+  dtime:'ms', feedback:'%', dwet:'%', width:'%'
+};
+
+function setDCMode(mode) {
+  dcMode = mode;
+  document.getElementById('mode-reverb-btn').classList.toggle('active', mode==='reverb');
+  document.getElementById('mode-delay-btn').classList.toggle('active', mode==='delay');
+  document.getElementById('reverb-knobs').style.display = mode==='reverb' ? 'grid' : 'none';
+  document.getElementById('delay-knobs').style.display = mode==='delay' ? 'grid' : 'none';
+  document.getElementById('knob-panel-label').textContent =
+    mode==='reverb' ? 'REVERB PARAMETERS — DRAG KNOBS VERTICALLY:' : 'DELAY PARAMETERS — DRAG KNOBS VERTICALLY:';
+
+  // Swap selectors
+  const selLabel = document.getElementById('dc-sel-label');
+  const selRow = document.getElementById('dc-selector-row');
+  if(mode==='reverb'){
+    selLabel.textContent = 'SELECT INSTRUMENT TO TEST AGAINST:';
+    selRow.innerHTML = `
+      <button class="dc-sel-btn active" onclick="setDCTarget('vocals',this)">VOCALS</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('piano',this)">PIANO</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('guitar',this)">GUITAR</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('pads',this)">PADS</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('drums',this)">DRUMS</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('synths',this)">SYNTHS</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('fx',this)">FX</button>`;
+    dcTarget = 'vocals';
+  } else {
+    selLabel.textContent = 'SELECT EMOTIONAL TARGET:';
+    selRow.innerHTML = `
+      <button class="dc-sel-btn active" onclick="setDCTarget('lonely',this)">LONELY</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('dreamy',this)">DREAMY</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('aggressive',this)">AGGRESSIVE</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('floating',this)">FLOATING</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('dark',this)">DARK</button>
+      <button class="dc-sel-btn" onclick="setDCTarget('wide',this)">WIDE</button>`;
+    dcTarget = 'lonely';
+  }
+  resetGradePanel();
+}
+
+function setDCTarget(t, btn) {
+  dcTarget = t;
+  btn.closest('.dc-selector-row').querySelectorAll('.dc-sel-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  resetGradePanel();
+}
+
+function setSource(s, btn) {
+  dcSource = s;
+  btn.closest('.source-row').querySelectorAll('.source-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function resetGradePanel(){
+  const gp = document.getElementById('grade-panel');
+  gp.className = 'grade-panel';
+  gp.innerHTML = '<div class="dc-idle">[ CONFIGURE YOUR SETTINGS ABOVE ]<br>PRESS "PLAY TEST SIGNAL" TO HEAR YOUR SETTINGS<br>PRESS "RUN DIAGNOSIS" TO RECEIVE YOUR GRADE</div>';
+}
+
+// ---- KNOB ENGINE ----
+function initKnobs(){
+  document.querySelectorAll('.knob-svg').forEach(canvas => {
+    let dragging = false, startY = 0, startVal = 0;
+    const min = parseFloat(canvas.dataset.min);
+    const max = parseFloat(canvas.dataset.max);
+    let val = parseFloat(canvas.dataset.val);
+    const param = canvas.dataset.param;
+
+    function draw(){
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width = 64, H = canvas.height = 64;
+      const cx = W/2, cy = H/2, r = 26;
+      const startA = Math.PI * 0.75;
+      const endA = Math.PI * 2.25;
+      const pct = (val - min) / (max - min);
+      const angle = startA + pct * (endA - startA);
+
+      ctx.clearRect(0,0,W,H);
+
+      // Track
+      ctx.beginPath();
+      ctx.arc(cx,cy,r,startA,endA);
+      ctx.strokeStyle = 'rgba(201,168,76,0.15)';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      // Fill
+      ctx.beginPath();
+      ctx.arc(cx,cy,r,startA,angle);
+      ctx.strokeStyle = '#c9a84c';
+      ctx.lineWidth = 4;
+      ctx.shadowColor = '#c9a84c';
+      ctx.shadowBlur = 8;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Dot
+      const dx = cx + r * Math.cos(angle);
+      const dy = cy + r * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(dx,dy,4,0,Math.PI*2);
+      ctx.fillStyle = '#c9a84c';
+      ctx.fill();
+
+      // Centre dot
+      ctx.beginPath();
+      ctx.arc(cx,cy,3,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(201,168,76,0.3)';
+      ctx.fill();
+    }
+
+    function updateVal(newVal){
+      val = Math.max(min, Math.min(max, newVal));
+      canvas.dataset.val = val;
+      dcParams[param] = val;
+      // Update display
+      const el = document.getElementById('knob-'+param+'-val');
+      if(el){
+        const suffix = unitSuffixes[param] || '';
+        el.textContent = (param==='decay' ? val.toFixed(1) : Math.round(val)) + suffix;
+      }
+      draw();
+    }
+
+    canvas.addEventListener('mousedown', e => {
+      dragging = true; startY = e.clientY; startVal = val;
+      e.preventDefault();
+    });
+    canvas.addEventListener('touchstart', e => {
+      dragging = true; startY = e.touches[0].clientY; startVal = val;
+      e.preventDefault();
+    }, {passive:false});
+
+    window.addEventListener('mousemove', e => {
+      if(!dragging) return;
+      const range = max - min;
+      const delta = (startY - e.clientY) / 120 * range;
+      updateVal(startVal + delta);
+    });
+    window.addEventListener('touchmove', e => {
+      if(!dragging) return;
+      const range = max - min;
+      const delta = (startY - e.touches[0].clientY) / 120 * range;
+      updateVal(startVal + delta);
+    }, {passive:false});
+
+    window.addEventListener('mouseup', () => dragging = false);
+    window.addEventListener('touchend', () => dragging = false);
+
+    draw();
+  });
+}
+
+// ---- WEB AUDIO SIGNAL GENERATION ----
+function getAudioCtx(){
+  if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function buildSignalBuffer(ctx, source){
+  const sr = ctx.sampleRate;
+  const len = sr * 1.5;
+  const buf = ctx.createBuffer(1, len, sr);
+  const data = buf.getChannelData(0);
+
+  if(source === 'tone'){
+    const freq = 440;
+    for(let i=0;i<len;i++){
+      const t = i/sr;
+      const env = t < 0.01 ? t/0.01 : Math.exp(-(t-0.01)*3);
+      data[i] = Math.sin(2*Math.PI*freq*t) * env * 0.6;
+    }
+  } else if(source === 'noise'){
+    for(let i=0;i<len;i++){
+      const t = i/sr;
+      const env = t < 0.005 ? t/0.005 : Math.exp(-(t-0.005)*8);
+      data[i] = (Math.random()*2-1) * env * 0.5;
+    }
+  } else if(source === 'click'){
+    for(let i=0;i<len;i++){
+      const t = i/sr;
+      const env = t < 0.001 ? 1 : Math.exp(-(t-0.001)*40);
+      data[i] = (Math.sin(2*Math.PI*200*t) + (Math.random()*2-1)*0.3) * env * 0.7;
+    }
+  } else if(source === 'pulse'){
+    const freq = 110;
+    for(let i=0;i<len;i++){
+      const t = i/sr;
+      const env = t < 0.008 ? t/0.008 : Math.exp(-(t-0.008)*5);
+      const phase = (t*freq) % 1;
+      data[i] = (phase < 0.5 ? 0.6 : -0.6) * env * 0.6;
+    }
+  }
+  return buf;
+}
+
+function dcPlay(){
+  dcStop();
+  const ctx = getAudioCtx();
+  if(ctx.state === 'suspended') ctx.resume();
+  document.getElementById('dc-status').textContent = '● PLAYING';
+  document.getElementById('dc-status').style.color = 'var(--teal)';
+
+  const buf = buildSignalBuffer(ctx, dcSource);
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  src.loop = true;
+
+  const gainDry = ctx.createGain();
+  const gainWet = ctx.createGain();
+  const masterGain = ctx.createGain();
+
+  let effectNode, wetVal;
+
+  if(dcMode === 'reverb'){
+    wetVal = dcParams.wet / 100;
+    gainDry.gain.value = 1 - wetVal * 0.5;
+    gainWet.gain.value = wetVal;
+
+    // Convolver-based reverb approximation using IIR
+    const convolverLen = Math.floor(ctx.sampleRate * Math.min(dcParams.decay, 4));
+    const irBuf = ctx.createBuffer(2, convolverLen, ctx.sampleRate);
+    for(let ch=0;ch<2;ch++){
+      const d = irBuf.getChannelData(ch);
+      for(let i=0;i<convolverLen;i++){
+        d[i] = (Math.random()*2-1) * Math.pow(1 - i/convolverLen, 2);
+      }
+    }
+    const conv = ctx.createConvolver();
+    conv.buffer = irBuf;
+
+    // Pre-delay
+    const delayNode = ctx.createDelay(0.1);
+    delayNode.delayTime.value = dcParams.predelay / 1000;
+
+    // Brightness filter on wet
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 1000 + (dcParams.bright / 100) * 15000;
+
+    src.connect(gainDry);
+    src.connect(delayNode);
+    delayNode.connect(conv);
+    conv.connect(filter);
+    filter.connect(gainWet);
+    gainDry.connect(masterGain);
+    gainWet.connect(masterGain);
+
+    dcNodes = { src, gainDry, gainWet, conv, delayNode, filter, masterGain };
+  } else {
+    // DELAY
+    wetVal = dcParams.dwet / 100;
+    gainDry.gain.value = 1;
+    gainWet.gain.value = wetVal;
+
+    const delayNode = ctx.createDelay(1.0);
+    delayNode.delayTime.value = Math.min(dcParams.dtime / 1000, 0.9);
+
+    const fbGain = ctx.createGain();
+    fbGain.gain.value = dcParams.feedback / 100;
+
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 4000;
+
+    src.connect(gainDry);
+    src.connect(delayNode);
+    delayNode.connect(filter);
+    filter.connect(fbGain);
+    fbGain.connect(delayNode);
+    filter.connect(gainWet);
+    gainDry.connect(masterGain);
+    gainWet.connect(masterGain);
+
+    dcNodes = { src, gainDry, gainWet, delayNode, fbGain, filter, masterGain };
+  }
+
+  masterGain.connect(ctx.destination);
+  src.start();
+  dcPlaying = true;
+
+  // Analyser for waveform
+  const analyser = ctx.createAnalyser();
+  analyser.fftSize = 512;
+  masterGain.connect(analyser);
+  dcNodes.analyser = analyser;
+  drawDCWaveform(analyser);
+}
+
+function dcStop(){
+  if(dcNodes.src) { try{ dcNodes.src.stop(); }catch(e){} }
+  dcPlaying = false;
+  if(dcWaveAnim) { cancelAnimationFrame(dcWaveAnim); dcWaveAnim = null; }
+  document.getElementById('dc-status').textContent = '● IDLE';
+  document.getElementById('dc-status').style.color = 'var(--grey)';
+  const canvas = document.getElementById('dc-waveform');
+  const ctx2 = canvas.getContext('2d');
+  ctx2.clearRect(0,0,canvas.width,canvas.height);
+  dcNodes = {};
+}
+
+function drawDCWaveform(analyser){
+  const canvas = document.getElementById('dc-waveform');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = 80;
+  const ctx2 = canvas.getContext('2d');
+  const bufLen = analyser.frequencyBinCount;
+  const dataArr = new Uint8Array(bufLen);
+
+  function frame(){
+    if(!dcPlaying) return;
+    dcWaveAnim = requestAnimationFrame(frame);
+    analyser.getByteTimeDomainData(dataArr);
+
+    ctx2.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx2.fillRect(0,0,canvas.width,canvas.height);
+
+    ctx2.beginPath();
+    ctx2.strokeStyle = '#c9a84c';
+    ctx2.lineWidth = 1.5;
+    const sliceW = canvas.width / bufLen;
+    let x = 0;
+    for(let i=0;i<bufLen;i++){
+      const v = dataArr[i]/128;
+      const y = v * canvas.height / 2;
+      i===0 ? ctx2.moveTo(x,y) : ctx2.lineTo(x,y);
+      x += sliceW;
+    }
+    ctx2.stroke();
+
+    // Baseline
+    ctx2.beginPath();
+    ctx2.strokeStyle = 'rgba(139,0,0,0.3)';
+    ctx2.lineWidth = 1;
+    ctx2.moveTo(0, canvas.height/2);
+    ctx2.lineTo(canvas.width, canvas.height/2);
+    ctx2.stroke();
+  }
+  frame();
+}
+
+// ---- DIAGNOSIS ENGINE ----
+function dcDiagnose(){
+  const gp = document.getElementById('grade-panel');
+  gp.className = 'grade-panel grading';
+  gp.innerHTML = '<div class="dc-idle" style="color:var(--gold)">[ RUNNING DIAGNOSTIC SCAN... ]</div>';
+
+  setTimeout(()=>{
+    const ranges = dcMode === 'reverb' ? reverbRanges[dcTarget] : delayRanges[dcTarget];
+    const paramKeys = dcMode === 'reverb'
+      ? ['decay','predelay','wet','bright']
+      : ['dtime','feedback','dwet','width'];
+
+    const results = [];
+    let passCount = 0;
+
+    paramKeys.forEach(p => {
+      const val = dcParams[p];
+      const [lo, hi] = ranges[p];
+      const suffix = unitSuffixes[p] || '';
+      const label = (dcMode==='reverb' ? paramLabels.reverb : paramLabels.delay)[p];
+      const userVal = (p==='decay' ? val.toFixed(1) : Math.round(val)) + suffix;
+      const rangeStr = (p==='decay' ? lo.toFixed(1) : lo) + suffix + ' – ' + (p==='decay' ? hi.toFixed(1) : hi) + suffix;
+
+      // Tolerance zones
+      const margin = (hi - lo) * 0.25;
+      if(val >= lo && val <= hi){
+        passCount++;
+        results.push({status:'ok', icon:'✓', param:label, userVal, rangeStr,
+          verdict:`SURGICAL — within correct range for ${dcTarget.toUpperCase()}`});
+      } else if(val >= lo - margin && val < lo){
+        results.push({status:'warn', icon:'△', param:label, userVal, rangeStr,
+          verdict:`BORDERLINE LOW — slightly under ideal range. Increase slightly.`});
+      } else if(val > hi && val <= hi + margin){
+        results.push({status:'warn', icon:'△', param:label, userVal, rangeStr,
+          verdict:`BORDERLINE HIGH — slightly over ideal range. Pull back.`});
+      } else if(val < lo){
+        results.push({status:'fail', icon:'✗', param:label, userVal, rangeStr,
+          verdict:getDiagMessage(p, 'low', dcTarget, dcMode)});
+      } else {
+        results.push({status:'fail', icon:'✗', param:label, userVal, rangeStr,
+          verdict:getDiagMessage(p, 'high', dcTarget, dcMode)});
+      }
+    });
+
+    const pct = Math.round((passCount / paramKeys.length) * 100);
+    let grade, gradeClass, gradeHeader;
+    if(pct >= 75){ grade='SURGICAL GRADE'; gradeClass='grade-pass'; gradeHeader='pass'; }
+    else if(pct >= 50){ grade='UNSTABLE — CORRECTABLE'; gradeClass='grade-warn'; gradeHeader='warn'; }
+    else { grade='MIX DAMAGE CONFIRMED'; gradeClass='grade-fail'; gradeHeader='fail'; }
+
+    gp.className = 'grade-panel ' + gradeClass;
+
+    const rowsHTML = results.map(r => `
+      <div class="grade-row">
+        <div class="grade-icon">${r.icon}</div>
+        <div class="grade-param">${r.param}</div>
+        <div class="grade-verdict ${r.status}">
+          YOUR VALUE: ${r.userVal} &nbsp;|&nbsp; CORRECT RANGE: ${r.rangeStr}<br>
+          ${r.verdict}
+        </div>
+      </div>`).join('');
+
+    gp.innerHTML = `
+      <div class="grade-header ${gradeHeader}">${grade}</div>
+      <div class="grade-rows">${rowsHTML}</div>
+      <div class="grade-score">
+        SURGICAL ACCURACY
+        <span class="${gradeHeader === 'pass' ? 'teal' : gradeHeader === 'warn' ? 'gold' : 'blood'}">${pct}%</span>
+      </div>`;
+  }, 900);
+}
+
+function getDiagMessage(param, dir, target, mode){
+  const msgs = {
+    reverb: {
+      decay: {
+        low: 'DECAY TOO SHORT — reverb tail disappears before it establishes any acoustic space.',
+        high: 'DECAY TOO LONG — reverb washes over the source. Mix mud incoming. Transients buried.'
+      },
+      predelay: {
+        low: 'PRE-DELAY TOO SHORT — reverb attaches to the attack of the source, blurring definition.',
+        high: 'PRE-DELAY TOO LONG — noticeable gap between source and reverb. Disconnected, unnatural.'
+      },
+      wet: {
+        low: 'TOO DRY — reverb is inaudible. No sense of acoustic space or environment.',
+        high: 'TOO WET — source is drowning in reverb. Clarity destroyed. Push wet signal to return bus.'
+      },
+      bright: {
+        low: 'TOO DARK — reverb tail is absorbing rather than supporting the source.',
+        high: 'TOO BRIGHT — reverb competes with source in presence frequencies. Harsh, cluttered mix.'
+      }
+    },
+    delay: {
+      dtime: {
+        low: 'DELAY TOO SHORT — sounds like chorus or flange, not intentional delay.',
+        high: 'DELAY TOO LONG — repeats arrive out of time with the groove. Rhythmic disconnect.'
+      },
+      feedback: {
+        low: 'FEEDBACK TOO LOW — delay disappears immediately. No trail, no movement.',
+        high: 'FEEDBACK TOO HIGH — runaway repeats building into noise. Mix density spiraling.'
+      },
+      dwet: {
+        low: 'DELAY INAUDIBLE — mix lacks any depth or movement from effect.',
+        high: 'DELAY OVERPOWERING SOURCE — dry signal lost in echo. Mix loses focus and punch.'
+      },
+      width: {
+        low: 'TOO NARROW — stereo field wasted. Delay not contributing spatial width.',
+        high: 'TOO WIDE — phase issues likely. Check mono compatibility immediately.'
+      }
+    }
+  };
+  return msgs[mode]?.[param]?.[dir] || 'VALUE OUT OF SURGICAL RANGE.';
+}
+
+// Init knobs on DOM ready
+document.addEventListener('DOMContentLoaded', initKnobs);
+setTimeout(initKnobs, 100);
+
+// ============================================================
+// LIVE PROCESSOR ENGINE
+// ============================================================
+
+let liveAudioCtx = null;
+let liveAudioBuffer = null;
+let liveSource = null;
+let liveAnalyser = null;
+let liveWaveAnimId = null;
+let liveIsPlaying = false;
+let liveVerbVal = 0;
+let liveDelayVal = 0;
+let liveProgressInterval = null;
+
+const verbComments = [
+  { min:0,  max:5,  text:'DRY — no reverb. The source is naked. Every detail is exposed. This is intimacy.' },
+  { min:5,  max:15, text:'SURGICAL ROOM — barely there. The signal breathes. You sense a space but can\'t name it. Correct for most lead vocals.' },
+  { min:15, max:28, text:'LIGHT PLATE — warmth without weight. Adds body to thin sources. Good for snare, piano, bright synths.' },
+  { min:28, max:42, text:'ROOM AMBIENCE — the source is placed in a real space. Listener feels environment. Works on most instruments in this zone.' },
+  { min:42, max:58, text:'MEDIUM HALL — starting to push. Sustain is extending. Good for pads and strings. Vocal intelligibility beginning to soften.' },
+  { min:58, max:72, text:'DEEP HALL — large acoustic space. Cinematic weight. Drums and guitars lose definition here. Pads and atmospheres live here.' },
+  { min:72, max:85, text:'REVERB BLEED DETECTED — the tail is overtaking the source. Transients are buried. Mix mud approaching. Pull back.' },
+  { min:85, max:100,text:'⚠ MIX MUD CONFIRMED — source is drowning. Reverb has consumed the signal. No definition. No dynamics. Reset and rebuild.' }
+];
+
+const delayComments = [
+  { min:0,  max:5,  text:'NO DELAY — pure source. No movement, no echo. Clean starting point.' },
+  { min:5,  max:15, text:'SLAP DELAY — single subtle echo. Adds warmth and presence without rhythm. Common on vocals. Barely heard, strongly felt.' },
+  { min:15, max:28, text:'LIGHT ECHO — 1–2 repeats fading fast. Creates movement without cluttering the arrangement. Works across all instruments.' },
+  { min:28, max:42, text:'MUSICAL DELAY — repeats sitting in the groove. Tempo-synced delay lives here. The mix starts breathing and moving.' },
+  { min:42, max:58, text:'ACTIVE DELAY — prominent repeats. Delay is now a composition element, not an effect. Use deliberately.' },
+  { min:58, max:72, text:'HIGH FEEDBACK — cascading echoes. The sound is multiplying. Stereo space expanding. Control this or it controls the mix.' },
+  { min:72, max:85, text:'FEEDBACK LEVEL CRITICAL — repeats are building on themselves. The signal is spiraling. This requires a filter on the feedback loop.' },
+  { min:85, max:100,text:'⚠ RUNAWAY FEEDBACK — delay is self-oscillating. This is not an effect anymore. This is damage. Back it down immediately.' }
+];
+
+function getVerbComment(val){ return verbComments.find(c => val >= c.min && val < c.max) || verbComments[verbComments.length-1]; }
+function getDelayComment(val){ return delayComments.find(c => val >= c.min && val < c.max) || delayComments[delayComments.length-1]; }
+
+function handleLiveDrop(e){
+  e.preventDefault();
+  document.getElementById('live-drop-zone').classList.remove('dragover');
+  const f = e.dataTransfer.files[0];
+  if(f) handleLiveFile(f);
+}
+
+function handleLiveFile(file){
+  if(!file) return;
+  const zone = document.getElementById('live-drop-zone');
+  zone.classList.add('loaded');
+  document.getElementById('drop-icon').textContent = '✓';
+  document.getElementById('drop-label').textContent = 'FILE LOADED';
+  document.getElementById('drop-sub').textContent = 'Click to replace';
+  document.getElementById('drop-file-name').textContent = '◈ ' + file.name;
+
+  if(!liveAudioCtx) liveAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const reader = new FileReader();
+  reader.onload = e => {
+    liveAudioCtx.decodeAudioData(e.target.result, buf => {
+      liveAudioBuffer = buf;
+      document.getElementById('live-controls').classList.add('visible');
+      drawStaticWaveform(buf);
+      initLiveKnobs();
+    }, err => {
+      document.getElementById('drop-file-name').textContent = '⚠ DECODE ERROR — try WAV or MP3';
+    });
+  };
+  reader.readAsArrayBuffer(file);
+}
+
+function drawStaticWaveform(buf){
+  const canvas = document.getElementById('live-waveform');
+  canvas.width = canvas.offsetWidth || 600;
+  canvas.height = 70;
+  const ctx = canvas.getContext('2d');
+  const data = buf.getChannelData(0);
+  const step = Math.ceil(data.length / canvas.width);
+  const W = canvas.width, H = canvas.height;
+
+  ctx.fillStyle = '#000';
+  ctx.fillRect(0,0,W,H);
+
+  ctx.beginPath();
+  ctx.strokeStyle = 'rgba(201,168,76,0.5)';
+  ctx.lineWidth = 1;
+  for(let x=0;x<W;x++){
+    let min=1, max=-1;
+    for(let j=0;j<step;j++){
+      const d = data[x*step+j] || 0;
+      if(d < min) min = d;
+      if(d > max) max = d;
+    }
+    ctx.moveTo(x, (1+min)/2*H);
+    ctx.lineTo(x, (1+max)/2*H);
+  }
+  ctx.stroke();
+
+  // Centre line
+  ctx.beginPath();
+  ctx.strokeStyle = 'rgba(139,0,0,0.25)';
+  ctx.lineWidth = 1;
+  ctx.moveTo(0,H/2); ctx.lineTo(W,H/2);
+  ctx.stroke();
+}
+
+function liveGetAudioCtx(){ return liveAudioCtx || (liveAudioCtx = new (window.AudioContext||window.webkitAudioContext)()); }
+
+function liveStop(){
+  if(liveSource){ try{ liveSource.stop(); }catch(e){} liveSource=null; }
+  liveIsPlaying = false;
+  if(liveWaveAnimId){ cancelAnimationFrame(liveWaveAnimId); liveWaveAnimId=null; }
+  if(liveProgressInterval){ clearInterval(liveProgressInterval); liveProgressInterval=null; }
+  document.getElementById('live-progress-fill').style.width = '0%';
+  document.getElementById('live-wf-status').textContent = '● IDLE';
+  document.getElementById('live-wf-status').style.color = 'var(--grey)';
+  document.getElementById('live-fx-btn').classList.remove('active');
+  document.getElementById('live-dry-btn').classList.remove('active');
+  if(liveAudioBuffer) drawStaticWaveform(liveAudioBuffer);
+}
+
+function livePlayDry(){
+  liveStop();
+  if(!liveAudioBuffer) return;
+  const ctx = liveGetAudioCtx();
+  if(ctx.state==='suspended') ctx.resume();
+
+  const src = ctx.createBufferSource();
+  src.buffer = liveAudioBuffer;
+  src.connect(ctx.destination);
+  src.start();
+  liveSource = src;
+  liveIsPlaying = true;
+  src.onended = () => { liveIsPlaying = false; document.getElementById('live-dry-btn').classList.remove('active'); };
+
+  document.getElementById('live-dry-btn').classList.add('active');
+  document.getElementById('live-fx-btn').classList.remove('active');
+  document.getElementById('live-wf-status').textContent = '● DRY SIGNAL';
+  document.getElementById('live-wf-status').style.color = 'var(--gold)';
+
+  startProgressBar(liveAudioBuffer.duration);
+  startLiveWaveform(null, src, ctx);
+}
+
+function livePlayFX(){
+  liveStop();
+  if(!liveAudioBuffer) return;
+  const ctx = liveGetAudioCtx();
+  if(ctx.state==='suspended') ctx.resume();
+
+  const src = ctx.createBufferSource();
+  src.buffer = liveAudioBuffer;
+
+  const dryGain = ctx.createGain();
+  const wetGain = ctx.createGain();
+  const master = ctx.createGain();
+  master.gain.value = 0.9;
+
+  const verbWet = liveVerbVal / 100;
+  const delayFB = liveDelayVal / 100;
+
+  dryGain.gain.value = 1;
+  wetGain.gain.value = verbWet * 0.85;
+
+  // REVERB via convolver
+  const irLen = Math.max(100, Math.floor(ctx.sampleRate * (0.2 + verbWet * 3.5)));
+  const irBuf = ctx.createBuffer(2, irLen, ctx.sampleRate);
+  for(let ch=0;ch<2;ch++){
+    const d = irBuf.getChannelData(ch);
+    for(let i=0;i<irLen;i++) d[i] = (Math.random()*2-1) * Math.pow(1-i/irLen, 1.5);
+  }
+  const conv = ctx.createConvolver();
+  conv.buffer = irBuf;
+
+  // DELAY
+  const delayNode = ctx.createDelay(1.0);
+  const delayTime = 0.05 + delayFB * 0.45;
+  delayNode.delayTime.value = delayTime;
+  const fbGain = ctx.createGain();
+  fbGain.gain.value = Math.min(delayFB * 0.85, 0.82);
+  const delayWetGain = ctx.createGain();
+  delayWetGain.gain.value = delayFB * 0.7;
+
+  const analyser = ctx.createAnalyser();
+  analyser.fftSize = 512;
+
+  // Signal routing
+  src.connect(dryGain);
+  src.connect(conv);
+  conv.connect(wetGain);
+
+  src.connect(delayNode);
+  delayNode.connect(fbGain);
+  fbGain.connect(delayNode);
+  delayNode.connect(delayWetGain);
+
+  dryGain.connect(master);
+  wetGain.connect(master);
+  delayWetGain.connect(master);
+  master.connect(analyser);
+  analyser.connect(ctx.destination);
+
+  src.start();
+  liveSource = src;
+  liveIsPlaying = true;
+  liveAnalyser = analyser;
+
+  src.onended = () => { liveIsPlaying = false; document.getElementById('live-fx-btn').classList.remove('active'); };
+
+  document.getElementById('live-fx-btn').classList.add('active');
+  document.getElementById('live-dry-btn').classList.remove('active');
+  document.getElementById('live-wf-status').textContent = '● FX PROCESSING';
+  document.getElementById('live-wf-status').style.color = 'var(--teal)';
+
+  startProgressBar(liveAudioBuffer.duration);
+  startLiveWaveform(analyser, src, ctx);
+}
+
+function startProgressBar(duration){
+  const fill = document.getElementById('live-progress-fill');
+  fill.style.width = '0%';
+  const start = Date.now();
+  liveProgressInterval = setInterval(()=>{
+    const elapsed = (Date.now()-start)/1000;
+    const pct = Math.min(elapsed/duration*100, 100);
+    fill.style.width = pct + '%';
+    if(pct >= 100) clearInterval(liveProgressInterval);
+  }, 80);
+}
+
+function startLiveWaveform(analyser, src, ctx){
+  const canvas = document.getElementById('live-waveform');
+  canvas.width = canvas.offsetWidth || 600;
+  canvas.height = 70;
+  const c = canvas.getContext('2d');
+
+  if(!analyser){
+    // Just show static teal flat line for dry
+    c.fillStyle='#000'; c.fillRect(0,0,canvas.width,canvas.height);
+    c.beginPath(); c.strokeStyle='rgba(0,212,170,0.4)'; c.lineWidth=1;
+    c.moveTo(0,canvas.height/2); c.lineTo(canvas.width,canvas.height/2); c.stroke();
+    return;
+  }
+
+  const bufLen = analyser.frequencyBinCount;
+  const dataArr = new Uint8Array(bufLen);
+  function frame(){
+    if(!liveIsPlaying) return;
+    liveWaveAnimId = requestAnimationFrame(frame);
+    analyser.getByteTimeDomainData(dataArr);
+    c.fillStyle='rgba(0,0,0,0.25)'; c.fillRect(0,0,canvas.width,canvas.height);
+    c.beginPath();
+    c.strokeStyle = '#00d4aa';
+    c.lineWidth = 1.5;
+    const sw = canvas.width/bufLen;
+    let x=0;
+    for(let i=0;i<bufLen;i++){
+      const v = dataArr[i]/128;
+      const y = v*canvas.height/2;
+      i===0 ? c.moveTo(x,y) : c.lineTo(x,y);
+      x+=sw;
+    }
+    c.stroke();
+    c.beginPath(); c.strokeStyle='rgba(201,168,76,0.15)'; c.lineWidth=1;
+    c.moveTo(0,canvas.height/2); c.lineTo(canvas.width,canvas.height/2); c.stroke();
+  }
+  frame();
+}
+
+// ---- LIVE KNOBS ----
+function initLiveKnobs(){
+  ['lk-reverb','lk-delay'].forEach(id => {
+    const canvas = document.getElementById(id);
+    if(!canvas) return;
+    const isVerb = id==='lk-reverb';
+    let val = 0, dragging = false, startY = 0, startVal = 0;
+
+    function drawLiveKnob(v){
+      const W = canvas.width = 90, H = canvas.height = 90;
+      const ctx = canvas.getContext('2d');
+      const cx=W/2, cy=H/2, r=34;
+      const startA = Math.PI*0.75, endA = Math.PI*2.25;
+      const pct = v/100;
+      const angle = startA + pct*(endA-startA);
+      ctx.clearRect(0,0,W,H);
+
+      // Track
+      ctx.beginPath(); ctx.arc(cx,cy,r,startA,endA);
+      ctx.strokeStyle='rgba(201,168,76,0.12)'; ctx.lineWidth=5; ctx.stroke();
+
+      // Glow fill
+      const color = isVerb ? '#c9a84c' : '#00d4aa';
+      if(pct > 0){
+        ctx.beginPath(); ctx.arc(cx,cy,r,startA,angle);
+        ctx.strokeStyle=color; ctx.lineWidth=5;
+        ctx.shadowColor=color; ctx.shadowBlur=12;
+        ctx.stroke(); ctx.shadowBlur=0;
+      }
+
+      // Pointer dot
+      const dx = cx + r*Math.cos(angle), dy = cy + r*Math.sin(angle);
+      ctx.beginPath(); ctx.arc(dx,dy,5,0,Math.PI*2);
+      ctx.fillStyle=color; ctx.fill();
+
+      // Center ring
+      ctx.beginPath(); ctx.arc(cx,cy,8,0,Math.PI*2);
+      ctx.strokeStyle = pct > 0 ? color : 'rgba(201,168,76,0.2)'; ctx.lineWidth=1.5; ctx.stroke();
+    }
+
+    function updateLiveKnob(newVal){
+      val = Math.max(0, Math.min(100, newVal));
+      if(isVerb){ liveVerbVal = val; document.getElementById('lk-reverb-val').textContent = Math.round(val)+'%'; updateVerbComment(val); }
+      else { liveDelayVal = val; document.getElementById('lk-delay-val').textContent = Math.round(val)+'%'; updateDelayComment(val); }
+      drawLiveKnob(val);
+      // If playing with FX, restart with new params
+      if(liveIsPlaying && document.getElementById('live-fx-btn').classList.contains('active')){
+        livePlayFX();
+      }
+    }
+
+    canvas.addEventListener('mousedown', e => { dragging=true; startY=e.clientY; startVal=val; e.preventDefault(); });
+    canvas.addEventListener('touchstart', e => { dragging=true; startY=e.touches[0].clientY; startVal=val; e.preventDefault(); }, {passive:false});
+    window.addEventListener('mousemove', e => { if(!dragging) return; const d=(startY-e.clientY)/150*100; updateLiveKnob(startVal+d); });
+    window.addEventListener('touchmove', e => { if(!dragging) return; const d=(startY-e.touches[0].clientY)/150*100; updateLiveKnob(startVal+d); }, {passive:false});
+    window.addEventListener('mouseup', ()=>dragging=false);
+    window.addEventListener('touchend', ()=>dragging=false);
+
+    drawLiveKnob(0);
+  });
+}
+
+function updateVerbComment(val){
+  const c = getVerbComment(val);
+  const el = document.getElementById('verb-comment');
+  el.textContent = c.text;
+  if(val >= 72) el.style.color = 'var(--blood2)';
+  else if(val >= 42) el.style.color = 'var(--gold)';
+  else el.style.color = 'var(--white)';
+}
+
+function updateDelayComment(val){
+  const c = getDelayComment(val);
+  const el = document.getElementById('delay-comment');
+  el.textContent = c.text;
+  if(val >= 72) el.style.color = 'var(--blood2)';
+  else if(val >= 42) el.style.color = 'var(--gold)';
+  else el.style.color = 'var(--white)';
+}
+
+
+document.querySelectorAll('.strip-fader-track').forEach(track => {
+  const handle = track.querySelector('.strip-fader-handle');
+  let dragging = false;
+  handle.addEventListener('mousedown', ()=> dragging = true);
+  window.addEventListener('mouseup', ()=> dragging = false);
+  window.addEventListener('mousemove', (e)=>{
+    if(!dragging) return;
+    const rect = track.getBoundingClientRect();
+    let pct = (e.clientY - rect.top) / rect.height * 100;
+    pct = Math.max(0, Math.min(85, pct));
+    handle.style.top = pct + '%';
+  });
+});
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .catch((err) => console.warn('Service worker registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>

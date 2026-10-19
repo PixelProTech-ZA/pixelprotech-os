@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frequency Oasis // WORLD SIGNAL</title>
+<meta name="description" content="Every city has a heartbeat. A living atlas of the world's radio, rendered in light.">
+<meta name="theme-color" content="#040404">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Frequency Oasis">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAGAUlEQVR4nIVWTYwcRxX+XlV1z87OeL3yenfjrC1zCV6BhaPIDjJYIjnYmBMXQ+AAgjtxZC4czMWOiZQLwjJCyg3lghISrk6IRHwAYWwTTGKsjcIBy1k7+0P8N7M701XvfRy6t2fGa4vqaU3V69L3vfree1UlIW8CAKR6AIiUFhGgtABDdkBEBBAR56qfCAlSaaQqzMwURoJhBH0ztAwR1PNEKCLeOe/FefG+nEV6S0oRqjrAoEKER6GPQAtEwCyUjgLiCFCciRcfJMvEe3ECgGbOJ43RBAAcYLQwgi4yrJIAWZAsuHYzPPPF7U9ubzknShSKW3f61z990Keny8x75wJBqlqM4oNGZ1KYiFOVrNHajF7KsLWVHdw7s3N6iw9Cg5FKKEXFmQsWMvX5alf/vdTrJRBgUi36qdfTXi8VfSsiVcNQBGt05JlsbeUH5qd3zrZI3Lj94MT3n45qRWJfUdD1EX534ebUzNj2LWPZJG6srPcKLYpCe7n4UHqoEItRsrH2sO4CTLazQ195YmZq/LPVtSsLq2+eOazGpFYoi8SeSh++kDyGRsqar73zny/s2jb5458CuPrKqQf311J3rVjrxG5Xe32NhWRj7TJ2pTJ5Jkeenfvql2avfrJ6/Lv7AJBU4+ET74oT8d5lWWg2s1br1E8OaT5ujebfv/ydOs0unTnVu9+JnU7R7ejauhZ9yca2lCsC4ATbJxvf/vruO53ipRf2kQDw/PHzlYZOJATfyEOzmbfb+cREY2Lia2fOAPjt/DYAP1r4HMBffn6yeHC/6HTS2roWfTeoHmBrK3t2fvr2f9dfemFfaXz++PkqUQVSturfiXPwvkavO+NjQZwT58WJiDhs5GieycG9s3Mz7csLq6PoA4ZaCoI0wqx2vO7snm05EGY0EnB1NQXvds22ALz1yhEAz714fqQGRUgBAYJKqjEli/FvL58poSuat38z2XRiyVKiKpPWBGw3s+D94nJ3885Q1bOwjDlNLUYtitTrpV7v4unT5fT91968s3rPpSJjsqKwGC1FyZsTEGlkcnj/3O4dE987/NRm9wc03on3Ls9C3gjjzdBshmbTN3IJAcSJY3ucxov/uLHy2Z0r1xb764XFGKr8cTI308Jo28CtShAiIGFEUpWIngA0VV9k4j3IUKw5S9JfnxoXFoUVhWkKG9sZgnMPwY9yVaVIwMxcigrAKDFp34tzBLK07kyl6GWWGAtLkWrhkXiPIZKSgUajCSNNXfTqnYgQzLXvQZcKoVlKpoaagGAyC95vJuCAowoySApIExVzqVwbwTGoEzpTMzVVqJJw5TczjuRPhTY0IFkaSwIjVanJYrIYLUYr4pi3hmcQW17tmhpJ0hxIADGxrK9XX/8AwIVz3ypRwTLzS5ZqUC4EBI00taSm6Q8vf6Ph5bW3P/KCq5+sxmilaxsSUTrrMakN5dJAG4JSjgbLYvWUxGQeBMDO6XEz664nQkpPBpmTlDeXOgCOnfxjtQjWi6g0ql6Sw+jge788knn3g9PvO5HFlW5Sq2Fd7U+R7K/XlhaXuwf2bC+NF84dHXCU8pTSYEMqkuCffvXN8mpxYM/UrZW1S9dXilTPhKtVBeVeN11aWN4x1Tz7xj8f4hjQcABN8P2zR0XEifz69x89OTV+5eOVu50ISB22kfNARPIwOHDqTRvAcy++AwwVBXHh3NH669k3Pnz6qalL15fevXyriCzDUhOMnGgQTrayQ/uemN02fnt17crHq2/94gge346dfG///NSOqfGlz9f+/OHS3U4cygAC3HwmC4R5cFvb+YH56Z0zLQCLy92f/fCZh6Bfff2DuZk2wE+Xu5cXVu51Y1Gm5nBqkPW15SGO8oALB/fO7pptB+/wqJbUbi51Lv5r+W4nssziUXSAj70Xld3MSxak3cwOzE/PzbRKpqS2uNy9srDyYD3FZFE3amQ0rcuOhMb442925UgEzPzG1REgYcaoZBX0kaIbRgcpIR//v3fTkfwZLmhuwFfDgTKoegzVRiDlZiClWWoQkQ3XajKOgA5BY7AjVugg/gd8GNK7yaIMcAAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAGAUlEQVR4nIVWTYwcRxX+XlV1z87OeL3yenfjrC1zCV6BhaPIDjJYIjnYmBMXQ+AAgjtxZC4czMWOiZQLwjJCyg3lghISrk6IRHwAYWwTTGKsjcIBy1k7+0P8N7M701XvfRy6t2fGa4vqaU3V69L3vfree1UlIW8CAKR6AIiUFhGgtABDdkBEBBAR56qfCAlSaaQqzMwURoJhBH0ztAwR1PNEKCLeOe/FefG+nEV6S0oRqjrAoEKER6GPQAtEwCyUjgLiCFCciRcfJMvEe3ECgGbOJ43RBAAcYLQwgi4yrJIAWZAsuHYzPPPF7U9ubzknShSKW3f61z990Keny8x75wJBqlqM4oNGZ1KYiFOVrNHajF7KsLWVHdw7s3N6iw9Cg5FKKEXFmQsWMvX5alf/vdTrJRBgUi36qdfTXi8VfSsiVcNQBGt05JlsbeUH5qd3zrZI3Lj94MT3n45qRWJfUdD1EX534ebUzNj2LWPZJG6srPcKLYpCe7n4UHqoEItRsrH2sO4CTLazQ195YmZq/LPVtSsLq2+eOazGpFYoi8SeSh++kDyGRsqar73zny/s2jb5458CuPrKqQf311J3rVjrxG5Xe32NhWRj7TJ2pTJ5Jkeenfvql2avfrJ6/Lv7AJBU4+ET74oT8d5lWWg2s1br1E8OaT5ujebfv/ydOs0unTnVu9+JnU7R7ejauhZ9yca2lCsC4ATbJxvf/vruO53ipRf2kQDw/PHzlYZOJATfyEOzmbfb+cREY2Lia2fOAPjt/DYAP1r4HMBffn6yeHC/6HTS2roWfTeoHmBrK3t2fvr2f9dfemFfaXz++PkqUQVSturfiXPwvkavO+NjQZwT58WJiDhs5GieycG9s3Mz7csLq6PoA4ZaCoI0wqx2vO7snm05EGY0EnB1NQXvds22ALz1yhEAz714fqQGRUgBAYJKqjEli/FvL58poSuat38z2XRiyVKiKpPWBGw3s+D94nJ3885Q1bOwjDlNLUYtitTrpV7v4unT5fT91968s3rPpSJjsqKwGC1FyZsTEGlkcnj/3O4dE987/NRm9wc03on3Ls9C3gjjzdBshmbTN3IJAcSJY3ucxov/uLHy2Z0r1xb764XFGKr8cTI308Jo28CtShAiIGFEUpWIngA0VV9k4j3IUKw5S9JfnxoXFoUVhWkKG9sZgnMPwY9yVaVIwMxcigrAKDFp34tzBLK07kyl6GWWGAtLkWrhkXiPIZKSgUajCSNNXfTqnYgQzLXvQZcKoVlKpoaagGAyC95vJuCAowoySApIExVzqVwbwTGoEzpTMzVVqJJw5TczjuRPhTY0IFkaSwIjVanJYrIYLUYr4pi3hmcQW17tmhpJ0hxIADGxrK9XX/8AwIVz3ypRwTLzS5ZqUC4EBI00taSm6Q8vf6Ph5bW3P/KCq5+sxmilaxsSUTrrMakN5dJAG4JSjgbLYvWUxGQeBMDO6XEz664nQkpPBpmTlDeXOgCOnfxjtQjWi6g0ql6Sw+jge788knn3g9PvO5HFlW5Sq2Fd7U+R7K/XlhaXuwf2bC+NF84dHXCU8pTSYEMqkuCffvXN8mpxYM/UrZW1S9dXilTPhKtVBeVeN11aWN4x1Tz7xj8f4hjQcABN8P2zR0XEifz69x89OTV+5eOVu50ISB22kfNARPIwOHDqTRvAcy++AwwVBXHh3NH669k3Pnz6qalL15fevXyriCzDUhOMnGgQTrayQ/uemN02fnt17crHq2/94gge346dfG///NSOqfGlz9f+/OHS3U4cygAC3HwmC4R5cFvb+YH56Z0zLQCLy92f/fCZh6Bfff2DuZk2wE+Xu5cXVu51Y1Gm5nBqkPW15SGO8oALB/fO7pptB+/wqJbUbi51Lv5r+W4nssziUXSAj70Xld3MSxak3cwOzE/PzbRKpqS2uNy9srDyYD3FZFE3amQ0rcuOhMb442925UgEzPzG1REgYcaoZBX0kaIbRgcpIR//v3fTkfwZLmhuwFfDgTKoegzVRiDlZiClWWoQkQ3XajKOgA5BY7AjVugg/gd8GNK7yaIMcAAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAACMUlEQVR4nFWSvWsUURTFz33zuZMPdlcyIaC2iZYJSBIsLAzai721kBglFn5gIwpqQiQr2Fj4BwQEC4VYqIVgwGAbbRSSIBvDZrPZnZ2ZnfeOxaxrfM29D37nvXu4R2y3AIiIQCRvBISIKKUcW3m+5bokTZpmcWyyjt2jRZQIlJLHV6eKg17Uwc5B9vzNT/F9QHS7Lbalk0Qcry+nLSVLc1NDxUJYDlqJbmRW0wqqiVPXzquPP9JWlDYanTgSx+/v0eOjoTamnerDFAf0okI56y9tnL4EYOPJo/iwqeNYHH9AKVm+Nj0xFpLItJm5sWb7fiEcGjhx8uzDBy/HygCubNa+rjzVSapERCkZLgcAAMxcXxNRopTk/o+c/CpeYXB5fnpiLARwbvatiIISy3W9YrFvZCQIwzO3bwEY//Z6Z/v36tqmDUHveUAgIhBq6iiOa/sgP925O3/5lMqSUqfe3Nqy8d+vf4uhTtOkXtdJbHmuf3jMNlnSbkR7ezaAai06HvYDAHMNCZpOZozWSSxKDeqWLfzVaOh2W5FYqHze3m0C+FC5CJIkaEjDLNNpunpvquix2Wjdf/HFaCoA2phqLcqneb9yIdeQhuS7pfOBawWuddBKjCFBcfwBUcpWsjg3OTEaHnVEdpuN77s3K+vakGR30xCxlSzOTg6Xg64fAMD2brNaixaedWmQ/7KUh9DKZaUAQHU/Wqisa0MAOU0asd2gl1bku0S3EgSFYD4faUD+AfFoIvyBXMBwAAAAAElFTkSuQmCC">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@300..600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#040404;
+  --void-2:#0a0806;
+  --glass:#0d0b08cc;
+  --glass-edge:#ffd88a1c;
+  --brass:#f2c368;
+  --brass-hi:#ffe6a8;
+  --brass-dim:#8a723f;
+  --gold-flare:#ffcf70;
+  --signal:#5fd0d6;
+  --signal-dim:#2d6b6e;
+  --ink:#e9ecef;
+  --ink-dim:#8a95a3;
+  --ink-faint:#525c6a;
+  --danger:#e0546b;
+
+  --g-news:#5b8dee;
+  --g-jazz:#e0b84a;
+  --g-rnb:#b06fe0;
+  --g-nature:#57d68a;
+  --g-talk:#ec9245;
+  --g-sport:#e05656;
+  --g-classical:#f2f4f6;
+  --g-pop:#f06fb0;
+  --g-electronic:#4fe0d0;
+  --g-default:#7f93a8;
+
+  --r-hair:1px;
+  --ease:cubic-bezier(.16,.8,.24,1);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{height:100%; background:var(--void); overflow:hidden;}
+body{
+  font-family:'Space Grotesk', sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  height:100dvh; width:100vw;
+}
+.mono{font-family:'JetBrains Mono', monospace;}
+.serif{font-family:'Cormorant Garamond', serif;}
+::selection{background:var(--brass); color:#000;}
+@keyframes goldShine{
+  0%{background-position:-200% 0;}
+  100%{background-position:200% 0;}
+}
+.shine-text{
+  background:linear-gradient(90deg, var(--brass-dim) 0%, var(--brass) 25%, var(--brass-hi) 50%, var(--brass) 75%, var(--brass-dim) 100%);
+  background-size:250% 100%;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:goldShine 5.5s linear infinite;
+}
+button{font-family:inherit; cursor:pointer;}
+::-webkit-scrollbar{width:6px; height:6px;}
+::-webkit-scrollbar-thumb{background:#ffffff22; border-radius:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+
+/* ---------- LANDING ---------- */
+#landing{
+  position:fixed; inset:0; z-index:100;
+  display:flex; align-items:center; justify-content:center; flex-direction:column;
+  background:radial-gradient(ellipse at 50% 40%, #0a1420 0%, #05070a 60%, #020304 100%);
+  transition:opacity 1.4s var(--ease), filter 1.4s var(--ease);
+}
+#landing.hidden{opacity:0; filter:blur(20px); pointer-events:none;}
+#starCanvas, #auroraCanvas{position:absolute; inset:0; width:100%; height:100%;}
+#landingEarth{position:relative; width:min(38vw,320px); height:min(38vw,320px); margin-bottom:38px; opacity:.9;}
+.landing-copy{position:relative; text-align:center; z-index:2;}
+.landing-eyebrow{
+  font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:.35em;
+  color:var(--signal); opacity:.8; text-transform:uppercase; margin-bottom:18px;
+  animation:fadeUp 1.6s var(--ease) both .2s;
+}
+.landing-headline{
+  font-family:'Cormorant Garamond', serif; font-style:italic; font-weight:500;
+  font-size:clamp(28px,4.4vw,54px); color:var(--ink); letter-spacing:.01em;
+  animation:fadeUp 1.8s var(--ease) both .5s;
+}
+#enterBtn{
+  margin-top:46px; position:relative; z-index:2;
+  background:transparent; border:1px solid #ffffff2a; color:var(--ink);
+  padding:16px 44px; font-size:11px; letter-spacing:.32em; text-transform:uppercase;
+  font-family:'JetBrains Mono', monospace;
+  animation:fadeUp 1.8s var(--ease) both 1.1s;
+  transition:border-color .4s, background .4s, letter-spacing .4s, box-shadow .5s;
+}
+#enterBtn:hover{border-color:var(--brass); background:#f2c3680f; letter-spacing:.4em; box-shadow:0 0 60px #f2c36855, 0 0 140px #f2c36822;}
+@keyframes fadeUp{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);}}
+
+/* ---------- APP SHELL ---------- */
+#app{position:fixed; inset:0; opacity:0; pointer-events:none; transition:opacity 1.2s var(--ease);}
+#app.active{opacity:1; pointer-events:auto;}
+#globeCanvas{position:absolute; inset:0; width:100%; height:100%; cursor:grab;}
+#globeCanvas:active{cursor:grabbing;}
+
+/* top bar */
+#topbar{
+  position:absolute; top:0; left:0; right:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 26px; pointer-events:none;
+  background:linear-gradient(#05070aee 0%, #05070a88 55%, transparent 100%);
+}
+#topbar > *{pointer-events:auto;}
+.brand{display:flex; align-items:baseline; gap:10px;}
+.brand-mark{width:9px; height:9px; border-radius:50%; background:var(--signal); box-shadow:0 0 12px var(--signal); animation:pulse2 2.4s ease-in-out infinite;}
+@keyframes pulse2{0%,100%{opacity:.5; transform:scale(.85);} 50%{opacity:1; transform:scale(1.15);}}
+.brand-text{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; letter-spacing:.02em; background:linear-gradient(90deg, var(--brass-dim), var(--brass-hi), var(--brass-dim)); background-size:220% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:goldShine 6s linear infinite; filter:drop-shadow(0 0 10px #f2c36833);}
+.brand-sub{font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.28em; color:var(--ink-faint); margin-left:6px;}
+
+.mode-rail{display:flex; gap:6px; background:var(--glass); border:1px solid var(--glass-edge); border-radius:30px; padding:5px;}
+.mode-btn{
+  border:none; background:transparent; color:var(--ink-dim); padding:8px 15px; border-radius:24px;
+  font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; font-family:'JetBrains Mono',monospace;
+  transition:all .35s var(--ease); white-space:nowrap;
+}
+.mode-btn:hover{color:var(--ink);}
+.mode-btn.active{background:var(--brass); color:#181103; font-weight:600;}
+
+.top-right{display:flex; align-items:center; gap:10px;}
+.icon-btn{
+  width:38px; height:38px; border-radius:50%; border:1px solid var(--glass-edge); background:var(--glass);
+  display:flex; align-items:center; justify-content:center; color:var(--ink-dim); font-size:15px;
+  transition:all .3s var(--ease);
+}
+.icon-btn:hover{color:var(--brass); border-color:var(--brass-dim); transform:translateY(-1px);}
+.icon-btn.on{color:var(--signal); border-color:var(--signal-dim);}
+
+#searchWrap{position:relative; display:flex; align-items:center;}
+#searchInput{
+  width:210px; background:var(--glass); border:1px solid var(--glass-edge); border-radius:20px;
+  padding:9px 16px 9px 34px; color:var(--ink); font-size:12px; font-family:'JetBrains Mono',monospace;
+  transition:width .4s var(--ease), border-color .3s;
+}
+#searchInput:focus{outline:none; width:280px; border-color:var(--brass-dim);}
+#searchWrap::before{content:'◎'; position:absolute; left:13px; color:var(--ink-faint); font-size:12px; pointer-events:none;}
+
+/* bottom-left: legend / clock */
+#hud-left{position:absolute; left:26px; bottom:22px; z-index:15; display:flex; flex-direction:column; gap:10px; pointer-events:none;}
+.legend{display:flex; flex-wrap:wrap; gap:8px 14px; max-width:340px;}
+.legend-item{display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--ink-faint); letter-spacing:.04em;}
+.legend-dot{width:7px; height:7px; border-radius:50%; box-shadow:0 0 6px currentColor;}
+.hud-stat{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-dim); letter-spacing:.05em;}
+.hud-stat b{color:var(--brass); font-weight:500;}
+.hud-link{color:var(--signal-dim); cursor:pointer; pointer-events:auto; text-decoration:underline; text-underline-offset:2px; transition:color .3s;}
+.hud-link:hover{color:var(--signal);}
+.hud-link.busy{opacity:.5; pointer-events:none;}
+
+/* right dock: sound weather ticker */
+#hud-right{position:absolute; right:26px; bottom:22px; z-index:15; text-align:right; pointer-events:none;}
+#localclock{font-family:'JetBrains Mono',monospace; font-size:26px; color:var(--ink); letter-spacing:.03em; font-weight:300;}
+#localclock span{color:var(--ink-faint); font-size:11px; display:block; letter-spacing:.2em; margin-top:2px;}
+
+/* discover fab */
+#discoverBtn{
+  position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:16;
+  background:linear-gradient(135deg,#1c1409,#0d0a04); border:1px solid var(--brass-dim); color:var(--brass);
+  padding:13px 26px; border-radius:30px; font-family:'JetBrains Mono',monospace; font-size:11px;
+  letter-spacing:.24em; text-transform:uppercase; display:flex; align-items:center; gap:10px;
+  box-shadow:0 8px 30px #00000080, inset 0 0 0 1px #c9a15e10;
+  transition:all .4s var(--ease);
+}
+#discoverBtn:hover{box-shadow:0 8px 55px #f2c36866, inset 0 0 0 1px #f2c36855; transform:translateX(-50%) translateY(-2px);}
+#discoverBtn .dot{width:6px; height:6px; border-radius:50%; background:var(--brass); animation:pulse2 1.6s infinite;}
+#discoverBtn.busy{opacity:.6; pointer-events:none;}
+
+/* side panel (station list / archive) */
+#sidePanel{
+  position:absolute; top:0; right:0; bottom:0; width:380px; z-index:30;
+  background:linear-gradient(180deg,#0a0e15f5,#070a10f8);
+  border-left:1px solid var(--glass-edge);
+  transform:translateX(100%); transition:transform .55s var(--ease);
+  display:flex; flex-direction:column; backdrop-filter:blur(18px);
+}
+#sidePanel.open{transform:translateX(0);}
+.panel-head{padding:22px 22px 14px; border-bottom:1px solid var(--glass-edge); display:flex; align-items:flex-start; justify-content:space-between;}
+.panel-title{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:22px;}
+.panel-sub{font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-faint); letter-spacing:.14em; margin-top:4px; text-transform:uppercase;}
+.panel-close{background:none; border:none; color:var(--ink-faint); font-size:18px; padding:4px;}
+.panel-close:hover{color:var(--ink);}
+#stationList{flex:1; overflow-y:auto; padding:8px 12px 20px;}
+.station-row{
+  display:flex; align-items:center; gap:12px; padding:12px 12px; border-radius:10px; margin-bottom:2px;
+  transition:background .25s; border:1px solid transparent;
+}
+.station-row:hover{background:#ffffff08; border-color:var(--glass-edge);}
+.station-row .beacon-dot{width:9px; height:9px; border-radius:50%; flex-shrink:0; box-shadow:0 0 8px currentColor;}
+.station-row .st-meta{flex:1; min-width:0;}
+.station-row .st-name{font-size:13px; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.station-row .st-sub{font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--ink-faint); margin-top:2px; letter-spacing:.03em;}
+.station-row .st-play{width:28px; height:28px; border-radius:50%; border:1px solid var(--glass-edge); display:flex; align-items:center; justify-content:center; font-size:10px; color:var(--ink-dim); flex-shrink:0;}
+.station-row:hover .st-play{border-color:var(--brass); color:var(--brass);}
+.empty-note{padding:40px 20px; text-align:center; color:var(--ink-faint); font-size:12.5px; line-height:1.6;}
+
+/* ---------- PLAYER ---------- */
+#player{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.94);
+  width:min(880px,92vw); max-height:86vh; overflow:hidden; z-index:60;
+  background:linear-gradient(160deg,#10151ef2,#080b10f5);
+  border:1px solid #ffffff1a; border-radius:20px;
+  box-shadow:0 40px 100px #000000c0, inset 0 1px 0 #ffffff10;
+  opacity:0; pointer-events:none; transition:opacity .5s var(--ease), transform .5s var(--ease);
+  backdrop-filter:blur(24px);
+}
+#player.open{opacity:1; pointer-events:auto; transform:translate(-50%,-50%) scale(1);}
+#playerScroll{max-height:86vh; overflow-y:auto; padding:26px 30px 30px;}
+
+#signalLost{
+  position:absolute; inset:0; z-index:5; display:flex; flex-direction:column; align-items:center;
+  justify-content:center; gap:6px; padding:30px;
+  background:radial-gradient(ellipse at 50% 30%, #1a1108 0%, #040404 75%);
+  opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
+}
+#signalLost.show{opacity:1; pointer-events:auto;}
+.sl-title{font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; letter-spacing:.4em; color:var(--danger); text-shadow:0 0 20px #ff556644; margin-bottom:14px;}
+.sl-station{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:24px; color:var(--brass-hi);}
+.sl-loc{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:22px;}
+.sl-rows{display:flex; flex-direction:column; gap:9px; width:min(320px,88vw); margin-bottom:26px;}
+.sl-row{display:flex; justify-content:space-between; align-items:center; padding:9px 14px; border:1px solid var(--glass-edge); border-radius:8px; background:#00000055;}
+.sl-row span{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.14em; color:var(--ink-faint);}
+.sl-row b{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--ink); font-weight:600; text-align:right;}
+.sl-actions{display:flex; gap:12px;}
+.sl-actions button{
+  font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.14em; padding:11px 20px;
+  border-radius:8px; border:1px solid var(--brass-dim); background:transparent; color:var(--brass); cursor:pointer;
+  transition:border-color .25s, box-shadow .25s, background .25s;
+}
+.sl-actions button:hover{border-color:var(--brass); background:#f2c36812; box-shadow:0 0 24px #f2c36833;}
+#slReturn{color:var(--ink-dim); border-color:var(--glass-edge);}
+#slReturn:hover{color:var(--ink); border-color:var(--ink-dim); background:#ffffff08; box-shadow:none;}
+.player-top{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px;}
+.player-id{display:flex; gap:14px; align-items:center;}
+.flag{font-size:30px; line-height:1;}
+.player-name{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:26px;}
+.player-loc{font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--ink-faint); letter-spacing:.1em; margin-top:3px; text-transform:uppercase;}
+.player-close{background:none; border:1px solid var(--glass-edge); border-radius:50%; width:32px; height:32px; color:var(--ink-dim); font-size:16px;}
+.player-close:hover{color:var(--danger); border-color:var(--danger);}
+
+.viz-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:14px; margin-bottom:16px;}
+.viz-card{background:#00000055; border:1px solid var(--glass-edge); border-radius:12px; padding:12px 14px; position:relative;}
+.viz-label{font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.2em; color:var(--ink-faint); text-transform:uppercase; margin-bottom:8px;}
+.viz-card canvas{width:100%; display:block; border-radius:6px;}
+
+.meters-row{display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:16px;}
+.meter{background:#00000055; border:1px solid var(--glass-edge); border-radius:12px; padding:10px 12px;}
+.meter-label{font-family:'JetBrains Mono',monospace; font-size:8.5px; letter-spacing:.14em; color:var(--ink-faint); text-transform:uppercase;}
+.meter-bar{height:5px; background:#ffffff10; border-radius:3px; margin-top:8px; overflow:hidden;}
+.meter-fill{height:100%; width:0%; background:linear-gradient(90deg,var(--signal),var(--brass)); transition:width .08s linear;}
+.meter-val{font-family:'JetBrains Mono',monospace; font-size:14px; color:var(--ink); margin-top:6px;}
+
+.controls-row{display:flex; align-items:center; gap:18px; margin-bottom:18px;}
+.play-toggle{
+  width:56px; height:56px; border-radius:50%; border:1px solid var(--brass); background:#f2c36818; color:var(--brass); box-shadow:0 0 22px #f2c36833;
+  font-size:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+}
+.play-toggle:hover{background:#c9a15e22;}
+.vol-wrap{flex:1; display:flex; align-items:center; gap:10px;}
+.vol-wrap input[type=range]{flex:1; accent-color:var(--brass); height:3px;}
+.live-badge{display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.18em; color:var(--danger); padding:6px 10px; border:1px solid #e0546b40; border-radius:20px;}
+.live-dot{width:6px; height:6px; border-radius:50%; background:var(--danger); animation:pulse2 1.1s infinite;}
+
+.facts-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:10px 16px; padding-top:14px; border-top:1px solid var(--glass-edge);}
+.fact{}
+.fact-label{font-family:'JetBrains Mono',monospace; font-size:8.5px; color:var(--ink-faint); letter-spacing:.16em; text-transform:uppercase;}
+.fact-val{font-size:13.5px; color:var(--ink); margin-top:3px;}
+#nowSong{font-family:'JetBrains Mono',monospace; font-size:11.5px; color:var(--signal); margin-top:14px; min-height:16px; letter-spacing:.02em;}
+
+/* ---------- overlay panels: audio lab, sound weather, archive, time machine ---------- */
+.overlay-panel{
+  position:absolute; z-index:40; background:linear-gradient(160deg,#10151ef2,#080b10f5);
+  border:1px solid #ffffff1a; border-radius:18px; box-shadow:0 30px 80px #000000b0; backdrop-filter:blur(20px);
+  opacity:0; pointer-events:none; transition:opacity .4s var(--ease), transform .4s var(--ease);
+}
+.overlay-panel.open{opacity:1; pointer-events:auto;}
+
+#audioLab{left:50%; top:50%; transform:translate(-50%,-46%); width:min(760px,92vw); padding:26px 28px 30px;}
+#audioLab.open{transform:translate(-50%,-50%);}
+#soundWeather{right:26px; top:88px; width:300px; padding:20px 22px; transform:translateX(20px);}
+#soundWeather.open{transform:translateX(0);}
+#timeMachine{left:50%; bottom:96px; transform:translate(-50%,10px); width:min(640px,90vw); padding:18px 26px;}
+#timeMachine.open{transform:translate(-50%,0);}
+#archivePanel{left:50%; top:50%; transform:translate(-50%,-46%); width:min(900px,94vw); max-height:82vh; padding:0;}
+#archivePanel.open{transform:translate(-50%,-50%);}
+#networkPanel{left:50%; top:50%; transform:translate(-50%,-46%); width:min(460px,92vw); padding:24px 26px 26px; border-color:#f2c36833;}
+#networkPanel.open{transform:translate(-50%,-50%);}
+
+.panel-h{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center;}
+.close-x{background:none; border:1px solid var(--glass-edge); border-radius:50%; width:28px; height:28px; color:var(--ink-dim); font-size:14px;}
+.close-x:hover{color:var(--danger);}
+.network-links{display:flex; flex-direction:column; gap:10px;}
+.network-link{
+  display:flex; align-items:center; gap:14px; padding:14px 16px; text-decoration:none;
+  border:1px solid var(--glass-edge); border-radius:10px;
+  background:linear-gradient(135deg,#171008,#0a0704);
+  transition:border-color .3s, box-shadow .3s, transform .3s;
+}
+.network-link:hover{border-color:var(--brass); box-shadow:0 0 30px #f2c36833; transform:translateY(-1px);}
+.nl-mark{color:var(--brass); font-size:13px; flex-shrink:0; filter:drop-shadow(0 0 6px #f2c36877);}
+.nl-body{display:flex; flex-direction:column; gap:3px; flex:1; min-width:0;}
+.nl-body b{color:var(--ink); font-size:13px; font-weight:600;}
+.nl-body span{color:var(--ink-dim); font-size:11px; font-family:'JetBrains Mono',monospace; letter-spacing:.01em;}
+.nl-go{color:var(--brass-dim); font-size:15px; flex-shrink:0; transition:color .3s, transform .3s;}
+.network-link:hover .nl-go{color:var(--brass); transform:translate(2px,-2px);}
+
+.lab-grid{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+.lab-grid canvas{width:100%; background:#00000055; border:1px solid var(--glass-edge); border-radius:10px;}
+.lab-card-label{font-family:'JetBrains Mono',monospace; font-size:9px; letter-spacing:.18em; color:var(--ink-faint); text-transform:uppercase; margin:0 0 6px 2px;}
+
+.sw-row{display:flex; justify-content:space-between; align-items:baseline; padding:9px 0; border-bottom:1px solid #ffffff0c;}
+.sw-row:last-child{border-bottom:none;}
+.sw-k{font-family:'JetBrains Mono',monospace; font-size:9.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.08em;}
+.sw-v{font-size:13px; color:var(--ink); text-align:right;}
+.sw-v small{color:var(--brass); font-family:'JetBrains Mono',monospace; font-size:10px; display:block;}
+
+#tmSlider{width:100%; accent-color:var(--brass); margin:14px 0 6px;}
+.tm-labels{display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--ink-faint); letter-spacing:.05em;}
+#tmYearBig{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:34px; text-align:center; color:var(--brass); margin-top:4px;}
+
+.archive-body{display:flex; height:70vh;}
+.archive-nav{width:190px; border-right:1px solid var(--glass-edge); padding:16px 10px; overflow-y:auto;}
+.archive-nav-item{padding:9px 12px; border-radius:8px; font-size:12px; color:var(--ink-dim); cursor:pointer; margin-bottom:2px; display:flex; justify-content:space-between;}
+.archive-nav-item:hover{background:#ffffff08;}
+.archive-nav-item.active{background:#c9a15e18; color:var(--brass);}
+.archive-nav-item small{color:var(--ink-faint); font-family:'JetBrains Mono',monospace;}
+.archive-list{flex:1; overflow-y:auto; padding:14px;}
+.archive-head-row{display:flex; justify-content:space-between; align-items:center; padding:20px 22px 0;}
+
+/* ---------- toasts ---------- */
+#toastStack{position:absolute; top:88px; left:26px; z-index:50; display:flex; flex-direction:column; gap:8px; width:290px; pointer-events:none;}
+.toast{
+  background:#0d1420ee; border:1px solid var(--glass-edge); border-left:2px solid var(--signal);
+  padding:11px 14px; border-radius:8px; font-size:11.5px; color:var(--ink-dim);
+  animation:toastIn .5s var(--ease) both, toastOut .5s var(--ease) 4.4s both;
+  box-shadow:0 10px 30px #00000060;
+}
+.toast b{color:var(--ink); display:block; margin-bottom:2px; font-size:12px;}
+@keyframes toastIn{from{opacity:0; transform:translateX(-16px);} to{opacity:1; transform:translateX(0);}}
+@keyframes toastOut{to{opacity:0; transform:translateX(-16px); margin-top:-40px;}}
+
+.achieve-toast{border-left-color:var(--brass);}
+.achieve-toast b{color:var(--brass);}
+
+/* loading veil */
+#veil{position:absolute; inset:0; z-index:19; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:14px; background:#05070ad0; transition:opacity .6s; pointer-events:none; opacity:0;}
+#veil.show{opacity:1; pointer-events:auto;}
+.veil-ring{width:46px; height:46px; border-radius:50%; border:1px solid #ffffff20; border-top-color:var(--brass); animation:spin 1.1s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+#veil span{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.2em; color:var(--ink-faint); text-transform:uppercase; text-align:center; max-width:280px;}
+
+/* night filter on the whole app for time machine vintage look */
+body.era-1950 #globeCanvas, body.era-1950 #player, body.era-1950 #app{filter:sepia(.45) contrast(1.05) brightness(.92);}
+body.era-1980 #app{filter:hue-rotate(-8deg) saturate(1.3) contrast(1.08);}
+body.era-2000 #app{filter:saturate(1.08) contrast(1.02);}
+
+.scanlines{position:absolute; inset:0; pointer-events:none; z-index:5; opacity:0; transition:opacity .5s; background:repeating-linear-gradient(#ffffff00 0px, #ffffff00 2px, #00000022 3px, #00000022 4px);}
+.scanlines.on{opacity:.5;}
+
+@media (max-width:760px){
+  .mode-rail{display:none;}
+  #searchInput{width:120px;}
+  #searchInput:focus{width:160px;}
+  #sidePanel{width:100%;}
+  .viz-grid{grid-template-columns:1fr;}
+  .meters-row{grid-template-columns:repeat(2,1fr);}
+  #soundWeather{right:12px; left:12px; width:auto; top:auto; bottom:100px;}
+  #hud-left{display:none;}
+  #discoverBtn span.long{display:none;}
+  .lab-grid{grid-template-columns:1fr;}
+  #player{width:94vw;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LANDING ============ -->
+<div id="landing">
+  <canvas id="starCanvas"></canvas>
+  <canvas id="auroraCanvas"></canvas>
+  <svg id="landingEarth" viewBox="0 0 200 200"></svg>
+  <div class="landing-copy">
+    <div class="landing-eyebrow">World Signal · A Living Atlas of Radio</div>
+    <div class="landing-headline shine-text">Every city has a heartbeat.</div>
+  </div>
+  <button id="enterBtn">Enter the Signal</button>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="app">
+  <canvas id="globeCanvas"></canvas>
+  <div class="scanlines" id="scanlines"></div>
+
+  <div id="veil"><div class="veil-ring" id="veilRing"></div><span id="veilText">Tuning the atmosphere…</span></div>
+
+  <div id="topbar">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <div class="brand-text">Frequency Oasis</div>
+      <div class="brand-sub">WORLD SIGNAL</div>
+    </div>
+    <div class="mode-rail" id="modeRail">
+      <button class="mode-btn active" data-mode="globe">Globe</button>
+      <button class="mode-btn" data-mode="lab">Audio Lab</button>
+      <button class="mode-btn" data-mode="archive">Archive</button>
+      <button class="mode-btn" data-mode="time">Time Machine</button>
+    </div>
+    <div class="top-right">
+      <div id="searchWrap">
+        <input id="searchInput" class="mono" placeholder="station, city, country…" />
+      </div>
+      <button class="icon-btn" id="constellationToggle" title="Signal constellations">✦</button>
+      <button class="icon-btn" id="nightToggle" title="Night mode">☾</button>
+      <button class="icon-btn" id="achieveBtn" title="Achievements">◈</button>
+      <button class="icon-btn" id="networkBtn" title="Frequency Network">⬡</button>
+      <button class="icon-btn" id="installBtn" title="Install app" style="display:none;">⇩</button>
+    </div>
+  </div>
+
+  <div id="hud-left">
+    <div class="hud-stat">SIGNALS ONLINE <b id="statCount">—</b> · COUNTRIES <b id="statCountries">—</b> · <span id="liveUpgradeBtn" class="hud-link">↻ try live directory</span></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div id="hud-right">
+    <div id="localclock">--:--<span id="localclockSub">GLOBAL MEAN TIME</span></div>
+  </div>
+
+  <button id="discoverBtn"><span class="dot"></span><span class="long">I Feel Curious</span><span class="short-only" style="display:none">Curious</span></button>
+
+  <div id="toastStack"></div>
+
+  <!-- SIDE PANEL: station list -->
+  <div id="sidePanel">
+    <div class="panel-head">
+      <div>
+        <div class="panel-title" id="panelTitle">Signals</div>
+        <div class="panel-sub" id="panelSub">—</div>
+      </div>
+      <button class="panel-close" id="panelClose">✕</button>
+    </div>
+    <div id="stationList"></div>
+  </div>
+
+  <!-- PLAYER -->
+  <div id="player">
+    <div id="playerScroll">
+      <div class="player-top">
+        <div class="player-id">
+          <div class="flag" id="pFlag">📡</div>
+          <div>
+            <div class="player-name" id="pName">—</div>
+            <div class="player-loc" id="pLoc">—</div>
+          </div>
+        </div>
+        <button class="player-close" id="playerClose">✕</button>
+      </div>
+
+      <div class="viz-grid">
+        <div class="viz-card">
+          <div class="viz-label">Frequency Spectrum</div>
+          <canvas id="specCanvas" width="600" height="150"></canvas>
+        </div>
+        <div class="viz-card">
+          <div class="viz-label">Oscilloscope</div>
+          <canvas id="scopeCanvas" width="380" height="150"></canvas>
+        </div>
+      </div>
+
+      <div class="meters-row">
+        <div class="meter"><div class="meter-label">VU Left</div><div class="meter-bar"><div class="meter-fill" id="vuL"></div></div></div>
+        <div class="meter"><div class="meter-label">VU Right</div><div class="meter-bar"><div class="meter-fill" id="vuR"></div></div></div>
+        <div class="meter"><div class="meter-label">Signal Strength</div><div class="meter-val" id="sigStrength">—</div></div>
+        <div class="meter"><div class="meter-label">Latency</div><div class="meter-val" id="latency">—</div></div>
+      </div>
+
+      <div class="controls-row">
+        <button class="play-toggle" id="playToggle">▶</button>
+        <div class="vol-wrap">
+          <span class="mono" style="font-size:10px;color:var(--ink-faint)">VOL</span>
+          <input type="range" id="volSlider" min="0" max="100" value="70">
+        </div>
+        <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+      </div>
+      <div id="nowSong" class="mono">♪ awaiting metadata…</div>
+
+      <div class="facts-grid" id="pFacts"></div>
+    </div>
+
+    <!-- SIGNAL LOST — replaces a generic error state. Shown only once every
+         known mirror for the current station has genuinely failed. -->
+    <div id="signalLost">
+      <div class="sl-title">SIGNAL LOST</div>
+      <div class="sl-station" id="slName">—</div>
+      <div class="sl-loc" id="slLoc">—</div>
+      <div class="sl-rows">
+        <div class="sl-row"><span>TRANSPORT</span><b id="slTransport">—</b></div>
+        <div class="sl-row"><span>LAST RESPONSE</span><b id="slLastResponse">—</b></div>
+        <div class="sl-row"><span>MIRROR SEARCH</span><b id="slMirrors">—</b></div>
+        <div class="sl-row"><span>STATUS</span><b id="slStatus">No playable signal</b></div>
+      </div>
+      <div class="sl-actions">
+        <button id="slRetry">TRY AGAIN</button>
+        <button id="slReturn">RETURN TO ATLAS</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUDIO LAB -->
+  <div class="overlay-panel" id="audioLab">
+    <div class="panel-h">Audio Laboratory <button class="close-x" data-close="audioLab">✕</button></div>
+    <div class="lab-grid">
+      <div><div class="lab-card-label">Spectrum Analyzer</div><canvas id="labSpec" width="360" height="140"></canvas></div>
+      <div><div class="lab-card-label">Waveform</div><canvas id="labWave" width="360" height="140"></canvas></div>
+      <div><div class="lab-card-label">Phase / Vectorscope</div><canvas id="labPhase" width="360" height="140"></canvas></div>
+      <div><div class="lab-card-label">Waterfall</div><canvas id="labFall" width="360" height="140"></canvas></div>
+    </div>
+    <div style="display:flex; gap:24px; margin-top:14px; font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--ink-faint);">
+      <div>LUFS <b id="labLufs" style="color:var(--signal)">—</b></div>
+      <div>PEAK <b id="labPeak" style="color:var(--signal)">—</b></div>
+      <div>DYNAMIC RANGE <b id="labDr" style="color:var(--signal)">—</b></div>
+      <div style="margin-left:auto; color:var(--ink-faint)">source: <span id="labSrc">no signal tuned</span></div>
+    </div>
+  </div>
+
+  <!-- FREQUENCY NETWORK — outbound links -->
+  <div class="overlay-panel" id="networkPanel">
+    <div class="panel-h" style="font-size:16px;">Frequency Network <button class="close-x" data-close="networkPanel">✕</button></div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:var(--ink-faint); letter-spacing:.04em; margin:2px 0 16px; line-height:1.6;">
+      Beyond the globe — sound, stock audio and releases from the Frequency Oasis / Audio Hospital network.
+    </div>
+    <div class="network-links">
+      <a class="network-link" href="https://pixabay.com/users/frequencyoasis-38933177/" target="_blank" rel="noopener">
+        <div class="nl-mark">◆</div>
+        <div class="nl-body"><b>Pixabay Audio</b><span>Royalty-free sound &amp; music library — Frequency Oasis catalog</span></div>
+        <div class="nl-go">↗</div>
+      </a>
+      <a class="network-link" href="https://frequencyoasis.gumroad.com/" target="_blank" rel="noopener">
+        <div class="nl-mark">◆</div>
+        <div class="nl-body"><b>Frequency Oasis · Gumroad</b><span>Sample packs, sound design &amp; original releases</span></div>
+        <div class="nl-go">↗</div>
+      </a>
+      <a class="network-link" href="https://audiohospital.bandcamp.com/album/ashes-to-aura" target="_blank" rel="noopener">
+        <div class="nl-mark">◆</div>
+        <div class="nl-body"><b>Audio Hospital · Ashes to Aura</b><span>Full album, streaming &amp; download on Bandcamp</span></div>
+        <div class="nl-go">↗</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- SOUND WEATHER -->
+  <div class="overlay-panel" id="soundWeather">
+    <div class="panel-h" style="font-size:16px;">Sound Weather <button class="close-x" data-close="soundWeather">✕</button></div>
+    <div id="swBody"></div>
+  </div>
+
+  <!-- TIME MACHINE -->
+  <div class="overlay-panel" id="timeMachine">
+    <div class="panel-h" style="font-size:16px;">Time Machine <button class="close-x" data-close="timeMachine">✕</button></div>
+    <div id="tmYearBig">Today</div>
+    <input type="range" id="tmSlider" min="0" max="7" step="1" value="7">
+    <div class="tm-labels"><span>1950</span><span>1960</span><span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>Today</span></div>
+    <div style="font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--ink-faint); margin-top:12px; line-height:1.6;">
+      The globe re-skins itself to the aesthetic of the era. Stations streamed are always live, present-day signals — this is a mood, not a time portal.
+    </div>
+  </div>
+
+  <!-- ARCHIVE -->
+  <div class="overlay-panel" id="archivePanel">
+    <div class="archive-head-row">
+      <div class="panel-h" style="margin:0;">The Archive <button class="close-x" data-close="archivePanel">✕</button></div>
+    </div>
+    <div class="archive-body">
+      <div class="archive-nav" id="archiveNav"></div>
+      <div class="archive-list" id="archiveList"></div>
+    </div>
+  </div>
+
+</div>
+
+<audio id="audioEl" preload="none"></audio>
+
+<script>
+(function(){
+"use strict";
+
+/* ============================================================
+   0. LANDING SCREEN — starfield, aurora, rotating earth sigil
+   ============================================================ */
+const starCanvas = document.getElementById('starCanvas');
+const sctx = starCanvas.getContext('2d');
+const auroraCanvas = document.getElementById('auroraCanvas');
+const actx = auroraCanvas.getContext('2d');
+let stars = [];
+function sizeCanvas(c, ctx){ c.width = innerWidth * devicePixelRatio; c.height = innerHeight * devicePixelRatio; ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0); }
+function initStars(){
+  sizeCanvas(starCanvas, sctx); sizeCanvas(auroraCanvas, actx);
+  stars = [];
+  const n = Math.floor((innerWidth*innerHeight)/3800);
+  for(let i=0;i<n;i++){
+    stars.push({x:Math.random()*innerWidth, y:Math.random()*innerHeight, r:Math.random()*1.3+.2, tw:Math.random()*Math.PI*2, sp:Math.random()*0.02+0.005, drift:Math.random()*0.15});
+  }
+}
+let landingActive = true;
+function drawLanding(t){
+  if(!landingActive) return;
+  sctx.clearRect(0,0,innerWidth,innerHeight);
+  for(const s of stars){
+    s.tw += s.sp;
+    s.x -= s.drift*0.06;
+    if(s.x<0) s.x = innerWidth;
+    const a = 0.35 + Math.sin(s.tw)*0.35 + 0.3;
+    sctx.beginPath();
+    sctx.fillStyle = `rgba(230,236,245,${Math.max(0,Math.min(1,a))})`;
+    sctx.arc(s.x, s.y, s.r, 0, 7);
+    sctx.fill();
+  }
+  actx.clearRect(0,0,innerWidth,innerHeight);
+  const grad = actx.createLinearGradient(0,0,0,innerHeight*0.7);
+  const shift = Math.sin(t*0.00012)*40;
+  grad.addColorStop(0, 'rgba(95,208,214,0)');
+  grad.addColorStop(0.3+Math.sin(t*0.0002)*0.05, `rgba(95,208,214,0.05)`);
+  grad.addColorStop(0.55, `rgba(150,110,220,0.045)`);
+  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  actx.fillStyle = grad;
+  actx.save();
+  actx.translate(innerWidth/2 + shift, 0);
+  actx.fillRect(-innerWidth/2-100, 0, innerWidth+200, innerHeight*0.75);
+  actx.restore();
+  requestAnimationFrame(drawLanding);
+}
+initStars();
+requestAnimationFrame(drawLanding);
+window.addEventListener('resize', ()=>{ initStars(); resizeGlobe(); });
+
+// simple line-art rotating earth sigil (SVG)
+(function buildEarthSigil(){
+  const svg = document.getElementById('landingEarth');
+  const ns = 'http://www.w3.org/2000/svg';
+  const circle = document.createElementNS(ns,'circle');
+  circle.setAttribute('cx',100); circle.setAttribute('cy',100); circle.setAttribute('r',92);
+  circle.setAttribute('fill','none'); circle.setAttribute('stroke','#c9a15e55'); circle.setAttribute('stroke-width','0.6');
+  svg.appendChild(circle);
+  const grp = document.createElementNS(ns,'g');
+  grp.setAttribute('id','ellipseGrp');
+  for(let i=-4;i<=4;i++){
+    const rx = Math.max(4, 92*Math.cos(i*0.34));
+    const e = document.createElementNS(ns,'ellipse');
+    e.setAttribute('cx',100); e.setAttribute('cy',100); e.setAttribute('rx',rx); e.setAttribute('ry',92);
+    e.setAttribute('fill','none'); e.setAttribute('stroke','#5fd0d64a'); e.setAttribute('stroke-width','0.5');
+    grp.appendChild(e);
+  }
+  for(let j=-3;j<=3;j++){
+    const ry = 92*Math.cos(j*0.4);
+    const cy = 100 - 92*Math.sin(j*0.4)*0 + j*(184/8);
+    const line = document.createElementNS(ns,'ellipse');
+    line.setAttribute('cx',100); line.setAttribute('cy',100+j*13); line.setAttribute('rx',92); line.setAttribute('ry',Math.max(2,20-Math.abs(j)*2));
+    line.setAttribute('fill','none'); line.setAttribute('stroke','#5fd0d62c'); line.setAttribute('stroke-width','0.4');
+    svg.appendChild(line);
+  }
+  svg.appendChild(grp);
+  // a few glowing dots (station preview)
+  for(let i=0;i<26;i++){
+    const ang = Math.random()*Math.PI*2, rad = Math.random()*80+5;
+    const dot = document.createElementNS(ns,'circle');
+    dot.setAttribute('cx', 100+Math.cos(ang)*rad*0.9);
+    dot.setAttribute('cy', 100+Math.sin(ang)*rad*0.5+ (Math.random()-.5)*20);
+    dot.setAttribute('r', Math.random()*1.1+0.4);
+    dot.setAttribute('fill', Math.random()>0.5?'#c9a15e':'#5fd0d6');
+    dot.style.opacity = Math.random()*0.7+0.2;
+    svg.appendChild(dot);
+  }
+  let rot = 0;
+  function spin(){
+    rot += 0.055;
+    grp.setAttribute('transform', `rotate(0 100 100)`);
+    svg.style.transform = `rotateY(${Math.sin(rot*0.15)*0}deg)`;
+    svg.querySelectorAll('ellipse').forEach((el,idx)=>{
+      // subtle shimmer only
+    });
+    requestAnimationFrame(spin);
+  }
+  spin();
+})();
+
+document.getElementById('enterBtn').addEventListener('click', enterSignal);
+
+/* ============================================================
+   1. GLOBAL STATE
+   ============================================================ */
+const state = {
+  stations: [],              // all loaded stations {name,country,countrycode,lat,lon,tags,genre,color,votes,bitrate,codec,url,homepage,language,favicon}
+  loaded: false,
+  rotY: 20,                  // degrees
+  rotX: -14,
+  autoRotate: true,
+  dragging: false,
+  lastX:0, lastY:0,
+  zoom: 1,
+  clusters: [],
+  hoverCluster: null,
+  current: null,              // currently playing station
+  visitedCountries: new Set(),
+  visitedStations: new Set(),
+  achievements: new Set(),
+  nightMode: false,
+  showConstellations: false,
+  eraIndex: 7,
+};
+
+const GENRE_MAP = [
+  [/news|informat/i, 'news', '--g-news'],
+  [/jazz/i, 'jazz', '--g-jazz'],
+  [/r ?& ?b|rnb|soul|funk/i, 'rnb', '--g-rnb'],
+  [/nature|ambient|chill|relax|meditat/i, 'nature', '--g-nature'],
+  [/talk|community/i, 'talk', '--g-talk'],
+  [/sport/i, 'sport', '--g-sport'],
+  [/classical|opera|orchestr/i, 'classical', '--g-classical'],
+  [/pop|top 40|top40/i, 'pop', '--g-pop'],
+  [/electro|edm|techno|house|dance|trance/i, 'electronic', '--g-electronic'],
+];
+function classify(tags){
+  const t = (tags||'').toLowerCase();
+  for(const [re,name,varName] of GENRE_MAP){ if(re.test(t)) return {name, color: getCss(varName)}; }
+  return {name:'signal', color: getCss('--g-default')};
+}
+function getCss(v){ return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+/* ============================================================
+   1b. BUILT-IN STATION SET (always available, zero network required)
+   ============================================================
+   The live Radio Browser directory (below) is a nice-to-have that fills
+   in thousands more stations when it's reachable. But some networks
+   block or throttle third-party fetch() calls (corporate proxies, some
+   privacy/VPN extensions, restrictive sandboxes) even though the exact
+   same URL loads fine via normal navigation. Rather than let the whole
+   app hinge on that fetch ever succeeding, we ship a real, curated set
+   of long-running public stations baked directly into the file. The
+   globe always has something to show and play, instantly, with zero
+   network round-trips. If the live directory IS reachable, it seamlessly
+   upgrades the map with thousands more stations in the background.
+   Individual streams can still go offline on their own end — that's
+   handled per-station by the existing player error messages, same as
+   any station from the live directory.
+*/
+const SEED_STATIONS_RAW = [
+  ['BBC World Service','United Kingdom','GB',51.5074,-0.1278,'news',192,'MP3','English',5000,'https://stream.live.vc.bbcmedia.co.uk/bbc_world_service'],
+  ['Radio Swiss Jazz','Switzerland','CH',46.9480,7.4474,'jazz',128,'MP3','—',3200,'https://stream.srg-ssr.ch/m/rsj/mp3_128'],
+  ['Radio Swiss Classic','Switzerland','CH',47.3769,8.5417,'classical',128,'MP3','—',2900,'https://stream.srg-ssr.ch/m/rsc_de/mp3_128'],
+  ['Radio Swiss Pop','Switzerland','CH',47.3769,8.5417,'pop',128,'MP3','—',2600,'https://stream.srg-ssr.ch/m/rsp/mp3_128'],
+  ['FIP','France','FR',48.8566,2.3522,'electronic eclectic',128,'MP3','French',4100,'https://icecast.radiofrance.fr/fip-midfi.mp3'],
+  ['France Info','France','FR',48.8566,2.3522,'news talk',128,'MP3','French',3700,'https://icecast.radiofrance.fr/franceinfo-midfi.mp3'],
+  ['France Musique','France','FR',48.8566,2.3522,'classical',128,'MP3','French',2400,'https://icecast.radiofrance.fr/francemusique-midfi.mp3'],
+  ['Deutschlandfunk','Germany','DE',50.9375,6.9603,'news talk',128,'MP3','German',3300,'https://st01.sslstream.dlf.de/dlf/01/128/mp3/stream.mp3'],
+  ['KEXP','United States','US',47.6062,-122.3321,'pop indie',160,'AAC','English',4600,'https://kexp.streamguys1.com/kexp160.aac'],
+  ['Jazz24','United States','US',47.6062,-122.3321,'jazz',128,'MP3','English',3100,'https://live.amperwave.net/direct/ppm-jazz24mp3-ibc1'],
+  ['SomaFM Groove Salad','United States','US',37.7749,-122.4194,'electronic ambient chill',128,'MP3','English',3900,'https://ice.somafm.com/groovesalad'],
+  ['SomaFM Drone Zone','United States','US',37.7749,-122.4194,'nature ambient chill',128,'MP3','English',2700,'https://ice.somafm.com/dronezone'],
+  ['SomaFM Beat Blender','United States','US',37.7749,-122.4194,'electronic house dance',128,'MP3','English',2500,'https://ice.somafm.com/beatblender'],
+  ['SomaFM Left Coast 70s','United States','US',37.7749,-122.4194,'pop',128,'MP3','English',2100,'https://ice.somafm.com/seventies'],
+  ['SomaFM Indie Pop Rocks','United States','US',37.7749,-122.4194,'pop',128,'MP3','English',2000,'https://ice.somafm.com/indiepop'],
+  ['SomaFM Sonic Universe','United States','US',37.7749,-122.4194,'jazz',128,'MP3','English',1800,'https://ice.somafm.com/sonicuniverse'],
+  ['SomaFM Suburbs of Goa','United States','US',37.7749,-122.4194,'electronic trance',128,'MP3','English',1900,'https://ice.somafm.com/suburbsofgoa'],
+  ['SomaFM Space Station Soma','United States','US',37.7749,-122.4194,'electronic ambient',128,'MP3','English',2200,'https://ice.somafm.com/spacestation'],
+  ['SomaFM Lush','United States','US',37.7749,-122.4194,'pop electronic',128,'MP3','English',1700,'https://ice.somafm.com/lush'],
+  ['SomaFM Digitalis','United States','US',37.7749,-122.4194,'electronic techno',128,'MP3','English',1600,'https://ice.somafm.com/digitalis'],
+  ['SomaFM Secret Agent','United States','US',37.7749,-122.4194,'electronic lounge',128,'MP3','English',1750,'https://ice.somafm.com/secretagent'],
+  ['SomaFM Boot Liquor','United States','US',37.7749,-122.4194,'talk community',128,'MP3','English',1300,'https://ice.somafm.com/bootliquor'],
+  ['SomaFM Underground 80s','United States','US',37.7749,-122.4194,'pop',128,'MP3','English',1950,'https://ice.somafm.com/u80s'],
+
+  /* --- South Africa & Africa ---
+     Sourced from junguler/m3u-radio-music-playlists (a real, community-
+     maintained, open-source radio directory on GitHub), not fabricated.
+     Not individually live-tested from this build environment (network
+     policy here blocks reaching these hosts directly) — if any go dark,
+     the existing probe + mirror-failover + honest "signal dropped"
+     handling above is what surfaces that, same as every other station. */
+  ['Jacaranda FM','South Africa','ZA',-25.7479,28.2293,'pop talk',128,'AAC','English/Afrikaans',0,'https://live.jacarandafm.com/jacarandalow.aac'],
+  ['Kaya FM 95.9','South Africa','ZA',-26.2041,28.0473,'rnb pop talk',128,'AAC','English',0,'https://edge.iono.fm/xice/82_medium.aac'],
+  ['CapeTalk','South Africa','ZA',-33.9249,18.4241,'talk news',128,'AAC','English',0,'https://edge.iono.fm/xice/162_medium.aac'],
+  ['Vuma FM','South Africa','ZA',-29.8587,31.0218,'pop rnb',128,'AAC','isiZulu',0,'https://edge.iono.fm/xice/77_medium.aac'],
+  ['Jozi FM','South Africa','ZA',-26.2041,28.0473,'pop community',128,'AAC','English',0,'https://edge.iono.fm/xice/51_medium.aac'],
+  ['Diamond FM','South Africa','ZA',-28.7282,24.7499,'electronic house',128,'AAC','English',0,'https://edge.iono.fm/xice/160_medium.aac'],
+  ['Vukani FM','South Africa','ZA',-33.0153,27.9116,'talk community',128,'AAC','isiXhosa',0,'https://edge.iono.fm/xice/108_medium.aac'],
+  ['Madibaz Radio','South Africa','ZA',-33.9608,25.6022,'pop indie community',128,'AAC','English',0,'https://edge.iono.fm/xice/75_medium.aac'],
+  ['Smile 90.4FM','South Africa','ZA',-33.9249,18.4241,'pop community',128,'AAC','English',0,'https://edge.iono.fm/xice/212_medium.aac'],
+  ['MFM (Rhodes Music Radio)','South Africa','ZA',-33.3106,26.5320,'pop indie community',128,'AAC','English',0,'https://edge.iono.fm/xice/46_medium.aac'],
+  ['Munghana Lonene FM','South Africa','ZA',-23.9045,29.4689,'talk community',128,'MP3','Xitsonga',0,'http://25633.live.streamtheworld.com/MUNGANALONENE.mp3'],
+  ['Ukhozi FM','South Africa','ZA',-29.8587,31.0218,'talk pop',128,'AAC','isiZulu',0,'https://22653.live.streamtheworld.com/UKHOZIFMAAC.aac'],
+  ['Thobela FM','South Africa','ZA',-23.9045,29.4689,'talk community',128,'MP3','Sepedi',0,'http://25283.live.streamtheworld.com/THOBELA.mp3'],
+  ['Gagasi FM','South Africa','ZA',-29.8587,31.0218,'pop rnb house',128,'HLS','English/isiZulu',0,'https://streaming.fabrik.fm/gagasi/echocast/audio/low/index.m3u8'],
+  ['Omulunga Radio','Namibia','NA',-22.5609,17.0658,'pop talk',128,'AAC','English',0,'https://edge.iono.fm/xice/193_high.aac'],
+  ['ZiFM Stereo','Zimbabwe','ZW',-17.8292,31.0522,'pop talk',128,'AAC','English',0,'http://edge.iono.fm/xice/134_medium.aac'],
+  ['Top Congo FM','Democratic Republic of the Congo','CD',-4.4419,15.2663,'pop talk',128,'MP3','French',0,'https://topcongofm2.ice.infomaniak.ch/topcongofm2-64.mp3'],
+  ['Africa Radio Abidjan','Ivory Coast','CI',5.3600,-4.0083,'pop',128,'MP3','French',0,'https://africaradio.ice.infomaniak.ch/abidjan128.mp3'],
+  ['Peace FM','Ghana','GH',5.6037,-0.1870,'talk pop',128,'AAC','Twi/English',0,'https://peacefm-atunwadigital.streamguys1.com/peacefm'],
+  ['Okay FM','Ghana','GH',5.6037,-0.1870,'talk pop',128,'AAC','Twi/English',0,'https://okayfm-atunwadigital.streamguys1.com/okayfm'],
+  ['Kiss FM Ghana','Ghana','GH',5.6037,-0.1870,'pop rnb',128,'AAC','English',0,'https://kissfm-atunwadigital.streamguys1.com/kissfm'],
+];
+/* Known alternate mirrors/CDN endpoints per station, tried in order
+   after the primary URL fails. Different providers host on different
+   networks/ports — if one is blocked or down on a given connection,
+   another often isn't. Keyed by station name. */
+const SEED_ALT_URLS = {
+  'BBC World Service': ['http://stream.live.vc.bbcmedia.co.uk/bbc_world_service'],
+  'Radio Swiss Jazz': ['https://stream.srg-ssr.ch/srgssr/rsj/mp3/128', 'http://stream.srg-ssr.ch/m/rsj/mp3_128'],
+  'Radio Swiss Classic': ['https://stream.srg-ssr.ch/srgssr/rsc_de/mp3/128', 'http://stream.srg-ssr.ch/m/rsc_de/mp3_128'],
+  'Radio Swiss Pop': ['https://stream.srg-ssr.ch/srgssr/rsp/mp3/128', 'http://stream.srg-ssr.ch/m/rsp/mp3_128'],
+  'FIP': ['https://icecast.radiofrance.fr/fip-hifi.aac', 'http://direct.fipradio.fr/live/fip-midfi.mp3'],
+  'France Info': ['http://direct.franceinfo.fr/live/franceinfo-midfi.mp3'],
+  'France Musique': ['http://direct.francemusique.fr/live/francemusique-midfi.mp3'],
+  'Deutschlandfunk': ['http://st01.dlf.de/dlf/01/128/mp3/stream.mp3'],
+  'KEXP': ['https://kexp.streamguys1.com/kexp64.aac', 'https://kexp-mp3-128.streamguys1.com/kexp128.mp3'],
+  'Jazz24': ['https://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1'],
+  'SomaFM Groove Salad': ['https://ice2.somafm.com/groovesalad-128-mp3', 'https://ice4.somafm.com/groovesalad-128-mp3'],
+  'SomaFM Drone Zone': ['https://ice2.somafm.com/dronezone-128-mp3', 'https://ice4.somafm.com/dronezone-128-mp3'],
+  'SomaFM Beat Blender': ['https://ice2.somafm.com/beatblender-128-mp3', 'https://ice4.somafm.com/beatblender-128-mp3'],
+  'SomaFM Left Coast 70s': ['https://ice2.somafm.com/seventies-128-mp3'],
+  'SomaFM Indie Pop Rocks': ['https://ice2.somafm.com/indiepop-128-mp3'],
+  'SomaFM Sonic Universe': ['https://ice2.somafm.com/sonicuniverse-128-mp3'],
+  'SomaFM Suburbs of Goa': ['https://ice2.somafm.com/suburbsofgoa-128-mp3'],
+  'SomaFM Space Station Soma': ['https://ice2.somafm.com/spacestation-128-mp3'],
+  'SomaFM Lush': ['https://ice2.somafm.com/lush-128-mp3'],
+  'SomaFM Digitalis': ['https://ice2.somafm.com/digitalis-128-mp3'],
+  'SomaFM Secret Agent': ['https://ice2.somafm.com/secretagent-128-mp3'],
+  'SomaFM Boot Liquor': ['https://ice2.somafm.com/bootliquor-128-mp3'],
+  'SomaFM Underground 80s': ['https://ice2.somafm.com/u80s-128-mp3'],
+  'Ukhozi FM': [
+    'https://22343.live.streamtheworld.com/UKHOZIFMAAC.aac',
+    'https://22533.live.streamtheworld.com/UKHOZIFMAAC_SC',
+    'https://22673.live.streamtheworld.com/UKHOZIFMAAC.aac',
+    'https://25443.live.streamtheworld.com/UKHOZIFMAAC.aac',
+    'https://25583.live.streamtheworld.com/UKHOZIFM.mp3',
+  ],
+  'Thobela FM': [
+    'http://25283.live.streamtheworld.com/THOBELA.mp3',
+    'https://27743.live.streamtheworld.com/THOBELAAAC.aac',
+    'https://27793.live.streamtheworld.com/THOBELAAAC.aac',
+    'https://28553.live.streamtheworld.com/THOBELAAAC.aac',
+    'https://29083.live.streamtheworld.com/THOBELAAAC.aac',
+  ],
+};
+function buildSeedStations(){
+  return SEED_STATIONS_RAW.map((r,i)=>{
+    const [name,country,cc,lat,lon,tags,bitrate,codec,language,votes,url] = r;
+    const g = classify(tags);
+    const urls = [url, ...(SEED_ALT_URLS[name]||[])];
+    const transport = detectTransport(codec, url);
+    return {
+      id: 'seed-'+i, name, country, cc, state:'',
+      lat, lon, tags, genre: g.name, color: g.color,
+      votes, bitrate, codec, url, urls, transport, homepage:'', language, favicon:''
+    };
+  });
+}
+// SIGNAL ROUTER — one place that decides how a URL gets played, so every
+// station is just data (name + urls + transport) instead of special-cased
+// playback code. 'hls' routes through native HLS where the browser has it
+// (Safari) or a lazily-loaded HLS.js where it doesn't; anything else is a
+// plain <audio> source (AAC/MP3 Icecast/Shoutcast streams — the vast
+// majority of internet radio).
+function detectTransport(codec, url){
+  if((codec||'').toUpperCase()==='HLS') return 'hls';
+  if(/\.m3u8(\?|$)/i.test(url||'')) return 'hls';
+  return 'native';
+}
+function loadSeedStations(){
+  state.stations = buildSeedStations();
+  state.loaded = true;
+  buildClusters();
+  document.getElementById('statCount').textContent = state.stations.length.toLocaleString();
+  const countries = new Set(state.stations.map(s=>s.country));
+  document.getElementById('statCountries').textContent = countries.size;
+  populateArchiveNav();
+}
+
+/* ============================================================
+   2. ENTER SIGNAL
+   ============================================================ */
+function enterSignal(){
+  document.getElementById('landing').classList.add('hidden');
+  landingActive = false;
+  setTimeout(()=>{ document.getElementById('landing').style.display='none'; }, 1500);
+  document.getElementById('app').classList.add('active');
+  resizeGlobe();
+  buildLegend();
+  startClock();
+  if(!state.loaded){
+    // Show real stations immediately — no network wait at all — then try
+    // to seamlessly upgrade to the full live directory in the background.
+    loadSeedStations();
+    toast('Signal lock acquired', `${state.stations.length.toLocaleString()} built-in stations mapped across ${new Set(state.stations.map(s=>s.country)).size} countries.`);
+    loadStations();
+  }
+  requestAnimationFrame(animateGlobe);
+  scheduleRadar();
+  tryRegisterSW();
+}
+document.getElementById('liveUpgradeBtn').addEventListener('click', ()=>{
+  const btn = document.getElementById('liveUpgradeBtn');
+  btn.classList.add('busy');
+  btn.textContent = '↻ contacting directory…';
+  loadStations().finally(()=>{
+    btn.classList.remove('busy');
+    btn.textContent = '↻ try live directory';
+  });
+});
+
+/* ============================================================
+   3. DATA — Radio Browser API (background enhancement only)
+   ============================================================ */
+// Radio Browser is a mirrored, community-run directory. Any single mirror
+// can be slow, overloaded, briefly offline, or simply blocked by something
+// on the visitor's network (corporate proxy, some privacy/VPN extensions).
+// The app no longer depends on this succeeding — SEED_STATIONS above
+// already gives every visitor a populated, playable globe with zero
+// network calls. This just tries, quietly, to upgrade to the full
+// multi-thousand-station live directory when it's reachable. We lead with
+// the official round-robin hostname (the address radio-browser.info itself
+// documents as the stable entry point — it resolves to whichever of their
+// servers is currently healthy) and fall back to a couple of named mirrors.
+const RB_MIRRORS = [
+  'https://all.api.radio-browser.info',
+  'https://de1.api.radio-browser.info',
+  'https://de2.api.radio-browser.info',
+];
+const RB_PATH = '/json/stations/search?hidebroken=true&has_geo_info=true&order=votes&reverse=true&limit=2500';
+const RB_TIMEOUT_MS = 8000;
+
+function veil(show, text){
+  const v = document.getElementById('veil');
+  if(text) document.getElementById('veilText').textContent = text;
+  v.classList.toggle('show', show);
+}
+
+async function fetchWithTimeout(url, ms){
+  const ctrl = new AbortController();
+  const timer = setTimeout(()=>ctrl.abort(), ms);
+  try{
+    const res = await fetch(url, {headers:{'Accept':'application/json'}, signal: ctrl.signal});
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    return await res.json();
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function fetchStationsFromAnyMirror(){
+  let lastErr = null;
+  for(const base of RB_MIRRORS){
+    try{
+      return await fetchWithTimeout(`${base}${RB_PATH}`, RB_TIMEOUT_MS);
+    }catch(e){
+      lastErr = e;
+      console.warn('Radio Browser mirror failed, trying next:', base, e);
+    }
+  }
+  throw lastErr || new Error('All mirrors failed');
+}
+
+// Never blocks the UI and never shows an error wall — the seed set is
+// already on screen. On success it swaps in the much larger live dataset;
+// on failure it just leaves the built-in stations exactly as they are.
+async function loadStations(){
+  // A page opened as file:///... sends Origin: null. Radio Browser (and
+  // most public APIs, including the weather/sunrise facts below) don't
+  // grant CORS to a null origin, so every fetch from a local file will
+  // fail here — not a bug, a browser security rule. Detect it up front
+  // so we skip the doomed network round-trips and tell the person the
+  // actual fix (serve the folder / host it) instead of a vague error.
+  if(location.protocol === 'file:'){
+    const link = document.getElementById('liveUpgradeBtn');
+    link.textContent = '⚠ open via a real server to unlock 2,500+ live stations';
+    link.title = 'Browsers block cross-site data requests from local file:// pages. Serve this folder (e.g. "python3 -m http.server" then open http://localhost:8000) or host it on GitHub Pages / Netlify to load the full live directory and station facts.';
+    toast('Running from a local file', 'The 2,500+ live station directory and weather/time facts need real hosting — browsers block that kind of request from a file:// page. Serve this folder with a local server (e.g. python3 -m http.server) or host it online. The 44 built-in stations still play normally.');
+    veil(false);
+    return;
+  }
+  try{
+    const data = await fetchStationsFromAnyMirror();
+    const live = data
+      .filter(s=>s.geo_lat && s.geo_long && Math.abs(s.geo_lat)<=90 && Math.abs(s.geo_long)<=180)
+      .map(s=>{
+        const g = classify(s.tags);
+        return {
+          id: s.stationuuid,
+          name: s.name?.trim() || 'Unnamed Signal',
+          country: s.country || 'Unknown',
+          cc: (s.countrycode||'').toUpperCase(),
+          state: s.state || '',
+          lat: +s.geo_lat, lon: +s.geo_long,
+          tags: s.tags || '',
+          genre: g.name, color: g.color,
+          votes: s.votes||0, bitrate: s.bitrate||0, codec: s.codec||'—',
+          url: s.url_resolved || s.url,
+          urls: [s.url_resolved || s.url],
+          transport: detectTransport(s.codec, s.url_resolved || s.url),
+          homepage: s.homepage||'', language: s.language||'—',
+          favicon: s.favicon||''
+        };
+      });
+    if(!live.length) throw new Error('Live directory returned no usable stations');
+    state.stations = live;
+    state.loaded = true;
+    buildClusters();
+    document.getElementById('statCount').textContent = state.stations.length.toLocaleString();
+    const countries = new Set(state.stations.map(s=>s.country));
+    document.getElementById('statCountries').textContent = countries.size;
+    populateArchiveNav();
+    toast('Live directory connected', `Upgraded to ${state.stations.length.toLocaleString()} live stations across ${countries.size} countries.`);
+    veil(false);
+  }catch(e){
+    console.warn('Live directory unreachable — staying on the built-in station set.', e);
+    veil(false);
+  }
+}
+
+function buildClusters(){
+  // group by rounded lat/lon grid → approximate "city" beacons
+  const grid = 2.2;
+  const map = new Map();
+  for(const s of state.stations){
+    const key = Math.round(s.lat/grid)+','+Math.round(s.lon/grid);
+    if(!map.has(key)) map.set(key, {lat:0, lon:0, n:0, stations:[], countries:new Set()});
+    const c = map.get(key);
+    c.stations.push(s); c.n++; c.lat+=s.lat; c.lon+=s.lon; c.countries.add(s.country);
+  }
+  state.clusters = [...map.values()].map(c=>({
+    lat: c.lat/c.n, lon: c.lon/c.n, n: c.n, stations: c.stations,
+    label: c.stations[0].state || c.stations[0].country,
+    country: [...c.countries][0]
+  }));
+}
+
+/* ============================================================
+   4. GLOBE RENDERING (dot-projected sphere; beacons = real stations)
+   ============================================================ */
+const gCanvas = document.getElementById('globeCanvas');
+const gctx = gCanvas.getContext('2d');
+let R = 260, CX=0, CY=0;
+function resizeGlobe(){
+  gCanvas.width = innerWidth*devicePixelRatio; gCanvas.height = innerHeight*devicePixelRatio;
+  gCanvas.style.width='100%'; gCanvas.style.height='100%';
+  gctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  CX = innerWidth/2; CY = innerHeight/2 + 10;
+  R = Math.min(innerWidth, innerHeight)*0.34;
+}
+
+// graticule points (visual "planet" even where there are no stations)
+let graticule = [];
+(function buildGraticule(){
+  for(let lat=-80; lat<=80; lat+=10){
+    for(let lon=-180; lon<180; lon+=6){
+      graticule.push({lat,lon});
+    }
+  }
+})();
+
+function project(lat, lon, rotY, rotX, radius){
+  const latR = lat*Math.PI/180, lonR = (lon+rotY)*Math.PI/180, tiltR = rotX*Math.PI/180;
+  const x0 = Math.cos(latR)*Math.sin(lonR);
+  const y0 = Math.sin(latR);
+  const z0 = Math.cos(latR)*Math.cos(lonR);
+  const y1 = y0*Math.cos(tiltR) - z0*Math.sin(tiltR);
+  const z1 = y0*Math.sin(tiltR) + z0*Math.cos(tiltR);
+  return { x: CX + x0*radius, y: CY - y1*radius, z: z1, front: z1 > -0.05 };
+}
+
+function subsolarLon(){
+  // rough sun longitude based on UTC time
+  const now = new Date();
+  const utcH = now.getUTCHours() + now.getUTCMinutes()/60;
+  return 180 - (utcH/24)*360;
+}
+
+let lastFrame = performance.now();
+function animateGlobe(t){
+  const dt = Math.min(40, t-lastFrame); lastFrame = t;
+  gctx.clearRect(0,0,innerWidth,innerHeight);
+
+  if(state.autoRotate && !state.dragging) state.rotY += dt*0.006;
+
+  // outer glow
+  const glow = gctx.createRadialGradient(CX,CY,R*0.5,CX,CY,R*1.55);
+  glow.addColorStop(0,'rgba(95,208,214,0.10)');
+  glow.addColorStop(1,'rgba(95,208,214,0)');
+  gctx.fillStyle = glow;
+  gctx.beginPath(); gctx.arc(CX,CY,R*1.55,0,7); gctx.fill();
+
+  // sphere base
+  const base = gctx.createRadialGradient(CX-R*0.3,CY-R*0.3,R*0.1,CX,CY,R*1.05);
+  base.addColorStop(0, state.nightMode? '#0d1420':'#101c26');
+  base.addColorStop(1, '#05070a');
+  gctx.fillStyle = base;
+  gctx.beginPath(); gctx.arc(CX,CY,R,0,7); gctx.fill();
+
+  const sunLon = subsolarLon();
+
+  // graticule dots
+  for(const p of graticule){
+    const pr = project(p.lat, p.lon, state.rotY, state.rotX, R);
+    if(!pr.front) continue;
+    const dayAmt = Math.cos((p.lon - sunLon)*Math.PI/180);
+    const alpha = (0.10 + pr.z*0.18) * (state.nightMode ? 1 : 1);
+    gctx.beginPath();
+    gctx.fillStyle = dayAmt>0.1 ? `rgba(120,160,190,${alpha})` : `rgba(40,60,80,${alpha*0.6})`;
+    gctx.arc(pr.x, pr.y, 0.75+pr.z*0.5, 0, 7);
+    gctx.fill();
+  }
+
+  // constellations (connect same-genre nearby beacons)
+  if(state.showConstellations && state.clusters.length){
+    gctx.lineWidth = 0.5;
+    const sampled = state.clusters.filter(c=>c.n>1).slice(0, 220);
+    for(let i=0;i<sampled.length;i++){
+      const a = sampled[i];
+      const gA = topGenre(a.stations);
+      const pa = project(a.lat,a.lon,state.rotY,state.rotX,R);
+      if(!pa.front) continue;
+      for(let j=i+1;j<Math.min(i+6, sampled.length);j++){
+        const b = sampled[j];
+        if(topGenre(b.stations).name !== gA.name) continue;
+        const pb = project(b.lat,b.lon,state.rotY,state.rotX,R);
+        if(!pb.front) continue;
+        const d = Math.hypot(pa.x-pb.x, pa.y-pb.y);
+        if(d>140) continue;
+        gctx.strokeStyle = gA.color + '33';
+        gctx.beginPath(); gctx.moveTo(pa.x,pa.y); gctx.lineTo(pb.x,pb.y); gctx.stroke();
+      }
+    }
+  }
+
+  // beacons
+  const now = performance.now()*0.001;
+  for(const c of state.clusters){
+    const pr = project(c.lat, c.lon, state.rotY, state.rotX, R);
+    if(!pr.front) continue;
+    const g = topGenre(c.stations);
+    const size = Math.min(6.5, 1.6 + Math.log(c.n+1)*1.3) * (0.4+pr.z*0.7);
+    const pulse = 0.6+Math.sin(now*2.2 + c.lat*0.3)*0.35;
+    gctx.beginPath();
+    gctx.fillStyle = g.color;
+    gctx.globalAlpha = 0.55 + pr.z*0.4;
+    gctx.shadowColor = g.color; gctx.shadowBlur = 8*pulse+4;
+    gctx.arc(pr.x, pr.y, size, 0, 7);
+    gctx.fill();
+    gctx.shadowBlur = 0;
+    gctx.globalAlpha = 1;
+    c._screen = pr; c._r = size+4;
+  }
+
+  // rim light
+  const rim = gctx.createRadialGradient(CX,CY,R*0.86,CX,CY,R*1.02);
+  rim.addColorStop(0,'rgba(0,0,0,0)');
+  rim.addColorStop(1,'rgba(95,208,214,0.22)');
+  gctx.fillStyle = rim;
+  gctx.beginPath(); gctx.arc(CX,CY,R,0,7); gctx.fill();
+
+  // hover ring / label
+  if(state.hoverCluster && state.hoverCluster._screen && state.hoverCluster._screen.front){
+    const s = state.hoverCluster._screen;
+    gctx.strokeStyle = '#c9a15e'; gctx.lineWidth=1;
+    gctx.beginPath(); gctx.arc(s.x,s.y, state.hoverCluster._r+6, 0, 7); gctx.stroke();
+    drawClusterLabel(state.hoverCluster, s);
+  }
+
+  requestAnimationFrame(animateGlobe);
+}
+
+function topGenre(stations){
+  const counts = {};
+  for(const s of stations){ counts[s.genre] = (counts[s.genre]||0)+1; }
+  let best='signal', bc=-1;
+  for(const k in counts){ if(counts[k]>bc){bc=counts[k]; best=k;} }
+  const found = GENRE_MAP.find(g=>g[1]===best);
+  return {name:best, color: found? getCss(found[2]) : getCss('--g-default')};
+}
+
+function drawClusterLabel(c, s){
+  const label = `${c.label} · ${c.n} signal${c.n>1?'s':''}`;
+  gctx.font = '11px "JetBrains Mono", monospace';
+  const w = gctx.measureText(label).width + 18;
+  gctx.fillStyle = 'rgba(8,11,16,0.92)';
+  gctx.strokeStyle = 'rgba(255,255,255,0.12)'; gctx.lineWidth=1;
+  const bx = s.x+14, by = s.y-24;
+  roundRect(gctx, bx, by, w, 24, 6); gctx.fill(); gctx.stroke();
+  gctx.fillStyle = '#e9ecef';
+  gctx.fillText(label, bx+9, by+16);
+}
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath();
+}
+
+/* pointer interactions on globe: drag rotate, hover, click select */
+gCanvas.addEventListener('pointerdown', e=>{
+  state.dragging = true; state.lastX = e.clientX; state.lastY = e.clientY;
+  gCanvas.setPointerCapture(e.pointerId);
+});
+gCanvas.addEventListener('pointerup', e=>{
+  state.dragging = false;
+  const moved = Math.hypot(e.clientX-state.lastX, e.clientY-state.lastY);
+  if(moved < 4){ handleGlobeClick(e); }
+});
+gCanvas.addEventListener('pointermove', e=>{
+  if(state.dragging){
+    const dx = e.clientX-state.lastX, dy = e.clientY-state.lastY;
+    state.rotY += dx*0.25; state.rotX = Math.max(-70,Math.min(70,state.rotX - dy*0.2));
+    state.lastX = e.clientX; state.lastY = e.clientY;
+    return;
+  }
+  const hit = findClusterAt(e.clientX, e.clientY);
+  state.hoverCluster = hit;
+  gCanvas.style.cursor = hit ? 'pointer' : 'grab';
+});
+gCanvas.addEventListener('wheel', e=>{
+  e.preventDefault();
+  R = Math.max(120, Math.min(innerHeight*0.6, R - e.deltaY*0.4));
+}, {passive:false});
+
+function findClusterAt(cx, cy){
+  let best=null, bd=9999;
+  for(const c of state.clusters){
+    if(!c._screen || !c._screen.front) continue;
+    const d = Math.hypot(c._screen.x-cx, c._screen.y-cy);
+    if(d < (c._r+6) && d<bd){ bd=d; best=c; }
+  }
+  return best;
+}
+function handleGlobeClick(e){
+  const c = findClusterAt(e.clientX, e.clientY);
+  if(c) openClusterList(c);
+}
+
+/* ============================================================
+   5. SIDE PANEL — station list
+   ============================================================ */
+const sidePanel = document.getElementById('sidePanel');
+function openClusterList(cluster){
+  document.getElementById('panelTitle').textContent = cluster.label || cluster.country;
+  document.getElementById('panelSub').textContent = `${cluster.country} · ${cluster.n} signal${cluster.n>1?'s':''}`;
+  renderStationList(cluster.stations);
+  sidePanel.classList.add('open');
+}
+function renderStationList(list){
+  const wrap = document.getElementById('stationList');
+  wrap.innerHTML='';
+  if(!list.length){ wrap.innerHTML = '<div class="empty-note">No signals found here.</div>'; return; }
+  list.slice(0,300).sort((a,b)=>b.votes-a.votes).forEach(s=>{
+    const row = document.createElement('div');
+    row.className='station-row';
+    row.innerHTML = `
+      <div class="beacon-dot" style="background:${s.color};color:${s.color}"></div>
+      <div class="st-meta">
+        <div class="st-name">${escapeHtml(s.name)}</div>
+        <div class="st-sub">${escapeHtml(s.country)} · ${s.genre} · ${s.bitrate||'—'}kbps</div>
+      </div>
+      <div class="st-play">▶</div>`;
+    row.addEventListener('click', ()=>openPlayer(s));
+    wrap.appendChild(row);
+  });
+}
+document.getElementById('panelClose').addEventListener('click', ()=>sidePanel.classList.remove('open'));
+
+function escapeHtml(str){ const d=document.createElement('div'); d.textContent=str; return d.innerHTML; }
+
+/* search */
+let searchTimer=null;
+document.getElementById('searchInput').addEventListener('input', e=>{
+  clearTimeout(searchTimer);
+  const q = e.target.value.trim().toLowerCase();
+  searchTimer = setTimeout(()=>{
+    if(q.length<2) return;
+    const results = state.stations.filter(s=>
+      s.name.toLowerCase().includes(q) || s.country.toLowerCase().includes(q) || (s.state||'').toLowerCase().includes(q) || s.genre.includes(q)
+    ).slice(0,300);
+    document.getElementById('panelTitle').textContent = 'Search';
+    document.getElementById('panelSub').textContent = `"${q}" · ${results.length} results`;
+    renderStationList(results);
+    sidePanel.classList.add('open');
+  }, 380);
+});
+
+/* ============================================================
+   6. PLAYER — real audio + Web Audio analyser visuals
+   ============================================================ */
+const audioEl = document.getElementById('audioEl');
+let actxAudio, analyser, sourceNode, dataArray, timeArray, graphFailed=false;
+function ensureAudioGraph(){
+  if(actxAudio || graphFailed) return;
+  try{
+    actxAudio = new (window.AudioContext||window.webkitAudioContext)();
+    // NOTE ON crossorigin: we deliberately do NOT set it here, and instead
+    // set/clear it per-attempt in attemptPlay() below. Setting crossorigin
+    // on the element causes browsers to refuse to load ANY stream that
+    // doesn't send CORS headers (most Icecast/Shoutcast stations don't) —
+    // so we try each stream WITH it first (real spectrum data if the host
+    // supports CORS) and silently fall back to WITHOUT it (audio plays,
+    // visualizer stays flat — a browser security rule, not a bug) if that
+    // first attempt fails.
+    sourceNode = actxAudio.createMediaElementSource(audioEl);
+    analyser = actxAudio.createAnalyser();
+    analyser.fftSize = 1024;
+    analyser.smoothingTimeConstant = 0.75;
+    sourceNode.connect(analyser);
+    analyser.connect(actxAudio.destination);
+    dataArray = new Uint8Array(analyser.frequencyBinCount);
+    timeArray = new Uint8Array(analyser.fftSize);
+  }catch(e){
+    // Some browsers (older Safari, some in-app webviews) choke on
+    // createMediaElementSource for streamed audio. Fall back to plain
+    // playback with no visualizer rather than breaking audio entirely.
+    graphFailed = true;
+    console.warn('Web Audio graph unavailable, falling back to plain playback', e);
+  }
+}
+
+const playerEl = document.getElementById('player');
+let silenceFrames = 0;
+
+/* ------------------------------------------------------------
+   Auto-reconnect + mirror failover.
+
+   A station carries a chain of candidate URLs (primary + known
+   alternate mirrors/CDNs). If the current one fails a couple of
+   times in a row, we don't just keep hammering the same dead
+   host — we advance to the next mirror in the chain. Different
+   mirrors sit on different networks/ports, so one being blocked
+   or down on a given connection doesn't sink the station.
+
+   Before committing to the <audio> element we also run a quick
+   "is this host reachable at all" probe via a no-cors fetch with
+   a short timeout. A no-cors fetch to a live stream resolves as
+   soon as the connection + response headers arrive (it doesn't
+   wait for the infinite body), so it's a fast, accurate way to
+   tell "network path blocked" apart from "audio decode issue" —
+   and it lets us skip a dead mirror in ~3s instead of waiting on
+   the browser's own much longer connection timeout.
+   ------------------------------------------------------------ */
+let reconnectTimer = null;
+let attemptsOnThisUrl = 0;
+let userPaused = false;
+let playToken = 0; // invalidates stale async attempts when the user switches stations fast
+const MAX_ATTEMPTS_PER_URL = 2;
+let mirrorsChecked = 0;
+let lastResponseText = '—';
+let hlsInstance = null;
+let hlsLibLoadPromise = null;
+
+function clearReconnect(){
+  if(reconnectTimer){ clearTimeout(reconnectTimer); reconnectTimer = null; }
+}
+
+function teardownHls(){
+  if(hlsInstance){ try{ hlsInstance.destroy(); }catch(e){} hlsInstance = null; }
+}
+
+// Lazy-load HLS.js only for the browsers that actually need it (Chrome,
+// Firefox, Edge — none of them speak HLS natively). Safari never pays this
+// cost since it plays .m3u8 directly. One shared promise so a second HLS
+// station doesn't re-fetch the library.
+function loadHlsLib(){
+  if(window.Hls) return Promise.resolve(window.Hls);
+  if(hlsLibLoadPromise) return hlsLibLoadPromise;
+  hlsLibLoadPromise = new Promise((resolve, reject)=>{
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js';
+    s.onload = ()=> window.Hls ? resolve(window.Hls) : reject(new Error('hls.js loaded but window.Hls missing'));
+    s.onerror = ()=> reject(new Error('hls.js failed to load from CDN'));
+    document.head.appendChild(s);
+  });
+  return hlsLibLoadPromise;
+}
+
+function probeReachable(url, timeoutMs){
+  return new Promise((resolve)=>{
+    const ctrl = new AbortController();
+    const timer = setTimeout(()=>{ ctrl.abort(); resolve(false); }, timeoutMs);
+    fetch(url, {mode:'no-cors', cache:'no-store', signal: ctrl.signal})
+      .then(()=>{ clearTimeout(timer); ctrl.abort(); resolve(true); })
+      .catch(()=>{ clearTimeout(timer); resolve(false); });
+  });
+}
+
+// SIGNAL ROUTER — the one place that decides HOW a URL gets played.
+// transport 'hls'  → native <video/audio> HLS where supported (Safari),
+//                    otherwise a lazily-loaded HLS.js instance.
+// transport 'native' (default) → plain <audio src>, which covers the vast
+//                    majority of Icecast/Shoutcast AAC/MP3 stations.
+// Every path resolves the same shape: {latency} on success, false on
+// failure, or 'autoplay-blocked' — so the caller never special-cases
+// transport again.
+function canPlayHlsNatively(){
+  return !!audioEl.canPlayType('application/vnd.apple.mpegurl');
+}
+
+function tryLoadAndPlay(url, withCors, transport){
+  teardownHls();
+  if(transport === 'hls' && !canPlayHlsNatively()){
+    return tryLoadAndPlayHlsJs(url);
+  }
+  return new Promise((resolve)=>{
+    audioEl.pause();
+    if(withCors) audioEl.crossOrigin = 'anonymous';
+    else audioEl.crossOrigin = null;
+    audioEl.src = url;
+    audioEl.volume = document.getElementById('volSlider').value/100;
+    audioEl.load();
+    try{ ensureAudioGraph(); if(actxAudio && actxAudio.state==='suspended') actxAudio.resume(); }catch(e){}
+    const t0 = performance.now();
+    audioEl.play().then(()=>{
+      resolve({latency: performance.now()-t0});
+    }).catch((err)=>{
+      if(err && err.name === 'NotAllowedError'){
+        document.getElementById('nowSong').textContent = '♪ tap play to start this signal.';
+        resolve('autoplay-blocked');
+        return;
+      }
+      console.warn('playback attempt failed', url, 'crossorigin='+withCors, err);
+      resolve(false);
+    });
+  });
+}
+
+function tryLoadAndPlayHlsJs(url){
+  return new Promise((resolve)=>{
+    audioEl.pause();
+    audioEl.crossOrigin = null;
+    loadHlsLib().then(Hls=>{
+      if(!Hls.isSupported()){ resolve(false); return; }
+      const hls = new Hls({ maxBufferLength: 20 });
+      hlsInstance = hls;
+      const t0 = performance.now();
+      let settled = false;
+      hls.on(Hls.Events.ERROR, (evt, data)=>{
+        if(data.fatal && !settled){ settled = true; resolve(false); }
+      });
+      hls.on(Hls.Events.MANIFEST_PARSED, ()=>{
+        audioEl.volume = document.getElementById('volSlider').value/100;
+        audioEl.play().then(()=>{
+          if(!settled){ settled = true; resolve({latency: performance.now()-t0}); }
+        }).catch(err=>{
+          if(settled) return;
+          settled = true;
+          if(err && err.name === 'NotAllowedError'){
+            document.getElementById('nowSong').textContent = '♪ tap play to start this signal.';
+            resolve('autoplay-blocked');
+          } else resolve(false);
+        });
+      });
+      hls.loadSource(url);
+      hls.attachMedia(audioEl);
+    }).catch(e=>{
+      console.warn('HLS.js unavailable, cannot play this station on this browser', e);
+      resolve(false);
+    });
+  });
+}
+
+async function attemptPlay(s, myToken){
+  if(userPaused || playToken !== myToken) return;
+  const url = s.urls[s._urlIndex];
+  const transport = s.transport || 'native';
+  const mixedContentRisk = location.protocol==='https:' && url.startsWith('http://');
+  document.getElementById('nowSong').textContent = s._urlIndex===0
+    ? '♪ connecting…'
+    : `♪ trying alternate source (${s._urlIndex+1}/${s.urls.length})…`;
+
+  mirrorsChecked++;
+  const reachable = await probeReachable(url, 3500);
+  if(playToken !== myToken || userPaused) return;
+  if(!reachable){
+    lastResponseText = mixedContentRisk ? 'blocked (insecure http on https page)' : 'no response';
+    advanceOrGiveUp(s, myToken, mixedContentRisk ? 'blocked (insecure http on https page)' : 'unreachable');
+    return;
+  }
+
+  // Try WITH crossorigin first (unlocks a real, live spectrum/scope for
+  // hosts that send CORS headers). If the browser refuses to load it that
+  // way, silently retry the exact same URL WITHOUT crossorigin — audio
+  // still plays fine, the visualizer just stays flat for that station.
+  // (HLS transport ignores the crossorigin flag — see tryLoadAndPlay.)
+  let result = await tryLoadAndPlay(url, true, transport);
+  if(result === 'autoplay-blocked') return; // message already shown, wait for user tap
+  if(!result && transport !== 'hls') result = await tryLoadAndPlay(url, false, transport);
+  if(playToken !== myToken || userPaused) return;
+  if(result === 'autoplay-blocked') return;
+  if(result){
+    document.getElementById('latency').textContent = Math.round(result.latency)+'ms';
+    document.getElementById('nowSong').textContent = '♪ live audio connected';
+    attemptsOnThisUrl = 0;
+  } else {
+    lastResponseText = 'connect failed';
+    advanceOrGiveUp(s, myToken, 'could not connect');
+  }
+}
+
+function showSignalLost(s){
+  document.getElementById('slName').textContent = s.name;
+  document.getElementById('slLoc').textContent = `${s.state? s.state+' · ':''}${s.country}`;
+  document.getElementById('slTransport').textContent = (s.transport||'native').toUpperCase();
+  document.getElementById('slLastResponse').textContent = lastResponseText;
+  document.getElementById('slMirrors').textContent = `${mirrorsChecked} endpoint${mirrorsChecked===1?'':'s'} checked`;
+  document.getElementById('signalLost').classList.add('show');
+}
+function hideSignalLost(){
+  document.getElementById('signalLost').classList.remove('show');
+}
+
+function advanceOrGiveUp(s, myToken, reason){
+  if(userPaused || playToken !== myToken) return;
+  if(netWaiting) return;
+  if(navigator.onLine === false){ enterNetWait(); return; }
+  attemptsOnThisUrl++;
+  clearReconnect();
+  if(attemptsOnThisUrl >= MAX_ATTEMPTS_PER_URL){
+    attemptsOnThisUrl = 0;
+    if(s._urlIndex < s.urls.length - 1){
+      s._urlIndex++;
+      reconnectTimer = setTimeout(()=>attemptPlay(s, myToken), 400);
+      return;
+    }
+    // exhausted every known mirror for this station — this is the one
+    // place we say so plainly, with the specifics, instead of a generic
+    // error or an infinite silent spinner.
+    // Before declaring the station dead, make sure it isn't just OUR
+    // internet that is down (wifi connected but no data, etc.). If the
+    // internet is down we wait and auto-resume instead of a dead end.
+    checkInternet().then(up=>{
+      if(userPaused || playToken !== myToken || netWaiting) return;
+      if(!up){ enterNetWait(); return; }
+      document.getElementById('nowSong').textContent = '♪ signal lost — see details below.';
+      showSignalLost(s);
+    });
+    return;
+  }
+  const delay = Math.min(1200 * Math.pow(1.7, attemptsOnThisUrl-1), 8000);
+  document.getElementById('nowSong').textContent = `♪ ${reason} — retrying…`;
+  reconnectTimer = setTimeout(()=>attemptPlay(s, myToken), delay);
+}
+
+function scheduleReconnect(reason){
+  const s = state.current;
+  if(!s) return;
+  lastResponseText = reason;
+  advanceOrGiveUp(s, playToken, reason);
+}
+
+async function openPlayer(s){
+  leaveNetWait();
+  clearReconnect();
+  teardownHls();
+  attemptsOnThisUrl = 0;
+  mirrorsChecked = 0;
+  lastResponseText = '—';
+  userPaused = false;
+  hideSignalLost();
+  playToken++;
+  const myToken = playToken;
+  s._urlIndex = 0;
+  s.urls = s.urls && s.urls.length ? s.urls : [s.url];
+  state.current = s;
+  silenceFrames = 0;
+  document.getElementById('pName').textContent = s.name;
+  document.getElementById('pLoc').textContent = `${s.state? s.state+', ':''}${s.country} · ${s.genre.toUpperCase()}`;
+  document.getElementById('pFlag').textContent = ccToFlag(s.cc) || '📡';
+  document.getElementById('nowSong').textContent = '♪ connecting…';
+  document.getElementById('latency').textContent = '—';
+
+  playerEl.classList.add('open');
+  document.getElementById('playToggle').textContent='⏸';
+
+  document.getElementById('sigStrength').textContent = (70+Math.round(Math.random()*28))+'%';
+  loadStationFacts(s);
+  trackAchievements(s);
+
+  attemptPlay(s, myToken);
+}
+document.getElementById('slRetry').addEventListener('click', ()=>{
+  const s = state.current;
+  if(!s) return;
+  leaveNetWait();
+  hideSignalLost();
+  attemptsOnThisUrl = 0;
+  mirrorsChecked = 0;
+  s._urlIndex = 0;
+  playToken++;
+  attemptPlay(s, playToken);
+});
+document.getElementById('slReturn').addEventListener('click', ()=>{
+  userPaused = true;
+  clearReconnect();
+  teardownHls();
+  hideSignalLost();
+  playerEl.classList.remove('open');
+  audioEl.pause();
+});
+audioEl.addEventListener('error', ()=>{
+  if(!state.current || userPaused) return;
+  scheduleReconnect('signal dropped');
+});
+audioEl.addEventListener('stalled', ()=>{
+  if(!state.current || userPaused) return;
+  scheduleReconnect('signal stalled');
+});
+audioEl.addEventListener('waiting', ()=>{
+  if(state.current && !userPaused) document.getElementById('nowSong').textContent = '♪ buffering…';
+});
+audioEl.addEventListener('playing', ()=>{
+  if(state.current){
+    document.getElementById('nowSong').textContent = '♪ live audio connected';
+    attemptsOnThisUrl = 0;
+    clearReconnect();
+  }
+});
+
+/* ── AUTO-RECONNECT ─────────────────────────────────────────────
+   If the internet drops, the player waits quietly (no "signal lost"
+   dead end, no button to press). The moment the connection is back it
+   re-tunes the same station and plays by itself. Also catches silent
+   stalls where the stream just freezes without raising an error. */
+let netWaiting = false;
+let netPollTimer = null;
+let lastPlayTime = -1, lastPlayTimeAt = 0;
+
+function checkInternet(){
+  const probes = [
+    'https://www.gstatic.com/generate_204',
+    'https://www.cloudflare.com/cdn-cgi/trace'
+  ].map(u=>probeReachable(u, 4000));
+  return Promise.all(probes).then(r=>r.some(Boolean));
+}
+
+function enterNetWait(){
+  const s = state.current;
+  if(!s || userPaused || netWaiting) return;
+  netWaiting = true;
+  clearReconnect();
+  hideSignalLost();
+  document.getElementById('nowSong').textContent = '♪ no internet — waiting for connection…';
+  clearInterval(netPollTimer);
+  netPollTimer = setInterval(pollNet, 3000);
+}
+
+async function pollNet(){
+  if(!netWaiting) return;
+  if(userPaused || !state.current){ leaveNetWait(); return; }
+  if(navigator.onLine === false) return;
+  if(await checkInternet()) resumeAfterNet();
+}
+
+function leaveNetWait(){
+  netWaiting = false;
+  clearInterval(netPollTimer);
+  netPollTimer = null;
+}
+
+function resumeAfterNet(){
+  const s = state.current;
+  leaveNetWait();
+  if(!s || userPaused) return;
+  clearReconnect();
+  hideSignalLost();
+  attemptsOnThisUrl = 0;
+  mirrorsChecked = 0;
+  s._urlIndex = 0;
+  playToken++;
+  document.getElementById('nowSong').textContent = '♪ connection back — reconnecting…';
+  attemptPlay(s, playToken);
+}
+
+window.addEventListener('offline', ()=>{ enterNetWait(); });
+window.addEventListener('online', ()=>{
+  if(netWaiting){ checkInternet().then(up=>{ if(up) resumeAfterNet(); }); return; }
+  // Came back online while the "signal lost" screen was showing because
+  // the network died — recover from that too.
+  const sl = document.getElementById('signalLost');
+  if(sl && sl.classList.contains('show') && state.current && !userPaused) resumeAfterNet();
+});
+
+// Silent-stall watchdog: stream claims to be playing but audio time has
+// not moved for 12s (typical when the connection dies mid-stream).
+setInterval(()=>{
+  if(!state.current || userPaused || netWaiting || audioEl.paused) { lastPlayTime = -1; return; }
+  const now = Date.now();
+  if(audioEl.currentTime !== lastPlayTime){ lastPlayTime = audioEl.currentTime; lastPlayTimeAt = now; return; }
+  if(now - lastPlayTimeAt >= 12000 && !reconnectTimer){
+    lastPlayTimeAt = now;
+    if(navigator.onLine === false){ enterNetWait(); return; }
+    scheduleReconnect('signal stalled');
+  }
+}, 2000);
+
+document.getElementById('playerClose').addEventListener('click', ()=>{
+  userPaused = true;
+  clearReconnect();
+  teardownHls();
+  playerEl.classList.remove('open');
+  audioEl.pause();
+});
+document.getElementById('playToggle').addEventListener('click', ()=>{
+  if(audioEl.paused){
+    userPaused = false;
+    leaveNetWait();
+    audioEl.play().catch(()=>scheduleReconnect('could not connect'));
+    document.getElementById('playToggle').textContent='⏸';
+  } else {
+    userPaused = true;
+    clearReconnect();
+    audioEl.pause();
+    document.getElementById('playToggle').textContent='▶';
+  }
+});
+document.getElementById('volSlider').addEventListener('input', e=>{ audioEl.volume = e.target.value/100; });
+
+function ccToFlag(cc){
+  if(!cc || cc.length!==2) return '';
+  return String.fromCodePoint(...[...cc.toUpperCase()].map(c=>127397+c.charCodeAt(0)));
+}
+
+/* visualizer drawing — shared renderer used by player + audio lab */
+function drawSpectrum(canvas, color){
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  ctx.clearRect(0,0,w,h);
+  if(!analyser){ return; }
+  analyser.getByteFrequencyData(dataArray);
+  const barCount = 64, step = Math.floor(dataArray.length/barCount);
+  const bw = w/barCount;
+  for(let i=0;i<barCount;i++){
+    let sum=0; for(let j=0;j<step;j++) sum+=dataArray[i*step+j];
+    const v = (sum/step)/255;
+    const bh = v*h;
+    const grad = ctx.createLinearGradient(0,h-bh,0,h);
+    grad.addColorStop(0, color);
+    grad.addColorStop(1, color+'22');
+    ctx.fillStyle = grad;
+    ctx.fillRect(i*bw+1, h-bh, bw-2, bh);
+  }
+}
+function drawScope(canvas, color){
+  const ctx = canvas.getContext('2d');
+  const w=canvas.width, h=canvas.height;
+  ctx.clearRect(0,0,w,h);
+  if(!analyser){ return; }
+  analyser.getByteTimeDomainData(timeArray);
+  ctx.beginPath(); ctx.strokeStyle=color; ctx.lineWidth=1.6;
+  const slice = w/timeArray.length;
+  for(let i=0;i<timeArray.length;i++){
+    const v = timeArray[i]/128.0;
+    const y = v*h/2;
+    if(i===0) ctx.moveTo(0,y); else ctx.lineTo(i*slice, y);
+  }
+  ctx.stroke();
+}
+function drawPhase(canvas, color){
+  // pseudo-vectorscope using time-domain samples plotted as lissajous with delay offset
+  const ctx = canvas.getContext('2d');
+  const w=canvas.width, h=canvas.height;
+  ctx.clearRect(0,0,w,h);
+  if(!analyser){ return; }
+  analyser.getByteTimeDomainData(timeArray);
+  ctx.strokeStyle = color+'aa'; ctx.lineWidth=1;
+  ctx.beginPath();
+  const cx=w/2, cy=h/2, sc=Math.min(w,h)/2.4;
+  const off = 6;
+  for(let i=off;i<timeArray.length;i++){
+    const x = (timeArray[i-off]/128-1)*sc + cx;
+    const y = (timeArray[i]/128-1)*sc + cy;
+    if(i===off) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+}
+let waterfallCols = [];
+function drawWaterfall(canvas, color){
+  const ctx = canvas.getContext('2d');
+  const w=canvas.width, h=canvas.height;
+  if(!analyser){ ctx.clearRect(0,0,w,h); return; }
+  analyser.getByteFrequencyData(dataArray);
+  const img = ctx.getImageData(1,0,w-1,h);
+  ctx.putImageData(img,0,0);
+  ctx.clearRect(w-1,0,1,h);
+  const bins = 64;
+  for(let i=0;i<bins;i++){
+    const v = dataArray[Math.floor(i*dataArray.length/bins)]/255;
+    const y = h - (i/bins)*h;
+    const rgb = hexToRgb(color);
+    ctx.fillStyle = `rgba(${rgb.r},${rgb.g},${rgb.b},${v})`;
+    ctx.fillRect(w-1, h-(i+1)*(h/bins), 1, h/bins+1);
+  }
+}
+function hexToRgb(hex){
+  hex = hex.replace('#','');
+  if(hex.length===3) hex = hex.split('').map(c=>c+c).join('');
+  const num = parseInt(hex,16);
+  return {r:(num>>16)&255, g:(num>>8)&255, b:num&255};
+}
+
+function vizLoop(){
+  const color = state.current ? state.current.color : '#5fd0d6';
+  if(playerEl.classList.contains('open')){
+    drawSpectrum(document.getElementById('specCanvas'), color);
+    drawScope(document.getElementById('scopeCanvas'), color);
+    updateMeters();
+  }
+  if(document.getElementById('audioLab').classList.contains('open')){
+    drawSpectrum(document.getElementById('labSpec'), color);
+    drawScope(document.getElementById('labWave'), color);
+    drawPhase(document.getElementById('labPhase'), color);
+    drawWaterfall(document.getElementById('labFall'), color);
+    updateLabNumbers();
+  }
+  requestAnimationFrame(vizLoop);
+}
+requestAnimationFrame(vizLoop);
+
+function updateMeters(){
+  if(!analyser){
+    document.getElementById('vuL').style.width='0%';
+    document.getElementById('vuR').style.width='0%';
+    return;
+  }
+  analyser.getByteTimeDomainData(timeArray);
+  let sum=0;
+  for(let i=0;i<timeArray.length;i++){ const d=(timeArray[i]-128)/128; sum+=d*d; }
+  const rms = Math.sqrt(sum/timeArray.length);
+  const pct = Math.min(100, rms*230);
+  document.getElementById('vuL').style.width = pct+'%';
+  document.getElementById('vuR').style.width = Math.max(0,pct+(Math.random()*8-4))+'%';
+
+  // Detect a "tainted" (no-CORS) stream: audio is audibly playing but the
+  // analyser reports true silence. Tell the person once, plainly, rather
+  // than leaving them staring at a dead meter wondering if it's broken.
+  if(!audioEl.paused && rms < 0.0008){
+    silenceFrames++;
+    if(silenceFrames === 150){
+      document.getElementById('nowSong').textContent = '♪ playing — this stream doesn\'t expose audio data for visualization, so the meters stay quiet, but sound is live.';
+    }
+  } else {
+    silenceFrames = 0;
+  }
+}
+function updateLabNumbers(){
+  if(!analyser) return;
+  analyser.getByteTimeDomainData(timeArray);
+  let sum=0, peak=0;
+  for(let i=0;i<timeArray.length;i++){ const d=(timeArray[i]-128)/128; sum+=d*d; peak=Math.max(peak,Math.abs(d)); }
+  const rms = Math.sqrt(sum/timeArray.length);
+  const lufs = -23 + 20*Math.log10(rms+0.0001)*-1*-1; // stylized approximation
+  document.getElementById('labLufs').textContent = (20*Math.log10(rms+0.0001)).toFixed(1)+' LUFS';
+  document.getElementById('labPeak').textContent = (20*Math.log10(peak+0.0001)).toFixed(1)+' dB';
+  document.getElementById('labDr').textContent = Math.max(1,(20*Math.log10((peak+0.001)/(rms+0.001)))).toFixed(1)+' dB';
+  document.getElementById('labSrc').textContent = state.current ? state.current.name : 'no signal tuned';
+}
+
+/* ============================================================
+   7. STATION FACTS — weather / time / sunrise via free public APIs
+   ============================================================ */
+async function loadStationFacts(s){
+  const facts = document.getElementById('pFacts');
+  facts.innerHTML = fact('Country', s.country) + fact('Genre', s.genre) + fact('Bitrate', (s.bitrate||'—')+' kbps') + fact('Codec', s.codec) + fact('Language', s.language) + fact('Votes', s.votes);
+  try{
+    const [wx, sun] = await Promise.all([
+      fetch(`https://api.open-meteo.com/v1/forecast?latitude=${s.lat}&longitude=${s.lon}&current_weather=true&timezone=auto`).then(r=>r.json()).catch(()=>null),
+      fetch(`https://api.sunrise-sunset.org/json?lat=${s.lat}&lng=${s.lon}&formatted=0`).then(r=>r.json()).catch(()=>null),
+    ]);
+    let extra = '';
+    if(wx && wx.current_weather){
+      extra += fact('Local Temp', Math.round(wx.current_weather.temperature)+'°C');
+      extra += fact('Wind', Math.round(wx.current_weather.windspeed)+' km/h');
+      if(wx.timezone) extra += fact('Timezone', wx.timezone);
+      if(wx.current_weather.time){
+        const local = new Date(wx.current_weather.time);
+        extra += fact('Local Time', local.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}));
+      }
+    }
+    if(sun && sun.results){
+      const sr = new Date(sun.results.sunrise), ss = new Date(sun.results.sunset);
+      extra += fact('Sunrise (UTC)', sr.toUTCString().slice(17,22));
+      extra += fact('Sunset (UTC)', ss.toUTCString().slice(17,22));
+    }
+    facts.innerHTML += extra;
+  }catch(e){ /* silent — facts are a bonus layer */ }
+}
+function fact(label, val){ return `<div class="fact"><div class="fact-label">${label}</div><div class="fact-val">${val}</div></div>`; }
+
+/* ============================================================
+   8. DISCOVER MODE — "I Feel Curious"
+   ============================================================ */
+document.getElementById('discoverBtn').addEventListener('click', async ()=>{
+  if(!state.stations.length) return;
+  const btn = document.getElementById('discoverBtn');
+  btn.classList.add('busy');
+  const pick = state.stations[Math.floor(Math.random()*state.stations.length)];
+  const targetY = -pick.lon - 90;
+  const targetX = pick.lat*0.6;
+  state.autoRotate = false;
+  await animateRotationTo(targetY, targetX, 1400);
+  openPlayer(pick);
+  toast('Discovery', `Tuned into ${pick.name} — ${pick.country}.`);
+  loadCountryFacts(pick.country);
+  state.autoRotate = true;
+  btn.classList.remove('busy');
+});
+function animateRotationTo(targetY, targetX, dur){
+  return new Promise(resolve=>{
+    const startY = state.rotY, startX = state.rotX, t0=performance.now();
+    // normalize targetY to shortest path
+    let diff = ((targetY - startY + 540)%360)-180;
+    function step(t){
+      const p = Math.min(1,(t-t0)/dur);
+      const ease = 1-Math.pow(1-p,3);
+      state.rotY = startY + diff*ease;
+      state.rotX = startX + (targetX-startX)*ease;
+      if(p<1) requestAnimationFrame(step); else resolve();
+    }
+    requestAnimationFrame(step);
+  });
+}
+async function loadCountryFacts(country){
+  try{
+    const res = await fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(country)}?fields=name,population,languages,capital,region`);
+    const data = await res.json();
+    const c = Array.isArray(data)? data[0] : null;
+    if(c){
+      const langs = c.languages? Object.values(c.languages).join(', ') : '—';
+      toast('About this place', `${country} · pop. ${c.population? c.population.toLocaleString():'—'} · languages: ${langs}`);
+    }
+  }catch(e){}
+}
+
+/* ============================================================
+   9. TOASTS — discovery radar + achievements
+   ============================================================ */
+function toast(title, body, achieve){
+  const stack = document.getElementById('toastStack');
+  const el = document.createElement('div');
+  el.className = 'toast' + (achieve? ' achieve-toast':'');
+  el.innerHTML = `<b>${title}</b>${body}`;
+  stack.appendChild(el);
+  setTimeout(()=>el.remove(), 5000);
+  while(stack.children.length>4) stack.removeChild(stack.firstChild);
+}
+function scheduleRadar(){
+  setInterval(()=>{
+    if(!state.stations.length) return;
+    const s = state.stations[Math.floor(Math.random()*state.stations.length)];
+    const templates = [
+      `New signal discovered in ${s.country}.`,
+      `Hidden ${s.genre} station found near ${s.state||s.country}.`,
+      `Community radio detected in ${s.country}.`,
+      `${s.name} just joined the constellation.`,
+    ];
+    toast('Discovery Radar', templates[Math.floor(Math.random()*templates.length)]);
+  }, 14000);
+}
+
+/* achievements */
+const ACHIEVEMENTS = [
+  {id:'first_contact', name:'First Contact', test:()=>state.visitedStations.size>=1},
+  {id:'world_traveller', name:'World Traveller', test:()=>state.visitedCountries.size>=10},
+  {id:'signal_collector', name:'Signal Collector', test:()=>state.visitedStations.size>=25},
+  {id:'jazz_hunter', name:'Jazz Hunter', test:()=>[...state.visitedStations].some(id=>{const s=state.stations.find(x=>x.id===id); return s&&s.genre==='jazz';})},
+  {id:'night_owl', name:'Night Owl', test:()=>state.nightMode},
+  {id:'ocean_listener', name:'Ocean Listener', test:()=>state.visitedCountries.size>=1 && [...state.visitedStations].some(id=>{const s=state.stations.find(x=>x.id===id); return s && Math.abs(s.lat)<15;})},
+  {id:'centurion', name:'World Signal Centurion', test:()=>state.visitedCountries.size>=100},
+];
+async function trackAchievements(s){
+  state.visitedStations.add(s.id);
+  state.visitedCountries.add(s.country);
+  for(const a of ACHIEVEMENTS){
+    if(!state.achievements.has(a.id) && a.test()){
+      state.achievements.add(a.id);
+      toast('Achievement Unlocked', a.name, true);
+    }
+  }
+  try{ localStorage.setItem('fo_achievements', JSON.stringify([...state.achievements])); }catch(e){}
+}
+(function loadAchievements(){
+  try{
+    const raw = localStorage.getItem('fo_achievements');
+    if(raw){ JSON.parse(raw).forEach(id=>state.achievements.add(id)); }
+  }catch(e){}
+})();
+document.getElementById('achieveBtn').addEventListener('click', ()=>{
+  const names = ACHIEVEMENTS.filter(a=>state.achievements.has(a.id)).map(a=>a.name);
+  toast('Your Achievements', names.length? names.join(' · ') : 'None yet — start tuning in.', true);
+});
+
+/* ============================================================
+   10. TOP BAR — modes, night, constellations, clock
+   ============================================================ */
+document.getElementById('nightToggle').addEventListener('click', e=>{
+  state.nightMode = !state.nightMode;
+  e.currentTarget.classList.toggle('on', state.nightMode);
+});
+document.getElementById('constellationToggle').addEventListener('click', e=>{
+  state.showConstellations = !state.showConstellations;
+  e.currentTarget.classList.toggle('on', state.showConstellations);
+});
+
+function startClock(){
+  function tick(){
+    const now = new Date();
+    document.getElementById('localclock').innerHTML = now.toUTCString().slice(17,22) + '<span>UTC · GLOBAL MEAN TIME</span>';
+  }
+  tick(); setInterval(tick, 1000*15);
+}
+
+function buildLegend(){
+  const legend = document.getElementById('legend');
+  const items = [
+    ['News','--g-news'],['Jazz','--g-jazz'],['R&B','--g-rnb'],['Nature','--g-nature'],
+    ['Talk','--g-talk'],['Sports','--g-sport'],['Classical','--g-classical'],['Pop','--g-pop'],['Electronic','--g-electronic']
+  ];
+  legend.innerHTML = items.map(([label,varName])=>`<div class="legend-item"><span class="legend-dot" style="background:${getCss(varName)};color:${getCss(varName)}"></span>${label}</div>`).join('');
+}
+
+/* mode rail: globe / lab / archive / time */
+const panels = {
+  lab: document.getElementById('audioLab'),
+  archive: document.getElementById('archivePanel'),
+  time: document.getElementById('timeMachine'),
+};
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    Object.values(panels).forEach(p=>p.classList.remove('open'));
+    const mode = btn.dataset.mode;
+    if(panels[mode]) panels[mode].classList.add('open');
+    if(mode==='globe'){ document.getElementById('soundWeather').classList.remove('open'); }
+  });
+});
+document.getElementById('networkBtn').addEventListener('click', ()=>{
+  document.getElementById('networkPanel').classList.add('open');
+});
+document.querySelectorAll('[data-close]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.getElementById(btn.dataset.close).classList.remove('open');
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelector('.mode-btn[data-mode="globe"]').classList.add('active');
+  });
+});
+
+/* sound weather panel — populate periodically from loaded dataset */
+function renderSoundWeather(){
+  if(!state.stations.length) return;
+  const genreCounts = {};
+  let loudestCountry=null, loudestVotes=-1;
+  const byCountry = {};
+  for(const s of state.stations){
+    genreCounts[s.genre] = (genreCounts[s.genre]||0)+1;
+    byCountry[s.country] = (byCountry[s.country]||0)+1;
+    if(s.votes>loudestVotes){ loudestVotes=s.votes; loudestCountry=s.country; }
+  }
+  const topGenreEntry = Object.entries(genreCounts).sort((a,b)=>b[1]-a[1])[0];
+  const quietestEntry = Object.entries(byCountry).sort((a,b)=>a[1]-b[1])[0];
+  const activeCountry = Object.entries(byCountry).sort((a,b)=>b[1]-a[1])[0];
+  const rows = [
+    ['Most active continent overall', activeCountry? activeCountry[0]: '—'],
+    ['Loudest signal (top-voted)', loudestCountry || '—'],
+    ['Quietest country tracked', quietestEntry? quietestEntry[0] : '—'],
+    ['Most '+(topGenreEntry?topGenreEntry[0]:'—')+' right now', (topGenreEntry?topGenreEntry[1]:0)+' stations'],
+    ['Signals mapped', state.stations.length.toLocaleString()],
+  ];
+  document.getElementById('swBody').innerHTML = rows.map(([k,v])=>`<div class="sw-row"><div class="sw-k">${k}</div><div class="sw-v">${v}</div></div>`).join('');
+}
+setInterval(renderSoundWeather, 6000);
+
+/* open sound weather via a keyboard-free entry: double click on globe background, or long-press icon; simplest: expose via constellations icon long? Provide explicit trigger: click brand mark */
+document.querySelector('.brand').addEventListener('click', ()=>{
+  document.getElementById('soundWeather').classList.toggle('open');
+  renderSoundWeather();
+});
+
+/* time machine */
+const ERA_LABELS = ['1950','1960','1970','1980','1990','2000','2010','Today'];
+document.getElementById('tmSlider').addEventListener('input', e=>{
+  const idx = +e.target.value;
+  state.eraIndex = idx;
+  document.getElementById('tmYearBig').textContent = ERA_LABELS[idx];
+  document.body.classList.remove('era-1950','era-1980','era-2000');
+  document.getElementById('scanlines').classList.remove('on');
+  if(idx<=1){ document.body.classList.add('era-1950'); document.getElementById('scanlines').classList.add('on'); }
+  else if(idx<=4){ document.body.classList.add('era-1980'); }
+  else if(idx<=6){ document.body.classList.add('era-2000'); document.getElementById('scanlines').classList.add('on'); }
+});
+
+/* archive */
+function populateArchiveNav(){
+  const countries = {};
+  for(const s of state.stations){ countries[s.country] = (countries[s.country]||0)+1; }
+  const sorted = Object.entries(countries).sort((a,b)=>b[1]-a[1]);
+  const nav = document.getElementById('archiveNav');
+  nav.innerHTML = sorted.map(([c,n])=>`<div class="archive-nav-item" data-country="${escapeHtml(c)}">${escapeHtml(c)}<small>${n}</small></div>`).join('');
+  nav.querySelectorAll('.archive-nav-item').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      nav.querySelectorAll('.archive-nav-item').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+      const list = state.stations.filter(s=>s.country===el.dataset.country);
+      renderArchiveList(list);
+    });
+  });
+  if(sorted.length){ nav.firstChild.classList.add('active'); renderArchiveList(state.stations.filter(s=>s.country===sorted[0][0])); }
+}
+function renderArchiveList(list){
+  const wrap = document.getElementById('archiveList');
+  wrap.innerHTML='';
+  list.slice(0,400).sort((a,b)=>b.votes-a.votes).forEach(s=>{
+    const row = document.createElement('div');
+    row.className='station-row';
+    row.innerHTML = `
+      <div class="beacon-dot" style="background:${s.color};color:${s.color}"></div>
+      <div class="st-meta"><div class="st-name">${escapeHtml(s.name)}</div><div class="st-sub">${s.genre} · ${s.bitrate||'—'}kbps · ${escapeHtml(s.language)}</div></div>
+      <div class="st-play">▶</div>`;
+    row.addEventListener('click', ()=>{ openPlayer(s); });
+    wrap.appendChild(row);
+  });
+}
+
+/* ============================================================
+   11. Service worker — real offline app-shell caching (see sw.js)
+   ============================================================ */
+function tryRegisterSW(){
+  if(!('serviceWorker' in navigator)) return;
+  navigator.serviceWorker.register('./sw.js').catch(()=>{ /* e.g. running from file:// during local preview */ });
+}
+
+/* Install prompt (Android/desktop Chrome/Edge) — captured so we can offer
+   a native "install" moment instead of relying on the browser's own UI. */
+let deferredInstallPrompt = null;
+window.addEventListener('beforeinstallprompt', (e)=>{
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  const btn = document.getElementById('installBtn');
+  if(btn) btn.style.display = 'flex';
+});
+document.addEventListener('DOMContentLoaded', ()=>{
+  const btn = document.getElementById('installBtn');
+  if(!btn) return;
+  btn.addEventListener('click', async ()=>{
+    if(!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    btn.style.display = 'none';
+  });
+});
+
+})();
+</script>
+</body>
+</html>

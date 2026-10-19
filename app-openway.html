@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Openway</title>
+<meta name="description" content="Find legitimate work, prepare to apply and build a better future. A PixelProTech Solutions product.">
+<meta name="theme-color" content="#07070a">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/x-icon;base64,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">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAWfmNhQlgAABZ+anVtYgAAAB5qdW1kYzJwYQARABCAAACqADibcQNjMnBhAAAAFlhqdW1iAAAAR2p1bWRjMm1hABEAEIAAAKoAOJtxA3VybjpjMnBhOjZlYzBhMjU3LTUxMDMtNDlmYy05YzA3LTg4Y2NlZDU2ZDE0YQAAAAOTanVtYgAAAClqdW1kYzJhcwARABCAAACqADibcQNjMnBhLmFzc2VydGlvbnMAAAAAuGp1bWIAAABEanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5pbmdyZWRpZW50LnYzAAAAABhjMnNo+AWVYYKrM1MbiIzWEdW8uAAAAGxjYm9yo2lkYzpmb3JtYXRpaW1hZ2UvcG5namluc3RhbmNlSUR4LHhtcDppaWQ6ZmM1Y2FlMTYtNWU1Yy00NDQxLTg0YjktODlmZDA5ZmQ3NTNhbHJlbGF0aW9uc2hpcGhwYXJlbnRPZgAAAeJqdW1iAAAAQWp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuYWN0aW9ucy52MgAAAAAYYzJzaHt3dHqQmd1cHj/ws6T5GEgAAAGZY2JvcqJnYWN0aW9uc4KiZmFjdGlvbmtjMnBhLm9wZW5lZGpwYXJhbWV0ZXJzoWtpbmdyZWRpZW50c4GiY3VybHgtc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5pbmdyZWRpZW50LnYzZGhhc2hYIFMgLIj1Jr1F4Qq8RJjVrndiVwvdOTX37RIjvodULXjZpGZhY3Rpb254HWNvbS5hbnRocm9waWMuY2xhdWRlLnByb3ZpZGVkanBhcmFtZXRlcnOheB9jb20uYW50aHJvcGljLm9yaWdpbi1jb25maWRlbmNlZ3Vua25vd25rZGVzY3JpcHRpb254ZkNsYXVkZSBwcm92aWRlZCB0aGlzIGZpbGUgYXQgdGhlIHJlcXVlc3Qgb2YgYSB1c2VyIGFuZCBtYXkgaGF2ZSBjcmVhdGVkIG9yIG1vZGlmaWVkIHRoZSBmaWxlIGNvbnRlbnRzLm1zb2Z0d2FyZUFnZW50oWRuYW1lZkNsYXVkZXJhbGxBY3Rpb25zSW5jbHVkZWT1AAAAyGp1bWIAAABAanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5oYXNoLmRhdGEAAAAAGGMyc2iwmdKPuZihfvGlfhpB2zt2AAAAgGNib3KlY2FsZ2ZzaGEyNTZjcGFkTQAAAAAAAAAAAAAAAABkaGFzaFgg/2EBghlp6DDNfCzU/BMjWbZcJnqD1E2Yc5wH167Um7xkbmFtZW5qdW1iZiBtYW5pZmVzdGpleGNsdXNpb25zgaJlc3RhcnQYIWZsZW5ndGgZFooAAAI+anVtYgAAACdqdW1kYzJjbAARABCAAACqADibcQNjMnBhLmNsYWltLnYyAAAAAg9jYm9ypWNhbGdmc2hhMjU2aXNpZ25hdHVyZXhNc2VsZiNqdW1iZj0vYzJwYS91cm46YzJwYTo2ZWMwYTI1Ny01MTAzLTQ5ZmMtOWMwNy04OGNjZWQ1NmQxNGEvYzJwYS5zaWduYXR1cmVqaW5zdGFuY2VJRHgseG1wOmlpZDo4Mjc5M2E0Zi00N2JkLTQ2OWYtOTgyOS02ZjNlN2RkNzU5NTdyY3JlYXRlZF9hc3NlcnRpb25zg6JjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggUyAsiPUmvUXhCrxEmNWud2JXC905NfftEiO+h1QteNmiY3VybHgqc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5hY3Rpb25zLnYyZGhhc2hYIH2MjKT3GqlTaiknyIq3SZ8+WRGDAIS499RF39ym3gSKomN1cmx4KXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaGFzaC5kYXRhZGhhc2hYICTNc4GA2K7fDpfibfADQNFvVl45mz+MywrStIs5IAX+dGNsYWltX2dlbmVyYXRvcl9pbmZvo2RuYW1lb0FudGhyb3BpYyBGaWxlc2d2ZXJzaW9uZTEuMC4wa3NwZWNWZXJzaW9uZTIuNC4wAAAQOGp1bWIAAAAoanVtZGMyY3MAEQAQgAAAqgA4m3EDYzJwYS5zaWduYXR1cmUAAAAQCGNib3LShFkCEqIBJhghWQIKMIICBjCCAY2gAwIBAgIUQOWgCu7COdC+uIP6BkIFPWdVEwAwCgYIKoZIzj0EAwMwSTEXMBUGA1UEChMOQW50aHJvcGljLCBQQkMxLjAsBgNVBAMTJUFudGhyb3BpYyBDb250ZW50IENyZWRlbnRpYWxzIFJvb3QgQ0EwHhcNMjYwODA3MTg0MzU2WhcNMjgwODA2MTk0MzU2WjBEMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEpMCcGA1UEAxMgQW50aHJvcGljIENsYXVkZSBDb250ZW50IFNpZ25pbmcwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAASYegpry1AYBRTVNL1CpTlbROnY3dey+UrsF9C3phYrATN3ZHf93Mo8RQN0KOUuOn19P4oWNFWe5n2/She9N7eTo1gwVjAOBgNVHQ8BAf8EBAMCB4AwFQYDVR0lBA4wDAYKKwYBBAGD6F4CATAMBgNVHRMBAf8EAjAAMB8GA1UdIwQYMBaAFM5R4gSBTmRbI/jjxM+aPpzB11zCMAoGCCqGSM49BAMDA2cAMGQCMDFzHRSeAXrSy1WOzkbhPZ6Km2wGTmZ/2gK18k8BQGXyqz88Rdrz6CTX9flAnYNVxgIwcF9c3fVhqmJKpi+UhasNUMko69cyX6STPfta3Q8EjyzDjzoyrol46FP6VFHhvUcJoWNwYWRZDZ4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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">
+
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Openway">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--bg:#07070a;--panel:#111119;--ink:#ecf2f7;--mute:#9a9fb3;--em:#00d0a0;--emd:#006050;--gold:#d4b36a;--line:#24232e;--onem:#04120e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+:focus-visible{outline:2px solid var(--em);outline-offset:3px;border-radius:4px}
+#app{max-width:560px;margin:0 auto;padding:0 20px 120px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;letter-spacing:-.01em}
+.btn{background:var(--em);color:var(--onem);font-weight:700;border-radius:999px;padding:12px 22px;min-height:46px}
+.btn.ghost{background:none;color:var(--em);border:1.5px solid var(--em)}
+.link{color:var(--em);font-weight:600;min-height:44px}
+h1{font-size:clamp(2.8rem,15vw,4.6rem);line-height:.92;letter-spacing:-.045em;font-weight:900;margin:34px 0 18px}
+h1 .dim{color:var(--mute);font-weight:800}
+h2{font-size:1.5rem;letter-spacing:-.025em;line-height:1.15;margin:44px 0 6px;font-weight:800}
+.lead{font-size:1.1rem;color:var(--mute);max-width:34ch;margin:0 0 22px}
+.test{display:inline-block;color:var(--gold);font-weight:600;font-size:.85rem}
+.road{list-style:none;margin:26px 0 0;padding:0}
+.road li{position:relative;padding:0 0 30px 46px}
+.road li:last-child{padding-bottom:0}
+.road li::before{content:"";position:absolute;left:11px;top:28px;bottom:0;width:3px;background:var(--em);transform-origin:top;animation:draw .5s ease-out both;animation-delay:calc(var(--i)*.35s)}
+.road li:last-child::before{display:none}
+.road .node{position:absolute;left:0;top:2px;width:25px;height:25px;border-radius:50%;border:3px solid var(--em);background:var(--bg);animation:pop .3s ease-out both;animation-delay:calc(var(--i)*.35s - .1s)}
+.road .on .node{background:var(--em);box-shadow:0 0 0 6px color-mix(in srgb,var(--em) 22%,transparent)}
+.road .soon::before{background:repeating-linear-gradient(var(--emd) 0 6px,transparent 6px 12px)}
+.road .soon .node{border-color:var(--emd)}
+.road b{display:block;font-size:1.1rem;letter-spacing:-.01em}
+.road span{color:var(--mute);font-size:.95rem}
+@keyframes draw{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.search{width:100%;font:inherit;color:var(--ink);background:none;border:0;border-bottom:2px solid var(--line);padding:12px 0;margin:10px 0 4px;border-radius:0}
+.search:focus{outline:0;border-color:var(--em)}
+.cats{display:flex;gap:22px;overflow-x:auto;margin:6px -20px 8px;padding:0 20px;scrollbar-width:none}
+.cats button{padding:10px 0;white-space:nowrap;color:var(--mute);font-weight:600;border-bottom:3px solid transparent}
+.cats button[aria-pressed=true]{color:var(--ink);border-color:var(--em)}
+.job{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:18px 0 18px 14px;border-left:3px solid var(--line);margin:6px 0;transition:border-color .15s,padding .15s}
+.job:hover,.job:active{border-color:var(--em);padding-left:20px}
+.job .t{flex:1}.job b{display:block;font-size:1.2rem;letter-spacing:-.02em;line-height:1.2}
+.job small{color:var(--mute);font-size:.92rem}
+.job .m{color:var(--em);font-size:.82rem;font-weight:600}
+.empty{color:var(--mute);padding:20px 0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:20px 16px;margin:22px 0}
+.facts dt{color:var(--mute);font-size:.85rem}.facts dd{margin:0;font-weight:700;font-size:1.05rem;line-height:1.3}
+.warn{color:var(--gold);font-weight:600;font-size:.9rem}
+.track{display:flex;margin:26px 0 8px}
+.track button{flex:1;position:relative;text-align:center;padding-top:30px;font-size:.82rem;color:var(--mute);font-weight:600;min-height:64px}
+.track button::before{content:"";position:absolute;top:8px;left:0;right:0;height:3px;background:var(--line)}
+.track button::after{content:"";position:absolute;top:1px;left:calc(50% - 8px);width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--line)}
+.track button.done::before{background:var(--em)}
+.track button.done::after,.track button.cur::after{border-color:var(--em)}
+.track button.cur::after{background:var(--em)}
+.track button.cur{color:var(--ink)}
+.track button:first-child::before{left:50%}.track button:last-child::before{right:50%}
+.sec h3{font-size:1.2rem;margin:26px 0 8px;letter-spacing:-.02em}
+.sec ul{padding-left:20px;margin:6px 0}.sec li{margin:6px 0}
+.say{background:var(--panel);border-radius:14px;padding:16px;margin:12px 0;white-space:pre-wrap}
+.say.no{border-left:4px solid var(--gold)}.say.yes{border-left:4px solid var(--em)}
+.say i{display:block;font-style:normal;font-size:.8rem;color:var(--mute);margin-bottom:4px}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--panel);border:2px solid var(--line);border-radius:14px;padding:12px}
+textarea:focus{outline:0;border-color:var(--em)}
+details{margin:26px 0;color:var(--mute)}summary{cursor:pointer;color:var(--ink);font-weight:600;min-height:44px;display:flex;align-items:center}
+details dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.9rem}details dd{margin:0}
+.scene{padding:26px 0;border-top:1px solid var(--line)}
+.scene p.q{font-size:1.35rem;font-weight:800;letter-spacing:-.025em;line-height:1.25;margin:0 0 14px}
+.bar{display:flex;gap:4px;margin:12px 0}.bar i{flex:1;height:6px;border-radius:3px;background:var(--line)}.bar i.f{background:var(--em)}
+.app{padding:22px 0;border-top:1px solid var(--line)}.app b{font-size:1.15rem;letter-spacing:-.02em}
+nav{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav div{display:flex;max-width:560px;margin:0 auto}
+nav button{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0 8px;font-size:.78rem;font-weight:600;color:var(--mute);min-height:58px;position:relative}
+nav button[aria-current=page]{color:var(--em)}
+nav button[aria-current=page]::before{content:"";position:absolute;top:-1px;width:36px;height:3px;background:var(--em);border-radius:0 0 3px 3px}
+nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.foot{margin-top:56px;color:var(--mute);font-size:.82rem}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div id="app"></div>
+<nav aria-label="Main"><div id="nav"></div></nav>
+<script>
+const JOBS=[
+{id:"t1",title:"Office cleaner",employer:"Test Employer A",category:"Cleaning",location:"Johannesburg, Gauteng",pay:"Not stated",hours:"Mon to Fri, early shift",type:"Permanent",licences:[],skills:["Reliable","Attention to detail"],experience:"None required",apply:"Email a short message"},
+{id:"t2",title:"Warehouse packer",employer:"Test Employer B",category:"Warehousing",location:"Midrand, Gauteng",pay:"Not stated",hours:"Shifts, some Saturdays",type:"Contract",licences:[],skills:["Can stand and lift for long periods","Follows instructions"],experience:"Helpful, not required",apply:"Apply through the source link"},
+{id:"t3",title:"Security officer",employer:"Test Employer C",category:"Security",location:"Pretoria, Gauteng",pay:"Not stated",hours:"12-hour shifts",type:"Permanent",licences:["PSIRA registration (check the current rules)"],skills:["Alert","Basic report writing"],experience:"Grade training may be required",apply:"Call the number on the source page"},
+{id:"t4",title:"Kitchen assistant",employer:"Test Employer D",category:"Hospitality",location:"Sandton, Gauteng",pay:"Not stated",hours:"Evenings and weekends",type:"Temporary",licences:[],skills:["Food hygiene awareness","Teamwork"],experience:"None required",apply:"Walk in with your CV"},
+{id:"t5",title:"Gardener",employer:"Test Employer E",category:"Gardening",location:"Randburg, Gauteng",pay:"Not stated",hours:"Mon to Fri, day shift",type:"Permanent",licences:[],skills:["Basic plant care","Tool handling"],experience:"Informal experience accepted",apply:"Email a short message"}
+].map(j=>({...j,source:"Openway test data",link:"none",found:"2026-10-11",status:"Not verified. Test data.",limits:"Invented for development."}));
+const SCAM=["You are asked to pay for the job, a uniform, a test or \"registration\".","There is no interview and no real person to speak to.","Only a free email address or WhatsApp number, and you cannot find the company.","They want your ID or bank details before any offer.","The pay sounds far too high for the work."];
+const SCENES=[
+{q:"Your supervisor says your work is not good enough, in front of others.",yes:"Thank you. Please show me what to change and I will fix it now.",no:"It is not my fault. Nobody showed me.",why:"You stay calm and get the fix. Later, in private, you can ask how to avoid it next time. If it keeps happening in public to humiliate you, write down the dates and raise it with someone senior."},
+{q:"You think there is a quicker way to do the task.",yes:"I understand the current way. I have another idea that might help us finish sooner. May I explain it?",no:"You don't know what you're doing. My way is better.",why:"You give your opinion without attacking the person. Then you listen to the answer. If it stays no, you follow safe instructions."},
+{q:"Your taxi is late and you will arrive after start time.",yes:"Good morning. My taxi is delayed. I will be there by 7:40. I am sorry, and I will leave earlier tomorrow.",no:"(Say nothing and arrive late.)",why:"Telling them early shows respect. Silence looks like you do not care."},
+{q:"Interviewer: Why should we hire you without matric?",yes:"I do not have matric, but I am reliable, I learn quickly, and I have experience in [your real experience]. I am ready to show you.",no:"I don't know. I just need a job.",why:"Be honest, then point to what you can do. Use only true details."},
+{q:"Payday passed and your money has not arrived.",yes:"Good afternoon. My pay for [month] has not come in. Can you tell me when I will receive it? Please confirm by message.",no:"Quit without saying anything.",why:"Ask politely and keep a written record. If it stays unpaid, contact the Department of Employment and Labour. Check the current process there."}
+];
+const STEPS=["The job","Get ready","Practise","Apply"],ST=["Applied","Followed up","Interview","Offer"];
+const S={tab:"work",job:null,step:0,cat:"All",q:"",open:{}};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const $=id=>document.getElementById(id);
+const mark='<svg width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="var(--em)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 9.5A10 10 0 1 0 23 22.5"/><path d="M13 11l6 5-6 5"/></svg>';
+const chev='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--mute)" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+const ICON={work:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2"/>',practise:'<path d="M4 5h16v11H9l-5 4z"/>',apps:'<path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6"/>'};
+const NAV=[["work","Work"],["practise","Practise"],["apps","My applications"]];
+
+function go(t){S.tab=t;S.job=null;render();scrollTo(0,0)}
+function openJob(id){S.job=id;S.step=0;render();scrollTo(0,0)}
+function step(i){S.step=i;render()}
+function filtered(){return JOBS.filter(j=>(S.cat==="All"||j.category===S.cat)&&(j.title+j.location+j.employer+j.category).toLowerCase().includes(S.q.toLowerCase()))}
+function listHtml(){const l=filtered();return l.length?l.map(j=>`<button class="job" onclick="openJob('${j.id}')"><span class="t"><b>${esc(j.title)}</b><small>${esc(j.employer)}, ${esc(j.location)}</small><br><span class="m">Matric not listed as required</span></span>${chev}</button>`).join(""):`<p class="empty">No jobs match that search. Clear the words or choose All.</p>`}
+function onSearch(v){S.q=v;$("list").innerHTML=listHtml()}
+
+function work(){
+ const cats=["All",...new Set(JOBS.map(j=>j.category))];
+ const road=[["Find work","See jobs that do not list matric as a requirement.","on"],["Get ready","A CV checklist, a message to send and a scam check. It sits inside every job.","on"],["Practise","Say your answers out loud before the interview.","on"],["Start strong","Your first week at work. Coming soon.","soon"],["Move up","Skills, training and better pay. Coming soon.","soon"]];
+ return `<h1><span class="dim">No matric.</span><br>Still a future.</h1>
+ <p class="lead">Find work you can apply for, get ready for the interview, and learn how to keep the job.</p>
+ <ol class="road" aria-label="Your road with Openway">${road.map((r,i)=>`<li class="${r[2]}" style="--i:${i}"><i class="node"></i><b>${r[0]}</b><span>${r[1]}</span></li>`).join("")}</ol>
+ <h2 id="jobs">Jobs to look at</h2><span class="test">Test data for now. These are not real jobs.</span>
+ <label class="sr" for="q" style="position:absolute;left:-9999px">Search jobs</label>
+ <input id="q" class="search" type="search" placeholder="Search by job or place" value="${esc(S.q)}" oninput="onSearch(this.value)">
+ <div class="cats" role="group" aria-label="Job type">${cats.map(c=>`<button aria-pressed="${c===S.cat}" onclick="S.cat='${c}';render()">${c}</button>`).join("")}</div>
+ <div id="list">${listHtml()}</div>
+ <p class="foot">Openway is a PixelProTech Solutions product. Registration 2026/622131/07.</p>`;
+}
+function jobBody(j){
+ if(S.step===0)return `<div class="sec"><h3>What this means for you</h3><ul><li>The listing does not ask for matric. Confirm this with the employer.</li><li>Before you accept, ask the pay rate, how often you are paid, and the hours.</li>${j.licences.length?"<li>This job lists a licence or registration. Check the current rules with the body that issues it.</li>":""}</ul>
+ <p>Skills they look for: ${esc(j.skills.join(", "))}.<br>Experience: ${esc(j.experience)}.</p><p>How to apply: <b>${esc(j.apply)}</b></p>
+ <details><summary>Where this listing came from</summary><dl><dt>Source</dt><dd>${esc(j.source)}</dd><dt>Link</dt><dd>${esc(j.link)}</dd><dt>Found</dt><dd>${j.found}</dd><dt>Status</dt><dd>${esc(j.status)}</dd><dt>Limits</dt><dd>${esc(j.limits)}</dd></dl></details>
+ <button class="link" onclick="alert('Thank you. In the full app this goes to our review team. In this prototype nothing is saved.')">Report this listing</button> <button class="btn" onclick="step(1)">Get ready</button></div>`;
+ if(S.step===1)return `<div class="sec"><h3>Your CV, without matric</h3><ul><li>Your name, phone number and area.</li><li>One line: reliable, hardworking, available for ${esc(j.type.toLowerCase())} ${esc(j.category.toLowerCase())} work.</li><li>Real work counts, even informal: a family business, piece jobs, volunteering. Say what you did.</li><li>Skills that match: ${esc(j.skills.join(", "))}.</li><li>Education: your highest grade completed. Be honest.</li><li>Two people who can speak for you, with their permission.</li></ul>
+ <h3>Message to the employer</h3><div class="say">Good day. I would like to apply for the ${esc(j.title.toLowerCase())} position. I am reliable and can start on [date]. I live in [area] and get to work by [transport]. May I send my CV or come in for an interview? Thank you. [Your name and number]</div>
+ <h3>Stop if you see this</h3><ul>${SCAM.map(s=>`<li>${esc(s)}</li>`).join("")}</ul><p><button class="btn" onclick="step(2)">Practise answers</button></p></div>`;
+ if(S.step===2)return `<div class="sec"><h3>Likely questions</h3><p style="color:var(--mute)">Say your answer out loud first. Then compare.</p></div>`+sceneHtml(3)+sceneHtml(2)+`<p><button class="btn" onclick="step(3)">I am ready to apply</button></p>`;
+ const t=store.get("note_"+j.id,"");
+ return `<div class="sec"><h3>Apply the way the listing says</h3><p>Openway never sends anything for you. Use the method on the listing: <b>${esc(j.apply)}</b>. Then record it here.</p>
+ <label for="n" style="color:var(--mute);font-size:.9rem">Notes. Saved on this phone as you type.</label><textarea id="n" rows="4" oninput="store.set('note_${j.id}',this.value)">${esc(t)}</textarea>
+ <p><button class="btn" onclick="track('${j.id}')">I applied</button></p><p style="color:var(--mute);font-size:.85rem">Browser storage can be cleared. Do not write ID numbers or bank details here.</p></div>`;
+}
+function job(){
+ const j=JOBS.find(x=>x.id===S.job);
+ return `<button class="link" onclick="go('work')">Back to jobs</button>
+ <h1 style="font-size:clamp(2.2rem,11vw,3.4rem);margin:12px 0 6px">${esc(j.title)}</h1><div>${esc(j.employer)}</div><span class="test">Test data. Not a real job.</span>
+ <dl class="facts"><div><dt>Pay</dt><dd>${esc(j.pay)}${j.pay==="Not stated"?'<br><span class="warn">Ask before you accept</span>':""}</dd></div><div><dt>Where</dt><dd>${esc(j.location)}</dd></div><div><dt>Hours</dt><dd>${esc(j.hours)}</dd></div><div><dt>Type</dt><dd>${esc(j.type)}</dd></div></dl>
+ <div class="track" role="tablist">${STEPS.map((s,i)=>`<button role="tab" aria-selected="${i===S.step}" class="${i<S.step?"done":i===S.step?"cur":""}" onclick="step(${i})">${s}</button>`).join("")}</div>${jobBody(j)}`;
+}
+function sceneHtml(i){const c=SCENES[i],k="s"+i,o=S.open[k];return `<div class="scene"><p class="q">${esc(c.q)}</p>${o?`<div class="say yes"><i>A stronger answer</i>${esc(c.yes)}</div><div class="say no"><i>A weaker answer</i>${esc(c.no)}</div><p style="color:var(--mute)">${esc(c.why)}</p>`:`<button class="btn ghost" onclick="S.open['${k}']=1;render()">Show answers</button>`}</div>`}
+function practise(){return `<h1 style="font-size:clamp(2.4rem,12vw,3.6rem)">Practise<br>what to say.</h1><p class="lead">Short moments from work and interviews. Say your answer out loud, then tap to compare.</p><p class="lead" style="font-size:.95rem">Respect your supervisor and keep your dignity. Raise safety problems, unpaid wages and harassment, even when it is uncomfortable.</p>${SCENES.map((_,i)=>sceneHtml(i)).join("")}`}
+function track(id){const a=store.get("apps",[]);if(!a.find(x=>x.id===id))a.push({id,date:new Date().toISOString().slice(0,10),i:0});store.set("apps",a);go("apps")}
+function adv(id){const a=store.get("apps",[]),x=a.find(x=>x.id===id);if(x&&x.i<3)x.i++;store.set("apps",a);render()}
+function drop(id){store.set("apps",store.get("apps",[]).filter(x=>x.id!==id));render()}
+function apps(){const a=store.get("apps",[]);return `<h1 style="font-size:clamp(2.4rem,12vw,3.6rem)">My applications</h1>`+(a.length?a.map(x=>{const j=JOBS.find(j=>j.id===x.id);return `<div class="app"><b>${esc(j.title)}</b><div style="color:var(--mute)">${esc(j.employer)}. Applied ${x.date}.</div><div class="bar" aria-hidden="true">${ST.map((_,k)=>`<i class="${k<=x.i?"f":""}"></i>`).join("")}</div><div><b style="font-size:1rem">${ST[x.i]}</b>${x.i===0?'<span style="color:var(--mute)"> Follow up politely after about a week.</span>':""}${x.i===3?'<span style="color:var(--mute)"> Well done. First-week guidance will appear here in a later version.</span>':""}</div><p>${x.i<3?`<button class="btn ghost" onclick="adv('${x.id}')">Mark as ${ST[x.i+1].toLowerCase()}</button> `:""}<button class="link" onclick="drop('${x.id}')">Remove</button></p></div>`}).join(""):`<p class="lead">Nothing here yet. Open a job, work through it, then tap I applied.</p><button class="btn" onclick="go('work')">Find work</button>`)}
+function render(){
+ $("app").innerHTML=`<div class="top"><span class="brand">${mark}Openway</span><button id="inst" class="link" hidden>Install</button></div>`+(S.job?job():S.tab==="work"?work():S.tab==="practise"?practise():apps());
+ $("nav").innerHTML=NAV.map(([k,l])=>`<button ${S.tab===k&&!S.job||(S.job&&k==="work")?'aria-current="page"':""} onclick="go('${k}')"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON[k]}</svg>${l}</button>`).join("");
+ if(dp)$("inst").hidden=false;$("inst").onclick=install;
+}
+let dp=null;
+async function install(){if(!dp)return;dp.prompt();await dp.userChoice;dp=null;$("inst").hidden=true}
+addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e;const b=$("inst");if(b)b.hidden=false});
+addEventListener("appinstalled",()=>{dp=null;const b=$("inst");if(b)b.hidden=true});
+render();
+if("serviceWorker" in navigator)addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{})});
+</script></body></html>

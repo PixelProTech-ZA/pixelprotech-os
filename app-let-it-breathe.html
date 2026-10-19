@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101210">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgeG1sbnM6YzJwYT0iaHR0cDovL2MycGEub3JnL21hbmlmZXN0Ij48bWV0YWRhdGE+PGMycGE6bWFuaWZlc3Q+QUFBV2dtcDFiV0lBQUFBZWFuVnRaR015Y0dFQUVRQVFnQUFBcWdBNG0zRURZekp3WVFBQUFCWmNhblZ0WWdBQUFFZHFkVzFrWXpKdFlRQVJBQkNBQUFDcUFEaWJjUU4xY200Nll6SndZVG96WldFd1pEVXhaaTFoWkdJNExUUmpPR010WVRGbU5DMDFZVFV4TWpNMFpXSmlPV01BQUFBRGwycDFiV0lBQUFBcGFuVnRaR015WVhNQUVRQVFnQUFBcWdBNG0zRURZekp3WVM1aGMzTmxjblJwYjI1ekFBQUFBTHhxZFcxaUFBQUFSR3AxYldSalltOXlBQkVBRUlBQUFLb0FPSnR4RTJNeWNHRXVhVzVuY21Wa2FXVnVkQzUyTXdBQUFBQVlZekp6YU05Wk40NzN6YnFoaXdKc0RMRWt1dThBQUFCd1kySnZjcU5wWkdNNlptOXliV0YwYldsdFlXZGxMM04yWnl0NGJXeHFhVzV6ZEdGdVkyVkpSSGdzZUcxd09tbHBaRG8yWVRjME9XTTVZaTAxWldGa0xUUmhNamN0T1RGaFpTMWtZVE01TURJd01qTTNOalZzY21Wc1lYUnBiMjV6YUdsd2FIQmhjbVZ1ZEU5bUFBQUI0bXAxYldJQUFBQkJhblZ0WkdOaWIzSUFFUUFRZ0FBQXFnQTRtM0VUWXpKd1lTNWhZM1JwYjI1ekxuWXlBQUFBQUJoak1uTm8zU0F6R3JRMUZHUHNFMnRaY0ZVeE5nQUFBWmxqWW05eW9tZGhZM1JwYjI1emdxSm1ZV04wYVc5dWEyTXljR0V1YjNCbGJtVmthbkJoY21GdFpYUmxjbk9oYTJsdVozSmxaR2xsYm5SemdhSmpkWEpzZUMxelpXeG1JMnAxYldKbVBXTXljR0V1WVhOelpYSjBhVzl1Y3k5ak1uQmhMbWx1WjNKbFpHbGxiblF1ZGpOa2FHRnphRmdnRUh6N0JZYStLRDUyVUIxNEVyWlJrUWhFaWxSMTVWM1lobG80VEg0NUN6U2tabUZqZEdsdmJuZ2RZMjl0TG1GdWRHaHliM0JwWXk1amJHRjFaR1V1Y0hKdmRtbGtaV1JxY0dGeVlXMWxkR1Z5YzZGNEgyTnZiUzVoYm5Sb2NtOXdhV011YjNKcFoybHVMV052Ym1acFpHVnVZMlZuZFc1cmJtOTNibXRrWlhOamNtbHdkR2x2Ym5obVEyeGhkV1JsSUhCeWIzWnBaR1ZrSUhSb2FYTWdabWxzWlNCaGRDQjBhR1VnY21WeGRXVnpkQ0J2WmlCaElIVnpaWElnWVc1a0lHMWhlU0JvWVhabElHTnlaV0YwWldRZ2IzSWdiVzlrYVdacFpXUWdkR2hsSUdacGJHVWdZMjl1ZEdWdWRITXViWE52Wm5SM1lYSmxRV2RsYm5TaFpHNWhiV1ZtUTJ4aGRXUmxjbUZzYkVGamRHbHZibk5KYm1Oc2RXUmxaUFVBQUFESWFuVnRZZ0FBQUVCcWRXMWtZMkp2Y2dBUkFCQ0FBQUNxQURpYmNSTmpNbkJoTG1oaGMyZ3VaR0YwWVFBQUFBQVlZekp6YUkwVzNaTnI5UTd4OXNaOXVzNG9IbUFBQUFDQVkySnZjcVZqWVd4blpuTm9ZVEkxTm1Od1lXUk5BQUFBQUFBQUFBQUFBQUFBQUdSb1lYTm9XQ0JrSS9kVGlIU1RYbTV6RnlYcHFSNXhzT2VZVU5nMFVkUWRiTDdsb0U0VktXUnVZVzFsYm1wMWJXSm1JRzFoYm1sbVpYTjBhbVY0WTJ4MWMybHZibk9Cb21WemRHRnlkQmg3Wm14bGJtZDBhQmtlQkFBQUFqNXFkVzFpQUFBQUoycDFiV1JqTW1Oc0FCRUFFSUFBQUtvQU9KdHhBMk15Y0dFdVkyeGhhVzB1ZGpJQUFBQUNEMk5pYjNLbFkyRnNaMlp6YUdFeU5UWnBjMmxuYm1GMGRYSmxlRTF6Wld4bUkycDFiV0ptUFM5ak1uQmhMM1Z5Ympwak1uQmhPak5sWVRCa05URm1MV0ZrWWpndE5HTTRZeTFoTVdZMExUVmhOVEV5TXpSbFltSTVZeTlqTW5CaExuTnBaMjVoZEhWeVpXcHBibk4wWVc1alpVbEVlQ3g0YlhBNmFXbGtPak0zWTJOaE5tVm1MVGM0WW1VdE5HWTJOQzFpT0dOaExXWXdZVGhpWTJabU5HWTRNM0pqY21WaGRHVmtYMkZ6YzJWeWRHbHZibk9Eb21OMWNteDRMWE5sYkdZamFuVnRZbVk5WXpKd1lTNWhjM05sY25ScGIyNXpMMk15Y0dFdWFXNW5jbVZrYVdWdWRDNTJNMlJvWVhOb1dDQVFmUHNGaHI0b1BuWlFIWGdTdGxHUkNFU0tWSFhsWGRpR1dqaE1mamtMTktKamRYSnNlQ3B6Wld4bUkycDFiV0ptUFdNeWNHRXVZWE56WlhKMGFXOXVjeTlqTW5CaExtRmpkR2x2Ym5NdWRqSmthR0Z6YUZnZ3FCcUhseE5GcHBhejYzejVvZnhIVUZPRzRtY2RyRThrbW1qQlZxTTNJdEdpWTNWeWJIZ3BjMlZzWmlOcWRXMWlaajFqTW5CaExtRnpjMlZ5ZEdsdmJuTXZZekp3WVM1b1lYTm9MbVJoZEdGa2FHRnphRmdnaHE1eGRNZUJvRlVzL3NRTXBVRDFBVWxGSG5hdjBDTUpnY281Wm5iaHBKVjBZMnhoYVcxZloyVnVaWEpoZEc5eVgybHVabStqWkc1aGJXVnZRVzUwYUhKdmNHbGpJRVpwYkdWelozWmxjbk5wYjI1bE1TNHdMakJyYzNCbFkxWmxjbk5wYjI1bE1pNDBMakFBQUJBNGFuVnRZZ0FBQUNocWRXMWtZekpqY3dBUkFCQ0FBQUNxQURpYmNRTmpNbkJoTG5OcFoyNWhkSFZ5WlFBQUFCQUlZMkp2Y3RLRVdRSVNvZ0VtR0NGWkFnb3dnZ0lHTUlJQmphQURBZ0VDQWhSQTVhQUs3c0k1MEw2NGcvb0dRZ1U5WjFVVEFEQUtCZ2dxaGtqT1BRUURBekJKTVJjd0ZRWURWUVFLRXc1QmJuUm9jbTl3YVdNc0lGQkNRekV1TUN3R0ExVUVBeE1sUVc1MGFISnZjR2xqSUVOdmJuUmxiblFnUTNKbFpHVnVkR2xoYkhNZ1VtOXZkQ0JEUVRBZUZ3MHlOakE0TURjeE9EUXpOVFphRncweU9EQTRNRFl4T1RRek5UWmFNRVF4RnpBVkJnTlZCQW9URGtGdWRHaHliM0JwWXl3Z1VFSkRNU2t3SndZRFZRUURFeUJCYm5Sb2NtOXdhV01nUTJ4aGRXUmxJRU52Ym5SbGJuUWdVMmxuYm1sdVp6QlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJKaDZDbXZMVUJnRkZOVTB2VUtsT1Z0RTZkamQxN0w1U3V3WDBMZW1GaXNCTTNka2QvM2N5anhGQTNRbzVTNDZmWDAvaWhZMFZaN21mYjlLRjcwM3Q1T2pXREJXTUE0R0ExVWREd0VCL3dRRUF3SUhnREFWQmdOVkhTVUVEakFNQmdvckJnRUVBWVBvWGdJQk1Bd0dBMVVkRXdFQi93UUNNQUF3SHdZRFZSMGpCQmd3Rm9BVXpsSGlCSUZPWkZzaitPUEV6NW8rbk1IWFhNSXdDZ1lJS29aSXpqMEVBd01EWndBd1pBSXdNWE1kRko0QmV0TExWWTdPUnVFOW5vcWJiQVpPWm4vYUFyWHlUd0ZBWmZLclB6eEYydlBvSk5mMStVQ2RnMVhHQWpCd1gxemQ5V0dxWWtxbUw1U0ZxdzFReVNqcjF6SmZwSk05KzFyZER3U1BMTU9QT2pLdWlYam9VL3BVVWVHOVJ3bWhZM0JoWkZrTm5nQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUFpZUUVwQkhIY2RuOFJhSDJ6d09wc0tmWVhvWmI1THFxYXNkL1VBNFd3MkdkbmdtUVJ4eTR2TXZESzIvd3E0M2RwMXp4U3R6SWZvRHA2UGNlTjdsZlZJay84PTwvYzJwYTptYW5pZmVzdD48L21ldGFkYXRhPjxyZWN0IHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgcng9IjEyIiBmaWxsPSIjMTAxMjEwIi8+PGNpcmNsZSBjeD0iMzIiIGN5PSIzMiIgcj0iMjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q1ZmY2NSIgc3Ryb2tlLW9wYWNpdHk9Ii40IiBzdHJva2Utd2lkdGg9IjIiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSIxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDVmZjY1IiBzdHJva2Utd2lkdGg9IjMiLz48Y2lyY2xlIGN4PSIzMiIgY3k9IjMyIiByPSI1IiBmaWxsPSIjZDVmZjY1Ii8+PC9zdmc+">
+
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Let It Breathe"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="LET IT BREATHE by Audio Hospital — a concept for careful speaker diagnosis and recovery.">
+<title>LET IT BREATHE — Audio Hospital</title>
+<style>
+  :root{--bg:#101210;--panel:#171a17;--panel2:#1d211d;--line:#343a32;--ink:#f1f3eb;--muted:#a6aea1;--lime:#d5ff65;--lime-ink:#17200b;--orange:#ff805b;--radius:22px;--max:1120px}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none} button,select{font:inherit} button{cursor:pointer}
+  .wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+  .topbar{position:sticky;top:0;z-index:10;background:rgba(16,18,16,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);padding-top:env(safe-area-inset-top)}
+  .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:850;letter-spacing:-.04em}
+  .mark{width:35px;height:35px;border:1px solid var(--lime);border-radius:11px;display:grid;place-items:center;color:var(--lime);font-size:19px;transform:rotate(-5deg)}
+  .brand small{display:block;color:var(--muted);font-size:10px;font-weight:750;letter-spacing:.18em;text-transform:uppercase;line-height:1.2;margin-top:3px}
+  .navlinks{display:flex;align-items:center;gap:25px;color:#c2c8bc;font-size:13px}
+  .navlinks a:hover{color:var(--lime)}
+  .pill{border:1px solid var(--line);border-radius:999px;padding:10px 15px;font-size:12px;font-weight:750;white-space:nowrap}
+  .pill:hover{border-color:var(--lime);color:var(--lime)}
+  .hero{padding:76px 0 58px;overflow:hidden;position:relative}
+  .hero-grid{display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:44px}
+  .eyebrow{display:flex;align-items:center;gap:9px;color:var(--lime);font-size:11px;letter-spacing:.19em;text-transform:uppercase;font-weight:850}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px #d5ff6570}
+  h1{font-size:clamp(47px,7vw,86px);letter-spacing:-.075em;line-height:.91;margin:24px 0 22px;font-weight:900;max-width:680px}
+  h1 span{color:var(--lime);display:block}
+  .lead{color:#b8c0b3;font-size:clamp(15px,1.7vw,18px);max-width:480px;line-height:1.7}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;border:0;border-radius:999px;padding:14px 19px;font-size:13px;font-weight:850;transition:transform .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--lime);color:var(--lime-ink)}.btn-secondary{background:transparent;border:1px solid #4a5146;color:var(--ink)}
+  .micro{margin-top:18px;color:#828b7d;font-size:11px;display:flex;gap:8px;align-items:center}
+  .visual{position:relative;min-height:410px;border:1px solid #333a30;border-radius:30px;background:radial-gradient(ellipse at 50% 42%,#293125 0%,#1a1e19 42%,#131512 76%);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .visual:before,.visual:after{content:"";position:absolute;border:1px solid #d5ff651b;border-radius:50%;width:310px;height:310px}
+  .visual:after{width:430px;height:430px;border-color:#d5ff650e}
+  .rings{position:absolute;width:250px;height:250px;border:1px solid #d5ff6530;border-radius:50%;box-shadow:0 0 0 17px #d5ff6506,0 0 0 35px #d5ff6505,0 0 60px #d5ff6512}
+  .speaker{position:relative;z-index:1;width:174px;height:174px;border-radius:50%;background:linear-gradient(145deg,#2a3027,#0b0d0b);border:1px solid #59634e;box-shadow:inset 0 0 0 10px #141712,inset 0 0 0 11px #40483a,0 24px 70px #0009;display:grid;place-items:center}
+  .speaker:before{content:"";width:112px;height:112px;border-radius:50%;border:1px solid #667258;background:repeating-radial-gradient(circle at center,#171b15 0 5px,#262c21 6px 8px);box-shadow:inset 0 0 28px #000}
+  .speaker:after{content:"";position:absolute;width:34px;height:34px;border-radius:50%;border:1px solid #d5ff6580;background:#d5ff6514;box-shadow:0 0 28px #d5ff6525}
+  .wave{position:absolute;bottom:33px;left:24px;right:24px;height:45px;display:flex;align-items:center;justify-content:center;gap:4px;opacity:.9}
+  .wave i{display:block;width:3px;border-radius:5px;background:var(--lime);height:var(--h);opacity:var(--o,.75)}
+  .float-tag{position:absolute;z-index:2;background:#151914d9;border:1px solid #414a3b;border-radius:13px;padding:11px 13px;backdrop-filter:blur(10px);font-size:11px;color:#d8dfd0;box-shadow:0 10px 35px #0003}
+  .float-tag b{display:block;color:var(--lime);font-size:12px;margin-bottom:2px}.tag-a{top:29px;left:22px}.tag-b{right:19px;bottom:91px}
+  .status-line{display:flex;align-items:center;gap:8px;color:#b7c0b0;font-size:10px;letter-spacing:.12em;text-transform:uppercase;margin-top:14px}
+  .status-line span{width:6px;height:6px;border-radius:50%;background:var(--orange)}
+  .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#141713}
+  .strip-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:22px 0}
+  .strip-item{display:flex;gap:12px;align-items:center}.num{font-size:11px;color:var(--lime);font-weight:850;letter-spacing:.12em}.strip-item strong{display:block;font-size:13px}.strip-item small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+  section.content{padding:82px 0}
+  .section-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:30px}
+  .kicker{color:var(--lime);font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:850}
+  h2{font-size:clamp(30px,4.2vw,49px);letter-spacing:-.055em;line-height:1.02;margin:12px 0 0;max-width:600px}
+  .section-head p{max-width:390px;color:var(--muted);font-size:14px;margin:0;line-height:1.7}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+  .card{border:1px solid var(--line);background:linear-gradient(145deg,#1b1f1a,#151713);border-radius:var(--radius);padding:23px;min-height:210px}
+  .card-icon{width:39px;height:39px;display:grid;place-items:center;border:1px solid #48513f;border-radius:12px;color:var(--lime);font-size:18px;margin-bottom:29px}
+  .card h3{margin:0 0 8px;font-size:17px;letter-spacing:-.025em}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}
+  .workflow{display:grid;grid-template-columns:.85fr 1.15fr;gap:15px;align-items:stretch}
+  .workflow-intro{padding:30px;border-radius:var(--radius);background:var(--lime);color:#18200e;display:flex;flex-direction:column;justify-content:space-between;min-height:360px}
+  .workflow-intro .kicker{color:#3b4c20}.workflow-intro h2{font-size:clamp(32px,4vw,47px)}.workflow-intro p{font-size:14px;line-height:1.7;max-width:360px;color:#354325}
+  .steps{border:1px solid var(--line);border-radius:var(--radius);padding:10px 22px;background:#171a16}
+  .step{display:grid;grid-template-columns:37px 1fr;gap:15px;padding:22px 0;border-bottom:1px solid #30362e}.step:last-child{border:0}
+  .step-num{color:var(--lime);font-size:11px;font-weight:850;padding-top:3px}.step h3{font-size:15px;margin:0 0 5px}.step p{font-size:12px;color:var(--muted);margin:0;line-height:1.65}
+  .check-area{background:#151814;border:1px solid var(--line);border-radius:28px;padding:clamp(20px,4vw,36px);display:grid;grid-template-columns:.85fr 1.15fr;gap:30px}
+  .check-area h2{font-size:clamp(29px,3.6vw,42px)}.check-area .desc{color:var(--muted);font-size:13px;line-height:1.7}
+  .form-panel{background:#1c201b;border:1px solid #363d32;border-radius:20px;padding:20px}
+  label{display:block;color:#d8dfd2;font-size:12px;font-weight:750;margin-bottom:8px}
+  select{width:100%;background:#111410;color:var(--ink);border:1px solid #41483b;border-radius:12px;padding:13px 12px;outline:none;min-height:47px}
+  select:focus{border-color:var(--lime)}.field{margin-bottom:15px}
+  .result{margin-top:16px;border-radius:14px;border:1px solid #41483b;background:#131612;padding:15px;display:none}.result.show{display:block}.result strong{display:block;color:var(--lime);font-size:13px;margin-bottom:5px}.result p{color:#b9c2b2;font-size:12px;line-height:1.65;margin:0}
+  .notice{margin-top:14px;padding:12px 13px;border-left:2px solid var(--orange);background:#ff805b0c;color:#c7b6ad;font-size:11px;line-height:1.65}
+  .closing{padding:35px 0 72px}.closing-box{position:relative;overflow:hidden;border:1px solid #3c4634;border-radius:28px;padding:clamp(25px,5vw,52px);background:radial-gradient(ellipse at 90% 0%,#344025 0%,#1a1e17 42%,#141612 78%)}
+  .closing-box h2{font-size:clamp(37px,6vw,66px);max-width:700px}.closing-box p{color:#b4bdac;max-width:520px;font-size:14px;line-height:1.75}
+  footer{border-top:1px solid var(--line);padding:25px 0 calc(25px + env(safe-area-inset-bottom));color:#899184;font-size:11px}
+  .foot{display:flex;justify-content:space-between;gap:20px;align-items:center}.foot strong{color:#d9e0d2;letter-spacing:.04em}
+  @media(max-width:780px){.wrap{width:min(100% - 30px,var(--max))}.nav{min-height:64px}.navlinks{display:none}.hero{padding:45px 0 35px}.hero-grid{grid-template-columns:1fr;gap:30px}.hero-copy{max-width:620px}h1{font-size:clamp(50px,14vw,78px);margin-top:20px}.visual{min-height:330px;border-radius:24px}.speaker{width:145px;height:145px}.speaker:before{width:93px;height:93px}.rings{width:215px;height:215px}.visual:before{width:265px;height:265px}.visual:after{width:350px;height:350px}.tag-a{top:18px;left:14px}.tag-b{right:13px;bottom:77px}.strip-inner{gap:15px;padding:18px 0}.strip-item{align-items:flex-start;gap:8px}.strip-item strong{font-size:11px}.strip-item small{font-size:10px}.strip-item .num{font-size:10px}section.content{padding:59px 0}.section-head{display:block}.section-head p{margin-top:15px}.cards{grid-template-columns:1fr}.card{min-height:auto;padding:20px}.card-icon{margin-bottom:20px}.workflow{grid-template-columns:1fr}.workflow-intro{min-height:280px}.check-area{grid-template-columns:1fr;gap:20px}.closing{padding-bottom:50px}.foot{align-items:flex-start;flex-direction:column;gap:9px}}
+  @media(max-width:380px){.wrap{width:calc(100% - 24px)}.brand{font-size:14px}.pill{padding:9px 11px;font-size:11px}.hero{padding-top:35px}.actions .btn{width:100%}.strip-inner{grid-template-columns:1fr;gap:13px}.strip-item{align-items:center}.strip-item strong{font-size:12px}.visual{min-height:290px}.float-tag{font-size:10px;padding:9px}.tag-b{bottom:64px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+  .engine{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(145deg,#1b1f1a,#151713);padding:24px;display:grid;gap:16px}
+  .engine .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .engine label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:700}
+  .engine select,.engine input[type=range]{width:100%;min-height:44px;background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:0 10px}
+  .engine input[type=range]{accent-color:var(--lime);padding:0}
+  .eng-state{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+  .eng-state i{width:10px;height:10px;border-radius:50%;background:var(--orange)}
+  .eng-state.on i{background:var(--lime);box-shadow:0 0 14px var(--lime)}
+  .eng-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .btn[disabled]{opacity:.4;cursor:not-allowed;transform:none}
+  .btn-stop{background:var(--orange);color:#2a0d05}
+  .eng-note{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+  .outcome{display:flex;flex-wrap:wrap;gap:8px}.outcome button{min-height:44px;background:transparent;border:1px solid #4a5146;color:var(--ink);border-radius:999px;padding:0 14px}
+  @media(max-width:560px){.engine .row{grid-template-columns:1fr}}
+
+  /* Visual identity: instrument-grade, rare */
+  :root{--mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace}
+  .kicker,.eyebrow,.status-line,.float-tag b,.num,.eng-state{font-family:var(--mono)}
+  .visual{background:linear-gradient(#d5ff6509 1px,transparent 1px) 0 0/100% 26px,linear-gradient(90deg,#d5ff6509 1px,transparent 1px) 0 0/26px 100%,radial-gradient(ellipse at 50% 45%,#2a3426 0%,#161915 55%,#0e100d 100%);border-radius:6px;border-color:#4b5642}
+  .visual:before,.visual:after{border-radius:50%;border-style:dashed}
+  .crop{position:absolute;inset:12px;pointer-events:none;z-index:3;background:
+    linear-gradient(var(--lime),var(--lime)) 0 0/18px 1px no-repeat,linear-gradient(var(--lime),var(--lime)) 0 0/1px 18px no-repeat,
+    linear-gradient(var(--lime),var(--lime)) 100% 0/18px 1px no-repeat,linear-gradient(var(--lime),var(--lime)) 100% 0/1px 18px no-repeat,
+    linear-gradient(var(--lime),var(--lime)) 0 100%/18px 1px no-repeat,linear-gradient(var(--lime),var(--lime)) 0 100%/1px 18px no-repeat,
+    linear-gradient(var(--lime),var(--lime)) 100% 100%/18px 1px no-repeat,linear-gradient(var(--lime),var(--lime)) 100% 100%/1px 18px no-repeat}
+  .rings{border:0;box-shadow:none;width:276px;height:276px;background:repeating-conic-gradient(#d5ff65 0 .45deg,transparent .45deg 4deg);-webkit-mask:radial-gradient(circle,transparent 0 68%,#000 69% 73%,transparent 74%);mask:radial-gradient(circle,transparent 0 68%,#000 69% 73%,transparent 74%);opacity:.7;animation:spin 48s linear infinite}
+  .speaker{background:conic-gradient(from 20deg,#2b3228,#0a0c09,#46503b,#0a0c09,#2b3228);border:1px solid #6c7a5b;box-shadow:inset 0 0 0 9px #0f120e,inset 0 0 0 10px #d5ff6540,0 0 0 1px #000,0 24px 60px #000a;animation:breathe 5.5s ease-in-out infinite}
+  .speaker:before{background:repeating-radial-gradient(circle at center,#0d100c 0 3px,#d5ff6522 3px 4px,#1b2118 4px 7px)}
+  .speaker:after{border-color:var(--lime);background:radial-gradient(circle,#d5ff65 0 22%,#d5ff6522 24%,transparent 70%);box-shadow:0 0 34px #d5ff6560}
+  .wave i{background:linear-gradient(var(--lime),#d5ff6540);width:2px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes breathe{50%{transform:scale(1.035)}}
+  @media(prefers-reduced-motion:reduce){.rings,.speaker{animation:none}}
+  .scope{position:relative;border:1px solid #4b5642;border-radius:6px;background:linear-gradient(#d5ff6512 1px,transparent 1px) 0 0/100% 25%,linear-gradient(90deg,#d5ff6512 1px,transparent 1px) 0 0/12.5% 100%,#0a0c09;overflow:hidden}
+  .scope canvas{display:block;width:100%;height:130px}
+  .scope b{position:absolute;left:10px;top:7px;font:700 10px var(--mono);letter-spacing:.16em;color:#d5ff65aa}
+  .engine{border-radius:6px;border-color:#4b5642}
+
+.auto{border:1px solid #4b5642;border-radius:6px;background:linear-gradient(145deg,#1b1f1a,#10130f);padding:18px;display:grid;gap:14px;position:relative;overflow:hidden}
+.auto:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,#0000 0 3px,#d5ff6506 3px 4px);pointer-events:none}
+.auto>*{position:relative}
+.scope canvas{height:190px}
+.scope.live:after{content:"";position:absolute;top:0;bottom:0;width:2px;background:var(--lime);box-shadow:0 0 18px var(--lime);animation:scan 3s linear infinite}
+@keyframes scan{from{left:0}to{left:100%}}
+.prog{height:4px;background:#232a21}.prog i{display:block;height:100%;width:0;background:var(--lime);box-shadow:0 0 12px var(--lime);transition:width .2s linear}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));gap:6px}
+.stages li{font:700 10px/1.35 var(--mono);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:8px;border-radius:4px;color:#7f897a}
+.stages li span{display:block;color:var(--lime);opacity:.55}
+.stages li.on{border-color:var(--lime);color:var(--ink);box-shadow:inset 0 0 18px #d5ff6533;animation:blink 1.2s infinite}
+.stages li.done{color:var(--lime);border-color:#d5ff6560}.stages li.done span:after{content:" ✓"}
+@keyframes blink{50%{background:#d5ff6514}}
+.log{margin:0;background:#080a07;border:1px solid #2a3027;border-radius:4px;padding:10px;font:12px/1.6 var(--mono);color:#b9e060;height:132px;overflow:auto;white-space:pre-wrap}
+.final{border:1px solid var(--lime);border-radius:6px;padding:16px;background:#d5ff650a;display:grid;gap:12px}
+.verdict{font:800 clamp(20px,5vw,30px)/1.1 var(--mono);color:var(--lime);text-shadow:0 0 22px #d5ff6560;letter-spacing:-.02em}
+.bar{display:grid;grid-template-columns:84px 1fr 86px;gap:10px;align-items:center;font:11px var(--mono);color:var(--muted);margin:4px 0}
+.bar div{position:relative;height:8px;background:#1d221b}.bar div:before{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:#6b765f}
+.bar div i{position:absolute;top:0;bottom:0;background:var(--lime)}.bar div i.neg{background:var(--orange)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Audio Hospital home"><span class="mark">≈</span><span>AUDIO HOSPITAL<small>Sound recovery lab</small></span></a>
+    <nav class="navlinks" aria-label="Main navigation"><a href="#method">Method</a><a href="#workflow">Workflow</a><a href="#check">Device check</a></nav>
+    <a class="pill" href="#check">Check a device ↗</a>
+  </div>
+</header>
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span> Audio Hospital / concept 001</div>
+        <h1>LET IT <span>BREATHE.</span></h1>
+        <p class="lead">A sharper approach to speaker recovery. Diagnose the blockage, apply a controlled method, then verify the sound — no blind blasting, no guesswork.</p>
+        <div class="actions"><button class="btn btn-secondary" id="install" type="button" hidden>Install app</button><a class="btn btn-primary" href="#check">Start a device check <span>↗</span></a><a class="btn btn-secondary" href="#method">See the method <span>↓</span></a></div>
+        <div class="micro"><span style="color:var(--lime)">●</span> Built around diagnosis first. Recovery second.</div>
+      </div>
+      <div>
+        <div class="visual" role="img" aria-label="Abstract precision speaker with controlled sound-wave rings">
+          <div class="float-tag tag-a"><b>01 / DIAGNOSE</b>Find the real cause</div>
+          <div class="crop" aria-hidden="true"></div><div class="rings" aria-hidden="true"></div><div class="speaker"></div>
+          <div class="float-tag tag-b"><b>CONTROLLED OUTPUT</b>Not maximum volume</div>
+          <div class="wave" aria-hidden="true"><i style="--h:9px"></i><i style="--h:14px"></i><i style="--h:20px"></i><i style="--h:29px"></i><i style="--h:16px"></i><i style="--h:35px"></i><i style="--h:24px"></i><i style="--h:13px"></i><i style="--h:31px"></i><i style="--h:40px"></i><i style="--h:20px"></i><i style="--h:12px"></i><i style="--h:27px"></i><i style="--h:34px"></i><i style="--h:15px"></i><i style="--h:23px"></i><i style="--h:11px"></i><i style="--h:18px"></i><i style="--h:30px"></i><i style="--h:14px"></i><i style="--h:24px"></i><i style="--h:10px"></i></div>
+        </div>
+        <div class="status-line"><span></span> Early concept · efficacy testing required</div>
+      </div>
+    </div>
+  </section>
+  <div class="strip"><div class="wrap strip-inner">
+    <div class="strip-item"><span class="num">01</span><div><strong>Diagnose before treatment</strong><small>Find the cause, not just the symptom</small></div></div>
+    <div class="strip-item"><span class="num">02</span><div><strong>Control the signal</strong><small>Frequency, level and duration matter</small></div></div>
+    <div class="strip-item"><span class="num">03</span><div><strong>Verify the result</strong><small>Clarity is measured, not assumed</small></div></div>
+  </div></div>
+  <section class="content" id="method"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">The recovery logic</div><h2>Less guessing.<br>More signal.</h2></div><p>Sound can help move some loose debris in some speaker designs. It cannot fix every cause of muffled audio. The method starts by knowing the difference.</p></div>
+    <div class="cards">
+      <article class="card"><div class="card-icon">⌕</div><h3>Find the obstruction</h3><p>Check the grille, audio settings, speaker behavior and signs of damage before choosing a recovery path.</p></article>
+      <article class="card"><div class="card-icon">〰</div><h3>Apply controlled vibration</h3><p>Test a suitable tone or sweep at a bounded level and duration. More power is not automatically more effective.</p></article>
+      <article class="card"><div class="card-icon">✓</div><h3>Prove the improvement</h3><p>Repeat the same sound check and record the outcome. If the fault remains, stop and inspect further.</p></article>
+    </div>
+  </div></section>
+  <section class="content" id="workflow" style="padding-top:0"><div class="wrap workflow">
+    <div class="workflow-intro"><div><div class="kicker">The Audio Hospital standard</div><h2>Recovery is a process. Not a magic tone.</h2><p>Every device gets a diagnosis, a suitable method and a final check. That's how we build a repeatable service — and later, a smarter tool.</p></div><div style="font-size:11px;font-weight:850;letter-spacing:.12em">LET IT BREATHE ↗</div></div>
+    <div class="steps">
+      <div class="step"><div class="step-num">01</div><div><h3>Identify the device</h3><p>Phone, laptop or another supported device. Different speakers respond differently.</p></div></div>
+      <div class="step"><div class="step-num">02</div><div><h3>Classify the symptom</h3><p>Muffled, quiet, distorted or possibly moisture-affected. These are not interchangeable faults.</p></div></div>
+      <div class="step"><div class="step-num">03</div><div><h3>Choose the safe next step</h3><p>Use a tested recovery procedure only where appropriate. Avoid high-volume experiments.</p></div></div>
+      <div class="step"><div class="step-num">04</div><div><h3>Retest and record</h3><p>Compare results. Escalate persistent faults to physical inspection or repair.</p></div></div>
+    </div>
+  </div></section>
+  <section class="content" id="check" style="padding-top:0"><div class="wrap check-area">
+    <div><div class="kicker">Guided check · preview</div><h2>What is your speaker doing?</h2><p class="desc">Choose the closest match to see the recommended next step. This is a guidance preview, not a live hardware diagnosis, and it does not play any sound. The experimental engine is further down and only runs when you press Start.</p><div class="notice">Safety first: don't use loud tones to force a result. Keep liquid away from the device. If a device was exposed to liquid, is overheating, or sounds mechanically damaged, stop and seek appropriate service.</div></div>
+    <div class="form-panel">
+      <div class="field"><label for="device">Device type</label><select id="device"><option value="phone">Android / smartphone</option><option value="laptop">Laptop / PC</option><option value="other">Other speaker</option></select></div>
+      <div class="field"><label for="symptom">Main symptom</label><select id="symptom"><option value="muffled">Sound is muffled</option><option value="quiet">Sound is unusually quiet</option><option value="distorted">Sound is distorted or rattling</option><option value="wet">Possible liquid or moisture exposure</option></select></div>
+      <button class="btn btn-primary" id="diagnose" type="button" style="width:100%">Show recommended next step ↗</button>
+      <div class="result" id="result" role="status" aria-live="polite"><strong id="result-title">Recommended next step</strong><p id="result-copy"></p></div>
+    </div>
+  </div></section>
+  <section class="content" id="engine" style="padding-top:0"><div class="wrap">
+    <div class="section-head"><div><div class="kicker">Auto recovery · experimental</div><h2>Press start.<br>Sit back.</h2></div><p>The app runs a fixed, capped protocol on its own, narrates each step, re-measures with your microphone and reports what it measured. Rule-based automation, not machine learning, and not a proven cleaner.</p></div>
+    <div class="engine auto">
+      <div class="scope" id="scopebox"><b id="state">STANDBY</b><canvas id="scope" aria-hidden="true"></canvas></div>
+      <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+      <ol class="stages" id="stages" aria-label="Protocol stages"></ol>
+      <pre class="log" id="log" role="log" aria-live="polite" tabindex="0"></pre>
+      <div class="row"><div><label for="inten">Intensity (capped, never auto-escalates)</label><select id="inten"><option value=".15">Gentle</option><option value=".3" selected>Standard</option><option value=".45">Strong (hard cap)</option></select></div>
+      <label style="display:flex;gap:10px;align-items:center;font-size:13px;color:var(--ink);margin:0"><input type="checkbox" id="micOn" checked style="width:22px;height:22px;accent-color:#d5ff65"> Measure before/after with microphone</label></div>
+      <label style="display:flex;gap:10px;align-items:center;font-size:13px;color:var(--ink)"><input type="checkbox" id="ack" style="width:22px;height:22px;accent-color:#d5ff65"> No liquid exposure and no distortion. Device volume is low to medium, in a quiet room, speaker facing up, phone not touched during the run.</label>
+      <p class="eng-note" id="hint"></p>
+      <div class="eng-btns"><button class="btn btn-primary" id="go" type="button" disabled>Start auto recovery</button><button class="btn btn-stop" id="stop" type="button">Emergency stop</button></div>
+      <div class="final" id="final" hidden tabindex="-1"><div class="kicker">Session result</div><div class="verdict" id="verdict"></div><p class="eng-note" id="vsub"></p><div id="bars"></div>
+        <div class="kicker">Now play normal audio. Is it clearer? (self-assessment)</div><div class="outcome" id="outcome"><button data-o="Improvement reported">Improved</button><button data-o="No noticeable improvement">No change</button><button data-o="Problem worsened">Worse</button></div>
+        <p class="eng-note" id="rep" style="white-space:pre-wrap"></p><div class="eng-btns"><button class="btn btn-secondary" id="copy" type="button">Copy report</button><button class="btn btn-secondary" id="dl" type="button">Download .txt</button></div></div>
+    </div>
+  </div></section>
+  <section class="closing"><div class="wrap"><div class="closing-box"><div class="kicker">Audio Hospital / build with proof</div><h2>Make the sound breathe again.</h2><p>LET IT BREATHE is an early product concept. The next milestone is controlled testing across real devices — before claims, presets or a “boost” are released.</p><a class="btn btn-primary" href="#check">Run the guided check <span>↗</span></a></div></div></section>
+</main>
+<footer><div class="wrap foot"><div><strong>AUDIO HOSPITAL</strong> &nbsp;·&nbsp; LET IT BREATHE</div><div>Install: browser menu → Add to Home Screen · Concept prototype · Not a certified diagnostic or cleaning tool</div></div></footer>
+<script>"use strict";
+/* Audio engine: bounded, limiter-protected, abortable. Never starts without a user gesture. */
+const Engine=(()=>{
+  const AC=window.AudioContext||window.webkitAudioContext,CAP=.45,BANDS=[[200,800],[800,2500],[2500,6000]];
+  let ctx,lim,out,micA,stream,cur=null,aborted=false,timers=[],waiters=[];
+  function init(){
+    if(ctx&&ctx.state!=="closed"){ctx.resume();return ctx}
+    ctx=new AC();lim=ctx.createDynamicsCompressor();
+    lim.threshold.value=-12;lim.knee.value=0;lim.ratio.value=20;lim.attack.value=.003;lim.release.value=.1;
+    out=ctx.createAnalyser();out.fftSize=1024;lim.connect(out);out.connect(ctx.destination);
+    ctx.onstatechange=()=>{if(ctx&&ctx.state==="interrupted")halt()};
+    aborted=false;return ctx}
+  function play(o){return new Promise(res=>{
+    if(aborted)return res();
+    const peak=Math.min(o.peak,CAP),n=ctx.currentTime+.05,end=n+o.secs,osc=ctx.createOscillator(),g=ctx.createGain();
+    osc.type="sine";osc.connect(g);g.connect(lim);g.gain.setValueAtTime(0,n);
+    if(o.kind==="sweep"){const cy=o.cycle||o.secs;
+      for(let t=n;t<end-.01;t+=cy){osc.frequency.setValueAtTime(o.f0,t);osc.frequency.exponentialRampToValueAtTime(o.f1,Math.min(t+cy-.05,end))}
+      g.gain.linearRampToValueAtTime(peak,n+.4);g.gain.setValueAtTime(peak,end-.4);g.gain.linearRampToValueAtTime(0,end)}
+    else{osc.frequency.setValueAtTime(o.f0,n);
+      for(let t=n+.1;t<end-.3;t+=.5){g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(peak,t+.04);g.gain.setValueAtTime(peak,t+.25);g.gain.linearRampToValueAtTime(0,t+.3)}}
+    cur={osc,g};osc.onended=()=>{cur=null;res()};osc.start(n);osc.stop(end+.05)})}
+  const wait=s=>new Promise(r=>{if(aborted)return r();waiters.push(r);timers.push(setTimeout(r,s*1000))});
+  function bands(buf,sr){const bw=sr/(buf.length*2);return BANDS.map(([a,b])=>{let s=0;for(let i=Math.ceil(a/bw);i<=Math.floor(b/bw);i++)s+=Math.pow(10,buf[i]/10);return s})}
+  /* Relative (uncalibrated) band levels in dB captured by the device microphone. */
+  async function probe(secs,tone){
+    if(!micA||aborted)return null;
+    const L=[],buf=new Float32Array(micA.frequencyBinCount),sr=ctx.sampleRate;
+    const it=setInterval(()=>{micA.getFloatFrequencyData(buf);L.push(bands(buf,sr))},60);
+    if(tone)await play({kind:"sweep",f0:200,f1:6000,peak:.12,secs});else await wait(secs);
+    clearInterval(it);if(aborted||!L.length)return null;
+    return BANDS.map((_,b)=>10*Math.log10(L.reduce((a,x)=>a+x[b],0)/L.length+1e-20))}
+  async function enableMic(){
+    try{stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false}});
+      micA=ctx.createAnalyser();micA.fftSize=4096;micA.smoothingTimeConstant=0;ctx.createMediaStreamSource(stream).connect(micA);return true}
+    catch(e){return false}}
+  function disableMic(){if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;micA=null}
+  function halt(){
+    aborted=true;timers.forEach(clearTimeout);timers=[];waiters.forEach(r=>r());waiters=[];
+    if(cur&&ctx){try{cur.g.gain.cancelScheduledValues(ctx.currentTime);cur.g.gain.setTargetAtTime(0,ctx.currentTime,.01);cur.osc.stop(ctx.currentTime+.08)}catch(e){}}}
+  function reset(){aborted=false}
+  return{supported:!!AC,init,play,wait,probe,enableMic,disableMic,halt,reset,out:()=>out,aborted:()=>aborted}
+})();
+</script>
+<script>
+  const device = document.getElementById('device');
+  const symptom = document.getElementById('symptom');
+  const result = document.getElementById('result');
+  const resultTitle = document.getElementById('result-title');
+  const resultCopy = document.getElementById('result-copy');
+  document.getElementById('diagnose').addEventListener('click', () => {
+    const s = symptom.value;
+    let title = 'Inspect before recovery';
+    let copy = 'Check the grille for visible obstruction and review audio settings. If you test a tone-based method later, use only a controlled, validated procedure and compare the result at the same playback level.';
+    if (s === 'quiet') { title = 'Check settings and the sound path'; copy = 'Confirm media volume, balance, output selection and whether all speaker openings are clear. If the sound remains quiet, investigate the speaker hardware before trying a recovery tone.'; }
+    if (s === 'distorted') { title = 'Do not boost a distorted speaker'; copy = 'Rattling or distortion may indicate damage, debris touching the diaphragm, or an overloaded speaker. Lower the volume and arrange inspection if the symptom persists.'; }
+    if (s === 'wet') { title = 'Stop and assess liquid exposure'; copy = 'Do not charge or deliberately drive the speaker with loud tones while liquid exposure is suspected. Follow the device maker’s guidance and seek service if exposure may have reached the device interior.'; }
+    if (s === 'muffled') { title = 'Check for a blocked grille'; copy = 'Look for visible debris and check whether the issue affects one speaker or every audio output. Avoid sharp tools or pushing debris deeper. A controlled tone may help some loose particles, but it is not a universal fix.'; }
+    const deviceName = device.options[device.selectedIndex].text;
+    resultTitle.textContent = title + ' · ' + deviceName;
+    resultCopy.textContent = copy;
+    result.classList.add('show');
+  });
+
+  
+(()=>{
+const $=id=>document.getElementById(id),E=Engine;
+const STAGES=[
+ {id:'floor',t:'Noise floor',s:2,mic:1,m:'Listening to the room noise floor...'},
+ {id:'pre',t:'Probe before',s:4,mic:1,m:'Probe sweep: capturing baseline response...'},
+ {id:'swA',t:'Sweep up',s:12,m:'Sweep 80 to 2000 Hz at capped level...'},
+ {id:'pls',t:'Pulse 180 Hz',s:10,m:'Low pulse burst at capped level...'},
+ {id:'swB',t:'Sweep down',s:12,m:'Sweep 2000 to 80 Hz at capped level...'},
+ {id:'set',t:'Settle',s:3,m:'Silence. Letting the speaker settle...'},
+ {id:'post',t:'Probe after',s:4,mic:1,m:'Probe sweep: capturing post-run response...'}];
+const BN=['200-800 Hz','0.8-2.5 kHz','2.5-6 kHz'];
+let running=false,R={},t0=0,tick,wl,st=[],total=0,mic=false,P=.3,verdict='',done=false;
+const logEl=$('log'),cv=$('scope'),c2=cv.getContext('2d'),box=$('scopebox');
+const pad=n=>String(n).padStart(2,'0'),stamp=()=>{const e=t0?Math.floor((Date.now()-t0)/1000):0;return '['+pad(Math.floor(e/60))+':'+pad(e%60)+']'};
+const log=m=>{logEl.textContent+=(logEl.textContent?'\n':'')+stamp()+' '+m;logEl.scrollTop=logEl.scrollHeight};
+function fit(){const r=devicePixelRatio||1;cv.width=cv.clientWidth*r;cv.height=cv.clientHeight*r;draw()}
+function draw(){const a=E.out();c2.fillStyle=running?'rgba(10,12,9,.28)':'#0a0c09';c2.fillRect(0,0,cv.width,cv.height);
+ c2.strokeStyle='#d5ff65';c2.lineWidth=running?2:1;c2.shadowColor='#d5ff65';c2.shadowBlur=running?8:0;c2.beginPath();
+ if(running&&a){const d=new Uint8Array(a.fftSize);a.getByteTimeDomainData(d);const n=d.length>>1;for(let i=0;i<n;i++){const x=i/(n-1)*cv.width,y=d[i]/255*cv.height;i?c2.lineTo(x,y):c2.moveTo(x,y)}}
+ else{c2.globalAlpha=.4;c2.moveTo(0,cv.height/2);c2.lineTo(cv.width,cv.height/2)}
+ c2.stroke();c2.globalAlpha=1;c2.shadowBlur=0;if(running)requestAnimationFrame(draw)}
+function sync(){const s=symptom.value,lock=s==='wet'||s==='distorted';
+ $('go').disabled=running||lock||!$('ack').checked||!E.supported;
+ if(running)return;
+ $('state').textContent=lock?'LOCKED':'STANDBY';
+ $('hint').textContent=!E.supported?'This browser has no Web Audio support. Engine unavailable.':lock?(s==='wet'?'Locked: liquid exposure suspected. Follow the manufacturer guidance and seek service.':'Locked: a distorted speaker needs inspection, not more signal.'):'Idle. Nothing plays until you press Start. Total run is about 45 seconds.'}
+function renderStages(){$('stages').innerHTML=st.map((x,i)=>'<li id="st-'+x.id+'"><span>'+pad(i+1)+'</span>'+x.t+'</li>').join('')}
+const mark=(id,c)=>{const e=$('st-'+id);if(e)e.className=c};
+async function run(x){
+ if(x.id==='floor')R.floor=await E.probe(2,false);
+ else if(x.id==='pre')R.pre=await E.probe(4,true);
+ else if(x.id==='swA')await E.play({kind:'sweep',f0:80,f1:2000,peak:P,secs:12,cycle:6});
+ else if(x.id==='pls')await E.play({kind:'pulse',f0:180,peak:P,secs:10});
+ else if(x.id==='swB')await E.play({kind:'sweep',f0:2000,f1:80,peak:P,secs:12,cycle:6});
+ else if(x.id==='set')await E.wait(3);
+ else if(x.id==='post')R.post=await E.probe(4,true)}
+$('go').onclick=async()=>{
+ if(running)return;running=true;done=false;R={};$('final').hidden=true;logEl.textContent='';t0=0;
+ P=+$('inten').value;E.reset();E.init();mic=$('micOn').checked?await E.enableMic():false;
+ if($('micOn').checked&&!mic)log('Microphone unavailable or denied. Falling back to self-assessment.');
+ st=STAGES.filter(x=>mic||!x.mic);renderStages();total=st.reduce((a,x)=>a+x.s,0);t0=Date.now();
+ log('Session start: '+device.options[device.selectedIndex].text+' / '+symptom.options[symptom.selectedIndex].text);
+ log(mic?'Microphone on. Measuring before and after.':'No microphone. Result will be self-assessed.');
+ try{wl=await navigator.wakeLock?.request('screen')}catch(e){}
+ $('state').textContent='RUNNING';box.classList.add('live');draw();
+ tick=setInterval(()=>{$('prog').style.width=Math.min(100,(Date.now()-t0)/(total*10))+'%'},200);sync();
+ for(const x of st){if(E.aborted())break;mark(x.id,'on');log(x.m);await run(x);if(!E.aborted())mark(x.id,'done')}
+ finish()};
+function judge(){
+ if(!mic)return{h:'RUN COMPLETE · NOT MEASURED',s:'No microphone data. Retest by ear and record your self-assessment below.',rows:[]};
+ const{floor,pre,post}=R;if(!floor||!pre||!post)return{h:'INCOMPLETE',s:'A measurement stage did not finish. No result.',rows:[]};
+ const rows=BN.map((n,b)=>{const ok=pre[b]-floor[b]>=6&&post[b]-floor[b]>=6;return{n,ok,d:post[b]-pre[b]}});
+ const v=rows.filter(r=>r.ok);
+ if(!v.length)return{h:'INCONCLUSIVE',s:'The probe was too quiet versus room noise. Move to a quieter room, raise device volume slightly and run again.',rows};
+ const a=v.reduce((s,r)=>s+r.d,0)/v.length;
+ const h=a>=3?'MEASURED INCREASE '+a.toFixed(1)+' dB':a<=-3?'MEASURED DECREASE '+a.toFixed(1)+' dB':'NO SIGNIFICANT CHANGE ('+(a>=0?'+':'')+a.toFixed(1)+' dB)';
+ return{h,s:'Relative, uncalibrated microphone comparison at the same device volume. Room noise, phone position and handling affect it. A louder result is not proof of cleaning, and a quieter one may be noise.',rows}}
+function finish(){
+ clearInterval(tick);const was=E.aborted();E.halt();E.disableMic();try{wl&&wl.release()}catch(e){}
+ running=false;box.classList.remove('live');draw();$('prog').style.width=was?$('prog').style.width:'100%';
+ let j;if(was){j={h:'STOPPED · NO RESULT',s:'The run was stopped before completion.',rows:[]};log('Stopped. No result.');$('state').textContent='STOPPED'}
+ else{j=judge();log('Protocol complete. '+j.h);$('state').textContent='COMPLETE'}
+ verdict=j.h;done=true;$('verdict').textContent=j.h;$('vsub').textContent=j.s;
+ $('bars').innerHTML=j.rows.map(r=>'<div class="bar"><span>'+r.n+'</span><div>'+(r.ok?'<i class="'+(r.d<0?'neg':'')+'" style="'+(r.d<0?'right':'left')+':50%;width:'+Math.min(50,Math.abs(r.d)/12*50)+'%"></i>':'')+'</div><span>'+(r.ok?(r.d>=0?'+':'')+r.d.toFixed(1)+' dB':'below noise')+'</span></div>').join('');
+ $('rep').textContent='';$('final').hidden=false;$('final').focus();sync()}
+$('stop').onclick=()=>{if(running)E.halt()};
+addEventListener('keydown',e=>{if(e.key==='Escape'&&running)E.halt()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&running){E.halt();log('Page hidden. Stopped for safety.')}});
+addEventListener('pagehide',()=>E.halt());
+let self='Not recorded';
+const report=()=>'LET IT BREATHE · Audio Hospital session\nDevice: '+device.options[device.selectedIndex].text+'\nSymptom: '+symptom.options[symptom.selectedIndex].text+'\nProcedure: auto protocol (sweep up, 180 Hz pulse, sweep down), level cap '+P+', device volume user-set\nMicrophone measurement (relative, uncalibrated): '+verdict+'\nSelf-assessment: '+self+'\nExperimental. Not a certified diagnostic or cleaning tool.';
+$('outcome').onclick=e=>{const o=e.target.dataset.o;if(!o)return;self=o;$('rep').textContent=report()};
+$('copy').onclick=async()=>{const t=report();$('rep').textContent=t;try{await navigator.clipboard.writeText(t)}catch(e){}};
+$('dl').onclick=()=>{const t=report();$('rep').textContent=t;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/plain'}));a.download='let-it-breathe-session.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+$('ack').onchange=sync;symptom.addEventListener('change',sync);addEventListener('resize',fit);fit();sync();
+let dp;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('install').hidden=false});
+$('install').onclick=async()=>{dp.prompt();await dp.userChoice;$('install').hidden=true};
+if('serviceWorker'in navigator&&location.protocol!=='file:')addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>

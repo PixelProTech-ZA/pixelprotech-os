@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Frequency Oasis // WORLD SIGNAL</title>
+<meta name="description" content="A living atmosphere of Earth's live radio stations.">
+<meta name="theme-color" content="#05070c">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAIdUlEQVR4nO2dO64WRxCFC8uIhGWQIzaALORFELEBYm6ARIREADEbIGIRFrLYACJnLxBYc+8wnlfPTFedqnO+0AI8U32+ru55/ffuP3j404Qg5Y/oAxAiEgkgqJEAghoJIKiRAIIaCSCokQCCGgkgqJEAghoJIKiRAIIaCSCokQCBvHrzPvoQ6JEAghoJIKiRAIIaCSCokQCCGgkgqJEAghoJIKi5p69CCGbUAQQ1ZQXQYwbXUbmWZQX48Pam9MB58erNe/vw9ib6MLrxZ/QBVOfb5xen/v6T558uOhIxR/lNsNcMdjborXiIUX32N1MHOIx34Lf+/+oUxyjfAcyumcmiA9/KWSEYZn8zdYBVrgj92SAePYbx31N3WIaiA5i1zWhHQucdsp7HyDL7mxEJsIeWUKHNqpmPPRIJYPvDkyU41c6nJ9QC7AlK9pAwnOMZKAVgDAXjOe+BSoCtELAEQHW4g0aAtUFnGvAxqgmBABrkbZhrVPZpUDPugW1hrRbZ7oC3UrYDLA2cgr8OW93KCaBZ/zxMNSwlANvs1RuGepbZAzAMljdLtau0LyghgMLfj+oSpF8CzQ2Egt+HirVO3QEqDggyc7XN3gnSCqDwx1BNgpQCKPyxVJIgnQAKPwZVJEglgMKPRQUJ0gig8GOSXYIUAij82GSWIOVnUTKG//X3H01//t3jR52OpA9Pnn9KE/ox3QU4+4mNjEVtDfvefyObFN8+vzg1WXl8nsXlTvDwlebWk8m09Lki9C2gynDFmB3NyxFcH4VoObEM4W8J/cdnT5v+7Zdfvu7+s2gyHB07z+APhDwLtOdEkT/+uhX81rDvZUsKJBFaxi8i+AOhD8MtrfFQZ/+14PcK/RJrMiCIsHcMoz/DCPc0KGL4kYI/BVkExLGcAi9AdMHmwh8d+iXmZECTIHo8p0DdCEO75Jkp/Gbzx+Z9dWoLtDGG6gAos0W24M+B1A1QxnUOmA6AUqQK4TfD6gbTsUTqAikfhejFNCAZgz9mOP5xN3j9/Uf4vgAJiA6AMPtXC/+Y6blEdALULgAhQDSVwz+AIAEi4QJEz/4M4R+IlgCxC4QLEAlT+AeiJUAjVIDIGYAx/ANIEkR3AagOEHXpkyn8A1HnjHQPwCxQAJTZnzH8A+NzZ+0CMB3Aa2ZgX/Ou4VUbpC4AI4AHzOv+JZD2AxGECBC98TFT+Mcg1CIqExAdwKMlss1sZ/CoFcoyCEIAbxBmPDRYa0IhgK767APlqpAn7gJEP/ogcEB4NKJ8B2CZyXrAULvyAozR8mcbthpRCSDEFFcBvNf/2vwew3MzHL0PUAcQ1Oid4AD+/fj37H//6+U/zkciygqAtvxZCv3Sn4mW4eOzp7cv01d+kV5LIAf2hP+KvyPakQCdORNkSdAfNwEY7wBfEWAGCSKvBKkDdOLK4DJIEEVJAaI3wD0CGyEBw8NxJQUQYi8SQFAjAS6m51JFe4HrkQCCGgkgqDn0KMTws5ZrRP7yn6hHr8wdEkDhFt70ypyWQIIaCXAxPZ/ijH5CtCISQFAjAQQ1JQUYv7wx93u5vemxVIlY/oxrpxdiRBNXBlZr/364CRD99n8EVwSXIfyR74qoA3TmTIAZwh+NBHDgSJAVfh/KfhXi3eNHty9xvPzyNfzLEONAZ/gsCsMG2KywAMggBZ0dLYEENa4CeF8Jir4fkBXP5U/010LUAQQ1VAKoC2zDVqPyAlS+gtEbhtq5C8B4R1jME73+NyPoAGbaDO+F5dr/GAoBpkiC/8NaEwgBPJZBLDPaFXjUCmXpGyIAwpehWWe8ORBqEZUJiA7gxXRmQxj4aKY1YOuUMAJ4tUS2AW7BqzYoyx+zQAEil0G6KvQfKFd9IrMA0wHM4mYGRgmizhlp9jcLFgClC5hxSYC07o++IALVAbxhlAAp/AiECxD9aASTBNHhR3j0YUq4AAgwSBAdflQgBIjuAma1JUAIP+Lsb6Z3gn9j/CK92V1wol+oP8qcxJr5fweiA5hhdAGz+YBk7AZI4Ued/c3M7t1/8PBn9EEMzIU+slhzv42L3g2Qgm+GN6ZTYDqAGVZhzPJ1A7Twz4E2xlAdwAxzxlj7lfTojrAmZHT4EcdySqgAr968n/3tJ9TCIYmAHHyz/WO4lAEvQgQYfvFv7cSRN05rIpj1k2Fr+YUQ/IGW8duTh164CtByoqhdYMyWCGNapWjZayAF3+z42EWI4CLA0RPLIMFAiwxXgBb6gSvGzFOE7gKcXeNlkmCglwyooR+4eqw89gdwV4HmQN4P7KVVCvSwz5FxnFI+CvHt84sUxR2TMdAtoL3osheoG2FLzIU9a8ErknGZOpBCADNJgErm8JslEsBMEqCRPfxmyQQwkwQoVAi/WUIBzCRBNFXCb5ZUADNJEEWl8JslFsBMEnhTLfxmSW6EbbEU+uyDg0Ll+qbuAANLA6FucJ7K4TcrIoCZJOhB9fCbFVkCjVkLfKWB6wlTDcsJMMAwe/WArW5lBTDjmsnOwlqrMnuAOdYGTnuDO1jDb1a8A4xhHuQlVBMiAcy2Z32WQVcd7qASYGDP8qdaCBjPeQ+UAgwwhILhHM9ALcDA3g1xlqBUO5+eSIARLVeG0MKT+dgjoRGg5RMbRy6Reoeq5zFGf67QEwoBjg7oFfcKzooRdQwsEqT8LIoX4+AcDWLUDTctc/ZRvgP0msnQ7iT3CDxDF1AHOEj0Tzpphr+G0h0AYQY7K0Z00BFq2BN1gM5EB1isU/Zp0Oozlxcf3t7cfq68IqWXQEJsUbYDCLEHCRBM5eVFBiSAoEYCCGokgKBGAghqJICgRgIIaiSAoEYCCGr0KISgRh1AUCMBBDUSQFAjAQQ1EkBQIwEENRJAUCMBBDUSQFAjAQQ1EkBQIwEENb8AhKElHeJ3WlsAAAAASUVORK5CYII=">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>/* ==========================================================================
+   FREQUENCY OASIS — design tokens
+   ========================================================================== */
+:root{
+  --void:#04060a;
+  --deep:#0a0f1a;
+  --deep-2:#0e1526;
+  --panel: rgba(14,20,34,0.62);
+  --panel-solid:#0d1322;
+  --panel-border: rgba(212,175,106,0.16);
+  --hairline: rgba(255,255,255,0.07);
+  --gold:#d4af6a;
+  --gold-soft:#f0dcae;
+  --ice:#7fd8e8;
+  --text:#eae7de;
+  --muted:#8a93a6;
+  --muted-2:#5c6579;
+  --danger:#ef5b5b;
+
+  --g-news:#4f8ff7;
+  --g-jazz:#d4af6a;
+  --g-rnb:#b072e0;
+  --g-nature:#5bd68f;
+  --g-talk:#f0954a;
+  --g-sports:#ef5b5b;
+  --g-classical:#f4f2ea;
+  --g-pop:#f07ab0;
+  --g-electronic:#4fd8f0;
+
+  --display: 'Fraunces', ui-serif, Georgia, serif;
+  --body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --ease: cubic-bezier(.22,.7,.2,1);
+}
+
+*{box-sizing:border-box;}
+html,body{
+  margin:0; padding:0; width:100%; height:100%;
+  background:var(--void); color:var(--text);
+  font-family:var(--body);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button{font-family:inherit; cursor:pointer;}
+input{font-family:inherit;}
+::selection{background:var(--gold); color:#100c02;}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+}
+
+.hidden{display:none !important;}
+
+a{color:var(--ice); text-decoration:none;}
+
+/* focus visibility */
+button:focus-visible, input:focus-visible, a:focus-visible{
+  outline:2px solid var(--ice);
+  outline-offset:2px;
+}
+
+/* ==========================================================================
+   HOME
+   ========================================================================== */
+#home{
+  position:fixed; inset:0; z-index:50;
+  display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(ellipse at 50% 30%, #0c1526 0%, #050810 55%, #020305 100%);
+  transition:opacity 1.1s var(--ease), visibility 1.1s;
+}
+#home.leaving{opacity:0; visibility:hidden; pointer-events:none;}
+
+#starfield{position:absolute; inset:0; width:100%; height:100%;}
+.aurora{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 30% at 20% 15%, rgba(127,216,232,0.09), transparent 60%),
+    radial-gradient(ellipse 50% 25% at 80% 10%, rgba(212,175,106,0.08), transparent 60%);
+  filter:blur(10px);
+  animation:auroraDrift 22s ease-in-out infinite alternate;
+  mix-blend-mode:screen;
+}
+@keyframes auroraDrift{
+  0%{transform:translateX(-2%) translateY(0);}
+  100%{transform:translateX(3%) translateY(2%);}
+}
+#homeGlobe{position:absolute; left:50%; top:52%; transform:translate(-50%,-50%); opacity:0.9;}
+
+.home-copy{
+  position:relative; z-index:2; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:28px;
+  padding:0 24px;
+}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; letter-spacing:0.42em;
+  color:var(--gold); margin:0; opacity:0.85;
+}
+#heartbeatLine{
+  font-family:var(--display); font-style:italic; font-weight:500;
+  font-size:clamp(28px, 5vw, 54px); margin:0; color:var(--text);
+  opacity:0; animation:fadeUp 2.2s var(--ease) 0.4s forwards;
+  letter-spacing:0.01em;
+}
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(14px);}
+  to{opacity:1; transform:translateY(0);}
+}
+.enter-btn{
+  opacity:0; animation:fadeUp 1.8s var(--ease) 1.6s forwards;
+  background:transparent;
+  border:1px solid rgba(212,175,106,0.5);
+  color:var(--gold-soft);
+  font-family:var(--mono);
+  font-size:12px; letter-spacing:0.32em;
+  padding:16px 34px; border-radius:2px;
+  position:relative; overflow:hidden;
+  transition:color .4s, border-color .4s, background .4s;
+}
+.enter-btn::before{
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(90deg, transparent, rgba(212,175,106,0.25), transparent);
+  transform:translateX(-100%);
+  animation:sweep 3.2s ease-in-out infinite;
+}
+@keyframes sweep{ to{transform:translateX(100%);} }
+.enter-btn:hover{ background:rgba(212,175,106,0.09); border-color:var(--gold); color:var(--gold-soft); }
+
+/* ==========================================================================
+   WORLD
+   ========================================================================== */
+#world{position:fixed; inset:0; background:var(--void); overflow:hidden;}
+#globeCanvas{position:absolute; inset:0; width:100%; height:100%; cursor:grab;}
+#globeCanvas:active{cursor:grabbing;}
+
+/* topbar */
+.topbar{
+  position:absolute; top:0; left:0; right:0; z-index:20;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 26px;
+  background:linear-gradient(180deg, rgba(4,6,10,0.75), transparent);
+  pointer-events:none;
+}
+.topbar > *{pointer-events:auto;}
+.brand{
+  font-family:var(--mono); letter-spacing:0.28em; font-size:12px;
+  display:flex; align-items:center; gap:10px; color:var(--gold-soft);
+}
+.brand-dot{
+  width:7px; height:7px; border-radius:50%; background:var(--gold);
+  box-shadow:0 0 10px 2px rgba(212,175,106,0.7);
+  animation:pulseDot 2.4s ease-in-out infinite;
+}
+@keyframes pulseDot{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+.topbar-stats{display:flex; gap:26px;}
+.stat{display:flex; flex-direction:column; align-items:center; font-family:var(--mono);}
+.stat span{font-size:16px; color:var(--text); letter-spacing:0.02em;}
+.stat label{font-size:9px; color:var(--muted); letter-spacing:0.16em; margin-top:2px;}
+.stat.clock span{color:var(--ice);}
+
+.topbar-actions{display:flex; gap:8px;}
+.ghost-btn{
+  background:rgba(255,255,255,0.03);
+  border:1px solid var(--hairline);
+  color:var(--muted);
+  font-family:var(--mono); font-size:10px; letter-spacing:0.16em;
+  padding:9px 14px; border-radius:3px;
+  transition:all .25s;
+  display:inline-block;
+}
+.ghost-btn:hover{ color:var(--gold-soft); border-color:var(--panel-border); background:rgba(212,175,106,0.06);}
+.ghost-btn.small{padding:7px 12px; font-size:9px;}
+
+/* control dock */
+.control-dock{
+  position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
+  z-index:20; display:flex; gap:14px; align-items:center;
+}
+.curious-btn{
+  position:relative;
+  background:var(--panel); backdrop-filter:blur(12px);
+  border:1px solid var(--panel-border); color:var(--gold-soft);
+  font-family:var(--mono); font-size:11px; letter-spacing:0.2em;
+  padding:14px 22px; border-radius:30px;
+  display:flex; align-items:center; gap:10px;
+  transition:transform .3s var(--ease), border-color .3s;
+}
+.curious-btn:hover{ transform:translateY(-2px); border-color:var(--gold); }
+.curious-ring{
+  width:9px; height:9px; border-radius:50%;
+  border:1px solid var(--gold); position:relative;
+}
+.curious-ring::after{
+  content:''; position:absolute; inset:-5px; border-radius:50%;
+  border:1px solid rgba(212,175,106,0.4);
+  animation:ringExpand 2s ease-out infinite;
+}
+@keyframes ringExpand{ 0%{transform:scale(0.4); opacity:1;} 100%{transform:scale(1.8); opacity:0;} }
+
+.search-wrap{position:relative;}
+#searchInput{
+  width:280px; background:var(--panel); backdrop-filter:blur(12px);
+  border:1px solid var(--panel-border); color:var(--text);
+  padding:14px 16px; border-radius:30px; font-size:13px;
+}
+#searchInput::placeholder{color:var(--muted-2);}
+.search-results{
+  position:absolute; bottom:calc(100% + 8px); left:0; right:0;
+  max-height:260px; overflow-y:auto;
+  background:var(--panel-solid); border:1px solid var(--panel-border);
+  border-radius:12px; padding:6px;
+}
+.search-results .sr-item{
+  padding:9px 12px; border-radius:8px; font-size:13px; color:var(--text);
+  display:flex; justify-content:space-between; gap:8px;
+}
+.search-results .sr-item:hover{ background:rgba(212,175,106,0.08); cursor:pointer; }
+.search-results .sr-item small{color:var(--muted); font-family:var(--mono); font-size:10px;}
+
+/* legend */
+.legend{
+  position:absolute; left:20px; bottom:28px; z-index:20;
+  display:flex; flex-direction:column; gap:6px;
+  background:var(--panel); backdrop-filter:blur(10px);
+  border:1px solid var(--panel-border); border-radius:10px;
+  padding:12px 14px;
+  font-family:var(--mono); font-size:10px; letter-spacing:0.04em;
+}
+.legend .lg-item{display:flex; align-items:center; gap:8px; color:var(--muted);}
+.legend .lg-dot{width:7px; height:7px; border-radius:50%; flex:none;}
+
+/* time machine */
+.timemachine{
+  position:absolute; right:20px; bottom:28px; z-index:20; width:220px;
+  background:var(--panel); backdrop-filter:blur(10px);
+  border:1px solid var(--panel-border); border-radius:10px;
+  padding:12px 16px;
+}
+.timemachine label{
+  font-family:var(--mono); font-size:9px; letter-spacing:0.2em; color:var(--muted);
+}
+.timemachine input[type=range]{
+  width:100%; margin:8px 0 4px; accent-color:var(--gold);
+}
+.decade-ticks{display:flex; justify-content:space-between; font-family:var(--mono); font-size:8px; color:var(--muted-2);}
+
+/* heartbeat readout */
+.heartbeat-readout{
+  position:absolute; top:80px; left:26px; z-index:15;
+  display:flex; align-items:center; gap:8px;
+  font-family:var(--mono); font-size:10px; color:var(--muted);
+  letter-spacing:0.05em;
+}
+.pulse-dot{
+  width:6px; height:6px; border-radius:50%; background:var(--ice);
+  box-shadow:0 0 8px 2px rgba(127,216,232,0.6);
+  animation:pulseDot 3.2s ease-in-out infinite;
+}
+
+/* radar toasts */
+.radar-toast-host{
+  position:absolute; top:80px; right:26px; z-index:20;
+  display:flex; flex-direction:column; gap:8px; align-items:flex-end;
+}
+.radar-toast{
+  background:var(--panel-solid); border:1px solid var(--panel-border);
+  border-left:2px solid var(--ice);
+  padding:10px 14px; border-radius:6px; font-size:12px; color:var(--text);
+  max-width:260px;
+  animation:toastIn .5s var(--ease), toastOut .5s var(--ease) 4.5s forwards;
+}
+@keyframes toastIn{ from{opacity:0; transform:translateX(20px);} to{opacity:1; transform:translateX(0);} }
+@keyframes toastOut{ to{opacity:0; transform:translateX(20px);} }
+
+/* ==========================================================================
+   PANELS (shared)
+   ========================================================================== */
+.stream-panel, .facts-panel, .util-panel{
+  position:absolute; top:78px; right:20px; bottom:28px; z-index:25;
+  width:340px; max-width:88vw;
+  background:var(--panel); backdrop-filter:blur(18px);
+  border:1px solid var(--panel-border); border-radius:14px;
+  display:flex; flex-direction:column; overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  animation:panelIn .35s var(--ease);
+}
+.facts-panel{ left:20px; right:auto; top:78px; }
+@keyframes panelIn{ from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
+
+.panel-head{
+  display:flex; justify-content:space-between; align-items:flex-start;
+  padding:18px 18px 12px; border-bottom:1px solid var(--hairline);
+}
+.panel-eyebrow{
+  font-family:var(--mono); font-size:9px; letter-spacing:0.2em; color:var(--gold);
+  margin:0 0 4px;
+}
+.panel-head h3{margin:0; font-family:var(--display); font-weight:500; font-size:19px;}
+.close-btn{
+  background:none; border:none; color:var(--muted); font-size:20px; line-height:1;
+  padding:2px 6px;
+}
+.close-btn:hover{color:var(--text);}
+
+.stream-list{overflow-y:auto; padding:8px;}
+.stream-item{
+  padding:12px; border-radius:10px; display:flex; gap:12px; align-items:center;
+  transition:background .2s;
+}
+.stream-item:hover{background:rgba(255,255,255,0.04); cursor:pointer;}
+.stream-dot{width:9px; height:9px; border-radius:50%; flex:none; margin-top:4px;}
+.stream-info{flex:1; min-width:0;}
+.stream-info .si-name{font-size:14px; color:var(--text); margin:0 0 3px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.stream-info .si-meta{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.03em;}
+.stream-live{
+  font-family:var(--mono); font-size:8px; letter-spacing:0.14em;
+  color:#7be89a; border:1px solid rgba(123,232,154,0.35);
+  padding:2px 6px; border-radius:3px; flex:none;
+}
+
+.facts-body, .util-body{padding:16px 18px; overflow-y:auto; font-size:13px; line-height:1.6; color:var(--muted);}
+.facts-body .fact-row{display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--hairline);}
+.facts-body .fact-row label{color:var(--muted-2); font-family:var(--mono); font-size:10px; letter-spacing:0.08em;}
+.facts-body .fact-row span{color:var(--text); text-align:right;}
+.facts-body .fact-blurb{margin-top:10px; font-family:var(--display); font-style:italic; color:var(--gold-soft); font-size:14px; line-height:1.5;}
+
+.util-body .uw-row{display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--hairline); font-size:12px;}
+.util-body .uw-row span{color:var(--text); font-family:var(--mono);}
+.util-body .archive-group{margin-bottom:14px;}
+.util-body .archive-group h4{margin:0 0 6px; font-size:11px; letter-spacing:0.1em; color:var(--gold); font-family:var(--mono); font-weight:500;}
+.util-body .archive-tag{
+  display:inline-block; margin:0 6px 6px 0; padding:6px 10px; border-radius:20px;
+  border:1px solid var(--hairline); font-size:11px; color:var(--muted);
+}
+.util-body .archive-tag:hover{border-color:var(--gold); color:var(--gold-soft); cursor:pointer;}
+.badge-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+.badge{
+  border:1px solid var(--hairline); border-radius:10px; padding:12px; text-align:center;
+  opacity:0.35;
+}
+.badge.unlocked{opacity:1; border-color:var(--panel-border); background:rgba(212,175,106,0.05);}
+.badge .b-icon{font-size:20px; margin-bottom:6px;}
+.badge .b-name{font-size:11px; color:var(--text);}
+.badge .b-desc{font-size:9px; color:var(--muted); margin-top:3px;}
+
+/* ==========================================================================
+   PLAYER
+   ========================================================================== */
+.player{
+  position:fixed; inset:0; z-index:40;
+  display:flex; align-items:center; justify-content:center;
+  background:rgba(2,3,6,0.72); backdrop-filter:blur(6px);
+  animation:fadeIn .3s var(--ease);
+}
+@keyframes fadeIn{ from{opacity:0;} to{opacity:1;} }
+.player-glass{
+  width:min(760px, 92vw); max-height:90vh; overflow-y:auto;
+  background:linear-gradient(160deg, rgba(20,26,42,0.85), rgba(10,14,24,0.9));
+  border:1px solid var(--panel-border);
+  border-radius:20px; padding:26px 28px 22px;
+  box-shadow:0 40px 120px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+  animation:panelIn .4s var(--ease);
+}
+.player-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;}
+.player-id{display:flex; align-items:center; gap:14px;}
+.flag{font-size:30px;}
+.player-id h2{margin:0; font-family:var(--display); font-weight:500; font-size:22px;}
+.player-id p{margin:2px 0 0; font-size:12px; color:var(--muted); font-family:var(--mono);}
+
+.player-scopes{
+  display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:14px;
+}
+.scope{
+  width:100%; height:120px; border-radius:12px;
+  background:radial-gradient(ellipse at 50% 0%, rgba(212,175,106,0.05), rgba(0,0,0,0.35));
+  border:1px solid var(--hairline);
+}
+
+.vu-row{display:flex; align-items:center; gap:14px; margin-bottom:16px;}
+.vu{flex:1; display:flex; align-items:center; gap:8px;}
+.vu label{font-family:var(--mono); font-size:10px; color:var(--muted); width:10px;}
+.vu-track{flex:1; height:6px; background:rgba(255,255,255,0.06); border-radius:4px; overflow:hidden;}
+.vu-fill{height:100%; width:0%; background:linear-gradient(90deg, #5bd68f, var(--gold) 70%, var(--danger) 92%); transition:width .06s linear;}
+.vu-peak{font-family:var(--mono); font-size:10px; color:var(--muted); letter-spacing:0.06em;}
+
+.player-meta{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:10px 16px;
+  margin-bottom:14px; padding:14px 0; border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline);
+}
+.meta-item label{display:block; font-family:var(--mono); font-size:9px; letter-spacing:0.1em; color:var(--muted-2); margin-bottom:3px;}
+.meta-item span{font-size:12.5px; color:var(--text);}
+
+.now-playing{
+  font-family:var(--display); font-style:italic; color:var(--gold-soft);
+  font-size:14px; margin-bottom:16px; min-height:20px;
+}
+
+.transport{display:flex; align-items:center; gap:18px;}
+.play-btn{
+  width:52px; height:52px; border-radius:50%; flex:none;
+  background:var(--gold); color:#171207; border:none; font-size:16px;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 24px rgba(212,175,106,0.35);
+  transition:transform .2s;
+}
+.play-btn:hover{transform:scale(1.06);}
+.volume-wheel{flex:1; display:flex; flex-direction:column; gap:2px;}
+.volume-wheel input{width:100%; accent-color:var(--gold);}
+.volume-wheel label{font-family:var(--mono); font-size:9px; color:var(--muted); letter-spacing:0.14em;}
+
+/* ==========================================================================
+   LOADING
+   ========================================================================== */
+.loading-screen{
+  position:fixed; inset:0; z-index:60; background:rgba(3,4,7,0.86); backdrop-filter:blur(4px);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:18px;
+}
+.loading-ring{
+  width:46px; height:46px; border-radius:50%;
+  border:2px solid rgba(212,175,106,0.2); border-top-color:var(--gold);
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{ to{transform:rotate(360deg);} }
+.loading-screen p{font-family:var(--mono); font-size:12px; color:var(--muted); letter-spacing:0.06em;}
+
+/* night mode subtle body tint */
+body.night #world{filter:saturate(1.05) brightness(0.98);}
+
+/* time machine decade themes */
+body.era-crt .player-glass{ filter:sepia(0.15) contrast(1.05); }
+body.era-neon .player-glass{ box-shadow:0 0 0 1px var(--ice), 0 40px 120px rgba(0,0,0,0.6); }
+body.era-vintage #globeCanvas{ filter:sepia(0.25) contrast(0.95); }
+
+/* ==========================================================================
+   RESPONSIVE
+   safe-area aware; nothing is display:none permanently — things collapse
+   into a toggleable drawer or a bottom sheet instead of disappearing.
+   ========================================================================== */
+:root{
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+.filtersToggle{ display:none; }
+
+@media (max-width: 860px){
+  .topbar{ padding:calc(14px + var(--sat)) calc(14px + var(--sar)) 12px calc(14px + var(--sal)); }
+  .topbar-stats{ gap:14px; }
+  .topbar-stats .stat:not(.clock){ display:none; }
+  .topbar-actions{ gap:6px; }
+  .ghost-btn{ padding:8px 10px; font-size:9px; }
+
+  .player-scopes{grid-template-columns:1fr 1fr;}
+  .player-meta{grid-template-columns:1fr 1fr;}
+  #searchInput{width:150px;}
+}
+
+@media (max-width: 700px){
+  /* bottom control dock: curious + search stay put, legend + time machine
+     move into a slide-up drawer so nothing overlaps or vanishes */
+  .control-dock{
+    left:0; right:0; transform:none; bottom:calc(16px + var(--sab));
+    padding:0 14px; justify-content:center; flex-wrap:nowrap;
+  }
+  .search-wrap{flex:1; min-width:0;}
+  #searchInput{width:100%;}
+  .curious-btn span{display:none;}
+  .curious-btn{padding:14px; width:48px; height:48px; justify-content:center; border-radius:50%;}
+  .curious-ring{margin:0;}
+
+  .legend, .timemachine{
+    position:fixed; left:12px; right:12px; bottom:0;
+    width:auto; max-width:none;
+    transform:translateY(115%); opacity:0;
+    transition:transform .35s var(--ease), opacity .35s var(--ease);
+    pointer-events:none; z-index:22;
+  }
+  .legend{ display:flex; flex-direction:row; flex-wrap:wrap; gap:8px 14px; margin-bottom:calc(78px + var(--sab)); }
+  .timemachine{ margin-bottom:calc(150px + var(--sab)); }
+  body.show-filters .legend, body.show-filters .timemachine{
+    transform:translateY(0); opacity:1; pointer-events:auto;
+  }
+  body.show-filters .timemachine{ transition-delay:.05s; }
+
+  .filtersToggle{
+    display:flex; align-items:center; justify-content:center;
+    width:48px; height:48px; border-radius:50%; flex:none;
+    background:var(--panel); backdrop-filter:blur(12px);
+    border:1px solid var(--panel-border); color:var(--gold-soft);
+    font-size:16px;
+  }
+  .filtersToggle.active{ border-color:var(--gold); background:rgba(212,175,106,0.12); }
+
+  .heartbeat-readout{
+    top:auto; bottom:calc(16px + var(--sab)); left:14px;
+    max-width:40vw;
+  }
+  .heartbeat-readout span:last-child{
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .radar-toast-host{ top:calc(64px + var(--sat)); right:14px; max-width:60vw; }
+  .radar-toast{ max-width:none; font-size:11px; }
+
+  /* panels become full-width bottom sheets, so they can never run off
+     the top/side edges of a small viewport */
+  .stream-panel, .facts-panel, .util-panel{
+    left:0; right:0; top:auto; bottom:0; width:100%; max-width:100%;
+    max-height:78vh;
+    border-radius:20px 20px 0 0;
+    padding-bottom:var(--sab);
+  }
+
+  .player-glass{ padding:20px 18px calc(18px + var(--sab)); border-radius:16px 16px 0 0; width:100%; max-width:100%; max-height:100vh; }
+  .player{ align-items:flex-end; }
+  .player-meta{grid-template-columns:1fr 1fr; gap:8px 12px;}
+}
+
+@media (max-width: 480px){
+  .player-scopes{grid-template-columns:1fr 1fr;}
+  .scope{height:84px;}
+  .player-id h2{font-size:18px;}
+  .brand span:last-child{display:none;}
+  .eyebrow{font-size:9px; letter-spacing:0.3em;}
+  #heartbeatLine{font-size:clamp(22px,7vw,32px);}
+  .enter-btn{padding:14px 24px; font-size:11px;}
+}
+
+/* scrollbars */
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-thumb{background:rgba(212,175,106,0.25); border-radius:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+</style>
+</head>
+<body>
+
+<!-- ============ HOME ============ -->
+<section id="home">
+  <canvas id="starfield"></canvas>
+  <div class="aurora"></div>
+  <canvas id="homeGlobe"></canvas>
+  <div class="home-copy">
+    <p class="eyebrow">FREQUENCY OASIS</p>
+    <h1 id="heartbeatLine">Every city has a heartbeat.</h1>
+    <button id="enterBtn" class="enter-btn">
+      <span>ENTER THE SIGNAL</span>
+    </button>
+  </div>
+</section>
+
+<!-- ============ WORLD ============ -->
+<section id="world" class="hidden">
+
+  <canvas id="globeCanvas"></canvas>
+
+  <!-- top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span>WORLD SIGNAL</span>
+    </div>
+    <div class="topbar-stats">
+      <div class="stat"><span id="statStations">0</span><label>signals live</label></div>
+      <div class="stat"><span id="statCountries">0</span><label>territories</label></div>
+      <div class="stat clock"><span id="statUTC">--:--</span><label>UTC</label></div>
+    </div>
+    <div class="topbar-actions">
+      <button class="ghost-btn" data-panel="lab" title="Audio Lab">LAB</button>
+      <button class="ghost-btn" data-panel="weather" title="Sound Weather">WEATHER</button>
+      <button class="ghost-btn" data-panel="archive" title="The Archive">ARCHIVE</button>
+      <button class="ghost-btn" data-panel="badges" title="Achievements">◆</button>
+    </div>
+  </header>
+
+  <!-- curious / search -->
+  <div class="control-dock">
+    <button id="curiousBtn" class="curious-btn">
+      <span class="curious-ring"></span>
+      I FEEL CURIOUS
+    </button>
+    <div class="search-wrap">
+      <input id="searchInput" type="text" placeholder="Find a city, country, or genre…" autocomplete="off">
+      <div id="searchResults" class="search-results hidden"></div>
+    </div>
+    <button id="filtersToggle" class="filtersToggle" aria-label="Legend and Time Machine" title="Legend and Time Machine">◈</button>
+  </div>
+
+  <!-- legend -->
+  <div class="legend" id="legend"></div>
+
+  <!-- time machine -->
+  <div class="timemachine">
+    <label>TIME MACHINE</label>
+    <input id="decadeSlider" type="range" min="0" max="7" step="1" value="7">
+    <div class="decade-ticks">
+      <span>1950</span><span>60</span><span>70</span><span>80</span><span>90</span><span>2000</span><span>10</span><span>Today</span>
+    </div>
+  </div>
+
+  <!-- radar toast -->
+  <div id="radarToastHost" class="radar-toast-host"></div>
+
+  <!-- global heartbeat pulse label -->
+  <div class="heartbeat-readout">
+    <span class="pulse-dot"></span>
+    <span id="heartbeatLabel">calibrating global heartbeat…</span>
+  </div>
+
+  <!-- cluster / signal stream panel -->
+  <aside id="streamPanel" class="stream-panel hidden">
+    <div class="panel-head">
+      <div>
+        <p class="panel-eyebrow" id="clusterEyebrow">SIGNAL CLUSTER</p>
+        <h3 id="clusterTitle">—</h3>
+      </div>
+      <button class="close-btn" data-close="streamPanel">×</button>
+    </div>
+    <div id="streamList" class="stream-list"></div>
+  </aside>
+
+  <!-- discover facts panel -->
+  <aside id="factsPanel" class="facts-panel hidden">
+    <div class="panel-head">
+      <div>
+        <p class="panel-eyebrow">DIGITAL TRAVELLER</p>
+        <h3 id="factsTitle">—</h3>
+      </div>
+      <button class="close-btn" data-close="factsPanel">×</button>
+    </div>
+    <div id="factsBody" class="facts-body"></div>
+  </aside>
+
+  <!-- side utility panels -->
+  <aside id="weatherPanel" class="util-panel hidden">
+    <div class="panel-head"><h3>Sound Weather</h3><button class="close-btn" data-close="weatherPanel">×</button></div>
+    <div id="weatherBody" class="util-body"></div>
+  </aside>
+
+  <aside id="archivePanel" class="util-panel hidden">
+    <div class="panel-head"><h3>The Archive</h3><button class="close-btn" data-close="archivePanel">×</button></div>
+    <div id="archiveBody" class="util-body"></div>
+  </aside>
+
+  <aside id="badgesPanel" class="util-panel hidden">
+    <div class="panel-head"><h3>Achievements</h3><button class="close-btn" data-close="badgesPanel">×</button></div>
+    <div id="badgesBody" class="util-body"></div>
+  </aside>
+
+  <!-- ============ PLAYER ============ -->
+  <div id="player" class="player hidden">
+    <div class="player-glass">
+      <div class="player-head">
+        <div class="player-id">
+          <span id="playerFlag" class="flag">🌐</span>
+          <div>
+            <h2 id="playerName">—</h2>
+            <p id="playerLoc">—</p>
+          </div>
+        </div>
+        <button id="playerClose" class="close-btn">×</button>
+      </div>
+
+      <div class="player-scopes">
+        <canvas id="wheelCanvas" class="scope wheel"></canvas>
+        <canvas id="specCanvas" class="scope spectrum"></canvas>
+        <canvas id="scopeCanvas" class="scope oscilloscope"></canvas>
+        <canvas id="vectorCanvas" class="scope vector"></canvas>
+      </div>
+
+      <div class="vu-row">
+        <div class="vu"><label>L</label><div class="vu-track"><div id="vuL" class="vu-fill"></div></div></div>
+        <div class="vu"><label>R</label><div class="vu-track"><div id="vuR" class="vu-fill"></div></div></div>
+        <div class="vu-peak">PEAK <span id="peakVal">-∞</span> dB</div>
+      </div>
+
+      <div class="player-meta">
+        <div class="meta-item"><label>Genre</label><span id="metaGenre">—</span></div>
+        <div class="meta-item"><label>Bitrate</label><span id="metaBitrate">—</span></div>
+        <div class="meta-item"><label>Language</label><span id="metaLang">—</span></div>
+        <div class="meta-item"><label>Local time</label><span id="metaTime">—</span></div>
+        <div class="meta-item"><label>Weather</label><span id="metaWeather">—</span></div>
+        <div class="meta-item"><label>Sunrise / Sunset</label><span id="metaSun">—</span></div>
+        <div class="meta-item"><label>Signal</label><span id="metaSignal">—</span></div>
+        <div class="meta-item"><label>Latency</label><span id="metaLatency">—</span></div>
+      </div>
+
+      <div class="now-playing">
+        <span id="nowPlayingText">Tuning in…</span>
+      </div>
+
+      <div class="transport">
+        <button id="playPauseBtn" class="play-btn">▶</button>
+        <div class="volume-wheel">
+          <input id="volumeRange" type="range" min="0" max="100" value="70">
+          <label>VOLUME</label>
+        </div>
+        <a id="stationSite" class="ghost-btn small" href="#" target="_blank" rel="noopener">WEBSITE ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <audio id="audioEl" crossorigin="anonymous" preload="none"></audio>
+
+</section>
+
+<div id="loadingScreen" class="loading-screen hidden">
+  <div class="loading-ring"></div>
+  <p id="loadingText">Establishing contact with the ionosphere…</p>
+</div>
+
+<script>/* ==========================================================================
+   FREQUENCY OASIS // WORLD SIGNAL
+   Vanilla JS. No frameworks. Real station data via the Radio Browser API.
+   ========================================================================== */
+'use strict';
+
+/* -------------------------------------------------------------------------
+   0. CONSTANTS & GLOBAL STATE
+   ------------------------------------------------------------------------- */
+const API_HOSTS = [
+  'https://de1.api.radio-browser.info',
+  'https://de2.api.radio-browser.info',
+  'https://at1.api.radio-browser.info',
+  'https://nl1.api.radio-browser.info'
+];
+
+const GENRES = {
+  news:       { label:'News',       color:'#4f8ff7', energy:0.5, keys:['news','information'] },
+  jazz:       { label:'Jazz',       color:'#d4af6a', energy:0.35,keys:['jazz','blues','swing'] },
+  rnb:        { label:'R&B',        color:'#b072e0', energy:0.55,keys:['r&b','rnb','soul','hiphop','hip hop','rap'] },
+  nature:     { label:'Nature',     color:'#5bd68f', energy:0.2, keys:['nature','ambient','chill','relax','meditation'] },
+  talk:       { label:'Talk',       color:'#f0954a', energy:0.4, keys:['talk','community','culture','public radio'] },
+  sports:     { label:'Sports',     color:'#ef5b5b', energy:0.75,keys:['sport','sports'] },
+  classical:  { label:'Classical',  color:'#f4f2ea', energy:0.25,keys:['classical','opera','orchestra'] },
+  pop:        { label:'Pop',        color:'#f07ab0', energy:0.6, keys:['pop','top 40','top40','chart'] },
+  electronic: { label:'Electronic', color:'#4fd8f0', energy:0.85,keys:['electronic','dance','edm','house','techno','trance'] }
+};
+const GENRE_KEYS = Object.keys(GENRES);
+
+const ISLAND_NATIONS = new Set(['IS','JP','GB','IE','NZ','MG','CU','JM','LK','TW','PH','ID','MT','CY','BH','SG','MU','SC','FJ']);
+const MOUNTAIN_NATIONS = new Set(['CH','NP','BO','AT','PE','BT','AD','KG','TJ']);
+
+const state = {
+  stations: [],          // raw standardized stations
+  clusters: [],          // grouped by geo cell
+  rotY: 0.6,              // radians
+  rotX: -0.18,
+  autoRotate: true,
+  dragging:false,
+  lastPointer:null,
+  zoom: 1,
+  radius: 0,
+  center:{x:0,y:0},
+  hoverCluster:null,
+  activeStation:null,
+  audioCtx:null,
+  analyserL:null,
+  analyserR:null,
+  analyserMono:null,
+  simulatedScopes:false,
+  discoveredKeys:new Set(),
+  listenedCountries:new Set(JSON.parse(localStorage.getItem('fo_countries')||'[]')),
+  achievements:JSON.parse(localStorage.getItem('fo_achv')||'{}'),
+  jazzPlays: Number(localStorage.getItem('fo_jazzplays')||0),
+  playCount: Number(localStorage.getItem('fo_playcount')||0),
+  decade: 7,
+  playing:false
+};
+
+/* -------------------------------------------------------------------------
+   1. UTIL
+   ------------------------------------------------------------------------- */
+const $ = sel => document.querySelector(sel);
+const $all = sel => Array.from(document.querySelectorAll(sel));
+const clamp = (v,a,b) => Math.max(a, Math.min(b,v));
+const rad = d => d*Math.PI/180;
+
+function classifyGenre(tagsStr){
+  const t = (tagsStr||'').toLowerCase();
+  for(const key of GENRE_KEYS){
+    if(GENRES[key].keys.some(k=>t.includes(k))) return key;
+  }
+  // deterministic fallback so unmatched stations still get a stable, varied color
+  let h=0; for(let i=0;i<t.length;i++) h = (h*31 + t.charCodeAt(i))>>>0;
+  return GENRE_KEYS[h % GENRE_KEYS.length];
+}
+
+function continentOf(lat, lon){
+  if(lat>34 && lat<72 && lon>-25 && lon<45) return 'Europe';
+  if(lat>-35 && lat<38 && lon>-20 && lon<52) return 'Africa';
+  if(lat>5 && lat<75 && lon>-170 && lon<-50) return 'North America';
+  if(lat>-57 && lat<13 && lon>-82 && lon<-34) return 'South America';
+  if(lat>-50 && lat<0 && lon>110 && lon<180) return 'Oceania';
+  if(lat>-10 && lat<77 && lon>45 && lon<=180) return 'Asia';
+  return 'Other';
+}
+
+function toastRadar(msg){
+  const host = $('#radarToastHost');
+  const el = document.createElement('div');
+  el.className='radar-toast';
+  el.textContent = msg;
+  host.appendChild(el);
+  setTimeout(()=>el.remove(), 5100);
+}
+
+/* -------------------------------------------------------------------------
+   2. STARFIELD (home)
+   ------------------------------------------------------------------------- */
+(function starfield(){
+  const cvs = $('#starfield');
+  const ctx = cvs.getContext('2d');
+  let stars = [];
+  function resize(){
+    cvs.width = innerWidth*devicePixelRatio;
+    cvs.height = innerHeight*devicePixelRatio;
+    cvs.style.width = innerWidth+'px';
+    cvs.style.height = innerHeight+'px';
+    const n = Math.floor((innerWidth*innerHeight)/3200);
+    stars = Array.from({length:n}, ()=>({
+      x:Math.random()*cvs.width, y:Math.random()*cvs.height,
+      r:Math.random()*1.4+0.2, s:Math.random()*0.4+0.05,
+      p:Math.random()*Math.PI*2
+    }));
+  }
+  window.addEventListener('resize', resize);
+  resize();
+  let t=0;
+  function tick(){
+    t+=0.016;
+    ctx.clearRect(0,0,cvs.width,cvs.height);
+    for(const st of stars){
+      const alpha = 0.4+0.6*Math.sin(t*st.s+st.p);
+      ctx.fillStyle = `rgba(230,230,240,${clamp(alpha,0,1)})`;
+      ctx.beginPath(); ctx.arc(st.x, st.y, st.r*devicePixelRatio, 0, 7); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+/* -------------------------------------------------------------------------
+   3. HOME DECORATIVE GLOBE (small wireframe, spins slowly)
+   ------------------------------------------------------------------------- */
+(function homeGlobe(){
+  const cvs = $('#homeGlobe');
+  const ctx = cvs.getContext('2d');
+  function size(){
+    const s = Math.min(innerWidth, innerHeight)*0.5;
+    cvs.width = s*devicePixelRatio; cvs.height = s*devicePixelRatio;
+    cvs.style.width = s+'px'; cvs.style.height=s+'px';
+  }
+  window.addEventListener('resize', size); size();
+  let a=0;
+  function tick(){
+    a += 0.0022;
+    const w = cvs.width, h = cvs.height, r = w*0.42, cx=w/2, cy=h/2;
+    ctx.clearRect(0,0,w,h);
+    ctx.strokeStyle='rgba(212,175,106,0.28)';
+    ctx.lineWidth=1;
+    // outer rim
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,7); ctx.stroke();
+    // latitude ellipses
+    for(let i=-60;i<=60;i+=30){
+      const rr = r*Math.cos(rad(i));
+      const yy = cy - r*Math.sin(rad(i))*0.0 - 0; // flattened later
+      ctx.beginPath();
+      ctx.ellipse(cx, cy - r*Math.sin(rad(i)), rr, rr*0.28, 0, 0, 7);
+      ctx.globalAlpha=0.35;
+      ctx.stroke();
+    }
+    // longitude ellipses (rotating)
+    ctx.globalAlpha=0.45;
+    for(let i=0;i<6;i++){
+      const ang = a + i*Math.PI/6;
+      const rx = Math.abs(Math.cos(ang))*r;
+      ctx.beginPath();
+      ctx.ellipse(cx, cy, Math.max(rx,0.6), r, 0, 0, 7);
+      ctx.stroke();
+    }
+    ctx.globalAlpha=1;
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+
+/* -------------------------------------------------------------------------
+   4. LAND SILHOUETTES (rough continent polygons, lon/lat degrees)
+   ------------------------------------------------------------------------- */
+const LANDMASSES = [
+  [[-165,68],[-155,60],[-130,55],[-125,48],[-124,40],[-117,32],[-105,20],[-97,18],
+   [-90,16],[-97,26],[-95,29],[-81,25],[-80,32],[-75,35],[-70,42],[-67,45],[-60,50],
+   [-65,60],[-80,65],[-100,70],[-130,70],[-150,70],[-165,68]],
+  [[-80,10],[-77,5],[-70,-5],[-70,-18],[-71,-30],[-73,-40],[-68,-52],[-65,-55],
+   [-58,-52],[-56,-38],[-48,-25],[-40,-15],[-35,-8],[-45,2],[-60,8],[-72,10],[-80,10]],
+  [[-17,15],[-16,25],[10,37],[20,33],[32,31],[35,28],[43,12],[51,12],[45,0],
+   [40,-15],[35,-25],[30,-33],[20,-34],[15,-27],[12,-15],[10,-2],[8,4],[-5,5],[-10,7],[-17,15]],
+  [[-10,43],[-9,36],[0,38],[10,36],[18,40],[27,41],[30,45],[28,50],[20,54],
+   [25,60],[20,64],[10,63],[5,58],[-2,58],[-5,50],[-10,48],[-10,43]],
+  [[27,41],[35,45],[50,45],[55,50],[65,52],[80,50],[95,45],[110,45],[125,42],
+   [135,45],[140,35],[130,25],[110,20],[100,15],[95,20],[85,20],[70,25],[60,25],[50,30],[40,35],[27,41]],
+  [[113,-22],[120,-18],[130,-12],[142,-11],[145,-16],[150,-25],[150,-35],[140,-38],
+   [132,-32],[122,-34],[114,-30],[113,-22]]
+];
+
+/* -------------------------------------------------------------------------
+   5. THE WORLD GLOBE
+   ------------------------------------------------------------------------- */
+const globeCvs = $('#globeCanvas');
+const gctx = globeCvs.getContext('2d');
+
+function resizeGlobe(){
+  globeCvs.width = innerWidth*devicePixelRatio;
+  globeCvs.height = innerHeight*devicePixelRatio;
+  globeCvs.style.width = innerWidth+'px';
+  globeCvs.style.height = innerHeight+'px';
+  state.center.x = globeCvs.width/2;
+  state.center.y = globeCvs.height/2;
+  state.radius = Math.min(globeCvs.width, globeCvs.height)*0.34;
+}
+window.addEventListener('resize', resizeGlobe);
+resizeGlobe();
+
+// 3D projection helpers ------------------------------------------------
+function project(lon, lat){
+  const phi = rad(lat), theta = rad(lon) + state.rotY;
+  let x = Math.cos(phi)*Math.sin(theta);
+  let y = Math.sin(phi);
+  let z = Math.cos(phi)*Math.cos(theta);
+  // tilt around X axis
+  const cx = Math.cos(state.rotX), sx = Math.sin(state.rotX);
+  const y2 = y*cx - z*sx;
+  const z2 = y*sx + z*cx;
+  const R = state.radius*state.zoom;
+  return {
+    x: state.center.x + x*R,
+    y: state.center.y - y2*R,
+    z: z2,
+    visible: z2 > -0.02
+  };
+}
+
+// subsolar point (rough approximation, good enough for a day/night mood)
+function subsolar(){
+  const now = new Date();
+  const startOfYear = Date.UTC(now.getUTCFullYear(),0,0);
+  const dayOfYear = Math.floor((now - startOfYear)/86400000);
+  const decl = 23.44*Math.sin(rad(360/365*(dayOfYear-81)));
+  const utcHours = now.getUTCHours() + now.getUTCMinutes()/60;
+  const lon = 180 - utcHours*15; // sun over lon where local solar noon
+  return { lat: decl, lon: ((lon+180)%360)-180 };
+}
+
+function isNightAt(lon,lat){
+  const s = subsolar();
+  const p1 = [Math.cos(rad(lat))*Math.cos(rad(lon)), Math.cos(rad(lat))*Math.sin(rad(lon)), Math.sin(rad(lat))];
+  const p2 = [Math.cos(rad(s.lat))*Math.cos(rad(s.lon)), Math.cos(rad(s.lat))*Math.sin(rad(s.lon)), Math.sin(rad(s.lat))];
+  const dot = p1[0]*p2[0]+p1[1]*p2[1]+p1[2]*p2[2];
+  return dot < -0.05;
+}
+
+function drawGlobe(ts){
+  const w = globeCvs.width, h = globeCvs.height;
+  gctx.clearRect(0,0,w,h);
+
+  const R = state.radius*state.zoom;
+  const cx = state.center.x, cy = state.center.y;
+
+  // ocean sphere
+  const grad = gctx.createRadialGradient(cx-R*0.35, cy-R*0.35, R*0.1, cx, cy, R*1.05);
+  grad.addColorStop(0,'#132038');
+  grad.addColorStop(0.55,'#0b1526');
+  grad.addColorStop(1,'#050912');
+  gctx.beginPath(); gctx.arc(cx,cy,R,0,7); gctx.fillStyle=grad; gctx.fill();
+
+  // subtle rim light
+  gctx.beginPath(); gctx.arc(cx,cy,R,0,7);
+  gctx.strokeStyle='rgba(212,175,106,0.35)'; gctx.lineWidth=1.2; gctx.stroke();
+
+  // graticule
+  gctx.lineWidth=1;
+  for(let lat=-60; lat<=60; lat+=30){
+    gctx.beginPath();
+    let started=false;
+    for(let lon=-180; lon<=180; lon+=4){
+      const p = project(lon,lat);
+      if(p.visible){
+        if(!started){ gctx.moveTo(p.x,p.y); started=true; } else gctx.lineTo(p.x,p.y);
+      } else started=false;
+    }
+    gctx.strokeStyle='rgba(127,216,232,0.10)';
+    gctx.stroke();
+  }
+  for(let lon=-150; lon<=180; lon+=30){
+    gctx.beginPath();
+    let started=false;
+    for(let lat=-90; lat<=90; lat+=4){
+      const p = project(lon,lat);
+      if(p.visible){
+        if(!started){ gctx.moveTo(p.x,p.y); started=true; } else gctx.lineTo(p.x,p.y);
+      } else started=false;
+    }
+    gctx.strokeStyle='rgba(127,216,232,0.10)';
+    gctx.stroke();
+  }
+
+  // landmasses
+  for(const poly of LANDMASSES){
+    gctx.beginPath();
+    let started=false; let anyVisible=false;
+    for(const [lon,lat] of poly){
+      const p = project(lon,lat);
+      if(p.visible) anyVisible=true;
+      if(!started){ gctx.moveTo(p.x,p.y); started=true; } else gctx.lineTo(p.x,p.y);
+    }
+    gctx.closePath();
+    if(anyVisible){
+      gctx.fillStyle='rgba(212,175,106,0.10)';
+      gctx.fill();
+      gctx.strokeStyle='rgba(212,175,106,0.30)';
+      gctx.lineWidth=1;
+      gctx.stroke();
+    }
+  }
+
+  // night shading
+  for(let lat=-84; lat<=84; lat+=6){
+    for(let lon=-180; lon<180; lon+=6){
+      if(!isNightAt(lon,lat)) continue;
+      const p = project(lon,lat);
+      if(!p.visible) continue;
+      gctx.fillStyle='rgba(2,4,10,0.30)';
+      gctx.beginPath(); gctx.arc(p.x,p.y, R*0.052, 0, 7); gctx.fill();
+    }
+  }
+
+  // polar aurora hint
+  [ -85, 85 ].forEach(latp=>{
+    const p = project(state.auroraLon||0, latp);
+    if(p.visible){
+      const ag = gctx.createRadialGradient(p.x,p.y,0,p.x,p.y,R*0.5);
+      ag.addColorStop(0, latp>0? 'rgba(127,216,232,0.22)':'rgba(176,114,224,0.18)');
+      ag.addColorStop(1,'rgba(0,0,0,0)');
+      gctx.fillStyle=ag;
+      gctx.beginPath(); gctx.arc(p.x,p.y,R*0.5,0,7); gctx.fill();
+    }
+  });
+
+  // constellations (connect same-genre nearby clusters)
+  drawConstellations(R);
+
+  // beacons
+  const visibleClusters = [];
+  for(const c of state.clusters){
+    const p = project(c.lon, c.lat);
+    c._proj = p;
+    if(!p.visible) continue;
+    visibleClusters.push(c);
+    const g = GENRES[c.genre];
+    const baseR = clamp(2.4 + Math.sqrt(c.stations.length)*1.6, 2.4, 13) * (R/260);
+    const speed = 1.4 + g.energy*2.6;
+    const pulse = 0.65 + 0.35*Math.sin((ts||0)/1000*speed + c.seed);
+    const night = isNightAt(c.lon,c.lat);
+    const glowR = baseR * (1.8+pulse*0.9);
+
+    const rg = gctx.createRadialGradient(p.x,p.y,0,p.x,p.y,glowR);
+    rg.addColorStop(0, g.color);
+    rg.addColorStop(1, 'rgba(0,0,0,0)');
+    gctx.globalAlpha = night? 0.95 : 0.55+pulse*0.25;
+    gctx.fillStyle = rg;
+    gctx.beginPath(); gctx.arc(p.x,p.y,glowR,0,7); gctx.fill();
+
+    gctx.globalAlpha=1;
+    gctx.fillStyle = g.color;
+    gctx.beginPath(); gctx.arc(p.x,p.y, baseR*0.55, 0, 7); gctx.fill();
+  }
+  state._visibleClusters = visibleClusters;
+
+  // global heartbeat pulse ring traveling along the rim
+  drawHeartbeatRing(ts, R, cx, cy);
+
+  // hover highlight
+  if(state.hoverCluster && state.hoverCluster._proj && state.hoverCluster._proj.visible){
+    const p = state.hoverCluster._proj;
+    gctx.strokeStyle='rgba(240,220,171,0.9)';
+    gctx.lineWidth=1.4;
+    gctx.beginPath(); gctx.arc(p.x,p.y,10*(R/260)+6,0,7); gctx.stroke();
+  }
+}
+
+function drawConstellations(R){
+  const list = state._visibleClusters || [];
+  if(list.length<2) return;
+  gctx.lineWidth=1;
+  for(let i=0;i<list.length;i++){
+    const a = list[i];
+    let links=0;
+    for(let j=0;j<list.length;j++){
+      if(i===j || links>=2) break;
+      const b = list[j];
+      if(a.genre!==b.genre) continue;
+      const dx=a._proj.x-b._proj.x, dy=a._proj.y-b._proj.y;
+      const d = Math.hypot(dx,dy);
+      if(d < R*0.5 && d>4){
+        gctx.strokeStyle = hexToRgba(GENRES[a.genre].color, 0.10);
+        gctx.beginPath(); gctx.moveTo(a._proj.x,a._proj.y); gctx.lineTo(b._proj.x,b._proj.y); gctx.stroke();
+        links++;
+      }
+    }
+  }
+}
+function hexToRgba(hex,a){
+  const n = parseInt(hex.slice(1),16);
+  return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`;
+}
+
+let heartbeatPhase=0;
+function drawHeartbeatRing(ts,R,cx,cy){
+  const speed = 0.35 + Math.min(state.stations.length,600)/600*0.9;
+  heartbeatPhase = ((ts||0)/1000*speed) % (Math.PI*2);
+  const p = { x: cx + Math.cos(heartbeatPhase)*R, y: cy + Math.sin(heartbeatPhase)*R*0.98 };
+  const rg = gctx.createRadialGradient(p.x,p.y,0,p.x,p.y,R*0.09);
+  rg.addColorStop(0,'rgba(212,175,106,0.9)');
+  rg.addColorStop(1,'rgba(212,175,106,0)');
+  gctx.fillStyle=rg;
+  gctx.beginPath(); gctx.arc(p.x,p.y,R*0.09,0,7); gctx.fill();
+}
+
+function globeLoop(ts){
+  if(state.autoRotate && !state.dragging){
+    state.rotY += 0.00035;
+  }
+  state.auroraLon = ((ts||0)/4000)%360 - 180;
+  drawGlobe(ts||0);
+  requestAnimationFrame(globeLoop);
+}
+requestAnimationFrame(globeLoop);
+
+/* pointer interaction: drag to rotate, wheel to zoom, click to select */
+(function globeInteraction(){
+  let downPos=null, moved=false;
+  globeCvs.addEventListener('pointerdown', e=>{
+    state.dragging=true; downPos={x:e.clientX,y:e.clientY}; moved=false;
+    state.lastPointer={x:e.clientX,y:e.clientY};
+  });
+  window.addEventListener('pointermove', e=>{
+    if(!state.dragging) { handleHover(e); return; }
+    const dx = e.clientX - state.lastPointer.x;
+    const dy = e.clientY - state.lastPointer.y;
+    if(Math.abs(dx)+Math.abs(dy) > 3) moved=true;
+    state.rotY += dx*0.005;
+    state.rotX = clamp(state.rotX + dy*0.004, -1.2, 1.2);
+    state.lastPointer={x:e.clientX,y:e.clientY};
+  });
+  window.addEventListener('pointerup', e=>{
+    if(state.dragging && !moved){
+      handleClick(e);
+    }
+    state.dragging=false;
+  });
+  globeCvs.addEventListener('wheel', e=>{
+    e.preventDefault();
+    state.zoom = clamp(state.zoom * (1 - e.deltaY*0.001), 0.6, 3.2);
+  }, {passive:false});
+
+  let pinchDist=null;
+  globeCvs.addEventListener('touchmove', e=>{
+    if(e.touches.length===2){
+      const d = Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
+      if(pinchDist) state.zoom = clamp(state.zoom*(d/pinchDist), 0.6, 3.2);
+      pinchDist = d;
+    }
+  }, {passive:true});
+  globeCvs.addEventListener('touchend', ()=>{ pinchDist=null; });
+
+  function nearestCluster(clientX, clientY){
+    const rect = globeCvs.getBoundingClientRect();
+    const x = (clientX-rect.left)*devicePixelRatio, y=(clientY-rect.top)*devicePixelRatio;
+    let best=null, bestD=26*devicePixelRatio;
+    for(const c of (state._visibleClusters||[])){
+      const d = Math.hypot(c._proj.x-x, c._proj.y-y);
+      if(d<bestD){ bestD=d; best=c; }
+    }
+    return best;
+  }
+  function handleHover(e){
+    state.hoverCluster = nearestCluster(e.clientX, e.clientY);
+    globeCvs.style.cursor = state.hoverCluster? 'pointer':'grab';
+  }
+  function handleClick(e){
+    const c = nearestCluster(e.clientX, e.clientY);
+    if(c) openCluster(c);
+  }
+})();
+
+/* -------------------------------------------------------------------------
+   6. DATA LAYER — Radio Browser API
+   ------------------------------------------------------------------------- */
+async function apiFetch(path){
+  let lastErr;
+  for(const host of API_HOSTS){
+    try{
+      const res = await fetch(host+path, { headers:{'User-Agent':'FrequencyOasis/1.0'} });
+      if(!res.ok) throw new Error('bad status '+res.status);
+      return await res.json();
+    }catch(err){ lastErr = err; }
+  }
+  throw lastErr;
+}
+
+function standardize(raw){
+  return raw
+    .filter(s=>s.geo_lat && s.geo_long && s.url_resolved)
+    .map(s=>({
+      id: s.stationuuid,
+      name: s.name?.trim() || 'Unnamed Signal',
+      country: s.country || 'Unknown',
+      countrycode: (s.countrycode||'').toUpperCase(),
+      state: s.state || '',
+      lat: parseFloat(s.geo_lat),
+      lon: parseFloat(s.geo_long),
+      tags: s.tags || '',
+      genre: classifyGenre(s.tags),
+      bitrate: s.bitrate || 0,
+      votes: s.votes || 0,
+      clicks: s.clickcount || 0,
+      url: s.url_resolved,
+      homepage: s.homepage || '',
+      favicon: s.favicon || '',
+      language: (s.language||'').split(',')[0] || 'unknown'
+    }));
+}
+
+function buildClusters(stations){
+  const cells = new Map();
+  const CELL = 3.2;
+  for(const s of stations){
+    const key = Math.round(s.lat/CELL)+'_'+Math.round(s.lon/CELL);
+    if(!cells.has(key)) cells.set(key, []);
+    cells.get(key).push(s);
+  }
+  const clusters = [];
+  let seed=0;
+  for(const [key, list] of cells){
+    const lat = list.reduce((a,s)=>a+s.lat,0)/list.length;
+    const lon = list.reduce((a,s)=>a+s.lon,0)/list.length;
+    const genreCounts = {};
+    list.forEach(s=>genreCounts[s.genre]=(genreCounts[s.genre]||0)+1);
+    const genre = Object.entries(genreCounts).sort((a,b)=>b[1]-a[1])[0][0];
+    const stateNames = {};
+    list.forEach(s=>{ const k=s.state||s.country; stateNames[k]=(stateNames[k]||0)+1; });
+    const label = Object.entries(stateNames).sort((a,b)=>b[1]-a[1])[0][0];
+    clusters.push({ key, lat, lon, stations:list, genre, label, seed: (seed++ * 0.7)%6.28, country:list[0].country, countrycode:list[0].countrycode });
+  }
+  return clusters;
+}
+
+async function loadStations(){
+  setLoading(true, 'Sweeping the ionosphere for live signals…');
+  try{
+    const raw = await apiFetch('/json/stations/search?has_geo_info=true&hidebroken=true&order=clickcount&reverse=true&limit=900');
+    state.stations = standardize(raw);
+    state.clusters = buildClusters(state.stations);
+    updateTopbarStats();
+    renderLegend();
+    setLoading(false);
+  }catch(err){
+    console.error(err);
+    setLoading(true, 'Signal weak — retrying station sweep…');
+    setTimeout(loadStations, 3000);
+  }
+}
+
+function updateTopbarStats(){
+  $('#statStations').textContent = state.stations.length.toLocaleString();
+  const countries = new Set(state.stations.map(s=>s.countrycode).filter(Boolean));
+  $('#statCountries').textContent = countries.size;
+}
+
+function renderLegend(){
+  const host = $('#legend');
+  host.innerHTML = GENRE_KEYS.map(k=>{
+    const g = GENRES[k];
+    return `<div class="lg-item"><span class="lg-dot" style="background:${g.color}"></span>${g.label}</div>`;
+  }).join('');
+}
+
+/* -------------------------------------------------------------------------
+   7. PANELS — cluster stream / facts / weather / archive / badges
+   ------------------------------------------------------------------------- */
+function openPanel(id){ $('#'+id).classList.remove('hidden'); }
+function closePanel(id){ $('#'+id).classList.add('hidden'); }
+
+function openCluster(cluster){
+  state.hoverCluster = cluster;
+  $('#clusterEyebrow').textContent = `${cluster.stations.length} SIGNAL${cluster.stations.length>1?'S':''} · ${cluster.country.toUpperCase()}`;
+  $('#clusterTitle').textContent = cluster.label || cluster.country;
+  const list = $('#streamList');
+  list.innerHTML = cluster.stations.slice(0,60).map(s=>streamItemHTML(s)).join('');
+  openPanel('streamPanel');
+  list.querySelectorAll('.stream-item').forEach((el,i)=>{
+    el.addEventListener('click', ()=>playStation(cluster.stations[i]));
+  });
+}
+
+function streamItemHTML(s){
+  const g = GENRES[s.genre];
+  return `<div class="stream-item">
+    <span class="stream-dot" style="background:${g.color}; box-shadow:0 0 8px ${g.color}"></span>
+    <div class="stream-info">
+      <p class="si-name">${escapeHTML(s.name)}</p>
+      <p class="si-meta">${escapeHTML(s.state||s.country)} · ${g.label} · ${s.bitrate||'—'}kbps</p>
+    </div>
+    <span class="stream-live">LIVE</span>
+  </div>`;
+}
+function escapeHTML(str){ return (str||'').replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+/* search ------------------------------------------------------------- */
+let searchTimer=null;
+$('#searchInput').addEventListener('input', e=>{
+  clearTimeout(searchTimer);
+  const q = e.target.value.trim();
+  if(!q){ $('#searchResults').classList.add('hidden'); return; }
+  searchTimer = setTimeout(()=>runSearch(q), 260);
+});
+function runSearch(q){
+  const ql = q.toLowerCase();
+  const localHits = state.stations.filter(s=>
+    s.name.toLowerCase().includes(ql) ||
+    s.country.toLowerCase().includes(ql) ||
+    (s.state||'').toLowerCase().includes(ql) ||
+    s.tags.toLowerCase().includes(ql)
+  ).slice(0,18);
+  const box = $('#searchResults');
+  if(!localHits.length){
+    box.innerHTML = `<div class="sr-item"><span>No local matches — try Enter to search the network</span></div>`;
+  } else {
+    box.innerHTML = localHits.map((s,i)=>`<div class="sr-item" data-i="${i}"><span>${escapeHTML(s.name)}</span><small>${escapeHTML(s.state||s.country)}</small></div>`).join('');
+    box.querySelectorAll('.sr-item').forEach((el,i)=>{
+      el.addEventListener('click', ()=>{ playStation(localHits[i]); box.classList.add('hidden'); flyTo(localHits[i].lon, localHits[i].lat); });
+    });
+  }
+  box.classList.remove('hidden');
+}
+$('#searchInput').addEventListener('keydown', async e=>{
+  if(e.key!=='Enter') return;
+  const q = e.target.value.trim();
+  if(!q) return;
+  try{
+    const raw = await apiFetch(`/json/stations/search?name=${encodeURIComponent(q)}&limit=40&hidebroken=true`);
+    const results = standardize(raw);
+    if(results.length){
+      const cluster = { key:'search', lat:results[0].lat, lon:results[0].lon, stations:results, genre:results[0].genre, label:q, country:results[0].country };
+      openCluster(cluster);
+      flyTo(results[0].lon, results[0].lat);
+    } else {
+      toastRadar(`No live signal found for "${q}."`);
+    }
+  }catch(err){ console.error(err); }
+});
+document.addEventListener('click', e=>{
+  if(!e.target.closest('.search-wrap')) $('#searchResults').classList.add('hidden');
+});
+
+function flyTo(lon,lat){
+  // simplest smooth approach: animate rotY toward -lon
+  const targetY = -rad(lon) - Math.PI/2 * 0; // align so lon faces viewer (theta=0)
+  const target = -rad(lon);
+  const targetX = clamp(rad(lat)*0.6, -1.1, 1.1);
+  animateRotation(target, targetX);
+}
+function animateRotation(targetY, targetX){
+  state.autoRotate=false;
+  const startY = state.rotY, startX = state.rotX;
+  // normalize shortest path
+  let dy = ((targetY-startY+Math.PI)%(2*Math.PI))-Math.PI;
+  const dur=1400, t0=performance.now();
+  function step(now){
+    const t = clamp((now-t0)/dur,0,1);
+    const e = 1-Math.pow(1-t,3);
+    state.rotY = startY + dy*e;
+    state.rotX = startX + (targetX-startX)*e;
+    if(t<1) requestAnimationFrame(step);
+    else setTimeout(()=>state.autoRotate=true, 2500);
+  }
+  requestAnimationFrame(step);
+}
+
+/* close buttons */
+$all('[data-close]').forEach(btn=>{
+  btn.addEventListener('click', ()=>closePanel(btn.dataset.close));
+});
+$all('[data-panel]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const map = {lab:'weatherPanel', weather:'weatherPanel', archive:'archivePanel', badges:'badgesPanel'};
+    if(btn.dataset.panel==='lab'){ openAudioLab(); return; }
+    if(btn.dataset.panel==='weather'){ renderWeatherPanel(); openPanel('weatherPanel'); return; }
+    if(btn.dataset.panel==='archive'){ renderArchivePanel(); openPanel('archivePanel'); return; }
+    if(btn.dataset.panel==='badges'){ renderBadgesPanel(); openPanel('badgesPanel'); return; }
+  });
+});
+
+/* Sound Weather panel -------------------------------------------------- */
+function renderWeatherPanel(){
+  const s = state.stations;
+  if(!s.length){ $('#weatherBody').innerHTML='Gathering the network…'; return; }
+  const byGenre = {};
+  GENRE_KEYS.forEach(k=>byGenre[k]=0);
+  let gospel=0;
+  const byCluster = {};
+  const byCountry = {};
+  const byContinent = {};
+  s.forEach(st=>{
+    byGenre[st.genre]++;
+    if((st.tags||'').toLowerCase().includes('gospel')) gospel++;
+    byCountry[st.country] = (byCountry[st.country]||0)+1;
+    const cont = continentOf(st.lat, st.lon);
+    byContinent[cont] = (byContinent[cont]||0)+1;
+  });
+  state.clusters.forEach(c=>{
+    const avgBitrate = c.stations.reduce((a,x)=>a+(x.bitrate||0),0)/c.stations.length;
+    byCluster[c.key] = { label:c.label, country:c.country, avg:avgBitrate };
+  });
+  const loudest = Object.values(byCluster).sort((a,b)=>b.avg-a.avg)[0];
+  const quietestCountry = Object.entries(byCountry).sort((a,b)=>a[1]-b[1])[0];
+  const activeContinent = Object.entries(byContinent).sort((a,b)=>b[1]-a[1])[0];
+  const topGenre = Object.entries(byGenre).sort((a,b)=>b[1]-a[1])[0];
+
+  $('#weatherBody').innerHTML = `
+    <div class="uw-row"><label>Loudest signal cluster</label><span>${escapeHTML(loudest? (loudest.label+', '+loudest.country) : '—')}</span></div>
+    <div class="uw-row"><label>Quietest territory</label><span>${escapeHTML(quietestCountry? quietestCountry[0] : '—')}</span></div>
+    <div class="uw-row"><label>Most Jazz right now</label><span>${byGenre.jazz}</span></div>
+    <div class="uw-row"><label>Most News right now</label><span>${byGenre.news}</span></div>
+    <div class="uw-row"><label>Most Gospel right now</label><span>${gospel}</span></div>
+    <div class="uw-row"><label>Most Electronic right now</label><span>${byGenre.electronic}</span></div>
+    <div class="uw-row"><label>Most active continent</label><span>${activeContinent? activeContinent[0]:'—'}</span></div>
+    <div class="uw-row"><label>Dominant frequency overall</label><span>${GENRES[topGenre[0]].label}</span></div>
+    <p style="margin-top:12px; color:var(--muted-2); font-size:11px;">Computed live from the ${s.length.toLocaleString()} signals currently tracked by World Signal.</p>
+  `;
+}
+
+/* Archive panel --------------------------------------------------------- */
+function renderArchivePanel(){
+  const byCountry = {};
+  state.stations.forEach(s=>{ byCountry[s.country]=(byCountry[s.country]||0)+1; });
+  const top = Object.entries(byCountry).sort((a,b)=>b[1]-a[1]).slice(0,24);
+  $('#archiveBody').innerHTML = `
+    <div class="archive-group">
+      <h4>BY GENRE</h4>
+      ${GENRE_KEYS.map(k=>`<span class="archive-tag" data-genre="${k}">${GENRES[k].label}</span>`).join('')}
+    </div>
+    <div class="archive-group">
+      <h4>BY TERRITORY</h4>
+      ${top.map(([c,n])=>`<span class="archive-tag" data-country="${escapeHTML(c)}">${escapeHTML(c)} · ${n}</span>`).join('')}
+    </div>
+  `;
+  $('#archiveBody').querySelectorAll('[data-genre]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const g = el.dataset.genre;
+      const matches = state.stations.filter(s=>s.genre===g).slice(0,60);
+      if(matches.length){
+        openCluster({ key:'genre', lat:matches[0].lat, lon:matches[0].lon, stations:matches, genre:g, label:GENRES[g].label, country:'' });
+        closePanel('archivePanel');
+      }
+    });
+  });
+  $('#archiveBody').querySelectorAll('[data-country]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const c = el.dataset.country;
+      const matches = state.stations.filter(s=>s.country===c).slice(0,60);
+      if(matches.length){
+        openCluster({ key:'country', lat:matches[0].lat, lon:matches[0].lon, stations:matches, genre:matches[0].genre, label:c, country:c });
+        flyTo(matches[0].lon, matches[0].lat);
+        closePanel('archivePanel');
+      }
+    });
+  });
+}
+
+/* Badges panel ----------------------------------------------------------- */
+const BADGES = [
+  { id:'first', icon:'📡', name:'First Contact', desc:'Play your first station' },
+  { id:'night', icon:'🌙', name:'Night Owl', desc:'Play a station in the dark hours' },
+  { id:'traveller', icon:'🌍', name:'World Traveller', desc:'Listen across 10 countries' },
+  { id:'collector', icon:'💠', name:'Signal Collector', desc:'Listen across 25 countries' },
+  { id:'jazzhunter', icon:'🎷', name:'Jazz Hunter', desc:'Play 5 jazz stations' },
+  { id:'ocean', icon:'🌊', name:'Ocean Listener', desc:'Tune into an island nation' },
+  { id:'mountain', icon:'⛰️', name:'Mountain Frequencies', desc:'Tune into a mountain nation' }
+];
+function renderBadgesPanel(){
+  $('#badgesBody').innerHTML = `<div class="badge-grid">${BADGES.map(b=>{
+    const un = state.achievements[b.id];
+    return `<div class="badge ${un?'unlocked':''}"><div class="b-icon">${b.icon}</div><div class="b-name">${b.name}</div><div class="b-desc">${b.desc}</div></div>`;
+  }).join('')}</div>`;
+}
+function unlock(id){
+  if(state.achievements[id]) return;
+  state.achievements[id]=true;
+  localStorage.setItem('fo_achv', JSON.stringify(state.achievements));
+  const b = BADGES.find(x=>x.id===id);
+  if(b) toastRadar(`Achievement unlocked — ${b.name}.`);
+}
+function checkAchievements(station){
+  unlock('first');
+  const hourLocal = new Date().getHours();
+  if(hourLocal>=0 && hourLocal<5) unlock('night');
+  if(state.listenedCountries.size>=10) unlock('traveller');
+  if(state.listenedCountries.size>=25) unlock('collector');
+  if(station.genre==='jazz' && state.jazzPlays>=5) unlock('jazzhunter');
+  if(ISLAND_NATIONS.has(station.countrycode)) unlock('ocean');
+  if(MOUNTAIN_NATIONS.has(station.countrycode)) unlock('mountain');
+}
+
+/* -------------------------------------------------------------------------
+   8. PLAYER
+   ------------------------------------------------------------------------- */
+const audioEl = $('#audioEl');
+
+function ensureAudioGraph(){
+  if(state.audioCtx) return;
+  try{
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    state.audioCtx = new Ctx();
+    const src = state.audioCtx.createMediaElementSource(audioEl);
+    const splitter = state.audioCtx.createChannelSplitter(2);
+    const merger = state.audioCtx.createGain();
+    state.analyserL = state.audioCtx.createAnalyser();
+    state.analyserR = state.audioCtx.createAnalyser();
+    state.analyserMono = state.audioCtx.createAnalyser();
+    [state.analyserL,state.analyserR,state.analyserMono].forEach(a=>{ a.fftSize=1024; a.smoothingTimeConstant=0.8; });
+    src.connect(splitter);
+    splitter.connect(state.analyserL,0);
+    splitter.connect(state.analyserR,1);
+    src.connect(state.analyserMono);
+    src.connect(state.audioCtx.destination);
+  }catch(err){
+    console.warn('Audio graph unavailable, using simulated scopes.', err);
+    state.simulatedScopes = true;
+  }
+}
+
+async function playStation(station){
+  state.activeStation = station;
+  closePanel('streamPanel'); closePanel('factsPanel');
+  openPanel_player();
+  $('#playerName').textContent = station.name;
+  $('#playerLoc').textContent = `${station.state? station.state+', ':''}${station.country}`;
+  $('#playerFlag').textContent = flagEmoji(station.countrycode) || '📡';
+  $('#metaGenre').textContent = GENRES[station.genre].label;
+  $('#metaBitrate').textContent = station.bitrate? station.bitrate+' kbps' : '—';
+  $('#metaLang').textContent = station.language || '—';
+  $('#stationSite').href = station.homepage || station.url || '#';
+  $('#nowPlayingText').textContent = 'Tuning in…';
+  $('#metaSignal').textContent = signalBars(station.bitrate);
+  $('#metaLatency').textContent = '—';
+
+  audioEl.src = station.url;
+  audioEl.volume = ($('#volumeRange').value)/100;
+  ensureAudioGraph();
+  if(state.audioCtx && state.audioCtx.state==='suspended') state.audioCtx.resume();
+
+  const t0 = performance.now();
+  audioEl.oncanplay = ()=>{ $('#metaLatency').textContent = Math.round(performance.now()-t0)+' ms'; };
+  try{
+    await audioEl.play();
+    state.playing = true;
+    $('#playPauseBtn').textContent='❚❚';
+    $('#nowPlayingText').textContent = 'Live from ' + station.name;
+  }catch(err){
+    $('#nowPlayingText').textContent = 'Unable to connect to this signal — try another.';
+  }
+
+  // weather / time / sun via Open-Meteo (real, free, no key)
+  fetchStationEnvironment(station);
+
+  // bookkeeping for achievements
+  state.playCount++; localStorage.setItem('fo_playcount', state.playCount);
+  if(station.genre==='jazz'){ state.jazzPlays++; localStorage.setItem('fo_jazzplays', state.jazzPlays); }
+  if(station.countrycode){ state.listenedCountries.add(station.countrycode); localStorage.setItem('fo_countries', JSON.stringify([...state.listenedCountries])); }
+  checkAchievements(station);
+
+  toastRadar(`Now tuned — ${station.name}, ${station.country}.`);
+}
+
+function openPanel_player(){ $('#player').classList.remove('hidden'); }
+$('#playerClose').addEventListener('click', ()=>{
+  $('#player').classList.add('hidden');
+  audioEl.pause();
+  state.playing=false;
+});
+$('#playPauseBtn').addEventListener('click', ()=>{
+  if(state.playing){ audioEl.pause(); state.playing=false; $('#playPauseBtn').textContent='▶'; }
+  else { audioEl.play(); state.playing=true; $('#playPauseBtn').textContent='❚❚'; }
+});
+$('#volumeRange').addEventListener('input', e=>{ audioEl.volume = e.target.value/100; });
+
+function flagEmoji(cc){
+  if(!cc || cc.length!==2) return '';
+  const A = 127397;
+  return String.fromCodePoint(...[...cc.toUpperCase()].map(c=>c.charCodeAt(0)+A));
+}
+function signalBars(bitrate){
+  if(!bitrate) return '▂▄▆';
+  if(bitrate>=192) return '▂▄▆█';
+  if(bitrate>=128) return '▂▄▆';
+  if(bitrate>=64) return '▂▄';
+  return '▂';
+}
+
+let envTimer=null;
+async function fetchStationEnvironment(station){
+  clearInterval(envTimer);
+  try{
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${station.lat}&longitude=${station.lon}&current=temperature_2m,weather_code&daily=sunrise,sunset&timezone=auto`;
+    const res = await fetch(url);
+    const data = await res.json();
+    const temp = data.current?.temperature_2m;
+    const code = data.current?.weather_code;
+    $('#metaWeather').textContent = temp!=null? `${Math.round(temp)}°C, ${weatherCodeLabel(code)}` : '—';
+    const sunrise = data.daily?.sunrise?.[0], sunset = data.daily?.sunset?.[0];
+    $('#metaSun').textContent = sunrise&&sunset? `${fmtTime(sunrise)} / ${fmtTime(sunset)}` : '—';
+    const offsetSec = data.utc_offset_seconds || 0;
+    const updateClock = ()=>{
+      const nowUtc = Date.now() + (new Date().getTimezoneOffset()*60000);
+      const local = new Date(nowUtc + offsetSec*1000);
+      $('#metaTime').textContent = local.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    };
+    updateClock();
+    envTimer = setInterval(updateClock, 15000);
+  }catch(err){
+    $('#metaWeather').textContent = '—';
+    $('#metaSun').textContent = '—';
+  }
+}
+function fmtTime(iso){ const d=new Date(iso); return d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
+function weatherCodeLabel(code){
+  const map = {0:'clear',1:'mostly clear',2:'partly cloudy',3:'overcast',45:'fog',48:'fog',
+    51:'drizzle',61:'rain',63:'rain',65:'heavy rain',71:'snow',73:'snow',75:'heavy snow',
+    80:'showers',95:'storms'};
+  return map[code] || 'mild';
+}
+
+/* -------------------------------------------------------------------------
+   9. SCOPES — real Web Audio analysis with graceful simulated fallback
+   ------------------------------------------------------------------------- */
+const scopeCanvases = {
+  wheel: $('#wheelCanvas'), spec: $('#specCanvas'), osc: $('#scopeCanvas'), vec: $('#vectorCanvas')
+};
+function fitCanvas(cvs){
+  const rect = cvs.getBoundingClientRect();
+  cvs.width = rect.width*devicePixelRatio;
+  cvs.height = rect.height*devicePixelRatio;
+}
+function fitAllScopes(){ Object.values(scopeCanvases).forEach(fitCanvas); }
+window.addEventListener('resize', fitAllScopes);
+
+let simPhase=0;
+function scopesLoop(ts){
+  requestAnimationFrame(scopesLoop);
+  if($('#player').classList.contains('hidden')) return;
+  if(!scopeCanvases.wheel.width) fitAllScopes();
+
+  let freqData, timeData, freqL, freqR;
+  const useSim = state.simulatedScopes || !state.analyserMono;
+  if(!useSim){
+    freqData = new Uint8Array(state.analyserMono.frequencyBinCount);
+    timeData = new Uint8Array(state.analyserMono.fftSize);
+    state.analyserMono.getByteFrequencyData(freqData);
+    state.analyserMono.getByteTimeDomainData(timeData);
+    freqL = new Uint8Array(state.analyserL.fftSize); state.analyserL.getByteTimeDomainData(freqL);
+    freqR = new Uint8Array(state.analyserR.fftSize); state.analyserR.getByteTimeDomainData(freqR);
+    // detect silence -> likely CORS-tainted stream, fall back gracefully
+    const sum = freqData.reduce((a,b)=>a+b,0);
+    if(sum===0){ simPhase+=0.02; }
+  }
+  if(useSim || (freqData && freqData.reduce((a,b)=>a+b,0)===0)){
+    simPhase += 0.05;
+    const n=128;
+    freqData = new Uint8Array(n); timeData = new Uint8Array(n); freqL=new Uint8Array(n); freqR=new Uint8Array(n);
+    for(let i=0;i<n;i++){
+      freqData[i] = 80+80*Math.abs(Math.sin(i*0.2+simPhase))*Math.random();
+      timeData[i] = 128+60*Math.sin(i*0.4+simPhase*2);
+      freqL[i] = 128+50*Math.sin(i*0.3+simPhase*1.7);
+      freqR[i] = 128+50*Math.sin(i*0.3+simPhase*1.7+0.4);
+    }
+  }
+
+  drawWheel(scopeCanvases.wheel, freqData, ts);
+  drawSpectrum(scopeCanvases.spec, freqData);
+  drawOscilloscope(scopeCanvases.osc, timeData);
+  drawVector(scopeCanvases.vec, freqL, freqR);
+  drawVU(freqL, freqR);
+}
+requestAnimationFrame(scopesLoop);
+
+function drawWheel(cvs, freqData, ts){
+  const ctx = cvs.getContext('2d');
+  const w=cvs.width,h=cvs.height,cx=w/2,cy=h/2,R=Math.min(w,h)*0.42;
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle='rgba(212,175,106,0.25)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.arc(cx,cy,R,0,7); ctx.stroke();
+  const bars=48;
+  for(let i=0;i<bars;i++){
+    const v = freqData[Math.floor(i/bars*freqData.length)]/255;
+    const a1 = (i/bars)*Math.PI*2 + (ts||0)/6000;
+    const r1 = R*0.55, r2 = r1 + v*R*0.42;
+    ctx.strokeStyle = `rgba(240,220,171,${0.35+v*0.6})`;
+    ctx.lineWidth = 2*devicePixelRatio;
+    ctx.beginPath();
+    ctx.moveTo(cx+Math.cos(a1)*r1, cy+Math.sin(a1)*r1);
+    ctx.lineTo(cx+Math.cos(a1)*r2, cy+Math.sin(a1)*r2);
+    ctx.stroke();
+  }
+  ctx.fillStyle='rgba(212,175,106,0.9)';
+  ctx.beginPath(); ctx.arc(cx,cy,3*devicePixelRatio,0,7); ctx.fill();
+}
+function drawSpectrum(cvs, freqData){
+  const ctx = cvs.getContext('2d');
+  const w=cvs.width,h=cvs.height;
+  ctx.clearRect(0,0,w,h);
+  const n = freqData.length, bw = w/n*2.2;
+  for(let i=0;i<n/2.2;i++){
+    const v = freqData[i]/255;
+    const bh = v*h*0.92;
+    const hue = 40 - v*40;
+    ctx.fillStyle = `rgba(212,175,106,${0.35+v*0.6})`;
+    ctx.fillRect(i*bw, h-bh, bw*0.72, bh);
+  }
+}
+function drawOscilloscope(cvs, timeData){
+  const ctx = cvs.getContext('2d');
+  const w=cvs.width,h=cvs.height;
+  ctx.clearRect(0,0,w,h);
+  ctx.strokeStyle='rgba(127,216,232,0.85)'; ctx.lineWidth=1.6*devicePixelRatio;
+  ctx.beginPath();
+  for(let i=0;i<timeData.length;i++){
+    const x = i/timeData.length*w;
+    const y = h/2 + ((timeData[i]-128)/128)*(h/2*0.85);
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.stroke();
+}
+function drawVector(cvs, L, R){
+  const ctx = cvs.getContext('2d');
+  const w=cvs.width,h=cvs.height,cx=w/2,cy=h/2;
+  ctx.fillStyle='rgba(4,6,10,0.28)'; ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle='rgba(79,216,240,0.5)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(cx,0); ctx.lineTo(cx,h); ctx.moveTo(0,cy); ctx.lineTo(w,cy); ctx.stroke();
+  ctx.fillStyle='rgba(240,220,171,0.85)';
+  for(let i=0;i<L.length;i++){
+    const x = cx + ((L[i]-128)/128)*(w/2*0.85);
+    const y = cy - ((R[i]-128)/128)*(h/2*0.85);
+    ctx.fillRect(x,y,1.4*devicePixelRatio,1.4*devicePixelRatio);
+  }
+}
+function drawVU(L,R){
+  const peakL = Math.max(...Array.from(L).map(v=>Math.abs(v-128)))/128;
+  const peakR = Math.max(...Array.from(R).map(v=>Math.abs(v-128)))/128;
+  $('#vuL').style.width = (peakL*100).toFixed(0)+'%';
+  $('#vuR').style.width = (peakR*100).toFixed(0)+'%';
+  const db = 20*Math.log10(Math.max(peakL,peakR,0.0001));
+  $('#peakVal').textContent = isFinite(db)? db.toFixed(1) : '-∞';
+}
+
+function openAudioLab(){
+  if($('#player').classList.contains('hidden')){
+    toastRadar('Tune into a station first to open the Audio Lab.');
+    return;
+  }
+  toastRadar('Audio Lab is live in the player scopes below.');
+}
+
+/* -------------------------------------------------------------------------
+   10. DISCOVER MODE — "I FEEL CURIOUS"
+   ------------------------------------------------------------------------- */
+$('#curiousBtn').addEventListener('click', discoverRandom);
+function discoverRandom(){
+  if(!state.clusters.length) return;
+  const c = state.clusters[Math.floor(Math.random()*state.clusters.length)];
+  const station = c.stations[Math.floor(Math.random()*c.stations.length)];
+  flyTo(station.lon, station.lat);
+  setTimeout(()=>{
+    playStation(station);
+    showFacts(station);
+  }, 1500);
+}
+
+async function showFacts(station){
+  $('#factsTitle').textContent = `${station.state? station.state+', ':''}${station.country}`;
+  $('#factsBody').innerHTML = `<p>Gathering coordinates…</p>`;
+  openPanel('factsPanel');
+  const cont = continentOf(station.lat, station.lon);
+  const nearby = state.clusters
+    .map(c=>({c, d:Math.hypot(c.lat-station.lat,c.lon-station.lon)}))
+    .sort((a,b)=>a.d-b.d).slice(1,4).map(x=>x.c.label);
+  let weatherLine = '—', timeLine='—';
+  try{
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${station.lat}&longitude=${station.lon}&current=temperature_2m,weather_code&timezone=auto`;
+    const res = await fetch(url); const data = await res.json();
+    weatherLine = `${Math.round(data.current.temperature_2m)}°C, ${weatherCodeLabel(data.current.weather_code)}`;
+    const offsetSec = data.utc_offset_seconds||0;
+    const nowUtc = Date.now() + (new Date().getTimezoneOffset()*60000);
+    timeLine = new Date(nowUtc + offsetSec*1000).toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+  }catch(e){}
+
+  $('#factsBody').innerHTML = `
+    <div class="fact-row"><label>Continent</label><span>${cont}</span></div>
+    <div class="fact-row"><label>Coordinates</label><span>${station.lat.toFixed(1)}°, ${station.lon.toFixed(1)}°</span></div>
+    <div class="fact-row"><label>Language</label><span>${escapeHTML(station.language)}</span></div>
+    <div class="fact-row"><label>Local time</label><span>${timeLine}</span></div>
+    <div class="fact-row"><label>Weather</label><span>${weatherLine}</span></div>
+    <div class="fact-row"><label>Dominant style</label><span>${GENRES[station.genre].label}</span></div>
+    <div class="fact-row"><label>Nearby signals</label><span>${escapeHTML(nearby.join(', ')||'—')}</span></div>
+    <p class="fact-blurb">"${randomTravelLine(station)}"</p>
+  `;
+}
+function randomTravelLine(station){
+  const lines = [
+    `The airwaves of ${station.country} carry something worth stopping for.`,
+    `Somewhere near ${station.lat.toFixed(1)}°, ${station.lon.toFixed(1)}°, a station keeps its city company.`,
+    `${GENRES[station.genre].label} travels further than you'd think.`,
+    `A small transmitter, a whole territory listening.`
+  ];
+  return lines[Math.floor(Math.random()*lines.length)];
+}
+
+/* -------------------------------------------------------------------------
+   11. DISCOVERY RADAR — periodic toasts of "newly discovered" signals
+   ------------------------------------------------------------------------- */
+setInterval(()=>{
+  if(!state.clusters.length) return;
+  const pool = state.clusters.filter(c=>!state.discoveredKeys.has(c.key));
+  const source = pool.length? pool : state.clusters;
+  const c = source[Math.floor(Math.random()*source.length)];
+  state.discoveredKeys.add(c.key);
+  const templates = [
+    `New signal discovered in ${c.country}.`,
+    `Hidden ${GENRES[c.genre].label} station found in ${c.label||c.country}.`,
+    `Community radio detected in ${c.country}.`
+  ];
+  toastRadar(templates[Math.floor(Math.random()*templates.length)]);
+}, 8000);
+
+/* -------------------------------------------------------------------------
+   12. HEARTBEAT READOUT LABEL
+   ------------------------------------------------------------------------- */
+setInterval(()=>{
+  if(!state.stations.length) return;
+  const countries = new Set(state.stations.map(s=>s.countrycode)).size;
+  const byGenre = {};
+  state.stations.forEach(s=>byGenre[s.genre]=(byGenre[s.genre]||0)+1);
+  const top = Object.entries(byGenre).sort((a,b)=>b[1]-a[1])[0];
+  $('#heartbeatLabel').textContent = `Pulses arriving from ${countries} territories · dominant frequency: ${GENRES[top[0]].label}`;
+}, 6000);
+
+/* -------------------------------------------------------------------------
+   12b. MOBILE FILTERS DRAWER (legend + time machine live here on small screens)
+   ------------------------------------------------------------------------- */
+(function filtersDrawer(){
+  const btn = $('#filtersToggle');
+  if(!btn) return;
+  function setOpen(open){
+    document.body.classList.toggle('show-filters', open);
+    btn.classList.toggle('active', open);
+  }
+  btn.addEventListener('click', e=>{
+    e.stopPropagation();
+    setOpen(!document.body.classList.contains('show-filters'));
+  });
+  document.addEventListener('click', e=>{
+    if(!document.body.classList.contains('show-filters')) return;
+    if(e.target.closest('.legend') || e.target.closest('.timemachine') || e.target===btn) return;
+    setOpen(false);
+  });
+  globeCvs.addEventListener('pointerdown', ()=>setOpen(false));
+})();
+
+/* -------------------------------------------------------------------------
+   13. TIME MACHINE (cosmetic decade filter)
+   ------------------------------------------------------------------------- */
+const DECADE_LABELS=['1950','1960','1970','1980','1990','2000','2010','Today'];
+const DECADE_ERA = ['era-vintage','era-vintage','era-vintage','era-crt','era-crt','era-neon','era-neon',''];
+$('#decadeSlider').addEventListener('input', e=>{
+  const idx = +e.target.value;
+  state.decade = idx;
+  document.body.classList.remove('era-crt','era-neon','era-vintage');
+  if(DECADE_ERA[idx]) document.body.classList.add(DECADE_ERA[idx]);
+  toastRadar(`Time Machine: visual aesthetic set to ${DECADE_LABELS[idx]}. Live signals shown regardless of era.`);
+});
+
+/* -------------------------------------------------------------------------
+   14. UTC CLOCK + NIGHT MODE BODY CLASS
+   ------------------------------------------------------------------------- */
+setInterval(()=>{
+  const now = new Date();
+  $('#statUTC').textContent = now.toUTCString().slice(17,22);
+  const h = now.getUTCHours();
+  document.body.classList.toggle('night', h<6 || h>19);
+}, 1000);
+
+/* -------------------------------------------------------------------------
+   15. LOADING SCREEN HELPER
+   ------------------------------------------------------------------------- */
+function setLoading(on, text){
+  const el = $('#loadingScreen');
+  if(text) $('#loadingText').textContent = text;
+  el.classList.toggle('hidden', !on);
+}
+
+/* -------------------------------------------------------------------------
+   16. HOME -> WORLD TRANSITION
+   ------------------------------------------------------------------------- */
+$('#enterBtn').addEventListener('click', ()=>{
+  $('#home').classList.add('leaving');
+  $('#world').classList.remove('hidden');
+  setTimeout(()=>{ $('#home').style.display='none'; }, 1200);
+  fitAllScopes();
+  if(!state.stations.length) loadStations();
+});
+
+/* -------------------------------------------------------------------------
+   17. SERVICE WORKER (PWA / offline shell)
+   ------------------------------------------------------------------------- */
+if('serviceWorker' in navigator){
+  window.addEventListener('load', ()=>{
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  });
+}
+</script>
+</body>
+</html>

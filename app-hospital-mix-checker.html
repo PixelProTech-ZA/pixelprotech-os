@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HOSPITAL MIX CHECKER — Frequency Oasis</title>
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<meta name="theme-color" content="#080a0f">
+
+<link rel="icon" href="data:image/png;base64,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">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mix Checker">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080a0f;--surface:#0d1117;--border:#1e2530;--accent:#00ff9d;--accent2:#ff3c6e;--accent3:#7b5cf5;--text:#e8eaf0;--muted:#4a5568;--grid:rgba(0,255,157,0.04)}
+.theme-hiphop{--accent:#f5c518;--accent2:#ff6b35;--accent3:#c084fc}
+.theme-trap{--accent:#00d4ff;--accent2:#ff1744;--accent3:#7c4dff}
+.theme-rnb{--accent:#ff9eb5;--accent2:#c77dff;--accent3:#f72585}
+.theme-slowjam{--accent:#ffb347;--accent2:#e05c8e;--accent3:#9b59b6}
+.theme-maskandi{--accent:#00e676;--accent2:#ff6d00;--accent3:#ffd740}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Space Mono',monospace;min-height:100vh;overflow-x:hidden;position:relative}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px;z-index:0;pointer-events:none}
+body::after{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px);pointer-events:none;z-index:9999}
+.container{max-width:1100px;margin:0 auto;padding:20px;position:relative;z-index:1}
+header{text-align:center;padding:36px 0 24px}
+.logo-top{font-size:10px;letter-spacing:6px;color:var(--accent);text-transform:uppercase;margin-bottom:6px;opacity:.8}
+h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,10vw,96px);letter-spacing:4px;line-height:.9;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 60%,var(--accent3) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 30px color-mix(in srgb,var(--accent) 35%,transparent));animation:glow 3s ease-in-out infinite alternate}
+@keyframes glow{from{filter:drop-shadow(0 0 16px color-mix(in srgb,var(--accent) 25%,transparent))}to{filter:drop-shadow(0 0 44px color-mix(in srgb,var(--accent) 55%,transparent))}}
+.subtitle{font-size:10px;letter-spacing:4px;color:var(--muted);margin-top:8px;text-transform:uppercase}
+.status-bar{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:16px;padding:10px 14px;background:var(--surface);border:1px solid var(--border);border-radius:4px}
+.sdot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0}
+.sdot.on{background:var(--accent);animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.preset-badge{display:inline-flex;align-items:center;gap:6px;font-size:9px;letter-spacing:2px;padding:3px 9px;border-radius:2px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);text-transform:uppercase;margin-left:auto}
+.preset-badge .pd{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:blink 1.2s infinite}
+.sec-lbl{font-size:9px;letter-spacing:4px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.tpl-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:14px}
+@media(max-width:700px){.tpl-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:430px){.tpl-grid{grid-template-columns:repeat(2,1fr)}}
+.tpl-btn{background:var(--surface);border:1px solid var(--border);color:var(--muted);padding:14px 8px 10px;cursor:pointer;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase;border-radius:6px;transition:all .2s;text-align:center;position:relative;overflow:hidden}
+.tpl-btn::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .2s}
+.tpl-btn:hover::after,.tpl-btn.active::after{transform:scaleX(1)}
+.tpl-btn:hover,.tpl-btn.active{border-color:var(--accent);color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+.tpl-btn .e{display:block;font-size:20px;margin-bottom:5px}
+.tpl-btn .n{display:block;font-size:12px}
+.tpl-btn .s{display:block;font-size:8px;color:var(--muted);font-family:'Space Mono';letter-spacing:1px;margin-top:3px}
+.tpl-info{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);padding:12px 16px;border-radius:4px;margin-bottom:16px;display:flex;gap:20px;flex-wrap:wrap;align-items:center;transition:border-color .3s}
+.ic .l{color:var(--muted);font-size:8px;letter-spacing:2px;text-transform:uppercase;display:block}
+.ic .v{color:var(--accent);font-weight:700;font-size:12px;display:block;transition:color .3s}
+.preset-chain{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:14px}
+.chain-title{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.chain-nodes{display:flex;align-items:center;gap:0;overflow-x:auto;padding-bottom:4px}
+.cn{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:8px 10px;text-align:center;flex-shrink:0;min-width:76px;transition:all .3s}
+.cn.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--bg))}
+.cn .cl{font-size:7px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
+.cn .cv{font-family:'Bebas Neue',sans-serif;font-size:14px;color:var(--accent);letter-spacing:1px}
+.cn .cu{font-size:7px;color:var(--muted);letter-spacing:1px}
+.carrow{color:var(--muted);font-size:12px;padding:0 3px;flex-shrink:0}
+.eq-viz{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:14px}
+.eq-viz-top{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+canvas{width:100%;display:block;border-radius:3px;background:#080c10}
+#eqCanvas{height:90px}
+#waveCanvas{height:140px}
+#fftCanvas{height:140px}
+#specCanvas{height:140px}
+.btn-apply{width:100%;background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 70%,var(--accent3)));color:var(--bg);border:none;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;cursor:pointer;border-radius:4px;margin-bottom:6px;transition:all .2s}
+.btn-apply:hover{transform:translateY(-1px);box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 28%,transparent)}
+.btn-apply:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
+.apply-hint{font-size:9px;letter-spacing:1px;color:var(--muted);text-align:center;margin-bottom:16px}
+.input-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:600px){.input-row{grid-template-columns:1fr}}
+.input-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:20px;text-align:center;cursor:pointer;transition:border-color .2s}
+.input-card:hover,.input-card.on{border-color:var(--accent);box-shadow:0 0 20px color-mix(in srgb,var(--accent) 10%,transparent)}
+.input-card input[type=file]{display:none}
+.ci{font-size:28px;margin-bottom:8px;display:block}
+.ct{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;color:var(--accent);margin-bottom:4px}
+.cs{font-size:9px;color:var(--muted);letter-spacing:1px}
+.btn-mic{width:100%;background:transparent;color:var(--accent2);border:1px solid var(--accent2);padding:10px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;cursor:pointer;border-radius:4px;transition:all .2s;margin-top:10px}
+.btn-mic:hover,.btn-mic.rec{background:color-mix(in srgb,var(--accent2) 14%,transparent)}
+.btn-mic.rec{animation:micpulse 1s ease-in-out infinite}
+@keyframes micpulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent2) 35%,transparent)}50%{box-shadow:0 0 0 6px transparent}}
+.playback-bar{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:12px 16px;margin-bottom:14px;flex-wrap:wrap}
+.play-btn{background:var(--accent);color:var(--bg);border:none;width:34px;height:34px;border-radius:50%;font-size:13px;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.play-btn:hover{transform:scale(1.1)}
+.prog-wrap{flex:1;height:4px;background:var(--border);border-radius:2px;cursor:pointer;min-width:80px}
+.prog-fill{height:100%;background:var(--accent);border-radius:2px;transition:width .08s;pointer-events:none}
+.timed{font-size:10px;color:var(--muted);letter-spacing:1px;min-width:70px}
+.fname{font-size:9px;color:var(--accent);letter-spacing:1px;flex:1;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.btn-analyze{width:100%;background:var(--accent);color:var(--bg);border:none;padding:14px;font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:4px;cursor:pointer;border-radius:4px;margin-bottom:16px;transition:all .2s}
+.btn-analyze:hover{opacity:.88;transform:translateY(-1px)}
+.btn-analyze:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.score-section{display:flex;justify-content:center;margin-bottom:16px}
+.score-ring{position:relative;width:130px;height:130px;margin:0 auto 8px}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring circle{transition:stroke-dashoffset 1s ease,stroke .5s}
+.score-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:36px;color:var(--accent)}
+.score-lbl{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;text-align:center}
+.score-grade{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--accent);text-align:center;margin-top:4px}
+.meters-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+@media(max-width:700px){.meters-row{grid-template-columns:repeat(2,1fr)}}
+.meter-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px 12px;text-align:center}
+.meter-label{font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.meter-val{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;margin-bottom:3px;transition:color .3s}
+.meter-unit{font-size:8px;color:var(--muted);letter-spacing:1px}
+.meter-bar-wrap{width:100%;height:3px;background:var(--border);border-radius:2px;margin-top:7px;overflow:hidden}
+.meter-bar{height:100%;border-radius:2px;transition:width .1s}
+.bands-row{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:14px}
+@media(max-width:700px){.bands-row{grid-template-columns:repeat(4,1fr)}}
+.band-card{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:10px 6px;text-align:center}
+.band-name{font-size:8px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+.band-bar-container{display:flex;justify-content:center;align-items:flex-end;height:48px;margin-bottom:4px}
+.band-bar-inner{width:10px;border-radius:2px 2px 0 0;background:var(--accent);transition:height .08s,background .3s;min-height:2px}
+.band-db{font-family:'Bebas Neue';font-size:13px;color:var(--accent)}
+.band-hz{font-size:7px;color:var(--muted);letter-spacing:1px}
+.canvas-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.canvas-row{grid-template-columns:1fr}}
+.viz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:14px;margin-bottom:14px}
+.viz-lbl{font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:8px}
+.feedback-panel{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent2);border-radius:6px;padding:16px;margin-bottom:14px}
+.feedback-title{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:3px;color:var(--accent2);margin-bottom:12px}
+.feedback-list{list-style:none;display:flex;flex-direction:column;gap:6px}
+.feedback-list li{display:flex;align-items:flex-start;gap:8px;font-size:10px;line-height:1.6;color:#a0aec0;padding:8px;border-radius:4px;background:rgba(255,255,255,.02);border:1px solid var(--border)}
+.feedback-list li .dot{width:6px;height:6px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.dot-good{background:var(--accent)}.dot-warn{background:#f6ad55}.dot-bad{background:var(--accent2)}
+.report-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent3);border-radius:6px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.ri{font-size:26px;flex-shrink:0}
+.rinfo{flex:1}
+.rt{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;color:var(--accent3);margin-bottom:2px}
+.rs{font-size:8px;color:var(--muted);letter-spacing:1px}
+.btn-dl{background:var(--accent3);color:#fff;border:none;padding:10px 18px;font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;border-radius:4px;cursor:pointer;transition:opacity .2s;white-space:nowrap}
+.btn-dl:hover{opacity:.85}
+.btn-dl:disabled{opacity:.3;cursor:not-allowed}
+.services-section{border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:14px}
+.svc-hdr{background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 12%,var(--surface)),var(--surface));border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;gap:8px}
+.svc-hdr-title{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:3px;color:var(--accent)}
+.svc-hdr-sub{font-size:8px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-left:auto}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+.svc-card{padding:22px 18px;background:var(--surface);position:relative;overflow:hidden;border-right:1px solid var(--border);transition:background .2s}
+.svc-card:last-child{border-right:none}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+.svc-card:last-child::before{background:linear-gradient(90deg,var(--accent2),transparent)}
+.svc-card:hover{background:color-mix(in srgb,var(--accent) 4%,var(--surface))}
+.svc-card:last-child:hover{background:color-mix(in srgb,var(--accent2) 4%,var(--surface))}
+.svc-badge{display:inline-block;font-size:8px;letter-spacing:2px;padding:3px 7px;border-radius:2px;background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 28%,transparent);margin-bottom:8px;text-transform:uppercase}
+.svc-card:last-child .svc-badge{background:color-mix(in srgb,var(--accent2) 14%,transparent);color:var(--accent2);border-color:color-mix(in srgb,var(--accent2) 28%,transparent)}
+.svc-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px;color:var(--text);margin-bottom:6px;line-height:1.1}
+.svc-desc{font-size:9px;color:var(--muted);line-height:1.7;margin-bottom:12px}
+.svc-price{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent);letter-spacing:2px;margin-bottom:2px}
+.svc-card:last-child .svc-price{color:var(--accent2)}
+.svc-psub{font-size:8px;color:var(--muted);letter-spacing:1px;margin-bottom:14px}
+.svc-feats{list-style:none;display:flex;flex-direction:column;gap:4px;margin-bottom:16px}
+.svc-feats li{font-size:9px;color:#718096;display:flex;gap:6px;align-items:flex-start}
+.svc-feats li::before{content:'◆';color:var(--accent);font-size:6px;margin-top:2px;flex-shrink:0}
+.svc-card:last-child .svc-feats li::before{color:var(--accent2)}
+.btn-svc{width:100%;padding:11px;font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:3px;border-radius:4px;cursor:pointer;border:none;transition:all .2s;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn-vst{background:var(--accent);color:var(--bg)}
+.btn-vst:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 28%,transparent)}
+.btn-mix{background:var(--accent2);color:#fff}
+.btn-mix:hover{opacity:.88;transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb,var(--accent2) 28%,transparent)}
+.export-row{display:flex;gap:8px;margin-bottom:24px}
+.btn-exp{flex:1;background:transparent;border:1px solid var(--border);color:var(--muted);padding:10px;font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:2px;cursor:pointer;border-radius:4px;transition:all .2s}
+.btn-exp:hover{border-color:var(--accent3);color:var(--accent3)}
+footer{text-align:center;padding:18px 0 26px;font-size:8px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;border-top:1px solid var(--border)}
+footer span{color:var(--accent)}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="logo-top">&#9670; Clinical Audio Systems &#9670;</div>
+  <h1>HOSPITAL<br>MIX CHECKER</h1>
+  <div class="subtitle">Professional Audio Diagnostic Tool &middot; SA Edition &middot; Frequency Oasis</div>
+</header>
+
+<div class="status-bar">
+  <div class="sdot" id="sdot"></div>
+  <span id="statusText">Awaiting signal &mdash; load a file or arm mic</span>
+  <div class="preset-badge hidden" id="presetBadge"><span class="pd"></span><span id="pbText">NO PRESET</span></div>
+</div>
+
+<div class="sec-lbl" style="margin-top:10px">&#9670; Select Genre Preset</div>
+<div class="tpl-grid">
+  <button class="tpl-btn active" onclick="setTemplate('hiphop',this)"><span class="e">&#127908;</span><span class="n">HIP-HOP</span><span class="s">boom bap &middot; conscious</span></button>
+  <button class="tpl-btn" onclick="setTemplate('trap',this)"><span class="e">&#128266;</span><span class="n">TRAP</span><span class="s">808s &middot; hi-hats</span></button>
+  <button class="tpl-btn" onclick="setTemplate('rnb',this)"><span class="e">&#127769;</span><span class="n">R&amp;B</span><span class="s">neo soul &middot; smooth</span></button>
+  <button class="tpl-btn" onclick="setTemplate('slowjam',this)"><span class="e">&#128145;</span><span class="n">SLOW JAM</span><span class="s">deep &middot; intimate</span></button>
+  <button class="tpl-btn" onclick="setTemplate('maskandi',this)"><span class="e">&#127757;</span><span class="n">MASKANDI</span><span class="s">afropop &middot; isicathamiya</span></button>
+</div>
+
+<div class="tpl-info" id="tplInfo">
+  <div class="ic"><span class="l">Genre</span><span class="v" id="iGenre">Hip-Hop</span></div>
+  <div class="ic"><span class="l">Target LUFS</span><span class="v" id="iLufs">-14 LUFS</span></div>
+  <div class="ic"><span class="l">True Peak</span><span class="v" id="iPeak">-1 dBTP</span></div>
+  <div class="ic"><span class="l">Comp Ratio</span><span class="v" id="iComp">4:1</span></div>
+  <div class="ic"><span class="l">Bass Boost</span><span class="v" id="iBass">+3dB@80Hz</span></div>
+  <div class="ic"><span class="l">Presence</span><span class="v" id="iPres">+2dB@3kHz</span></div>
+</div>
+
+<div class="preset-chain">
+  <div class="chain-title">
+    <span>&#9670; Active Preset Signal Chain</span>
+    <span id="chainStatus" style="font-size:8px;color:var(--muted)">&mdash; NOT APPLIED &mdash;</span>
+  </div>
+  <div class="chain-nodes">
+    <div class="cn" id="cn0"><div class="cl">HPF</div><div class="cv" id="cv0">&mdash;</div><div class="cu">Hz</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn1"><div class="cl">Sub Boost</div><div class="cv" id="cv1">&mdash;</div><div class="cu">dB</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn2"><div class="cl">Bass EQ</div><div class="cv" id="cv2">&mdash;</div><div class="cu">dB</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn3"><div class="cl">Mid Cut</div><div class="cv" id="cv3">&mdash;</div><div class="cu">dB</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn4"><div class="cl">Presence</div><div class="cv" id="cv4">&mdash;</div><div class="cu">dB</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn5"><div class="cl">Air Shelf</div><div class="cv" id="cv5">&mdash;</div><div class="cu">dB</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn6"><div class="cl">Compress</div><div class="cv" id="cv6">&mdash;</div><div class="cu">ratio</div></div>
+    <div class="carrow">&rarr;</div>
+    <div class="cn" id="cn7"><div class="cl">Output</div><div class="cv" id="cv7">&mdash;</div><div class="cu">dBFS</div></div>
+  </div>
+</div>
+
+<div class="eq-viz">
+  <div class="eq-viz-top">
+    <span>&#9670; Preset EQ Curve</span>
+    <span id="eqLabel" style="color:var(--accent);font-size:9px">Hip-Hop Curve</span>
+  </div>
+  <canvas id="eqCanvas"></canvas>
+</div>
+
+<button class="btn-apply" id="applyBtn" onclick="applyPreset()" disabled>&#9670; APPLY PRESET TO MIX &#9670;</button>
+<div class="apply-hint" id="applyHint">Load a file first, then apply the genre preset to process your audio through the signal chain</div>
+
+<div class="input-row">
+  <div class="input-card" id="dropZone" onclick="document.getElementById('fileIn').click()" ondragover="event.preventDefault()" ondrop="handleDrop(event)">
+    <input type="file" id="fileIn" accept="audio/*" onchange="loadFile(event)">
+    <span class="ci">&#128193;</span>
+    <div class="ct">Drop / Upload Audio</div>
+    <div class="cs">WAV &middot; MP3 &middot; FLAC &middot; AIFF &middot; OGG</div>
+  </div>
+  <div class="input-card" id="micCard">
+    <span class="ci">&#127897;&#65039;</span>
+    <div class="ct">Live Mic Input</div>
+    <div class="cs">Real-time monitoring via microphone</div>
+    <button class="btn-mic" id="micBtn" onclick="toggleMic()">&#9210; ARM MICROPHONE</button>
+  </div>
+</div>
+
+<div class="playback-bar hidden" id="playbackBar">
+  <button class="play-btn" id="playBtn" onclick="togglePlay()">&#9654;</button>
+  <div class="prog-wrap" id="progWrap" onclick="seekAudio(event)">
+    <div class="prog-fill" id="progFill" style="width:0%"></div>
+  </div>
+  <div class="timed" id="timeD">0:00 / 0:00</div>
+  <div class="fname" id="fname">&mdash;</div>
+</div>
+
+<button class="btn-analyze" id="analyzeBtn" onclick="startAnalysis()" disabled>&#9670; ANALYZE MIX &#9670;</button>
+
+<div class="score-section">
+  <div>
+    <div class="score-ring">
+      <svg width="130" height="130" viewBox="0 0 130 130">
+        <circle cx="65" cy="65" r="56" fill="none" stroke="#1e2530" stroke-width="8"/>
+        <circle id="scoreCircle" cx="65" cy="65" r="56" fill="none" stroke="var(--accent)" stroke-width="8" stroke-dasharray="352" stroke-dashoffset="352" stroke-linecap="round"/>
+      </svg>
+      <div class="score-num" id="scoreNum">&mdash;</div>
+    </div>
+    <div class="score-lbl">Mix Health Score</div>
+    <div class="score-grade" id="scoreGrade">&mdash;</div>
+  </div>
+</div>
+
+<div class="sec-lbl">&#9670; Real-Time Meters</div>
+<div class="meters-row">
+  <div class="meter-card"><div class="meter-label">RMS Level</div><div class="meter-val" id="mRMS" style="color:var(--accent)">&mdash;</div><div class="meter-unit">dBFS</div><div class="meter-bar-wrap"><div class="meter-bar" id="bRMS" style="width:0%;background:var(--accent)"></div></div></div>
+  <div class="meter-card"><div class="meter-label">Peak Level</div><div class="meter-val" id="mPeak" style="color:var(--accent)">&mdash;</div><div class="meter-unit">dBFS</div><div class="meter-bar-wrap"><div class="meter-bar" id="bPeak" style="width:0%;background:var(--accent2)"></div></div></div>
+  <div class="meter-card"><div class="meter-label">Dynamic Range</div><div class="meter-val" id="mDyn" style="color:var(--accent)">&mdash;</div><div class="meter-unit">dB</div><div class="meter-bar-wrap"><div class="meter-bar" id="bDyn" style="width:0%;background:var(--accent3)"></div></div></div>
+  <div class="meter-card"><div class="meter-label">Est. LUFS</div><div class="meter-val" id="mLufs" style="color:var(--accent)">&mdash;</div><div class="meter-unit">LUFS</div><div class="meter-bar-wrap"><div class="meter-bar" id="bLufs" style="width:0%;background:var(--accent)"></div></div></div>
+</div>
+
+<div class="sec-lbl">&#9670; Frequency Band Energy</div>
+<div class="bands-row" id="bandsRow"></div>
+
+<div class="viz-wrap">
+  <div class="viz-lbl">&#9670; Waveform</div>
+  <canvas id="waveCanvas"></canvas>
+</div>
+
+<div class="canvas-row">
+  <div class="viz-wrap"><div class="viz-lbl">&#9670; FFT Spectrum</div><canvas id="fftCanvas"></canvas></div>
+  <div class="viz-wrap"><div class="viz-lbl">&#9670; Spectrogram</div><canvas id="specCanvas"></canvas></div>
+</div>
+
+<div class="feedback-panel">
+  <div class="feedback-title">&#9877; Diagnostic Report</div>
+  <ul class="feedback-list" id="feedbackList">
+    <li><span class="dot dot-warn"></span>Load audio or use mic &mdash; then Analyze to get your full diagnostic report.</li>
+  </ul>
+</div>
+
+<div class="report-card">
+  <div class="ri">&#128203;</div>
+  <div class="rinfo">
+    <div class="rt">Professional Mix Report</div>
+    <div class="rs">Branded client report &mdash; meters, score, preset chain, genre feedback + Frequency Oasis contacts</div>
+  </div>
+  <button class="btn-dl" id="reportDlBtn" onclick="exportReport()" disabled>&#11015; DOWNLOAD REPORT</button>
+</div>
+
+<div class="services-section">
+  <div class="svc-hdr">
+    <div class="svc-hdr-title">&#9670; Frequency Oasis Services</div>
+    <div class="svc-hdr-sub">SA &middot; Professional Audio</div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-badge">&#9670; Digital Download</div>
+      <div class="svc-title">Save Your Mix<br>with Our VST</div>
+      <div class="svc-desc">Get the Frequency Oasis plugin &mdash; engineered for SA producers. Shape, treat and finalise your mix with tools built for our sound.</div>
+      <div class="svc-price">Gumroad Store</div>
+      <div class="svc-psub">Instant download &middot; License included</div>
+      <ul class="svc-feats">
+        <li>Studio-grade processing chain</li>
+        <li>Genre presets: Hip-Hop, Trap, R&amp;B, Maskandi</li>
+        <li>Works in any DAW &middot; VST3 / AU</li>
+        <li>Lifetime updates</li>
+      </ul>
+      <a class="btn-svc btn-vst" href="https://frequencyoasis.gumroad.com/" target="_blank" rel="noopener">&#128722; BUY VST PLUGIN</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-badge">&#9670; Human Service</div>
+      <div class="svc-title">Let Us Mix<br>Your Track</div>
+      <div class="svc-desc">Skip the guesswork. Send stems, we deliver a radio-ready mix. Hip-Hop, Trap, R&amp;B, Maskandi, Afropop &mdash; we speak your genre.</div>
+      <div class="svc-price">R1 200</div>
+      <div class="svc-psub">Per track &middot; WhatsApp to book</div>
+      <ul class="svc-feats">
+        <li>Full stem mix and master</li>
+        <li>Genre-specific treatment</li>
+        <li>2 revisions included</li>
+        <li>Streaming-ready WAV and MP3 delivery</li>
+      </ul>
+      <a class="btn-svc btn-mix" href="https://wa.me/27651971461?text=Hi%20Frequency%20Oasis%20I%20want%20to%20book%20a%20professional%20mix%20for%20R1200." target="_blank" rel="noopener">&#128172; WHATSAPP TO BOOK</a>
+    </div>
+  </div>
+</div>
+
+<div class="export-row">
+  <button class="btn-exp" onclick="exportReport()">&#9670; Export Report</button>
+  <button class="btn-exp" onclick="resetAll()">&#9670; Reset</button>
+</div>
+
+<footer>Hospital Mix Checker &middot; <span>SA Edition</span> &middot; Powered by <span>Frequency Oasis</span> &middot; &copy; 2025</footer>
+</div>
+
+<script>
+const TEMPLATES={
+  hiphop:{name:'Hip-Hop',theme:'theme-hiphop',lufs:'-14 LUFS',peak:'-1 dBTP',targetLufs:-14,targetPeak:-1,compRatio:'4:1',bassBoost:'+3dB @ 80Hz',presence:'+2dB @ 3kHz',chain:{hpf:40,sub:2,bass:3,midCut:-2,presence:2,air:1,comp:4,output:-1},eq:[{f:40,g:0,q:.7,type:'highpass'},{f:80,g:3,q:1.2,type:'peaking'},{f:200,g:1,q:.8,type:'peaking'},{f:700,g:-2,q:1,type:'peaking'},{f:3000,g:2,q:1.5,type:'peaking'},{f:8000,g:1,q:.8,type:'peaking'},{f:12000,g:1,q:.7,type:'highshelf'}],bandWeights:[1.2,1.5,1,0.8,1.4,1.1,0.8],feedback:{bass:'808s sit best 40-80Hz. Mono below 120Hz for club systems.',vocal:'Vocal presence at 2-4kHz is key for lyric clarity over dense beats.',highs:'Roll off harshness above 10kHz. Leave air, kill sibilance.',comp:'4:1 bus comp with medium attack gives hip-hop that classic glue sound.'}},
+  trap:{name:'Trap',theme:'theme-trap',lufs:'-9 LUFS',peak:'-0.3 dBTP',targetLufs:-9,targetPeak:-0.3,compRatio:'6:1',bassBoost:'+5dB @ 50Hz',presence:'+2dB @ 2kHz',chain:{hpf:30,sub:5,bass:3,midCut:-3,presence:2,air:3,comp:6,output:-0.3},eq:[{f:30,g:0,q:.7,type:'highpass'},{f:50,g:5,q:1.5,type:'peaking'},{f:100,g:3,q:1,type:'peaking'},{f:500,g:-3,q:1.2,type:'peaking'},{f:2000,g:2,q:1.4,type:'peaking'},{f:10000,g:3,q:.8,type:'peaking'},{f:16000,g:3,q:.7,type:'highshelf'}],bandWeights:[1.8,1.6,0.9,0.7,1.3,1.2,1.4],feedback:{bass:'Trap 808s need sidechain room. Clash with kick ruins the drop every time.',vocal:'Auto-tune vocals need 1.5-3kHz boost to cut through the wall of bass.',highs:'Hi-hats live above 8kHz. Shimmer yes, shriek no.',comp:'Hard limiting + parallel compression gives trap that crushed wall of power.'}},
+  rnb:{name:'R&B / Neo Soul',theme:'theme-rnb',lufs:'-16 LUFS',peak:'-1 dBTP',targetLufs:-16,targetPeak:-1,compRatio:'2:1',bassBoost:'+2dB @ 100Hz',presence:'+1.5dB @ 5kHz',chain:{hpf:60,sub:1,bass:2,midCut:-1,presence:1.5,air:2,comp:2,output:-1},eq:[{f:60,g:0,q:.7,type:'highpass'},{f:100,g:2,q:1,type:'peaking'},{f:300,g:1,q:.8,type:'peaking'},{f:800,g:-1,q:1,type:'peaking'},{f:5000,g:1.5,q:1.5,type:'peaking'},{f:10000,g:2,q:.8,type:'peaking'},{f:14000,g:2,q:.7,type:'highshelf'}],bandWeights:[0.9,1.1,1.3,1.5,1.6,1.2,0.8],feedback:{bass:'R&B bass is felt not heard. Keep sub under 80Hz, let the kick breathe.',vocal:'Female vocals peak 4-6kHz. Silky de-essing is mandatory, not optional.',highs:'High shelf +2dB at 12-14kHz adds silky air without harshness.',comp:'Gentle 2:1 bus comp with slow attack preserves the emotional dynamics.'}},
+  slowjam:{name:'Slow Jam / Neo Soul',theme:'theme-slowjam',lufs:'-18 LUFS',peak:'-1.5 dBTP',targetLufs:-18,targetPeak:-1.5,compRatio:'1.5:1',bassBoost:'+1dB @ 120Hz',presence:'+1dB @ 4kHz',chain:{hpf:80,sub:0,bass:1,midCut:-2,presence:1,air:1.5,comp:1.5,output:-1.5},eq:[{f:80,g:0,q:.7,type:'highpass'},{f:120,g:1,q:.9,type:'peaking'},{f:350,g:-2,q:1,type:'peaking'},{f:900,g:-1,q:1,type:'peaking'},{f:4000,g:1,q:1.5,type:'peaking'},{f:9000,g:1.5,q:.8,type:'peaking'},{f:13000,g:1.5,q:.7,type:'highshelf'}],bandWeights:[0.8,1,1.4,1.6,1.5,1.1,0.7],feedback:{bass:'Warm bass stays out of the 200-400Hz mud zone. Cut there, always.',vocal:'Low-mid cut at 350Hz on vocals adds intimacy without boxiness.',highs:'Long reverb tails filtered above 6kHz. No harsh reflections, pure air.',comp:'Slow attack 50ms+ compressor preserves the breath and intimacy.'}},
+  maskandi:{name:'Maskandi / Afropop',theme:'theme-maskandi',lufs:'-13 LUFS',peak:'-1 dBTP',targetLufs:-13,targetPeak:-1,compRatio:'3:1',bassBoost:'+2dB @ 100Hz',presence:'+3dB @ 5kHz',chain:{hpf:50,sub:1,bass:2,midCut:-1,presence:3,air:2,comp:3,output:-1},eq:[{f:50,g:0,q:.7,type:'highpass'},{f:100,g:2,q:1.1,type:'peaking'},{f:200,g:1,q:.8,type:'peaking'},{f:600,g:-1,q:1,type:'peaking'},{f:5000,g:3,q:1.6,type:'peaking'},{f:9000,g:2,q:.9,type:'peaking'},{f:14000,g:2,q:.7,type:'highshelf'}],bandWeights:[0.9,1.1,1.2,1.4,1.7,1.5,1.3],feedback:{bass:'Maskandi bass sits 100-200Hz. Keep it warm, round and out of the mud.',vocal:'Zulu vocals need room. Light reverb keeps the cultural authenticity.',highs:'Guitar harmonics are identity. Protect 4-8kHz, that shimmer is the genre.',comp:'Light 3:1 comp preserves the live, dynamic energy of traditional instruments.'}}
+};
+const BANDS=[{name:'SUB',hz:'20-60',start:20,end:60},{name:'BASS',hz:'60-250',start:60,end:250},{name:'LO-MID',hz:'250-500',start:250,end:500},{name:'MID',hz:'500-2k',start:500,end:2000},{name:'HI-MID',hz:'2k-6k',start:2000,end:6000},{name:'PRES',hz:'6k-12k',start:6000,end:12000},{name:'AIR',hz:'12k+',start:12000,end:20000}];
+
+let cur='hiphop',audioCtx=null,analyser=null,micStream=null,audioEl=null,audioBuf=null;
+let playing=false,micOn=false,presetOn=false,pNodes=[],animId=null,spectro=[],res={};
+let mediaElSrc=null;
+
+function init(){buildBands();setTemplate('hiphop',document.querySelector('.tpl-btn'));drawEQ(TEMPLATES.hiphop.eq);}
+
+function buildBands(){
+  document.getElementById('bandsRow').innerHTML=BANDS.map((b,i)=>`<div class="band-card"><div class="band-name">${b.name}</div><div class="band-bar-container"><div class="band-bar-inner" id="bb${i}" style="height:2px"></div></div><div class="band-db" id="bd${i}">-</div><div class="band-hz">${b.hz}</div></div>`).join('');
+}
+
+function setTemplate(key,btn){
+  cur=key;const t=TEMPLATES[key];
+  document.body.className=t.theme;
+  document.querySelectorAll('.tpl-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  document.getElementById('iGenre').textContent=t.name;
+  document.getElementById('iLufs').textContent=t.lufs;
+  document.getElementById('iPeak').textContent=t.peak;
+  document.getElementById('iComp').textContent=t.compRatio;
+  document.getElementById('iBass').textContent=t.bassBoost;
+  document.getElementById('iPres').textContent=t.presence;
+  document.getElementById('eqLabel').textContent=t.name+' Curve';
+  const c=t.chain;
+  document.getElementById('cv0').textContent=c.hpf;
+  document.getElementById('cv1').textContent=(c.sub>=0?'+':'')+c.sub;
+  document.getElementById('cv2').textContent=(c.bass>=0?'+':'')+c.bass;
+  document.getElementById('cv3').textContent=(c.midCut>=0?'+':'')+c.midCut;
+  document.getElementById('cv4').textContent=(c.presence>=0?'+':'')+c.presence;
+  document.getElementById('cv5').textContent=(c.air>=0?'+':'')+c.air;
+  document.getElementById('cv6').textContent=c.comp+':1';
+  document.getElementById('cv7').textContent=c.output;
+  drawEQ(t.eq);
+  presetOn=false;
+  document.getElementById('chainStatus').textContent='- NOT APPLIED -';
+  document.getElementById('chainStatus').style.color='var(--muted)';
+  document.querySelectorAll('.cn').forEach(n=>n.classList.remove('on'));
+  document.getElementById('presetBadge').classList.add('hidden');
+  document.getElementById('applyHint').textContent='Load a file first, then apply the '+t.name+' preset chain to process your audio';
+}
+
+function drawEQ(bands){
+  const cv=document.getElementById('eqCanvas');
+  const ctx=cv.getContext('2d');
+  cv.width=cv.offsetWidth||800;cv.height=90;
+  const W=cv.width,H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  const acc=gv('--accent'),acc2=gv('--accent2');
+  ctx.strokeStyle='rgba(255,255,255,0.05)';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=i/4*H;ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W,y);ctx.stroke();}
+  ctx.strokeStyle='rgba(255,255,255,0.12)';ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+  const fl=[20,50,100,200,500,1000,2000,5000,10000,20000];
+  ctx.fillStyle='rgba(255,255,255,0.18)';ctx.font='7px monospace';
+  fl.forEach(f=>{const x=f2x(f,W);ctx.fillText(f>=1000?(f/1000)+'k':f,x-4,H-3);});
+  const pts=[];
+  for(let i=0;i<=W;i++){
+    const freq=x2f(i,W);let g=0;
+    bands.forEach(b=>{
+      if(b.type==='highpass'){const r=freq/b.f;g+=r<1?-12*(1-r):0;}
+      else if(b.type==='highshelf'){const r=freq/b.f;g+=b.g*Math.min(1,r);}
+      else{const dist=Math.abs(Math.log2(freq/b.f));g+=b.g*Math.exp(-dist*dist*4);}
+    });
+    pts.push({x:i,y:H/2-(g/12)*(H/2*0.82)});
+  }
+  const gr=ctx.createLinearGradient(0,0,0,H);
+  gr.addColorStop(0,acc+'44');gr.addColorStop(1,acc+'06');
+  ctx.beginPath();ctx.moveTo(0,H/2);
+  pts.forEach(p=>ctx.lineTo(p.x,p.y));
+  ctx.lineTo(W,H/2);ctx.closePath();ctx.fillStyle=gr;ctx.fill();
+  ctx.beginPath();ctx.strokeStyle=acc;ctx.lineWidth=2;ctx.shadowColor=acc;ctx.shadowBlur=6;
+  pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));ctx.stroke();
+  ctx.shadowBlur=0;
+  bands.forEach(b=>{
+    if(b.type==='highpass')return;
+    const x=f2x(b.f,W),y=H/2-(b.g/12)*(H/2*0.82);
+    ctx.fillStyle=b.g>=0?acc:acc2;ctx.shadowColor=b.g>=0?acc:acc2;ctx.shadowBlur=8;
+    ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;
+  });
+}
+
+function f2x(f,W){const lMin=Math.log10(20),lMax=Math.log10(20000);return((Math.log10(f)-lMin)/(lMax-lMin))*W;}
+function x2f(x,W){const lMin=Math.log10(20),lMax=Math.log10(20000);return Math.pow(10,lMin+(x/W)*(lMax-lMin));}
+
+function handleDrop(e){e.preventDefault();const f=e.dataTransfer.files[0];if(f&&f.type.startsWith('audio'))processFile(f);}
+function loadFile(e){if(e.target.files[0])processFile(e.target.files[0]);}
+
+function processFile(file){
+  stopMic();
+  setStatus('Loading: '+file.name,true);
+  document.getElementById('fname').textContent=file.name;
+  document.getElementById('playbackBar').classList.remove('hidden');
+  if(mediaElSrc){try{mediaElSrc.disconnect();}catch(e){}}mediaElSrc=null;
+  if(audioEl){audioEl.pause();audioEl.src='';}
+  audioEl=new Audio();audioEl.src=URL.createObjectURL(file);
+  audioEl.addEventListener('timeupdate',updateProg);
+  audioEl.addEventListener('loadedmetadata',()=>{
+    document.getElementById('analyzeBtn').disabled=false;
+    document.getElementById('applyBtn').disabled=false;
+    setStatus('File loaded: '+file.name,false);
+    document.getElementById('applyHint').textContent='Ready! Hit APPLY PRESET to process with the '+TEMPLATES[cur].name+' chain';
+  });
+  const rdr=new FileReader();
+  rdr.onload=ev=>{ensureCtx();audioCtx.decodeAudioData(ev.target.result.slice(0),buf=>{audioBuf=buf;});};
+  rdr.readAsArrayBuffer(file);
+  document.getElementById('dropZone').classList.add('on');
+  document.getElementById('micCard').classList.remove('on');
+}
+
+function applyPreset(){
+  if(!audioEl)return;
+  ensureCtx();audioCtx.resume();
+  const t=TEMPLATES[cur];
+  if(!mediaElSrc){mediaElSrc=audioCtx.createMediaElementSource(audioEl);}
+  // Disconnect source from everything, then rewire clean
+  try{mediaElSrc.disconnect();}catch(e){}
+  pNodes.forEach(n=>{try{n.disconnect();}catch(e){}});pNodes=[];
+  if(analyser){try{analyser.disconnect();}catch(e){}}
+  const src=mediaElSrc;
+  const hpf=audioCtx.createBiquadFilter();hpf.type='highpass';hpf.frequency.value=t.chain.hpf;hpf.Q.value=0.7;
+  const eqNodes=t.eq.filter(b=>b.type!=='highpass').map(b=>{
+    const f=audioCtx.createBiquadFilter();
+    f.type=b.type==='highshelf'?'highshelf':'peaking';
+    f.frequency.value=b.f;f.gain.value=b.g;f.Q.value=b.q||1;return f;
+  });
+  const comp=audioCtx.createDynamicsCompressor();
+  comp.ratio.value=t.chain.comp;comp.threshold.value=-24;comp.knee.value=6;
+  comp.attack.value=t.chain.comp>4?.003:.01;comp.release.value=t.chain.comp>4?.1:.25;
+  const out=audioCtx.createGain();out.gain.value=Math.pow(10,(t.chain.output+2)/20);
+  analyser=audioCtx.createAnalyser();analyser.fftSize=2048;
+  let prev=src;prev.connect(hpf);prev=hpf;
+  eqNodes.forEach(n=>{prev.connect(n);prev=n;});
+  prev.connect(comp);comp.connect(out);out.connect(analyser);analyser.connect(audioCtx.destination);
+  pNodes=[src,hpf,...eqNodes,comp,out];
+  document.querySelectorAll('.cn').forEach(n=>n.classList.add('on'));
+  document.getElementById('chainStatus').textContent='ACTIVE: '+t.name.toUpperCase();
+  document.getElementById('chainStatus').style.color='var(--accent)';
+  document.getElementById('presetBadge').classList.remove('hidden');
+  document.getElementById('pbText').textContent=t.name.toUpperCase()+' PRESET LIVE';
+  presetOn=true;
+  if(!playing)togglePlay();else startLoop();
+  setStatus('Preset ACTIVE: '+t.name+' chain processing your audio',true);
+  document.getElementById('applyHint').textContent='Preset is live. Your audio runs through the full '+t.name+' signal chain.';
+}
+
+async function toggleMic(){
+  if(micOn){stopMic();return;}
+  try{
+    micStream=await navigator.mediaDevices.getUserMedia({audio:true});
+    ensureCtx();
+    if(analyser){try{analyser.disconnect();}catch(e){}}
+    analyser=audioCtx.createAnalyser();analyser.fftSize=2048;
+    const s=audioCtx.createMediaStreamSource(micStream);s.connect(analyser);
+    micOn=true;
+    document.getElementById('micBtn').textContent='STOP MIC';document.getElementById('micBtn').classList.add('rec');
+    document.getElementById('micCard').classList.add('on');document.getElementById('dropZone').classList.remove('on');
+    document.getElementById('analyzeBtn').disabled=false;
+    setStatus('Mic active - real-time monitoring',true);startLoop();
+  }catch(e){alert('Mic denied: '+e.message);}
+}
+function stopMic(){
+  if(micStream){micStream.getTracks().forEach(t=>t.stop());micStream=null;}
+  micOn=false;
+  document.getElementById('micBtn').textContent='ARM MICROPHONE';document.getElementById('micBtn').classList.remove('rec');
+  document.getElementById('micCard').classList.remove('on');
+}
+
+function togglePlay(){
+  if(!audioEl)return;
+  ensureCtx();audioCtx.resume();
+  if(!playing){
+    // Ensure basic passthrough routing if no preset applied yet
+    if(!mediaElSrc){
+      mediaElSrc=audioCtx.createMediaElementSource(audioEl);
+      analyser=audioCtx.createAnalyser();analyser.fftSize=2048;
+      mediaElSrc.connect(analyser);
+      analyser.connect(audioCtx.destination);
+    }
+    audioEl.play();document.getElementById('playBtn').textContent='||';playing=true;startLoop();
+  }else{
+    audioEl.pause();document.getElementById('playBtn').textContent='>';playing=false;
+  }
+}
+
+function updateProg(){
+  if(!audioEl)return;
+  const p=(audioEl.currentTime/audioEl.duration)*100||0;
+  document.getElementById('progFill').style.width=p+'%';
+  document.getElementById('timeD').textContent=fmt(audioEl.currentTime)+' / '+fmt(audioEl.duration);
+}
+function seekAudio(e){
+  if(!audioEl||!audioEl.duration)return;
+  const r=document.getElementById('progWrap').getBoundingClientRect();
+  audioEl.currentTime=((e.clientX-r.left)/r.width)*audioEl.duration;
+}
+function fmt(s){if(!s||isNaN(s))return'0:00';return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0');}
+
+function startAnalysis(){
+  ensureCtx();if(audioCtx.state==='suspended')audioCtx.resume();
+  if(micOn){setStatus('Analysis running - live monitoring',true);return;}
+  if(audioBuf)runBufAnalysis();
+  if(!playing)togglePlay();
+  startLoop();setStatus('Analysis running',true);
+}
+
+function runBufAnalysis(){
+  const data=audioBuf.getChannelData(0),len=data.length;
+  let sq=0,pk=0;const bSz=Math.floor(len/100);let maxB=-Infinity,minB=Infinity;
+  for(let i=0;i<len;i++){const v=Math.abs(data[i]);sq+=data[i]*data[i];if(v>pk)pk=v;}
+  for(let b=0;b<100;b++){let bs=0;for(let i=b*bSz;i<(b+1)*bSz&&i<len;i++)bs+=data[i]*data[i];const br=Math.sqrt(bs/bSz);if(br>maxB)maxB=br;if(br>0.0001&&br<minB)minB=br;}
+  const rDb=20*Math.log10(Math.sqrt(sq/len)||0.0001);
+  const pDb=20*Math.log10(pk||0.0001);
+  const dr=20*Math.log10(maxB/(minB||0.0001));
+  const lufs=rDb-0.691;
+  res={rmsDb:rDb,peakDb:pDb,dynRange:dr,lufsEst:lufs};
+  updateMeters(rDb,pDb,dr,lufs);genScore(rDb,pDb,dr,lufs);genFeedback(rDb,pDb,dr,lufs);
+  drawStaticWave(audioBuf);document.getElementById('reportDlBtn').disabled=false;
+}
+
+function startLoop(){if(animId)cancelAnimationFrame(animId);loop();}
+function loop(){
+  animId=requestAnimationFrame(loop);if(!analyser)return;
+  const bLen=analyser.frequencyBinCount;
+  const td=new Uint8Array(bLen),fd=new Uint8Array(bLen);
+  analyser.getByteTimeDomainData(td);analyser.getByteFrequencyData(fd);
+  drawWave(td);drawFFT(fd);drawSpec(fd);updateBands(fd);
+  let sq=0,pk=0;td.forEach(v=>{const n=(v-128)/128;sq+=n*n;if(Math.abs(n)>pk)pk=Math.abs(n);});
+  const rms=Math.sqrt(sq/bLen);
+  const rDb=20*Math.log10(rms||0.0001);
+  const pDb=20*Math.log10(pk||0.0001);
+  const dr=pDb-rDb,lufs=rDb-0.691;
+  updateMeters(rDb,pDb,dr,lufs);
+  if(micOn){genScore(rDb,pDb,dr,lufs);genFeedback(rDb,pDb,dr,lufs);}
+}
+
+function drawWave(td){
+  const c=document.getElementById('waveCanvas');const ctx=c.getContext('2d');
+  c.width=c.offsetWidth;c.height=c.offsetHeight;const W=c.width,H=c.height;
+  ctx.clearRect(0,0,W,H);const acc=gv('--accent');
+  ctx.strokeStyle=acc;ctx.lineWidth=1.5;ctx.shadowColor=acc;ctx.shadowBlur=5;
+  ctx.beginPath();const sl=W/td.length;
+  td.forEach((v,i)=>{const y=(v/128)*(H/2);i===0?ctx.moveTo(0,y):ctx.lineTo(i*sl,y);});ctx.stroke();
+  ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,0.05)';ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(0,H/2);ctx.lineTo(W,H/2);ctx.stroke();
+}
+function drawFFT(fd){
+  const c=document.getElementById('fftCanvas');const ctx=c.getContext('2d');
+  c.width=c.offsetWidth;c.height=c.offsetHeight;const W=c.width,H=c.height;
+  ctx.clearRect(0,0,W,H);const acc=gv('--accent'),acc2=gv('--accent2');
+  const g=ctx.createLinearGradient(0,H,0,0);g.addColorStop(0,acc2+'88');g.addColorStop(.5,acc+'99');g.addColorStop(1,acc+'ff');
+  const bw=W/fd.length;fd.forEach((v,i)=>{const h=(v/255)*H;ctx.fillStyle=g;ctx.fillRect(i*bw,H-h,bw,h);});
+}
+function drawSpec(fd){
+  const c=document.getElementById('specCanvas');const ctx=c.getContext('2d');
+  c.width=c.offsetWidth;c.height=c.offsetHeight;const W=c.width,H=c.height;
+  spectro.push(Array.from(fd));if(spectro.length>W)spectro.shift();
+  ctx.clearRect(0,0,W,H);
+  spectro.forEach((col,x)=>{col.forEach((v,y)=>{const t=y/col.length,b=v/255;ctx.fillStyle=`rgb(${Math.floor(b*255*(1-t))},${Math.floor(b*180*t)},${Math.floor(b*255*(t>.5?1:t*2))})`;ctx.fillRect(x,H-(y/col.length)*H,1,H/col.length+1);});});
+}
+function drawStaticWave(buf){
+  const c=document.getElementById('waveCanvas');const ctx=c.getContext('2d');
+  c.width=c.offsetWidth;c.height=c.offsetHeight||140;const W=c.width,H=c.height;
+  ctx.clearRect(0,0,W,H);const data=buf.getChannelData(0),step=Math.ceil(data.length/W);
+  const acc=gv('--accent');ctx.strokeStyle=acc;ctx.lineWidth=1;ctx.shadowColor=acc;ctx.shadowBlur=4;
+  ['top','bot'].forEach(s=>{ctx.beginPath();for(let i=0;i<W;i++){let mx=0;for(let j=0;j<step;j++){const v=Math.abs(data[i*step+j]||0);if(v>mx)mx=v;}const y=s==='top'?(H/2)-(mx*H/2.2):(H/2)+(mx*H/2.2);i===0?ctx.moveTo(i,y):ctx.lineTo(i,y);}ctx.stroke();});
+}
+function updateBands(fd){
+  if(!audioCtx)return;const binHz=audioCtx.sampleRate/analyser.fftSize;
+  BANDS.forEach((b,i)=>{const s=Math.floor(b.start/binHz),e=Math.floor(b.end/binHz);let sum=0,cnt=0;for(let j=s;j<=e&&j<fd.length;j++){sum+=fd[j];cnt++;}const avg=cnt>0?sum/cnt:0;const db=20*Math.log10((avg/255)||0.0001);const pct=Math.max(0,Math.min(100,(avg/255)*100));const w=TEMPLATES[cur].bandWeights[i];const bar=document.getElementById('bb'+i);const dbEl=document.getElementById('bd'+i);if(bar)bar.style.height=Math.max(2,pct*w*0.5)+'px';if(dbEl)dbEl.textContent=db.toFixed(0);});
+}
+function updateMeters(rms,peak,dyn,lufs){
+  const t=TEMPLATES[cur];
+  const s=(id,bid,val,clr)=>{const el=document.getElementById(id);const bar=document.getElementById(bid);if(el){el.textContent=val.toFixed(1);el.style.color=clr;}if(bar)bar.style.width=Math.max(0,Math.min(100,(val+60)/60*100))+'%';};
+  s('mRMS','bRMS',rms,rms>-6?'var(--accent2)':rms>-18?'var(--accent)':'var(--accent3)');
+  s('mPeak','bPeak',peak,peak>-1?'var(--accent2)':'var(--accent)');
+  const de=document.getElementById('mDyn');if(de){de.textContent=Math.abs(dyn).toFixed(1);de.style.color='var(--accent3)';}
+  document.getElementById('bDyn').style.width=Math.min(100,Math.abs(dyn)/30*100)+'%';
+  const le=document.getElementById('mLufs');const lc=Math.abs(lufs-t.targetLufs)<2?'var(--accent)':'var(--accent2)';
+  if(le){le.textContent=lufs.toFixed(1);le.style.color=lc;}document.getElementById('bLufs').style.width=Math.max(0,Math.min(100,(lufs+30)/30*100))+'%';
+}
+function genScore(rms,peak,dyn,lufs){
+  const t=TEMPLATES[cur];let score=100;
+  score-=Math.min(25,Math.abs(lufs-t.targetLufs)*3);
+  if(peak>t.targetPeak)score-=20;else if(peak<-20)score-=8;
+  if(Math.abs(dyn)<3)score-=15;else if(Math.abs(dyn)>20)score-=5;
+  if(rms>-6)score-=10;if(rms<-30)score-=5;
+  score=Math.max(0,Math.min(100,Math.round(score)));
+  const grade=score>=90?'S - CLINICAL':score>=75?'A - SOLID':score>=60?'B - DECENT':score>=45?'C - NEEDS WORK':'D - REDO IT';
+  const acc=gv('--accent');
+  document.getElementById('scoreNum').textContent=score;
+  document.getElementById('scoreGrade').textContent=grade;
+  document.getElementById('scoreCircle').style.strokeDashoffset=352-(score/100)*352;
+  document.getElementById('scoreCircle').style.stroke=acc;
+  document.getElementById('scoreNum').style.color=acc;
+  document.getElementById('scoreGrade').style.color=acc;
+}
+function genFeedback(rms,peak,dyn,lufs){
+  const t=TEMPLATES[cur];const fb=t.feedback;const list=[];
+  const ld=lufs-t.targetLufs;
+  if(Math.abs(ld)<=2)list.push({type:'good',msg:'Loudness ('+lufs.toFixed(1)+' LUFS) on target for '+t.name+'. Streaming ready.'});
+  else if(ld>2)list.push({type:'bad',msg:'Too loud ('+lufs.toFixed(1)+' LUFS). Target '+t.lufs+'. Pull master gain or ease the limiter.'});
+  else list.push({type:'warn',msg:'Too quiet ('+lufs.toFixed(1)+' LUFS). Target '+t.lufs+'. Add makeup gain or bus saturation.'});
+  if(peak>t.targetPeak)list.push({type:'bad',msg:'TRUE PEAK CLIPPING ('+peak.toFixed(1)+' dBFS). Set limiter to '+t.peak+' now.'});
+  else list.push({type:'good',msg:'True peak safe ('+peak.toFixed(1)+' dBFS). No clipping on streaming platforms.'});
+  if(Math.abs(dyn)<4)list.push({type:'bad',msg:'Over-compressed. Dynamic range crushed. Ease the limiter, let the mix breathe.'});
+  else if(Math.abs(dyn)>18)list.push({type:'warn',msg:'High dynamic range. Can feel quiet in loud environments. Check target loudness.'});
+  else list.push({type:'good',msg:'Dynamic range healthy ('+Math.abs(dyn).toFixed(1)+' dB). Good balance of punch and loudness.'});
+  list.push({type:'warn',msg:'BASS: '+fb.bass});
+  list.push({type:'warn',msg:'VOCAL: '+fb.vocal});
+  list.push({type:'good',msg:'HIGHS: '+fb.highs});
+  list.push({type:'good',msg:'COMP: '+fb.comp});
+  if(presetOn)list.push({type:'good',msg:'PRESET ACTIVE: '+t.name+' chain (HPF + EQ + Compressor + Gain) is processing your signal right now.'});
+  document.getElementById('feedbackList').innerHTML=list.map(f=>'<li><span class="dot dot-'+f.type+'"></span>'+f.msg+'</li>').join('');
+}
+function ensureCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
+function gv(v){return getComputedStyle(document.body).getPropertyValue(v).trim()||'#00ff9d';}
+function setStatus(msg,on){document.getElementById('statusText').textContent=msg;document.getElementById('sdot').className='sdot'+(on?' on':'');}
+
+function exportReport(){
+  const t=TEMPLATES[cur];const r=res;
+  const score=document.getElementById('scoreNum').textContent;
+  const grade=document.getElementById('scoreGrade').textContent;
+  const fb=Array.from(document.querySelectorAll('#feedbackList li')).map(li=>'  * '+li.textContent.trim()).join('\n');
+  const fn=document.getElementById('fname').textContent||'Unknown';
+  const ps=presetOn?'APPLIED: '+t.name:'Not applied';
+  const c=t.chain;
+  const txt=[
+    '==========================================================',
+    '     FREQUENCY OASIS - PROFESSIONAL MIX REPORT',
+    '==========================================================',
+    '  Track     : '+fn,
+    '  Generated : '+new Date().toLocaleString(),
+    '  Genre     : '+t.name,
+    '  Preset    : '+ps,
+    '',
+    '  MIX HEALTH: '+score+'/100 - '+grade,
+    '----------------------------------------------------------',
+    '  RMS       : '+(r.rmsDb?r.rmsDb.toFixed(2):'-')+' dBFS',
+    '  Peak      : '+(r.peakDb?r.peakDb.toFixed(2):'-')+' dBFS',
+    '  Dyn Range : '+(r.dynRange?Math.abs(r.dynRange).toFixed(2):'-')+' dB',
+    '  LUFS Est  : '+(r.lufsEst?r.lufsEst.toFixed(2):'-')+' LUFS',
+    '  Target    : '+t.targetLufs+' LUFS / '+t.targetPeak+' dBTP',
+    '',
+    '  PRESET CHAIN ('+t.name+')',
+    '----------------------------------------------------------',
+    '  HPF      : '+c.hpf+' Hz',
+    '  Sub      : '+(c.sub>=0?'+':'')+c.sub+' dB',
+    '  Bass EQ  : '+(c.bass>=0?'+':'')+c.bass+' dB',
+    '  Mid Cut  : '+(c.midCut>=0?'+':'')+c.midCut+' dB',
+    '  Presence : '+(c.presence>=0?'+':'')+c.presence+' dB',
+    '  Air      : '+(c.air>=0?'+':'')+c.air+' dB',
+    '  Compress : '+c.comp+':1',
+    '  Output   : '+c.output+' dBFS',
+    '',
+    '  FEEDBACK',
+    '----------------------------------------------------------',
+    fb,
+    '',
+    '  BOOK A PROFESSIONAL MIX: R1 200 per track',
+    '  WhatsApp: +27 065 197 1461',
+    '  VST Plugin: https://frequencyoasis.gumroad.com/',
+    '==========================================================',
+  ].join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain'}));
+  a.download='FO_Report_'+fn.replace(/[^a-z0-9]/gi,'_').slice(0,20)+'.txt';a.click();
+}
+
+function resetAll(){
+  if(animId)cancelAnimationFrame(animId);stopMic();
+  if(audioEl){audioEl.pause();audioEl.src='';audioEl=null;}
+  pNodes.forEach(n=>{try{n.disconnect();}catch(e){}});pNodes=[];
+  audioBuf=null;analyser=null;playing=false;presetOn=false;spectro=[];res={};
+  if(mediaElSrc){try{mediaElSrc.disconnect();}catch(e){}}mediaElSrc=null;
+  ['analyzeBtn','applyBtn','reportDlBtn'].forEach(id=>document.getElementById(id).disabled=true);
+  document.getElementById('playbackBar').classList.add('hidden');
+  document.getElementById('playBtn').textContent='>';
+  document.getElementById('progFill').style.width='0%';
+  document.getElementById('timeD').textContent='0:00 / 0:00';
+  document.getElementById('fname').textContent='-';
+  document.getElementById('scoreNum').textContent='-';
+  document.getElementById('scoreGrade').textContent='-';
+  document.getElementById('scoreCircle').style.strokeDashoffset=352;
+  ['mRMS','mPeak','mDyn','mLufs'].forEach(id=>document.getElementById(id).textContent='-');
+  ['bRMS','bPeak','bDyn','bLufs'].forEach(id=>document.getElementById(id).style.width='0%');
+  document.getElementById('feedbackList').innerHTML='<li><span class="dot dot-warn"></span>Load audio or use mic, then Analyze to get your diagnostic report.</li>';
+  BANDS.forEach((_,i)=>{const b=document.getElementById('bb'+i);const d=document.getElementById('bd'+i);if(b)b.style.height='2px';if(d)d.textContent='-';});
+  document.getElementById('chainStatus').textContent='- NOT APPLIED -';document.getElementById('chainStatus').style.color='var(--muted)';
+  document.querySelectorAll('.cn').forEach(n=>n.classList.remove('on'));
+  document.getElementById('presetBadge').classList.add('hidden');
+  setStatus('Awaiting signal',false);
+  ['waveCanvas','fftCanvas','specCanvas'].forEach(id=>{const c=document.getElementById(id);if(c){const x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);}});
+  drawEQ(TEMPLATES[cur].eq);
+}
+
+init();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .catch((err) => console.warn('Service worker registration failed:', err));
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="UTF-8" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline';" />
+<title>Pixel Archive Swallow — PixelProTech Solutions</title>
+<style>:root {
+  --bg: #14181d;
+  --panel: #171c23;
+  --border: #262c34;
+  --text: #e7eaee;
+  --text-dim: #8b95a1;
+  --accent: #7c6cf0;
+  --warn: #e0a63c;
+  --ok: #3ecf8e;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
+
+.shell { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 220px; background: #10141a; border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; padding: 20px 0;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 20px 20px; border-bottom: 1px solid var(--border); margin-bottom: 12px; }
+.brand-mark { border-radius: 8px; }
+.brand-name { font-weight: 700; font-size: 13px; letter-spacing: 0.5px; }
+.brand-sub { font-size: 11px; color: var(--text-dim); }
+
+nav { display: flex; flex-direction: column; flex: 1; }
+.nav-item {
+  background: none; border: none; color: var(--text-dim); text-align: left; padding: 12px 20px;
+  font-size: 12px; letter-spacing: 0.5px; cursor: pointer; border-left: 3px solid transparent;
+}
+.nav-item:hover { color: var(--text); background: #171c23; }
+.nav-item.active { color: var(--accent); border-left-color: var(--accent); background: #171c23; }
+
+.sidebar-footer { padding: 12px 20px 0; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-dim); }
+.status-line { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+.dot-green { background: var(--ok); }
+.dot-amber { background: var(--warn); }
+
+.content { flex: 1; padding: 40px; overflow-y: auto; }
+.view { display: none; }
+.view.active { display: block; }
+
+h1 { font-size: 20px; letter-spacing: 1px; margin: 0 0 24px; font-weight: 700; }
+h3 { font-size: 13px; letter-spacing: 0.5px; color: var(--text-dim); margin: 0 0 12px; }
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 20px; max-width: 900px; }
+.stat-card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px; }
+.stat-card.warn { border-color: var(--warn); }
+.stat-value { font-size: 28px; font-weight: 300; }
+.stat-label { font-size: 11px; color: var(--text-dim); letter-spacing: 0.5px; margin-top: 6px; }
+
+.last-swallow { color: var(--text-dim); font-size: 12px; margin-bottom: 20px; }
+
+.primary-btn {
+  background: var(--accent); color: white; border: none; padding: 12px 24px;
+  font-size: 12px; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer;
+}
+.primary-btn:hover { opacity: 0.9; }
+.primary-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.secondary-btn {
+  background: transparent; color: var(--text); border: 1px solid var(--border); padding: 12px 24px;
+  font-size: 12px; letter-spacing: 0.5px; border-radius: 4px; cursor: pointer; margin-top: 8px;
+}
+.secondary-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.panel { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 20px; margin-bottom: 20px; max-width: 640px; }
+.panel label { display: block; font-size: 11px; color: var(--text-dim); letter-spacing: 0.5px; margin: 12px 0 6px; }
+.panel label:first-child { margin-top: 0; }
+.panel input, .panel select {
+  width: 100%; background: #0d1117; border: 1px solid var(--border); color: var(--text);
+  padding: 10px 12px; border-radius: 4px; font-size: 13px;
+}
+.row { display: flex; gap: 10px; align-items: flex-end; }
+.row > div, .row > input { flex: 1; }
+.row button { white-space: nowrap; height: 40px; }
+
+.hint { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+.mono { font-family: 'Consolas', monospace; font-size: 11px; color: var(--text-dim); margin-top: 8px; word-break: break-all; }
+
+.live-log { background: #0d1117; border: 1px solid var(--border); border-radius: 4px; padding: 12px; height: 160px; overflow-y: auto; font-family: monospace; font-size: 12px; margin-bottom: 12px; }
+.live-log .entry { padding: 2px 0; }
+.live-log .entry.ok { color: var(--ok); }
+.live-log .entry.warn { color: var(--warn); }
+.live-log .entry.error { color: #e05c5c; }
+
+.list { display: flex; flex-direction: column; gap: 8px; max-width: 900px; }
+.list-item { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
+.list-item .meta { font-size: 11px; color: var(--text-dim); margin-top: 4px; }
+.list-item button { background: transparent; border: 1px solid var(--border); color: var(--text); padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+
+.badge { font-size: 10px; padding: 3px 8px; border-radius: 3px; letter-spacing: 0.5px; }
+.badge-high { background: rgba(62,207,142,0.15); color: var(--ok); }
+.badge-medium { background: rgba(224,166,60,0.15); color: var(--warn); }
+.badge-low, .badge-review { background: rgba(224,92,92,0.15); color: #e05c5c; }
+</style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img class="brand-mark" src="data:image/png;base64,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" alt="Pixel Archive Swallow" width="36" height="36" />
+        <div class="brand-text">
+          <div class="brand-name">ARCHIVE SWALLOW</div>
+          <div class="brand-sub">PixelProTech Solutions</div>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-item active" data-view="dashboard">DASHBOARD</button>
+        <button class="nav-item" data-view="swallow">SWALLOW</button>
+        <button class="nav-item" data-view="archive">ARCHIVE</button>
+        <button class="nav-item" data-view="search">SEARCH</button>
+        <button class="nav-item" data-view="review">REVIEW</button>
+        <button class="nav-item" data-view="boxes">BOXES</button>
+        <button class="nav-item" data-view="settings">SETTINGS</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-line" id="cloud-status"><span class="dot dot-green"></span> ZERO CLOUD MODE</div>
+        <div class="reg-line">Reg 2026/622131/07</div>
+      </div>
+    </aside>
+
+    <main class="content">
+
+      <section id="view-dashboard" class="view active">
+        <h1>PIXEL ARCHIVE SWALLOW</h1>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-value" id="stat-documents">—</div><div class="stat-label">DOCUMENTS</div></div>
+          <div class="stat-card"><div class="stat-value" id="stat-pages">—</div><div class="stat-label">PAGES</div></div>
+          <div class="stat-card"><div class="stat-value" id="stat-boxes">—</div><div class="stat-label">BOXES</div></div>
+          <div class="stat-card warn"><div class="stat-value" id="stat-review">—</div><div class="stat-label">NEEDS REVIEW</div></div>
+        </div>
+        <div class="last-swallow">LAST SWALLOW: <span id="stat-last">—</span></div>
+        <button class="primary-btn" id="btn-start-swallow">START SWALLOW</button>
+      </section>
+
+      <section id="view-swallow" class="view">
+        <h1>SWALLOW</h1>
+        <div class="panel">
+          <label>Archive</label>
+          <select id="swallow-archive"></select>
+          <label>Box</label>
+          <select id="swallow-box"></select>
+          <label>Scanner Device (if NAPS2 installed)</label>
+          <select id="swallow-device"><option>— checking —</option></select>
+          <div class="row">
+            <div><label>DPI</label><input type="number" id="swallow-dpi" value="300" /></div>
+            <div><label>Color Mode</label>
+              <select id="swallow-color"><option>Color</option><option>Gray</option><option>BlackWhite</option></select>
+            </div>
+          </div>
+          <button class="primary-btn" id="btn-begin-batch">BEGIN BATCH (watch import folder)</button>
+          <button class="secondary-btn" id="btn-manual-import" disabled>MANUAL IMPORT (choose files)</button>
+          <p class="hint">Drop scanned files (PNG/JPG/TIFF/PDF) into the import folder shown below, or use manufacturer scanning software pointed at that folder. Files are picked up automatically.</p>
+          <div id="import-folder-path" class="mono"></div>
+        </div>
+        <div class="panel">
+          <h3>LIVE PROCESSING</h3>
+          <div id="live-log" class="live-log"></div>
+          <button class="secondary-btn" id="btn-finalize-batch" disabled>FINALIZE BATCH</button>
+        </div>
+      </section>
+
+      <section id="view-archive" class="view">
+        <h1>ARCHIVE</h1>
+        <div class="panel">
+          <label>New Archive Name</label>
+          <div class="row"><input type="text" id="new-archive-name" placeholder="e.g. Financial Records" /><button id="btn-create-archive">CREATE</button></div>
+        </div>
+        <div id="archive-list" class="list"></div>
+      </section>
+
+      <section id="view-search" class="view">
+        <h1>SEARCH</h1>
+        <div class="panel">
+          <div class="row"><input type="text" id="search-query" placeholder="supplier name, reference number, keyword..." /><button id="btn-search">SEARCH</button></div>
+        </div>
+        <div id="search-results" class="list"></div>
+      </section>
+
+      <section id="view-review" class="view">
+        <h1>REVIEW</h1>
+        <div class="panel">
+          <p id="review-count" class="hint">— items pending</p>
+        </div>
+        <div id="review-list" class="list"></div>
+      </section>
+
+      <section id="view-boxes" class="view">
+        <h1>BOXES</h1>
+        <div class="panel">
+          <label>Archive</label>
+          <select id="box-archive-select"></select>
+          <label>Box Label (e.g. FIN-014)</label>
+          <input type="text" id="new-box-label" />
+          <label>Year Range (optional)</label>
+          <input type="text" id="new-box-years" placeholder="2005–2008" />
+          <div class="row">
+            <button id="btn-create-box">CREATE BOX</button>
+            <button id="btn-print-label" class="secondary-btn">PRINT LABEL PDF</button>
+          </div>
+        </div>
+        <div id="box-list" class="list"></div>
+      </section>
+
+      <section id="view-settings" class="view">
+        <h1>SETTINGS</h1>
+        <div class="panel">
+          <p><strong>Local-first architecture.</strong> OCR, classification, search index and the archive database all run on this machine. No document content is transmitted anywhere unless you explicitly enable a future cloud feature — none exist in this build.</p>
+          <p class="mono">Data location: see OS user-data folder → PixelArchive/</p>
+          <label>Export</label>
+          <button id="btn-export-csv" class="secondary-btn">EXPORT CURRENT ARCHIVE AS CSV</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <script>// app.js — renderer logic. Everything here calls window.pixel, the narrow
+// bridge exposed by preload.js. No fs/child_process access exists here.
+
+let currentBatchId = null;
+let currentBoxId = null;
+let currentArchiveId = null;
+
+// ---------- Navigation ----------
+document.querySelectorAll('.nav-item').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.nav-item').forEach((b) => b.classList.remove('active'));
+    document.querySelectorAll('.view').forEach((v) => v.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`view-${btn.dataset.view}`).classList.add('active');
+    if (btn.dataset.view === 'archive') refreshArchiveList();
+    if (btn.dataset.view === 'review') refreshReview();
+    if (btn.dataset.view === 'boxes') refreshBoxArchiveSelect();
+  });
+});
+
+// ---------- Dashboard ----------
+async function refreshDashboard() {
+  const stats = await window.pixel.dashboardStats();
+  document.getElementById('stat-documents').textContent = stats.documents;
+  document.getElementById('stat-pages').textContent = stats.pages;
+  document.getElementById('stat-boxes').textContent = stats.boxes;
+  document.getElementById('stat-review').textContent = stats.needsReview;
+  document.getElementById('stat-last').textContent = stats.lastSwallow ? new Date(stats.lastSwallow).toLocaleString() : '—';
+}
+document.getElementById('btn-start-swallow').addEventListener('click', () => {
+  document.querySelector('.nav-item[data-view="swallow"]').click();
+});
+
+// ---------- Archive ----------
+async function refreshArchiveList() {
+  const archives = await window.pixel.listArchives();
+  const list = document.getElementById('archive-list');
+  list.innerHTML = '';
+  for (const a of archives) {
+    const el = document.createElement('div');
+    el.className = 'list-item';
+    el.innerHTML = `<div><div>${a.name}</div><div class="meta">Created ${new Date(a.created_at).toLocaleDateString()}</div></div>`;
+    list.appendChild(el);
+  }
+  await populateArchiveSelects(archives);
+}
+
+async function populateArchiveSelects(archives) {
+  const selects = [
+    document.getElementById('swallow-archive'),
+    document.getElementById('box-archive-select')
+  ];
+  for (const sel of selects) {
+    const prev = sel.value;
+    sel.innerHTML = archives.map((a) => `<option value="${a.id}">${a.name}</option>`).join('');
+    if (prev) sel.value = prev;
+  }
+  currentArchiveId = document.getElementById('swallow-archive').value || (archives[0] && archives[0].id);
+}
+
+document.getElementById('btn-create-archive').addEventListener('click', async () => {
+  const input = document.getElementById('new-archive-name');
+  if (!input.value.trim()) return;
+  await window.pixel.createArchive(input.value.trim());
+  input.value = '';
+  refreshArchiveList();
+});
+
+// ---------- Boxes ----------
+async function refreshBoxArchiveSelect() {
+  const archives = await window.pixel.listArchives();
+  await populateArchiveSelects(archives);
+  await refreshBoxList();
+}
+
+document.getElementById('box-archive-select').addEventListener('change', refreshBoxList);
+document.getElementById('swallow-archive').addEventListener('change', async (e) => {
+  currentArchiveId = e.target.value;
+  await refreshSwallowBoxes();
+});
+
+async function refreshBoxList() {
+  const archiveId = document.getElementById('box-archive-select').value;
+  if (!archiveId) return;
+  const boxes = await window.pixel.listBoxes(archiveId);
+  const list = document.getElementById('box-list');
+  list.innerHTML = '';
+  for (const b of boxes) {
+    const el = document.createElement('div');
+    el.className = 'list-item';
+    el.innerHTML = `<div><div>${b.label}</div><div class="meta">${b.year_range || 'no year range'}</div></div>`;
+    list.appendChild(el);
+  }
+  await refreshSwallowBoxes();
+}
+
+async function refreshSwallowBoxes() {
+  const archiveId = document.getElementById('swallow-archive').value;
+  if (!archiveId) return;
+  const boxes = await window.pixel.listBoxes(archiveId);
+  const sel = document.getElementById('swallow-box');
+  sel.innerHTML = boxes.map((b) => `<option value="${b.id}">${b.label}</option>`).join('');
+}
+
+document.getElementById('btn-create-box').addEventListener('click', async () => {
+  const archiveId = document.getElementById('box-archive-select').value;
+  const label = document.getElementById('new-box-label').value.trim();
+  const years = document.getElementById('new-box-years').value.trim();
+  if (!archiveId || !label) return;
+  await window.pixel.createBox(archiveId, label, years || null);
+  document.getElementById('new-box-label').value = '';
+  document.getElementById('new-box-years').value = '';
+  refreshBoxList();
+});
+
+document.getElementById('btn-print-label').addEventListener('click', async () => {
+  const archiveSelect = document.getElementById('box-archive-select');
+  const archiveName = archiveSelect.options[archiveSelect.selectedIndex]?.text || 'Archive';
+  const label = document.getElementById('new-box-label').value.trim();
+  const years = document.getElementById('new-box-years').value.trim();
+  if (!label) return;
+  await window.pixel.generateBoxLabel({ archiveName, boxLabel: label, yearRange: years || null });
+});
+
+// ---------- Swallow (ingestion) ----------
+async function initScannerDevices() {
+  const status = await window.pixel.listScannerDevices();
+  const sel = document.getElementById('swallow-device');
+  if (status.available && status.devices.length) {
+    sel.innerHTML = status.devices.map((d) => `<option>${d}</option>`).join('');
+  } else {
+    sel.innerHTML = '<option>— manual import fallback active —</option>';
+    document.getElementById('btn-manual-import').disabled = false;
+  }
+}
+
+document.getElementById('btn-begin-batch').addEventListener('click', async () => {
+  const boxId = document.getElementById('swallow-box').value;
+  if (!boxId) { alert('Create a box first (BOXES tab).'); return; }
+  currentBoxId = boxId;
+  const dpi = parseInt(document.getElementById('swallow-dpi').value, 10) || 300;
+  const colorMode = document.getElementById('swallow-color').value;
+
+  const { batchId, watchFolder } = await window.pixel.startWatchFolder(boxId, dpi, colorMode);
+  currentBatchId = batchId;
+  document.getElementById('import-folder-path').textContent = watchFolder;
+  document.getElementById('btn-finalize-batch').disabled = false;
+  document.getElementById('btn-manual-import').disabled = false;
+  document.getElementById('live-log').innerHTML = '';
+  logLine(`Batch ${batchId} started. Watching: ${watchFolder}`, 'ok');
+});
+
+document.getElementById('btn-manual-import').addEventListener('click', async () => {
+  if (!currentBatchId) { alert('Begin a batch first.'); return; }
+  const result = await window.pixel.manualImport(currentBatchId);
+  logLine(`Imported ${result.imported} file(s) into watch folder.`, 'ok');
+});
+
+document.getElementById('btn-finalize-batch').addEventListener('click', async () => {
+  if (!currentBatchId) return;
+  logLine('Finalizing batch — grouping pages into documents…', 'ok');
+  const result = await window.pixel.finalizeBatch(currentBatchId, currentBoxId);
+  logLine(`Batch finalized. ${result.documentCount} document(s) created.`, 'ok');
+  document.getElementById('btn-finalize-batch').disabled = true;
+  currentBatchId = null;
+  refreshDashboard();
+});
+
+function logLine(text, level = 'ok') {
+  const log = document.getElementById('live-log');
+  const line = document.createElement('div');
+  line.className = `entry ${level}`;
+  line.textContent = text;
+  log.appendChild(line);
+  log.scrollTop = log.scrollHeight;
+}
+
+window.pixel.onPageProcessed(({ pageNumber, status, error }) => {
+  if (error) {
+    logLine(`Page ${pageNumber}: ERROR — ${error}`, 'error');
+  } else {
+    const level = status === 'HIGH' ? 'ok' : (status === 'MEDIUM' ? 'ok' : 'warn');
+    logLine(`Page ${pageNumber}: processed (${status})`, level);
+  }
+});
+
+// ---------- Search ----------
+document.getElementById('btn-search').addEventListener('click', runSearch);
+document.getElementById('search-query').addEventListener('keydown', (e) => { if (e.key === 'Enter') runSearch(); });
+
+async function runSearch() {
+  const query = document.getElementById('search-query').value.trim();
+  const results = await window.pixel.search(query);
+  const list = document.getElementById('search-results');
+  list.innerHTML = '';
+  if (!results.length) {
+    list.innerHTML = '<div class="hint">No matches.</div>';
+    return;
+  }
+  for (const r of results) {
+    const el = document.createElement('div');
+    el.className = 'list-item';
+    el.innerHTML = `
+      <div>
+        <div>${r.supplier || r.category || 'Unclassified'} — ${r.reference || 'no ref'}</div>
+        <div class="meta">${r.snippet || ''}</div>
+      </div>
+      <span class="badge badge-${(r.confidence || 'review').toLowerCase()}">${r.confidence}</span>
+    `;
+    list.appendChild(el);
+  }
+}
+
+// ---------- Review ----------
+async function refreshReview() {
+  const summary = await window.pixel.reviewSummary();
+  document.getElementById('review-count').textContent = `${summary.pending} item(s) pending`;
+  const items = await window.pixel.reviewItems(null);
+  const list = document.getElementById('review-list');
+  list.innerHTML = '';
+  for (const item of items) {
+    const el = document.createElement('div');
+    el.className = 'list-item';
+    el.innerHTML = `
+      <div>
+        <div>${item.reason}</div>
+        <div class="meta">Confidence: ${item.confidence} · ${new Date(item.created_at).toLocaleString()}</div>
+      </div>
+      <button data-id="${item.id}">RESOLVE</button>
+    `;
+    el.querySelector('button').addEventListener('click', async () => {
+      await window.pixel.resolveReview(item.id);
+      refreshReview();
+      refreshDashboard();
+    });
+    list.appendChild(el);
+  }
+}
+
+// ---------- Settings / export ----------
+document.getElementById('btn-export-csv').addEventListener('click', async () => {
+  if (!currentArchiveId) { alert('No archive selected — visit the ARCHIVE tab first.'); return; }
+  const result = await window.pixel.exportCsv(currentArchiveId, null);
+  if (!result.canceled) alert(`Exported ${result.count} document(s).`);
+});
+
+// ---------- Boot ----------
+(async function init() {
+  await refreshDashboard();
+  await refreshArchiveList();
+  await initScannerDevices();
+})();
+</script>
+</body>
+</html>
