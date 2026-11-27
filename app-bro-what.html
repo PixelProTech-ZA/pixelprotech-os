@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en"><head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BRO, WHAT?! — No shame. Just answers.</title>
+<meta name="theme-color" content="#1c1d1f">
+<meta name="api-base" content="https://bro-what-api.lindokuhlerojasmabika.workers.dev">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+:root{--bg:#1c1d1f;--panel:#26282b;--line:#3a3d41;--txt:#fff;--mute:#b4b8bd;--lime:#c6ff3d;--ink:#10120a}
+*{box-sizing:border-box}html,body{margin:0;height:100%}
+body{background:var(--bg);color:var(--txt);font:16px/1.5 "Trebuchet MS","Segoe UI",system-ui,sans-serif;display:flex;flex-direction:column}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;padding-top:max(14px,env(safe-area-inset-top))}
+.logo{font:900 1.35rem/1 "Arial Black",Impact,sans-serif;letter-spacing:-.02em;display:flex;align-items:center;gap:2px}
+.logo .q{display:inline-grid;place-items:center;background:var(--lime);color:var(--ink);border-radius:50% 50% 50% 8px;width:1.5em;height:1.5em;margin-left:5px;transform:rotate(-8deg);font-size:1.05em}
+.hbtns{display:flex;gap:8px}.ghost{background:none;border:1px solid var(--line);border-radius:99px;padding:6px 14px;color:var(--mute)}
+.ghost:hover{border-color:var(--lime);color:#fff}
+main{flex:1;overflow-y:auto;padding:0 18px 12px;scroll-behavior:smooth}
+.wrap{max-width:720px;margin:0 auto}
+.hero{padding:7vh 0 10px}
+.hero h1{font:900 clamp(2.6rem,11vw,5rem)/.95 "Arial Black",Impact,sans-serif;letter-spacing:-.03em;margin:0 0 14px}
+.hero h1 span{color:var(--lime);display:inline-block;transform:rotate(-6deg)}
+.hero .tag{font-weight:800;letter-spacing:.04em;margin:0}.hero .sub{color:var(--mute);margin:6px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}
+.chip{background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:8px 14px}
+.chip:hover{border-color:var(--lime)}
+.msg{max-width:88%;margin:12px 0;padding:12px 16px;border-radius:20px;animation:in .22s ease-out;white-space:pre-wrap;word-wrap:break-word}
+.me{margin-left:auto;background:var(--lime);color:var(--ink);border-bottom-right-radius:6px;font-weight:600}
+.bro{background:var(--panel);border:1px solid var(--line);border-bottom-left-radius:6px}
+.bro a{color:var(--lime)}
+.bro.urgent{border-color:#ff8a4c}
+.acts{display:flex;gap:6px;margin-top:8px}.acts button{background:none;border:0;color:var(--mute);font-size:.85rem;padding:2px 6px;border-radius:8px}
+.acts button:hover{color:var(--lime)}
+.dots span{display:inline-block;width:8px;height:8px;margin-right:4px;border-radius:50%;background:var(--lime);animation:b 1s infinite}
+.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}
+.banner{background:#33290f;border:1px solid #8a6d1a;border-radius:14px;padding:12px 14px;margin:14px 0;font-size:.92rem}
+form{padding:10px 18px;padding-bottom:max(10px,env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--bg)}
+.row{max-width:720px;margin:0 auto;display:flex;gap:10px;align-items:flex-end}
+textarea{flex:1;resize:none;background:var(--panel);color:#fff;border:1px solid var(--line);border-radius:20px;padding:13px 16px;font:inherit;max-height:30vh}
+textarea::placeholder{color:var(--mute)}
+.go{background:var(--lime);color:var(--ink);border:0;border-radius:99px;padding:13px 20px;font-weight:900;white-space:nowrap}
+.go:disabled{opacity:.5;cursor:not-allowed}
+.hint{max-width:720px;margin:6px auto 0;color:var(--mute);font-size:.82rem}
+footer{text-align:center;color:var(--mute);font-size:.75rem;padding:8px 12px 12px}
+dialog{background:var(--panel);color:#fff;border:1px solid var(--line);border-radius:20px;max-width:520px;padding:22px}
+dialog::backdrop{background:#000a}dialog h2{margin-top:0}dialog li{margin:6px 0}
+@keyframes in{from{opacity:0;transform:translateY(8px)}}@keyframes b{50%{transform:translateY(-5px)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style></head><body>
+<header><div class="logo" aria-label="BRO, WHAT?!">BRO, WHAT<span class="q">?!</span></div>
+<div class="hbtns"><button class="ghost" id="priv">Privacy</button><button class="ghost" id="clear">Clear chat</button></div></header>
+<main id="main"><div class="wrap">
+<section class="hero" id="hero"><h1>BRO, <span>WHAT?!</span> 😂</h1>
+<p class="tag">NO SHAME. JUST ANSWERS.</p><p class="sub">We don't laugh. We explain.</p>
+<p class="sub">Whatever you've been wondering about, you can ask here.</p>
+<div class="chips" id="chips"></div></section>
+<div id="banner"></div><div id="log" aria-live="polite"></div></div></main>
+<form id="f"><div class="row"><textarea id="t" rows="2" maxlength="2000" placeholder="Bro, what's on your mind?" aria-label="Your question"></textarea>
+<button class="go" id="go" type="submit">LET'S TALK 👊</button></div>
+<div class="hint">Ask the awkward stuff. We're listening. · Enter to send, Shift+Enter for a new line</div></form>
+<footer>Built by PixelProTech Solutions (Pty) Ltd · Reg 2026/622131/07 · pixelprotechsolutions.co.za<br>General information only. Not a diagnosis. In an emergency, contact local emergency services.</footer>
+<dialog id="pd"><h2>Your privacy 🔒</h2><ul>
+<li>No account. No sign-up.</li><li>Your chat lives in this tab only. Close it or hit Clear chat and it's gone from your screen.</li>
+<li>Your messages are sent to our server and an AI provider (OpenRouter) to write a reply.</li>
+<li>We keep only anonymous counts: topic type, response time and safety flags. We do not keep your message text or who you are.</li>
+<li>Your chats are never used as public examples or in marketing.</li></ul>
+<button class="go" onclick="pd.close()">Got it</button></dialog>
+<script>
+const API=(document.querySelector('meta[name=api-base]').content||'').replace(/\/$/,'');
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+<script>
+const $=id=>document.getElementById(id),log=$('log'),t=$('t'),go=$('go');
+const CATS=[['😂','Awkward Questions','Okay, this is awkward, but: '],['🍑','Body Questions','I have a question about my body: '],['❤️','Relationships','I have a relationship question: '],['😳','Sexual Health','I have a sexual health question: '],['🧠','Mental Wellbeing','I want to talk about how I feel: '],['💬','Life Questions','I have a life question: '],['🤔','Just Curious','I\'m just curious: '],['🩺','Health Concerns','I have a health concern: ']];
+CATS.forEach(([e,n,p])=>{const b=document.createElement('button');b.type='button';b.className='chip';b.textContent=e+' '+n;b.onclick=()=>{t.value=p;t.focus()};$('chips').append(b)});
+let hist=[],busy=false;
+fetch(API+'/api/status').then(r=>r.json()).then(s=>{if(!s.configured)$('banner').innerHTML='<div class="banner"><b>Setup needed.</b> The AI isn\'t connected yet. Set <code>OPENROUTER_API_KEY</code> and <code>OPENROUTER_MODEL</code> on the server, then restart.</div>'}).catch(()=>{$('banner').innerHTML='<div class="banner"><b>Server not reachable.</b> Run <code>node server.js</code> and open this page from it.</div>'});
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmt=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/(https?:\/\/[^\s<]+[^\s<.,;:)])/g,'<a href="$1" target="_blank" rel="noopener noreferrer nofollow">$1</a>');
+function add(cls,html){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;log.append(d);$('main').scrollTop=1e9;return d}
+function acts(d,text){const a=document.createElement('div');a.className='acts';
+ [['Copy answer',b=>{navigator.clipboard?.writeText(text);b.textContent='Copied ✓'}],['👍 Helpful',b=>fb('up',a,b)],['👎 Not helpful',b=>fb('down',a,b)]].forEach(([l,fn])=>{const b=document.createElement('button');b.type='button';b.textContent=l;b.onclick=()=>fn(b);a.append(b)});d.append(a)}
+function fb(v,a,b){fetch(API+'/api/feedback',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({value:v})});a.innerHTML='<span style="color:var(--mute);font-size:.85rem">Thanks for the feedback 👊</span>'}
+const ERR={setup:'The AI isn\'t set up yet. The site owner needs to add the API key.',rate:'Too many questions at once. Wait a minute and try again.',down:'I couldn\'t get an answer just now. Tap Try again, your question is saved. 👊',bad:'That message couldn\'t be sent. Check it isn\'t empty or too long (2000 characters max).'};
+const DOTS='<span class="dots"><span></span><span></span><span></span></span>';
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function attempt(w){ // streams the answer word by word; falls back to plain JSON if the server is the old kind
+ const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),28000);
+ try{const r=await fetch(API+'/api/chat',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({messages:hist.slice(-6),stream:true}),signal:ac.signal});
+  clearTimeout(tm);
+  if(r.ok&&(r.headers.get('content-type')||'').includes('text/plain')&&r.body){
+   const safety=r.headers.get('X-Safety')||'ok',rd=r.body.getReader(),dec=new TextDecoder();let text='';
+   try{for(;;){const{done,value}=await rd.read();if(done)break;text+=dec.decode(value,{stream:true});w.innerHTML=fmt(text);$('main').scrollTop=1e9}}catch{}
+   return text.trim()?{ok:true,j:{reply:text.trim(),safety}}:{ok:false,j:{error:'down'}}}
+  const j=await r.json().catch(()=>({}));return{ok:r.ok,j}}
+ catch{clearTimeout(tm);return{ok:false,j:{error:'down'}}}}
+async function getReply(w){ // 2 tries max, silent, the user only sees the dots
+ let res;
+ for(let i=0;i<2;i++){
+  res=await attempt(w);
+  if(res.ok||['bad','rate','setup'].includes(res.j.error))break;
+  if(i<1)await wait(600)
+ }
+ return res}
+async function send(override){
+ const text=(typeof override==='string'?override:t.value).trim();if(!text||busy)return;busy=true;go.disabled=true;
+ $('hero').style.display='none';const me=add('me',esc(text));hist.push({role:'user',content:text});t.value='';
+ const w=add('bro',DOTS);
+ const{ok,j}=await getReply(w);
+ if(ok){hist.push({role:'assistant',content:j.reply});w.innerHTML=fmt(j.reply);if(j.safety==='urgent'||j.safety==='threat')w.classList.add('urgent');acts(w,j.reply)}
+ else{hist.pop();w.textContent=ERR[j.error]||ERR.down;
+  if(!['bad','setup'].includes(j.error)){const a=document.createElement('div');a.className='acts';const b=document.createElement('button');b.type='button';b.textContent='↻ Try again';
+   b.onclick=()=>{me.remove();w.remove();send(text)};a.append(b);w.append(a)}}
+ busy=false;go.disabled=false;t.focus();$('main').scrollTop=1e9}
+$('f').onsubmit=e=>{e.preventDefault();send()};
+t.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}};
+$('clear').onclick=()=>{hist=[];log.innerHTML='';$('hero').style.display='';t.value=''};
+$('priv').onclick=()=>$('pd').showModal();
+</script></body></html>

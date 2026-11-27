@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="en">
+<head><script>(function(){
+var F={};
+function key(u){try{u=String((u&&u.url)||u);}catch(e){return null}
+ u=u.split('#')[0].split('?')[0];
+ if(/^(https?:|\/\/|blob:|data:)/.test(u)){try{var o=new URL(u,location.href);if(o.origin!==location.origin)return null;u=o.pathname}catch(e){return null}}
+ u=u.replace(/^(\.\/)+/,'').replace(/^\//,'');var b=u.split('/').pop();try{b=decodeURIComponent(b)}catch(e){}return F.hasOwnProperty(b)?b:null}
+function bytes(b){var s=atob(b),a=new Uint8Array(s.length);for(var i=0;i<s.length;i++)a[i]=s.charCodeAt(i);return a}
+var of=window.fetch;
+if(of){window.fetch=function(i,o){var k=key(i);if(k){var d=F[k];return Promise.resolve(new Response(bytes(d[1]),{status:200,headers:{'Content-Type':d[0]}}))}return of.apply(this,arguments)}}
+try{var xo=XMLHttpRequest.prototype.open;XMLHttpRequest.prototype.open=function(m,u){var k=key(u);var a=[].slice.call(arguments);if(k){a[1]='data:'+F[k][0]+';base64,'+F[k][1]}return xo.apply(this,a)}}catch(e){}
+try{var OW=window.Worker;if(OW){window.Worker=function(u,o){var k=key(u);if(k){u=URL.createObjectURL(new Blob([bytes(F[k][1])],{type:'text/javascript'}))}return new OW(u,o)}}}catch(e){}
+try{if(navigator.serviceWorker){navigator.serviceWorker.register=function(){return Promise.resolve({scope:'./',installing:null,waiting:null,active:null,update:function(){return Promise.resolve()},unregister:function(){return Promise.resolve(true)},addEventListener:function(){}})}}}catch(e){}
+})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070a">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="Mom Sindy is a friendly cooking companion that guides you one safe step at a time, with voice.">
+<link rel="manifest" href="data:application/manifest+json,%7B%7D">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Mom Sindy">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Mom Sindy | PixelProTech Solutions</title>
+<style>
+:root{
+  --bg:#07070a;--panel:#1a1a22;--panel2:#1c1c26;
+  --teal:#00d4aa;--violet:#7b2fff;--gold:#d8b96a;
+  --text:#f1eefa;--text2:#c7c1da;--muted:#9a90b8;--dim:#524b6a;
+  --line:#2b2938;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 12% 0%,rgba(123,47,255,.16) 0,transparent 38%),radial-gradient(ellipse at 100% 20%,rgba(0,212,170,.09) 0,transparent 34%),var(--bg);color:var(--text);font:16px/1.55 var(--sans);min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:11px 15px;background:var(--panel2);color:var(--text);font-weight:650;transition:border-color .15s,transform .15s}
+button:hover{border-color:var(--teal);transform:translateY(-1px)}
+button:disabled{opacity:.4;cursor:not-allowed;transform:none;border-color:var(--line)}
+button:focus-visible,input:focus-visible,select:focus-visible,.dish:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.primary{background:var(--teal);color:#04120e;border-color:var(--teal)}
+.primary:hover{border-color:var(--text)}
+.quiet{background:transparent}
+.app{max-width:1180px;margin:auto;padding:22px}
+.sys{font:700 .68rem/1 var(--mono);letter-spacing:.22em;color:var(--dim);text-transform:uppercase}
+.top{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:8px 0 22px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.brand{font:700 .72rem/1.4 var(--mono);letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
+.brand strong{display:block;color:var(--text);font:800 1.2rem/1.2 var(--sans);letter-spacing:.06em}
+.tag{border:1px solid var(--violet);color:var(--text2);border-radius:99px;padding:6px 12px;font:700 .68rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;padding:30px 0}
+.eyebrow{color:var(--teal);font:700 .72rem/1 var(--mono);letter-spacing:.2em;text-transform:uppercase}
+.hero h1{font-size:clamp(2.2rem,5vw,4.1rem);line-height:1.03;margin:14px 0;font-weight:800}
+.hero h1 span{color:var(--teal)}
+.hero p{color:var(--text2);max-width:600px}
+.hero-art{min-height:290px;background:linear-gradient(145deg,#1d1535,#12121a 58%,#0a0a10);border:1px solid var(--line);border-radius:22px;display:grid;place-items:center;overflow:hidden;position:relative}
+.hero-art:before,.hero-art:after{content:"";position:absolute;border:1px solid rgba(0,212,170,.18);border-radius:50%;width:270px;height:270px}
+.hero-art:after{width:350px;height:350px;border-color:rgba(123,47,255,.25)}
+.robot{position:relative;z-index:1;text-align:center;animation:bob 3s ease-in-out infinite}
+.robot .head{width:112px;height:120px;margin:auto;background:linear-gradient(145deg,#f1eefa,#9a90b8);border-radius:48% 48% 44% 44%;box-shadow:inset -10px -8px 18px rgba(26,26,34,.35),0 15px 35px rgba(0,0,0,.55);position:relative}
+.eyes{position:absolute;top:48px;left:22px;right:22px;display:flex;justify-content:space-between}
+.eyes i{width:13px;height:8px;border-radius:50%;background:#07070a;box-shadow:0 0 10px var(--teal)}
+.smile{position:absolute;bottom:24px;left:43px;width:26px;height:12px;border-bottom:2px solid #1a1a22;border-radius:50%}
+.bodybot{width:142px;height:105px;margin:-3px auto 0;background:linear-gradient(120deg,#c7c1da,#7b6fa0);border-radius:38px 38px 22px 22px;position:relative;border:5px solid #524b6a}
+.apron{position:absolute;left:38px;right:38px;top:24px;bottom:0;background:#1a1a22;border-radius:15px 15px 8px 8px;border-top:4px solid var(--teal)}
+.robot small{display:block;color:var(--teal);margin-top:12px;font:700 .72rem/1 var(--mono);letter-spacing:.2em}
+.speech{position:absolute;top:22px;right:18px;background:var(--text);color:#1a1a22;padding:9px 13px;border-radius:14px 14px 3px 14px;font-size:.83rem;max-width:160px;z-index:2}
+.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}
+.card{background:linear-gradient(150deg,var(--panel),#14141b);border:1px solid var(--line);border-radius:18px;padding:20px}
+.card h2,.card h3{margin:0 0 12px}
+.card h2{font-size:1.15rem}
+.muted{color:var(--muted)}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.between{justify-content:space-between}
+.field{display:grid;gap:6px;margin:13px 0}
+.field label{color:var(--muted);font:700 .7rem/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase}
+.field select,.field input{background:#0d0d12;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:11px;width:100%}
+.dish{display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:14px;margin-top:10px;cursor:pointer;background:transparent;transition:border-color .15s}
+.dish:hover{border-color:var(--dim)}
+.dish.active{border-color:var(--teal);background:rgba(0,212,170,.06)}
+.dish .emoji{font-size:2.3rem;text-align:center;background:var(--panel2);border-radius:12px;padding:8px}
+.dish h3{font-size:1rem;margin:0}
+.dish p{font-size:.83rem;margin:3px 0 0;color:var(--muted)}
+.progress{height:6px;background:var(--panel2);border-radius:99px;overflow:hidden;margin:13px 0}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--violet));width:0;transition:width .25s}
+.stepnum{color:var(--teal);font:700 .72rem/1 var(--mono);letter-spacing:.18em}
+.step-title{font-size:1.4rem;margin:8px 0}
+.step-copy{color:var(--text2);min-height:68px}
+.tip{border-left:3px solid var(--gold);background:rgba(216,185,106,.07);padding:10px 12px;border-radius:0 10px 10px 0;color:var(--text2);font-size:.9rem;margin:12px 0}
+.note{border-left:3px solid var(--violet);background:rgba(123,47,255,.1);padding:10px 12px;border-radius:0 10px 10px 0;color:var(--text2);font-size:.9rem;margin:12px 0}
+.voicebar{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.status{font:.78rem/1.3 var(--mono);color:var(--teal);min-height:1.3em}
+.list{list-style:none;padding:0;margin:0}
+.list li{margin:4px 0}
+.list label{display:flex;gap:10px;align-items:flex-start;color:var(--text2);cursor:pointer;padding:5px 0}
+.list input{accent-color:var(--teal);margin-top:5px;width:16px;height:16px;flex:none}
+.list input:checked+span{color:var(--dim);text-decoration:line-through}
+.pill{font:700 .66rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--teal);border:1px solid rgba(0,212,170,.4);border-radius:99px;padding:5px 10px}
+.answer{color:var(--teal);margin-bottom:0}
+.hidden{display:none!important}
+.chat{max-height:280px;overflow:auto;display:grid;gap:8px;margin:12px 0;padding-right:4px}
+.msg{padding:9px 12px;border-radius:12px;font-size:.92rem;max-width:92%;line-height:1.45;overflow-wrap:anywhere}
+.msg.user{justify-self:end;background:rgba(123,47,255,.18);border:1px solid rgba(123,47,255,.4);color:var(--text)}
+.msg.sindy{justify-self:start;background:var(--panel2);border:1px solid var(--line);color:var(--text2)}
+.msg.pending{color:var(--muted);font-style:italic}
+.msg.sys{justify-self:center;font:.72rem/1.3 var(--mono);color:var(--muted);padding:2px 6px}
+.pill.ok{color:var(--teal);border-color:rgba(0,212,170,.4)}
+.pill.warn{color:var(--gold);border-color:rgba(216,185,106,.5)}
+.footer{padding:30px 0 10px;text-align:center;border-top:1px solid var(--line);margin-top:28px}
+.footer .sys{display:block;line-height:1.9}
+.footer a{color:var(--muted);text-decoration:none}
+.footer a:hover{color:var(--teal)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+/* ---------- app feel (Android / PWA) ---------- */
+html{-webkit-text-size-adjust:100%;color-scheme:dark}
+body{-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+button{min-height:48px;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+button:active{transform:scale(.97);filter:brightness(1.12)}
+.field select,.field input{min-height:48px;font-size:16px}
+.dish{min-height:72px}
+.dish:active{transform:scale(.99)}
+.top .row{gap:8px}
+@media(max-width:800px){
+  button{border-radius:999px;padding:12px 18px}
+  .card{border-radius:24px;padding:18px}
+  .dish{border-radius:18px}
+  .hero-art{border-radius:28px}
+  .navbar{position:sticky;bottom:10px;z-index:5;background:rgba(26,26,34,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:8px;border:1px solid var(--line);border-radius:999px;flex-wrap:nowrap}
+  .navbar button{flex:0 0 auto}
+  .navbar .primary{flex:1 1 auto}
+  .chat{max-height:42vh}
+}
+@media(display-mode:standalone){.tag{display:none}}
+@media(prefers-reduced-motion:reduce){.robot{animation:none}html{scroll-behavior:auto}button:hover,button:active{transform:none}}
+@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}.hero-art{min-height:260px}.app{padding:15px}.hero{padding-top:20px}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><strong>PIXELPROTECH SOLUTIONS</strong>Field IT Engineering &amp; Digital Systems</div>
+    <div class="row"><button class="quiet hidden" id="installBtn" type="button">⬇ Install app</button><div class="tag">Prototype · Mom Sindy</div></div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">// Your kitchen companion</div>
+      <h1>Good food.<br><span>Good teaching.</span><br>No kitchen fear.</h1>
+      <p>Mom Sindy guides you from choosing a meal to serving it. Pick a dish, prepare your ingredients, and cook one step at a time, with every step read aloud if your browser supports speech.</p>
+      <div class="row"><button class="primary" id="startBtn">Start cooking</button><button class="quiet" id="welcomeBtn">Meet Mom Sindy · voice</button></div>
+      <p class="muted" style="font-size:.84rem">No account needed. The lesson runs in your browser. Questions you ask Mom Sindy are sent to a PixelProTech server and an AI provider (OpenRouter) to be answered; if that is unavailable she uses built-in answers. Voice uses your browser's built-in speech features.</p>
+    </div>
+    <div class="hero-art" role="img" aria-label="Illustration of Mom Sindy, a friendly cooking robot in an apron">
+      <div class="speech" id="bubble" aria-live="polite">We'll take it one step at a time, my child.</div>
+      <div class="robot"><div class="head"><div class="eyes"><i></i><i></i></div><div class="smile"></div></div><div class="bodybot"><div class="apron"></div></div><small>MOM SINDY</small></div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="row between"><h2>Choose today's lesson</h2><span class="pill">3 recipes</span></div>
+      <div class="dish active" role="button" tabindex="0" data-recipe="pap"><div class="emoji">🍲</div><div><h3>Pap &amp; chakalaka</h3><p>South African staple · beginner · about 45 min</p></div></div>
+      <div class="dish" role="button" tabindex="0" data-recipe="stew"><div class="emoji">🥘</div><div><h3>Beef stew &amp; rice</h3><p>Comforting home meal · beginner · about 90 min</p></div></div>
+      <div class="dish" role="button" tabindex="0" data-recipe="jollof"><div class="emoji">🍚</div><div><h3>Jollof-style rice</h3><p>West African-inspired · beginner · about 60 min</p></div></div>
+      <div class="field"><label for="servings">How many people are eating?</label>
+        <select id="servings"><option value="1">1 person</option><option value="2" selected>2 people</option><option value="4">4 people</option><option value="6">6 people</option></select></div>
+      <div class="field"><label for="kitchen">Your kitchen setup</label>
+        <select id="kitchen">
+          <option value="stove">Normal stove and pots</option>
+          <option value="hotplate">One hotplate and one pot</option>
+          <option value="gas">Gas stove</option>
+          <option value="micro">Microwave and kettle only</option>
+        </select></div>
+      <div class="note" id="kitchenNote" aria-live="polite"></div>
+      <button class="primary" style="width:100%" id="prepareBtn">Prepare my lesson</button>
+    </div>
+
+    <div class="card" id="lesson">
+      <div class="row between"><h2>Cook with Mom Sindy</h2><span class="pill" id="recipeLabel">Pap &amp; chakalaka</span></div>
+      <div class="stepnum" id="stepCount">STEP 1 OF 6</div>
+      <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progressWrap"><span id="progressBar"></span></div>
+      <h3 class="step-title" id="stepTitle"></h3>
+      <p class="step-copy" id="stepText"></p>
+      <div class="tip" id="stepTip"></div>
+      <div class="row between"><span class="muted" id="stepTime"></span><span class="status" id="voiceStatus" aria-live="polite"></span></div>
+      <div class="voicebar">
+        <button class="primary" id="readBtn">🔊 Read step</button>
+        <button id="talkBtn">🎙️ Talk to Sindy</button>
+        <button id="stopBtn">⏹ Stop</button>
+      </div>
+      <div class="voicebar navbar" style="margin-top:12px">
+        <button id="backBtn">← Back</button>
+        <button class="primary" style="flex:1" id="nextBtn">I've done this · Next →</button>
+      </div>
+      <p class="muted" style="font-size:.8rem;margin-bottom:0">Voice commands: “next”, “repeat”, “back”, or ask a question such as “how do I know the pap is ready?”</p>
+    </div>
+  </section>
+
+  <section class="grid" style="margin-top:20px">
+    <div class="card">
+      <h2>Shopping &amp; preparation list</h2>
+      <p class="muted" style="margin-top:-5px">Amounts scale to the number of people you chose. They are starting estimates: adjust to appetite, and follow the packet ratio for maize meal and rice.</p>
+      <ul class="list" id="ingredients"></ul>
+    </div>
+    <div class="card">
+      <div class="row between"><h2>Ask Mom Sindy</h2><span class="pill warn" id="aiPill">AI: checking…</span></div>
+      <p class="muted" id="aiNote" style="margin-top:0"></p>
+      <div class="chat" id="chatlog" role="log" aria-live="polite" aria-label="Conversation with Mom Sindy"></div>
+      <div class="field"><label for="question">Your question</label><input id="question" placeholder="e.g. How do I know the pap is ready?" autocomplete="off" maxlength="500"></div>
+      <div class="row"><button class="primary" id="askBtn">Ask Sindy</button><button id="speakBtn">🎙️ Speak</button></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="sys">PixelProTech Solutions (Pty) Ltd · Reg 2026/622131/07</span>
+    <span class="sys"><a href="https://pixelprotechsolutions.co.za" target="_blank" rel="noopener">pixelprotechsolutions.co.za</a> · Johannesburg • Pretoria • Centurion • Gauteng</span>
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* Ingredient quantities are per 2 people. q = number, u = unit, n = name.
+   u:"" means a countable item. */
+const recipes = {
+pap:{name:"Pap & chakalaka",
+ingredients:[
+ {q:1,u:"cup",n:"maize meal"},
+ {q:3,u:"cups",n:"water for soft pap (use less for stiff pap; follow the packet)"},
+ {q:1,u:"",n:"onion(s), chopped",c:1},
+ {q:2,u:"",n:"tomato(es), chopped",c:1},
+ {q:1,u:"",n:"carrot(s), grated",c:1},
+ {q:0.5,u:"",n:"green pepper(s), chopped",c:1},
+ {q:1,u:"tbsp",n:"cooking oil"},
+ {q:1,u:"tsp",n:"chakalaka spice or mild curry powder"},
+ {q:0,u:"",n:"salt, to taste"},
+ {q:0,u:"",n:"cooked beans (optional)"}],
+steps:[
+["Get your kitchen ready","Wash your hands, clear your work surface and gather your ingredients. Put a pot, spoon, chopping board and knife within reach.","Tie back long hair. Keep pan handles turned inward and use dry cloths for hot cookware.","Preparation · about 5 min"],
+["Prepare the vegetables","Peel and chop the onion. Chop the tomatoes and green pepper. Grate the carrot. Keep the vegetables separate and put the knife safely aside.","Use a stable chopping board and curl your fingertips away from the blade.","Preparation · about 8 min"],
+["Start the chakalaka","Warm the oil in a saucepan over medium heat. Add the onion and green pepper and stir until the onion softens, then add the carrot and tomatoes.","If the oil smokes, the pan is too hot. Lower the heat and stir so nothing catches.","Cooking · about 5–7 min"],
+["Simmer the chakalaka","Add the spice, a pinch of salt and a splash of water. Stir, cover partly and simmer until the vegetables are soft. Add cooked beans if you like.","Stir now and then and add small splashes of water if the pan dries out. Taste with a clean spoon.","Cooking · about 12–15 min"],
+["Cook the pap","Bring the water and a pinch of salt to a boil in a separate pot. Lower the heat. Sprinkle in the maize meal gradually while stirring firmly to prevent lumps. If the packet gives a different ratio, follow the packet.","Steam can burn. Keep your face and hands away from the pot opening, and never dump all the maize meal in at once.","Cooking · about 10–15 min"],
+["Check, serve and enjoy","Cover the pap and cook on low heat, stirring now and then, until it is cooked through with no raw maize-meal taste. Serve hot with the chakalaka.","Never leave a hot stove unattended. Refrigerate leftovers promptly in shallow containers; do not leave cooked food out for hours.","Finish · about 5 min"]]},
+
+stew:{name:"Beef stew & rice",
+ingredients:[
+ {q:350,u:"g",n:"beef stew pieces",r:25},
+ {q:1,u:"",n:"onion(s), chopped",c:1},
+ {q:2,u:"",n:"tomato(es), chopped (or 1 tbsp tomato paste each)",c:1},
+ {q:1,u:"",n:"carrot(s), sliced",c:1},
+ {q:1,u:"",n:"potato(es), cubed (optional)",c:1},
+ {q:1,u:"tbsp",n:"cooking oil"},
+ {q:2,u:"",n:"garlic clove(s), crushed",c:1},
+ {q:1,u:"tsp",n:"curry powder"},
+ {q:0,u:"",n:"salt and pepper, to taste"},
+ {q:1,u:"cup",n:"uncooked rice"},
+ {q:2,u:"cups",n:"water or unsalted stock for the stew, plus extra as needed"}],
+steps:[
+["Set up safely","Wash your hands and clear the counter. Gather the beef, vegetables, seasonings, rice, two pots and a chopping board.","Keep raw beef and its juices away from ready-to-eat food. Wash hands, knife and board after handling raw meat.","Preparation · about 5 min"],
+["Prepare ingredients","Chop the onion and tomatoes. Slice the carrot and cube the potato. Measure the rice. Keep the raw beef on its own plate.","Use a separate board for raw meat if you can. Do not wash raw meat: splashing spreads germs.","Preparation · about 10 min"],
+["Brown the beef","Heat the oil in a heavy pot over medium-high heat. Brown the beef in batches so the pot is not crowded, then move it to a clean plate.","Hot oil can splatter, so lower pieces in carefully. Do not put cooked meat back on the raw-meat plate.","Cooking · about 8–10 min"],
+["Build the stew","Lower the heat. Cook the onion until soft. Add garlic, tomato, curry powder and salt. Return the beef and add enough water or stock to partly cover it.","Scrape the bottom gently. Add a little water if the pot is drying out.","Cooking · about 5 min"],
+["Simmer until tender","Cover and simmer gently, stirring from time to time. Add the carrot and potato partway through. Continue until the beef is tender.","Timing depends on the cut and the size of the pieces; tougher cuts can need 60–90 minutes or more. If you use a food thermometer, whole pieces of beef should reach at least 63°C with a 3-minute rest.","Cooking · about 45–75 min"],
+["Cook rice and serve","Rinse the rice if you like. Cook it using the water ratio on the packet. Fluff with a fork and serve with the hot stew.","Keep raw-meat utensils away from the cooked rice. Refrigerate leftovers promptly and reheat until steaming hot.","Finish · about 15 min"]]},
+
+jollof:{name:"Jollof-style rice",
+ingredients:[
+ {q:1,u:"cup",n:"long-grain rice"},
+ {q:2,u:"",n:"tomato(es)",c:1},
+ {q:0.5,u:"",n:"red bell pepper(s)",c:1},
+ {q:1,u:"",n:"onion(s) (about half goes into the blend, the rest is chopped)",c:1},
+ {q:1,u:"tbsp",n:"tomato paste"},
+ {q:2,u:"tbsp",n:"cooking oil"},
+ {q:1,u:"tsp",n:"curry powder"},
+ {q:0.5,u:"tsp",n:"dried thyme"},
+ {q:2,u:"",n:"garlic clove(s), crushed",c:1},
+ {q:0,u:"",n:"ginger and salt, to taste"},
+ {q:1.5,u:"cups",n:"stock or water (check the rice packet and adjust)"}],
+steps:[
+["Get ready","Wash your hands, clear the counter and gather a pot with a lid, a blender or grater, a spoon and your ingredients.","Keep the lid and handles safely positioned. Be careful with blades when blending.","Preparation · about 5 min"],
+["Make the pepper base","Blend or finely grate the tomatoes, bell pepper and about half of the onion. Keep the mixture smooth but not watery.","If you use a blender, secure the lid and never put a hand inside while the blades move.","Preparation · about 8 min"],
+["Cook the base","Heat the oil over medium heat. Soften the remaining chopped onion. Stir in the tomato paste, then add the blended mixture.","Cook gently and stir to prevent splashing. Lower the heat if it spits.","Cooking · about 10–15 min"],
+["Season it","Add garlic, ginger, thyme, curry powder and salt. Simmer until the sauce thickens and the raw tomato smell is gone.","Taste with a clean spoon. You can always add more seasoning later.","Cooking · about 8–10 min"],
+["Add rice and liquid","Rinse and drain the rice. Stir it into the sauce. Add the stock or water, using the rice packet as your guide.","Too much liquid makes the rice mushy. You can add a little hot water later if needed.","Cooking · about 3 min"],
+["Steam, check and serve","Cover and cook on low heat, checking occasionally and gently turning the rice so it cooks evenly. Add small splashes of hot water if it dries out. Serve once the rice is tender all the way through.","Do not leave the stove unattended. Cooking time and liquid vary by rice type and pot. Let the rice rest briefly before serving.","Finish · about 15–25 min"]]}
+};
+
+const kitchenNotes = {
+ stove:"",
+ hotplate:"One hotplate, one pot: cook the parts of the recipe one after another, not together. Keep the finished part covered in its pot or a lidded dish while you use the pot for the next part. Wash the pot between parts.",
+ gas:"Gas stove: if you smell gas, turn off the knobs, open windows and do not light anything. Keep the flame under the pot, not licking up the sides, and keep cloths and sleeves away from it.",
+ micro:"These recipes need a stove or hotplate with a pot. A microwave and kettle alone cannot safely brown, simmer or cook them, so Mom Sindy will not pretend otherwise. If you only have those, boil water in the kettle and use it to cook instant oats or noodles instead."
+};
+
+const substitutes = [
+ [/tomato paste/, "If you have fresh tomatoes, use about 2 chopped tomatoes per tablespoon of paste and simmer a little longer so the extra water cooks off."],
+ [/fresh tomato|tomatoes/, "No fresh tomatoes? Use 1 tablespoon of tomato paste per tomato, mixed with a splash of water."],
+ [/stock/, "No stock? Plain water works. Add a little more salt and seasoning to make up for the flavour."],
+ [/curry|chakalaka|spice/, "Mild curry powder and chakalaka spice can stand in for each other. Start with half the amount and taste, because strength varies by brand."],
+ [/green pepper|bell pepper|peppers?/, "Green and red peppers can replace each other. If you have neither, leave it out; the dish will still work."],
+ [/garlic/, "No garlic? Leave it out, or use a little extra onion."],
+ [/onion/, "Onion gives the base flavour. If you have none, leave it out and add a little extra spice, tasting as you go."],
+ [/maize|mealie|pap/, "Maize meal has no safe substitute for pap. Use the ratio on your packet."],
+ [/rice/, "Long-grain white rice works best here. Other rice needs different water and time, so follow its packet."],
+ [/oil/, "Any plain cooking oil works. Sunflower oil is common."]
+];
+
+const $ = id => document.getElementById(id);
+let selected = "pap", step = 0;
+
+/* ---------- formatting ---------- */
+function fmtNum(x){
+  const w = Math.floor(x), f = Math.round((x - w) * 4) / 4;
+  const frac = {0:"",0.25:"¼",0.5:"½",0.75:"¾",1:""}[f];
+  const whole = f === 1 ? w + 1 : w;
+  if (whole === 0 && frac) return frac;
+  return String(whole) + (frac || "");
+}
+function scaleIngredient(i, people){
+  if (!i.q) return i.n;
+  let q = i.q * people / 2;
+  if (i.r) q = Math.max(i.r, Math.round(q / i.r) * i.r);
+  else if (i.c) q = Math.max(0.5, Math.round(q * 2) / 2);
+  const num = i.r ? String(q) : fmtNum(q);
+  let unit = i.u;
+  if (unit === "cup" || unit === "cups") unit = q > 1 ? "cups" : "cup";
+  const name = i.n.replace(/\((e?s)\)/g, q > 1 ? "$1" : "");
+  return `${num}${unit ? " " + unit : ""} ${name}`.replace(/\s+/g, " ").trim();
+}
+
+/* ---------- rendering ---------- */
+function renderIngredients(){
+  const people = Number($("servings").value);
+  $("ingredients").innerHTML = recipes[selected].ingredients
+    .map(i => `<li><label><input type="checkbox"><span>${scaleIngredient(i, people)}</span></label></li>`).join("");
+}
+function renderKitchen(){
+  const n = kitchenNotes[$("kitchen").value];
+  $("kitchenNote").textContent = n;
+  $("kitchenNote").classList.toggle("hidden", !n);
+}
+function render(){
+  const r = recipes[selected], s = r.steps[step], last = step === r.steps.length - 1;
+  $("recipeLabel").textContent = r.name;
+  $("stepCount").textContent = `STEP ${step + 1} OF ${r.steps.length}`;
+  $("stepTitle").textContent = s[0];
+  $("stepText").textContent = s[1];
+  $("stepTip").textContent = "Safety tip: " + s[2];
+  $("stepTime").textContent = s[3];
+  const pct = Math.round((step + 1) / r.steps.length * 100);
+  $("progressBar").style.width = pct + "%";
+  $("progressWrap").setAttribute("aria-valuenow", pct);
+  $("backBtn").disabled = step === 0;
+  $("nextBtn").textContent = last ? "Finish lesson ✓" : "I've done this · Next →";
+  $("bubble").textContent = last ? "Look at you! Let's finish strong." : "One step at a time, my child.";
+  renderIngredients();
+}
+function chooseRecipe(id){
+  selected = id; step = 0;
+  document.querySelectorAll(".dish").forEach(x => x.classList.toggle("active", x.dataset.recipe === id));
+  render();
+}
+
+/* ---------- speech ---------- */
+const hasTTS = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+function setStatus(t){ $("voiceStatus").textContent = t; }
+function say(text){
+  if (!hasTTS){ setStatus("Speech output is not supported in this browser."); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.rate = 0.92; u.lang = "en-ZA";
+  u.onstart = () => setStatus("Mom Sindy is speaking…");
+  u.onend = () => setStatus("Ready when you are.");
+  u.onerror = e => { if (e.error !== "interrupted" && e.error !== "canceled") setStatus("Speech could not play in this browser."); };
+  speechSynthesis.speak(u);
+}
+function stopSpeech(){ if (hasTTS) speechSynthesis.cancel(); setStatus("Stopped."); }
+function speakCurrent(){ const s = recipes[selected].steps[step]; say(`${s[0]}. ${s[1]} Safety tip. ${s[2]}`); }
+
+/* ---------- navigation ---------- */
+function nextStep(){
+  if (step < recipes[selected].steps.length - 1){ step++; render(); speakCurrent(); }
+  else { const m = "You have completed this lesson. Well done, my child. Let the food cool a little and enjoy your meal."; $("bubble").textContent = "You did it! Proud of you."; addMsg("sindy", m); say(m); }
+}
+function previousStep(){ if (step > 0){ step--; render(); speakCurrent(); } }
+function startCooking(){ $("lesson").scrollIntoView({behavior:"smooth"}); speakCurrent(); }
+
+/* ---------- Ask Sindy ---------- */
+/* A command only counts if the whole utterance is a command, so questions
+   like "what do I need next?" are answered, not treated as "next". */
+function parseCommand(text){
+  const t = text.toLowerCase().replace(/[^a-z\s]/g, "").replace(/\s+/g, " ").trim();
+  if (/^(next|next step|done|i am done|im done|i have done this|continue)$/.test(t)) return "next";
+  if (/^(repeat|repeat that|again|say that again|read it again|read step)$/.test(t)) return "repeat";
+  if (/^(back|go back|previous|previous step)$/.test(t)) return "back";
+  return null;
+}
+function answerQuestion(q){
+  const t = q.toLowerCase();
+  if (/(pap|porridge).*(ready|done|cooked)|(ready|done|cooked).*(pap|porridge)/.test(t))
+    return "Pap is ready when it is cooked through, with no raw or dry maize-meal taste, and it holds together on the spoon. Keep it on low heat, covered, and stir now and then until the texture suits you.";
+  if (/rice.*(ready|done|cooked)|(ready|done|cooked).*rice/.test(t))
+    return "Taste a few grains. Rice is ready when it is tender all the way through with no hard centre. If it is still firm and the pot is dry, add a small splash of hot water, cover and cook a little longer.";
+  if (/(beef|meat|stew).*(ready|done|cooked|tender)|(ready|done|cooked|tender).*(beef|meat|stew)/.test(t))
+    return "Stew beef is ready when a piece is tender enough to cut easily with a spoon. Tougher cuts can take 60 to 90 minutes or more of gentle simmering. If you use a thermometer, whole pieces of beef should reach at least 63 degrees Celsius with a 3-minute rest.";
+  if (/lump/.test(t))
+    return "To avoid lumps in pap, sprinkle the maize meal in gradually and stir firmly the whole time. If lumps form, press them against the side of the pot with the back of the spoon while stirring.";
+  if (/burn|burnt|smok|catch(ing)? fire|fire|too hot/.test(t))
+    return "Turn the heat down or off if it is safe to do so, and move back from the smoke. Never pour water on burning oil. If a pan catches fire, turn off the heat if you safely can and cover the pan with a metal lid. If it spreads, leave and call the emergency services.";
+  if (/temperature|thermometer|safe to eat|undercook/.test(t))
+    return "Whole pieces of beef should reach at least 63 degrees Celsius with a 3-minute rest, and minced beef 71 degrees. Cook rice and pap until fully tender, and reheat leftovers until steaming hot.";
+  if (/leftover|store|fridge|refrigerat/.test(t))
+    return "Refrigerate leftovers promptly in shallow containers rather than leaving them out for hours. Reheat until steaming hot all the way through.";
+  if (/substitut|replace|instead|don'?t have|do not have|no\s+\w+|without|run out|missing/.test(t)){
+    for (const [re, a] of substitutes) if (re.test(t)) return a;
+    return "Tell me which ingredient is missing, for example tomato paste, stock, garlic, onion or curry powder, and I will tell you what I know.";
+  }
+  if (/ingredient|shopping|what do i need|what must i buy/.test(t))
+    return "Your shopping and preparation list is in the card on the left, scaled to the number of people you chose. Tick items off as you gather them.";
+  return "I don't have an answer for that in this version. Follow the current step, check the ingredient list, and use the safety tip. You can ask me about doneness, burning, leftovers, temperatures or substitutes.";
+}
+/* ---------- AI connection ----------
+   API_BASE is the public address of YOUR Cloudflare Worker, e.g.
+   "https://mom-sindy-api.your-subdomain.workers.dev". It is not a secret.
+   The OpenRouter key lives only inside the Worker. Leave empty to use the
+   built-in answers only. */
+const API_BASE = "https://mom-sindy-api.lindokuhlerojasmabika.workers.dev";
+const AI_STATES = {
+  checking:     ["AI: checking…", "warn", "Connecting to Mom Sindy's AI…"],
+  online:       ["AI: ready", "ok", "Mom Sindy's AI is connected. Ask her anything about this lesson, even mid-step. Your progress stays where it is."],
+  offline:      ["AI: offline", "warn", "The AI could not be reached, so Mom Sindy is using her built-in answers. Your lesson is not affected."],
+  unconfigured: ["AI: not connected", "warn", "Mom Sindy is using her built-in answers (doneness, safety, burning, leftovers, substitutes). The AI connection has not been set up yet."]
+};
+let aiState = API_BASE ? "checking" : "unconfigured";
+let busy = false;
+const history = []; /* conversation memory: kept in this page only, never stored */
+
+function apiUrl(path){ return API_BASE.replace(/\/+$/, "") + path; }
+function setAi(state){
+  aiState = state;
+  const [label, cls, note] = AI_STATES[state];
+  $("aiPill").textContent = label;
+  $("aiPill").className = "pill " + cls;
+  $("aiNote").textContent = note;
+}
+async function checkAI(){
+  if (!API_BASE){ setAi("unconfigured"); return; }
+  setAi("checking");
+  const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), 8000);
+  try {
+    const r = await fetch(apiUrl("/health"), { signal: ctrl.signal });
+    const d = await r.json();
+    setAi(d && d.ok && d.configured ? "online" : "offline");
+  } catch { setAi("offline"); }
+  finally { clearTimeout(t); }
+}
+
+function addMsg(kind, text){
+  const d = document.createElement("div");
+  d.className = "msg " + kind;
+  d.textContent = text; /* textContent only: AI text is never treated as HTML */
+  const log = $("chatlog");
+  log.appendChild(d);
+  log.scrollTop = log.scrollHeight;
+  return d;
+}
+
+function buildContext(){
+  const r = recipes[selected], s = r.steps[step], people = Number($("servings").value);
+  return {
+    recipe: r.name,
+    stepIndex: step,
+    steps: r.steps.map(x => x[0]),
+    stepText: s[1],
+    stepTip: s[2],
+    servings: people,
+    kitchen: $("kitchen").selectedOptions[0].textContent,
+    ingredients: r.ingredients.map(i => scaleIngredient(i, people))
+  };
+}
+async function askAI(text){
+  const ctrl = new AbortController(), t = setTimeout(() => ctrl.abort(), 25000);
+  try {
+    const res = await fetch(apiUrl("/chat"), {
+      method: "POST", signal: ctrl.signal,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text, context: buildContext(), history: history.slice(-10) })
+    });
+    let data = null;
+    try { data = await res.json(); } catch {}
+    if (!res.ok || !data || !data.ok || !data.reply) throw new Error((data && data.error) || ("http_" + res.status));
+    return data.reply;
+  } finally { clearTimeout(t); }
+}
+
+async function respond(text, speak){
+  const cmd = parseCommand(text);
+  if (cmd){
+    addMsg("user", text);
+    if (cmd === "next"){ addMsg("sindy", "Let's move to the next step."); nextStep(); }
+    else if (cmd === "back"){ addMsg("sindy", "Let's go back one step."); previousStep(); }
+    else { addMsg("sindy", "Of course. I'll repeat the current step."); speakCurrent(); }
+    return;
+  }
+  if (busy) return;
+  addMsg("user", text);
+  $("question").value = "";
+
+  let reply = "", usedAI = false;
+  if (API_BASE && aiState !== "unconfigured"){
+    if (navigator.onLine === false){ setAi("offline"); }
+    else {
+      busy = true; $("askBtn").disabled = true;
+      const pending = addMsg("sindy", "Mom Sindy is thinking…");
+      pending.classList.add("pending");
+      try { reply = await askAI(text); usedAI = true; setAi("online"); }
+      catch { setAi("offline"); }
+      pending.remove(); busy = false; $("askBtn").disabled = false;
+    }
+  }
+  if (!usedAI){
+    reply = answerQuestion(text);
+    if (API_BASE) addMsg("sys", "AI unavailable, so this is a built-in answer.");
+  }
+  addMsg("sindy", reply);
+  history.push({ role: "user", content: text }, { role: "assistant", content: reply });
+  if (history.length > 20) history.splice(0, history.length - 20);
+  $("bubble").textContent = "Let's figure it out together.";
+  if (speak) say(reply);
+}
+function askSindy(){
+  const q = $("question").value.trim();
+  if (!q){ addMsg("sys", "Type a question first, my child."); return; }
+  respond(q, true);
+}
+function listen(cb){
+  if (!SR){ setStatus("Voice input is not available in this browser. Type your question instead."); return; }
+  const rec = new SR();
+  rec.lang = "en-ZA"; rec.interimResults = false; rec.maxAlternatives = 1;
+  setStatus("Listening…");
+  rec.onresult = e => { const t = e.results[0][0].transcript; setStatus("Heard: " + t); cb(t); };
+  rec.onerror = e => setStatus(e.error === "not-allowed" ? "Microphone permission was denied." : "I couldn't hear that. Please try again or type it.");
+  try { rec.start(); } catch (err) { setStatus("Voice input could not start. Try again."); }
+}
+
+/* ---------- wiring ---------- */
+document.querySelectorAll(".dish").forEach(d => {
+  d.addEventListener("click", () => chooseRecipe(d.dataset.recipe));
+  d.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); chooseRecipe(d.dataset.recipe); } });
+});
+$("servings").addEventListener("change", renderIngredients);
+$("kitchen").addEventListener("change", renderKitchen);
+$("startBtn").addEventListener("click", startCooking);
+$("prepareBtn").addEventListener("click", () => { step = 0; render(); startCooking(); });
+$("welcomeBtn").addEventListener("click", () => say("Hello my child, I'm Mom Sindy. Choose a meal and I'll guide you from preparation to serving. We will take it one safe step at a time."));
+$("readBtn").addEventListener("click", speakCurrent);
+$("stopBtn").addEventListener("click", stopSpeech);
+$("talkBtn").addEventListener("click", () => listen(t => { $("question").value = t; respond(t, true); }));
+$("speakBtn").addEventListener("click", () => listen(t => { $("question").value = t; respond(t, true); }));
+$("backBtn").addEventListener("click", previousStep);
+$("nextBtn").addEventListener("click", nextStep);
+$("askBtn").addEventListener("click", askSindy);
+$("question").addEventListener("keydown", e => { if (e.key === "Enter") askSindy(); });
+
+setStatus(hasTTS ? (SR ? "Voice output and input available." : "Voice output available. Voice input is not supported here.") : "Voice is not supported in this browser. Text works fully.");
+if (!hasTTS){ $("readBtn").disabled = true; $("stopBtn").disabled = true; $("welcomeBtn").disabled = true; }
+if (!SR){ $("talkBtn").disabled = true; $("speakBtn").disabled = true; }
+window.addEventListener("online", checkAI);
+window.addEventListener("offline", () => { if (API_BASE) setAi("offline"); });
+addMsg("sindy", "Ask me about this lesson, my child: doneness, safety, burning, leftovers or substitutes.");
+renderKitchen();
+render();
+checkAI();
+
+/* ---------- PWA: install + offline ---------- */
+if ("serviceWorker" in navigator && location.protocol !== "file:"){
+  window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+}
+let deferredInstall = null;
+window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); deferredInstall = e; $("installBtn").classList.remove("hidden"); });
+window.addEventListener("appinstalled", () => { deferredInstall = null; $("installBtn").classList.add("hidden"); });
+$("installBtn").addEventListener("click", async () => {
+  if (!deferredInstall) return;
+  deferredInstall.prompt();
+  try { await deferredInstall.userChoice; } catch {}
+  deferredInstall = null; $("installBtn").classList.add("hidden");
+});
+/* Home-screen shortcuts open a recipe directly: ?recipe=pap | stew | jollof */
+const qRecipe = new URLSearchParams(location.search).get("recipe");
+if (qRecipe && recipes[qRecipe]) chooseRecipe(qRecipe);
+</script>
+</body>
+</html>
