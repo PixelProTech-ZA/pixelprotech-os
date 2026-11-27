@@ -1,0 +1,17 @@
+PIXEL GUIDE - put the AI helper online (run these in this folder, on your computer)
+
+Needs Node.js 22.12 or newer. Check with:  node --version
+
+1) npx wrangler@latest login
+2) npx wrangler@latest deploy
+3) npx wrangler@latest secret put OPENROUTER_API_KEY
+   (paste the key when it asks; nothing shows while you paste; press Enter)
+
+Check it: open  https://pixel-guide-api.lindokuhlerojasmabika.workers.dev/health
+It should say  {"ok":true,"configured":true}
+
+If step 2 prints a different address, open Pixel Guide in the OS, tap "Connection",
+paste that address and save.
+
+Do not upload this folder or your key to GitHub.
+In your OpenRouter account, set a credit limit on this key.

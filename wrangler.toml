@@ -1,0 +1,28 @@
+name = "pixel-guide-api"
+main = "worker.js"
+compatibility_date = "2026-11-01"
+
+# Non-secret settings. Change a value, then run: npx wrangler deploy
+[vars]
+# Any model id from https://openrouter.ai/models
+MODEL = "openai/gpt-4o-mini"
+# Optional comma-separated backup models
+FALLBACK_MODELS = ""
+# Sites allowed to use this Worker
+ALLOWED_ORIGINS = "https://pixelprotech-za.github.io,https://pixelprotechsolutions.co.za"
+# Live OS the app list is read from
+OS_URL = "https://pixelprotech-za.github.io/pixelprotech-os/"
+# Longest reply, in tokens
+MAX_TOKENS = "450"
+
+# Each visitor address: 10 questions per minute (approximate, per Cloudflare location)
+[[ratelimits]]
+name = "CHAT_LIMIT"
+namespace_id = "7210"
+
+  [ratelimits.simple]
+  limit = 10
+  period = 60
+
+# The OpenRouter key is NOT stored here. Add it as an encrypted secret:
+#   npx wrangler secret put OPENROUTER_API_KEY
