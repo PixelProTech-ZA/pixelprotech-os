@@ -1,14 +1,14 @@
-/* PixelProTech OS service worker v0.9.1
+/* PixelProTech OS service worker v0.10.0
    - Precaches only the small shell (~300 KB) so first install is fast on mobile data.
    - Apps and their files are saved the first time they are opened (stale-while-revalidate).
    - The apps cache survives version bumps, so a new OS version does NOT re-download every app.
    - Settings > "Download all apps" sends PRECACHE with every file listed in os-files.json. */
-const VERSION = "0-9-1";
+const VERSION = "0-10-0";
 const SHELL_CACHE = "pixelprotech-os-shell-v" + VERSION;
 const APPS_CACHE = "pixelprotech-os-apps";
 const SHELL_FILES = [
   "./", "./index.html", "./manifest.json", "./os-files.json",
-  "./pixel-fx.css", "./pixel-fx.js", "./pixel-apps.js", "./pixel-repos.js",
+  "./pixel-fx.css", "./pixel-fx.js", "./pixel-apps.js", "./pixel-repos.js", "./pixel-guide.js",
   "./icon-192.png", "./icon-512.png"
 ];
 

@@ -1,6 +1,6 @@
 {
- "generated_files": 119,
- "bytes": 30718203,
+ "generated_files": 120,
+ "bytes": 30729724,
  "files": [
   "app-academy.html",
   "app-archive-swallow.html",
@@ -120,6 +120,7 @@
   "pixel-apps.js",
   "pixel-fx.css",
   "pixel-fx.js",
+  "pixel-guide.js",
   "pixel-repos.js"
  ]
 }

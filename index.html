@@ -350,7 +350,7 @@ select{background:var(--glass2); border:1px solid var(--br2); color:var(--tx); p
    PIXEL CORE
    ========================================================= */
 const PixelOS = {
-  version: "0.9.1",
+  version: "0.10.0",
   core: { eventBus: new EventTarget() },
   apps: {},        // registry: id -> definition
   windows: new Map(), // winId -> record
@@ -1410,6 +1410,7 @@ if("serviceWorker" in navigator){
 </script>
 <script src="pixel-apps.js"></script>
 <script src="pixel-repos.js"></script>
+<script src="pixel-guide.js"></script>
 <script src="pixel-fx.js"></script>
 </body>
 </html>
